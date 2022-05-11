@@ -63,7 +63,7 @@ import 'shared.dart' show controlPath;
 ///  }
 /// }
 /// ```
-@directive(
+@Directive(
   selector: '[ngControl]',
   providers: [
     ExistingProvider(NgControl, NgControlName),

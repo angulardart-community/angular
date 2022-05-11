@@ -15,8 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory(), createInjector: doGenerate);
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '',
 )
 class GoldenComponent {

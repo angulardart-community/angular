@@ -42,8 +42,7 @@ const provideTokens = [
   ValueProvider.forToken(customMulti, 'customMulti: B'),
 ];
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '',
   providers: [
     provideTokens,

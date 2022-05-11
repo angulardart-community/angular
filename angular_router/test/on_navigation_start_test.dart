@@ -79,8 +79,7 @@ Stream<dynamic> navigate(Router router, String path) => StreamGroup.merge([
 const canDeactivateToken = OpaqueToken<bool>('canDeactivateToken');
 const canNavigateToken = OpaqueToken<bool>('canNavigateToken');
 
-@component(
-  selector: 'home',
+@Component(  selector: 'home',
   template: '',
 )
 class HomeComponent implements CanDeactivate, CanNavigate {
@@ -100,14 +99,12 @@ class HomeComponent implements CanDeactivate, CanNavigate {
   Future<bool> canNavigate() => Future.value(_canNavigate);
 }
 
-@component(
-  selector: 'destination',
+@Component(  selector: 'destination',
   template: '',
 )
 class DestinationComponent {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
   providers: [routerProvidersTest],

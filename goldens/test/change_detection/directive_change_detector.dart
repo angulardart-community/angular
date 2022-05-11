@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     NgModelLike,
   ],
@@ -27,7 +26,7 @@ class GoldenComponent {
   String value = deopt();
 }
 
-@directive(
+@Directive(
   selector: '[ngModel]:not([ngControl]):not([ngFormControl])',
 )
 class NgModelLike implements AfterChanges, OnInit {

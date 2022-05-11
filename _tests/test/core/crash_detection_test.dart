@@ -14,7 +14,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createNoCrashFactory(),
     ).addInjector(
-      (i) => injector.map({
+      (i) => Injector.map({
         ValueService: valueService,
       }, i),
     );
@@ -32,10 +32,10 @@ void main() {
 
   test('Should disable change detection on components that throw', () async {
     final valueService = ValueService()..value = '1';
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<Crash>(
       ng.createCrashFactory(),
     ).addInjector(
-      (i) => injector.map({
+      (i) => Injector.map({
         ValueService: valueService,
       }, i),
     );
@@ -67,10 +67,10 @@ void main() {
   test('Should disable change detection to avoid infinite ngOnInit', () async {
     final valueService = ValueService()..value = '1';
     final rpcService = RpcService();
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CrashOnInit>(
       ng.createCrashOnInitFactory(),
     ).addInjector(
-      (i) => injector.map({
+      (i) => Injector.map({
         ValueService: valueService,
         RpcService: rpcService,
       }, i),
@@ -114,16 +114,14 @@ class ValueService {
 }
 
 /// A top-level component that does not contain any crashing components.
-@component(
-  selector: 'no-crash',
+@Component(  selector: 'no-crash',
   template: '<child></child>',
   directives: [ChildComponent],
 )
 class NoCrash {}
 
 /// A child component that renders [ValueService.value].
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: 'Value: {{service.value}}',
 )
 class ChildComponent {
@@ -132,8 +130,7 @@ class ChildComponent {
   ChildComponent(this.service);
 }
 
-@component(
-  selector: 'crash',
+@Component(  selector: 'crash',
   template: r'''
     <child></child>
     <error *ngIf="startCrashing"></error>
@@ -148,8 +145,7 @@ class Crash {
   bool startCrashing = false;
 }
 
-@component(
-  selector: 'error',
+@Component(  selector: 'error',
   template: 'Error({{first}})',
 )
 class ErrorComponent {
@@ -169,8 +165,7 @@ class RpcService {
   }
 }
 
-@component(
-  selector: 'crash-on-init',
+@Component(  selector: 'crash-on-init',
   directives: [
     ChildComponent,
     ErrorComponent,
@@ -187,8 +182,7 @@ class CrashOnInit {
   bool startCrashing = false;
 }
 
-@component(
-  selector: 'oninit',
+@Component(  selector: 'oninit',
   template: '',
 )
 class OnInitComponent implements OnInit {

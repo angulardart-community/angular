@@ -54,7 +54,7 @@ import 'shared.dart' show setUpControl;
 ///  String login;
 /// }
 /// ```
-@directive(
+@Directive(
   selector: '[ngFormControl]',
   providers: [
     ExistingProvider(NgControl, NgFormControl),

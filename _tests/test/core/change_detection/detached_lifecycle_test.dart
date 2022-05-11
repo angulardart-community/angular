@@ -137,8 +137,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [
     DetachedViaStrategy,
   ],
@@ -153,12 +152,11 @@ class TestDetachedViaStrategy {
 
   var text = 'Hello World';
 
-  @ViewChild(DetachedViaStrategy, read: changeDetectorRef)
-  changeDetectorRef? child;
+  @ViewChild(DetachedViaStrategy, read: ChangeDetectorRef)
+  ChangeDetectorRef? child;
 }
 
-@component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   directives: [
     DetachedViaRef,
   ],
@@ -173,8 +171,8 @@ class TestDetachedViaRef {
 
   var text = 'Hello World';
 
-  @ViewChild(DetachedViaRef, read: changeDetectorRef)
-  changeDetectorRef? child;
+  @ViewChild(DetachedViaRef, read: ChangeDetectorRef)
+  ChangeDetectorRef? child;
 }
 
 class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
@@ -205,8 +203,7 @@ class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
   }
 }
 
-@component(
-  selector: 'detached-via-strategy',
+@Component(  selector: 'detached-via-strategy',
   template: r'''
     <span>{{text}}</span>
     <span>
@@ -214,12 +211,11 @@ class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
     </span>
   ''',
   // ignore: deprecated_member_use
-  changeDetection: changeDetectionStrategy.Detached,
+  changeDetection: ChangeDetectionStrategy.Detached,
 )
 class DetachedViaStrategy extends Logger {}
 
-@component(
-  selector: 'detached-via-ref',
+@Component(  selector: 'detached-via-ref',
   template: r'''
     <span>{{text}}</span>
     <span>
@@ -228,7 +224,7 @@ class DetachedViaStrategy extends Logger {}
   ''',
 )
 class DetachedViaRef extends Logger {
-  DetachedViaRef(changeDetectorRef changeDetectorRef) {
+  DetachedViaRef(ChangeDetectorRef changeDetectorRef) {
     // ignore: deprecated_member_use
     changeDetectorRef.detach();
   }

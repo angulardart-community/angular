@@ -47,7 +47,7 @@ import 'shared.dart' show setUpControl;
 /// Try the [live example][ex].
 ///
 /// [ex]:  https://angulardart.dev/examples/template-syntax/#ngModel
-@directive(
+@Directive(
   selector: '[ngModel]:not([ngControl]):not([ngFormControl])',
   providers: [
     ExistingProvider(NgControl, NgModel),

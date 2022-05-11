@@ -534,7 +534,7 @@ class Base {
   String? string = 'foo';
 }
 
-@component(
+@Component(
   selector: 'ngclass-destroy',
   directives: [NgClass, NgFor],
   template: '<div *ngFor="let item of items" [ngClass]="item"></div>',
@@ -543,7 +543,7 @@ class DestroyClassTest {
   List<List<String>>? items;
 }
 
-@component(
+@Component(
   selector: 'class-with-names',
   directives: [NgClass],
   template: '<div [ngClass]="classes"></div>',
@@ -555,7 +555,7 @@ class ClassWithNames {
   };
 }
 
-@component(
+@Component(
   selector: 'condition-map-test',
   directives: [NgClass],
   template: '<div [ngClass]="conditionMap"></div>',
@@ -576,77 +576,77 @@ class ConditionMapTest extends Base {
   }
 }
 
-@component(
+@Component(
   selector: 'map-update-test',
   directives: [NgClass],
   template: '<div [ngClass]="map"></div>',
 )
 class MapUpdateTest extends Base {}
 
-@component(
+@Component(
   selector: 'list-update-test',
   directives: [NgClass],
   template: '<div [ngClass]="list"></div>',
 )
 class ListUpdateTest extends Base {}
 
-@component(
+@Component(
   selector: 'list-update-with-initial-test',
   directives: [NgClass],
   template: '<div class="foo" [ngClass]="list"></div>',
 )
 class ListUpdateWithInitialTest extends Base {}
 
-@component(
+@Component(
   selector: 'list-update-test',
   directives: [NgClass],
   template: '<div [ngClass]="set"></div>',
 )
 class SetUpdateTest extends Base {}
 
-@component(
+@Component(
   selector: 'string-literal-test',
   directives: [NgClass],
   template: '<div [ngClass]="\'foo bar foo-bar fooBar\'"></div>',
 )
 class StringLiteralTest {}
 
-@component(
+@Component(
   selector: 'string-update-test',
   directives: [NgClass],
   template: '<div [ngClass]="string"></div>',
 )
 class StringUpdateTest extends Base {}
 
-@component(
+@Component(
   selector: 'string-update-with-initial-test',
   directives: [NgClass],
   template: '<div class="foo" [ngClass]="string"></div>',
 )
 class StringUpdateWithInitialTest extends Base {}
 
-@component(
+@Component(
   selector: 'map-update-with-initial-test',
   directives: [NgClass],
   template: '<div [ngClass]="map" class="init foo"></div>',
 )
 class MapUpdateWithInitialTest extends Base {}
 
-@component(
+@Component(
   selector: 'map-update-with-initial-interpolation-test',
   directives: [NgClass],
   template: '<div [ngClass]="map" class="{{\'init foo\'}}"></div>',
 )
 class MapUpdateWithInitialInterpolationTest extends Base {}
 
-@component(
+@Component(
   selector: 'map-update-with-initial-binding-test',
   directives: [NgClass],
   template: '<div [ngClass]="map" class="init" [class]="\'foo\'"></div>',
 )
 class MapUpdateWithInitialBindingTest extends Base {}
 
-@component(
+@Component(
   selector: 'map-update-with-condition-binding-test',
   directives: [NgClass],
   template:
@@ -654,14 +654,14 @@ class MapUpdateWithInitialBindingTest extends Base {}
 )
 class MapUpdateWithConditionBindingTest extends Base {}
 
-@component(
+@Component(
   selector: 'map-update-with-string-binding-test',
   directives: [NgClass],
   template: '<div class="init" [ngClass]="map" [class]="string"></div>',
 )
 class MapUpdateWithStringBindingTest extends Base {}
 
-@component(
+@Component(
   selector: 'interpolation-with-condition-binding-test',
   directives: [NgClass],
   template: '<div [class.baz]="condition" class="{{string}}" ngClass></div>',
@@ -674,7 +674,7 @@ extension _SumCssClasses on Element {
   }
 }
 
-@component(
+@Component(
   selector: 'child',
   template: '',
 )
@@ -686,7 +686,7 @@ class ChildWithHostClass {
   String get className => name ?? '';
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [
     NgClass,
@@ -699,7 +699,7 @@ class TestStaticClassWithNgClass {
   String? name;
 }
 
-@component(
+@Component(
   selector: 'test',
   template: r'''
     <div class="static" [class.enabled]="enabled"></div>
@@ -709,7 +709,7 @@ class TestStaticClassWithClassDot {
   bool enabled = false;
 }
 
-@component(
+@Component(
   selector: 'test',
   template: r'''
     <div class="static" [attr.class]="name"></div>
@@ -719,7 +719,7 @@ class TestStaticClassWithAttrClass {
   String name = '';
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [
     ChildWithHostClass,
@@ -732,7 +732,7 @@ class TestStaticClassWithHostClass {
   String? name;
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [
     NgClass,
@@ -746,7 +746,7 @@ class TestStaticClassWithClassDotNgClass {
   String? name;
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [
     NgClass,
@@ -760,7 +760,7 @@ class TestDynamicClassWithNgClass {
   String? name2;
 }
 
-@component(
+@Component(
   selector: 'test',
   template: r'''
     <div class="{{name}}" [class.enabled]="enabled"></div>
@@ -771,7 +771,7 @@ class TestDynamicClassWithClassDot {
   bool enabled = false;
 }
 
-@component(
+@Component(
   selector: 'test',
   template: r'''
     <div class="{{name1}}" [attr.class]="name2"></div>
@@ -782,7 +782,7 @@ class TestDynamicClassWithAttrClass {
   String name2 = '';
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [
     ChildWithHostClass,

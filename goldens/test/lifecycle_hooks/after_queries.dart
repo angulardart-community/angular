@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     NgIf,
     UsesAfterContent,
@@ -44,8 +43,7 @@ class GoldenComponent {
   bool showValue = deopt();
 }
 
-@component(
-  selector: 'uses-after-view',
+@Component(  selector: 'uses-after-view',
   directives: [
     ChildComponent,
     NgIf,
@@ -79,8 +77,7 @@ class UsesAfterView implements AfterViewInit, AfterViewChecked {
   }
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '',
 )
 class ChildComponent {
@@ -90,8 +87,7 @@ class ChildComponent {
   }
 }
 
-@component(
-  selector: 'uses-after-content',
+@Component(  selector: 'uses-after-content',
   template: '<ng-content></ng-content>',
 )
 class UsesAfterContent implements AfterContentInit, AfterContentChecked {

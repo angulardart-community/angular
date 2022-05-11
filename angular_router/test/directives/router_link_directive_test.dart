@@ -83,8 +83,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test-router-link',
+@Component(  selector: 'test-router-link',
   directives: [
     RouterLink,
   ],
@@ -96,8 +95,7 @@ class TestRouterLink {
   late String routerLink;
 }
 
-@component(
-  selector: 'test-router-link-keypress',
+@Component(  selector: 'test-router-link-keypress',
   template: '<div [routerLink]="routerLink"></div>',
   directives: [RouterLink],
 )
@@ -105,8 +103,7 @@ class TestRouterLinkKeyPress {
   String routerLink = '/foo/bar';
 }
 
-@component(
-  selector: 'test-router-link',
+@Component(  selector: 'test-router-link',
   directives: [
     RouterLink,
   ],

@@ -66,8 +66,7 @@ const testModule = Module(
 @GenerateInjector.fromModules([testModule])
 final createInjector = ng.createInjector$Injector;
 
-@component(
-  selector: 'app',
+@Component(  selector: 'app',
   directives: [RouterOutlet],
   template: '''
     <router-outlet [routes]="routes"></router-outlet>
@@ -94,8 +93,7 @@ class AppComponent {
   ];
 }
 
-@component(
-  selector: 'route',
+@Component(  selector: 'route',
   template: '',
 )
 class RouteComponent {}

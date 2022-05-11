@@ -91,15 +91,14 @@ void main() {
   });
 }
 
-@component(
-  selector: 'push-cmp-with-ref',
-  changeDetection: changeDetectionStrategy.OnPush,
+@Component(  selector: 'push-cmp-with-ref',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '{{field}}',
 )
 class PushCmpWithRef {
   var numberOfChecks = 0;
 
-  final changeDetectorRef ref;
+  final ChangeDetectorRef ref;
 
   @Input()
   String? prop;
@@ -116,8 +115,7 @@ class PushCmpWithRef {
   }
 }
 
-@component(
-  selector: 'manual-check',
+@Component(  selector: 'manual-check',
   template: '<push-cmp-with-ref #cmp></push-cmp-with-ref>',
   directives: [PushCmpWithRef],
 )
@@ -126,13 +124,12 @@ class ManualCheckComponent {
   PushCmpWithRef? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<template #container></template>',
 )
 class ManualCheckLoadedComponent {
-  @ViewChild('container', read: viewContainerRef)
-  viewContainerRef? componentLoader;
+  @ViewChild('container', read: ViewContainerRef)
+  ViewContainerRef? componentLoader;
 
   PushCmpWithRef loadComponent() {
     return componentLoader!
@@ -141,18 +138,16 @@ class ManualCheckLoadedComponent {
   }
 }
 
-@component(
-  selector: 'event-cmp',
+@Component(  selector: 'event-cmp',
   template: '<div (click)="noop()"></div>',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class EventCmp {
   void noop() {}
 }
 
-@component(
-  selector: 'push-cmp',
-  changeDetection: changeDetectionStrategy.OnPush,
+@Component(  selector: 'push-cmp',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '{{field}}<div (click)="noop()"></div><div *ngIf="true" '
       '(click)="noop()"></div><event-cmp></event-cmp>',
   directives: [EventCmp, NgIf],
@@ -171,8 +166,7 @@ class PushCmp {
   }
 }
 
-@component(
-  selector: 'push-cmp-host',
+@Component(  selector: 'push-cmp-host',
   template: '<push-cmp [prop]="ctxProp" #cmp></push-cmp>',
   directives: [PushCmp],
 )
@@ -183,8 +177,7 @@ class PushCmpHostComponent {
   PushCmp? child;
 }
 
-@component(
-  selector: 'push-cmp-with-ref-host',
+@Component(  selector: 'push-cmp-with-ref-host',
   template: '<push-cmp-with-ref [prop]="ctxProp" #cmp></push-cmp-with-ref>',
   directives: [PushCmpWithRef],
 )
@@ -195,9 +188,8 @@ class PushCmpWithRefHostComponent {
   PushCmpWithRef? child;
 }
 
-@component(
-  selector: 'push-cmp-with-async',
-  changeDetection: changeDetectionStrategy.OnPush,
+@Component(  selector: 'push-cmp-with-async',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: r'{{$pipe.async(field)}}',
   pipes: [AsyncPipe],
 )
@@ -221,8 +213,7 @@ class PushCmpWithAsyncPipe {
   }
 }
 
-@component(
-  selector: 'push-cmp-with-async-host',
+@Component(  selector: 'push-cmp-with-async-host',
   template: '<push-cmp-with-async #cmp></push-cmp-with-async>',
   directives: [PushCmpWithAsyncPipe],
 )

@@ -11,7 +11,7 @@ void main() {
 
   /// Returns the root [Element] created by initializing [component].
   Future<Element> rootElementOf<T extends Object>(
-    componentFactory<T> component,
+    ComponentFactory<T> component,
   ) {
     final testBed = NgTestBed(component);
     return testBed.create().then((fixture) => fixture.rootElement);
@@ -170,8 +170,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'host-binding-static',
+@Component(  selector: 'host-binding-static',
   template: '',
 )
 class HostBindingStaticTitle {
@@ -179,8 +178,7 @@ class HostBindingStaticTitle {
   static const hostTitle = 'Hello World';
 }
 
-@component(
-  selector: 'host-binding-instance',
+@Component(  selector: 'host-binding-instance',
   template: '',
 )
 class HostBindingInstanceTitle {
@@ -188,20 +186,17 @@ class HostBindingInstanceTitle {
   final hostTitle = 'Hello World';
 }
 
-@component(
-  selector: 'host-binding-static-not-inherited',
+@Component(  selector: 'host-binding-static-not-inherited',
   template: '',
 )
 class HostBindingStaticTitleNotInherited extends HostBindingStaticTitle {}
 
-@component(
-  selector: 'host-binding-instance-inherited',
+@Component(  selector: 'host-binding-instance-inherited',
   template: '',
 )
 class HostBindingInstanceTitleInherited extends HostBindingInstanceTitle {}
 
-@component(
-  selector: 'host-binding-tab-index',
+@Component(  selector: 'host-binding-tab-index',
   template: '',
 )
 class HostBindingTabIndex0 {
@@ -209,8 +204,7 @@ class HostBindingTabIndex0 {
   static const hostTabIndex = 0;
 }
 
-@component(
-  selector: 'host-binding-tab-index',
+@Component(  selector: 'host-binding-tab-index',
   template: '',
 )
 class HostBindingTabIndexNegative1 {
@@ -218,8 +212,7 @@ class HostBindingTabIndexNegative1 {
   static const hostTabIndex = -1;
 }
 
-@component(
-  selector: 'host-binding-static-class',
+@Component(  selector: 'host-binding-static-class',
   template: '',
 )
 class HostBindingStaticClass {
@@ -227,8 +220,7 @@ class HostBindingStaticClass {
   static const hostClass = 'themeable';
 }
 
-@component(
-  selector: 'host-binding-static-class',
+@Component(  selector: 'host-binding-static-class',
   template: '',
 )
 class HostBindingInstanceClass {
@@ -236,8 +228,7 @@ class HostBindingInstanceClass {
   var hostClass = 'themeable';
 }
 
-@component(
-  selector: 'host-binding-conditional-attribute',
+@Component(  selector: 'host-binding-conditional-attribute',
   template: '',
 )
 class HostBindingConditionalAttribute {
@@ -250,8 +241,7 @@ class HostBindingConditionalAttribute {
   bool disabledBackingValue = false;
 }
 
-@component(
-  selector: 'host-binding-conditional-attribute-statics',
+@Component(  selector: 'host-binding-conditional-attribute-statics',
   template: '',
 )
 class HostBindingConditionalStatics {
@@ -263,8 +253,7 @@ class HostBindingConditionalStatics {
   static bool get ariaDisabled => disabled;
 }
 
-@component(
-  selector: 'host-binding-conditional-attribute',
+@Component(  selector: 'host-binding-conditional-attribute',
   template: '',
 )
 class HostBindingConditionalClass {
@@ -272,8 +261,7 @@ class HostBindingConditionalClass {
   var fancy = false;
 }
 
-@component(
-  selector: 'host-binding-multi',
+@Component(  selector: 'host-binding-multi',
   template: '',
 )
 class HostBindingMulti {
@@ -282,8 +270,7 @@ class HostBindingMulti {
   static const hostClassAndTitle = 'hello';
 }
 
-@component(
-  selector: 'host-listener-click',
+@Component(  selector: 'host-listener-click',
   template: '',
 )
 class HostListenerClick {
@@ -295,14 +282,12 @@ class HostListenerClick {
   void Function() clickHandler = () => throw UnimplementedError();
 }
 
-@component(
-  selector: 'host-listener-inherited-click',
+@Component(  selector: 'host-listener-inherited-click',
   template: '',
 )
 class HostListenerInheritedClick extends HostListenerClick {}
 
-@component(
-  selector: 'host-listener-multi',
+@Component(  selector: 'host-listener-multi',
   template: '',
 )
 class HostListenerMulti {

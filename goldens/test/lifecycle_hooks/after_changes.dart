@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [UsesAfterChanges],
   template: '<uses-after-changes [a]="a" [b]="b" [c]="c"></uses-after-changes>',
 )
@@ -33,8 +32,7 @@ class GoldenComponent {
   }
 }
 
-@component(
-  selector: 'uses-after-changes',
+@Component(  selector: 'uses-after-changes',
   template: '',
 )
 class UsesAfterChanges implements AfterChanges {

@@ -6,8 +6,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     HasVisibilityAll,
     HasVisibilityLocal,
@@ -19,15 +18,13 @@ void main() {
 )
 class GoldenComponent {}
 
-@component(
-  selector: 'has-visibility-all',
+@Component(  selector: 'has-visibility-all',
   template: '',
   visibility: Visibility.all,
 )
 class HasVisibilityAll {}
 
-@component(
-  selector: 'has-visibility-local',
+@Component(  selector: 'has-visibility-local',
   template: '',
 )
 class HasVisibilityLocal {}

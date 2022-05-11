@@ -16,7 +16,7 @@ const NUMBER_VALUE_ACCESSOR = ExistingProvider.forToken(
 ///  ### Example
 ///
 ///  <input type="number" [(ngModel)]="age">
-@directive(
+@Directive(
   selector: 'input[type=number][ngControl],'
       'input[type=number][ngFormControl],'
       'input[type=number][ngModel]',

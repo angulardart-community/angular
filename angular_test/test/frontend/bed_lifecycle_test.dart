@@ -28,7 +28,7 @@ void main() {
     );
     final fixture = await testBed.create();
     expect(docRoot.text, isEmpty);
-    await fixture.update((c) => c.value = 'New value');
+    await fixture.update((AngularLifecycle c) => c.value = 'New value');
     expect(docRoot.text, 'New value');
     await fixture.dispose();
     print(docRoot.innerHtml);
@@ -36,10 +36,10 @@ void main() {
   });
 
   test('should invoke ngAfterChanges, then ngOnInit', () async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
-      beforeChangeDetection: (root) => root.name = 'Hello',
+      beforeChangeDetection: (NgAfterChangesInitOrder root) => root.name = 'Hello',
     );
     expect(
       fixture.assertOnlyInstance.child!.events,
@@ -50,7 +50,7 @@ void main() {
   test(
       'should invoke ngAfterChanges with asynchronous beforeChangeDetection,'
       ' then ngOnInit', () async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
       beforeChangeDetection: (root) async => root.name = 'Hello',
@@ -62,7 +62,7 @@ void main() {
   });
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '{{value}}',
 )
@@ -70,7 +70,7 @@ class AngularLifecycle {
   String value = '';
 }
 
-@component(
+@Component(
   selector: 'test',
   directives: [ChildWithLifeCycles],
   template: '<child [name]="name"></child>',
@@ -82,7 +82,7 @@ class NgAfterChangesInitOrder {
   ChildWithLifeCycles? child;
 }
 
-@component(
+@Component(
   selector: 'child',
   template: '',
   visibility: Visibility.all,

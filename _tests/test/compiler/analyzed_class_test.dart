@@ -109,7 +109,7 @@ class AnalyzedClassVisitor extends RecursiveElementVisitor<AnalyzedClass> {
 
   @override
   AnalyzedClass visitCompilationUnitElement(CompilationUnitElement element) {
-    return _visitAll(element.types);
+    return _visitAll(element.classes);
   }
 
   @override

@@ -68,7 +68,7 @@ class RadioButtonState {
 ///   RadioButtonState foodFish = new RadioButtonState(false, "fish");
 /// }
 /// ```
-@directive(
+@Directive(
   selector: 'input[type=radio][ngControl],'
       'input[type=radio][ngFormControl],'
       'input[type=radio][ngModel]',

@@ -104,7 +104,7 @@ void main() {
           NgTestBed(ng.createNgIfThrowsDuringChangeDetectionFactory());
       var fixture = await testBed.create();
       expect(
-        fixture.update((c) => c.startFailing = true),
+        fixture.update((NgIfThrowsDuringChangeDetection c) => c.startFailing = true),
         throwsA(isExpressionChanged),
       );
     });
@@ -113,12 +113,12 @@ void main() {
 
 const isExpressionChanged = TypeMatcher<UnstableExpressionError>();
 
-@directive(
+@Directive(
   selector: 'copy-me',
 )
 class CopyMe {}
 
-@component(
+@Component(
   selector: 'ngif-intemplate-test',
   template: '''
     <div>
@@ -136,7 +136,7 @@ class NgIfInTemplateComponent {
   bool booleanCondition = true;
 }
 
-@component(
+@Component(
   selector: 'ngif-toggle-test',
   template: '''
     <div>
@@ -152,7 +152,7 @@ class NgIfToggleTestComponent {
   bool booleanCondition = true;
 }
 
-@component(
+@Component(
   selector: 'ngif-nested-test',
   template: '''
     <div>
@@ -171,7 +171,7 @@ class NgIfNestedTestComponent {
   bool nestedBooleanCondition = true;
 }
 
-@component(
+@Component(
   selector: 'ngif-multiupdate-test',
   template: '<div>'
       '<copy-me *ngIf="numberCondition + 1 >= 2">helloNumber</copy-me>'
@@ -191,7 +191,7 @@ class NgIfMultiUpdateTestComponent {
   bool functionCondition(s, n) => s == 'foo' && n == 1;
 }
 
-@component(
+@Component(
   selector: 'ngif-checkbinding-test',
   template: r'''
     <template [ngIf]="startFailing">

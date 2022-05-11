@@ -142,8 +142,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'ng-form-test',
+@Component(  selector: 'ng-form-test',
   directives: [
     formDirectives,
     NgIf,
@@ -177,8 +176,7 @@ class NgFormTest {
   ControlGroup get formModel => form!.form!;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     formDirectives,
     NgIf,
@@ -191,7 +189,7 @@ class NgFormTest {
       </button>
     </form>
   ''',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushControlTest {
   var requiresName = false;
@@ -200,8 +198,7 @@ class OnPushControlTest {
   ButtonElement? submitButton;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     formDirectives,
     NgIf,
@@ -216,7 +213,7 @@ class OnPushControlTest {
       </button>
     </form>
   ''',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushControlGroupTest {
   var requiresGroup = false;

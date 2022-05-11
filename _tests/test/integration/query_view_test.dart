@@ -61,8 +61,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ValueDirective,
   ],
@@ -78,8 +77,7 @@ class TestDirectViewChildren extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ValueDirective,
   ],
@@ -93,8 +91,7 @@ class TestDirectViewChild extends HasChild<ValueDirective> {
   ValueDirective? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     NeverShowDirective,
@@ -116,8 +113,7 @@ class TestViewChildrenAndEmbedded extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     ValueDirective,
@@ -134,8 +130,7 @@ class TestDirectViewChildEmbedded extends HasChild<ValueDirective> {
   ValueDirective? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     NeverShowDirective,
@@ -155,8 +150,7 @@ class TestViewChildNestedOnOff extends HasChild<ValueDirective> {
   ValueDirective? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     NgIf,
     ValueDirective,
@@ -178,8 +172,7 @@ class TestViewChildNestedNgIfOffOn extends HasChild<ValueDirective> {
   ValueDirective? child;
 }
 
-@component(
-  selector: 'test-regression-embedded-ngif-false-true-async',
+@Component(  selector: 'test-regression-embedded-ngif-false-true-async',
   directives: [
     NgIf,
     ValueDirective,
@@ -209,8 +202,7 @@ class TestViewChildNestedNgIfOffOnAsync extends HasChild<ValueDirective>
   ValueDirective? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ValueDirective,
   ],
@@ -226,8 +218,7 @@ class TestDirectViewChildrenList extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ValueDirective,
   ],
@@ -247,8 +238,7 @@ class TestDirectViewChildrenListSetter extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     NeverShowDirective,
@@ -270,8 +260,7 @@ class TestViewChildrenAndEmbeddedList extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     NgFor,
@@ -291,8 +280,7 @@ class TestNestedNgForQueriesList {
   List<Element>? taggedDivs;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     AlwaysShowDirective,
     NgFor,
@@ -318,7 +306,7 @@ class TestNestedAndStaticNgForQueriesList {
 
 abstract class Queryable {}
 
-@directive(
+@Directive(
   selector: 'queryable-directive',
   providers: [
     ExistingProvider(Queryable, QueryableDirective),
@@ -329,8 +317,7 @@ class QueryableDirective implements Queryable {}
 
 class InjectableService {}
 
-@component(
-  selector: 'test-non-directive-child-selector',
+@Component(  selector: 'test-non-directive-child-selector',
   directives: [
     NgIf,
     QueryableDirective,

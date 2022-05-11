@@ -14,7 +14,7 @@ void main() {
   });
 }
 
-@component(
+@Component(
   selector: 'view-comp',
   providers: [DataService],
   template: '{{value}}',
@@ -30,7 +30,7 @@ class ViewComponent implements OnInit {
   Future<String> ngOnInit() async => value = await _service.fetch();
 }
 
-@component(
+@Component(
   selector: 'test-view-comp',
   directives: [
     OverrideDirective,
@@ -40,7 +40,7 @@ class ViewComponent implements OnInit {
 )
 class TestViewComponent {}
 
-@directive(
+@Directive(
   selector: '[override]',
   providers: [
     Provider(DataService, useClass: FakeDataService),

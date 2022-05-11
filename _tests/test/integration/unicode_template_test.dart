@@ -20,8 +20,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'app',
+@Component(  selector: 'app',
   template: '''
     <div>🎂</div>         <!-- Misc symbols: causes compilation error -->
     <div>ΓΔ</div>         <!-- Greek: OK-->

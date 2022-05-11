@@ -107,8 +107,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'heroes',
+@Component(  selector: 'heroes',
   template: '',
 )
 class HeroesComponent {}

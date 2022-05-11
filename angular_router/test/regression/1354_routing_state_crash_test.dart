@@ -78,8 +78,7 @@ class LoggingExceptionHandler implements ExceptionHandler {
   }
 }
 
-@component(
-  selector: 'app',
+@Component(  selector: 'app',
   template: r'''
     <form class="url-form" (submit)="updateUrl(urlBar.value!)">
       <label for="url-bar">Mock URL: </label>
@@ -160,20 +159,17 @@ class AppComponent {
   }
 }
 
-@component(
-  selector: 'home',
+@Component(  selector: 'home',
   template: 'Home Page',
 )
 class HomeComponent {}
 
-@component(
-  selector: 'another',
+@Component(  selector: 'another',
   template: 'Another Page',
 )
 class AnotherComponent {}
 
-@component(
-  selector: 'throws',
+@Component(  selector: 'throws',
   directives: [
     NgIf,
   ],

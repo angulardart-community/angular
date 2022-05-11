@@ -31,7 +31,7 @@ Future<void> disposeAnyRunningTest() async => activeTest?.dispose();
 Future<NgTestFixture<T>> createDynamicFixture<T extends Object>(
   NgTestBed<T> bed,
   Type type, {
-  FutureOr<void> Function(injector)? beforeComponentCreated,
+  FutureOr<void> Function(Injector)? beforeComponentCreated,
   FutureOr<void> Function(T)? beforeChangeDetection,
 }) {
   return bed._createDynamic(
@@ -104,15 +104,15 @@ class NgTestBed<T extends Object> {
     return host;
   }
 
-  static injector _defaultRootInjector(injector parent) => parent;
+  static Injector _defaultRootInjector(Injector parent) => parent;
 
   static NgTestStabilizer _alwaysStable(
-    injector _,
+      Injector _,
   ) =>
       NgTestStabilizer.alwaysStable;
 
   static NgTestStabilizer _defaultStabilizers(
-    injector injector, [
+      Injector injector, [
     TimerHookZone? timerZone,
   ]) {
     // There is no good way in Dart to support a union between two function
@@ -132,7 +132,7 @@ class NgTestBed<T extends Object> {
   final NgTestStabilizerFactory _createStabilizer;
 
   // TODO(b/157257828): Split initReflector APIs into a separate class.
-  final componentFactory<T>? _componentFactory;
+  final ComponentFactory<T>? _componentFactory;
   final InjectorFactory _rootInjector;
 
   /// Create a new [NgTestBed] that uses the provided [component] factory.
@@ -155,7 +155,7 @@ class NgTestBed<T extends Object> {
   /// }
   /// ```
   factory NgTestBed(
-    componentFactory<T> component, {
+    ComponentFactory<T> component, {
     Element? host,
     InjectorFactory rootInjector = _defaultRootInjector,
     bool watchAngularLifecycle = true,
@@ -214,7 +214,7 @@ class NgTestBed<T extends Object> {
     required Iterable<Object> providers,
     required NgTestStabilizerFactory stabilizer,
     InjectorFactory? rootInjector,
-    componentFactory<T>? component,
+    ComponentFactory<T>? component,
   })  : _host = host,
         _providers = providers.toList(),
         _createStabilizer = stabilizer,
@@ -223,7 +223,7 @@ class NgTestBed<T extends Object> {
 
   NgTestBed._useComponentFactory({
     Element? host,
-    required componentFactory<T> component,
+    required ComponentFactory<T> component,
     required InjectorFactory rootInjector,
     required bool watchAngularLifecycle,
   })  : _host = host,
@@ -251,7 +251,7 @@ class NgTestBed<T extends Object> {
   /// configuration across many tests with subtle differences.
   NgTestBed<T> addInjector(InjectorFactory factory) {
     return fork(
-      rootInjector: (injector parent) => _rootInjector(factory(parent)),
+      rootInjector: (Injector parent) => _rootInjector(factory(parent)),
     );
   }
 
@@ -275,7 +275,7 @@ class NgTestBed<T extends Object> {
   ///
   /// Returns a future that completes with a fixture around the component.
   Future<NgTestFixture<T>> create({
-    FutureOr<void> Function(injector)? beforeComponentCreated,
+    FutureOr<void> Function(Injector)? beforeComponentCreated,
     FutureOr<void> Function(T instance)? beforeChangeDetection,
   }) {
     return _createDynamic(
@@ -308,7 +308,7 @@ class NgTestBed<T extends Object> {
   // Used for compatibility only. See `create` for public API.
   Future<NgTestFixture<T>> _createDynamic(
     Type type, {
-    FutureOr<void> Function(injector)? beforeComponentCreated,
+    FutureOr<void> Function(Injector)? beforeComponentCreated,
     FutureOr<void> Function(T instance)? beforeChangeDetection,
   }) {
     // We *purposefully* do not use async/await here - that always adds an
@@ -333,7 +333,7 @@ class NgTestBed<T extends Object> {
       // Created within "createStabilizersAndRunUserHook".
       late final NgTestStabilizer allStabilizers;
 
-      Future<void> createStabilizersAndRunUserHook(injector injector) async {
+      Future<void> createStabilizersAndRunUserHook(Injector injector) async {
         // Some internal stabilizers get access to the TimerHookZone.
         // Most (i.e. user-land) stabilizers do not.
         final createStabilizer = _createStabilizer;
@@ -360,7 +360,7 @@ class NgTestBed<T extends Object> {
       }
 
       return bootstrapForTest<T>(
-        (_componentFactory ?? typeToFactory(type)) as componentFactory<T>,
+        (_componentFactory ?? typeToFactory(type)) as ComponentFactory<T>,
         _host ?? _defaultHost(),
         _createRootInjectorFactory(),
         beforeComponentCreated: createStabilizersAndRunUserHook,
@@ -369,7 +369,7 @@ class NgTestBed<T extends Object> {
       ).then((componentRef) async {
         _checkForActiveTest();
         await allStabilizers.stabilize();
-        final testFixture = NgTestFixture(
+        final testFixture = NgTestFixture<T>(
           componentRef.injector.provideType(ApplicationRef),
           componentRef,
           allStabilizers,
@@ -386,7 +386,7 @@ class NgTestBed<T extends Object> {
   /// Any non-null value overrides the existing properties.
   NgTestBed<E> fork<E extends T>({
     Element? host,
-    componentFactory<E>? component,
+    ComponentFactory<E>? component,
     Iterable<Object>? providers,
     InjectorFactory? rootInjector,
     NgTestStabilizerFactory? stabilizer,
@@ -396,12 +396,12 @@ class NgTestBed<T extends Object> {
       providers: providers ?? _providers,
       stabilizer: stabilizer ?? _createStabilizer,
       rootInjector: rootInjector ?? _rootInjector,
-      component: (component ?? _componentFactory) as componentFactory<E>?,
+      component: (component ?? _componentFactory) as ComponentFactory<E>?,
     );
   }
 
   /// Returns a new instance of [NgTestBed] with [component] overrode.
-  NgTestBed<E> setComponent<E extends T>(componentFactory<E> component) {
+  NgTestBed<E> setComponent<E extends T>(ComponentFactory<E> component) {
     return fork<E>(component: component);
   }
 

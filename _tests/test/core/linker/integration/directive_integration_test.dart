@@ -95,8 +95,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'input[type=text][width]',
+@Component(  selector: 'input[type=text][width]',
   template: 'Test',
 )
 class SimpleInput {
@@ -104,8 +103,7 @@ class SimpleInput {
   int? width;
 }
 
-@component(
-  selector: 'button[width]',
+@Component(  selector: 'button[width]',
   template: 'Test',
 )
 class SimpleButton {
@@ -113,7 +111,7 @@ class SimpleButton {
   int? width;
 }
 
-@directive(
+@Directive(
   selector: '[my-dir]',
   exportAs: 'myDir',
 )
@@ -122,8 +120,7 @@ class MyDir {
   String dirProp = '';
 }
 
-@component(
-  selector: 'bound-directive-input',
+@Component(  selector: 'bound-directive-input',
   template: '<div my-dir [elProp]="value"></div>'
       '<div my-dir elProp="Hi there!"></div>'
       '<div my-dir elProp="Hey {{\'there!!\'}}"></div>'
@@ -144,8 +141,7 @@ class MyService {
   String greeting = 'hello';
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
   viewProviders: [
     MyService,
@@ -159,8 +155,7 @@ class ChildComponent {
   }
 }
 
-@component(
-  selector: 'parent',
+@Component(  selector: 'parent',
   template: '<child></child>',
   directives: [
     ChildComponent,
@@ -168,8 +163,7 @@ class ChildComponent {
 )
 class ParentComponent {}
 
-@component(
-  selector: 'multiple-directives',
+@Component(  selector: 'multiple-directives',
   template: '<child my-dir [elProp]="value"></child>',
   directives: [
     ChildComponent,
@@ -183,8 +177,7 @@ class MultipleDirectivesComponent {
   MyDir? directive;
 }
 
-@component(
-  selector: 'unbound-directive-input',
+@Component(  selector: 'unbound-directive-input',
   template: '<div my-dir></div>',
   directives: [
     MyDir,
@@ -192,7 +185,7 @@ class MultipleDirectivesComponent {
 )
 class UnboundDirectiveInputComponent {}
 
-@directive(
+@Directive(
   selector: '[no-duplicate]',
 )
 class DuplicateDir {
@@ -201,8 +194,7 @@ class DuplicateDir {
   }
 }
 
-@component(
-  selector: 'duplicate-directives',
+@Component(  selector: 'duplicate-directives',
   template: '<div no-duplicate></div>',
   directives: [
     DuplicateDir,
@@ -211,7 +203,7 @@ class DuplicateDir {
 )
 class DuplicateDirectivesComponent {}
 
-@directive(
+@Directive(
   selector: '[id]',
 )
 class IdDir {
@@ -219,8 +211,7 @@ class IdDir {
   String? id;
 }
 
-@component(
-  selector: 'override-native-property',
+@Component(  selector: 'override-native-property',
   template: '<div [id]="value"></div>',
   directives: [
     IdDir,
@@ -233,7 +224,7 @@ class OverrideNativePropertyComponent {
   IdDir? directive;
 }
 
-@directive(
+@Directive(
   selector: '[customEvent]',
 )
 class EventDir {
@@ -243,8 +234,7 @@ class EventDir {
   Stream<String> get customEvent => _streamController.stream;
 }
 
-@component(
-  selector: 'event-directive',
+@Component(  selector: 'event-directive',
   template: '<p (customEvent)="doNothing()"></p>',
   directives: [
     EventDir,
@@ -260,7 +250,7 @@ class EventDirectiveComponent {
 @Injectable()
 class PublicApi {}
 
-@directive(
+@Directive(
   selector: '[public-api]',
   providers: [
     Provider(PublicApi, useExisting: PrivateImpl),
@@ -268,7 +258,7 @@ class PublicApi {}
 )
 class PrivateImpl extends PublicApi {}
 
-@directive(
+@Directive(
   selector: '[needs-public-api]',
 )
 class NeedsPublicApi {
@@ -277,8 +267,7 @@ class NeedsPublicApi {
   NeedsPublicApi(@Host() this.api);
 }
 
-@component(
-  selector: 'retrieves-dependency-from-host',
+@Component(  selector: 'retrieves-dependency-from-host',
   template: '<div public-api><div needs-public-api></div></div>',
   directives: [
     PrivateImpl,
@@ -295,8 +284,7 @@ class DoublePipe {
   String transform(dynamic value) => '$value$value';
 }
 
-@component(
-  selector: 'piped-directive-input',
+@Component(  selector: 'piped-directive-input',
   template: r'''
     <div my-dir #dir="myDir" [elProp]="$pipe.double(value)"></div>
     ''',

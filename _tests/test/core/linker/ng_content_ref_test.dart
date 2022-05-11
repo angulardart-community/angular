@@ -141,8 +141,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'its-empty',
+@Component(  selector: 'its-empty',
   template: '''
     <has-content-api></has-content-api>
   ''',
@@ -150,8 +149,7 @@ void main() {
 )
 class ItsEmpty {}
 
-@component(
-  selector: 'it-has-projected-content',
+@Component(  selector: 'it-has-projected-content',
   template: '''
     <has-content-api>
       <div class="foo"></div>
@@ -161,51 +159,44 @@ class ItsEmpty {}
 )
 class ItHasProjectedContent {}
 
-@component(
-  selector: 'has-content-api',
+@Component(  selector: 'has-content-api',
   template: 'hasContent:{{fooRef.hasContent}}'
       '<ng-content select=".foo" #fooRef></ng-content>',
 )
 class HasContentApiComponent {}
 
-@component(
-  selector: 'no-select-and-empty',
+@Component(  selector: 'no-select-and-empty',
   template: '<no-select-has-content></no-select-has-content>',
   directives: [NoSelectorHasContentComponent],
 )
 class WithoutSelectorAndEmpty {}
 
-@component(
-  selector: 'no-select-and-has-contents',
+@Component(  selector: 'no-select-and-has-contents',
   template:
       '<no-select-has-content><div></div><div></div></no-select-has-content>',
   directives: [NoSelectorHasContentComponent],
 )
 class WithoutSelectorAndHasContents {}
 
-@component(
-  selector: 'no-select-has-content',
+@Component(  selector: 'no-select-has-content',
   template: 'hasContent:{{ref.hasContent}}<ng-content #ref></ng-content>',
 )
 class NoSelectorHasContentComponent {}
 
-@component(
-  selector: 'has-match-ng-project-as',
+@Component(  selector: 'has-match-ng-project-as',
   template: '<ng-project-as><template class="foo"></template></ng-project-as>',
   directives: [NgProjectAsComponent],
 )
 class HasMatchNgProjectAs {}
 
-@component(
-  selector: 'ng-project-as',
+@Component(  selector: 'ng-project-as',
   template:
       '<has-content-api><ng-content select=".foo" ngProjectAs=".foo"></ng-content></has-content-api>',
   directives: [HasContentApiComponent],
 )
 class NgProjectAsComponent {}
 
-@component(
-  selector: 'ng-if-comp',
+@Component(  selector: 'ng-if-comp',
   template:
       '<no-select-has-content><div *ngIf="flag"></div></no-select-has-content>',
   directives: [NoSelectorHasContentComponent, NgIf],
@@ -214,8 +205,7 @@ class NgIfComponent {
   bool flag = true;
 }
 
-@component(
-  selector: 'ng-for-comp',
+@Component(  selector: 'ng-for-comp',
   template:
       '<no-select-has-content><div *ngFor="let item of items"></div></no-select-has-content>',
   directives: [NoSelectorHasContentComponent, NgFor],
@@ -224,8 +214,7 @@ class NgForComponent {
   List<int> items = [];
 }
 
-@component(
-  selector: 'its-empty',
+@Component(  selector: 'its-empty',
   template: '''
     <api-on-dart></api-on-dart>
   ''',
@@ -236,8 +225,7 @@ class ItsEmptyOnDart {
   ApiOnDartComponent? child;
 }
 
-@component(
-  selector: 'it-has-projected-content',
+@Component(  selector: 'it-has-projected-content',
   template: '''
     <api-on-dart>
       <div class="foo"></div>
@@ -250,23 +238,21 @@ class ItHasProjectedContentOnDart {
   ApiOnDartComponent? child;
 }
 
-@component(
-  selector: 'api-on-dart',
+@Component(  selector: 'api-on-dart',
   template: '<ng-content select=".foo" #fooRef></ng-content>',
 )
 class ApiOnDartComponent {
   @ViewChild('fooRef')
-  ngContentRef? byRef;
+  NgContentRef? byRef;
 
-  @ViewChild(ngContentRef)
-  ngContentRef? byType;
+  @ViewChild(NgContentRef)
+  NgContentRef? byType;
 
-  @ViewChildren(ngContentRef)
-  List<ngContentRef>? byTypes;
+  @ViewChildren(NgContentRef)
+  List<NgContentRef>? byTypes;
 }
 
-@component(
-  selector: 'if-in-template',
+@Component(  selector: 'if-in-template',
   template: '<template-comp><span>foo</span></template-comp>',
   directives: [EmbeddedTemplateComp],
 )
@@ -275,8 +261,7 @@ class NgIfInTemplate {
   EmbeddedTemplateComp? child;
 }
 
-@component(
-  selector: 'template-comp',
+@Component(  selector: 'template-comp',
   template: '''
     <ng-container *ngIf="isContentVisible">
       <ng-content #content></ng-content>
@@ -286,7 +271,7 @@ class NgIfInTemplate {
 )
 class EmbeddedTemplateComp {
   @ViewChild('content')
-  ngContentRef? ref;
+  NgContentRef? ref;
 
   bool isContentVisible = true;
 

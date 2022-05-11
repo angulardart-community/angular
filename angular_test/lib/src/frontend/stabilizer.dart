@@ -4,15 +4,15 @@ import 'package:angular/angular.dart';
 import '../errors.dart';
 import 'ng_zone/timer_hook_zone.dart';
 
-/// Creates a [NgTestStabilizer], optionally from an [injector].
-typedef NgTestStabilizerFactory = NgTestStabilizer Function(injector);
+/// Creates a [NgTestStabilizer], optionally from an [Injector].
+typedef NgTestStabilizerFactory = NgTestStabilizer Function(Injector);
 
 /// A variant of an [NgTestStabilizerFactory] with access to [TimerHookZone].
 ///
 /// In the future we can consider opening up visibility, but for now we should
 /// ensure that only our own stabilizers have access to this specific zone hook.
 typedef AllowTimerHookZoneAccess = NgTestStabilizer Function(
-  injector, [
+  Injector, [
   TimerHookZone?,
 ]);
 
@@ -20,7 +20,7 @@ typedef AllowTimerHookZoneAccess = NgTestStabilizer Function(
 NgTestStabilizerFactory composeStabilizers(
   Iterable<NgTestStabilizerFactory> factories,
 ) {
-  return (injector injector, [TimerHookZone? zone]) {
+  return (Injector injector, [TimerHookZone? zone]) {
     return _DelegatingNgTestStabilizer(factories.map((f) {
       // Most (i.e. all user-land) stabilizers do not have access to the
       // "secret" TimerHookZone. Only functions that are defined within this

@@ -81,8 +81,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'ng-model-test',
+@Component(  selector: 'ng-model-test',
   directives: [
     formDirectives,
   ],
@@ -99,8 +98,7 @@ class NgModelTest {
   String? loginValue;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     CustomEditorWithNgModelSupport,
     NgModel,
@@ -114,8 +112,7 @@ class NgModelWithCheckBindingTest {
   String? value;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     CustomEditorWithNgModelSupport,
     NgModel,
@@ -135,8 +132,7 @@ class NgModelWithNgDisabledTestComponent {
   CustomEditorWithNgModelSupport? editor;
 }
 
-@component(
-  selector: 'custom-editor-with-ng-model',
+@Component(  selector: 'custom-editor-with-ng-model',
   template: '',
 )
 class CustomEditorWithNgModelSupport implements ControlValueAccessor<String> {

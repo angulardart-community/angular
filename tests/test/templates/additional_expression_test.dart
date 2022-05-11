@@ -87,8 +87,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test-prefixed-exports',
+@Component(  selector: 'test-prefixed-exports',
   exports: [
     lib.ExternalStaticClass,
     lib.toUppercase,
@@ -108,8 +107,7 @@ class TestPrefixedExports {
   var name = 'Bob';
 }
 
-@component(
-  selector: 'test-non-root-assignment',
+@Component(  selector: 'test-non-root-assignment',
   template: r'''
     <button (click)="(a = $event)"></button>
     <button (click)="a = b = $event"></button>
@@ -123,8 +121,7 @@ class TestNonRootAssignment {
   Object c(Object c) => c;
 }
 
-@component(
-  selector: 'test-null-aware-functions',
+@Component(  selector: 'test-null-aware-functions',
   directives: [
     NgFor,
   ],

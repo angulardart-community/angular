@@ -66,8 +66,7 @@ class MyService {
   String greeting = 'hello';
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
   viewProviders: [
     MyService,
@@ -81,8 +80,7 @@ class ChildComponent {
   }
 }
 
-@component(
-  selector: 'component-reference-binding',
+@Component(  selector: 'component-reference-binding',
   template: '<p><child #alice></child></p>',
   directives: [ChildComponent],
 )
@@ -91,14 +89,13 @@ class ComponentReferenceBindingComponent {
   ChildComponent? child;
 }
 
-@directive(
+@Directive(
   selector: '[export-dir]',
   exportAs: 'dir',
 )
 class ExportDir {}
 
-@component(
-  selector: 'directive-reference-binding',
+@Component(  selector: 'directive-reference-binding',
   template: '<div><div export-dir #localdir="dir"></div></div>',
   directives: [ExportDir],
 )
@@ -107,8 +104,7 @@ class DirectiveReferenceBindingComponent {
   ExportDir? directive;
 }
 
-@component(
-  selector: 'element-reference-binding',
+@Component(  selector: 'element-reference-binding',
   template: r'''
     <div #alice>
       <i capture [reference]="alice">
@@ -123,7 +119,7 @@ class ElementReferenceBindingComponent {
   CaptureReferenceDirective? captured;
 }
 
-@directive(
+@Directive(
   selector: '[capture]',
 )
 class CaptureReferenceDirective {
@@ -131,8 +127,7 @@ class CaptureReferenceDirective {
   dynamic reference;
 }
 
-@component(
-  selector: 'use-ref-before-declaration',
+@Component(  selector: 'use-ref-before-declaration',
   template: '<template [ngIf]="true">{{alice.value}}</template>'
       '|{{alice.value}}|<child #alice></child>',
   directives: [
@@ -142,8 +137,7 @@ class CaptureReferenceDirective {
 )
 class UseRefBeforeDeclarationComponent {}
 
-@component(
-  selector: 'two-component-references',
+@Component(  selector: 'two-component-references',
   template: '<p><child #alice></child><child #bob></child></p>',
   directives: [ChildComponent],
 )
@@ -155,8 +149,7 @@ class TwoComponentReferencesComponent {
   ChildComponent? bob;
 }
 
-@component(
-  selector: 'case-sensitive-ref',
+@Component(  selector: 'case-sensitive-ref',
   template: '<child #superAlice></child>',
   directives: [ChildComponent],
 )

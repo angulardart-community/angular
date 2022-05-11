@@ -72,8 +72,7 @@ void main() {
 @Injectable()
 class InjectableService {}
 
-@component(
-  selector: 'directive-consuming-injectable',
+@Component(  selector: 'directive-consuming-injectable',
   template: '',
 )
 class DirectiveConsumingInjectable {
@@ -83,14 +82,13 @@ class DirectiveConsumingInjectable {
       @Host() @Inject(InjectableService) this.injectable);
 }
 
-@directive(
+@Directive(
   selector: 'directive-providing-injectable',
   providers: [InjectableService],
 )
 class DirectiveProvidingInjectable {}
 
-@component(
-  selector: 'provide-consume-injectable',
+@Component(  selector: 'provide-consume-injectable',
   template: '''
 <directive-providing-injectable>
   <directive-consuming-injectable #consumer></directive-consuming-injectable>
@@ -105,8 +103,7 @@ class ProvideConsumeInjectableComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@component(
-  selector: 'provides-injectable-in-view',
+@Component(  selector: 'provides-injectable-in-view',
   template: '''
 <directive-consuming-injectable #consumer>
 </directive-consuming-injectable>''',
@@ -118,8 +115,7 @@ class ProvidesInjectableInViewComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@component(
-  selector: 'directive-containing-directive-consuming-an-injectable',
+@Component(  selector: 'directive-containing-directive-consuming-an-injectable',
   template: '''
 <directive-consuming-injectable-unbounded>
 </directive-consuming-injectable-unbounded>''',
@@ -130,8 +126,7 @@ class DirectiveContainingDirectiveConsumingAnInjectable {
   DirectiveConsumingInjectableUnbounded? directive;
 }
 
-@component(
-  selector: 'directive-consuming-injectable-unbounded',
+@Component(  selector: 'directive-consuming-injectable-unbounded',
   template: '',
 )
 class DirectiveConsumingInjectableUnbounded {
@@ -143,8 +138,7 @@ class DirectiveConsumingInjectableUnbounded {
   }
 }
 
-@component(
-  selector: 'provides-injectable-unbounded',
+@Component(  selector: 'provides-injectable-unbounded',
   template: '''
 <directive-providing-injectable>
   <directive-containing-directive-consuming-an-injectable #dir>
@@ -169,7 +163,7 @@ class EventBus {
 
 const grandParentBus = EventBus(null, 'grandparent');
 
-@directive(
+@Directive(
   selector: 'grand-parent-providing-event-bus',
   providers: [
     Provider(EventBus, useValue: grandParentBus),
@@ -185,8 +179,7 @@ EventBus createParentBus(EventBus parentEventBus) {
   return EventBus(parentEventBus, 'parent');
 }
 
-@component(
-  selector: 'parent-providing-event-bus',
+@Component(  selector: 'parent-providing-event-bus',
   providers: [
     Provider(EventBus, useFactory: createParentBus, deps: [
       [EventBus, SkipSelf()]
@@ -205,7 +198,7 @@ class ParentProvidingEventBus {
   ParentProvidingEventBus(this.bus, @SkipSelf() this.grandParentBus);
 }
 
-@directive(
+@Directive(
   selector: 'child-consuming-event-bus',
 )
 class ChildConsumingEventBus {
@@ -214,8 +207,7 @@ class ChildConsumingEventBus {
   ChildConsumingEventBus(@SkipSelf() this.bus);
 }
 
-@component(
-  selector: 'event-bus',
+@Component(  selector: 'event-bus',
   template: '''
 <grand-parent-providing-event-bus>
   <parent-providing-event-bus></parent-providing-event-bus>
@@ -233,16 +225,15 @@ class EventBusComponent {
   ParentProvidingEventBus? parent;
 }
 
-InjectableService createInjectableWithLogging(injector injector) {
+InjectableService createInjectableWithLogging(Injector injector) {
   injector.get(ComponentProvidingLoggingInjectable).created = true;
   return InjectableService();
 }
 
-@component(
-  selector: 'component-providing-logging-injectable',
+@Component(  selector: 'component-providing-logging-injectable',
   providers: [
     Provider(InjectableService,
-        useFactory: createInjectableWithLogging, deps: [injector])
+        useFactory: createInjectableWithLogging, deps: [Injector])
   ],
   template: '<ng-content></ng-content>',
   visibility: Visibility.all,
@@ -251,8 +242,7 @@ class ComponentProvidingLoggingInjectable {
   bool created = false;
 }
 
-@component(
-  selector: 'lazy-bindings',
+@Component(  selector: 'lazy-bindings',
   template: '''
 <component-providing-logging-injectable #providing>
   <directive-consuming-injectable *ngIf="visible">
@@ -271,14 +261,13 @@ class LazyBindingsComponent {
   ComponentProvidingLoggingInjectable? providing;
 }
 
-@directive(
+@Directive(
   selector: 'some-directive',
   visibility: Visibility.all,
 )
 class SomeDirective {}
 
-@component(
-  selector: 'cmp-with-host',
+@Component(  selector: 'cmp-with-host',
   template: '<p>Component with an injected host</p>',
   directives: [SomeDirective],
 )
@@ -288,8 +277,7 @@ class CompWithHost {
   CompWithHost(@Host() this.myHost);
 }
 
-@component(
-  selector: 'injects-host',
+@Component(  selector: 'injects-host',
   template:
       '<some-directive><cmp-with-host #cmp></cmp-with-host></some-directive>',
   directives: [CompWithHost, SomeDirective],
@@ -299,8 +287,7 @@ class InjectsHostComponent {
   CompWithHost? compWithHost;
 }
 
-@component(
-  selector: 'injects-host-through-view-container',
+@Component(  selector: 'injects-host-through-view-container',
   template: '''
 <some-directive>
   <p *ngIf="true">

@@ -19,13 +19,12 @@ void main() {
       var testBed = NgTestBed(ng.createMyCompWithTemplateRefFactory());
       var testFixture = await testBed.create();
       var refReader = testFixture.assertOnlyInstance.refReaderComponent;
-      expect(refReader!.ref1, TypeMatcher<templateRef>());
+      expect(refReader!.ref1, TypeMatcher<TemplateRef>());
     });
   });
 }
 
-@component(
-  selector: 'my-comp-with-tref',
+@Component(  selector: 'my-comp-with-tref',
   template: '<template #alice>Unstamped tmp</template>'
       '<ref-reader [ref1]="alice"></ref-reader>',
   directives: [RefReaderComponent],
@@ -35,24 +34,21 @@ class MyCompWithTemplateRef {
   RefReaderComponent? refReaderComponent;
 }
 
-@component(
-  selector: 'ref-reader',
+@Component(  selector: 'ref-reader',
   template: '<div></div>',
 )
 class RefReaderComponent {
   @Input()
-  templateRef? ref1;
+  TemplateRef? ref1;
 }
 
-@component(
-  selector: 'container-with-no-propertyaccess',
+@Component(  selector: 'container-with-no-propertyaccess',
   template: '<no-property-access></no-property-access>',
   directives: [NoPropertyAccess],
 )
 class ContainerWithNoPropertyAccess {}
 
-@component(
-  selector: 'no-property-access',
+@Component(  selector: 'no-property-access',
   template: '''{{model.doesNotExist}}''',
 )
 class NoPropertyAccess {

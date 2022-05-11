@@ -56,8 +56,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'uses-on-push',
+@Component(  selector: 'uses-on-push',
   template: '<on-push [ticks]="ticks"></on-push>',
   directives: [OnPushComponent],
 )
@@ -68,18 +67,17 @@ class UsesOnPushComponent {
   OnPushComponent? child;
 }
 
-@component(
-  selector: 'on-push',
+@Component(  selector: 'on-push',
   template: r'''
     <button>Ticks: {{ticks}}</button>
   ''',
   directives: [
     NgIf,
   ],
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushComponent {
-  final changeDetectorRef _changeDetector;
+  final ChangeDetectorRef _changeDetector;
 
   OnPushComponent(this._changeDetector);
 

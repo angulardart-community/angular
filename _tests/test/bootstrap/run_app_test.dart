@@ -15,7 +15,7 @@ import 'run_app_test.template.dart' as ng;
 void main() {
   ng.initReflector();
 
-  late componentRef<HelloWorldComponent> component;
+  late ComponentRef<HelloWorldComponent> component;
   late Element rootDomContainer;
 
   FutureOr<T> runInApp<T>(T Function() fn) {
@@ -77,7 +77,7 @@ void main() {
     component = runApp(
       ng.createHelloWorldComponentFactory(),
       createInjector: (parent) {
-        return injector.map({
+        return Injector.map({
           ExceptionHandler: StubExceptionHandler(),
         }, parent);
       },
@@ -143,7 +143,7 @@ void main() {
   });
 }
 
-@component(
+@Component(
   selector: 'hello-world',
   template: '<h1>Hello {{name}}!</h1>',
   styles: [

@@ -26,7 +26,7 @@ void main() {
 
 /// Loads [componentFactory] and expects its text to have [fontStyle].
 Future<void> expectTextFontStyle(
-  componentFactory<Object> componentFactory,
+  ComponentFactory<Object> componentFactory,
   String fontStyle,
 ) async {
   final testBed = NgTestBed(componentFactory);
@@ -36,8 +36,7 @@ Future<void> expectTextFontStyle(
   return testFixture.dispose();
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<p class="text"></p>',
   styles: [
     // Intentionally unscoped to leak between test fixtures if not cleared.
@@ -50,8 +49,7 @@ Future<void> expectTextFontStyle(
 )
 class ItalicTextComponent {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<p class="text"></p>',
 )
 class NormalTextComponent {}

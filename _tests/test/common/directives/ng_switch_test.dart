@@ -82,11 +82,12 @@ void main() {
     });
     test('should match equal, but not identical, string cases', () async {
       final testBed = NgTestBed(ng.createSwitchEqualStringsTestFactory());
-      final testFixture = await testBed.create(beforeChangeDetection: (comp) {
+      final testFixture = await testBed.create(beforeChangeDetection:
+          (SwitchEqualStringsTest comp) {
         comp.switchCase = 'one';
       });
       expect(testFixture.text, contains('first case'));
-      await testFixture.update((comp) {
+      await testFixture.update((SwitchEqualStringsTest comp) {
         comp.switchCase = 'two';
       });
       expect(testFixture.text, contains('second case'));
@@ -94,7 +95,7 @@ void main() {
   });
 }
 
-@component(
+@Component(
   selector: 'switch-when-test',
   directives: [NgSwitch, NgSwitchWhen],
   template: '''<div>
@@ -107,7 +108,7 @@ class SwitchWhenTest {
   String? switchValue;
 }
 
-@component(
+@Component(
   selector: 'switch-default-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -120,7 +121,7 @@ class SwitchDefaultTest {
   String? switchValue;
 }
 
-@component(
+@Component(
   selector: 'switch-multiple-when-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -137,7 +138,7 @@ class SwitchMultipleWhenTest {
   String? switchValue;
 }
 
-@component(
+@Component(
   selector: 'switch-when-value-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -153,7 +154,7 @@ class SwitchWhenValueTest {
   String? when2;
 }
 
-@component(
+@Component(
   selector: 'switch-equal-strings-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''

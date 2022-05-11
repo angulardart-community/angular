@@ -2568,7 +2568,7 @@ void main() {
       test('should allow pipes that have been defined as dependencies', () {
         var testPipe = CompilePipeMetadata(
           name: 'test',
-          transformType: o.FunctionType(o.STRING_TYPE, [o.STRING_TYPE]),
+          transformType: o.FunctionType(o.stringType, [o.stringType]),
           type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
         );
         // Should not throw.
@@ -2593,7 +2593,7 @@ void main() {
       test('should report error if invoked with too many arguments', () {
         final testPipe = CompilePipeMetadata(
           name: 'test',
-          transformType: o.FunctionType(o.STRING_TYPE, [o.STRING_TYPE]),
+          transformType: o.FunctionType(o.stringType, [o.stringType]),
           type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
         );
         expect(

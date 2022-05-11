@@ -47,8 +47,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'ng-control-group-test',
+@Component(  selector: 'ng-control-group-test',
   directives: [
     formDirectives,
     NgIf,

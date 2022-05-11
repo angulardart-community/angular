@@ -102,23 +102,21 @@ void main() {
   });
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class Child {
   var value = '';
 }
 
-@component(
-  selector: 'has-content-child',
+@Component(  selector: 'has-content-child',
   template: '<ng-content></ng-content>',
 )
 class HasContentChild {
   HasContentChild(this._changeDetectorRef);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   @ContentChild(Child)
   Child? child;
@@ -129,8 +127,7 @@ class HasContentChild {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-child>
       <child></child>
@@ -143,14 +140,13 @@ class TestContentChild {
   HasContentChild? child;
 }
 
-@component(
-  selector: 'has-content-children',
+@Component(  selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasContentChildren {
   HasContentChildren(this._changeDetectorRef, this._ngZone);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
   final NgZone _ngZone;
 
   List<Child> _children = [];
@@ -171,8 +167,7 @@ class HasContentChildren {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -187,15 +182,14 @@ class TestContentChildren {
   HasContentChildren? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<child></child>',
   directives: [Child],
 )
 class TestViewChild {
   TestViewChild(this._changeDetectorRef);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   @ViewChild(Child)
   Child? child;
@@ -206,8 +200,7 @@ class TestViewChild {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child></child>
@@ -218,7 +211,7 @@ class TestViewChild {
 class TestViewChildren {
   TestViewChildren(this._changeDetectorRef);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   @ViewChildren(Child)
   List<Child>? children;
@@ -235,27 +228,25 @@ abstract class HasValue {
   String? value;
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
   providers: [
     ExistingProvider(HasValue, ChildWithExistingProvider),
   ],
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class ChildWithExistingProvider implements HasValue {
   @override
   var value = '';
 }
 
-@component(
-  selector: 'has-content-children',
+@Component(  selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasExistingProviderContentChildren {
   HasExistingProviderContentChildren(this._changeDetectorRef);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   @ContentChildren(HasValue)
   List<HasValue>? children;
@@ -268,8 +259,7 @@ class HasExistingProviderContentChildren {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -284,8 +274,7 @@ class TestExistingProviderContentChildren {
   HasExistingProviderContentChildren? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child></child>
@@ -296,7 +285,7 @@ class TestExistingProviderContentChildren {
 class TestExistingProviderViewChildren {
   TestExistingProviderViewChildren(this._changeDetectorRef);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   @ViewChildren(HasValue)
   List<HasValue>? children;
@@ -309,8 +298,7 @@ class TestExistingProviderViewChildren {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -331,8 +319,7 @@ class TestEmbeddedContentChildren {
   HasContentChildren? child;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child *ngIf="isSecondChildVisible"></child>
@@ -346,7 +333,7 @@ class TestEmbeddedContentChildren {
 class TestEmbeddedViewChildren {
   TestEmbeddedViewChildren(this._changeDetectorRef, this._ngZone);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
   final NgZone _ngZone;
 
   var isSecondChildVisible = false;

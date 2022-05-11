@@ -41,7 +41,7 @@ void main() {
 
     group('.empty', () {
       test('should throw by default', () {
-        final i = injector.empty();
+        final i = Injector.empty();
         expect(
           () => i.get(ExampleService),
           throwsNoProviderError,
@@ -66,7 +66,7 @@ void main() {
 
       test('should throw a readable message with injection fails', () {
         // Anything but injector.get(Injector) will fail here.
-        final injector = injector.empty();
+        final injector = Injector.empty();
         expect(
           () => injector.get(ExampleService),
           throwsA(
@@ -78,8 +78,8 @@ void main() {
       });
 
       test('should throw a readable message even with a parent injector', () {
-        final parent = injector.empty();
-        final child = injector.map({}, parent);
+        final parent = Injector.empty();
+        final child = Injector.map({}, parent);
         expect(
           () => child.get(ExampleService),
           throwsA(
@@ -91,7 +91,7 @@ void main() {
       });
 
       test('should use orElse if provided', () {
-        final i = injector.empty();
+        final i = Injector.empty();
         expect(i.get(ExampleService, 123), 123);
         expect(i.injectFromSelfOptional(ExampleService, 123), 123);
         expect(i.injectFromAncestryOptional(ExampleService, 123), 123);
@@ -100,8 +100,8 @@ void main() {
 
       test('should fallback to the parent injector if provided', () {
         final instance = ExampleService();
-        final parent = injector.map({ExampleService: instance});
-        final i = injector.map({}, parent);
+        final parent = Injector.map({ExampleService: instance});
+        final i = Injector.map({}, parent);
         expect(i.get(ExampleService), instance);
         expect(i.provideType<ExampleService>(ExampleService), instance);
         expect(
@@ -113,15 +113,15 @@ void main() {
       });
 
       test('should return itself if Injector is passed', () {
-        final i = injector.empty();
-        expect(i.get(injector), i);
+        final i = Injector.empty();
+        expect(i.get(Injector), i);
       });
     });
 
     group('.map', () {
       test('should return a provided key-value pair', () {
         final instance = ExampleService();
-        final i = injector.map({ExampleService: instance});
+        final i = Injector.map({ExampleService: instance});
         expect(i.get(ExampleService), instance);
         expect(i.provideType<ExampleService>(ExampleService), instance);
         expect(i.injectFromSelf(ExampleService), instance);
@@ -136,12 +136,12 @@ void main() {
       });
 
       test('should return itself if Injector is passed', () {
-        final i = injector.map({});
-        expect(i.get(injector), i);
+        final i = Injector.map({});
+        expect(i.get(Injector), i);
       });
 
       test('should throw a readable error message on a failure', () {
-        final injector = injector.map({});
+        final injector = Injector.map({});
         expect(
           () => injector.get(ExampleService),
           throwsA(
@@ -246,7 +246,7 @@ void main() {
 
       test('should return itself for "Injector"', () {
         final i = ReflectiveInjector.resolveAndCreate([
-          Provider(#theInjector, useFactory: (i) => [i], deps: [injector]),
+          Provider(#theInjector, useFactory: (i) => [i], deps: [Injector]),
         ]);
         expect(i.get(#theInjector), [i]);
       });
@@ -439,7 +439,7 @@ void main() {
     });
 
     group('.generate', () {
-      final injector = exampleGenerated(injector.empty());
+      final injector = exampleGenerated(Injector.empty());
 
       test('should consider Provider(T) as Provider(T, useClass: T)', () {
         expect(
@@ -557,13 +557,13 @@ void main() {
 
       test('should support Module', () {
         expect(
-          exampleFromModule(injector.empty()).get(ExampleService),
+          exampleFromModule(Injector.empty()).get(ExampleService),
           const TypeMatcher<ExampleService2>(),
         );
       });
 
       test('should support arbitrary const values in ValueProvider', () {
-        final injector = valueProviderExamples(injector.empty());
+        final injector = valueProviderExamples(Injector.empty());
         final c1 = injector.provideType<TestConstNoArgs>(
           TestConstNoArgs,
         );
@@ -587,7 +587,7 @@ void main() {
     });
 
     test('should de-duplicate tokens preferring the last provider', () {
-      final injector = tokenOrdering(injector.empty());
+      final injector = tokenOrdering(Injector.empty());
       expect(injector.get(duplicateToken), 'B');
       expect(injector.get(duplicateMulti), ['A', 'B']);
     });
@@ -654,7 +654,7 @@ void main() {
   });
 
   group('root Injector overrides', () {
-    void _testOverrideExceptionHandler(injector appInjector) {
+    void _testOverrideExceptionHandler(Injector appInjector) {
       // Normally errors here are forwarded to the ExceptionHandler.
       //
       // In the case of #1227, we accidentally always used the default
@@ -673,7 +673,7 @@ void main() {
     test('rootInjector should allow overriding ExceptionHandler', () {
       _testOverrideExceptionHandler(
         rootInjector((parent) {
-          return injector.map({
+          return Injector.map({
             ExceptionHandler: _CustomExceptionHandler(),
           }, parent);
         }),
@@ -702,7 +702,7 @@ void main() {
     final testValue = 'Hello world!';
     final testBed = NgTestBed(
       ng.createTestComponentFactory(),
-      rootInjector: (parent) => injector.map({testToken: testValue}, parent),
+      rootInjector: (parent) => Injector.map({testToken: testValue}, parent),
     );
     final testFixture = await testBed.create();
     final testComponent = testFixture.assertOnlyInstance;
@@ -723,7 +723,7 @@ class CaptureInjectInjector extends HierarchicalInjector implements Injector {
   Object? lastToken;
   Object? lastOrElse;
 
-  CaptureInjectInjector() : super(injector.empty());
+  CaptureInjectInjector() : super(Injector.empty());
 
   @override
   Object? injectFromSelfOptional(
@@ -972,8 +972,7 @@ class Model {
   String toString() => '$Model {place=$place}';
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [ProvidersDirective],
   template: '''
     <div providers>
@@ -983,15 +982,15 @@ class Model {
   ''',
 )
 class TestComponent {
-  @ViewChild('container', read: viewContainerRef)
-  viewContainerRef? viewContainerRef;
+  @ViewChild('container', read: ViewContainerRef)
+  ViewContainerRef? viewContainerRef;
 }
 
 const testToken = OpaqueToken<String>('test');
 const tokenA = OpaqueToken<String>('a');
 const tokenB = OpaqueToken<String>('b');
 
-@directive(
+@Directive(
   selector: '[providers]',
   // Multiple providers to ensure the range check isn't skipped due to short
   // circuit evaluation of mismatched token query.

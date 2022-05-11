@@ -19,8 +19,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     ChildComponent,
     NgIf,
@@ -116,8 +115,7 @@ class GoldenComponent {
   bool get isLoading => deopt();
 }
 
-@component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '',
 )
 class ChildComponent {}

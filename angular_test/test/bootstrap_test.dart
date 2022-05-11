@@ -9,7 +9,7 @@ import 'bootstrap_test.template.dart' as ng_generated;
 void main() {
   ng_generated.initReflector();
 
-  injector _noopInjector(injector i) => i;
+  Injector _noopInjector(Injector i) => i;
 
   test('should create a new component in the DOM', () async {
     final host = Element.div();
@@ -51,9 +51,9 @@ void main() {
     final test = await bootstrapForTest(
       ng_generated.createAddProvidersFactory(),
       host,
-      (i) => injector.map({TestService: TestService()}, i),
+      (i) => Injector.map({TestService: TestService()}, i),
     );
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(instance._testService, isNotNull);
     test.destroy();
   });
@@ -64,7 +64,7 @@ void main() {
     final test = await bootstrapForTest(
         ng_generated.createAddProvidersFactory(),
         host,
-        (i) => injector.map({TestService: TestService()}, i),
+        (i) => Injector.map({TestService: TestService()}, i),
         beforeComponentCreated: (injector) {
       testService = injector.provideType(TestService);
       testService!.count++;
@@ -74,7 +74,7 @@ void main() {
             ' `beforeChangeDetection`, `testService` should not be null.');
       }
     });
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(testService, instance._testService);
     expect(testService!.count, 1);
     test.destroy();
@@ -87,7 +87,7 @@ void main() {
     final test = await bootstrapForTest(
       ng_generated.createAddProvidersFactory(),
       host,
-      (i) => injector.map({TestService: TestService()}, i),
+      (i) => Injector.map({TestService: TestService()}, i),
       beforeComponentCreated: (injector) =>
           Future.delayed(Duration(milliseconds: 200), () {}).then((_) {
         testService = injector.provideType(TestService);
@@ -100,20 +100,20 @@ void main() {
         }
       },
     );
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(testService, instance._testService);
     expect(testService!.count, 1);
     test.destroy();
   });
 }
 
-@component(
+@Component(
   selector: 'test',
   template: 'Hello World',
 )
 class NewComponentInDom {}
 
-@component(
+@Component(
   selector: 'test',
   template: 'Hello {{users.first}}!',
 )
@@ -122,7 +122,7 @@ class BeforeChangeDetection {
   final users = <String>[];
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )

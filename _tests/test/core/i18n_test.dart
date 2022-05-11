@@ -109,20 +109,17 @@ void main() {
 
 const issuesLink = 'https://github.com/angulardart/angular/issues';
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<p @i18n="description">A message.</p>',
 )
 class TestI18nNode {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<img alt="A puppy!" @i18n:alt="description">',
 )
 class TestI18nAttribute {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <p @i18n="description">
       A message<br>
@@ -132,8 +129,7 @@ class TestI18nAttribute {}
 )
 class TestI18nNodeWithHtml {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <p @i18n="description">
       Click <a href="$issuesLink">here</a> to file an issue.
@@ -142,8 +138,7 @@ class TestI18nNodeWithHtml {}
 )
 class TestI18nNodeWithUnsafeHtml {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <p @i18n="description">
       Not &lt;i&gt;italic&lt;/i&gt;.
@@ -152,8 +147,7 @@ class TestI18nNodeWithUnsafeHtml {}
 )
 class TestI18nNodeWithEscapedHtmlCharacters {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <p @i18n="description">
       <i>Italic</i>, not &lt;i&gt;italic&lt;/i&gt;.
@@ -162,8 +156,7 @@ class TestI18nNodeWithEscapedHtmlCharacters {}
 )
 class TestI18nNodeWithHtmlAndEscapedHtmlCharacters {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <p
         @i18n="description"
@@ -182,8 +175,7 @@ class TestI18nNodeWithHtmlAndEscapedHtmlCharacters {}
 )
 class TestI18nParameters {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <template #message @i18n="Template message description">
       A message in a <i>template</i>!
@@ -194,14 +186,13 @@ class TestI18nParameters {}
 )
 class TestI18nTemplate {
   @ViewChild('message')
-  templateRef? messageTemplate;
+  TemplateRef? messageTemplate;
 
-  @ViewChild('container', read: viewContainerRef)
-  viewContainerRef? viewContainer;
+  @ViewChild('container', read: ViewContainerRef)
+  ViewContainerRef? viewContainer;
 }
 
-@component(
-  selector: 'injects-message',
+@Component(  selector: 'injects-message',
   template: '',
 )
 class InjectsMessage {
@@ -210,8 +201,7 @@ class InjectsMessage {
   InjectsMessage(@Attribute('message') this.message);
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <injects-message
         message="An internationalized message."
@@ -225,8 +215,7 @@ class TestInjectI18nAttribute {
   InjectsMessage? injectsMessage;
 }
 
-@component(
-  selector: 'greeting',
+@Component(  selector: 'greeting',
   template: '',
 )
 class GreetingComponent {
@@ -234,8 +223,7 @@ class GreetingComponent {
   String? message;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <greeting
         [message]="'An internationalized property'"
@@ -249,8 +237,7 @@ class TestExplicitI18nInput {
   GreetingComponent? greeting;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <greeting
         message="An internationalized property"
@@ -264,9 +251,9 @@ class TestImplicitI18nInput {
   GreetingComponent? greeting;
 }
 
-@directive(selector: '[message]')
+@Directive(selector: '[message]')
 class MessageDirective {
-  MessageDirective(templateRef templateRef, viewContainerRef viewContainerRef) {
+  MessageDirective(TemplateRef templateRef, ViewContainerRef viewContainerRef) {
     viewContainerRef.createEmbeddedView(templateRef);
   }
 
@@ -274,8 +261,7 @@ class MessageDirective {
   String? message;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <template
         message="An internationalized property"

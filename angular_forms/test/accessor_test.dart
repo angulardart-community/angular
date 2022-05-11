@@ -45,8 +45,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'accessor-test',
+@Component(  selector: 'accessor-test',
   template: '<input type="text" integer [(ngModel)]="value">',
   directives: [IntValueAccessor, NgModel],
 )
@@ -58,7 +57,7 @@ class AccessorTestComponent {
 
 typedef ChangeFunctionSimple = dynamic Function(dynamic value);
 
-@directive(
+@Directive(
   selector: 'input[integer]',
   providers: [
     ExistingProvider.forToken(ngValueAccessor, IntValueAccessor),

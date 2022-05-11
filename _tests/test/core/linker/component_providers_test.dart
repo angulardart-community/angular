@@ -16,8 +16,7 @@ void main() {
 
 abstract class Foo {}
 
-@component(
-  selector: 'foo',
+@Component(  selector: 'foo',
   template: '',
   providers: [
     ExistingProvider(Foo, Foo1),
@@ -25,8 +24,7 @@ abstract class Foo {}
 )
 class Foo1 implements Foo {}
 
-@component(
-  selector: 'foo',
+@Component(  selector: 'foo',
   template: '',
   providers: [
     ExistingProvider(Foo, Foo2),
@@ -34,14 +32,13 @@ class Foo1 implements Foo {}
 )
 class Foo2 implements Foo {}
 
-@directive(selector: '[bar]')
+@Directive(selector: '[bar]')
 class Bar {
   final Foo foo;
   Bar(this.foo);
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <foo bar></foo>
   ''',

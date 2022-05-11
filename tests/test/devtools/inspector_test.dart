@@ -957,15 +957,13 @@ InspectorNode anonymize(InspectorNode node) {
   });
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestComponentViews1],
   template: '<test-1></test-1>',
 )
 class TestComponentViews {}
 
-@component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [
     TestComponentViews2,
     TestComponentViews3,
@@ -977,20 +975,17 @@ class TestComponentViews {}
 )
 class TestComponentViews1 {}
 
-@component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   template: '',
 )
 class TestComponentViews2 {}
 
-@component(
-  selector: 'test-3',
+@Component(  selector: 'test-3',
   template: '',
 )
 class TestComponentViews3 {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [NgIf, TestEmbeddedViews1],
   template: '''
     <test-1 *ngIf="isChildVisible"></test-1>
@@ -1000,8 +995,7 @@ class TestConditionalEmbeddedViews {
   var isChildVisible = false;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [NgFor, TestEmbeddedViews1],
   template: '''
     <test-1 *ngFor="let _ of values"></test-1>
@@ -1011,14 +1005,12 @@ class TestRepeatedEmbeddedViews {
   var values = <int>[];
 }
 
-@component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   template: '',
 )
 class TestEmbeddedViews1 {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TestEmbeddedViews1,
     TestEmbeddedViews2,
@@ -1032,8 +1024,7 @@ class TestEmbeddedViews1 {}
 )
 class TestTransplantedEmbeddedViews {}
 
-@component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   directives: [NgTemplateOutlet],
   template: '''
     <ng-container *ngTemplateOutlet="templateRef"></ng-container>
@@ -1041,11 +1032,10 @@ class TestTransplantedEmbeddedViews {}
 )
 class TestEmbeddedViews2 {
   @Input()
-  templateRef? templateRef;
+  TemplateRef? templateRef;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: ''',
     <template #viewContainerRef></template>
   ''',
@@ -1053,8 +1043,8 @@ class TestEmbeddedViews2 {
 class TestHostViews {
   final componentFactory = ng.createTestHostViews1Factory();
 
-  @ViewChild('viewContainerRef', read: viewContainerRef)
-  viewContainerRef? viewContainerRef;
+  @ViewChild('viewContainerRef', read: ViewContainerRef)
+  ViewContainerRef? viewContainerRef;
 
   void load() {
     viewContainerRef!
@@ -1067,15 +1057,13 @@ class TestHostViews {
   }
 }
 
-@component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   template: '''
   ''',
 )
 class TestHostViews1 {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TestProjectedContent1,
     TestProjectedContent2,
@@ -1092,8 +1080,7 @@ class TestHostViews1 {}
 )
 class TestProjectedContent {}
 
-@component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [TestProjectedContent5],
   template: '''
     <ng-content select="[first]"></ng-content>
@@ -1105,34 +1092,29 @@ class TestProjectedContent {}
 )
 class TestProjectedContent1 {}
 
-@component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   template: '',
 )
 class TestProjectedContent2 {}
 
-@component(
-  selector: 'test-3',
+@Component(  selector: 'test-3',
   template: '',
 )
 class TestProjectedContent3 {}
 
-@component(
-  selector: 'test-4',
+@Component(  selector: 'test-4',
   template: '',
 )
 class TestProjectedContent4 {}
 
-@component(
-  selector: 'test-5',
+@Component(  selector: 'test-5',
   template: '''
     <ng-content></ng-content>
   ''',
 )
 class TestProjectedContent5 {}
 
-@component(
-  selector: 'test-external-content-roots',
+@Component(  selector: 'test-external-content-roots',
   template: '''
     <template #none>
       <p>Hello, world!</p>
@@ -1152,18 +1134,18 @@ class TestProjectedContent5 {}
 class TestExternalContentRoots {
   TestExternalContentRoots(this._viewContainerRef);
 
-  final viewContainerRef _viewContainerRef;
+  final ViewContainerRef _viewContainerRef;
 
   @ViewChild('none')
-  templateRef? noComponentTemplateRef;
+  TemplateRef? noComponentTemplateRef;
 
   @ViewChild('one')
-  templateRef? oneComponentTemplateRef;
+  TemplateRef? oneComponentTemplateRef;
 
   @ViewChild('multiple')
-  templateRef? multipleComponentTemplateRef;
+  TemplateRef? multipleComponentTemplateRef;
 
-  void initExternalContent(html.Element container, templateRef content) {
+  void initExternalContent(html.Element container, TemplateRef content) {
     final viewRef = _viewContainerRef.createEmbeddedView(content);
     for (final node in viewRef.rootNodes) {
       container.append(node);
@@ -1171,8 +1153,7 @@ class TestExternalContentRoots {
   }
 }
 
-@component(
-  selector: 'test-inputs',
+@Component(  selector: 'test-inputs',
   template: '',
 )
 class TestInputs {
@@ -1183,8 +1164,7 @@ class TestInputs {
   List<int>? values;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs></test-inputs>
@@ -1192,8 +1172,7 @@ class TestInputs {
 )
 class TestUnusedInputs {}
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs [name]="title" [data]="numbers"></test-inputs>
@@ -1204,8 +1183,7 @@ class TestUsedInputs {
   List<int>? numbers;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs [name]="title" [data]="numbers"></test-inputs>

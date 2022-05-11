@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     NoEncapsulation,
     EmulatedEncapsulation,
@@ -48,8 +47,7 @@ class GoldenComponent {
   String addClass = deopt();
 }
 
-@component(
-  selector: 'no-encapsulation',
+@Component(  selector: 'no-encapsulation',
   template: '''
     <span class="trailing-text"
           [class.floated-label]="floatingLabel">
@@ -94,8 +92,7 @@ class NoEncapsulation {
   var disabled = false;
 }
 
-@component(
-  selector: 'emulated-encapsulation',
+@Component(  selector: 'emulated-encapsulation',
   template: '''
     <span class="trailing-text"
           [class.floated-label]="floatingLabel">

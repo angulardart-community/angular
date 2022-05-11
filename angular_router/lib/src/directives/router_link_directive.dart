@@ -20,7 +20,7 @@ import '../url.dart';
 /// ```
 ///
 /// The [routerLink] can contain queryParameters or a fragment, ie: /heroes?a=1.
-@directive(
+@Directive(
   selector: '[routerLink]',
 )
 class RouterLink implements OnDestroy {

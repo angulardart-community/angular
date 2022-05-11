@@ -112,65 +112,56 @@ void main() {
   });
 }
 
-@component(
-  selector: 'interpolate-constant-test',
+@Component(  selector: 'interpolate-constant-test',
   template: '<div>{{myConst}}</div>',
   exports: [myConst],
 )
 class InterpolateConstantTest {}
 
-@component(
-  selector: 'interpolate-static-field-test',
+@Component(  selector: 'interpolate-static-field-test',
   template: '<div>{{MyClass.staticField}}</div>',
   exports: [MyClass],
 )
 class InterpolateStaticFieldTest {}
 
-@component(
-  selector: 'interpolate-enum-test',
+@Component(  selector: 'interpolate-enum-test',
   template: '<div>{{MyEnum.a}}</div>',
   exports: [MyEnum],
 )
 class InterpolateEnumTest {}
 
-@component(
-  selector: 'interpolate-top-level-function-test',
+@Component(  selector: 'interpolate-top-level-function-test',
   template: '<div>{{myFunc("hello")}}</div>',
   exports: [myFunc],
 )
 class InterpolateTopLevelFunctionTest {}
 
-@component(
-  selector: 'interpolate-static-function-test',
+@Component(  selector: 'interpolate-static-function-test',
   template: '<div>{{MyClass.staticFunc("hello")}}</div>',
   exports: [MyClass],
 )
 class InterpolateStaticFunctionTest {}
 
-@component(
-  selector: 'static-ng-for-test',
+@Component(  selector: 'static-ng-for-test',
   template: '<div *ngFor="let item of myList">{{item}}</div>',
   exports: [myList],
   directives: [NgFor],
 )
 class StaticNgForTest {}
 
-@component(
-  selector: 'static-event-handler-test',
+@Component(  selector: 'static-event-handler-test',
   template: '<div (click)="staticClickHandler()"></div>',
   exports: [staticClickHandler],
 )
 class StaticEventHandlerTest {}
 
-@component(
-  selector: 'static-event-handler-target-test',
+@Component(  selector: 'static-event-handler-target-test',
   template: '<div (click)="MyClass.clickHandled = true"></div>',
   exports: [MyClass],
 )
 class StaticEventHandlerTargetTest {}
 
-@component(
-  selector: 'static-event-handle-arg-test',
+@Component(  selector: 'static-event-handle-arg-test',
   template: '<div (click)="handleClick(myList)"></div>',
   exports: [myList],
 )
@@ -182,23 +173,20 @@ class StaticEventHandlerArgTest {
   }
 }
 
-@component(
-  selector: 'static-library-prefix-test',
+@Component(  selector: 'static-library-prefix-test',
   template: '<p>{{lib.myConst}}</p>',
   exports: [lib.myConst],
 )
 class StaticLibraryPrefixTest {}
 
-@component(
-  selector: 'self-refer-test',
+@Component(  selector: 'self-refer-test',
   template: '<p>{{SelfReferTest.staticField}}</p>',
 )
 class SelfReferTest {
   static String staticField = 'hello';
 }
 
-@component(
-  selector: 'self-refer-host-binding-test',
+@Component(  selector: 'self-refer-host-binding-test',
   template: '',
 )
 class SelfReferHostBindingTest {

@@ -21,8 +21,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'view-child-test',
+@Component(  selector: 'view-child-test',
   template: r'''
     <div #container>
       <template [ngIf]="showChildHost">
@@ -43,13 +42,13 @@ class ViewChildTest {
   @ViewChild('container', read: Element)
   Element? containerElement;
 
-  @ViewChild('marker', read: viewContainerRef)
-  viewContainerRef? markerViewContainer;
+  @ViewChild('marker', read: ViewContainerRef)
+  ViewContainerRef? markerViewContainer;
 
   var showChildHost = false;
 }
 
-@directive(
+@Directive(
   selector: '[childHost]',
 )
 class ChildHostDirective {}

@@ -414,7 +414,7 @@ void main() {
             4,
             7,
           ),
-        ), // pointing at @Component
+        ), // pointing at @Component(
       ]);
     });
 
@@ -435,7 +435,7 @@ void main() {
         allOf(
           contains('Provider.useClass can only be used with a class'),
           containsSourceLocation(6, 7),
-        ) // pointing at @Component
+        ) // pointing at @Component(
       ]);
     });
 

@@ -31,7 +31,7 @@ String _extractId(String valueString) => valueString.split(':')[0];
 /// fired for selects in Firefox and IE:
 /// https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
 /// https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4660045
-@directive(
+@Directive(
   selector: 'select[ngControl],select[ngFormControl],select[ngModel]',
   providers: [SELECT_VALUE_ACCESSOR],
   // SelectControlValueAccessor must be visible to NgSelectOption.
@@ -87,7 +87,7 @@ class SelectControlValueAccessor extends Object
 ///     <select ngControl="city">
 ///       <option *ngFor="let c of cities" [value]="c"></option>
 ///     </select>
-@directive(
+@Directive(
   selector: 'option',
 )
 class NgSelectOption implements OnDestroy {

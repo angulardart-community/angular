@@ -46,7 +46,7 @@ void main() {
   });
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )
@@ -62,7 +62,7 @@ class CatchSynchronousErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )
@@ -78,7 +78,7 @@ class CatchAsynchronousErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )
@@ -98,7 +98,7 @@ class CatchConstructorErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )
@@ -120,7 +120,7 @@ class CatchConstructorAsyncErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '<button (click)="throwError">Throw</button>',
 )
@@ -142,7 +142,7 @@ class CatchNativeEventSynchronousErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '<button (click)="throwError">Throw</button>',
 )
@@ -164,7 +164,7 @@ class CatchNativeEventAsynchronousErrors {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '',
 )
@@ -185,7 +185,7 @@ class CatchOnInitErrors implements OnInit {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '<child [trueToError]="value"></child>',
   directives: [ChildChangeDetectionError],
@@ -196,7 +196,7 @@ class CatchInChangeDetection {
       ng.createCatchInChangeDetectionFactory(),
     ).create();
     expect(
-      fixture.update((c) => c.value = true),
+      fixture.update((CatchInChangeDetection c) => c.value = true),
       throwsA(isStateError),
     );
   }
@@ -204,7 +204,7 @@ class CatchInChangeDetection {
   bool value = false;
 }
 
-@component(
+@Component(
   selector: 'child',
   template: '',
 )
@@ -217,7 +217,7 @@ class ChildChangeDetectionError {
   }
 }
 
-@component(
+@Component(
   selector: 'test',
   template: '<h1>Hello {{name}}</h1>',
 )
@@ -226,14 +226,14 @@ class NoExceptionsSwallowedTest {
     final simpleHandler = _CapturingExceptionHandler();
     final fixture = await NgTestBed(
       ng.createNoExceptionsSwallowedTestFactory(),
-      rootInjector: (i) => injector.map(
+      rootInjector: (i) => Injector.map(
         {ExceptionHandler: simpleHandler},
         i,
       ),
     ).create();
 
     expect(fixture.text, 'Hello Angular');
-    await fixture.update((c) => c.name = 'World');
+    await fixture.update((NoExceptionsSwallowedTest c) => c.name = 'World');
     expect(fixture.text, 'Hello World');
     final html = fixture.rootElement.innerHtml;
     expect(html, '<h1>Hello World</h1>');

@@ -16,12 +16,12 @@ void main() {
     });
 
     Future<void> testComponent(
-      componentFactory<Object> componentFactory,
+      ComponentFactory<Object> componentFactory,
     ) async {
       final testBed = NgTestBed(
         componentFactory,
         rootInjector: (parent) {
-          return injector.map({MutableState: state}, parent);
+          return Injector.map({MutableState: state}, parent);
         },
       );
       final testFixture = await testBed.create();
@@ -96,8 +96,7 @@ class MutableState {
 }
 
 /// A component that relies on default change detection to observe mutations.
-@component(
-  selector: 'default',
+@Component(  selector: 'default',
   template: '{{state.value}}',
 )
 class DefaultComponent {
@@ -107,23 +106,21 @@ class DefaultComponent {
 }
 
 @changeDetectionLink
-@component(
-  selector: 'on-push-container',
+@Component(  selector: 'on-push-container',
   template: '<template #container></template>',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushContainerComponent {
   @Input()
-  set componentFactory(componentFactory<Object>? value) {
+  set componentFactory(ComponentFactory<Object>? value) {
     viewContainerRef!.createComponent(value!);
   }
 
-  @ViewChild('container', read: viewContainerRef)
-  viewContainerRef? viewContainerRef;
+  @ViewChild('container', read: ViewContainerRef)
+  ViewContainerRef? viewContainerRef;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-container [componentFactory]="defaultComponentFactory">
     </on-push-container>
@@ -135,22 +132,20 @@ class LoadInOnPush {
 }
 
 @changeDetectionLink
-@component(
-  selector: 'on-push-ancestor',
+@Component(  selector: 'on-push-ancestor',
   template: '''
     <on-push-container [componentFactory]="componentFactory">
     </on-push-container>
   ''',
   directives: [OnPushContainerComponent],
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushAncestorComponent {
   @Input()
-  componentFactory<Object>? componentFactory;
+  ComponentFactory<Object>? componentFactory;
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-ancestor [componentFactory]="defaultComponentFactory">
     </on-push-ancestor>
@@ -162,29 +157,28 @@ class LoadInOnPushDescendant {
 }
 
 @changeDetectionLink
-@component(
-  selector: 'on-push-embedded-container',
+@Component(  selector: 'on-push-embedded-container',
   template: '''
     <ng-container *ngIf="isContainerVisible">
       <template #container></template>
     </ng-container>
   ''',
   directives: [NgIf],
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushEmbeddedContainerComponent {
   OnPushEmbeddedContainerComponent(this._changeDetectorRef, this._ngZone);
 
-  final changeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
   final NgZone _ngZone;
 
   var isContainerVisible = true;
 
   @Input()
-  componentFactory<Object>? componentFactory;
+  ComponentFactory<Object>? componentFactory;
 
-  @ViewChild('container', read: viewContainerRef)
-  set viewContainerRef(viewContainerRef? value) {
+  @ViewChild('container', read: ViewContainerRef)
+  set viewContainerRef(ViewContainerRef? value) {
     if (value != null) {
       _ngZone.runAfterChangesObserved(() {
         value
@@ -196,8 +190,7 @@ class OnPushEmbeddedContainerComponent {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-embedded-container [componentFactory]="defaultComponentFactory">
     </on-push-embedded-container>

@@ -15,8 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     MaterialAutoSuggestInputComponent,
     MaterialIcon,
@@ -51,7 +50,7 @@ class GoldenComponent {
 
 abstract class ControlContainer {}
 
-@directive(
+@Directive(
   selector: 'form',
   providers: [
     ExistingProvider(ControlContainer, NgForm),
@@ -62,7 +61,7 @@ class NgForm implements ControlContainer {}
 
 abstract class NgControl {}
 
-@directive(
+@Directive(
   selector: '[ngControl]',
   providers: [
     ExistingProvider(NgControl, NgControlName),
@@ -70,7 +69,7 @@ abstract class NgControl {}
 )
 class NgControlName implements NgControl {}
 
-@directive(
+@Directive(
   selector: '[ngControlGroup]',
   providers: [
     ExistingProvider(ControlContainer, NgControlGroup),
@@ -84,7 +83,7 @@ const ngValidators = MultiToken<Validator>();
 
 class DeferredValidator implements Validator {}
 
-@directive(
+@Directive(
   selector: '[required][ngControl]',
   providers: [
     ExistingProvider.forToken(ngValidators, RequiredValidator),
@@ -96,8 +95,7 @@ abstract class HasRenderer {}
 
 abstract class SelectionContainer {}
 
-@component(
-  selector: 'material-auto-suggest-input',
+@Component(  selector: 'material-auto-suggest-input',
   providers: [
     ExistingProvider(HasDisabled, MaterialAutoSuggestInputComponent),
     ExistingProvider(HasRenderer, MaterialAutoSuggestInputComponent),
@@ -109,8 +107,7 @@ abstract class SelectionContainer {}
 )
 class MaterialAutoSuggestInputComponent {}
 
-@component(
-  selector: 'material-icon',
+@Component(  selector: 'material-icon',
   template: '',
 )
 class MaterialIcon {}
@@ -123,7 +120,7 @@ abstract class HasDisabled {}
 
 abstract class ReferenceDirective {}
 
-@directive(
+@Directive(
   selector: 'material-input',
   visibility: Visibility.all,
 )
@@ -137,8 +134,7 @@ class ServiceB implements Service {}
 
 const luckyNumber = OpaqueToken<int>('luckyNumber');
 
-@component(
-  selector: 'material-input',
+@Component(  selector: 'material-input',
   providers: [
     ClassProvider(Service, useClass: ServiceA),
     ClassProvider(DeferredValidator),

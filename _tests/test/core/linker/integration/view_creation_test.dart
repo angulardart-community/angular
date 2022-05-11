@@ -23,7 +23,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createMovesEmbeddedViewComponentFactory(),
     ).addInjector(
-      (i) => injector.map({
+      (i) => Injector.map({
         ANCHOR_ELEMENT: template,
       }, i),
     );
@@ -154,8 +154,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'simple-imp-cmp',
+@Component(  selector: 'simple-imp-cmp',
   template: '',
 )
 class SimpleImperativeViewComponent {
@@ -166,12 +165,12 @@ class SimpleImperativeViewComponent {
 
 const ANCHOR_ELEMENT = OpaqueToken('AnchorElement');
 
-@directive(
+@Directive(
   selector: '[someImpvp]',
 )
 class SomeImperativeViewport {
-  viewContainerRef vc;
-  templateRef templateRef;
+  ViewContainerRef vc;
+  TemplateRef templateRef;
   EmbeddedViewRef? view;
   TemplateElement anchor;
 
@@ -194,8 +193,7 @@ class SomeImperativeViewport {
   }
 }
 
-@component(
-  selector: 'moves-embedded-view',
+@Component(  selector: 'moves-embedded-view',
   template: '<div><div *someImpvp="ctxBoolProp">hello</div></div>',
   directives: [SomeImperativeViewport],
 )
@@ -206,7 +204,7 @@ class MovesEmbeddedViewComponent {
   SomeImperativeViewport? viewport;
 }
 
-@directive(
+@Directive(
   selector: '[has-property]',
 )
 class PropertyDirective {
@@ -214,8 +212,7 @@ class PropertyDirective {
   String? value;
 }
 
-@component(
-  selector: 'unknown-property-on-directive',
+@Component(  selector: 'unknown-property-on-directive',
   template: '<div has-property [property]="value"></div>',
   directives: [PropertyDirective],
 )
@@ -223,7 +220,7 @@ class UnknownPropertyOnDirectiveComponent {
   String value = 'Hello world!';
 }
 
-@directive(
+@Directive(
   selector: '[title]',
 )
 class DirectiveWithTitle {
@@ -231,8 +228,7 @@ class DirectiveWithTitle {
   String? title;
 }
 
-@component(
-  selector: 'overridden-property',
+@Component(  selector: 'overridden-property',
   template: '<span [title]="name"></span>',
   directives: [DirectiveWithTitle],
 )
@@ -240,7 +236,7 @@ class OverriddenPropertyComponent {
   String name = 'TITLE';
 }
 
-@directive(
+@Directive(
   selector: '[title]',
 )
 class DirectiveWithTitleAndHostProperty {
@@ -249,8 +245,7 @@ class DirectiveWithTitleAndHostProperty {
   String? title;
 }
 
-@component(
-  selector: 'directive-updates-dom',
+@Component(  selector: 'directive-updates-dom',
   template: '<span [title]="name"></span>',
   directives: [DirectiveWithTitleAndHostProperty],
 )
@@ -258,7 +253,7 @@ class DirectiveUpdatesDomComponent {
   String name = 'TITLE';
 }
 
-@directive(
+@Directive(
   selector: 'with-prop-decorators',
 )
 class DirectiveWithPropDecorators {
@@ -284,8 +279,7 @@ class DirectiveWithPropDecorators {
   }
 }
 
-@component(
-  selector: 'uses-input-decorator',
+@Component(  selector: 'uses-input-decorator',
   template: '''
 <with-prop-decorators elProp="foo" (elEvent)="value='called'">
 </with-prop-decorators>''',
@@ -298,8 +292,7 @@ class DecoratorsComponent {
   DirectiveWithPropDecorators? directive;
 }
 
-@component(
-  selector: 'svg-elements',
+@Component(  selector: 'svg-elements',
   template: '''
 <svg>
   <use xlink:href="Port"/>
@@ -315,14 +308,12 @@ class DecoratorsComponent {
 )
 class SvgElementsComponent {}
 
-@component(
-  selector: 'namespace-attribute',
+@Component(  selector: 'namespace-attribute',
   template: '<svg:use xlink:href="#id"/>',
 )
 class NamespaceAttributeComponent {}
 
-@component(
-  selector: 'namespace-attribute-binding',
+@Component(  selector: 'namespace-attribute-binding',
   template: '<svg:use [attr.xlink:href]="value"/>',
 )
 class NamespaceAttributeBindingComponent {

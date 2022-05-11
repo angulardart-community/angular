@@ -25,7 +25,7 @@ import '../router_hook.dart';
 ///   </template>
 /// </template>
 /// ```
-@directive(
+@Directive(
   selector: 'router-outlet',
 )
 class RouterOutlet implements OnInit, OnDestroy {

@@ -12,7 +12,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup;
 
 /// A form that will not remove controls if the control is taken out of the
 /// view for example with a [NgIf].
-@directive(
+@Directive(
   selector: '[memorizedForm]',
   providers: [
     Provider(ControlContainer, useExisting: MemorizedForm),

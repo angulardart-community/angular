@@ -155,8 +155,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '',
 )
 class TestComponent {}

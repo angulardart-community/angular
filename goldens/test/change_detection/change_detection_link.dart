@@ -21,8 +21,7 @@ void main() {
 /// passing a [componentFactory] that loads another Default component to its
 /// OnPush descendants. However, this isn't needed to generate the code in
 /// interest.
-@component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '''
     <on-push-link></on-push-link>
   ''',
@@ -31,8 +30,7 @@ void main() {
 class GoldenComponent {}
 
 @changeDetectionLink
-@component(
-  selector: 'on-push-link',
+@Component(  selector: 'on-push-link',
   template: '''
     <template #container></template>
     <ng-container *ngIf="isVisible">
@@ -47,35 +45,33 @@ class GoldenComponent {}
     NestedOnPushLink,
     NgIf,
   ],
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class OnPushLink {
-  @ViewChild('container', read: viewContainerRef)
-  set container(viewContainerRef? _) => deopt(_);
+  @ViewChild('container', read: ViewContainerRef)
+  set container(ViewContainerRef? _) => deopt(_);
 
-  @ViewChild('embeddedContainer', read: viewContainerRef)
-  set embeddedContainer(viewContainerRef? _) => deopt(_);
+  @ViewChild('embeddedContainer', read: ViewContainerRef)
+  set embeddedContainer(ViewContainerRef? _) => deopt(_);
 
   bool isVisible = deopt();
 }
 
 // Should not be linked.
-@component(
-  selector: 'nested-on-push',
+@Component(  selector: 'nested-on-push',
   template: '',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class NestedOnPush {}
 
 @changeDetectionLink
-@component(
-  selector: 'nested-on-push-link',
+@Component(  selector: 'nested-on-push-link',
   template: '''
     <template #container></template>
   ''',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class NestedOnPushLink {
-  @ViewChild('container', read: viewContainerRef)
-  set container(viewContainerRef? _) => deopt(_);
+  @ViewChild('container', read: ViewContainerRef)
+  set container(ViewContainerRef? _) => deopt(_);
 }

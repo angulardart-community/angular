@@ -50,32 +50,28 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '{{field}}',
 )
 class TestStaticField {
   static String field = 'static field';
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '{{getter}}',
 )
 class TestStaticGetter {
   static String get getter => 'static getter';
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '{{method()}}',
 )
 class TestStaticMethod {
   static String method() => 'static method';
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <div @skipSchemaValidationFor="[set]" (set)="setter = valueToSet">
       {{setValue}}
@@ -91,8 +87,7 @@ class TestStaticSetter {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '{{field()}}',
 )
 class TestCallingStaticField {
@@ -100,7 +95,7 @@ class TestCallingStaticField {
   static String Function() field = () => 'static closure';
 }
 
-@directive(selector: '[invoke]')
+@Directive(selector: '[invoke]')
 class InvokeTearOff {
   final Element _host;
 
@@ -112,8 +107,7 @@ class InvokeTearOff {
   }
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<div [invoke]="method"></div>',
   directives: [InvokeTearOff],
 )

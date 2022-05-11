@@ -7,9 +7,9 @@ import 'injector_use_value_test.template.dart' as ng;
 //
 // These tend to be complicated and more isolated than other code.
 void main() {
-  late injector injector;
+  late Injector injector;
 
-  setUp(() => injector = example(injector.empty()));
+  setUp(() => injector = example(Injector.empty()));
 
   group('should resolve useValue: targeting a', () {
     test('class with a const constructor', () {

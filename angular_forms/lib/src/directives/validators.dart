@@ -58,7 +58,7 @@ typedef ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
 /// ```
 ///
 /// A _required_ control must have a non-empty value.
-@directive(
+@Directive(
   selector: ''
       '[required][ngControl],'
       '[required][ngFormControl],'
@@ -81,7 +81,7 @@ class RequiredValidator implements Validator {
 /// ```html
 /// <input ngControl="fullName" minLength="10" />
 /// ```
-@directive(
+@Directive(
   selector: ''
       '[minlength][ngControl],'
       '[minlength][ngFormControl],'
@@ -120,7 +120,7 @@ class MinLengthValidator implements Validator {
 /// ```html
 /// <input ngControl="fullName" maxLength="10" />
 /// ```
-@directive(
+@Directive(
   selector: ''
       '[maxlength][ngControl],'
       '[maxlength][ngFormControl],'
@@ -162,7 +162,7 @@ class MaxLengthValidator implements Validator {
 ///
 /// The attribute value is parsed and used as a [RegExp] to validate the control
 /// value against. The regular expression must match the entire control value.
-@directive(
+@Directive(
   selector: ''
       '[pattern][ngControl],'
       '[pattern][ngFormControl],'

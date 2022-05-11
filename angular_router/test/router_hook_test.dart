@@ -89,8 +89,7 @@ final testRouterHook = TestRouterHook();
 
 RouterHook routerHookFactory() => testRouterHook;
 
-@component(
-  selector: 'test-app',
+@Component(  selector: 'test-app',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
 )
@@ -107,10 +106,10 @@ class TestAppComponent {
   TestAppComponent(this.router);
 }
 
-@component(selector: 'foo', template: '')
+@Componentselector: 'foo', template: '')
 class FooComponent {}
 
-@component(selector: 'index', template: '')
+@Componentselector: 'index', template: '')
 class IndexComponent implements OnInit, OnDestroy {
   /// Tracks the number of active or cached instances of this component.
   static var instanceCount = 0;

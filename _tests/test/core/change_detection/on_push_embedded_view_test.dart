@@ -89,8 +89,7 @@ void main() {
   });
 }
 
-@component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TemplateProducerComponent,
     TemplateConsumerComponent,
@@ -118,20 +117,19 @@ class TestComponent {
   var consumerText = '';
 }
 
-@component(
-  selector: 'template-producer',
+@Component(  selector: 'template-producer',
   template: '''
     <template #template>{{templateText}}</template>
   ''',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'templateProducer',
 )
 class TemplateProducerComponent implements OnInit {
-  @ViewChild('template', read: viewContainerRef)
-  viewContainerRef? container;
+  @ViewChild('template', read: ViewContainerRef)
+  ViewContainerRef? container;
 
   @ViewChild('template')
-  templateRef? template;
+  TemplateRef? template;
 
   @Input()
   String? templateText;
@@ -142,20 +140,19 @@ class TemplateProducerComponent implements OnInit {
   }
 }
 
-@component(
-  selector: 'template-consumer',
+@Component(  selector: 'template-consumer',
   template: '''
     <template #container></template>
     <div>{{text}}</div>
   ''',
-  changeDetection: changeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class TemplateConsumerComponent implements OnInit {
-  @ViewChild('container', read: viewContainerRef)
-  viewContainerRef? container;
+  @ViewChild('container', read: ViewContainerRef)
+  ViewContainerRef? container;
 
   @Input()
-  templateRef? template;
+  TemplateRef? template;
 
   @Input()
   String? text;

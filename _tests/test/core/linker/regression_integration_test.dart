@@ -56,28 +56,24 @@ void main() {
   });
 }
 
-@component(
-  selector: 'right-precedence-conditional',
+@Component(  selector: 'right-precedence-conditional',
   template: '{{"red" + (hasBorder ? " border" : "")}}',
 )
 class RightPrecedenceConditionalComponent {
   bool hasBorder = false;
 }
 
-@component(
-  selector: 'interpolate-class-binding',
+@Component(  selector: 'interpolate-class-binding',
   template: '<div [class.foo]="true" #element>{{element.className}}</div>',
 )
 class InterpolateClassBindingComponent {}
 
-@component(
-  selector: 'content-host',
+@Component(  selector: 'content-host',
   template: '<ng-content></ng-content>',
 )
 class ContentHostComponent {}
 
-@component(
-  selector: 'content-provider',
+@Component(  selector: 'content-provider',
   template: 'A<content-host *ngIf="true" [ngClass]="\'red\'">B</content-host>C',
   directives: [
     ContentHostComponent,

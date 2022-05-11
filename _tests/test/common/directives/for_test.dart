@@ -134,7 +134,7 @@ void main() {
 
     test('should throw on non-iterable ref and suggest using an array',
         () async {
-      final testBed = NgTestBed(ng.createNgForOptionsTestFactory());
+      final testBed = NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
       final testFixture = await testBed.create();
       expect(testFixture.update((component) {
         component.items = 'this is not iterable';
@@ -288,7 +288,7 @@ void main() {
     test('should allow using a custom template', () async {
       var testBed = NgTestBed(ng.createNgForCustomTemplateTestFactory());
       var testFixture = await testBed.create();
-      await testFixture.update((component) {
+      await testFixture.update((NgForCustomTemplateTest component) {
         component.child!.items = ['a', 'b', 'c'];
       });
       expect(testFixture.text, hasTextContent('0: a;1: b;2: c;'));
@@ -468,12 +468,12 @@ class BaseTestComponent {
   }
 }
 
-@directive(
+@Directive(
   selector: 'copy-me',
 )
 class CopyMe {}
 
-@component(
+@Component(
   selector: 'ngfor-items-test',
   template: '<div><copy-me *ngFor="let item of items">'
       '{{item.toString()}};</copy-me></div>',
@@ -483,19 +483,19 @@ class CopyMe {}
   ],
 )
 class NgForItemsTest extends BaseTestComponent {
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 }
 
-@component(
+@Component(
   selector: 'ngfor-options-test',
   template: '<ul><li *ngFor="let item of items">{{item["name"]}};'
       '</li></ul>',
   directives: [NgFor],
 )
 class NgForOptionsTest {
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 
   dynamic items;
 
@@ -513,14 +513,14 @@ class NgForOptionsTest {
   }
 }
 
-@component(
+@Component(
   selector: 'ngfor-null-test',
   template: '<ul><li *ngFor="let item of null">{{item}};</li></ul>',
   directives: [NgFor],
 )
 class NgForNullTest extends NgForOptionsTest {}
 
-@component(
+@Component(
   selector: 'ngfor-object-test',
   template: '<div><copy-me *ngFor="let item of items">'
       '{{item.toString()}};</copy-me></div>',
@@ -536,11 +536,11 @@ class NgForObjectItemInstanceTest {
     items = <dynamic>[1, 2, 3];
   }
 
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 }
 
-@component(
+@Component(
   selector: 'ng-for-nested',
   template: '<div>'
       '<div *ngFor="let item of items">'
@@ -555,7 +555,7 @@ class NgForNestedTest {
   List<List<String>>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-nested-template',
   template: '<div>'
       '<template ngFor let-item [ngForOf]="items">'
@@ -568,7 +568,7 @@ class NgForNestedTemplateTest {
   List<List<String>>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-nested-lastif',
   template: '<div><template ngFor let-item [ngForOf]="items" '
       'let-i="index"><div>{{i}}|</div>'
@@ -579,7 +579,7 @@ class NgForNestedLastIfTest {
   List<int>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-index-test',
   template: '<div><copy-me *ngFor="let item of items; let i=index">'
       '{{i.toString()}}</copy-me></div>',
@@ -592,7 +592,7 @@ class NgForIndexTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-first-test',
   template: '<div><copy-me *ngFor="let item of items; '
       'let isFirst=first">{{isFirst.toString()}}</copy-me></div>',
@@ -605,7 +605,7 @@ class NgForFirstTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-last-test',
   template: '<div><copy-me *ngFor="let item of items; '
       'let isLast=last\">{{isLast.toString()}}</copy-me></div>',
@@ -618,7 +618,7 @@ class NgForLastTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-even-test',
   template: '<div><copy-me *ngFor="let item of items; '
       'let isEven=even\">{{isEven.toString()}}</copy-me></div>',
@@ -631,7 +631,7 @@ class NgForEvenTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-odd-test',
   template: '<div><copy-me *ngFor="let item of items; '
       'let isOdd=odd">{{isOdd.toString()}}</copy-me></div>',
@@ -644,7 +644,7 @@ class NgForOddTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-custom-template-container',
   template: '''
     <test-cmp>
@@ -662,20 +662,20 @@ class NgForCustomTemplateTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'test-cmp',
   template: '<ul><template ngFor [ngForOf]="items" '
       '[ngForTemplate]="contentTpl"></template></ul>',
   directives: [NgFor],
 )
 class NgForCustomTemplateComponent {
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-custom-template-container2',
   template: '<test-cmp></test-cmp>',
   directives: [NgFor, NgForCustomTemplateNullComponent],
@@ -687,7 +687,7 @@ class NgForCustomTemplateNullTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'test-cmp',
   template: '<ul><template ngFor let-item [ngForOf]="items" '
       '[ngForTemplate]="contentTpl" let-i="index">'
@@ -695,13 +695,13 @@ class NgForCustomTemplateNullTest {
   directives: [NgFor],
 )
 class NgForCustomTemplateNullComponent {
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'ng-for-custom-template-precedence',
   template: '''
     <test-cmp>
@@ -719,7 +719,7 @@ class NgForCustomTemplatePrecedenceTest {
   List<Object>? items;
 }
 
-@component(
+@Component(
   selector: 'test-cmp',
   template: '<ul><template ngFor let-item [ngForOf]="items" '
       '[ngForTemplate]="contentTpl" let-i="index">'
@@ -727,8 +727,8 @@ class NgForCustomTemplatePrecedenceTest {
   directives: [NgFor],
 )
 class NgForCustomTemplatePrecedenceComponent {
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 
   List<Object>? items;
 }
@@ -740,7 +740,7 @@ class Foo {
   String toString() => title;
 }
 
-@component(
+@Component(
   selector: 'track-by-id-test',
   template: '<template ngFor let-item [ngForOf]="items" '
       '[ngForTrackBy]="trackById" let-i="index">'
@@ -759,7 +759,7 @@ class TrackByIdTest {
   String colorOfItem(Map<String, String> item) => item['color']!;
 }
 
-@component(
+@Component(
   selector: 'track-by-index-test',
   template: '<div><template ngFor let-item [ngForOf]="items" '
       '[ngForTrackBy]="trackByIndex">{{item}}</template></div>',
@@ -771,7 +771,7 @@ class TrackByIndexTest {
   int trackByIndex(int index, void item) => index;
 }
 
-@component(
+@Component(
   selector: 'object-editor',
   template: '<div *ngFor="let entity of entities; let i=index">'
       '<object-to-edit [objectId]="entity"></object-to-edit>'
@@ -792,7 +792,7 @@ class ObjectEditorComponent {
   }
 }
 
-@component(
+@Component(
   selector: 'object-to-edit',
   template: '<p>{{objectId}}</p>',
 )
@@ -806,7 +806,7 @@ class ObjectToEdit {
   }
 }
 
-@component(
+@Component(
   selector: 'ngfor-hashcode-test',
   template: '<div><span *ngFor="let item of items">'
       '{{item.toString()}};</span></div>',
@@ -815,8 +815,8 @@ class ObjectToEdit {
 class NgForHashcodeTest {
   List<HashcodeTestItem>? items;
 
-  @ContentChild(templateRef)
-  templateRef? contentTpl;
+  @ContentChild(TemplateRef)
+  TemplateRef? contentTpl;
 }
 
 class HashcodeTestItem {
@@ -839,7 +839,7 @@ class HashcodeTestItem {
   String toString() => '${value * hashMultiplier}';
 }
 
-@component(
+@Component(
   selector: 'let-assignment-spacing-test',
   directives: [NgFor],
   template: r'''
