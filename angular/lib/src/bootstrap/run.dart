@@ -61,7 +61,7 @@ Injector appInjector(
       userInjector,
     );
     appViewUtils = AppViewUtils(
-      userInjector.provideToken(APP_ID),
+      userInjector.provideToken(appIdToken),
       EventManager(ngZone),
     );
     return userInjector;

@@ -276,7 +276,7 @@ class ManualViewportDirective {
   selector: 'container-with-style-emu',
   template: '<div class=\"blueStyle\"></div>',
   styles: ['.blueStyle { color: blue}'],
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.emulated,
   directives: [SimpleComponent],
 )
 class ContainerWithStyleEmulated {}
@@ -285,7 +285,7 @@ class ContainerWithStyleEmulated {}
   selector: 'container-with-style-not-emu',
   template: '<div class=\"redStyle\"></div>',
   styles: ['.redStyle { color: red}'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.none,
   directives: [SimpleComponent],
 )
 class ContainerWithStyleNotEmulated {}

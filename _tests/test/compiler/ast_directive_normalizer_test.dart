@@ -170,11 +170,11 @@ void main() {
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'package:a/a.dart'),
       template: CompileTemplateMetadata(
         template: '',
-        encapsulation: ViewEncapsulation.Emulated,
+        encapsulation: ViewEncapsulation.emulated,
       ),
     );
     metadata = await normalizer.normalizeDirective(metadata);
-    expect(metadata.template.encapsulation, ViewEncapsulation.None);
+    expect(metadata.template.encapsulation, ViewEncapsulation.none);
   });
 
   test('should resolve inline stylesheets', () async {
@@ -205,7 +205,7 @@ void main() {
       ),
     );
     metadata = await normalizer.normalizeDirective(metadata);
-    expect(metadata.template.encapsulation, ViewEncapsulation.Emulated);
+    expect(metadata.template.encapsulation, ViewEncapsulation.emulated);
     expect(
       metadata.template.styles,
       [

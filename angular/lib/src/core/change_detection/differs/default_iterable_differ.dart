@@ -223,23 +223,23 @@ class DefaultIterableDiffer {
       }
     } else {
       index = 0;
-      collection.forEach((item) {
+      for (final item in collection) {
         var itemTrackBy = _trackByFn(index, item);
-        if (record == null || !identical(record!.trackById, itemTrackBy)) {
+        if (record == null || !identical(record.trackById, itemTrackBy)) {
           record = _mismatch(record, item, itemTrackBy, index);
           mayBeDirty = true;
         } else {
           if (mayBeDirty) {
             // TODO(misko): can we limit this to duplicates only?
-            record = _verifyReinsertion(record!, item, itemTrackBy, index);
+            record = _verifyReinsertion(record, item, itemTrackBy, index);
           }
-          if (!identical(record!.item, item)) {
-            _addIdentityChange(record!, item);
+          if (!identical(record.item, item)) {
+            _addIdentityChange(record, item);
           }
         }
-        record = record!._next;
+        record = record._next;
         index++;
-      });
+      }
       _length = index;
     }
     _truncate(record);
@@ -583,24 +583,7 @@ class DefaultIterableDiffer {
       forEachRemovedItem((record) => removals.add(record));
       var identityChanges = <Object>[];
       forEachIdentityChange((record) => identityChanges.add(record));
-      return 'collection: ' +
-          list.join(', ') +
-          '\n' +
-          'previous: ' +
-          previous.join(', ') +
-          '\n' +
-          'additions: ' +
-          additions.join(', ') +
-          '\n' +
-          'moves: ' +
-          moves.join(', ') +
-          '\n' +
-          'removals: ' +
-          removals.join(', ') +
-          '\n' +
-          'identityChanges: ' +
-          identityChanges.join(', ') +
-          '\n';
+      return 'collection: ${list.join(', ')}\nprevious: ${previous.join(', ')}\nadditions: ${additions.join(', ')}\nmoves: ${moves.join(', ')}\nremovals: ${removals.join(', ')}\nidentityChanges: ${identityChanges.join(', ')}\n';
     } else {
       return super.toString();
     }
@@ -723,7 +706,7 @@ class _DuplicateMap {
   /// first or second.
   CollectionChangeRecord? get(dynamic trackById, [int? afterIndex]) {
     var recordList = _map[trackById];
-    return recordList == null ? null : recordList.get(trackById, afterIndex);
+    return recordList?.get(trackById, afterIndex);
   }
 
   /// Removes a [CollectionChangeRecord] from the list of duplicates.

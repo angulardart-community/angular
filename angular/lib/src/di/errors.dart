@@ -99,9 +99,5 @@ class NoProviderError extends InjectionError {
   @override
   String toString() => path.isEmpty
       ? _noProviderError(token)
-      : _noProviderError(token) +
-          ':\n  ${path.join(' ->\n  ')} ->\n  $token.\n'
-              '**NOTE**: This path is not exhaustive, and nodes may be missing '
-              'in between the "->" delimiters. There is ongoing work to improve '
-              'this error message and include all the nodes where possible. ';
+      : '${_noProviderError(token)}:\n  ${path.join(' ->\n  ')} ->\n  $token.\n**NOTE**: This path is not exhaustive, and nodes may be missing in between the "->" delimiters. There is ongoing work to improve this error message and include all the nodes where possible. ';
 }

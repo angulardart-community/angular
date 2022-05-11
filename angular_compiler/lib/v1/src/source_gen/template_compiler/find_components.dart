@@ -809,7 +809,7 @@ class _ComponentVisitor
         value,
         'encapsulation',
         ViewEncapsulation.values,
-        defaultTo: ViewEncapsulation.Emulated,
+        defaultTo: ViewEncapsulation.emulated,
       );
 
   int _changeDetection(ClassElement clazz, DartObject? value) {

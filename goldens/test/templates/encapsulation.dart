@@ -81,7 +81,7 @@ class GoldenComponent {
     }
     '''
   ],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.none,
 )
 class NoEncapsulation {
   @Input()
