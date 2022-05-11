@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [UsesDoCheck],
   template: '<uses-do-check [a]="a" [b]="b" [c]="c"></uses-do-check>',
 )
@@ -33,8 +32,7 @@ class GoldenComponent {
   }
 }
 
-@Component(
-  selector: 'uses-do-check',
+@Component(  selector: 'uses-do-check',
   template: '',
 )
 class UsesDoCheck implements DoCheck {

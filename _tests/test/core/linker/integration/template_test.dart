@@ -58,8 +58,7 @@ class SomeViewport {
   }
 }
 
-@Component(
-  selector: 'template-directive',
+@Component(  selector: 'template-directive',
   template:
       '<template some-viewport let-x="some-tmpl"><div>{{x}}</div></template>',
   directives: [
@@ -68,8 +67,7 @@ class SomeViewport {
 )
 class TemplateDirectiveComponent {}
 
-@Component(
-  selector: 'destroy-parent-view',
+@Component(  selector: 'destroy-parent-view',
   template: '<div *ngIf="visible">'
       '<template some-viewport let-x="someTmpl"><span>{{x}}</span></template>'
       '</div>',
@@ -85,8 +83,7 @@ class DestroyParentViewComponent {
   SomeViewport? viewport;
 }
 
-@Component(
-  selector: 'empty-template',
+@Component(  selector: 'empty-template',
   template: '<template></template>',
 )
 class EmptyTemplateComponent {}
@@ -115,8 +112,7 @@ class ToolbarViewContainer {
   }
 }
 
-@Component(
-  selector: 'toolbar',
+@Component(  selector: 'toolbar',
   template: '<div *ngFor="let part of query" [toolbarVc]="part"></div>',
   directives: [
     NgFor,
@@ -136,8 +132,7 @@ class ToolbarComponent {
 )
 class SomeDirective {}
 
-@Component(
-  selector: 'cmp-with-host',
+@Component(  selector: 'cmp-with-host',
   template: '<p>Component with an injected host</p>',
   directives: [SomeDirective],
 )
@@ -147,8 +142,7 @@ class CompWithHost {
   CompWithHost(@Host() this.myHost);
 }
 
-@Component(
-  selector: 'template-ref-transplant',
+@Component(  selector: 'template-ref-transplant',
   template: '<some-directive><toolbar>'
       '<template toolbarpart let-toolbarProp="toolbarProp">'
       '{{prop}},{{toolbarProp}},<cmp-with-host></cmp-with-host>'

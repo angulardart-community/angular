@@ -53,7 +53,7 @@ void main() {
       }
     ''');
     final output = await ReflectableReader.noLinking().resolve(testLib);
-    final clazz = testLib.definingCompilationUnit.types.first;
+    final clazz = testLib.definingCompilationUnit.classes.first;
     expect(
       output,
       ReflectableOutput(registerClasses: [
@@ -76,16 +76,16 @@ void main() {
   });
 
   group('for linking', () {
-    late Set<String> _fakeInputs;
-    late Set<String> _fakeIsLibrary;
+    late Set<String> fakeInputs;
+    late Set<String> fakeIsLibrary;
     late ReflectableReader reader;
 
     setUp(() {
-      _fakeInputs = <String>{};
-      _fakeIsLibrary = <String>{};
+      fakeInputs = <String>{};
+      fakeIsLibrary = <String>{};
       reader = ReflectableReader(
-        hasInput: _fakeInputs.contains,
-        isLibrary: (lib) async => _fakeIsLibrary.contains(lib),
+        hasInput: fakeInputs.contains,
+        isLibrary: (lib) async => fakeIsLibrary.contains(lib),
       );
     });
 
@@ -105,7 +105,7 @@ void main() {
     });
 
     test('should link to a file that has a .template.dart on disk', () async {
-      _fakeIsLibrary.add('foo.template.dart');
+      fakeIsLibrary.add('foo.template.dart');
       final testLib = await resolveLibrary(r'''
         import 'foo.dart';
         import 'bar.dart';
@@ -120,7 +120,7 @@ void main() {
     });
 
     test('should link to a file that will have a .template.dart', () async {
-      _fakeInputs.add('foo.dart');
+      fakeInputs.add('foo.dart');
       final testLib = await resolveLibrary(r'''
         import 'foo.dart';
         import 'bar.dart';

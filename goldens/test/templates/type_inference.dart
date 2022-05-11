@@ -8,8 +8,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [NgFor],
   template: '''
     <!-- Operators -->

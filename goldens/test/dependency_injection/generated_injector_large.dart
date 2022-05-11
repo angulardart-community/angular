@@ -15,12 +15,11 @@ void main() {
   runApp(ng.createGoldenComponentFactory(), createInjector: doGenerate);
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '',
 )
 class GoldenComponent {
-  GoldenComponent(Injector i) {
+  GoldenComponent(injector i) {
     deopt(i.get);
   }
 }

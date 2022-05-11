@@ -82,11 +82,12 @@ void main() {
     });
     test('should match equal, but not identical, string cases', () async {
       final testBed = NgTestBed(ng.createSwitchEqualStringsTestFactory());
-      final testFixture = await testBed.create(beforeChangeDetection: (comp) {
+      final testFixture = await testBed.create(beforeChangeDetection:
+          (SwitchEqualStringsTest comp) {
         comp.switchCase = 'one';
       });
       expect(testFixture.text, contains('first case'));
-      await testFixture.update((comp) {
+      await testFixture.update((SwitchEqualStringsTest comp) {
         comp.switchCase = 'two';
       });
       expect(testFixture.text, contains('second case'));

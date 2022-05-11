@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     SimpleStringInterpolate,
     SimpleUnknownInterpolate,
@@ -51,8 +50,7 @@ class GoldenComponent {
   late Object anything;
 }
 
-@Component(
-  selector: 'simple-string',
+@Component(  selector: 'simple-string',
   template: '{{value}}',
 )
 class SimpleStringInterpolate {
@@ -60,8 +58,7 @@ class SimpleStringInterpolate {
   String? value;
 }
 
-@Component(
-  selector: 'simple-unknown',
+@Component(  selector: 'simple-unknown',
   template: '{{value}}',
 )
 class SimpleUnknownInterpolate {
@@ -69,8 +66,7 @@ class SimpleUnknownInterpolate {
   Object? value;
 }
 
-@Component(
-  selector: 'known-finals',
+@Component(  selector: 'known-finals',
   template: '''
     <span>{{aConstString}}</span>
     <span>{{aFinalString}}</span>
@@ -83,8 +79,7 @@ class KnownFinalValuesInterpolate {
   static final aFinalNumber = 3;
 }
 
-@Component(
-  selector: 'adjacency',
+@Component(  selector: 'adjacency',
   template: '''
     <span>{{greeting}} {{place}}!</span>
     <span>{{greeting}}! We are happy to have {{name}} in our {{place}}!</span>
@@ -96,8 +91,7 @@ class AdjacentInterpolate {
   String name = deopt();
 }
 
-@Component(
-  selector: 'literals',
+@Component(  selector: 'literals',
   template: '''
     <span>{{"Hello"}} {{"World"}}!</span>
     <span>{{1}} {{2}} {{3}}</span>
@@ -105,8 +99,7 @@ class AdjacentInterpolate {
 )
 class LiteralsInterpolate {}
 
-@Component(
-  selector: 'property',
+@Component(  selector: 'property',
   template: '''
     <span title="{{title1}} {{title2}}"></span>
   ''',
@@ -116,8 +109,7 @@ class PropertyInterpolate {
   String title2 = deopt();
 }
 
-@Component(
-  selector: 'inputs',
+@Component(  selector: 'inputs',
   directives: [
     ChildComponent,
   ],
@@ -130,8 +122,7 @@ class InputInterpolate {
   String b = deopt();
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '',
 )
 class ChildComponent {
@@ -141,8 +132,7 @@ class ChildComponent {
   }
 }
 
-@Component(
-  selector: 'max-interpolate-limit',
+@Component(  selector: 'max-interpolate-limit',
   template: '''
     <span>
       {{stringA}}
@@ -188,8 +178,7 @@ class MaximumInterpolateLimit {
   static Object hide(Object a) => a;
 }
 
-@Component(
-  selector: 'null-checked',
+@Component(  selector: 'null-checked',
   template: '''
     {{maybeNull ?? ''}}
     {{maybeNull?.toUpperCase()}}

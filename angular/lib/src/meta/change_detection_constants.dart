@@ -1,18 +1,18 @@
 /// Describes the current state of the change detector.
 class ChangeDetectorState {
-  /// [NeverChecked] means that the change detector has not been checked yet,
+  /// [neverChecked] means that the change detector has not been checked yet,
   /// and initialization methods should be called during detection.
-  static const int NeverChecked = 0;
+  static const int neverChecked = 0;
 
-  /// [CheckedBefore] means that the change detector has successfully completed
+  /// [checkedBefore] means that the change detector has successfully completed
   /// at least one detection previously.
-  static const int CheckedBefore = 1;
+  static const int checkedBefore = 1;
 
-  /// [Errored] means that the change detector encountered an error checking a
+  /// [errored] means that the change detector encountered an error checking a
   /// binding or calling a directive lifecycle method and is now in an
   /// inconsistent state. Change detectors in this state will no longer detect
   /// changes.
-  static const int Errored = 2;
+  static const int errored = 2;
 }
 
 /// Describes within the change detector which strategy will be used the next
@@ -25,18 +25,23 @@ class ChangeDetectionStrategy {
   /// When an asynchronous event (such as user interaction or an RPC) occurs
   /// within the app, the root component of the app is checked for changes,
   /// and then all children in a depth-first search.
+  // ignore: constant_identifier_names
   static const Default = 0;
 
-  @Deprecated('Not intended to be a public API. Use "OnPush"')
+  @Deprecated('Not intended to be a public API. Use [onPush]')
+  // ignore: constant_identifier_names
   static const CheckOnce = ChangeDetectionCheckedState.checkOnce;
 
-  @Deprecated('Not intended to be a public API. Use "OnPush"')
+  @Deprecated('Not intended to be a public API. Use [onPush]')
+  // ignore: constant_identifier_names
   static const Checked = ChangeDetectionCheckedState.waitingForMarkForCheck;
 
-  @Deprecated('Not intended to be a public API. Use "Default"')
+  @Deprecated('Not intended to be a public API. Use [onPush]')
+  // ignore: constant_identifier_names
   static const CheckAlways = ChangeDetectionCheckedState.checkAlways;
 
-  @Deprecated('Not intended to be a public API. Use "ChangeDetectorRef.detach"')
+  @Deprecated('Not intended to be a public API. Use [ChangeDetectorRef.detach]')
+  // ignore: constant_identifier_names
   static const Detached = ChangeDetectionCheckedState.waitingToBeAttached;
 
   /// An optimized form of change detection, skipping some checks for changes.
@@ -56,13 +61,17 @@ class ChangeDetectionStrategy {
   /// **WARNING**: It is currently _undefined behavior_ to have a [Default]
   /// configured component as a child (or directive) of a component that is
   /// using [OnPush]. We hope to introduce more guidance here in the future.
-  static const OnPush = 5;
+  static const int onPush = 5;
+
+  @Deprecated('Not intended to be a public API. Use "ChangeDetectorRef.detach"')
+  // ignore: constant_identifier_names
+  static const int OnPush = onPush;
 
   static String toPrettyString(int strategy) {
     switch (strategy) {
       case Default:
         return 'Default';
-      case OnPush:
+      case onPush:
         return 'OnPush';
       default:
         return 'Internal';

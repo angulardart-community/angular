@@ -75,7 +75,7 @@ void main() {
   final component = createCompileDirectiveMetadata(
       selector: 'root',
       type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Root'),
-      metadataType: CompileDirectiveMetadataType.Component);
+      metadataType: CompileDirectiveMetadataType.component);
 
   ParseTemplate _parse;
 
@@ -674,8 +674,8 @@ void main() {
                   name: selector,
                   diDeps: deps.map(createDep).toList()),
               metadataType: isComponent
-                  ? CompileDirectiveMetadataType.Component
-                  : CompileDirectiveMetadataType.Directive,
+                  ? CompileDirectiveMetadataType.component
+                  : CompileDirectiveMetadataType.directive,
               template: CompileTemplateMetadata(ngContentSelectors: []),
               providers: providers,
               viewProviders: viewProviders,
@@ -693,7 +693,7 @@ void main() {
           var comp = createDir('my-comp');
           var elAst = parse('<my-comp></my-comp>', [comp])[0] as ElementAst;
           expect(elAst.providers, hasLength(1));
-          expect(elAst.providers[0].providerType, ProviderAstType.Component);
+          expect(elAst.providers[0].providerType, ProviderAstType.component);
           expect(elAst.providers[0].providers[0].useClass, comp.type);
         });
 
@@ -701,7 +701,7 @@ void main() {
           var dirA = createDir('[dirA]');
           var elAst = parse('<div dirA></div>', [dirA])[0] as ElementAst;
           expect(elAst.providers, hasLength(1));
-          expect(elAst.providers[0].providerType, ProviderAstType.Directive);
+          expect(elAst.providers[0].providerType, ProviderAstType.directive);
           expect(elAst.providers[0].providers[0].useClass, dirA.type);
         });
 
@@ -711,7 +711,7 @@ void main() {
           var elAst = parse('<div dirA></div>', [dirA])[0] as ElementAst;
           expect(elAst.providers, hasLength(2));
           expect(
-              elAst.providers[1].providerType, ProviderAstType.PublicService);
+              elAst.providers[1].providerType, ProviderAstType.publicService);
           expect(elAst.providers[1].providers, orderedEquals([provider]));
         });
 
@@ -721,7 +721,7 @@ void main() {
           var elAst = parse('<my-comp></my-comp>', [comp])[0] as ElementAst;
           expect(elAst.providers, hasLength(2));
           expect(
-              elAst.providers[1].providerType, ProviderAstType.PrivateService);
+              elAst.providers[1].providerType, ProviderAstType.privateService);
           expect(elAst.providers[1].providers, orderedEquals([provider]));
         });
 
@@ -1070,7 +1070,7 @@ void main() {
         test('should assign references with empty value to components', () {
           var dirA = createCompileDirectiveMetadata(
               selector: '[a]',
-              metadataType: CompileDirectiveMetadataType.Component,
+              metadataType: CompileDirectiveMetadataType.component,
               type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
               exportAs: 'dirA',
               template: CompileTemplateMetadata(ngContentSelectors: []));
@@ -1117,7 +1117,7 @@ void main() {
         test('should support references via #...', () {
           expect(humanizeTplAst(parse('<template #a></template>', [])), [
             [EmbeddedTemplateAst],
-            [ReferenceAst, 'a', identifierToken(Identifiers.TemplateRef)]
+            [ReferenceAst, 'a', identifierToken(Identifiers.templateRef)]
           ]);
         });
 
@@ -1457,7 +1457,7 @@ void main() {
         test('@Output', () {
           final comp = createCompileDirectiveMetadata(
               selector: 'comp',
-              metadataType: CompileDirectiveMetadataType.Component,
+              metadataType: CompileDirectiveMetadataType.component,
               outputs: ['e'],
               type:
                   CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Comp'));
@@ -1524,7 +1524,7 @@ void main() {
           test('event', () {
             final comp = createCompileDirectiveMetadata(
                 selector: 'comp',
-                metadataType: CompileDirectiveMetadataType.Component,
+                metadataType: CompileDirectiveMetadataType.component,
                 outputs: ['e'],
                 type: CompileTypeMetadata(
                     moduleUrl: someModuleUrl, name: 'Comp'));
@@ -1612,7 +1612,7 @@ void main() {
         test('should recognize <ng-content> select in element', () {
           final comp = createCompileDirectiveMetadata(
               selector: 'comp',
-              metadataType: CompileDirectiveMetadataType.Component,
+              metadataType: CompileDirectiveMetadataType.component,
               type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Comp'),
               template: CompileTemplateMetadata(ngContentSelectors: ['foo']));
           expect(humanizeTplAst(parse('<comp><foo></foo></comp>', [comp])), [
@@ -1627,7 +1627,7 @@ void main() {
             () {
           final comp = createCompileDirectiveMetadata(
               selector: 'comp',
-              metadataType: CompileDirectiveMetadataType.Component,
+              metadataType: CompileDirectiveMetadataType.component,
               type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Comp'),
               template:
                   CompileTemplateMetadata(ngContentSelectors: ['[filter]']));
@@ -1645,7 +1645,7 @@ void main() {
         test('should recognize <ng-content> select in attribute', () {
           final comp = createCompileDirectiveMetadata(
               selector: 'comp',
-              metadataType: CompileDirectiveMetadataType.Component,
+              metadataType: CompileDirectiveMetadataType.component,
               type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Comp'),
               template:
                   CompileTemplateMetadata(ngContentSelectors: ['[header]']));
@@ -1742,7 +1742,7 @@ void main() {
           String selector, List<String> ngContentSelectors) {
         return createCompileDirectiveMetadata(
             selector: selector,
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(
                 moduleUrl: someModuleUrl, name: '''SomeComp${compCounter++}'''),
             template: CompileTemplateMetadata(
@@ -2047,12 +2047,12 @@ void main() {
       test('should not allow more than 1 component per element', () {
         var dirA = createCompileDirectiveMetadata(
             selector: 'div',
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
             template: CompileTemplateMetadata(ngContentSelectors: []));
         var dirB = createCompileDirectiveMetadata(
             selector: 'div',
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirB'),
             template: CompileTemplateMetadata(ngContentSelectors: []));
         expect(
@@ -2070,7 +2070,7 @@ void main() {
           'on explicit embedded templates', () {
         var dirA = createCompileDirectiveMetadata(
             selector: '[a]',
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
             template: CompileTemplateMetadata(ngContentSelectors: []));
         expect(
@@ -2098,7 +2098,7 @@ void main() {
           'embedded templates', () {
         var dirA = createCompileDirectiveMetadata(
             selector: '[a]',
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
             template: CompileTemplateMetadata(ngContentSelectors: []));
         expect(
@@ -2514,7 +2514,7 @@ void main() {
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'));
         var comp = createCompileDirectiveMetadata(
             selector: 'div',
-            metadataType: CompileDirectiveMetadataType.Component,
+            metadataType: CompileDirectiveMetadataType.component,
             type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'ZComp'),
             template: CompileTemplateMetadata(ngContentSelectors: []));
         expect(
@@ -2568,7 +2568,7 @@ void main() {
       test('should allow pipes that have been defined as dependencies', () {
         var testPipe = CompilePipeMetadata(
           name: 'test',
-          transformType: o.FunctionType(o.STRING_TYPE, [o.STRING_TYPE]),
+          transformType: o.FunctionType(o.stringType, [o.stringType]),
           type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
         );
         // Should not throw.
@@ -2593,7 +2593,7 @@ void main() {
       test('should report error if invoked with too many arguments', () {
         final testPipe = CompilePipeMetadata(
           name: 'test',
-          transformType: o.FunctionType(o.STRING_TYPE, [o.STRING_TYPE]),
+          transformType: o.FunctionType(o.stringType, [o.stringType]),
           type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'DirA'),
         );
         expect(
@@ -2652,7 +2652,7 @@ CompileDirectiveMetadata createCompileDirectiveMetadata({
 
   return CompileDirectiveMetadata(
     type: type,
-    metadataType: metadataType ?? CompileDirectiveMetadataType.Directive,
+    metadataType: metadataType ?? CompileDirectiveMetadataType.directive,
     selector: selector,
     exportAs: exportAs,
     inputs: inputsMap,

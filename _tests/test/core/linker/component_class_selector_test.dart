@@ -24,14 +24,12 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'foo.bar',
+@Component(  selector: 'foo.bar',
   template: '',
 )
 class ClassSelectorComponent {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <foo @skipSchemaValidationFor="foo"></foo>
     <foo class="bar"></foo>

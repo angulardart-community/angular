@@ -72,8 +72,7 @@ void main() {
 @Injectable()
 class InjectableService {}
 
-@Component(
-  selector: 'directive-consuming-injectable',
+@Component(  selector: 'directive-consuming-injectable',
   template: '',
 )
 class DirectiveConsumingInjectable {
@@ -89,8 +88,7 @@ class DirectiveConsumingInjectable {
 )
 class DirectiveProvidingInjectable {}
 
-@Component(
-  selector: 'provide-consume-injectable',
+@Component(  selector: 'provide-consume-injectable',
   template: '''
 <directive-providing-injectable>
   <directive-consuming-injectable #consumer></directive-consuming-injectable>
@@ -105,8 +103,7 @@ class ProvideConsumeInjectableComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@Component(
-  selector: 'provides-injectable-in-view',
+@Component(  selector: 'provides-injectable-in-view',
   template: '''
 <directive-consuming-injectable #consumer>
 </directive-consuming-injectable>''',
@@ -118,8 +115,7 @@ class ProvidesInjectableInViewComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@Component(
-  selector: 'directive-containing-directive-consuming-an-injectable',
+@Component(  selector: 'directive-containing-directive-consuming-an-injectable',
   template: '''
 <directive-consuming-injectable-unbounded>
 </directive-consuming-injectable-unbounded>''',
@@ -130,8 +126,7 @@ class DirectiveContainingDirectiveConsumingAnInjectable {
   DirectiveConsumingInjectableUnbounded? directive;
 }
 
-@Component(
-  selector: 'directive-consuming-injectable-unbounded',
+@Component(  selector: 'directive-consuming-injectable-unbounded',
   template: '',
 )
 class DirectiveConsumingInjectableUnbounded {
@@ -143,8 +138,7 @@ class DirectiveConsumingInjectableUnbounded {
   }
 }
 
-@Component(
-  selector: 'provides-injectable-unbounded',
+@Component(  selector: 'provides-injectable-unbounded',
   template: '''
 <directive-providing-injectable>
   <directive-containing-directive-consuming-an-injectable #dir>
@@ -185,8 +179,7 @@ EventBus createParentBus(EventBus parentEventBus) {
   return EventBus(parentEventBus, 'parent');
 }
 
-@Component(
-  selector: 'parent-providing-event-bus',
+@Component(  selector: 'parent-providing-event-bus',
   providers: [
     Provider(EventBus, useFactory: createParentBus, deps: [
       [EventBus, SkipSelf()]
@@ -214,8 +207,7 @@ class ChildConsumingEventBus {
   ChildConsumingEventBus(@SkipSelf() this.bus);
 }
 
-@Component(
-  selector: 'event-bus',
+@Component(  selector: 'event-bus',
   template: '''
 <grand-parent-providing-event-bus>
   <parent-providing-event-bus></parent-providing-event-bus>
@@ -238,8 +230,7 @@ InjectableService createInjectableWithLogging(Injector injector) {
   return InjectableService();
 }
 
-@Component(
-  selector: 'component-providing-logging-injectable',
+@Component(  selector: 'component-providing-logging-injectable',
   providers: [
     Provider(InjectableService,
         useFactory: createInjectableWithLogging, deps: [Injector])
@@ -251,8 +242,7 @@ class ComponentProvidingLoggingInjectable {
   bool created = false;
 }
 
-@Component(
-  selector: 'lazy-bindings',
+@Component(  selector: 'lazy-bindings',
   template: '''
 <component-providing-logging-injectable #providing>
   <directive-consuming-injectable *ngIf="visible">
@@ -277,8 +267,7 @@ class LazyBindingsComponent {
 )
 class SomeDirective {}
 
-@Component(
-  selector: 'cmp-with-host',
+@Component(  selector: 'cmp-with-host',
   template: '<p>Component with an injected host</p>',
   directives: [SomeDirective],
 )
@@ -288,8 +277,7 @@ class CompWithHost {
   CompWithHost(@Host() this.myHost);
 }
 
-@Component(
-  selector: 'injects-host',
+@Component(  selector: 'injects-host',
   template:
       '<some-directive><cmp-with-host #cmp></cmp-with-host></some-directive>',
   directives: [CompWithHost, SomeDirective],
@@ -299,8 +287,7 @@ class InjectsHostComponent {
   CompWithHost? compWithHost;
 }
 
-@Component(
-  selector: 'injects-host-through-view-container',
+@Component(  selector: 'injects-host-through-view-container',
   template: '''
 <some-directive>
   <p *ngIf="true">

@@ -84,8 +84,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'ng-form-control-test',
+@Component(  selector: 'ng-form-control-test',
   directives: [
     formDirectives,
   ],
@@ -127,8 +126,7 @@ class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
   void onDisabledChanged(bool isDisabled) {}
 }
 
-@Component(
-  selector: 'ng-form-control-test',
+@Component(  selector: 'ng-form-control-test',
   directives: [
     formDirectives,
     DummyControlValueAccessor,

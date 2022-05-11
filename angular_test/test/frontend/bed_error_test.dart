@@ -196,7 +196,7 @@ class CatchInChangeDetection {
       ng.createCatchInChangeDetectionFactory(),
     ).create();
     expect(
-      fixture.update((c) => c.value = true),
+      fixture.update((CatchInChangeDetection c) => c.value = true),
       throwsA(isStateError),
     );
   }
@@ -233,7 +233,7 @@ class NoExceptionsSwallowedTest {
     ).create();
 
     expect(fixture.text, 'Hello Angular');
-    await fixture.update((c) => c.name = 'World');
+    await fixture.update((NoExceptionsSwallowedTest c) => c.name = 'World');
     expect(fixture.text, 'Hello World');
     final html = fixture.rootElement.innerHtml;
     expect(html, '<h1>Hello World</h1>');

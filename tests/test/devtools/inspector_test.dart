@@ -957,15 +957,13 @@ InspectorNode anonymize(InspectorNode node) {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestComponentViews1],
   template: '<test-1></test-1>',
 )
 class TestComponentViews {}
 
-@Component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [
     TestComponentViews2,
     TestComponentViews3,
@@ -977,20 +975,17 @@ class TestComponentViews {}
 )
 class TestComponentViews1 {}
 
-@Component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   template: '',
 )
 class TestComponentViews2 {}
 
-@Component(
-  selector: 'test-3',
+@Component(  selector: 'test-3',
   template: '',
 )
 class TestComponentViews3 {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [NgIf, TestEmbeddedViews1],
   template: '''
     <test-1 *ngIf="isChildVisible"></test-1>
@@ -1000,8 +995,7 @@ class TestConditionalEmbeddedViews {
   var isChildVisible = false;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [NgFor, TestEmbeddedViews1],
   template: '''
     <test-1 *ngFor="let _ of values"></test-1>
@@ -1011,14 +1005,12 @@ class TestRepeatedEmbeddedViews {
   var values = <int>[];
 }
 
-@Component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   template: '',
 )
 class TestEmbeddedViews1 {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TestEmbeddedViews1,
     TestEmbeddedViews2,
@@ -1032,8 +1024,7 @@ class TestEmbeddedViews1 {}
 )
 class TestTransplantedEmbeddedViews {}
 
-@Component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   directives: [NgTemplateOutlet],
   template: '''
     <ng-container *ngTemplateOutlet="templateRef"></ng-container>
@@ -1044,8 +1035,7 @@ class TestEmbeddedViews2 {
   TemplateRef? templateRef;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: ''',
     <template #viewContainerRef></template>
   ''',
@@ -1067,15 +1057,13 @@ class TestHostViews {
   }
 }
 
-@Component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   template: '''
   ''',
 )
 class TestHostViews1 {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TestProjectedContent1,
     TestProjectedContent2,
@@ -1092,8 +1080,7 @@ class TestHostViews1 {}
 )
 class TestProjectedContent {}
 
-@Component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [TestProjectedContent5],
   template: '''
     <ng-content select="[first]"></ng-content>
@@ -1105,34 +1092,29 @@ class TestProjectedContent {}
 )
 class TestProjectedContent1 {}
 
-@Component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   template: '',
 )
 class TestProjectedContent2 {}
 
-@Component(
-  selector: 'test-3',
+@Component(  selector: 'test-3',
   template: '',
 )
 class TestProjectedContent3 {}
 
-@Component(
-  selector: 'test-4',
+@Component(  selector: 'test-4',
   template: '',
 )
 class TestProjectedContent4 {}
 
-@Component(
-  selector: 'test-5',
+@Component(  selector: 'test-5',
   template: '''
     <ng-content></ng-content>
   ''',
 )
 class TestProjectedContent5 {}
 
-@Component(
-  selector: 'test-external-content-roots',
+@Component(  selector: 'test-external-content-roots',
   template: '''
     <template #none>
       <p>Hello, world!</p>
@@ -1171,8 +1153,7 @@ class TestExternalContentRoots {
   }
 }
 
-@Component(
-  selector: 'test-inputs',
+@Component(  selector: 'test-inputs',
   template: '',
 )
 class TestInputs {
@@ -1183,8 +1164,7 @@ class TestInputs {
   List<int>? values;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs></test-inputs>
@@ -1192,8 +1172,7 @@ class TestInputs {
 )
 class TestUnusedInputs {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs [name]="title" [data]="numbers"></test-inputs>
@@ -1204,8 +1183,7 @@ class TestUsedInputs {
   List<int>? numbers;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [TestInputs],
   template: '''
     <test-inputs [name]="title" [data]="numbers"></test-inputs>

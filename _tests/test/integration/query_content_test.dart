@@ -18,8 +18,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'content',
+@Component(  selector: 'content',
   template: '<ng-content></ng-content>',
 )
 class ContentChildrenComponent extends HasChildren<ValueDirective> {
@@ -28,8 +27,7 @@ class ContentChildrenComponent extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@Component(
-  selector: 'content',
+@Component(  selector: 'content',
   template: '<ng-content></ng-content>',
 )
 class ContentChildComponent extends HasChild<ValueDirective> {
@@ -38,8 +36,7 @@ class ContentChildComponent extends HasChild<ValueDirective> {
   ValueDirective? child;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ContentChildrenComponent,
     ValueDirective,
@@ -60,8 +57,7 @@ class TestContentChildren extends HasChildren<ValueDirective> {
   List<ValueDirective>? get children => content!.children;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ContentChildComponent,
     ValueDirective,
@@ -80,8 +76,7 @@ class TestContentChild extends HasChild<ValueDirective> {
   ValueDirective? get child => content!.child;
 }
 
-@Component(
-  selector: 'content',
+@Component(  selector: 'content',
   template: '<ng-content></ng-content>',
 )
 class ContentChildrenComponentList extends HasChildren<ValueDirective> {
@@ -90,8 +85,7 @@ class ContentChildrenComponentList extends HasChildren<ValueDirective> {
   List<ValueDirective>? children;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     ContentChildrenComponentList,
     ValueDirective,

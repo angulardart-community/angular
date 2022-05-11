@@ -137,8 +137,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test-1',
+@Component(  selector: 'test-1',
   directives: [
     DetachedViaStrategy,
   ],
@@ -157,8 +156,7 @@ class TestDetachedViaStrategy {
   ChangeDetectorRef? child;
 }
 
-@Component(
-  selector: 'test-2',
+@Component(  selector: 'test-2',
   directives: [
     DetachedViaRef,
   ],
@@ -205,8 +203,7 @@ class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
   }
 }
 
-@Component(
-  selector: 'detached-via-strategy',
+@Component(  selector: 'detached-via-strategy',
   template: r'''
     <span>{{text}}</span>
     <span>
@@ -218,8 +215,7 @@ class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
 )
 class DetachedViaStrategy extends Logger {}
 
-@Component(
-  selector: 'detached-via-ref',
+@Component(  selector: 'detached-via-ref',
   template: r'''
     <span>{{text}}</span>
     <span>

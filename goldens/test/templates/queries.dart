@@ -16,8 +16,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     AnotherDirective,
     EmbeddedQueries,
@@ -65,8 +64,8 @@ class GoldenComponent {
     deopt(value);
   }
 
-  @ViewChild('q2', read: ElementRef)
-  set readDIFromElementRef(ElementRef? value) {
+  @ViewChild('q2', read: elementRef)
+  set readDIFromElementRef(elementRef? value) {
     deopt(value);
   }
 
@@ -86,8 +85,7 @@ class GoldenComponent {
   }
 }
 
-@Component(
-  selector: 'embedded-queries',
+@Component(  selector: 'embedded-queries',
   directives: [
     AnotherDirective,
   ],
@@ -114,8 +112,7 @@ class EmbeddedQueries {
 class AnotherDirective {}
 
 // This closely mimics a piece of internal code that previously crashed.
-@Component(
-  selector: 'nested-ng-for-queries',
+@Component(  selector: 'nested-ng-for-queries',
   directives: [
     AnotherDirective,
     NgFor,
@@ -144,8 +141,7 @@ class NestedNgForQueriesList {
 
 // Demonstrates an optimization used to treat a single value query as static
 // when there are dynamic matching results.
-@Component(
-  selector: 'static-single-query',
+@Component(  selector: 'static-single-query',
   template: '''
     <another></another>
     <another *ngIf="isVisible"></another>
@@ -163,8 +159,7 @@ class StaticSingleQuery {
 
 // Demonstrates an optimization used to prune unnecessary values from a dynamic
 // single value query when there are multiple results.
-@Component(
-  selector: 'dynamic-single-query',
+@Component(  selector: 'dynamic-single-query',
   template: '''
     <ng-container *ngIf="isVisible">
       <another></another>
@@ -185,8 +180,7 @@ class DynamicSingleQuery {
 }
 
 // Queries whether <ng-content> has matched element.
-@Component(
-  selector: 'content-query',
+@Component(  selector: 'content-query',
   template: '''
     <div #header>
       <ng-content select="header"></ng-content>
@@ -207,8 +201,7 @@ class ContentQuery {
 }
 
 // Put reference on <ng-content>.
-@Component(
-  selector: 'content-has-reference',
+@Component(  selector: 'content-has-reference',
   template: '''
     <ng-content #foo></ng-content>
     {{foo.hasContent}}

@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     UsesUntypedComp,
     UsesGenericComp,
@@ -44,8 +43,7 @@ void main() {
 class GoldenComponent {}
 
 /// A component with no generic type parameters.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class UntypedComp {
@@ -54,8 +52,7 @@ class UntypedComp {
 }
 
 /// A component that uses [UntypedComp].
-@Component(
-  selector: 'uses-unyped-comp',
+@Component(  selector: 'uses-unyped-comp',
   directives: [
     UntypedComp,
   ],
@@ -66,8 +63,7 @@ class UsesUntypedComp {
 }
 
 /// A component with a single generic type parameter.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class GenericComp<T> {
@@ -76,8 +72,7 @@ class GenericComp<T> {
 }
 
 /// A component that uses [GenericComp].
-@Component(
-  selector: 'uses-generic-comp',
+@Component(  selector: 'uses-generic-comp',
   directives: [
     GenericComp,
   ],
@@ -91,8 +86,7 @@ class UsesGenericComp {
 }
 
 // A generic component that uses [GenericComp]
-@Component(
-  selector: 'uses-generic-comp-generic',
+@Component(  selector: 'uses-generic-comp-generic',
   directives: [
     GenericComp,
   ],
@@ -108,8 +102,7 @@ class UsesGenericCompGeneric<E> {
 }
 
 /// A component with two type parameters, each with a separate `@Input()`.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class MappingComp1<K, V> {
@@ -121,8 +114,7 @@ class MappingComp1<K, V> {
 }
 
 /// A component that uses [MappingComp1].
-@Component(
-  selector: 'uses-mapping-comp-1',
+@Component(  selector: 'uses-mapping-comp-1',
   directives: [
     MappingComp1,
   ],
@@ -137,8 +129,7 @@ class UsesMappingComp1 {
 }
 
 /// A component with two type parameters, but with a single `@Input()`.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class MappingComp2<K, V> {
@@ -147,8 +138,7 @@ class MappingComp2<K, V> {
 }
 
 /// A component that uses [MappingComp2].
-@Component(
-  selector: 'uses-mapping-comp-2',
+@Component(  selector: 'uses-mapping-comp-2',
   directives: [
     MappingComp2,
   ],
@@ -162,8 +152,7 @@ class UsesMappingComp2 {
 }
 
 /// A component with a type parameter with bounds other than `dynamic`.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class BoundComp<T extends num> {
@@ -172,8 +161,7 @@ class BoundComp<T extends num> {
 }
 
 /// A component that uses [BoundComp].
-@Component(
-  selector: 'uses-bound-comp-with-bounds',
+@Component(  selector: 'uses-bound-comp-with-bounds',
   directives: [
     BoundComp,
   ],
@@ -185,8 +173,7 @@ class UsesBoundCompWithBounds {
 }
 
 /// A component that uses [BoundComp] with an explicit type.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   directives: [
     BoundComp,
   ],
@@ -197,8 +184,7 @@ class UsesBoundComp {
 }
 
 /// A component with a type parameter that is bound by another one.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class SelfBoundComp<A, B extends A> {
@@ -210,8 +196,7 @@ class SelfBoundComp<A, B extends A> {
 }
 
 /// A component that uses [SelfBoundComp].
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   directives: [
     SelfBoundComp,
   ],
@@ -223,8 +208,7 @@ class UsesSelfBoundComp {
 }
 
 /// A component that uses function type signatures.
-@Component(
-  selector: 'comp',
+@Component(  selector: 'comp',
   template: '',
 )
 class FunctionTypeComp<F> {
@@ -233,8 +217,7 @@ class FunctionTypeComp<F> {
 }
 
 /// A component that uses [FunctionTypeComp].
-@Component(
-  selector: 'uses-function-type-comp',
+@Component(  selector: 'uses-function-type-comp',
   directives: [
     FunctionTypeComp,
   ],
@@ -251,8 +234,7 @@ class UsesFunctionTypeComp {
 }
 
 /// A component that has a child component that needs its generic type.
-@Component(
-  selector: 'parent',
+@Component(  selector: 'parent',
   directives: [
     NestedChildComp,
     NgFor,
@@ -277,8 +259,7 @@ class NestedParentComp<T> {
   Iterable<T>? moreInputs;
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '',
 )
 class NestedChildComp<T> {
@@ -287,8 +268,7 @@ class NestedChildComp<T> {
 }
 
 /// A component that uses [NestedParentComp].
-@Component(
-  selector: 'uses-nested-parent-comp',
+@Component(  selector: 'uses-nested-parent-comp',
   directives: [
     NestedParentComp,
   ],
@@ -309,8 +289,7 @@ class UsesNestedParentComp {
   List<int> moreBindings = deopt();
 }
 
-@Component(
-  selector: 'uses-multiple-types-comp',
+@Component(  selector: 'uses-multiple-types-comp',
   directives: [
     GenericComp,
   ],
@@ -335,8 +314,7 @@ class GenericDirective<T extends String> {
   T? input;
 }
 
-@Component(
-  selector: 'uses-generic-change-detector',
+@Component(  selector: 'uses-generic-change-detector',
   directives: [
     GenericDirective,
   ],

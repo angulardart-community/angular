@@ -56,8 +56,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'uses-on-push',
+@Component(  selector: 'uses-on-push',
   template: '<on-push [ticks]="ticks"></on-push>',
   directives: [OnPushComponent],
 )
@@ -68,8 +67,7 @@ class UsesOnPushComponent {
   OnPushComponent? child;
 }
 
-@Component(
-  selector: 'on-push',
+@Component(  selector: 'on-push',
   template: r'''
     <button>Ticks: {{ticks}}</button>
   ''',

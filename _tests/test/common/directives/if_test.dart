@@ -104,7 +104,7 @@ void main() {
           NgTestBed(ng.createNgIfThrowsDuringChangeDetectionFactory());
       var fixture = await testBed.create();
       expect(
-        fixture.update((c) => c.startFailing = true),
+        fixture.update((NgIfThrowsDuringChangeDetection c) => c.startFailing = true),
         throwsA(isExpressionChanged),
       );
     });

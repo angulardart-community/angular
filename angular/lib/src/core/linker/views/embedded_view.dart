@@ -128,7 +128,7 @@ abstract class EmbeddedView<T> extends RenderView
 
   @override
   bool get firstCheck =>
-      _data.changeDetectorState == ChangeDetectorState.NeverChecked;
+      _data.changeDetectorState == ChangeDetectorState.neverChecked;
 
   @override
   void detectChangesDeprecated() {
@@ -148,12 +148,12 @@ abstract class EmbeddedView<T> extends RenderView
     }
 
     // Set the state to already checked at least once.
-    _data.changeDetectorState = ChangeDetectorState.CheckedBefore;
+    _data.changeDetectorState = ChangeDetectorState.checkedBefore;
   }
 
   @override
   void disableChangeDetection() {
-    _data.changeDetectorState = ChangeDetectorState.Errored;
+    _data.changeDetectorState = ChangeDetectorState.errored;
   }
 
   @override
@@ -275,7 +275,7 @@ class _EmbeddedViewData<T> implements DynamicViewData, RenderViewData {
 
   @override
   int get changeDetectorState => _changeDetectorState;
-  int _changeDetectorState = ChangeDetectorState.NeverChecked;
+  int _changeDetectorState = ChangeDetectorState.neverChecked;
   set changeDetectorState(int state) {
     if (_changeDetectorState != state) {
       _changeDetectorState = state;
@@ -316,6 +316,6 @@ class _EmbeddedViewData<T> implements DynamicViewData, RenderViewData {
   void _updateShouldSkipChangeDetection() {
     _shouldSkipChangeDetection =
         _changeDetectionMode == ChangeDetectionStrategy.Detached ||
-            _changeDetectorState == ChangeDetectorState.Errored;
+            _changeDetectorState == ChangeDetectorState.errored;
   }
 }

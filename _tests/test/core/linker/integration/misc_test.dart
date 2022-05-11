@@ -65,16 +65,14 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'child-cmp-no-template',
+@Component(  selector: 'child-cmp-no-template',
   template: '',
 )
 class ChildCompNoTemplate {
   String ctxProp = 'hello';
 }
 
-@Component(
-  selector: 'var-in-loop',
+@Component(  selector: 'var-in-loop',
   template: '<template ngFor [ngForOf]="list" let-i>'
       '<child-cmp-no-template #cmp></child-cmp-no-template>'
       '{{i}}-{{cmp.ctxProp}}</template>',
@@ -92,8 +90,7 @@ class DirectiveUpdatingHostAttributes {
   static const hostRole = 'button';
 }
 
-@Component(
-  selector: 'directive-host-attributes',
+@Component(  selector: 'directive-host-attributes',
   template: '<div update-host-attributes></div>',
   directives: [DirectiveUpdatingHostAttributes],
 )
@@ -107,8 +104,7 @@ class DirectiveUpdatingHostProperties {
   String id = 'one';
 }
 
-@Component(
-  selector: 'directive-host-properties',
+@Component(  selector: 'directive-host-properties',
   template: '<div update-host-properties></div>',
   directives: [DirectiveUpdatingHostProperties],
 )
@@ -122,8 +118,7 @@ class MyService {
   String greeting = 'hello';
 }
 
-@Component(
-  selector: 'child-cmp-svc',
+@Component(  selector: 'child-cmp-svc',
   template: '{{ctxProp}}',
 )
 class ChildCompUsingService {
@@ -153,8 +148,7 @@ class DynamicViewport {
   }
 }
 
-@Component(
-  selector: 'dynamic-child-component',
+@Component(  selector: 'dynamic-child-component',
   template: '<div><dynamic-vp></dynamic-vp></div>',
   directives: [
     DynamicViewport,
@@ -176,8 +170,7 @@ class NeedsAttribute {
       @Attribute('foo') this.fooAttribute);
 }
 
-@Component(
-  selector: 'static-attributes',
+@Component(  selector: 'static-attributes',
   template: '<input static type="text" title>',
   directives: [NeedsAttribute],
 )
@@ -186,8 +179,7 @@ class StaticAttributesComponent {
   NeedsAttribute? needsAttribute;
 }
 
-@Component(
-  selector: 'unsafe-component',
+@Component(  selector: 'unsafe-component',
   template: '''
 <script>alert("Ooops");</script>
 <div>
@@ -196,8 +188,7 @@ class StaticAttributesComponent {
 )
 class UnsafeComponent {}
 
-@Component(
-  selector: 'named-arg-method-component',
+@Component(  selector: 'named-arg-method-component',
   template: r'''
     {{getName(name: 'Hello')}}
   ''',
@@ -208,8 +199,7 @@ class NamedArgMethodComponent {
 
 String? getName({String? name}) => name;
 
-@Component(
-  selector: 'named-arg-function-component',
+@Component(  selector: 'named-arg-function-component',
   template: r'''
     {{getName(name: 'Hello')}}
   ''',

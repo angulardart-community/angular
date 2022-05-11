@@ -27,9 +27,9 @@ final RegExp _safeUrlPattern = RegExp(
     caseSensitive: false);
 
 final RegExp _dataUrlPattern = RegExp(
-    '^data:(?:image\/(?:bmp|gif|'
-    'jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm));'
-    'base64,[a-z0-9+\/]+=*\$',
+    '^data:(?:image/(?:bmp|gif|'
+    'jpeg|jpg|png|tiff|webp)|video/(?:mpeg|mp4|ogg|webm));'
+    'base64,[a-z0-9+/]+=*\$',
     caseSensitive: false);
 
 String internalSanitizeUrl(String url) {

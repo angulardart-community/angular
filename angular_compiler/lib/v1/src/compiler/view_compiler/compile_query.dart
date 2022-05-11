@@ -388,8 +388,8 @@ class _ListCompileQuery extends CompileQuery {
     // bool _query_foo_0_0_isDirty = true;
     return storage.allocate(
       property,
-      outputType: o.BOOL_TYPE,
-      modifiers: [o.StmtModifier.Private],
+      outputType: o.boolType,
+      modifiers: [o.StmtModifier.private],
       initializer: o.literal(true),
     );
   }

@@ -94,8 +94,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'injects-visibility-local',
+@Component(  selector: 'injects-visibility-local',
   template: '',
 )
 class InjectsVisibilityLocalComponent {
@@ -104,8 +103,7 @@ class InjectsVisibilityLocalComponent {
   InjectsVisibilityLocalComponent(this.parent);
 }
 
-@Component(
-  selector: 'should-fail-to-inject-parent-component',
+@Component(  selector: 'should-fail-to-inject-parent-component',
   template: '<injects-visibility-local></injects-visibility-local>',
   directives: [InjectsVisibilityLocalComponent],
 )
@@ -116,8 +114,7 @@ class ShouldFailToInjectParentComponent {}
 )
 class VisibilityNoneDirective {}
 
-@Component(
-  selector: 'should-query-directive',
+@Component(  selector: 'should-query-directive',
   template: '<div visibility-none></div>',
   directives: [VisibilityNoneDirective],
 )
@@ -126,8 +123,7 @@ class ShouldQueryDirective {
   VisibilityNoneDirective? directive;
 }
 
-@Component(
-  selector: 'injects-directive',
+@Component(  selector: 'injects-directive',
   template: '',
 )
 class InjectsDirectiveComponent {
@@ -136,8 +132,7 @@ class InjectsDirectiveComponent {
   InjectsDirectiveComponent(this.directive);
 }
 
-@Component(
-  selector: 'should-fail-to-inject-from-element',
+@Component(  selector: 'should-fail-to-inject-from-element',
   template: '<injects-directive visibility-none></injects-directive>',
   directives: [InjectsDirectiveComponent, VisibilityNoneDirective],
 )
@@ -146,8 +141,7 @@ class ShouldInjectFromElement {
   InjectsDirectiveComponent? child;
 }
 
-@Component(
-  selector: 'should-fail-to-inject-from-view',
+@Component(  selector: 'should-fail-to-inject-from-view',
   template: '''
   <div visibility-none>
     <injects-directive></injects-directive>
@@ -160,15 +154,13 @@ class ShouldInjectFromView {
   InjectsDirectiveComponent? child;
 }
 
-@Component(
-  selector: 'injects-directive-host',
+@Component(  selector: 'injects-directive-host',
   template: '<injects-directive></injects-directive>',
   directives: [InjectsDirectiveComponent],
 )
 class InjectsDirectiveHostComponent {}
 
-@Component(
-  selector: 'should-fail-to-inject-from-parent-view',
+@Component(  selector: 'should-fail-to-inject-from-parent-view',
   template: '''
   <div visibility-none>
     <injects-directive-host></injects-directive-host>
@@ -181,8 +173,7 @@ class InjectsDirectiveHostComponent {}
 )
 class ShouldFailToInjectFromParentView {}
 
-@Component(
-  selector: 'visibility-local',
+@Component(  selector: 'visibility-local',
   template: '',
 )
 class VisibilityLocalComponent {}
@@ -194,8 +185,7 @@ class InjectsVisibilityLocal {
   InjectsVisibilityLocal(this.host);
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<visibility-local injects-visibility-local></visibility-local>',
   directives: [InjectsVisibilityLocal, VisibilityLocalComponent],
 )
@@ -211,8 +201,7 @@ abstract class SomeService {
   void foo();
 }
 
-@Component(
-  selector: 'my-component-with-service-test',
+@Component(  selector: 'my-component-with-service-test',
   template: '''
     <child-component-provides-service>
       <div *dirNeedsService></div>
@@ -222,8 +211,7 @@ abstract class SomeService {
 )
 class MyComponentWithServiceTest {}
 
-@Component(
-  selector: 'child-component-provides-service',
+@Component(  selector: 'child-component-provides-service',
   providers: [ExistingProvider(SomeService, MyChildComponentProvidesService)],
   template: '<div><ng-content></ng-content></div>',
 )
@@ -246,8 +234,7 @@ abstract class Dependency {
   String get text;
 }
 
-@Component(
-  selector: 'should-inject-aliased-local',
+@Component(  selector: 'should-inject-aliased-local',
   template: '<injects-aliased-local></injects-aliased-local>',
   directives: [InjectsAliasedLocal],
   providers: [
@@ -259,8 +246,7 @@ class ShouldInjectAliasedLocal extends Dependency {
   final String text = 'Hello';
 }
 
-@Component(
-  selector: 'injects-aliased-local',
+@Component(  selector: 'injects-aliased-local',
   template: '{{dependency.text}}',
 )
 class InjectsAliasedLocal {
@@ -269,8 +255,7 @@ class InjectsAliasedLocal {
   InjectsAliasedLocal(this.dependency);
 }
 
-@Component(
-  selector: 'injects-visibility-all',
+@Component(  selector: 'injects-visibility-all',
   template: '',
 )
 class InjectsVisibilityAllComponent {
@@ -279,8 +264,7 @@ class InjectsVisibilityAllComponent {
   InjectsVisibilityAllComponent(this.parent);
 }
 
-@Component(
-  selector: 'should-inject-parent-component',
+@Component(  selector: 'should-inject-parent-component',
   template: '<injects-visibility-all></injects-visibility-all>',
   directives: [InjectsVisibilityAllComponent],
   visibility: Visibility.all,
@@ -317,8 +301,7 @@ class VisibilityAllImplementation implements Interface {}
 )
 class VisibilityLocalImplementation implements Interface {}
 
-@Component(
-  selector: 'injects-multi-token',
+@Component(  selector: 'injects-multi-token',
   template: '',
 )
 class InjectsMultiToken {
@@ -327,8 +310,7 @@ class InjectsMultiToken {
   InjectsMultiToken(@implementations this.dependencies);
 }
 
-@Component(
-  selector: 'should-inject-multi-token',
+@Component(  selector: 'should-inject-multi-token',
   template: '<injects-multi-token local all></injects-multi-token>',
   directives: [
     InjectsMultiToken,
@@ -343,8 +325,7 @@ class ShouldInjectMultiToken {
 
 Interface getInterfaceFromImpl(ShouldSupportFactoryProvider impl) => impl;
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<should-inject-interface></should-inject-interface>',
   directives: [
     ShouldInjectInterface,
@@ -358,8 +339,7 @@ class ShouldSupportFactoryProvider implements Interface {
   ShouldInjectInterface? child;
 }
 
-@Component(
-  selector: 'should-inject-interface',
+@Component(  selector: 'should-inject-interface',
   template: '',
 )
 class ShouldInjectInterface {
@@ -367,8 +347,7 @@ class ShouldInjectInterface {
   ShouldInjectInterface(this.interface);
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<should-inject-interface></should-inject-interface>',
   directives: [
     ShouldInjectInterface,

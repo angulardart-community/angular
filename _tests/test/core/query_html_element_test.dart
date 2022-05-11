@@ -32,8 +32,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'uses-element',
+@Component(  selector: 'uses-element',
   template: '<div #div>1</div>',
 )
 class UsesElement {
@@ -41,8 +40,7 @@ class UsesElement {
   Element? element;
 }
 
-@Component(
-  selector: 'uses-element',
+@Component(  selector: 'uses-element',
   template: '<div #div>2</div>',
 )
 class UsesHtmlElement {
@@ -50,8 +48,7 @@ class UsesHtmlElement {
   HtmlElement? element;
 }
 
-@Component(
-  selector: 'uses-list-of-element',
+@Component(  selector: 'uses-list-of-element',
   template: '<div #div>1</div><div #div>2</div>',
 )
 class UsesListOfElement {
@@ -59,8 +56,7 @@ class UsesListOfElement {
   List<Element>? elements;
 }
 
-@Component(
-  selector: 'uses-list-of-element',
+@Component(  selector: 'uses-list-of-element',
   template: '<div #div>1</div><div #div>2</div>',
 )
 class UsesListOfHtmlElement {

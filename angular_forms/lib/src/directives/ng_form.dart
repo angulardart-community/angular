@@ -98,7 +98,7 @@ abstract class AbstractNgForm<T extends AbstractControlGroup>
   AbstractNgForm(this.changeDetectorRef);
 
   @protected
-  final ChangeDetectorRef changeDetectorRef;
+  final changeDetectorRef changeDetectorRef;
 
   @override
   T? form;

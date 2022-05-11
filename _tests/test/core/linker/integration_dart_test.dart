@@ -24,8 +24,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'my-comp-with-tref',
+@Component(  selector: 'my-comp-with-tref',
   template: '<template #alice>Unstamped tmp</template>'
       '<ref-reader [ref1]="alice"></ref-reader>',
   directives: [RefReaderComponent],
@@ -35,8 +34,7 @@ class MyCompWithTemplateRef {
   RefReaderComponent? refReaderComponent;
 }
 
-@Component(
-  selector: 'ref-reader',
+@Component(  selector: 'ref-reader',
   template: '<div></div>',
 )
 class RefReaderComponent {
@@ -44,15 +42,13 @@ class RefReaderComponent {
   TemplateRef? ref1;
 }
 
-@Component(
-  selector: 'container-with-no-propertyaccess',
+@Component(  selector: 'container-with-no-propertyaccess',
   template: '<no-property-access></no-property-access>',
   directives: [NoPropertyAccess],
 )
 class ContainerWithNoPropertyAccess {}
 
-@Component(
-  selector: 'no-property-access',
+@Component(  selector: 'no-property-access',
   template: '''{{model.doesNotExist}}''',
 )
 class NoPropertyAccess {

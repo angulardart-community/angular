@@ -79,7 +79,7 @@ class RadioControlValueAccessor extends Object
     implements ControlValueAccessor<RadioButtonState>, OnDestroy, OnInit {
   final HtmlElement _element;
   final RadioControlRegistry _registry;
-  final Injector _injector;
+  final injector _injector;
   RadioButtonState? _state;
   late NgControl _control;
 

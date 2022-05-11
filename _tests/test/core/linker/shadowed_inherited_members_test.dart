@@ -17,8 +17,7 @@ void main() {
 /// Shadows `AppView.rootEl`.
 void rootEl() {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <div>Hello world!</div>
   ''',

@@ -42,15 +42,14 @@ const provideTokens = [
   ValueProvider.forToken(customMulti, 'customMulti: B'),
 ];
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '',
   providers: [
     provideTokens,
   ],
 )
 class GoldenComponent {
-  GoldenComponent(Injector injector) {
+  GoldenComponent(injector injector) {
     deopt(injector);
   }
 }

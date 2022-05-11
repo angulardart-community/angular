@@ -55,8 +55,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [
     RouterOutlet,
@@ -90,7 +89,7 @@ class TestComponent {
   TestComponent(this.router);
 }
 
-@Component(selector: 'default', template: 'Default')
+@Componentselector: 'default', template: 'Default')
 class DefaultComponent {}
 
 abstract class DelayedActivation implements CanActivate {
@@ -102,17 +101,17 @@ abstract class DelayedActivation implements CanActivate {
   Future<bool> canActivate(_, __) => _future.then((_) => true);
 }
 
-@Component(selector: 'first', template: 'First')
+@Componentselector: 'first', template: 'First')
 class FirstComponent extends DelayedActivation {
   FirstComponent(@firstToken Future<void> future) : super(future);
 }
 
-@Component(selector: 'second', template: 'Second')
+@Componentselector: 'second', template: 'Second')
 class SecondComponent extends DelayedActivation {
   SecondComponent(@secondToken Future<void> future) : super(future);
 }
 
-@Component(selector: 'third', template: 'Third')
+@Componentselector: 'third', template: 'Third')
 class ThirdComponent extends DelayedActivation {
   ThirdComponent(@thirdToken Future<void> future) : super(future);
 }

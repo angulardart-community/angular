@@ -856,9 +856,9 @@ class _ParseContext {
       }
     }
     if (isTemplate) {
-      return Identifiers.TemplateRefToken;
+      return Identifiers.templateRefToken;
     } else if (hasReferenceInNgContent) {
-      return Identifiers.NgContentRefToken;
+      return Identifiers.ngContentRefToken;
     } else {
       return null;
     }
@@ -1600,6 +1600,7 @@ class _PipeCollector extends RecursiveAstVisitor<void> {
   void visitPipe(BindingPipe ast, dynamic context) {
     (pipeInvocations[ast.name] ??= []).add(ast.args.length);
     ast.exp.visit(this);
+    // ignore: void_checks
     visitAll(ast.args, context);
   }
 }
@@ -1661,12 +1662,12 @@ class _SortInputsVisitor extends RecursiveTemplateVisitor<void> {
   Comparator<ng.BoundDirectivePropertyAst> _orderingOf(
       Map<String, String> inputs) {
     final keys = inputs.keys.toList(growable: false);
-    int _indexOf(ng.BoundDirectivePropertyAst input) {
+    int indexOf(ng.BoundDirectivePropertyAst input) {
       return keys.indexOf(input.memberName);
     }
 
     return (ng.BoundDirectivePropertyAst a, ng.BoundDirectivePropertyAst b) =>
-        Comparable.compare(_indexOf(a), _indexOf(b));
+        Comparable.compare(indexOf(a), indexOf(b));
   }
 }
 

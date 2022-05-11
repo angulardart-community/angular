@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     UsesDomEvents,
     UsesOutputs,
@@ -27,8 +26,7 @@ void main() {
 )
 class GoldenComponent {}
 
-@Component(
-  selector: 'uses-dom-events',
+@Component(  selector: 'uses-dom-events',
   template: r'''
     <button (click)="tearOffNoArguments"></button>
     <button (click)="tearOffWithArguments"></button>
@@ -49,8 +47,7 @@ class UsesDomEvents {
   }
 }
 
-@Component(
-  selector: 'uses-ng-events',
+@Component(  selector: 'uses-ng-events',
   directives: [
     HasNgEvents,
   ],
@@ -75,8 +72,7 @@ class UsesOutputs {
   }
 }
 
-@Component(
-  selector: 'has-ng-events',
+@Component(  selector: 'has-ng-events',
   template: '',
 )
 class HasNgEvents {

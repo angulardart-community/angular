@@ -117,8 +117,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'hello-component',
+@Component(  selector: 'hello-component',
   template: 'Hello World',
 )
 class HelloComponent {}

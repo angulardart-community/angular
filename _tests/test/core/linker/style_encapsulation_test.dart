@@ -52,8 +52,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: r'''
     <div [class]="className">Hello World</div>
   ''',
@@ -69,8 +68,7 @@ class TestSetClassProperty {
   String get className => 'is-fancy';
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: r'''
     <div [attr.class]="className">Hello World</div>
   ''',
@@ -86,8 +84,7 @@ class TestSetClassAttribute {
   String get className => 'is-fancy';
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: r'''
     <child-with-text class="no-uppercase-test"></child-with-text>
   ''',
@@ -104,8 +101,7 @@ class TestSetClassAttribute {
 )
 class TestEncapsulationPierce {}
 
-@Component(
-  selector: 'child-with-text',
+@Component(  selector: 'child-with-text',
   template: r'''
     <button class="trigger-button">Hello World</button>
   ''',

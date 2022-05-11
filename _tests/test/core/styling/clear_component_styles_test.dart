@@ -24,7 +24,7 @@ void main() {
   });
 }
 
-/// Loads [ComponentFactory] and expects its text to have [fontStyle].
+/// Loads [componentFactory] and expects its text to have [fontStyle].
 Future<void> expectTextFontStyle(
   ComponentFactory<Object> componentFactory,
   String fontStyle,
@@ -36,8 +36,7 @@ Future<void> expectTextFontStyle(
   return testFixture.dispose();
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<p class="text"></p>',
   styles: [
     // Intentionally unscoped to leak between test fixtures if not cleared.
@@ -50,8 +49,7 @@ Future<void> expectTextFontStyle(
 )
 class ItalicTextComponent {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<p class="text"></p>',
 )
 class NormalTextComponent {}

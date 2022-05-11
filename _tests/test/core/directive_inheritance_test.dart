@@ -245,8 +245,7 @@ void main() {
 }
 
 /// Base component from which all other components will be derived for testing.
-@Component(
-  selector: 'root',
+@Component(  selector: 'root',
   template: '',
 )
 class RootComponent {
@@ -280,8 +279,7 @@ class RootComponent {
 }
 
 /// Tests inherited metadata.
-@Component(
-  selector: 'derived',
+@Component(  selector: 'derived',
   template: '''
     <ng-content></ng-content>
     <query-target></query-target>
@@ -291,14 +289,12 @@ class RootComponent {
 )
 class DerivedComponent extends RootComponent {}
 
-@Component(
-  selector: 'query-target',
+@Component(  selector: 'query-target',
   template: '',
 )
 class QueryTargetComponent {}
 
-@Component(
-  selector: 'test-derived',
+@Component(  selector: 'test-derived',
   template: '''
     <derived
         [input]="input"
@@ -318,8 +314,7 @@ class TestDerivedComponent {
 }
 
 /// Tests overriding inherited metadata implementations.
-@Component(
-  selector: 'override',
+@Component(  selector: 'override',
   template: '',
 )
 class OverrideComponent extends RootComponent {
@@ -340,8 +335,7 @@ class OverrideComponent extends RootComponent {
   Stream<String> get output => super.output.map((data) => '$data!');
 }
 
-@Component(
-  selector: 'test-override',
+@Component(  selector: 'test-override',
   template: '''
     <override
         [input]="input"
@@ -358,8 +352,7 @@ class TestOverrideComponent {
 }
 
 /// Tests annotating fields already annotated in the base component.
-@Component(
-  selector: 'annotated-derived',
+@Component(  selector: 'annotated-derived',
   template: '''
     <query-target></query-target>
     <query-target #view></query-target>
@@ -384,8 +377,7 @@ class AnnotatedDerivedComponent extends RootComponent {
   }
 }
 
-@Component(
-  selector: 'test-redefine',
+@Component(  selector: 'test-redefine',
   template: '''
     <annotated-derived>
       <query-target></query-target>
@@ -407,14 +399,12 @@ class BaseDirective {
   String? input;
 }
 
-@Component(
-  selector: 'directive-derived',
+@Component(  selector: 'directive-derived',
   template: '<div>{{input}}</div>',
 )
 class DirectiveDerivedComponent extends BaseDirective {}
 
-@Component(
-  selector: 'test-directive-derived',
+@Component(  selector: 'test-directive-derived',
   template: '<directive-derived [input]="input"></directive-derived>',
   directives: [DirectiveDerivedComponent],
 )
@@ -427,14 +417,12 @@ class DescriptionInput {
   String? description;
 }
 
-@Component(
-  selector: 'inherit-metadata',
+@Component(  selector: 'inherit-metadata',
   template: '<div>{{description}}</div>',
 )
 class InheritMetadataComponent extends DescriptionInput {}
 
-@Component(
-  selector: 'test-inherit-metadata',
+@Component(  selector: 'test-inherit-metadata',
   template: '<inherit-metadata [description]="description"></inherit-metadata>',
   directives: [InheritMetadataComponent],
 )
@@ -442,8 +430,7 @@ class TestInheritMetadataComponent {
   String? description;
 }
 
-@Component(
-  selector: 'implement-metadata',
+@Component(  selector: 'implement-metadata',
   template: '<div>{{description}}</div>',
 )
 class ImplementMetadataComponent implements DescriptionInput {
@@ -451,8 +438,7 @@ class ImplementMetadataComponent implements DescriptionInput {
   String? description;
 }
 
-@Component(
-  selector: 'test-implement-metadata',
+@Component(  selector: 'test-implement-metadata',
   template:
       '<implement-metadata [description]="description"></implement-metadata>',
   directives: [ImplementMetadataComponent],
@@ -461,14 +447,12 @@ class TestImplementMetadataComponent {
   String? description;
 }
 
-@Component(
-  selector: 'mixin-metadata',
+@Component(  selector: 'mixin-metadata',
   template: '<div>{{description}}</div>',
 )
 class MixinMetadataComponent extends Object with DescriptionInput {}
 
-@Component(
-  selector: 'test-mixin-metadata',
+@Component(  selector: 'test-mixin-metadata',
   template: '<mixin-metadata [description]="description"></mixin-metadata>',
   directives: [MixinMetadataComponent],
 )
@@ -491,8 +475,7 @@ class BazAttribute {
   String? baz;
 }
 
-@Component(
-  selector: 'multiple-supertypes',
+@Component(  selector: 'multiple-supertypes',
   template: '',
 )
 class MultipleSupertypesComponent extends FooAttribute
@@ -502,8 +485,7 @@ class MultipleSupertypesComponent extends FooAttribute
   String? baz;
 }
 
-@Component(
-  selector: 'test-multiple-supertypes',
+@Component(  selector: 'test-multiple-supertypes',
   template: '<multiple-supertypes></multiple-supertypes>',
   directives: [MultipleSupertypesComponent],
 )
@@ -523,8 +505,7 @@ class OverrideFooAttributes extends Attributes {
   String? fooValue;
 }
 
-@Component(
-  selector: 'test-most-derived-metadata',
+@Component(  selector: 'test-most-derived-metadata',
   template: '',
 )
 class TestMostDerivedMetadataComponent extends OverrideFooAttributes {}
@@ -545,8 +526,7 @@ class FancyTooltipDirective extends TooltipDirective {
   set fancyTooltip(String? value) => tooltip = value;
 }
 
-@Component(
-  selector: 'test-directive-inherit-metadata',
+@Component(  selector: 'test-directive-inherit-metadata',
   template: '<div fancyTooltip [tooltip]="tooltipMessage"></div>',
   directives: [FancyTooltipDirective],
 )
@@ -557,8 +537,7 @@ class TestDirectiveInheritMetadataComponent {
   String? tooltipMessage;
 }
 
-@Component(
-  selector: 'test-directive-override-binding',
+@Component(  selector: 'test-directive-override-binding',
   template: '<div [fancyTooltip]="tooltipMessage"></div>',
   directives: [FancyTooltipDirective],
 )
@@ -578,14 +557,12 @@ class MixinImplementsInterface implements MixinInterface {
   String? input;
 }
 
-@Component(
-  selector: 'mixes-in-interface',
+@Component(  selector: 'mixes-in-interface',
   template: '<div>{{input}}</div>',
 )
 class MixesInInterface extends Object with MixinImplementsInterface {}
 
-@Component(
-  selector: 'test-mixes-in-interface',
+@Component(  selector: 'test-mixes-in-interface',
   template: '<mixes-in-interface [input]="input"></mixes-in-interface>',
   directives: [MixesInInterface],
 )

@@ -137,8 +137,7 @@ abstract class TestNgForBase {
   List<HtmlElement>? get children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-content',
+@Component(  selector: 'test-ng-for-reorder-content',
   directives: [
     ContentProjectedChild,
     NgFor,
@@ -159,8 +158,7 @@ class TestNgForReorderContentChildren extends TestNgForBase {
   List<HtmlElement>? get children => child!.children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-content',
+@Component(  selector: 'test-ng-for-reorder-content',
   directives: [
     ContentProjectedChild,
     NgFor,
@@ -184,8 +182,7 @@ class TestNestedNgForReorderContentChildren extends TestNgForBase {
   List<HtmlElement>? get children => child!.children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-content',
+@Component(  selector: 'test-ng-for-reorder-content',
   directives: [
     ContentProjectedChild,
     NgFor,
@@ -210,8 +207,7 @@ class TestReferencedNgForReorderContentChildren extends TestNgForBase {
   List<HtmlElement>? get children => child!.children;
 }
 
-@Component(
-  selector: 'content-projected-child',
+@Component(  selector: 'content-projected-child',
   template: '<ng-content></ng-content>',
 )
 class ContentProjectedChild {
@@ -219,8 +215,7 @@ class ContentProjectedChild {
   List<HtmlElement>? children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-view',
+@Component(  selector: 'test-ng-for-reorder-view',
   directives: [
     NgFor,
   ],
@@ -236,8 +231,7 @@ class TestNgForReorderViewChildren extends TestNgForBase {
   List<HtmlElement>? children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-view',
+@Component(  selector: 'test-ng-for-reorder-view',
   directives: [
     NgFor,
     NgIf,
@@ -256,8 +250,7 @@ class TestNestedNgForReorderViewChildren extends TestNgForBase {
   List<HtmlElement>? children;
 }
 
-@Component(
-  selector: 'test-ng-for-reorder-view',
+@Component(  selector: 'test-ng-for-reorder-view',
   directives: [
     NgFor,
     NgIf,

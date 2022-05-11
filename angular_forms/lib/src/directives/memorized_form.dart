@@ -23,7 +23,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup;
 class MemorizedForm extends NgForm {
   MemorizedForm(
     @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
-    ChangeDetectorRef changeDetectorRef,
+    changeDetectorRef changeDetectorRef,
   ) : super(validators, changeDetectorRef);
 
   /// Add a control if it isn't already found in the container.

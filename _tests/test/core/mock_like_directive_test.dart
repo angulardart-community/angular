@@ -22,8 +22,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'notifier',
+@Component(  selector: 'notifier',
   template: '',
 )
 class NotifierComponent {
@@ -34,8 +33,7 @@ class NotifierComponent {
   Stream<String> get notifications => _notificationsController.stream;
 }
 
-@Component(
-  selector: 'notifier',
+@Component(  selector: 'notifier',
   template: '',
 )
 class MockNotifierComponent implements NotifierComponent {
@@ -43,8 +41,7 @@ class MockNotifierComponent implements NotifierComponent {
   Object noSuchMethod(Invocation invocation) => null;
 }
 
-@Component(
-  selector: 'test-mock-notifier',
+@Component(  selector: 'test-mock-notifier',
   template: '''
     <notifier (notifications)="notify(\$event)">
     </notifier>''',
@@ -54,8 +51,7 @@ class TestMockNotificationComponent {
   void notify(String notification) {}
 }
 
-@Component(
-  selector: 'notifier',
+@Component(  selector: 'notifier',
   template: '',
 )
 class FakeNotifierComponent extends NotifierComponent {
@@ -63,8 +59,7 @@ class FakeNotifierComponent extends NotifierComponent {
   Stream<String> get notifications => null;
 }
 
-@Component(
-  selector: 'test-fake-notifier',
+@Component(  selector: 'test-fake-notifier',
   template: '''
     <notifier (notifications)="notify(\$event)">
     </notifier>''',

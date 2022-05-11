@@ -29,15 +29,15 @@ import '../router_hook.dart';
   selector: 'router-outlet',
 )
 class RouterOutlet implements OnInit, OnDestroy {
-  final ViewContainerRef _viewContainerRef;
+  final viewContainerRef _viewContainerRef;
   final Router _router;
   final RouterHook? _routerHook;
 
   // A mapping of {ComponentFactory} -> created {ComponentRef}.
-  final _loadedComponents = <ComponentFactory<Object>, ComponentRef<Object>>{};
+  final _loadedComponents = <componentFactory<Object>, componentRef<Object>>{};
 
   // Factory that was used to create the active component.
-  ComponentFactory<Object>? _activeComponentFactory;
+  componentFactory<Object>? _activeComponentFactory;
 
   // Route definitions registered with this outlet.
   List<RouteDefinition> _routes = const [];
@@ -51,7 +51,7 @@ class RouterOutlet implements OnInit, OnDestroy {
     token?.routerOutlet = this;
   }
 
-  ComponentRef<Object>? get _activeComponent {
+  componentRef<Object>? get _activeComponent {
     return _loadedComponents[_activeComponentFactory];
   }
 
@@ -111,9 +111,9 @@ class RouterOutlet implements OnInit, OnDestroy {
   ///
   /// If the component is currently active, or reusable, a cached instance will
   /// be returned instead of creating a new one.
-  ComponentRef<Object> prepare(ComponentFactory<Object> componentFactory) {
+  componentRef<Object> prepare(componentFactory<Object> componentFactory) {
     return _loadedComponents.putIfAbsent(componentFactory, () {
-      final componentRef = componentFactory.create(Injector.map({
+      final componentRef = componentFactory.create(injector.map({
         RouterOutletToken: RouterOutletToken(),
       }, _viewContainerRef.injector));
       // ignore: deprecated_member_use
@@ -127,7 +127,7 @@ class RouterOutlet implements OnInit, OnDestroy {
   /// If the component has already been activated and is reusable, a cached
   /// instance will be reused instead of creating a new one.
   Future<void> activate(
-    ComponentFactory<Object> componentFactory,
+    componentFactory<Object> componentFactory,
     RouterState? oldState,
     RouterState newState,
   ) async {

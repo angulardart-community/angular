@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     NoEncapsulation,
     EmulatedEncapsulation,
@@ -48,8 +47,7 @@ class GoldenComponent {
   String addClass = deopt();
 }
 
-@Component(
-  selector: 'no-encapsulation',
+@Component(  selector: 'no-encapsulation',
   template: '''
     <span class="trailing-text"
           [class.floated-label]="floatingLabel">
@@ -81,7 +79,7 @@ class GoldenComponent {
     }
     '''
   ],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.none,
 )
 class NoEncapsulation {
   @Input()
@@ -94,8 +92,7 @@ class NoEncapsulation {
   var disabled = false;
 }
 
-@Component(
-  selector: 'emulated-encapsulation',
+@Component(  selector: 'emulated-encapsulation',
   template: '''
     <span class="trailing-text"
           [class.floated-label]="floatingLabel">

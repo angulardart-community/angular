@@ -18,7 +18,7 @@ import 'invalid_pipe_argument_exception.dart' show InvalidPipeArgumentException;
 /// All behavior is based on the expected behavior of the JavaScript API
 /// String.prototype.replace() function.
 ///
-/// Where the input expression is a [String] or [Number] (to be treated as a
+/// Where the input expression is a [String] or [number] (to be treated as a
 /// string),
 /// the `pattern` is a [String] or [RegExp],
 /// the 'replacement' is a [String] or [Function].

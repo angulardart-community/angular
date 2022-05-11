@@ -32,7 +32,7 @@ void main() {
 
   test('Should disable change detection on components that throw', () async {
     final valueService = ValueService()..value = '1';
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<Crash>(
       ng.createCrashFactory(),
     ).addInjector(
       (i) => Injector.map({
@@ -67,7 +67,7 @@ void main() {
   test('Should disable change detection to avoid infinite ngOnInit', () async {
     final valueService = ValueService()..value = '1';
     final rpcService = RpcService();
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CrashOnInit>(
       ng.createCrashOnInitFactory(),
     ).addInjector(
       (i) => Injector.map({
@@ -114,16 +114,14 @@ class ValueService {
 }
 
 /// A top-level component that does not contain any crashing components.
-@Component(
-  selector: 'no-crash',
+@Component(  selector: 'no-crash',
   template: '<child></child>',
   directives: [ChildComponent],
 )
 class NoCrash {}
 
 /// A child component that renders [ValueService.value].
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: 'Value: {{service.value}}',
 )
 class ChildComponent {
@@ -132,8 +130,7 @@ class ChildComponent {
   ChildComponent(this.service);
 }
 
-@Component(
-  selector: 'crash',
+@Component(  selector: 'crash',
   template: r'''
     <child></child>
     <error *ngIf="startCrashing"></error>
@@ -148,8 +145,7 @@ class Crash {
   bool startCrashing = false;
 }
 
-@Component(
-  selector: 'error',
+@Component(  selector: 'error',
   template: 'Error({{first}})',
 )
 class ErrorComponent {
@@ -169,8 +165,7 @@ class RpcService {
   }
 }
 
-@Component(
-  selector: 'crash-on-init',
+@Component(  selector: 'crash-on-init',
   directives: [
     ChildComponent,
     ErrorComponent,
@@ -187,8 +182,7 @@ class CrashOnInit {
   bool startCrashing = false;
 }
 
-@Component(
-  selector: 'oninit',
+@Component(  selector: 'oninit',
   template: '',
 )
 class OnInitComponent implements OnInit {

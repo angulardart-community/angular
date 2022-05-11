@@ -60,8 +60,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test-do-check-hook',
+@Component(  selector: 'test-do-check-hook',
   directives: [
     DoCheckExample1,
   ],
@@ -74,8 +73,7 @@ class TestDoCheckHook {
   List<String> animals = [];
 }
 
-@Component(
-  selector: 'test-do-check-setter',
+@Component(  selector: 'test-do-check-setter',
   directives: [
     DoCheckExample2,
   ],
@@ -88,8 +86,7 @@ class TestDoCheckSetter {
   List<String> animals = [];
 }
 
-@Component(
-  selector: 'do-check-example-1',
+@Component(  selector: 'do-check-example-1',
   template: r'''
     Number of Dogs: {{countDogs}}
   ''',
@@ -107,8 +104,7 @@ class DoCheckExample1 implements DoCheck {
   }
 }
 
-@Component(
-  selector: 'do-check-example-2',
+@Component(  selector: 'do-check-example-2',
   template: r'''
     Number of Dogs: {{countDogs}}
   ''',

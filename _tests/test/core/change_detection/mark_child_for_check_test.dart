@@ -102,8 +102,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
@@ -111,8 +110,7 @@ class Child {
   var value = '';
 }
 
-@Component(
-  selector: 'has-content-child',
+@Component(  selector: 'has-content-child',
   template: '<ng-content></ng-content>',
 )
 class HasContentChild {
@@ -129,8 +127,7 @@ class HasContentChild {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-child>
       <child></child>
@@ -143,8 +140,7 @@ class TestContentChild {
   HasContentChild? child;
 }
 
-@Component(
-  selector: 'has-content-children',
+@Component(  selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasContentChildren {
@@ -171,8 +167,7 @@ class HasContentChildren {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -187,8 +182,7 @@ class TestContentChildren {
   HasContentChildren? child;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<child></child>',
   directives: [Child],
 )
@@ -206,8 +200,7 @@ class TestViewChild {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child></child>
@@ -235,8 +228,7 @@ abstract class HasValue {
   String? value;
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: '{{value}}',
   providers: [
     ExistingProvider(HasValue, ChildWithExistingProvider),
@@ -248,8 +240,7 @@ class ChildWithExistingProvider implements HasValue {
   var value = '';
 }
 
-@Component(
-  selector: 'has-content-children',
+@Component(  selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasExistingProviderContentChildren {
@@ -268,8 +259,7 @@ class HasExistingProviderContentChildren {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -284,8 +274,7 @@ class TestExistingProviderContentChildren {
   HasExistingProviderContentChildren? child;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child></child>
@@ -309,8 +298,7 @@ class TestExistingProviderViewChildren {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <has-content-children>
       <child></child>
@@ -331,8 +319,7 @@ class TestEmbeddedContentChildren {
   HasContentChildren? child;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <child></child>
     <child *ngIf="isSecondChildVisible"></child>

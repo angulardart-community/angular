@@ -108,8 +108,8 @@ abstract class RenderView extends View {
   // Dependency injection ------------------------------------------------------
 
   @override
-  Object? injectFromAncestry(Object token, Object? notFoundValue) =>
-      parentView!.inject(token, parentIndex, notFoundValue);
+  Object? injectFromAncestry(Object token, Object? notFoundResult) =>
+      parentView!.inject(token, parentIndex, notFoundResult);
 
   // Change detection ----------------------------------------------------------
 

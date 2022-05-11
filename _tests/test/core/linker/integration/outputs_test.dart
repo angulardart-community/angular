@@ -109,8 +109,7 @@ class EventListenerDirective {
   }
 }
 
-@Component(
-  selector: 'event-directives',
+@Component(  selector: 'event-directives',
   template: '<div emitter listener></div>',
   directives: [EventEmitterDirective, EventListenerDirective],
 )
@@ -122,8 +121,7 @@ class ElementWithEventDirectivesComponent {
   EventListenerDirective? listener;
 }
 
-@Component(
-  selector: 'template-event-directives',
+@Component(  selector: 'template-event-directives',
   template: '<template emitter listener (event)="msg=\$event"></template>',
   directives: [EventEmitterDirective, EventListenerDirective],
 )
@@ -154,8 +152,7 @@ class DirectiveWithTwoWayBinding {
   }
 }
 
-@Component(
-  selector: 'two-way-binding',
+@Component(  selector: 'two-way-binding',
   template: '<div [(control)]="ctxProp" two-way></div>',
   directives: [DirectiveWithTwoWayBinding],
 )
@@ -178,8 +175,7 @@ class DomEventListenerDirective {
   }
 }
 
-@Component(
-  selector: 'element-with-dom-event',
+@Component(  selector: 'element-with-dom-event',
   template: '<div listener></div>',
   directives: [DomEventListenerDirective],
 )
@@ -206,8 +202,7 @@ class DirectiveListeningDomEventNoPrevent {
   void onEvent(Event event) {}
 }
 
-@Component(
-  selector: 'test-prevent-default',
+@Component(  selector: 'test-prevent-default',
   template: '<input type="checkbox" listenerprevent>'
       '<input type="checkbox" listenernoprevent>',
   directives: [
@@ -217,8 +212,7 @@ class DirectiveListeningDomEventNoPrevent {
 )
 class TestPreventDefaultComponent {}
 
-@Component(
-  selector: 'output',
+@Component(  selector: 'output',
   template: '',
 )
 class OutputComponent {
@@ -226,8 +220,7 @@ class OutputComponent {
   Stream<String> output = Stream.empty();
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<output (output)="handle"></output>',
   directives: [OutputComponent],
 )

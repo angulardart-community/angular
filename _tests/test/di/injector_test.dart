@@ -718,7 +718,7 @@ void main() {
   });
 }
 
-/// Implementation of [Injector] that captures [lastToken] and [lastOrElse].
+/// Implementation of [injector] that captures [lastToken] and [lastOrElse].
 class CaptureInjectInjector extends HierarchicalInjector implements Injector {
   Object? lastToken;
   Object? lastOrElse;
@@ -972,8 +972,7 @@ class Model {
   String toString() => '$Model {place=$place}';
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [ProvidersDirective],
   template: '''
     <div providers>

@@ -16,8 +16,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'host',
+@Component(  selector: 'host',
   directives: [
     HasOutput,
     ListensToOutput,
@@ -90,8 +89,7 @@ class ListensToOutput {
   }
 }
 
-@Component(
-  selector: 'has-output',
+@Component(  selector: 'has-output',
   template: '',
 )
 class HasOutput {

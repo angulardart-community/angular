@@ -99,7 +99,7 @@ class ProviderElementContext implements ElementProviderUsage {
     }
     // If any content query asks to read ViewContainerRef, mark
     // ProviderElementContext to require view container.
-    if (queriedTokens.get(identifierToken(Identifiers.ViewContainerRef)) !=
+    if (queriedTokens.get(identifierToken(Identifiers.viewContainerRef)) !=
         null) {
       _requiresViewContainer = true;
     }
@@ -192,13 +192,13 @@ class ProviderElementContext implements ElementProviderUsage {
       {required bool eager}) {
     var resolvedProvider = _allProviders.get(token);
     if (resolvedProvider == null ||
-        (((requestingProviderType == ProviderAstType.Directive) ||
-                (requestingProviderType == ProviderAstType.PublicService)) &&
+        (((requestingProviderType == ProviderAstType.directive) ||
+                (requestingProviderType == ProviderAstType.publicService)) &&
             (resolvedProvider.providerType ==
-                ProviderAstType.PrivateService)) ||
-        (((requestingProviderType == ProviderAstType.PrivateService) ||
-                (requestingProviderType == ProviderAstType.PublicService)) &&
-            (resolvedProvider.providerType == ProviderAstType.Builtin))) {
+                ProviderAstType.privateService)) ||
+        (((requestingProviderType == ProviderAstType.privateService) ||
+                (requestingProviderType == ProviderAstType.publicService)) &&
+            (resolvedProvider.providerType == ProviderAstType.builtin))) {
       return null;
     }
     var transformedProviderAst = _transformedProviders.get(token);
@@ -278,26 +278,26 @@ class ProviderElementContext implements ElementProviderUsage {
     var token = dep.token;
     if (token != null) {
       // access built-ins
-      if (requestingProviderType == ProviderAstType.Directive ||
-          requestingProviderType == ProviderAstType.Component) {
-        if (token.equalsTo(Identifiers.ElementRefToken) ||
-            token.equalsTo(Identifiers.HtmlElementToken) ||
-            token.equalsTo(Identifiers.ElementToken) ||
-            token.equalsTo(Identifiers.ChangeDetectorRefToken) ||
-            token.equalsTo(Identifiers.NgContentRefToken) ||
-            token.equalsTo(Identifiers.TemplateRefToken)) {
+      if (requestingProviderType == ProviderAstType.directive ||
+          requestingProviderType == ProviderAstType.component) {
+        if (token.equalsTo(Identifiers.elementRefToken) ||
+            token.equalsTo(Identifiers.htmlElementToken) ||
+            token.equalsTo(Identifiers.elementToken) ||
+            token.equalsTo(Identifiers.changeDetectorRefToken) ||
+            token.equalsTo(Identifiers.ngContentRefToken) ||
+            token.equalsTo(Identifiers.templateRefToken)) {
           return dep;
         }
-        if (token.equalsTo(Identifiers.ViewContainerRefToken)) {
+        if (token.equalsTo(Identifiers.viewContainerRefToken)) {
           _requiresViewContainer = true;
         }
-        if (token.equalsTo(Identifiers.ComponentLoaderToken)) {
+        if (token.equalsTo(Identifiers.componentLoaderToken)) {
           _requiresViewContainer = true;
           return dep;
         }
       }
       // access the injector
-      if (token.equalsTo(Identifiers.InjectorToken)) {
+      if (token.equalsTo(Identifiers.injectorToken)) {
         return dep;
       }
       // access providers
@@ -340,7 +340,7 @@ class ProviderElementContext implements ElementProviderUsage {
           currEager = false;
         }
         result = currElement!
-            ._getLocalDependency(ProviderAstType.PublicService, dep, currEager);
+            ._getLocalDependency(ProviderAstType.publicService, dep, currEager);
       }
       // check @Host restriction
       if (result == null) {
@@ -472,12 +472,12 @@ class _ProviderResolver {
     for (var directive in orderedList) {
       _resolveProviders(
         _normalizeProviders(directive.providers, sourceSpan),
-        ProviderAstType.PublicService,
+        ProviderAstType.publicService,
         eager: false,
       );
       _resolveProviders(
         _normalizeProviders(directive.viewProviders, sourceSpan),
-        ProviderAstType.PrivateService,
+        ProviderAstType.privateService,
         eager: false,
       );
     }
@@ -560,16 +560,16 @@ ProviderAstType _providerAstTypeFromMetadataType(
   CompileDirectiveMetadataType? type,
 ) {
   switch (type) {
-    case CompileDirectiveMetadataType.Component:
-      return ProviderAstType.Component;
-    case CompileDirectiveMetadataType.Directive:
-      return ProviderAstType.Directive;
+    case CompileDirectiveMetadataType.component:
+      return ProviderAstType.component;
+    case CompileDirectiveMetadataType.directive:
+      return ProviderAstType.directive;
     default:
       throw ArgumentError("Can't create '$ProviderAstType' from '$type'");
   }
 }
 
 final CompileTokenMetadata ngIfTokenMetadata =
-    identifierToken(Identifiers.NG_IF_DIRECTIVE);
+    identifierToken(Identifiers.ngIfDirective);
 final CompileTokenMetadata ngForTokenMetadata =
-    identifierToken(Identifiers.NG_FOR_DIRECTIVE);
+    identifierToken(Identifiers.ngForDirective);

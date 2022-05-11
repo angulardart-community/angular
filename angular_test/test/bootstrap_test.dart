@@ -53,7 +53,7 @@ void main() {
       host,
       (i) => Injector.map({TestService: TestService()}, i),
     );
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(instance._testService, isNotNull);
     test.destroy();
   });
@@ -74,7 +74,7 @@ void main() {
             ' `beforeChangeDetection`, `testService` should not be null.');
       }
     });
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(testService, instance._testService);
     expect(testService!.count, 1);
     test.destroy();
@@ -100,7 +100,7 @@ void main() {
         }
       },
     );
-    var instance = test.instance;
+    var instance = test.instance as AddProviders;
     expect(testService, instance._testService);
     expect(testService!.count, 1);
     test.destroy();

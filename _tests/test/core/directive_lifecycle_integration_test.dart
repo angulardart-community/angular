@@ -71,8 +71,7 @@ class LifecycleDir implements DoCheck {
   }
 }
 
-@Component(
-  selector: 'lifecycle',
+@Component(  selector: 'lifecycle',
   template: '<div lifecycle-dir></div>',
   directives: [LifecycleDir],
 )
@@ -127,8 +126,7 @@ class LifecycleCmp
   }
 }
 
-@Component(
-  selector: 'my-comp',
+@Component(  selector: 'my-comp',
   template: '<lifecycle [field]="123"></lifecycle>',
   directives: [LifecycleCmp],
 )

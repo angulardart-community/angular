@@ -14,8 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     Child,
     ChildWithDoCheck,
@@ -30,8 +29,7 @@ class GoldenComponent {
   String name = deopt();
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: 'Name: {{name}}',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
@@ -40,8 +38,7 @@ class Child {
   String? name;
 }
 
-@Component(
-  selector: 'child-with-do-check',
+@Component(  selector: 'child-with-do-check',
   template: 'Name: {{name}}',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )

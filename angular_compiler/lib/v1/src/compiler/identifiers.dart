@@ -192,48 +192,48 @@ class Identifiers {
     name: 'appViewUtils',
     moduleUrl: _appViewUtilsModuleUrl,
   );
-  static final ViewContainer = CompileIdentifierMetadata(
+  static final viewContainer = CompileIdentifierMetadata(
       name: 'ViewContainer',
       moduleUrl: 'asset:angular/lib/src/core/linker/view_container.dart');
-  static final ViewContainerToken = identifierToken(ViewContainer);
-  static final ElementRef = CompileIdentifierMetadata(
+  static final viewContainerToken = identifierToken(viewContainer);
+  static final elementRef = CompileIdentifierMetadata(
       name: 'ElementRef',
       moduleUrl: 'asset:angular/lib/src/core/linker/element_ref.dart');
-  static final ElementRefToken = identifierToken(ElementRef);
-  static final ViewContainerRef = CompileIdentifierMetadata(
+  static final elementRefToken = identifierToken(elementRef);
+  static final viewContainerRef = CompileIdentifierMetadata(
       name: 'ViewContainerRef',
       moduleUrl: 'asset:angular/lib/src/core/linker/view_container_ref.dart');
-  static final ViewContainerRefToken =
-      identifierToken(Identifiers.ViewContainerRef);
-  static final ComponentLoader = CompileIdentifierMetadata(
+  static final viewContainerRefToken =
+      identifierToken(Identifiers.viewContainerRef);
+  static final componentLoader = CompileIdentifierMetadata(
       name: 'ComponentLoader',
       moduleUrl: 'asset:angular/lib/src/core/linker/component_loader.dart');
-  static final ComponentLoaderToken = identifierToken(ComponentLoader);
-  static final ChangeDetectorRef = CompileIdentifierMetadata(
+  static final componentLoaderToken = identifierToken(componentLoader);
+  static final changeDetectorRef = CompileIdentifierMetadata(
       name: 'ChangeDetectorRef',
       moduleUrl: 'asset:angular/lib/src/core/change_detection/'
           'change_detector_ref.dart');
-  static final ChangeDetectorRefToken =
-      identifierToken(Identifiers.ChangeDetectorRef);
-  static final ComponentFactory = CompileIdentifierMetadata(
+  static final changeDetectorRefToken =
+      identifierToken(Identifiers.changeDetectorRef);
+  static final componentFactory = CompileIdentifierMetadata(
       name: 'ComponentFactory', moduleUrl: _angularRootUrl);
-  static final DirectiveChangeDetector = CompileIdentifierMetadata(
+  static final directiveChangeDetector = CompileIdentifierMetadata(
       name: 'DirectiveChangeDetector',
       moduleUrl: 'asset:angular/lib/src/core/'
           'change_detection/directive_change_detector.dart');
-  static final ComponentRef = CompileIdentifierMetadata(
+  static final componentRef = CompileIdentifierMetadata(
       name: 'ComponentRef', moduleUrl: _angularRootUrl);
-  static final TemplateRef = CompileIdentifierMetadata(
+  static final templateRef = CompileIdentifierMetadata(
       name: 'TemplateRef',
       moduleUrl: 'asset:angular/lib/src/core/linker/template_ref.dart');
-  static final TemplateRefToken = identifierToken(Identifiers.TemplateRef);
-  static final Injector = CompileIdentifierMetadata(
+  static final templateRefToken = identifierToken(Identifiers.templateRef);
+  static final injector = CompileIdentifierMetadata(
       name: 'Injector', moduleUrl: 'asset:angular/lib/src/di/injector.dart');
-  static final InjectorToken = identifierToken(Identifiers.Injector);
-  static final ViewType = CompileIdentifierMetadata(
+  static final injectorToken = identifierToken(Identifiers.injector);
+  static final viewType = CompileIdentifierMetadata(
       name: 'ViewType',
       moduleUrl: 'asset:angular/lib/src/core/linker/view_type.dart');
-  static final ChangeDetectionStrategy = CompileIdentifierMetadata(
+  static final changeDetectionStrategy = CompileIdentifierMetadata(
       name: 'ChangeDetectionStrategy', moduleUrl: _cdModuleUrl);
   static final identical = CompileIdentifierMetadata(name: 'identical');
   static final profileSetup = CompileIdentifierMetadata(
@@ -265,78 +265,78 @@ class Identifiers {
     CompileIdentifierMetadata(name: 'pureProxy10', moduleUrl: _proxiesModuleUrl)
   ];
 
-  static final NG_IF_DIRECTIVE =
+  static final ngIfDirective =
       CompileIdentifierMetadata(name: 'NgIf', moduleUrl: _ngIfUrl);
-  static final NG_FOR_DIRECTIVE =
+  static final ngForDirective =
       CompileIdentifierMetadata(name: 'NgFor', moduleUrl: _ngForUrl);
 
   // Runtime is initialized by output interpreter. Compiler executes in VM and
   // can't import dart:html to initialize here.
-  static var HTML_COMMENT_NODE =
+  static var htmlCommentNode =
       CompileIdentifierMetadata(name: 'Comment', moduleUrl: 'dart:html');
-  static var HTML_TEXT_NODE =
+  static var htmlTextNode =
       CompileIdentifierMetadata(name: 'Text', moduleUrl: 'dart:html');
-  static var HTML_DOCUMENT =
+  static var htmlDocument =
       CompileIdentifierMetadata(name: 'document', moduleUrl: 'dart:html');
-  static final HTML_DOCUMENT_FRAGMENT = CompileIdentifierMetadata(
+  static final htmlDocumentFragment = CompileIdentifierMetadata(
       name: 'DocumentFragment', moduleUrl: 'dart:html');
-  static final HTML_ELEMENT =
+  static final htmlElement =
       CompileIdentifierMetadata(name: 'Element', moduleUrl: 'dart:html');
-  static final ElementToken = identifierToken(HTML_ELEMENT);
-  static final HTML_HTML_ELEMENT =
+  static final elementToken = identifierToken(htmlElement);
+  static final htmlHtmlElement =
       CompileIdentifierMetadata(name: 'HtmlElement', moduleUrl: 'dart:html');
-  static final HtmlElementToken = identifierToken(HTML_HTML_ELEMENT);
-  static final SVG_SVG_ELEMENT =
+  static final htmlElementToken = identifierToken(htmlHtmlElement);
+  static final svgSvgElement =
       CompileIdentifierMetadata(name: 'SvgSvgElement', moduleUrl: 'dart:svg');
-  static final SVG_ELEMENT =
+  static final svgElement =
       CompileIdentifierMetadata(name: 'SvgElement', moduleUrl: 'dart:svg');
-  static final HTML_ANCHOR_ELEMENT =
+  static final htmlAnchorElement =
       CompileIdentifierMetadata(name: 'AnchorElement', moduleUrl: 'dart:html');
-  static final HTML_DIV_ELEMENT =
+  static final htmlDivElement =
       CompileIdentifierMetadata(name: 'DivElement', moduleUrl: 'dart:html');
-  static final HTML_AREA_ELEMENT =
+  static final htmlAreaElement =
       CompileIdentifierMetadata(name: 'AreaElement', moduleUrl: 'dart:html');
-  static final HTML_AUDIO_ELEMENT =
+  static final htmlAudioElement =
       CompileIdentifierMetadata(name: 'AudioElement', moduleUrl: 'dart:html');
-  static final HTML_BUTTON_ELEMENT =
+  static final htmlButtonElement =
       CompileIdentifierMetadata(name: 'ButtonElement', moduleUrl: 'dart:html');
-  static final HTML_CANVAS_ELEMENT =
+  static final htmlCanvasElement =
       CompileIdentifierMetadata(name: 'CanvasElement', moduleUrl: 'dart:html');
-  static final HTML_FORM_ELEMENT =
+  static final htmlFormElement =
       CompileIdentifierMetadata(name: 'FormElement', moduleUrl: 'dart:html');
-  static final HTML_IFRAME_ELEMENT =
+  static final htmlIframeElement =
       CompileIdentifierMetadata(name: 'IFrameElement', moduleUrl: 'dart:html');
-  static final HTML_IMAGE_ELEMENT =
+  static final htmlImageElement =
       CompileIdentifierMetadata(name: 'ImageElement', moduleUrl: 'dart:html');
-  static final HTML_INPUT_ELEMENT =
+  static final htmlInputElement =
       CompileIdentifierMetadata(name: 'InputElement', moduleUrl: 'dart:html');
-  static final HTML_TEXTAREA_ELEMENT = CompileIdentifierMetadata(
+  static final htmlTextareaElement = CompileIdentifierMetadata(
       name: 'TextAreaElement', moduleUrl: 'dart:html');
-  static final HTML_MEDIA_ELEMENT =
+  static final htmlMediaElement =
       CompileIdentifierMetadata(name: 'MediaElement', moduleUrl: 'dart:html');
-  static final HTML_MENU_ELEMENT =
+  static final htmlMenuElement =
       CompileIdentifierMetadata(name: 'MenuElement', moduleUrl: 'dart:html');
-  static final HTML_NODE_TREE_SANITIZER = CompileIdentifierMetadata(
+  static final htmlNodeTreeSanitizer = CompileIdentifierMetadata(
       name: 'NodeTreeSanitizer', moduleUrl: 'dart:html');
-  static final HTML_OPTION_ELEMENT =
+  static final htmlOptionElement =
       CompileIdentifierMetadata(name: 'OptionElement', moduleUrl: 'dart:html');
-  static final HTML_OLIST_ELEMENT =
+  static final htmlOlistElement =
       CompileIdentifierMetadata(name: 'OListElement', moduleUrl: 'dart:html');
-  static final HTML_SELECT_ELEMENT =
+  static final htmlSelectElement =
       CompileIdentifierMetadata(name: 'SelectElement', moduleUrl: 'dart:html');
-  static final HTML_TABLE_ELEMENT =
+  static final htmlTableElement =
       CompileIdentifierMetadata(name: 'TableElement', moduleUrl: 'dart:html');
-  static final HTML_TABLE_ROW_ELEMENT = CompileIdentifierMetadata(
+  static final htmlTableRowElement = CompileIdentifierMetadata(
       name: 'TableRowElement', moduleUrl: 'dart:html');
-  static final HTML_TABLE_COL_ELEMENT = CompileIdentifierMetadata(
+  static final htmlTableColElement = CompileIdentifierMetadata(
       name: 'TableColElement', moduleUrl: 'dart:html');
-  static final HTML_ULIST_ELEMENT =
+  static final htmlUlistElement =
       CompileIdentifierMetadata(name: 'UListElement', moduleUrl: 'dart:html');
-  static final HTML_NODE =
+  static final htmlNode =
       CompileIdentifierMetadata(name: 'Node', moduleUrl: 'dart:html');
 
   /// A class used for message internationalization.
-  static final Intl = CompileIdentifierMetadata(
+  static final intl = CompileIdentifierMetadata(
     name: 'Intl',
     moduleUrl: 'package:intl/intl.dart',
   );
@@ -354,11 +354,11 @@ class Identifiers {
     name: 'Deprecated',
   );
 
-  static final NgContentRef = CompileIdentifierMetadata(
+  static final ngContentRef = CompileIdentifierMetadata(
     name: 'NgContentRef',
     moduleUrl: 'asset:angular/lib/src/core/linker/ng_content_ref.dart',
   );
-  static final NgContentRefToken = identifierToken(Identifiers.NgContentRef);
+  static final ngContentRefToken = identifierToken(Identifiers.ngContentRef);
 }
 
 CompileTokenMetadata identifierToken(CompileIdentifierMetadata? identifier) {

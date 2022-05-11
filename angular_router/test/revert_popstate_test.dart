@@ -19,7 +19,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createTestComponentFactory(),
       rootInjector: (parent) {
-        return createInjector(Injector.map({RouterHook: routerHook}, parent));
+        return createInjector(injector.map({RouterHook: routerHook}, parent));
       },
     );
     testFixture = await testBed.create(beforeComponentCreated: (injector) {
@@ -81,8 +81,7 @@ const testModule = Module(
 @GenerateInjector.fromModules([testModule])
 final createInjector = ng.createInjector$Injector;
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [RouterOutlet],
   template: '''
     <router-outlet [routes]="routes"></router-outlet>
@@ -105,8 +104,7 @@ class TestComponent {
   ];
 }
 
-@Component(
-  selector: 'route',
+@Component(  selector: 'route',
   template: '',
 )
 class RouteComponent {}

@@ -9,7 +9,7 @@ import 'router/router_impl.dart';
 
 /// The main [Router] directives.
 ///
-/// Attach to a @[Component]'s directives when using any other the Router
+/// Attach to a @[component]'s directives when using any other the Router
 /// directives.
 /// ```
 /// @Component(

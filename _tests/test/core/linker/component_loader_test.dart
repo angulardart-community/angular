@@ -217,7 +217,7 @@ void main() {
 
   test('does not swallow exceptions', () async {
     final fixture =
-        await createFixture(ng.createCompWithCustomLocationFactory());
+        await createFixture<CompWithCustomLocation>(ng.createCompWithCustomLocationFactory());
     late final ComponentRef<DynamicOnPushComp> ref;
     await fixture.update((comp) {
       ref = comp.loader.loadNextToLocation(
@@ -249,8 +249,7 @@ class Log {
   String toString() => logItems.join('; ');
 }
 
-@Component(
-  selector: 'comp-with-custom-location',
+@Component(  selector: 'comp-with-custom-location',
   template: r'Before<template #location></template>After',
 )
 class CompWithCustomLocation {
@@ -262,8 +261,7 @@ class CompWithCustomLocation {
   ViewContainerRef? location;
 }
 
-@Component(
-  selector: 'comp-with-directive',
+@Component(  selector: 'comp-with-directive',
   directives: [
     DirectiveThatIsLocation,
   ],
@@ -280,8 +278,7 @@ class DirectiveThatIsLocation {
   }
 }
 
-@Component(
-  selector: 'comp-with-service',
+@Component(  selector: 'comp-with-service',
   providers: [ClassProvider(Service)],
   template: '',
 )
@@ -298,8 +295,7 @@ class Service {
   Service(this.loader);
 }
 
-@Component(
-  selector: 'dynamic-comp',
+@Component(  selector: 'dynamic-comp',
   template: 'Dynamic{{input}}',
 )
 class DynamicComp extends Lifecycles {
@@ -309,8 +305,7 @@ class DynamicComp extends Lifecycles {
   String? input;
 }
 
-@Component(
-  selector: 'dynamic-comp',
+@Component(  selector: 'dynamic-comp',
   template: 'Dynamic{{input}}',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )

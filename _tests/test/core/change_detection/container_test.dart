@@ -43,8 +43,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'child',
+@Component(  selector: 'child',
   template: r'{{value}}',
 )
 class ChildComponent {
@@ -60,8 +59,7 @@ class ChildComponent {
   dynamic get value => _value;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="boundValue"></child>',
 )

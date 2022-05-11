@@ -15,8 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     ChildComponentProvidingA$B$C,
     ChildComponentWithNgContentProviding$D,
@@ -44,7 +43,7 @@ void main() {
   ''',
 )
 class GoldenComponent {
-  GoldenComponent(Injector i) {
+  GoldenComponent(injector i) {
     deopt(i.get);
   }
 }
@@ -55,8 +54,7 @@ class B {}
 
 class C {}
 
-@Component(
-  selector: 'child-component-providing-a-b-c',
+@Component(  selector: 'child-component-providing-a-b-c',
   template: '',
   providers: [
     A,
@@ -68,8 +66,7 @@ class ChildComponentProvidingA$B$C {}
 
 class D {}
 
-@Component(
-  selector: 'child-component-with-ngcontent-providing-d',
+@Component(  selector: 'child-component-with-ngcontent-providing-d',
   template: '<ng-content></ng-content>',
   providers: [
     D,
@@ -77,8 +74,7 @@ class D {}
 )
 class ChildComponentWithNgContentProviding$D {}
 
-@Component(
-  selector: 'child-component-injecting-d',
+@Component(  selector: 'child-component-injecting-d',
   template: '',
 )
 class ChildComponentInjecting$D {
@@ -89,8 +85,7 @@ class A2 implements A {}
 
 class D2 implements D {}
 
-@Component(
-  selector: 'child-component-with-visibility-all',
+@Component(  selector: 'child-component-with-visibility-all',
   template: '',
   visibility: Visibility.all,
 )

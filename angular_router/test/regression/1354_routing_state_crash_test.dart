@@ -13,7 +13,7 @@ void main() {
     final appComponent = runApp<AppComponent>(
       ng.createAppComponentFactory(),
       createInjector: (parent) {
-        return Injector.map({
+        return injector.map({
           ExceptionHandler: LoggingExceptionHandler(),
         }, parent);
       },
@@ -78,8 +78,7 @@ class LoggingExceptionHandler implements ExceptionHandler {
   }
 }
 
-@Component(
-  selector: 'app',
+@Component(  selector: 'app',
   template: r'''
     <form class="url-form" (submit)="updateUrl(urlBar.value!)">
       <label for="url-bar">Mock URL: </label>
@@ -160,20 +159,17 @@ class AppComponent {
   }
 }
 
-@Component(
-  selector: 'home',
+@Component(  selector: 'home',
   template: 'Home Page',
 )
 class HomeComponent {}
 
-@Component(
-  selector: 'another',
+@Component(  selector: 'another',
   template: 'Another Page',
 )
 class AnotherComponent {}
 
-@Component(
-  selector: 'throws',
+@Component(  selector: 'throws',
   directives: [
     NgIf,
   ],

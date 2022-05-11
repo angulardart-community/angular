@@ -127,31 +127,27 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'host-test',
+@Component(  selector: 'host-test',
   template: '<div id="item1">Test1</div><ng-content></ng-content>',
   styles: [':host { color: rgb(64, 255, 127); }'],
 )
 class HostStyleTestComponent {}
 
-@Component(
-  selector: 'host-test2',
+@Component(  selector: 'host-test2',
   template: '<div id="item1">Test2</div>',
   styles: [':host { color: red; }'],
 )
 class HostStyle2TestComponent {}
 
 /// Nests one host inside other.
-@Component(
-  selector: 'host-container',
+@Component(  selector: 'host-container',
   template: '<host-test><host-test2></host-test2></host-test>',
   styles: [':host { color: rgb(0, 0, 0); }'],
   directives: [HostStyleTestComponent, HostStyle2TestComponent],
 )
 class HostStyleContainerComponent {}
 
-@Component(
-  selector: 'host-element-selector-test',
+@Component(  selector: 'host-element-selector-test',
   template: '<div id="item1">Hello</div>'
       '<section class="disabled" id="item2">Hello</section>',
   styles: [
@@ -161,8 +157,7 @@ class HostStyleContainerComponent {}
 )
 class HostElementSelectorTestComponent {}
 
-@Component(
-  selector: 'element-selector-test',
+@Component(  selector: 'element-selector-test',
   template: '<div id="item1">Hello</div>'
       '<section class="disabled" id="item2">Hello</section>',
   styles: [
@@ -172,8 +167,7 @@ class HostElementSelectorTestComponent {}
 )
 class ElementSelectorTestComponent {}
 
-@Component(
-  selector: 'content-selector-test',
+@Component(  selector: 'content-selector-test',
   template: '<section class="sec1" id="section1">Section1</section>'
       '<section class="sec2 activated" id="section2">Section2</section>'
       '<section class="sec3" id="section3">Section3</section>'
@@ -187,14 +181,12 @@ class ElementSelectorTestComponent {}
 )
 class ContentSelectorTestComponent {}
 
-@Component(
-  selector: 'content-selector-test-child',
+@Component(  selector: 'content-selector-test-child',
   template: '<section class="secA" id="sectionA">SectionA</section>',
 )
 class ContentSelectorChildComponent {}
 
-@Component(
-  selector: 'class-on-host',
+@Component(  selector: 'class-on-host',
   template: '<div id="item1">Test1</div>',
   styles: [':host { color: rgb(64, 255, 127); }'],
 )
@@ -203,8 +195,7 @@ class ClassOnHostTestComponent {
   static const hostClass = 'customhostclass';
 }
 
-@Component(
-  selector: 'class-attrib-binding',
+@Component(  selector: 'class-attrib-binding',
   template: '<div id="item1" [attr.class]="someClass">Test1</div>',
   styles: [':host { color: rgb(64, 255, 127); }'],
 )
@@ -212,8 +203,7 @@ class ClassAttribBindingComponent {
   String get someClass => 'xyz';
 }
 
-@Component(
-  selector: 'class-interpolate-test',
+@Component(  selector: 'class-interpolate-test',
   template: '<div id="item1" class="prefix {{someClass}} postfix">Test1</div>',
   styles: [':host { color: rgb(64, 255, 127); }'],
 )
@@ -224,8 +214,7 @@ class ClassInterpolateComponent {
   String get someClass => 'xyz';
 }
 
-@Component(
-  selector: 'component-container1',
+@Component(  selector: 'component-container1',
   template: '<div><child-component1 class="{{activeClass}}">'
       '<div class="mobile"></div>'
       '</child-component1></div>',
@@ -236,15 +225,13 @@ class ComponentContainerTestComponent {
   String get activeClass => 'active';
 }
 
-@Component(
-  selector: 'child-component1',
+@Component(  selector: 'child-component1',
   template: '<div id="child-div1"><ng-content></ng-content></div>',
   styles: [':host { color: #FF0000; }'],
 )
 class ChildComponent {}
 
-@Component(
-  selector: 'test-with-inline-svg',
+@Component(  selector: 'test-with-inline-svg',
   template: '''<div>
       <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1"
             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -305,8 +292,7 @@ String colorToHex(String value) {
   return value;
 }
 
-@Component(
-  selector: 'feature-promo',
+@Component(  selector: 'feature-promo',
   styles: [':host {position: absolute;}'],
   template: '<div>Hello</div>',
 )
@@ -316,8 +302,7 @@ class FeaturePromoComponent {
   String positionClass = '';
 }
 
-@Component(
-  selector: 'feature-promo-test',
+@Component(  selector: 'feature-promo-test',
   directives: [FeaturePromoComponent],
   template: '''<div>
       <feature-promo [positionClass]="myposition"></feature-promo>
@@ -327,8 +312,7 @@ class NgHostAttribShimTest {
   var myposition = 'position-class';
 }
 
-@Component(
-  selector: 'feature-promo2',
+@Component(  selector: 'feature-promo2',
   styles: [':host {position: absolute;}'],
   template: '<div >Hello</div>',
 )

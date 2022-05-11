@@ -18,7 +18,7 @@ void main() {
     reader = const FakeAssetReader();
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Directive,
+      metadataType: CompileDirectiveMetadataType.directive,
     );
 
     expect(
@@ -39,7 +39,7 @@ void main() {
     });
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(
         name: 'A',
         moduleUrl: 'asset:a/lib/a.dart',
@@ -63,7 +63,7 @@ void main() {
     });
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(
         name: 'A',
         moduleUrl: 'asset:a/lib/a.dart',
@@ -83,7 +83,7 @@ void main() {
     reader = FakeAssetReader();
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(
         name: 'A',
         moduleUrl: 'asset:a/lib/a.dart',
@@ -97,7 +97,7 @@ void main() {
     reader = FakeAssetReader();
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'asset:a/lib/a.dart'),
       template: CompileTemplateMetadata(
         template: r'''
@@ -119,7 +119,7 @@ void main() {
     reader = FakeAssetReader();
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'asset:a/lib/a.dart'),
       template: CompileTemplateMetadata(
         template: '<ng-content select></ng-content>',
@@ -137,7 +137,7 @@ void main() {
     });
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'package:a/a.dart'),
       template: CompileTemplateMetadata(
         template: r'''
@@ -166,15 +166,15 @@ void main() {
     reader = FakeAssetReader();
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'package:a/a.dart'),
       template: CompileTemplateMetadata(
         template: '',
-        encapsulation: ViewEncapsulation.Emulated,
+        encapsulation: ViewEncapsulation.emulated,
       ),
     );
     metadata = await normalizer.normalizeDirective(metadata);
-    expect(metadata.template.encapsulation, ViewEncapsulation.None);
+    expect(metadata.template.encapsulation, ViewEncapsulation.none);
   });
 
   test('should resolve inline stylesheets', () async {
@@ -186,7 +186,7 @@ void main() {
     });
     normalizer = AstDirectiveNormalizer(reader);
     metadata = CompileDirectiveMetadata(
-      metadataType: CompileDirectiveMetadataType.Component,
+      metadataType: CompileDirectiveMetadataType.component,
       type: CompileTypeMetadata(name: 'A', moduleUrl: 'package:a/a.dart'),
       template: CompileTemplateMetadata(
         template: r'''
@@ -205,7 +205,7 @@ void main() {
       ),
     );
     metadata = await normalizer.normalizeDirective(metadata);
-    expect(metadata.template.encapsulation, ViewEncapsulation.Emulated);
+    expect(metadata.template.encapsulation, ViewEncapsulation.emulated);
     expect(
       metadata.template.styles,
       [

@@ -93,49 +93,49 @@ class _AstToExpressionVisitor
     o.BinaryOperator op;
     switch (ast.operator) {
       case '+':
-        op = o.BinaryOperator.Plus;
+        op = o.BinaryOperator.plus;
         break;
       case '-':
-        op = o.BinaryOperator.Minus;
+        op = o.BinaryOperator.minus;
         break;
       case '*':
-        op = o.BinaryOperator.Multiply;
+        op = o.BinaryOperator.multiply;
         break;
       case '/':
-        op = o.BinaryOperator.Divide;
+        op = o.BinaryOperator.divide;
         break;
       case '%':
-        op = o.BinaryOperator.Modulo;
+        op = o.BinaryOperator.modulo;
         break;
       case '&&':
-        op = o.BinaryOperator.And;
+        op = o.BinaryOperator.and;
         break;
       case '||':
-        op = o.BinaryOperator.Or;
+        op = o.BinaryOperator.or;
         break;
       case '==':
-        op = o.BinaryOperator.Equals;
+        op = o.BinaryOperator.equals;
         break;
       case '!=':
-        op = o.BinaryOperator.NotEquals;
+        op = o.BinaryOperator.notEquals;
         break;
       case '===':
-        op = o.BinaryOperator.Identical;
+        op = o.BinaryOperator.identical;
         break;
       case '!==':
-        op = o.BinaryOperator.NotIdentical;
+        op = o.BinaryOperator.notIdentical;
         break;
       case '<':
-        op = o.BinaryOperator.Lower;
+        op = o.BinaryOperator.lower;
         break;
       case '>':
-        op = o.BinaryOperator.Bigger;
+        op = o.BinaryOperator.bigger;
         break;
       case '<=':
-        op = o.BinaryOperator.LowerEquals;
+        op = o.BinaryOperator.lowerEquals;
         break;
       case '>=':
-        op = o.BinaryOperator.BiggerEquals;
+        op = o.BinaryOperator.biggerEquals;
         break;
       default:
         throw BuildError.withoutContext(
@@ -161,8 +161,8 @@ class _AstToExpressionVisitor
   @override
   o.Expression visitEmptyExpr(compiler_ast.EmptyExpr ast, _) =>
       _isBoolType(_boundType)
-          ? o.LiteralExpr(true, o.BOOL_TYPE)
-          : o.LiteralExpr('', o.STRING_TYPE);
+          ? o.LiteralExpr(true, o.boolType)
+          : o.LiteralExpr('', o.stringType);
 
   @override
   o.Expression visitPipe(compiler_ast.BindingPipe ast, _) {
@@ -395,7 +395,7 @@ class _AstToExpressionVisitor
 }
 
 bool _isBoolType(o.OutputType? type) {
-  if (type == o.BOOL_TYPE) return true;
+  if (type == o.boolType) return true;
   if (type is o.ExternalType) {
     var name = type.value.name;
     return 'bool' == name.trim();

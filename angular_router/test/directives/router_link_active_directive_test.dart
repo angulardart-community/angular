@@ -82,8 +82,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test-router-link-active',
+@Component(  selector: 'test-router-link-active',
   directives: [
     RouterLink,
     RouterLinkActive,

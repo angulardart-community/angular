@@ -13,4 +13,4 @@ import 'package:angular/src/meta.dart';
 ///     ],
 ///   )
 /// ```
-const APP_ID = OpaqueToken<String>('APP_ID');
+const appIdToken = OpaqueToken<String>('APP_ID');

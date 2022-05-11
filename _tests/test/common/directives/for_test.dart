@@ -134,7 +134,7 @@ void main() {
 
     test('should throw on non-iterable ref and suggest using an array',
         () async {
-      final testBed = NgTestBed(ng.createNgForOptionsTestFactory());
+      final testBed = NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
       final testFixture = await testBed.create();
       expect(testFixture.update((component) {
         component.items = 'this is not iterable';
@@ -288,7 +288,7 @@ void main() {
     test('should allow using a custom template', () async {
       var testBed = NgTestBed(ng.createNgForCustomTemplateTestFactory());
       var testFixture = await testBed.create();
-      await testFixture.update((component) {
+      await testFixture.update((NgForCustomTemplateTest component) {
         component.child!.items = ['a', 'b', 'c'];
       });
       expect(testFixture.text, hasTextContent('0: a;1: b;2: c;'));

@@ -107,12 +107,12 @@ class NgTestBed<T extends Object> {
   static Injector _defaultRootInjector(Injector parent) => parent;
 
   static NgTestStabilizer _alwaysStable(
-    Injector _,
+      Injector _,
   ) =>
       NgTestStabilizer.alwaysStable;
 
   static NgTestStabilizer _defaultStabilizers(
-    Injector injector, [
+      Injector injector, [
     TimerHookZone? timerZone,
   ]) {
     // There is no good way in Dart to support a union between two function
@@ -140,7 +140,7 @@ class NgTestBed<T extends Object> {
   /// Some APIs are not supported outside of [NgTestBed.useInitReflector]:
   ///
   /// * [addProviders] will throw [UnsupportedError]; instead, the [addInjector]
-  ///   API allows you to wrap the previous [Injector], if any, to provide
+  ///   API allows you to wrap the previous [injector], if any, to provide
   ///   additional services. In most cases just [rootInjector] is enough, and
   ///   you could re-use providers via [GenerateInjector].
   ///
@@ -233,7 +233,7 @@ class NgTestBed<T extends Object> {
         _rootInjector = rootInjector,
         _componentFactory = component;
 
-  /// Whether this is the new-style [ComponentFactory]-backed [NgTestBed].
+  /// Whether this is the new-style [componentFactory]-backed [NgTestBed].
   bool get _usesComponentFactory => _componentFactory != null;
 
   /// Returns a new instance of [NgTestBed] with [providers] added.
@@ -369,7 +369,7 @@ class NgTestBed<T extends Object> {
       ).then((componentRef) async {
         _checkForActiveTest();
         await allStabilizers.stabilize();
-        final testFixture = NgTestFixture(
+        final testFixture = NgTestFixture<T>(
           componentRef.injector.provideType(ApplicationRef),
           componentRef,
           allStabilizers,

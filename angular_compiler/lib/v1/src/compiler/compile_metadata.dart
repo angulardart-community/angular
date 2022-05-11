@@ -418,7 +418,7 @@ class CompileTemplateMetadata {
   final List<String> styleUrls;
   final List<String> ngContentSelectors;
   CompileTemplateMetadata(
-      {this.encapsulation = ViewEncapsulation.Emulated,
+      {this.encapsulation = ViewEncapsulation.emulated,
       this.template,
       this.templateUrl,
       this.templateOffset = 0,
@@ -430,10 +430,10 @@ class CompileTemplateMetadata {
 
 enum CompileDirectiveMetadataType {
   /// Metadata type for a class annotated with `@Component`.
-  Component,
+  component,
 
   /// Metadata type for a class annotated with `@Directive`.
-  Directive,
+  directive,
 }
 
 /// Metadata regarding compilation of a directive.
@@ -529,17 +529,17 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   }
 
   bool get isComponent =>
-      metadataType == CompileDirectiveMetadataType.Component;
+      metadataType == CompileDirectiveMetadataType.component;
 
   bool get isOnPush => changeDetection == ChangeDetectionStrategy.OnPush;
 
   /// Whether the directive requires a change detector class to be generated.
   ///
-  /// [DirectiveChangeDetector] classes should only be generated if they
+  /// [directiveChangeDetector] classes should only be generated if they
   /// reduce the amount of duplicate code. Therefore we check for the presence
   /// of host bindings to move from each call site to a single method.
   bool get requiresDirectiveChangeDetector =>
-      metadataType == CompileDirectiveMetadataType.Directive &&
+      metadataType == CompileDirectiveMetadataType.directive &&
       hostProperties.isNotEmpty;
 
   Map<String, ast.AST>? _cachedHostAttributes;
@@ -572,7 +572,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
     // Host bindings are either literal strings or a property access. We have
     // to filter out non-static property accesses because the directive instance
     // is not available at build time.
-    bool _isStatic(ast.AST value) {
+    bool isStatic(ast.AST value) {
       if (value is ast.LiteralPrimitive) return true;
       if (value is ast.PropertyRead) {
         return value.receiver is ast.StaticRead;
@@ -586,7 +586,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
       var isStyleOrClassBinding =
           name.startsWith('style.') || name.startsWith('class.');
       if (isImmutable(value, analyzedClass) &&
-          _isStatic(value) &&
+          isStatic(value) &&
           !isStyleOrClassBinding) {
         if (name.startsWith('attr.')) {
           name = name.substring('attr.'.length);
@@ -628,7 +628,7 @@ CompileDirectiveMetadata createHostComponentMeta(
     outputs: const {},
     hostBindings: const {},
     hostListeners: const {},
-    metadataType: CompileDirectiveMetadataType.Component,
+    metadataType: CompileDirectiveMetadataType.component,
     selector: '*',
   );
 }

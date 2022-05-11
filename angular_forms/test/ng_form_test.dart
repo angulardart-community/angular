@@ -142,8 +142,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'ng-form-test',
+@Component(  selector: 'ng-form-test',
   directives: [
     formDirectives,
     NgIf,
@@ -160,7 +159,7 @@ void main() {
 class NgFormTest {
   NgFormTest(this.changeDetectorRef);
 
-  final ChangeDetectorRef changeDetectorRef;
+  final changeDetectorRef changeDetectorRef;
 
   @ViewChild('form')
   NgForm? form;
@@ -177,8 +176,7 @@ class NgFormTest {
   ControlGroup get formModel => form!.form!;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     formDirectives,
     NgIf,
@@ -200,8 +198,7 @@ class OnPushControlTest {
   ButtonElement? submitButton;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     formDirectives,
     NgIf,

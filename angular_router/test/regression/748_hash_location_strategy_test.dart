@@ -41,8 +41,7 @@ class MockPlatformLocation extends Mock implements BrowserPlatformLocation {}
 ])
 InjectorFactory injectorFactory = ng.injectorFactory$Injector;
 
-@Component(
-  selector: 'app',
+@Component(  selector: 'app',
   template: '''
     <a #routerLink [routerLink]="fooRoute.toUrl()"></a>
     <router-outlet [routes]="routes"></router-outlet>
@@ -60,5 +59,5 @@ class AppComponent {
   HtmlElement anchor;
 }
 
-@Component(selector: 'foo', template: '')
+@Componentselector: 'foo', template: '')
 class FooComponent {}

@@ -22,8 +22,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: r'''
     <ul>
       <ng-container *ngFor="let row of matrix">

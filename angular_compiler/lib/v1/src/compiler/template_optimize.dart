@@ -16,15 +16,15 @@ class OptimizeTemplateAstVisitor
 
   @override
   TemplateAst visitEmbeddedTemplate(
-      EmbeddedTemplateAst ast, CompileDirectiveMetadata? component) {
-    component = component!;
-    _typeNgForLocals(component, ast.directives, ast.variables);
+      EmbeddedTemplateAst ast, CompileDirectiveMetadata? context) {
+    context = context!;
+    _typeNgForLocals(context, ast.directives, ast.variables);
 
     // Add the local variables to the [CompileDirectiveMetadata] used in
     // children embedded templates.
-    var scoped = CompileDirectiveMetadata.from(component,
+    var scoped = CompileDirectiveMetadata.from(context,
         analyzedClass: AnalyzedClass.from(
-          component.analyzedClass!,
+          context.analyzedClass!,
           additionalLocals: {
             for (var v in ast.variables)
               if (v.dartType != null) v.name: v.dartType!,
@@ -47,7 +47,7 @@ void _typeNgForLocals(
 ) {
   final ngFor = directives.firstWhereOrNull((directive) =>
       directive.directive.type!.moduleUrl ==
-      Identifiers.NG_FOR_DIRECTIVE.moduleUrl);
+      Identifiers.ngForDirective.moduleUrl);
   if (ngFor == null) return; // No `NgFor` to optimize.
   BoundExpression? ngForOfValue;
   for (final input in ngFor.inputs) {
@@ -63,6 +63,8 @@ void _typeNgForLocals(
     // No [ngForOf] binding from which to get type.
     return;
   }
+
+  final lib = component.analyzedClass!.classElement.library;
   final ngForOfType =
       getExpressionType(ngForOfValue.expression.ast, component.analyzedClass!);
   // Augment locals set by `NgFor` with type information.
@@ -70,7 +72,7 @@ void _typeNgForLocals(
     switch (variable.value) {
       case r'$implicit':
         // This local is the generic type of the `Iterable` bound to [ngForOf].
-        variable.dartType = getIterableElementType(ngForOfType);
+        variable.dartType = getIterableElementType(ngForOfType, lib);
         break;
       case 'index':
       case 'count':

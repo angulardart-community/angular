@@ -55,24 +55,21 @@ void main() {
   }, tags: 'fails-on-ci');
 }
 
-@Component(
-  selector: 'unsafe-attribute',
+@Component(  selector: 'unsafe-attribute',
   template: '<a [href]="href">Link Title</a>',
 )
 class UnsafeAttributeComponent {
   String href = 'hello';
 }
 
-@Component(
-  selector: 'unsafe-style',
+@Component(  selector: 'unsafe-style',
   template: '<div [style.background]="backgroundStyle"></div>',
 )
 class UnsafeStyleComponent {
   String backgroundStyle = 'red';
 }
 
-@Component(
-  selector: 'unsafe-html',
+@Component(  selector: 'unsafe-html',
   template: '<div [innerHtml]="html"></div>',
 )
 class UnsafeHtmlComponent {

@@ -1,6 +1,6 @@
 /// Options for configuring whether a directive class can be injected.
 ///
-/// See [Directive.visibility] for details including the default behavior.
+/// See [directive.visibility] for details including the default behavior.
 enum Visibility {
   /// The directive can only be injected "locally"; i.e. not from another view.
   ///

@@ -20,8 +20,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'root',
+@Component(  selector: 'root',
   directives: [
     formDirectives,
     NgFor,

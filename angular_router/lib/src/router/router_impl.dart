@@ -25,7 +25,7 @@ class RouterImpl extends Router {
   final Location _location;
   final RouterHook? _routerHook;
   RouterState? _activeState;
-  Iterable<ComponentRef<Object>> _activeComponentRefs = [];
+  Iterable<componentRef<Object>> _activeComponentRefs = [];
   StreamController<String>? _onNavigationStart;
   StreamController<RouterState>? _onRouteResolved;
   RouterOutlet? _rootOutlet;
@@ -338,10 +338,10 @@ class RouterImpl extends Router {
     return path.isEmpty;
   }
 
-  /// Returns the [ComponentFactory] loaded by the partial [state]'s last route.
+  /// Returns the [componentFactory] loaded by the partial [state]'s last route.
   ///
   /// Returns null if the last route is a [RedirectRouteDefinition].
-  FutureOr<ComponentFactory<Object>?> _componentFactory(
+  FutureOr<componentFactory<Object>?> _componentFactory(
       MutableRouterState state) {
     var route = state.routes.last;
     if (route is ComponentRouteDefinition) {
@@ -361,7 +361,7 @@ class RouterImpl extends Router {
   }
 
   /// Returns the next [RouterOutlet] created by [componentRef], if any.
-  RouterOutlet? _nextOutlet(ComponentRef<Object> componentRef) =>
+  RouterOutlet? _nextOutlet(componentRef<Object> componentRef) =>
       componentRef.injector
           .provideType<RouterOutletToken>(RouterOutletToken)
           .routerOutlet;

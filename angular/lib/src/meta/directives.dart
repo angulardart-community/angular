@@ -246,7 +246,7 @@ class Component extends Directive {
     this.directives = const [],
     this.directiveTypes = const [],
     this.pipes = const [],
-    this.encapsulation = ViewEncapsulation.Emulated,
+    this.encapsulation = ViewEncapsulation.emulated,
   }) : super(
           selector: selector,
           exportAs: exportAs,

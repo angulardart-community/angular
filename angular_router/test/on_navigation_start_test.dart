@@ -30,7 +30,7 @@ void main() {
     test("doesn't fire when navigation is prohibited", () async {
       final testBed = NgTestBed(
         ng.createTestComponentFactory(),
-      ).addInjector((i) => Injector.map({canNavigateToken: false}, i));
+      ).addInjector((i) => injector.map({canNavigateToken: false}, i));
       final testFixture = await testBed.create();
       final router = testFixture.assertOnlyInstance.router;
       await expectLater(
@@ -42,7 +42,7 @@ void main() {
     test('fires when deactivation is prohibited', () async {
       final testBed = NgTestBed(
         ng.createTestComponentFactory(),
-      ).addInjector((i) => Injector.map({canDeactivateToken: false}, i));
+      ).addInjector((i) => injector.map({canDeactivateToken: false}, i));
       final testFixture = await testBed.create();
       final router = testFixture.assertOnlyInstance.router;
       await expectLater(
@@ -79,8 +79,7 @@ Stream<dynamic> navigate(Router router, String path) => StreamGroup.merge([
 const canDeactivateToken = OpaqueToken<bool>('canDeactivateToken');
 const canNavigateToken = OpaqueToken<bool>('canNavigateToken');
 
-@Component(
-  selector: 'home',
+@Component(  selector: 'home',
   template: '',
 )
 class HomeComponent implements CanDeactivate, CanNavigate {
@@ -100,14 +99,12 @@ class HomeComponent implements CanDeactivate, CanNavigate {
   Future<bool> canNavigate() => Future.value(_canNavigate);
 }
 
-@Component(
-  selector: 'destination',
+@Component(  selector: 'destination',
   template: '',
 )
 class DestinationComponent {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
   providers: [routerProvidersTest],

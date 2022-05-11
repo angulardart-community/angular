@@ -439,9 +439,10 @@ class _ComponentVisitor
   /// May return null if no setter corresponds to [element], or the [element]
   /// itself is invalid (e.g. a setter without parameters or a body).
   PropertyAccessorElement? _setterFor(Element element) {
+    final type = _directiveClassElement!.thisType;
     // Resolves specified generic type parameters.
-    final setter = _directiveClassElement!.thisType
-        .lookUpInheritedSetter(element.displayName)!;
+    final setter = type
+        .lookUpSetter2(element.displayName, _directiveClassElement!.library)!;
     if (setter.parameters.isEmpty) {
       CompileContext.current.reportAndRecover(
         BuildError.forElement(
@@ -684,8 +685,8 @@ class _ComponentVisitor
       type: componentType,
       originType: componentType,
       metadataType: isComponent
-          ? CompileDirectiveMetadataType.Component
-          : CompileDirectiveMetadataType.Directive,
+          ? CompileDirectiveMetadataType.component
+          : CompileDirectiveMetadataType.directive,
       selector: coerceString(annotationValue, 'selector'),
       exportAs: coerceString(annotationValue, 'exportAs'),
       changeDetection: changeDetection,
@@ -808,7 +809,7 @@ class _ComponentVisitor
         value,
         'encapsulation',
         ViewEncapsulation.values,
-        defaultTo: ViewEncapsulation.Emulated,
+        defaultTo: ViewEncapsulation.emulated,
       );
 
   int _changeDetection(ClassElement clazz, DartObject? value) {

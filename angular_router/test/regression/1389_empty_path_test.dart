@@ -19,8 +19,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '',
   providers: routerProvidersTest,
 )

@@ -60,7 +60,7 @@ class TemplateOutliner implements Builder {
     final directives = <ClassElement>[];
     final injectors = <String>[];
     var units = [library.definingCompilationUnit, ...library.parts];
-    var types = units.expand((unit) => unit.types);
+    var types = units.expand((unit) => unit.classes);
     var fields = units.expand((unit) => unit.topLevelVariables);
     for (final clazz in types) {
       final component = $Component.firstAnnotationOfExact(

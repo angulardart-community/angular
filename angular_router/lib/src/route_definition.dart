@@ -72,7 +72,7 @@ abstract class RouteDefinition {
   /// ```
   factory RouteDefinition({
     String? path,
-    ComponentFactory<Object>? component,
+    componentFactory<Object>? component,
     bool? useAsDefault,
     dynamic additionalData,
     RoutePath? routePath,
@@ -172,11 +172,11 @@ abstract class RouteDefinition {
 }
 
 /// Returns a future that completes with a component type or factory.
-typedef LoadComponentAsync = Future<ComponentFactory<Object>> Function();
+typedef LoadComponentAsync = Future<componentFactory<Object>> Function();
 
 class ComponentRouteDefinition extends RouteDefinition {
   /// Allows creating a component imperatively.
-  final ComponentFactory<Object>? component;
+  final componentFactory<Object>? component;
 
   ComponentRouteDefinition._({
     String? path,

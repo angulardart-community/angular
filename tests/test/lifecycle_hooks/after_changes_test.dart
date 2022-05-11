@@ -83,8 +83,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test-after-changes-example',
+@Component(  selector: 'test-after-changes-example',
   directives: [
     AfterChangesExample,
   ],
@@ -98,8 +97,7 @@ class TestAfterChanges {
   String? email;
 }
 
-@Component(
-  selector: 'after-changes-example',
+@Component(  selector: 'after-changes-example',
   template: '{{nameAndEmail}}',
 )
 class AfterChangesExample implements AfterChanges {
@@ -128,8 +126,7 @@ class AfterChangesExample implements AfterChanges {
   String nameAndEmail = '';
 }
 
-@Component(
-  selector: 'test-after-changes-directive',
+@Component(  selector: 'test-after-changes-directive',
   directives: [
     AfterChangesDirectiveExample,
   ],

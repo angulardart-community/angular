@@ -129,8 +129,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'ng-form-model-test',
+@Component(  selector: 'ng-form-model-test',
   directives: [
     formDirectives,
     DummyControlValueAccessor,

@@ -52,11 +52,10 @@ Future<List<String>> redirect([NavigationParams? params]) async {
 @GenerateInjector(routerProvidersTest)
 InjectorFactory injector = ng.injector$Injector;
 
-@Component(selector: 'to', template: '')
+@Componentselector: 'to', template: '')
 class ToComponent {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
 )
@@ -75,8 +74,7 @@ class TestRedirectComponent {
   );
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
 )

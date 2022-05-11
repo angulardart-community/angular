@@ -80,8 +80,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'nested-template-test',
+@Component(  selector: 'nested-template-test',
   directives: [
     HelloWorldComponent,
     NgIf,
@@ -119,8 +118,7 @@ class CustomIfDirective {
   }
 }
 
-@Component(
-  selector: 'nested-custom-test',
+@Component(  selector: 'nested-custom-test',
   directives: [
     CustomIfDirective,
     HelloWorldComponent,
@@ -141,8 +139,7 @@ class NestedCustomTest {
   CustomIfDirective? showInner;
 }
 
-@Component(
-  selector: 'hello-world',
+@Component(  selector: 'hello-world',
   template: 'Hello World',
 )
 class HelloWorldComponent {}

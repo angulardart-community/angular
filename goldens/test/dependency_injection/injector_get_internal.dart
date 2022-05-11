@@ -15,8 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     MaterialAutoSuggestInputComponent,
     MaterialIcon,
@@ -44,7 +43,7 @@ void main() {
   ''',
 )
 class GoldenComponent {
-  GoldenComponent(Injector i) {
+  GoldenComponent(injector i) {
     deopt(i.get);
   }
 }
@@ -96,8 +95,7 @@ abstract class HasRenderer {}
 
 abstract class SelectionContainer {}
 
-@Component(
-  selector: 'material-auto-suggest-input',
+@Component(  selector: 'material-auto-suggest-input',
   providers: [
     ExistingProvider(HasDisabled, MaterialAutoSuggestInputComponent),
     ExistingProvider(HasRenderer, MaterialAutoSuggestInputComponent),
@@ -109,8 +107,7 @@ abstract class SelectionContainer {}
 )
 class MaterialAutoSuggestInputComponent {}
 
-@Component(
-  selector: 'material-icon',
+@Component(  selector: 'material-icon',
   template: '',
 )
 class MaterialIcon {}
@@ -137,8 +134,7 @@ class ServiceB implements Service {}
 
 const luckyNumber = OpaqueToken<int>('luckyNumber');
 
-@Component(
-  selector: 'material-input',
+@Component(  selector: 'material-input',
   providers: [
     ClassProvider(Service, useClass: ServiceA),
     ClassProvider(DeferredValidator),

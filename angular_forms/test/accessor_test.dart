@@ -45,8 +45,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'accessor-test',
+@Component(  selector: 'accessor-test',
   template: '<input type="text" integer [(ngModel)]="value">',
   directives: [IntValueAccessor, NgModel],
 )

@@ -8,7 +8,7 @@ void main() {
   // Intentional explicit lack of ng_generated.initReflector().
 
   test('should create a component with a ComponentFactory', () async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<ExampleComp>(
       ng_generated.createExampleCompFactory(),
       rootInjector: mathInjector,
     );

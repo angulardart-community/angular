@@ -96,8 +96,7 @@ class MutableState {
 }
 
 /// A component that relies on default change detection to observe mutations.
-@Component(
-  selector: 'default',
+@Component(  selector: 'default',
   template: '{{state.value}}',
 )
 class DefaultComponent {
@@ -107,8 +106,7 @@ class DefaultComponent {
 }
 
 @changeDetectionLink
-@Component(
-  selector: 'on-push-container',
+@Component(  selector: 'on-push-container',
   template: '<template #container></template>',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
@@ -122,8 +120,7 @@ class OnPushContainerComponent {
   ViewContainerRef? viewContainerRef;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-container [componentFactory]="defaultComponentFactory">
     </on-push-container>
@@ -135,8 +132,7 @@ class LoadInOnPush {
 }
 
 @changeDetectionLink
-@Component(
-  selector: 'on-push-ancestor',
+@Component(  selector: 'on-push-ancestor',
   template: '''
     <on-push-container [componentFactory]="componentFactory">
     </on-push-container>
@@ -149,8 +145,7 @@ class OnPushAncestorComponent {
   ComponentFactory<Object>? componentFactory;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-ancestor [componentFactory]="defaultComponentFactory">
     </on-push-ancestor>
@@ -162,8 +157,7 @@ class LoadInOnPushDescendant {
 }
 
 @changeDetectionLink
-@Component(
-  selector: 'on-push-embedded-container',
+@Component(  selector: 'on-push-embedded-container',
   template: '''
     <ng-container *ngIf="isContainerVisible">
       <template #container></template>
@@ -196,8 +190,7 @@ class OnPushEmbeddedContainerComponent {
   }
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <on-push-embedded-container [componentFactory]="defaultComponentFactory">
     </on-push-embedded-container>

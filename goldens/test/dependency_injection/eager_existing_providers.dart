@@ -19,8 +19,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   directives: [
     InjectsServicesComponent,
     ProvidesServicesComponent,
@@ -32,7 +31,7 @@ void main() {
   ''',
 )
 class GoldenComponent {
-  GoldenComponent(Injector i) {
+  GoldenComponent(injector i) {
     deopt(i.get);
   }
 }
@@ -45,8 +44,7 @@ abstract class LazyProviderA {}
 
 abstract class LazyProviderB {}
 
-@Component(
-  selector: 'provides-services',
+@Component(  selector: 'provides-services',
   directives: [],
   providers: [
     ExistingProvider(EagerProviderA, ProvidesServicesComponent),
@@ -59,8 +57,7 @@ abstract class LazyProviderB {}
 class ProvidesServicesComponent
     implements EagerProviderA, EagerProviderB, LazyProviderA, LazyProviderB {}
 
-@Component(
-  selector: 'injects-services',
+@Component(  selector: 'injects-services',
   template: '',
 )
 class InjectsServicesComponent {

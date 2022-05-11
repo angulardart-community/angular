@@ -47,8 +47,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'rejection-case',
+@Component(  selector: 'rejection-case',
   directives: [
     ExampleInputComponent,
   ],
@@ -75,8 +74,7 @@ class RejectionCaseComponent {
   ExampleInputComponent? input;
 }
 
-@Component(
-  selector: 'example-input',
+@Component(  selector: 'example-input',
   template: '',
 )
 class ExampleInputComponent {

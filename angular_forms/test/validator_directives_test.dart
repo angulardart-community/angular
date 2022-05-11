@@ -107,8 +107,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'dynamic-required',
+@Component(  selector: 'dynamic-required',
   template: '''
 <div ngForm>
   <input
@@ -136,7 +135,7 @@ class DynamicRequiredComponent {
   NgControl? staticControl;
 }
 
-@Component(selector: 'dynamic-pattern', template: '''
+@Componentselector: 'dynamic-pattern', template: '''
 <form ngForm>
   <input
       [(ngModel)]="value"

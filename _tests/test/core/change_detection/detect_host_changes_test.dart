@@ -24,8 +24,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test-container',
+@Component(  selector: 'test-container',
   template: r'''
     <child-component class="mytarget" someDirective>
     </child-component>
@@ -34,8 +33,7 @@ void main() {
 )
 class TestContainer {}
 
-@Component(
-  selector: 'child-component',
+@Component(  selector: 'child-component',
   template: '<div>ChildHello</div>',
   providers: [Provider(SomeDirective, useExisting: ChildComponent)],
 )

@@ -16,8 +16,7 @@ void main() {
 
 abstract class Foo {}
 
-@Component(
-  selector: 'foo',
+@Component(  selector: 'foo',
   template: '',
   providers: [
     ExistingProvider(Foo, Foo1),
@@ -25,8 +24,7 @@ abstract class Foo {}
 )
 class Foo1 implements Foo {}
 
-@Component(
-  selector: 'foo',
+@Component(  selector: 'foo',
   template: '',
   providers: [
     ExistingProvider(Foo, Foo2),
@@ -40,8 +38,7 @@ class Bar {
   Bar(this.foo);
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <foo bar></foo>
   ''',

@@ -21,8 +21,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'view-child-test',
+@Component(  selector: 'view-child-test',
   template: r'''
     <div #container>
       <template [ngIf]="showChildHost">

@@ -94,20 +94,17 @@ void main() {
 const anchorHtml = '<!---->';
 const html = '<span>Hello!</span>';
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<ng-container></ng-container>',
 )
 class RendersNothing {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<ng-container>$html</ng-container>',
 )
 class RendersChildren {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <ng-container *ngFor="let value of values">
       {{value}}
@@ -119,8 +116,7 @@ class SupportsNgFor {
   List<String> values = [];
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<ng-container *ngIf="visible">$html</ng-container>',
   directives: [NgIf],
 )
@@ -128,8 +124,7 @@ class SupportsNgIf {
   bool visible = false;
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <template #ref let-msg="message">{{msg}}</template>
     <ng-container *ngTemplateOutlet="ref; context: context"></ng-container>
@@ -140,8 +135,7 @@ class SupportsNgTemplateOutlet {
   Map<String, dynamic> context = {'message': 'Hello'};
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <ng-container *ngFor="let i of integers">
       <li *ngIf="!filterOdd || i.isEven">
@@ -156,14 +150,12 @@ class SupportsNesting {
   bool filterOdd = false;
 }
 
-@Component(
-  selector: 'content-host',
+@Component(  selector: 'content-host',
   template: '<ng-content></ng-content>',
 )
 class ContentHost {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '''
     <content-host>
       <ng-container *ngIf="visible">$html</ng-container>
@@ -175,14 +167,12 @@ class CanBeProjected {
   bool visible = true;
 }
 
-@Component(
-  selector: 'contained-content-host',
+@Component(  selector: 'contained-content-host',
   template: '<ng-container><ng-content></ng-content></ng-container>',
 )
 class ContainedContentHost {}
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   template: '<contained-content-host>$html</contained-content-host>',
   directives: [ContainedContentHost],
 )

@@ -26,7 +26,7 @@ class _ViewStyleLinker {
   const _ViewStyleLinker(this._view, this._class);
 
   bool get _hasScopedStyles =>
-      _view.component.template!.encapsulation == ViewEncapsulation.Emulated;
+      _view.component.template!.encapsulation == ViewEncapsulation.emulated;
 
   o.ExternalExpr get _styleType => o.importExpr(_hasScopedStyles
       ? StyleEncapsulation.componentStylesScoped
@@ -56,13 +56,13 @@ class _ViewStyleLinker {
             o.ConditionalExpr(
               o.importExpr(Runtime.isDevMode),
               o.literal(_view.component.type!.moduleUrl),
-              o.NULL_EXPR,
+              o.nullExpr,
             ),
           ),
         ],
-        o.BuiltinType(o.BuiltinTypeName.String, [o.TypeModifier.Nullable]),
+        o.BuiltinType(o.BuiltinTypeName.string, [o.TypeModifier.nullable]),
         [
-          o.StmtModifier.Static,
+          o.StmtModifier.static,
         ],
       ),
     );
@@ -73,9 +73,9 @@ class _ViewStyleLinker {
     outputType: o.importType(
       StyleEncapsulation.componentStyles,
       [],
-      [o.TypeModifier.Nullable],
+      [o.TypeModifier.nullable],
     ),
-    modifiers: const [o.StmtModifier.Static],
+    modifiers: const [o.StmtModifier.static],
   );
 
   void _addStaticComponentStylesField() {
@@ -85,7 +85,7 @@ class _ViewStyleLinker {
   void _implementDebugClearComponentStyles() {
     // Static._componentStyles = null
     final nullifyStaticComponentStyles =
-        o.WriteStaticMemberExpr(_componentStylesStatic, o.NULL_EXPR).toStmt();
+        o.WriteStaticMemberExpr(_componentStylesStatic, o.nullExpr).toStmt();
     _class.methods.add(
       o.ClassMethod(
         _debugClearComponentStyles,
@@ -93,8 +93,8 @@ class _ViewStyleLinker {
         [
           nullifyStaticComponentStyles,
         ],
-        o.VOID_TYPE,
-        const [o.StmtModifier.Static],
+        o.voidType,
+        const [o.StmtModifier.static],
       ),
     );
   }
@@ -118,7 +118,7 @@ class _ViewStyleLinker {
     //   }
     // }
     final ifStylesNullInit = o.IfStmt(
-      readStyles.equals(o.NULL_EXPR),
+      readStyles.equals(o.nullExpr),
       [
         o.WriteStaticMemberExpr(
           _componentStylesStatic,

@@ -244,7 +244,7 @@ abstract class View implements ChangeDetectorRef {
 /// only make a call to a derived [ViewData] factory constructor, which is
 /// shared between all view implementations.
 abstract class ViewData {
-  /// Tracks this view's [ChangeDetectionStrategy].
+  /// Tracks this view's [changeDetectionStrategy].
   // TODO(b/132122866): host and embedded views only need a detached bit.
   int get changeDetectionMode;
 

@@ -154,8 +154,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'simple-imp-cmp',
+@Component(  selector: 'simple-imp-cmp',
   template: '',
 )
 class SimpleImperativeViewComponent {
@@ -194,8 +193,7 @@ class SomeImperativeViewport {
   }
 }
 
-@Component(
-  selector: 'moves-embedded-view',
+@Component(  selector: 'moves-embedded-view',
   template: '<div><div *someImpvp="ctxBoolProp">hello</div></div>',
   directives: [SomeImperativeViewport],
 )
@@ -214,8 +212,7 @@ class PropertyDirective {
   String? value;
 }
 
-@Component(
-  selector: 'unknown-property-on-directive',
+@Component(  selector: 'unknown-property-on-directive',
   template: '<div has-property [property]="value"></div>',
   directives: [PropertyDirective],
 )
@@ -231,8 +228,7 @@ class DirectiveWithTitle {
   String? title;
 }
 
-@Component(
-  selector: 'overridden-property',
+@Component(  selector: 'overridden-property',
   template: '<span [title]="name"></span>',
   directives: [DirectiveWithTitle],
 )
@@ -249,8 +245,7 @@ class DirectiveWithTitleAndHostProperty {
   String? title;
 }
 
-@Component(
-  selector: 'directive-updates-dom',
+@Component(  selector: 'directive-updates-dom',
   template: '<span [title]="name"></span>',
   directives: [DirectiveWithTitleAndHostProperty],
 )
@@ -284,8 +279,7 @@ class DirectiveWithPropDecorators {
   }
 }
 
-@Component(
-  selector: 'uses-input-decorator',
+@Component(  selector: 'uses-input-decorator',
   template: '''
 <with-prop-decorators elProp="foo" (elEvent)="value='called'">
 </with-prop-decorators>''',
@@ -298,8 +292,7 @@ class DecoratorsComponent {
   DirectiveWithPropDecorators? directive;
 }
 
-@Component(
-  selector: 'svg-elements',
+@Component(  selector: 'svg-elements',
   template: '''
 <svg>
   <use xlink:href="Port"/>
@@ -315,14 +308,12 @@ class DecoratorsComponent {
 )
 class SvgElementsComponent {}
 
-@Component(
-  selector: 'namespace-attribute',
+@Component(  selector: 'namespace-attribute',
   template: '<svg:use xlink:href="#id"/>',
 )
 class NamespaceAttributeComponent {}
 
-@Component(
-  selector: 'namespace-attribute-binding',
+@Component(  selector: 'namespace-attribute-binding',
   template: '<svg:use [attr.xlink:href]="value"/>',
 )
 class NamespaceAttributeBindingComponent {

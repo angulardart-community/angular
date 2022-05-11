@@ -18,11 +18,10 @@ void main() {
 /// This demonstrates the code generated to implement `@changeDetectionLink`.
 ///
 /// In practice, you'd only use `@changeDetectionLink` if this component were
-/// passing a [ComponentFactory] that loads another Default component to its
+/// passing a [componentFactory] that loads another Default component to its
 /// OnPush descendants. However, this isn't needed to generate the code in
 /// interest.
-@Component(
-  selector: 'golden',
+@Component(  selector: 'golden',
   template: '''
     <on-push-link></on-push-link>
   ''',
@@ -31,8 +30,7 @@ void main() {
 class GoldenComponent {}
 
 @changeDetectionLink
-@Component(
-  selector: 'on-push-link',
+@Component(  selector: 'on-push-link',
   template: '''
     <template #container></template>
     <ng-container *ngIf="isVisible">
@@ -60,16 +58,14 @@ class OnPushLink {
 }
 
 // Should not be linked.
-@Component(
-  selector: 'nested-on-push',
+@Component(  selector: 'nested-on-push',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class NestedOnPush {}
 
 @changeDetectionLink
-@Component(
-  selector: 'nested-on-push-link',
+@Component(  selector: 'nested-on-push-link',
   template: '''
     <template #container></template>
   ''',

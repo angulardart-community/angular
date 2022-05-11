@@ -33,8 +33,9 @@ class ComponentVisitorExceptionHandler {
     if (_warnings.isNotEmpty) {
       final buildWarnings = await Future.wait(
           _warnings.map((warning) => warning.resolve(resolver)));
-      buildWarnings
-          .forEach((buildWarning) => logWarning(buildWarning.toString()));
+      for (var buildWarning in buildWarnings) {
+        logWarning(buildWarning.toString());
+      }
     }
     if (_errors.isEmpty) {
       return;
@@ -68,7 +69,7 @@ Future<ElementDeclarationResult> _resolvedClassResult(
     assetId,
     allowSyntaxErrors: true,
   );
-  final result = await element.session!.getResolvedLibraryByElement2(library);
+  final result = await element.session!.getResolvedLibraryByElement(library);
   if (result is ResolvedLibraryResult) {
     return result.getElementDeclaration(element)!;
   }

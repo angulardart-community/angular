@@ -32,7 +32,7 @@ class I18nBuilder extends TemplateAstVisitor<void, StringBuffer> {
   }
 
   @override
-  void visitAnnotation(AnnotationAst astNode, [_]) {
+  void visitAnnotation(AnnotationAst astNode, [context]) {
     if (astNode.name == i18nDescription ||
         astNode.name.startsWith(i18nDescriptionPrefix)) {
       CompileContext.current.reportAndRecover(BuildError.forSourceSpan(
@@ -58,26 +58,26 @@ class I18nBuilder extends TemplateAstVisitor<void, StringBuffer> {
   }
 
   @override
-  void visitBanana(_, [__]) {
+  void visitBanana(astNode, [context]) {
     throw UnimplementedError();
   }
 
   @override
-  void visitCloseElement(_, [__]) {
+  void visitCloseElement(astNode, [context]) {
     throw UnimplementedError();
   }
 
   @override
-  void visitComment(_, [__]) {}
+  void visitComment(astNode, [context]) {}
 
   @override
-  void visitContainer(ContainerAst astNode, [_]) {
+  void visitContainer(ContainerAst astNode, [context]) {
     visitAll(astNode.annotations);
     visitAll(astNode.childNodes);
   }
 
   @override
-  void visitElement(ElementAst astNode, [_]) {
+  void visitElement(ElementAst astNode, [context]) {
     // Visit unpermitted AST nodes to report errors.
     visitAll(astNode.annotations);
     visitAll(astNode.events);
@@ -94,47 +94,47 @@ class I18nBuilder extends TemplateAstVisitor<void, StringBuffer> {
   }
 
   @override
-  void visitEmbeddedContent(EmbeddedContentAst astNode, [_]) {
+  void visitEmbeddedContent(EmbeddedContentAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitEmbeddedTemplate(EmbeddedTemplateAst astNode, [_]) {
+  void visitEmbeddedTemplate(EmbeddedTemplateAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitEvent(EventAst astNode, [_]) {
+  void visitEvent(EventAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitInterpolation(InterpolationAst astNode, [_]) {
+  void visitInterpolation(InterpolationAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitLetBinding(LetBindingAst astNode, [_]) {
+  void visitLetBinding(LetBindingAst astNode, [context]) {
     throw UnimplementedError();
   }
 
   @override
-  void visitProperty(PropertyAst astNode, [_]) {
+  void visitProperty(PropertyAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitReference(ReferenceAst astNode, [_]) {
+  void visitReference(ReferenceAst astNode, [context]) {
     _reportUnpermitted(astNode);
   }
 
   @override
-  void visitStar(StarAst starAst, [_]) {
+  void visitStar(StarAst astNode, [context]) {
     throw UnimplementedError();
   }
 
   @override
-  void visitText(TextAst astNode, [_]) {
+  void visitText(TextAst astNode, [context]) {
     // We must escape any newline characters, '$', and '\' so that the generated
     // message string is valid Dart.
     final text = _escape(astNode.value);

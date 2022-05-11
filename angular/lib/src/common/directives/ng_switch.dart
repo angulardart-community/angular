@@ -1,7 +1,7 @@
 import 'package:angular/src/core/linker.dart';
 import 'package:angular/src/meta.dart';
 
-const _WHEN_DEFAULT = Object();
+const _whenDefault = Object();
 
 class SwitchView {
   final ViewContainerRef _viewContainerRef;
@@ -94,7 +94,7 @@ class NgSwitch {
       // default case, nothing to do just return.
       if (_useDefault) return;
       _useDefault = true;
-      views = _valueViews[_WHEN_DEFAULT];
+      views = _valueViews[_whenDefault];
     }
     _emptyAllActiveViews();
     _activateViews(views);
@@ -118,7 +118,7 @@ class NgSwitch {
     // Switch to default when there is no more active ViewContainers
     if (identical(_activeViews.length, 0) && !_useDefault) {
       _useDefault = true;
-      _activateViews(_valueViews[_WHEN_DEFAULT]);
+      _activateViews(_valueViews[_whenDefault]);
     }
   }
 
@@ -149,7 +149,7 @@ class NgSwitch {
 
   void _deregisterView(dynamic value, SwitchView view) {
     // `_WHEN_DEFAULT` is used a marker for non-registered whens
-    if (identical(value, _WHEN_DEFAULT)) return;
+    if (identical(value, _whenDefault)) return;
     var views = _valueViews[value];
     if (views!.length == 1) {
       _valueViews.remove(value);
@@ -175,7 +175,7 @@ class NgSwitchWhen {
   final SwitchView _view;
 
   /// Used as a marker for an uninitialized value.
-  dynamic _value = _WHEN_DEFAULT;
+  dynamic _value = _whenDefault;
 
   NgSwitchWhen(
     ViewContainerRef viewContainer,
@@ -208,6 +208,6 @@ class NgSwitchDefault {
   NgSwitchDefault(ViewContainerRef viewContainer, TemplateRef templateRef,
       @Host() NgSwitch switchDirective) {
     switchDirective._registerView(
-        _WHEN_DEFAULT, SwitchView(viewContainer, templateRef));
+        _whenDefault, SwitchView(viewContainer, templateRef));
   }
 }

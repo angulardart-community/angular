@@ -89,8 +89,7 @@ void main() {
   });
 }
 
-@Component(
-  selector: 'test',
+@Component(  selector: 'test',
   directives: [
     TemplateProducerComponent,
     TemplateConsumerComponent,
@@ -118,8 +117,7 @@ class TestComponent {
   var consumerText = '';
 }
 
-@Component(
-  selector: 'template-producer',
+@Component(  selector: 'template-producer',
   template: '''
     <template #template>{{templateText}}</template>
   ''',
@@ -142,8 +140,7 @@ class TemplateProducerComponent implements OnInit {
   }
 }
 
-@Component(
-  selector: 'template-consumer',
+@Component(  selector: 'template-consumer',
   template: '''
     <template #container></template>
     <div>{{text}}</div>
