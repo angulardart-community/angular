@@ -4,7 +4,7 @@ import 'main.template.dart' as ng;
 
 void main() => runApp(ng.HelloWorldComponentNgFactory);
 
-@component(
+@Component(
   selector: 'hello-world',
   template: 'Hello World',
 )

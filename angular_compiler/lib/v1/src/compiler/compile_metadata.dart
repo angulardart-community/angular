@@ -572,7 +572,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
     // Host bindings are either literal strings or a property access. We have
     // to filter out non-static property accesses because the directive instance
     // is not available at build time.
-    bool _isStatic(ast.AST value) {
+    bool isStatic(ast.AST value) {
       if (value is ast.LiteralPrimitive) return true;
       if (value is ast.PropertyRead) {
         return value.receiver is ast.StaticRead;
@@ -586,7 +586,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
       var isStyleOrClassBinding =
           name.startsWith('style.') || name.startsWith('class.');
       if (isImmutable(value, analyzedClass) &&
-          _isStatic(value) &&
+          isStatic(value) &&
           !isStyleOrClassBinding) {
         if (name.startsWith('attr.')) {
           name = name.substring('attr.'.length);
