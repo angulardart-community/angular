@@ -68,7 +68,7 @@ Future<ElementDeclarationResult> _resolvedClassResult(
     assetId,
     allowSyntaxErrors: true,
   );
-  final result = await element.session!.getResolvedLibraryByElement2(library);
+  final result = await element.session!.getResolvedLibraryByElement(library);
   if (result is ResolvedLibraryResult) {
     return result.getElementDeclaration(element)!;
   }
