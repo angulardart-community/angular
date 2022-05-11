@@ -53,7 +53,7 @@ void main() {
       }
     ''');
     final output = await ReflectableReader.noLinking().resolve(testLib);
-    final clazz = testLib.definingCompilationUnit.types.first;
+    final clazz = testLib.definingCompilationUnit.classes.first;
     expect(
       output,
       ReflectableOutput(registerClasses: [
