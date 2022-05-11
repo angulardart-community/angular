@@ -134,60 +134,60 @@ void main() {
   });
 }
 
-@Directive(
+@directive(
   selector: 'tpl-refs',
   exportAs: 'tplRefs',
 )
 class CaptureTplRefs {
-  @ContentChildren(TemplateRef)
-  List<TemplateRef>? tplRefs;
+  @ContentChildren(templateRef)
+  List<templateRef>? tplRefs;
 }
 
-@Component(
+@component(
   selector: 'test-cmp',
   directives: [NgTemplateOutlet, CaptureTplRefs],
   template: '',
 )
 class TestComponent {
-  TemplateRef? currentTplRef;
+  templateRef? currentTplRef;
 }
 
-@Component(
+@component(
   selector: 'test-cmp-null',
   directives: [NgTemplateOutlet, CaptureTplRefs],
   template: '<template [ngTemplateOutlet]="null"></template>',
 )
 class TestWithNullComponent {
-  TemplateRef? currentTplRef;
+  templateRef? currentTplRef;
 }
 
-@Component(
+@component(
   selector: 'test-cmp-insert-content',
   directives: [NgTemplateOutlet, CaptureTplRefs],
   template: '<tpl-refs #refs="tplRefs"><template>foo</template></tpl-refs>'
       '<template [ngTemplateOutlet]="currentTplRef"></template>',
 )
 class TestInsertContentComponent {
-  TemplateRef? currentTplRef;
+  templateRef? currentTplRef;
 
   @ViewChild('refs')
   CaptureTplRefs? refs;
 }
 
-@Component(
+@component(
   selector: 'test-clear-content',
   directives: [NgTemplateOutlet, CaptureTplRefs],
   template: '<tpl-refs #refs="tplRefs"><template>foo</template></tpl-refs>'
       '<template [ngTemplateOutlet]="currentTplRef"></template>',
 )
 class TestClearContentComponent {
-  TemplateRef? currentTplRef;
+  templateRef? currentTplRef;
 
   @ViewChild('refs')
   CaptureTplRefs? refs;
 }
 
-@Component(
+@component(
   selector: 'test-change-content',
   directives: [NgTemplateOutlet, CaptureTplRefs],
   template: '<tpl-refs #refs="tplRefs"><template>foo</template><template>'
@@ -195,13 +195,13 @@ class TestClearContentComponent {
       '[ngTemplateOutlet]="currentTplRef"></template>',
 )
 class TestChangeContentComponent {
-  TemplateRef? currentTplRef;
+  templateRef? currentTplRef;
 
   @ViewChild('refs')
   CaptureTplRefs? refs;
 }
 
-@Component(
+@component(
   selector: 'test-context-change',
   template: '''
     <template #template let-text>{{text}}</template>
@@ -218,7 +218,7 @@ class TestContextChangeComponent {
   };
 }
 
-@Component(
+@component(
   selector: 'test-context-template-ref-change',
   template: '''
     <template #greet let-text>Hello {{text}}!</template>
@@ -236,7 +236,7 @@ class TestContextTemplateRefChangeComponent {
   bool isGreeting = true;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template #templateRef let-msg="message">{{msg}}</template>
@@ -249,7 +249,7 @@ class TestStarSyntax {
   Map<String, dynamic> templateContext = {'message': 'Hello world!'};
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template #templateRef let-message>{{message}}</template>
@@ -261,7 +261,7 @@ class TestValueInput {
   String? value;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template #greeting>Hello world!</template>
@@ -271,6 +271,6 @@ class TestValueInput {
 )
 class TestSetTemplate {
   @ViewChild('greeting')
-  TemplateRef? greetingTemplate;
-  TemplateRef? activeTemplate;
+  templateRef? greetingTemplate;
+  templateRef? activeTemplate;
 }

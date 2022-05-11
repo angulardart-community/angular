@@ -241,7 +241,7 @@ void main() {
   });
 }
 
-@Directive(
+@directive(
   selector: '[text]',
   exportAs: 'textDirective',
 )
@@ -256,7 +256,7 @@ abstract class TextDirectivesRenderer {
   String get text => textDirectives!.map((dir) => dir.text).join('|');
 }
 
-@Component(
+@component(
   selector: 'content-children',
   template: '<div>{{text}}</div>',
 )
@@ -266,7 +266,7 @@ class ContentChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'content-child',
   template: '<div>{{textDirective?.text}}</div><ng-content></ng-content>',
 )
@@ -275,7 +275,7 @@ class ContentChildComponent {
   TextDirective? textDirective;
 }
 
-@Component(
+@component(
   selector: 'tests-content-child',
   template: '''
 <div text="1"></div>
@@ -293,7 +293,7 @@ class ContentChildComponent {
 )
 class TestsContentChildComponent {}
 
-@Component(
+@component(
   selector: 'view-children',
   template: '''
 <div text="a">
@@ -312,7 +312,7 @@ class ViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'tests-view-children',
   template: '''
 <div text="1"></div>
@@ -327,7 +327,7 @@ class ViewChildrenComponent extends TextDirectivesRenderer {
 )
 class TestsViewChildrenComponent {}
 
-@Component(
+@component(
   selector: 'view-child',
   template: '''
 <div text="a">
@@ -345,7 +345,7 @@ class ViewChildComponent {
   TextDirective? textDirective;
 }
 
-@Component(
+@component(
   selector: 'tests-view-children',
   template: '''
 <div text="1"></div>
@@ -360,7 +360,7 @@ class ViewChildComponent {
 )
 class TestsViewChildComponent {}
 
-@Component(
+@component(
   selector: 'tests-embedded-content-children',
   template: '''
 <content-child>
@@ -378,7 +378,7 @@ class TestsEmbeddedContentChildComponent {
   bool showContent = false;
 }
 
-@Component(
+@component(
   selector: 'embedded-view-children',
   template: '''
 <template [ngIf]="showView">
@@ -401,7 +401,7 @@ class TestsEmbeddedViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'embedded-view-child',
   template: '''
 <div *ngIf="showView" text="a">
@@ -421,7 +421,7 @@ class TestsEmbeddedViewChildComponent {
   TextDirective? textDirective;
 }
 
-@Component(
+@component(
   selector: 'moves-directive',
   template: '''
 <content-children>
@@ -437,7 +437,7 @@ class MovesDirectiveComponent {
   List<String> list = <String>['1', '2', '3'];
 }
 
-@Component(
+@component(
   selector: 'transcluded-content-children',
   template: '<ng-content></ng-content><div>{{text}}</div>',
 )
@@ -447,7 +447,7 @@ class TranscludedContentChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'tests-transcluded-content-children',
   template: '''
 <transcluded-content-children>
@@ -461,12 +461,12 @@ class TranscludedContentChildrenComponent extends TextDirectivesRenderer {
 )
 class TestsTranscludedContentChildrenComponent {}
 
-@Directive(
+@directive(
   selector: '[inert]',
 )
 class InertDirective {}
 
-@Component(
+@component(
   selector: 'unrelated-changes',
   template: '''
 <div text="1"></div>
@@ -487,7 +487,7 @@ class UnrelatedChangesComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'long-ng-for-cycle',
   template: '''
 <div *ngFor="let item of list" [text]="item"></div>
@@ -506,7 +506,7 @@ class LongNgForCycleComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'four-queries',
   template: '''
 <div text="1"></div>
@@ -529,7 +529,7 @@ class FourQueriesComponent {
   TextDirective? q4;
 }
 
-@Component(
+@component(
   selector: 'template-ref',
   template: '''
 <template>
@@ -541,13 +541,13 @@ class FourQueriesComponent {
 ''',
 )
 class TemplateRefComponent implements AfterViewInit {
-  final ViewContainerRef viewContainerRef;
+  final viewContainerRef viewContainerRef;
 
-  @ContentChildren(TemplateRef)
-  List<TemplateRef>? contentTemplateRefs;
+  @ContentChildren(templateRef)
+  List<templateRef>? contentTemplateRefs;
 
-  @ViewChildren(TemplateRef)
-  List<TemplateRef>? viewTemplateRefs;
+  @ViewChildren(templateRef)
+  List<templateRef>? viewTemplateRefs;
 
   TemplateRefComponent(this.viewContainerRef);
 
@@ -557,14 +557,14 @@ class TemplateRefComponent implements AfterViewInit {
     createEmbeddedViewsFrom(viewTemplateRefs!);
   }
 
-  void createEmbeddedViewsFrom(Iterable<TemplateRef> templateRefs) {
+  void createEmbeddedViewsFrom(Iterable<templateRef> templateRefs) {
     for (var templateRef in templateRefs) {
       viewContainerRef.createEmbeddedView(templateRef);
     }
   }
 }
 
-@Component(
+@component(
   selector: 'tests-template-ref',
   template: '''
 <template-ref>
@@ -581,7 +581,7 @@ class TemplateRefComponent implements AfterViewInit {
 )
 class TestsTemplateRefComponent {}
 
-@Component(
+@component(
   selector: 'named-template-ref',
   template: '''
 <template #templateName>
@@ -590,13 +590,13 @@ class TestsTemplateRefComponent {}
 ''',
 )
 class NamedTemplateRefComponent implements AfterViewInit {
-  final ViewContainerRef viewContainerRef;
+  final viewContainerRef viewContainerRef;
 
   @ContentChild('templateName')
-  TemplateRef? contentTemplateRef;
+  templateRef? contentTemplateRef;
 
   @ViewChild('templateName')
-  TemplateRef? viewTemplateRef;
+  templateRef? viewTemplateRef;
 
   NamedTemplateRefComponent(this.viewContainerRef);
 
@@ -607,7 +607,7 @@ class NamedTemplateRefComponent implements AfterViewInit {
   }
 }
 
-@Component(
+@component(
   selector: 'tests-named-template-ref',
   template: '''
 <named-template-ref>
@@ -621,7 +621,7 @@ class NamedTemplateRefComponent implements AfterViewInit {
 )
 class TestsNamedTemplateRefComponent {}
 
-@Component(
+@component(
   selector: 'reads-content-children',
   template: '<div>{{text}}</div><ng-content></ng-content>',
 )
@@ -631,7 +631,7 @@ class ReadsContentChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'tests-reads-content-children',
   template: '''
 <reads-content-children text="1" #hasText>
@@ -645,7 +645,7 @@ class ReadsContentChildrenComponent extends TextDirectivesRenderer {
 )
 class TestsReadsContentChildrenComponent {}
 
-@Component(
+@component(
   selector: 'reads-content-child',
   template: '<div>{{textDirective!.text}}</div><ng-content></ng-content>',
 )
@@ -654,7 +654,7 @@ class ReadsContentChildComponent {
   TextDirective? textDirective;
 }
 
-@Component(
+@component(
   selector: 'tests-reads-content-child',
   template: '''
 <reads-content-child>
@@ -669,7 +669,7 @@ class ReadsContentChildComponent {
 )
 class TestsReadsContentChildComponent {}
 
-@Component(
+@component(
   selector: 'reads-view-children',
   template: '''
 <div text="1"></div>
@@ -686,7 +686,7 @@ class ReadsViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'reads-view-child',
   template: '''
 <div text="1"></div>
@@ -702,16 +702,16 @@ class ReadsViewChildComponent {
   TextDirective? textDirective;
 }
 
-@Component(
+@component(
   selector: 'reads-view-container-ref',
   template: '<div #hasViewContainerRef></div>',
 )
 class ReadsViewContainerRefComponent implements AfterViewInit {
-  @ContentChild(TemplateRef)
-  TemplateRef? templateRef;
+  @ContentChild(templateRef)
+  templateRef? templateRef;
 
-  @ViewChild('hasViewContainerRef', read: ViewContainerRef)
-  ViewContainerRef? viewContainerRef;
+  @ViewChild('hasViewContainerRef', read: viewContainerRef)
+  viewContainerRef? viewContainerRef;
 
   @override
   void ngAfterViewInit() {
@@ -719,7 +719,7 @@ class ReadsViewContainerRefComponent implements AfterViewInit {
   }
 }
 
-@Component(
+@component(
   selector: 'tests-reads-view-container-ref',
   template: '''
 <reads-view-container-ref>
@@ -731,7 +731,7 @@ class ReadsViewContainerRefComponent implements AfterViewInit {
 )
 class TestsReadsViewContainerRefComponent {}
 
-@Component(
+@component(
   selector: 'changes-view-children',
   template: '''
 <div [text]="x"></div>
@@ -754,7 +754,7 @@ class ChangesViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'destroys-view-children',
   template: '''
 <template [ngIf]="showView">
@@ -772,7 +772,7 @@ class DestroysViewChildrenComponent {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'labeled-view-children',
   template: '''
 <div
@@ -794,7 +794,7 @@ class LabeledViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'multiple-labeled-view-children',
   template: '''
 <div text="0" #textLabel1="textDirective"></div>
@@ -811,7 +811,7 @@ class MultipleLabeledViewChildrenComponent extends TextDirectivesRenderer {
   List<TextDirective>? textDirectives;
 }
 
-@Component(
+@component(
   selector: 'labeled-element-view-children',
   template: '''
 <div *ngFor="let item of list">
@@ -828,7 +828,7 @@ class LabeledElementViewChildrenComponent {
   List<HtmlElement>? elementRefs;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [NgIf],
   template: '''

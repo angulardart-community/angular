@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     NgFor,

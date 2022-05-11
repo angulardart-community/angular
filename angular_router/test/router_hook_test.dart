@@ -89,7 +89,7 @@ final testRouterHook = TestRouterHook();
 
 RouterHook routerHookFactory() => testRouterHook;
 
-@Component(
+@component(
   selector: 'test-app',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -107,10 +107,10 @@ class TestAppComponent {
   TestAppComponent(this.router);
 }
 
-@Component(selector: 'foo', template: '')
+@component(selector: 'foo', template: '')
 class FooComponent {}
 
-@Component(selector: 'index', template: '')
+@component(selector: 'index', template: '')
 class IndexComponent implements OnInit, OnDestroy {
   /// Tracks the number of active or cached instances of this component.
   static var instanceCount = 0;
@@ -191,7 +191,7 @@ final accumulateQueryHookInjector = ng.accumulateQueryHookInjector$Injector;
 class AccumulateQueryHook extends RouterHook {
   AccumulateQueryHook(this._injector);
 
-  final Injector _injector;
+  final injector _injector;
 
   // Lazily inject `Router` to avoid cyclic dependency.
   late final Router router = _injector.provideType(Router);

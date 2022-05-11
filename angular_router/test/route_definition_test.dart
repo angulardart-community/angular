@@ -107,7 +107,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'heroes',
   template: '',
 )
@@ -116,5 +116,5 @@ class HeroesComponent {}
 // Examples of a deferred loader function.
 //
 // In real code, `loadLibrary` would be used before referencing the type.
-Future<ComponentFactory<HeroesComponent>> loadHeroesComponent() async =>
+Future<componentFactory<HeroesComponent>> loadHeroesComponent() async =>
     ng.createHeroesComponentFactory();

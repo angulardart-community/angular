@@ -6,7 +6,7 @@ void main() {
   runApp(ng.createHelloWorldComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'hello-world',
   template: 'Hello World',
 )

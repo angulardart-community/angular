@@ -22,7 +22,7 @@ abstract class HasChild<T> {
 /// A simple directive that can be created in order to be queried.
 ///
 /// Accepts a single input, [value], for use with the helper [hasChildValues].
-@Directive(
+@directive(
   selector: 'value,[value]',
 )
 class ValueDirective {
@@ -31,17 +31,17 @@ class ValueDirective {
 }
 
 /// Similar to `*ngIf`, but always true.
-@Directive(
+@directive(
   selector: '[alwaysShow]',
 )
 class AlwaysShowDirective {
-  AlwaysShowDirective(ViewContainerRef container, TemplateRef template) {
+  AlwaysShowDirective(viewContainerRef container, templateRef template) {
     container.createEmbeddedView(template);
   }
 }
 
 /// Similar to `*ngIf`, but always false.
-@Directive(
+@directive(
   selector: '[neverShow]',
 )
 class NeverShowDirective {}

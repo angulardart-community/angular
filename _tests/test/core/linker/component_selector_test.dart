@@ -91,7 +91,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'tr-tag-test',
   template: '<table>'
       '<thead><tr><th>Repairs:</th></tr>'
@@ -108,19 +108,19 @@ class TrTagTest {
   final repairs = List.filled(3, null);
 }
 
-@Component(
+@component(
   selector: 'tr[repaired-part]',
   template: '<td>Repaired</td>',
 )
 class RepairedPartComponent {}
 
-@Component(
+@component(
   selector: 'div[foo=bar]',
   template: '<p>Matched!</p>',
 )
 class ExactAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'hyphen-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo></div>
@@ -132,13 +132,13 @@ class ExactAttributeSelectorComponent {}
 )
 class ExactAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: 'div[foo|=bar]',
   template: '<p>Matched!</p>',
 )
 class HyphenAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'hyphen-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo="bar"></div>
@@ -150,13 +150,13 @@ class HyphenAttributeSelectorComponent {}
 )
 class HyphenAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: 'div[foo~=bar]',
   template: '<p>Matched!</p>',
 )
 class ListAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'list-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo="bar"></div>
@@ -169,13 +169,13 @@ class ListAttributeSelectorComponent {}
 )
 class ListAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: 'div[foo^=bar]',
   template: '<p>Matched!</p>',
 )
 class PrefixAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'prefix-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo="bar"></div>
@@ -187,13 +187,13 @@ class PrefixAttributeSelectorComponent {}
 )
 class PrefixAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: 'div[foo]',
   template: '<p>Matched!</p>',
 )
 class SetAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'set-attribute-selector-test',
   template: '''
 <div></div>
@@ -206,13 +206,13 @@ class SetAttributeSelectorComponent {}
 )
 class SetAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: r'div[foo*=bar]',
   template: '<p>Matched!</p>',
 )
 class SubstringAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'substring-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo="bar"></div>
@@ -225,13 +225,13 @@ class SubstringAttributeSelectorComponent {}
 )
 class SubstringAttributeSelectorTestComponent {}
 
-@Component(
+@component(
   selector: r'div[foo$=bar]',
   template: '<p>Matched!</p>',
 )
 class SuffixAttributeSelectorComponent {}
 
-@Component(
+@component(
   selector: 'suffix-attribute-selector-test',
   template: '''
 <div @skipSchemaValidationFor="[foo]" foo="bar"></div>

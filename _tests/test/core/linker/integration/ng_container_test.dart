@@ -94,19 +94,19 @@ void main() {
 const anchorHtml = '<!---->';
 const html = '<span>Hello!</span>';
 
-@Component(
+@component(
   selector: 'test',
   template: '<ng-container></ng-container>',
 )
 class RendersNothing {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<ng-container>$html</ng-container>',
 )
 class RendersChildren {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <ng-container *ngFor="let value of values">
@@ -119,7 +119,7 @@ class SupportsNgFor {
   List<String> values = [];
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<ng-container *ngIf="visible">$html</ng-container>',
   directives: [NgIf],
@@ -128,7 +128,7 @@ class SupportsNgIf {
   bool visible = false;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template #ref let-msg="message">{{msg}}</template>
@@ -140,7 +140,7 @@ class SupportsNgTemplateOutlet {
   Map<String, dynamic> context = {'message': 'Hello'};
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <ng-container *ngFor="let i of integers">
@@ -156,13 +156,13 @@ class SupportsNesting {
   bool filterOdd = false;
 }
 
-@Component(
+@component(
   selector: 'content-host',
   template: '<ng-content></ng-content>',
 )
 class ContentHost {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <content-host>
@@ -175,13 +175,13 @@ class CanBeProjected {
   bool visible = true;
 }
 
-@Component(
+@component(
   selector: 'contained-content-host',
   template: '<ng-container><ng-content></ng-content></ng-container>',
 )
 class ContainedContentHost {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<contained-content-host>$html</contained-content-host>',
   directives: [ContainedContentHost],

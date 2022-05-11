@@ -200,7 +200,7 @@ void _bindViewHostProperties(
       compileElement: compileElement,
     ),
     converter,
-    o.THIS_EXPR,
+    o.thisExpr,
     renderNode,
     compileElement.isHtmlElement,
     view.nameResolver,

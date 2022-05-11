@@ -3,7 +3,7 @@ import 'package:angular_compiler/v1/src/compiler/ir/model.dart';
 import '../compile_metadata.dart' show CompileIdentifierMetadata;
 
 /// Supported modifiers for [OutputType].
-enum TypeModifier { Const, Nullable }
+enum TypeModifier { constant, nullable }
 
 abstract class OutputType {
   final List<TypeModifier> modifiers;
@@ -21,17 +21,17 @@ abstract class OutputType {
 }
 
 enum BuiltinTypeName {
-  Dynamic,
-  Object,
-  Bool,
-  String,
-  Int,
-  Double,
-  Number,
-  Function,
-  Void,
-  Never,
-  Null,
+  dynamic,
+  object,
+  bool,
+  string,
+  int,
+  double,
+  number,
+  function,
+  voidType,
+  never,
+  nullType,
 }
 
 class BuiltinType extends OutputType {
@@ -47,9 +47,9 @@ class BuiltinType extends OutputType {
       visitor.visitBuiltinType(this, context);
 
   @override
-  BuiltinType asNullable() => modifiers.contains(TypeModifier.Nullable)
+  BuiltinType asNullable() => modifiers.contains(TypeModifier.nullable)
       ? this
-      : BuiltinType(name, [...modifiers, TypeModifier.Nullable]);
+      : BuiltinType(name, [...modifiers, TypeModifier.nullable]);
 }
 
 class ExternalType extends OutputType {
@@ -66,9 +66,9 @@ class ExternalType extends OutputType {
       visitor.visitExternalType(this, context);
 
   @override
-  ExternalType asNullable() => modifiers.contains(TypeModifier.Nullable)
+  ExternalType asNullable() => modifiers.contains(TypeModifier.nullable)
       ? this
-      : ExternalType(value, typeParams, [...modifiers, TypeModifier.Nullable]);
+      : ExternalType(value, typeParams, [...modifiers, TypeModifier.nullable]);
 }
 
 class FunctionType extends OutputType {
@@ -86,10 +86,10 @@ class FunctionType extends OutputType {
       visitor.visitFunctionType(this, context);
 
   @override
-  FunctionType asNullable() => modifiers.contains(TypeModifier.Nullable)
+  FunctionType asNullable() => modifiers.contains(TypeModifier.nullable)
       ? this
       : FunctionType(
-          returnType, paramTypes, [...modifiers, TypeModifier.Nullable]);
+          returnType, paramTypes, [...modifiers, TypeModifier.nullable]);
 }
 
 class ArrayType extends OutputType {
@@ -105,9 +105,9 @@ class ArrayType extends OutputType {
       visitor.visitArrayType(this, context);
 
   @override
-  ArrayType asNullable() => modifiers.contains(TypeModifier.Nullable)
+  ArrayType asNullable() => modifiers.contains(TypeModifier.nullable)
       ? this
-      : ArrayType(of, [...modifiers, TypeModifier.Nullable]);
+      : ArrayType(of, [...modifiers, TypeModifier.nullable]);
 }
 
 class MapType extends OutputType {
@@ -120,22 +120,22 @@ class MapType extends OutputType {
       visitor.visitMapType(this, context);
 
   @override
-  MapType asNullable() => modifiers.contains(TypeModifier.Nullable)
+  MapType asNullable() => modifiers.contains(TypeModifier.nullable)
       ? this
-      : MapType(valueType, [...modifiers, TypeModifier.Nullable]);
+      : MapType(valueType, [...modifiers, TypeModifier.nullable]);
 }
 
-const DYNAMIC_TYPE = BuiltinType(BuiltinTypeName.Dynamic);
-const OBJECT_TYPE = BuiltinType(BuiltinTypeName.Object);
-const VOID_TYPE = BuiltinType(BuiltinTypeName.Void);
-const NEVER_TYPE = BuiltinType(BuiltinTypeName.Never);
-const NULL_TYPE = BuiltinType(BuiltinTypeName.Null);
-const BOOL_TYPE = BuiltinType(BuiltinTypeName.Bool);
-const INT_TYPE = BuiltinType(BuiltinTypeName.Int);
-const DOUBLE_TYPE = BuiltinType(BuiltinTypeName.Double);
-const NUMBER_TYPE = BuiltinType(BuiltinTypeName.Number);
-const STRING_TYPE = BuiltinType(BuiltinTypeName.String);
-const FUNCTION_TYPE = BuiltinType(BuiltinTypeName.Function);
+const dynamicType = BuiltinType(BuiltinTypeName.dynamic);
+const objectType = BuiltinType(BuiltinTypeName.object);
+const voidType = BuiltinType(BuiltinTypeName.voidType);
+const neverType = BuiltinType(BuiltinTypeName.never);
+const nullType = BuiltinType(BuiltinTypeName.nullType);
+const boolType = BuiltinType(BuiltinTypeName.bool);
+const intType = BuiltinType(BuiltinTypeName.int);
+const doubleType = BuiltinType(BuiltinTypeName.double);
+const numberType = BuiltinType(BuiltinTypeName.number);
+const stringType = BuiltinType(BuiltinTypeName.string);
+const functionType = BuiltinType(BuiltinTypeName.function);
 
 abstract class TypeVisitor<R, C> {
   R visitBuiltinType(BuiltinType type, C context);
@@ -147,21 +147,21 @@ abstract class TypeVisitor<R, C> {
 
 ///// Expressions
 enum BinaryOperator {
-  Equals,
-  NotEquals,
-  Identical,
-  NotIdentical,
-  Minus,
-  Plus,
-  Divide,
-  Multiply,
-  Modulo,
-  And,
-  Or,
-  Lower,
-  LowerEquals,
-  Bigger,
-  BiggerEquals
+  equals,
+  notEquals,
+  identical,
+  notIdentical,
+  minus,
+  plus,
+  divide,
+  multiply,
+  modulo,
+  and,
+  or,
+  lower,
+  lowerEquals,
+  bigger,
+  biggerEquals
 }
 
 abstract class Expression {
@@ -238,68 +238,68 @@ abstract class Expression {
   }
 
   BinaryOperatorExpr equals(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Equals, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.equals, this, rhs);
   }
 
   BinaryOperatorExpr notEquals(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.NotEquals, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.notEquals, this, rhs);
   }
 
   BinaryOperatorExpr identical(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Identical, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.identical, this, rhs);
   }
 
   BinaryOperatorExpr notIdentical(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.NotIdentical, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.notIdentical, this, rhs);
   }
 
   BinaryOperatorExpr minus(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Minus, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.minus, this, rhs);
   }
 
   BinaryOperatorExpr plus(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Plus, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.plus, this, rhs);
   }
 
   BinaryOperatorExpr divide(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Divide, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.divide, this, rhs);
   }
 
   BinaryOperatorExpr multiply(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Multiply, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.multiply, this, rhs);
   }
 
   BinaryOperatorExpr modulo(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Modulo, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.modulo, this, rhs);
   }
 
   BinaryOperatorExpr and(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.And, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.and, this, rhs);
   }
 
   BinaryOperatorExpr or(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Or, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.or, this, rhs);
   }
 
   BinaryOperatorExpr lower(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Lower, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.lower, this, rhs);
   }
 
   BinaryOperatorExpr lowerEquals(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.LowerEquals, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.lowerEquals, this, rhs);
   }
 
   BinaryOperatorExpr bigger(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.Bigger, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.bigger, this, rhs);
   }
 
   BinaryOperatorExpr biggerEquals(Expression rhs) {
-    return BinaryOperatorExpr(BinaryOperator.BiggerEquals, this, rhs);
+    return BinaryOperatorExpr(BinaryOperator.biggerEquals, this, rhs);
   }
 
   Expression isBlank() {
     // Note: We use equals by purpose here to compare to null and undefined in JS.
-    return equals(NULL_EXPR);
+    return equals(nullExpr);
   }
 
   Expression cast(OutputType type) {
@@ -323,7 +323,7 @@ class NamedExpr extends Expression {
   }
 }
 
-enum BuiltinVar { This, Super, CatchError, CatchStack, MetadataMap }
+enum BuiltinVar { thisVar, superVar, catchError, catchStack, metadataMap }
 
 class ReadVarExpr extends Expression {
   String? name;
@@ -453,7 +453,7 @@ class WritePropExpr extends Expression {
   }
 }
 
-enum BuiltinMethod { ConcatArray, SubscribeObservable }
+enum BuiltinMethod { concatArray, subscribeObservable }
 
 class InvokeMethodExpr extends Expression {
   final Expression receiver;
@@ -601,7 +601,7 @@ class IfNullExpr extends Expression {
 
 class NotExpr extends Expression {
   final Expression condition;
-  NotExpr(this.condition) : super(BOOL_TYPE);
+  NotExpr(this.condition) : super(boolType);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -805,14 +805,14 @@ abstract class ExpressionVisitor<R, C> {
   R visitNamedExpr(NamedExpr ast, C context);
 }
 
-var THIS_EXPR = ReadVarExpr(BuiltinVar.This);
-var SUPER_EXPR = ReadVarExpr(BuiltinVar.Super);
-var CATCH_ERROR_VAR = ReadVarExpr(BuiltinVar.CatchError);
-var CATCH_STACK_VAR = ReadVarExpr(BuiltinVar.CatchStack);
-var NULL_EXPR = LiteralExpr(null, null);
+var thisExpr = ReadVarExpr(BuiltinVar.thisVar);
+var superExpr = ReadVarExpr(BuiltinVar.superVar);
+var catchErrorVar = ReadVarExpr(BuiltinVar.catchError);
+var catchStackVar = ReadVarExpr(BuiltinVar.catchStack);
+var nullExpr = LiteralExpr(null, null);
 
 /// Modifiers applied to declarations (not truly statements).
-enum StmtModifier { Const, Final, Late, Private, Static }
+enum StmtModifier { constStmt, finalStmt, late, private, static }
 
 abstract class Statement {
   SourceReference? sourceReference;
@@ -1370,7 +1370,7 @@ class RecursiveExpressionVisitor<C>
 
   @override
   Expression visitWriteClassMemberExpr(WriteClassMemberExpr expr, C context) {
-    THIS_EXPR.visitExpression(this, context);
+    thisExpr.visitExpression(this, context);
     expr.value.visitExpression(this, context);
     return expr;
   }
@@ -1644,7 +1644,7 @@ class EscapedString {
 }
 
 LiteralExpr escapedString(String value) {
-  return literal(EscapedString(value), STRING_TYPE);
+  return literal(EscapedString(value), stringType);
 }
 
 LiteralExpr literal(dynamic value, [OutputType? type]) {

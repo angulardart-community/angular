@@ -19,13 +19,13 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'index',
   template: '',
 )
 class IndexComponent {}
 
-@Component(
+@component(
   selector: 'app',
   template: ''''
     <a [routerLink]="indexPath" [routerLinkActive]="activeClassName"></a>

@@ -68,7 +68,7 @@ class RadioButtonState {
 ///   RadioButtonState foodFish = new RadioButtonState(false, "fish");
 /// }
 /// ```
-@Directive(
+@directive(
   selector: 'input[type=radio][ngControl],'
       'input[type=radio][ngFormControl],'
       'input[type=radio][ngModel]',
@@ -79,7 +79,7 @@ class RadioControlValueAccessor extends Object
     implements ControlValueAccessor<RadioButtonState>, OnDestroy, OnInit {
   final HtmlElement _element;
   final RadioControlRegistry _registry;
-  final Injector _injector;
+  final injector _injector;
   RadioButtonState? _state;
   late NgControl _control;
 

@@ -94,7 +94,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'injects-visibility-local',
   template: '',
 )
@@ -104,19 +104,19 @@ class InjectsVisibilityLocalComponent {
   InjectsVisibilityLocalComponent(this.parent);
 }
 
-@Component(
+@component(
   selector: 'should-fail-to-inject-parent-component',
   template: '<injects-visibility-local></injects-visibility-local>',
   directives: [InjectsVisibilityLocalComponent],
 )
 class ShouldFailToInjectParentComponent {}
 
-@Directive(
+@directive(
   selector: '[visibility-none]',
 )
 class VisibilityNoneDirective {}
 
-@Component(
+@component(
   selector: 'should-query-directive',
   template: '<div visibility-none></div>',
   directives: [VisibilityNoneDirective],
@@ -126,7 +126,7 @@ class ShouldQueryDirective {
   VisibilityNoneDirective? directive;
 }
 
-@Component(
+@component(
   selector: 'injects-directive',
   template: '',
 )
@@ -136,7 +136,7 @@ class InjectsDirectiveComponent {
   InjectsDirectiveComponent(this.directive);
 }
 
-@Component(
+@component(
   selector: 'should-fail-to-inject-from-element',
   template: '<injects-directive visibility-none></injects-directive>',
   directives: [InjectsDirectiveComponent, VisibilityNoneDirective],
@@ -146,7 +146,7 @@ class ShouldInjectFromElement {
   InjectsDirectiveComponent? child;
 }
 
-@Component(
+@component(
   selector: 'should-fail-to-inject-from-view',
   template: '''
   <div visibility-none>
@@ -160,14 +160,14 @@ class ShouldInjectFromView {
   InjectsDirectiveComponent? child;
 }
 
-@Component(
+@component(
   selector: 'injects-directive-host',
   template: '<injects-directive></injects-directive>',
   directives: [InjectsDirectiveComponent],
 )
 class InjectsDirectiveHostComponent {}
 
-@Component(
+@component(
   selector: 'should-fail-to-inject-from-parent-view',
   template: '''
   <div visibility-none>
@@ -181,20 +181,20 @@ class InjectsDirectiveHostComponent {}
 )
 class ShouldFailToInjectFromParentView {}
 
-@Component(
+@component(
   selector: 'visibility-local',
   template: '',
 )
 class VisibilityLocalComponent {}
 
-@Directive(selector: '[injects-visibility-local]')
+@directive(selector: '[injects-visibility-local]')
 class InjectsVisibilityLocal {
   final VisibilityLocalComponent host;
 
   InjectsVisibilityLocal(this.host);
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<visibility-local injects-visibility-local></visibility-local>',
   directives: [InjectsVisibilityLocal, VisibilityLocalComponent],
@@ -211,7 +211,7 @@ abstract class SomeService {
   void foo();
 }
 
-@Component(
+@component(
   selector: 'my-component-with-service-test',
   template: '''
     <child-component-provides-service>
@@ -222,7 +222,7 @@ abstract class SomeService {
 )
 class MyComponentWithServiceTest {}
 
-@Component(
+@component(
   selector: 'child-component-provides-service',
   providers: [ExistingProvider(SomeService, MyChildComponentProvidesService)],
   template: '<div><ng-content></ng-content></div>',
@@ -232,21 +232,21 @@ class MyChildComponentProvidesService implements SomeService {
   void foo() {}
 }
 
-@Directive(
+@directive(
   selector: '[dirNeedsService]',
 )
 class MyDirectiveNeedsService {
   final SomeService someService;
 
   MyDirectiveNeedsService(
-      this.someService, ViewContainerRef ref, TemplateRef templateRef);
+      this.someService, viewContainerRef ref, templateRef templateRef);
 }
 
 abstract class Dependency {
   String get text;
 }
 
-@Component(
+@component(
   selector: 'should-inject-aliased-local',
   template: '<injects-aliased-local></injects-aliased-local>',
   directives: [InjectsAliasedLocal],
@@ -259,7 +259,7 @@ class ShouldInjectAliasedLocal extends Dependency {
   final String text = 'Hello';
 }
 
-@Component(
+@component(
   selector: 'injects-aliased-local',
   template: '{{dependency.text}}',
 )
@@ -269,7 +269,7 @@ class InjectsAliasedLocal {
   InjectsAliasedLocal(this.dependency);
 }
 
-@Component(
+@component(
   selector: 'injects-visibility-all',
   template: '',
 )
@@ -279,7 +279,7 @@ class InjectsVisibilityAllComponent {
   InjectsVisibilityAllComponent(this.parent);
 }
 
-@Component(
+@component(
   selector: 'should-inject-parent-component',
   template: '<injects-visibility-all></injects-visibility-all>',
   directives: [InjectsVisibilityAllComponent],
@@ -294,7 +294,7 @@ abstract class Interface {}
 
 const implementations = MultiToken<Interface>();
 
-@Directive(
+@directive(
   selector: '[all]',
   providers: [
     ExistingProvider.forToken(
@@ -306,7 +306,7 @@ const implementations = MultiToken<Interface>();
 )
 class VisibilityAllImplementation implements Interface {}
 
-@Directive(
+@directive(
   selector: '[local]',
   providers: [
     ExistingProvider.forToken(
@@ -317,7 +317,7 @@ class VisibilityAllImplementation implements Interface {}
 )
 class VisibilityLocalImplementation implements Interface {}
 
-@Component(
+@component(
   selector: 'injects-multi-token',
   template: '',
 )
@@ -327,7 +327,7 @@ class InjectsMultiToken {
   InjectsMultiToken(@implementations this.dependencies);
 }
 
-@Component(
+@component(
   selector: 'should-inject-multi-token',
   template: '<injects-multi-token local all></injects-multi-token>',
   directives: [
@@ -343,7 +343,7 @@ class ShouldInjectMultiToken {
 
 Interface getInterfaceFromImpl(ShouldSupportFactoryProvider impl) => impl;
 
-@Component(
+@component(
   selector: 'test',
   template: '<should-inject-interface></should-inject-interface>',
   directives: [
@@ -358,7 +358,7 @@ class ShouldSupportFactoryProvider implements Interface {
   ShouldInjectInterface? child;
 }
 
-@Component(
+@component(
   selector: 'should-inject-interface',
   template: '',
 )
@@ -367,7 +367,7 @@ class ShouldInjectInterface {
   ShouldInjectInterface(this.interface);
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<should-inject-interface></should-inject-interface>',
   directives: [

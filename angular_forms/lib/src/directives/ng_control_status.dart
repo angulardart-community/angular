@@ -4,7 +4,7 @@ import 'ng_control.dart' show NgControl;
 
 /// Directive automatically applied to Angular forms that sets CSS classes
 /// based on control status (valid/invalid/dirty/etc).
-@Directive(
+@directive(
   selector: '[ngControl],[ngModel],[ngFormControl]',
 )
 @Deprecated('Use listeners or variable binding on the control itself instead. '

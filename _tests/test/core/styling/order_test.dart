@@ -48,7 +48,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <child *ngIf="isFirstChildVisible"></child>
@@ -73,7 +73,7 @@ class TestComponent {
 ///
 /// Because this has equal specificity, it will only apply when Parent is
 /// rendered *after* Child.
-@Component(
+@component(
   selector: 'parent',
   template: '''
     <child class="test"></child>
@@ -92,7 +92,7 @@ class TestComponent {
 class ParentComponent {}
 
 /// Styles margin when class="test" is present on host element.
-@Component(
+@component(
   selector: 'child',
   template: '',
   styles: [

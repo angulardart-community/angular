@@ -113,12 +113,12 @@ void main() {
 
 const isExpressionChanged = TypeMatcher<UnstableExpressionError>();
 
-@Directive(
+@directive(
   selector: 'copy-me',
 )
 class CopyMe {}
 
-@Component(
+@component(
   selector: 'ngif-intemplate-test',
   template: '''
     <div>
@@ -136,7 +136,7 @@ class NgIfInTemplateComponent {
   bool booleanCondition = true;
 }
 
-@Component(
+@component(
   selector: 'ngif-toggle-test',
   template: '''
     <div>
@@ -152,7 +152,7 @@ class NgIfToggleTestComponent {
   bool booleanCondition = true;
 }
 
-@Component(
+@component(
   selector: 'ngif-nested-test',
   template: '''
     <div>
@@ -171,7 +171,7 @@ class NgIfNestedTestComponent {
   bool nestedBooleanCondition = true;
 }
 
-@Component(
+@component(
   selector: 'ngif-multiupdate-test',
   template: '<div>'
       '<copy-me *ngIf="numberCondition + 1 >= 2">helloNumber</copy-me>'
@@ -191,7 +191,7 @@ class NgIfMultiUpdateTestComponent {
   bool functionCondition(s, n) => s == 'foo' && n == 1;
 }
 
-@Component(
+@component(
   selector: 'ngif-checkbinding-test',
   template: r'''
     <template [ngIf]="startFailing">

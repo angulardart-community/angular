@@ -15,12 +15,12 @@ T injectFromFixture<T>(NgTestFixture<void> fixture, Object tokenOrType) {
 
 class NgTestFixture<T> {
   final ApplicationRef _applicationRef;
-  final ComponentRef<T> _rootComponentRef;
+  final componentRef<T> _rootComponentRef;
   final NgTestStabilizer _testStabilizer;
 
   factory NgTestFixture(
     ApplicationRef applicationRef,
-    ComponentRef<T> rootComponentRef,
+    componentRef<T> rootComponentRef,
     NgTestStabilizer testStabilizer,
   ) = NgTestFixture<T>._;
 

@@ -53,7 +53,7 @@ import 'validators.dart' show ValidatorFn;
 /// This example declares a control group for a user's name. The value and
 /// validation state of this group can be accessed separately from the overall
 /// form.
-@Directive(
+@directive(
   selector: '[ngControlGroup]',
   providers: [
     ExistingProvider(ControlContainer, NgControlGroup),

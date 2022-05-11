@@ -102,23 +102,23 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '{{value}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class Child {
   var value = '';
 }
 
-@Component(
+@component(
   selector: 'has-content-child',
   template: '<ng-content></ng-content>',
 )
 class HasContentChild {
   HasContentChild(this._changeDetectorRef);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
 
   @ContentChild(Child)
   Child? child;
@@ -129,7 +129,7 @@ class HasContentChild {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <has-content-child>
@@ -143,14 +143,14 @@ class TestContentChild {
   HasContentChild? child;
 }
 
-@Component(
+@component(
   selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasContentChildren {
   HasContentChildren(this._changeDetectorRef, this._ngZone);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
   final NgZone _ngZone;
 
   List<Child> _children = [];
@@ -171,7 +171,7 @@ class HasContentChildren {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <has-content-children>
@@ -187,7 +187,7 @@ class TestContentChildren {
   HasContentChildren? child;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<child></child>',
   directives: [Child],
@@ -195,7 +195,7 @@ class TestContentChildren {
 class TestViewChild {
   TestViewChild(this._changeDetectorRef);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
 
   @ViewChild(Child)
   Child? child;
@@ -206,7 +206,7 @@ class TestViewChild {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <child></child>
@@ -218,7 +218,7 @@ class TestViewChild {
 class TestViewChildren {
   TestViewChildren(this._changeDetectorRef);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
 
   @ViewChildren(Child)
   List<Child>? children;
@@ -235,27 +235,27 @@ abstract class HasValue {
   String? value;
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '{{value}}',
   providers: [
     ExistingProvider(HasValue, ChildWithExistingProvider),
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class ChildWithExistingProvider implements HasValue {
   @override
   var value = '';
 }
 
-@Component(
+@component(
   selector: 'has-content-children',
   template: '<ng-content></ng-content>',
 )
 class HasExistingProviderContentChildren {
   HasExistingProviderContentChildren(this._changeDetectorRef);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
 
   @ContentChildren(HasValue)
   List<HasValue>? children;
@@ -268,7 +268,7 @@ class HasExistingProviderContentChildren {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <has-content-children>
@@ -284,7 +284,7 @@ class TestExistingProviderContentChildren {
   HasExistingProviderContentChildren? child;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <child></child>
@@ -296,7 +296,7 @@ class TestExistingProviderContentChildren {
 class TestExistingProviderViewChildren {
   TestExistingProviderViewChildren(this._changeDetectorRef);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
 
   @ViewChildren(HasValue)
   List<HasValue>? children;
@@ -309,7 +309,7 @@ class TestExistingProviderViewChildren {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <has-content-children>
@@ -331,7 +331,7 @@ class TestEmbeddedContentChildren {
   HasContentChildren? child;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <child></child>
@@ -346,7 +346,7 @@ class TestEmbeddedContentChildren {
 class TestEmbeddedViewChildren {
   TestEmbeddedViewChildren(this._changeDetectorRef, this._ngZone);
 
-  final ChangeDetectorRef _changeDetectorRef;
+  final changeDetectorRef _changeDetectorRef;
   final NgZone _ngZone;
 
   var isSecondChildVisible = false;

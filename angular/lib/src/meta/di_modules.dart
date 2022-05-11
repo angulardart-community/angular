@@ -3,7 +3,7 @@ import 'package:angular/src/meta.dart';
 
 /// Encapsulates a reusable set of dependency injection configurations.
 ///
-/// One or more modules can be used to create an [Injector], or a runtime
+/// One or more modules can be used to create an [injector], or a runtime
 /// representation of dependency injection. Modules can also be used to add
 /// dependency injection to `@Directive` or `@Component`-annotated classes.
 ///

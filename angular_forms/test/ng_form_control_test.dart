@@ -84,7 +84,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'ng-form-control-test',
   directives: [
     formDirectives,
@@ -105,7 +105,7 @@ class NgFormControlTest {
   Control loginControl = Control(null);
 }
 
-@Directive(selector: '[dummy]', providers: [
+@directive(selector: '[dummy]', providers: [
   ExistingProvider.forToken(
     ngValueAccessor,
     DummyControlValueAccessor,
@@ -127,7 +127,7 @@ class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
   void onDisabledChanged(bool isDisabled) {}
 }
 
-@Component(
+@component(
   selector: 'ng-form-control-test',
   directives: [
     formDirectives,

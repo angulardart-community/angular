@@ -6,7 +6,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     MessageDirective,
@@ -37,7 +37,7 @@ void main() {
 )
 class GoldenComponent {}
 
-@Directive(
+@directive(
   selector: '[message]',
 )
 class MessageDirective {

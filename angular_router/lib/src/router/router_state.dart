@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:angular/angular.dart' show ComponentFactory, ComponentRef;
+import 'package:angular/angular.dart' show componentFactory, componentRef;
 
 import '../route_definition.dart';
 import '../route_path.dart';
@@ -43,8 +43,8 @@ class RouterState extends Url {
 /// maintains a list of outlets and components that will be attached. These
 /// are [QueueList]s so that elements can be added in the front or back.
 class MutableRouterState {
-  final List<ComponentRef<Object>> components = [];
-  final Map<ComponentRef<Object>, ComponentFactory<Object>> factories = {};
+  final List<componentRef<Object>> components = [];
+  final Map<componentRef<Object>, componentFactory<Object>> factories = {};
   final List<Map<String, String>> _parameterStack = [];
   final List<RouteDefinition> routes = [];
 

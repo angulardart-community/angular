@@ -134,19 +134,19 @@ abstract class IO<T> {
   Stream<T?> get output => _controller.stream;
 }
 
-@Component(
+@component(
   selector: 'generic',
   template: '',
 )
 class SingleGenericComponent<T> extends IO<T> {}
 
-@Component(
+@component(
   selector: 'generic',
   template: '',
 )
 class MultipleGenericComponent<K, V> extends IO<Map<K, V>> {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<generic [input]="value" (output)="handle"></generic>',
   directives: [SingleGenericComponent],
@@ -161,7 +161,7 @@ class TestSingleConcreteTypeArgument {
   void handle(String output) {}
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<generic [input]="value" (output)="handle"></generic>',
   directives: [MultipleGenericComponent],
@@ -176,7 +176,7 @@ class TestMultipleConcreteTypeArgument {
   void handle(Map<String, int> output) {}
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<generic></generic>',
   directives: [SingleGenericComponent],
@@ -191,7 +191,7 @@ class TestNestedConcreteTypeArgument {
   void handle(List<String> output) {}
 }
 
-@Component(
+@component(
   selector: 'flow',
   template: '<generic [input]="value" (output)="handle"></generic>',
   directives: [SingleGenericComponent],
@@ -209,7 +209,7 @@ class FlowTypeArgumentComponent<T> {
   void handle(T output) {}
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<flow [value]="value"></flow>',
   directives: [FlowTypeArgumentComponent],
@@ -224,7 +224,7 @@ class TestFlowTypeArgument {
   var value = 'a';
 }
 
-@Component(
+@component(
   selector: 'test',
   template: ''',
     <generic [input]="index" (output)="handleIndex" #indexed></generic>
@@ -247,10 +247,10 @@ class TestDistinctlyTypedDirectives {
   void handleName(String output) {}
 }
 
-@Directive(selector: '[generic]')
+@directive(selector: '[generic]')
 class GenericDirective<T> extends IO<T> {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<div generic [input]="value" (output)="handle"></div>',
   directives: [GenericDirective],
@@ -266,7 +266,7 @@ class TestGenericDirective {
 }
 
 /// Change detectors are generated for directives with host bindings.
-@Directive(selector: '[generic]')
+@directive(selector: '[generic]')
 class GenericDirectiveWithChangeDetector<T> extends IO<T> {
   T? _input;
 
@@ -280,7 +280,7 @@ class GenericDirectiveWithChangeDetector<T> extends IO<T> {
   String get a => _input?.toString() ?? '';
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<div generic [input]="value" (output)="handle"></div>',
   directives: [GenericDirectiveWithChangeDetector],
@@ -295,7 +295,7 @@ class TestGenericDirectiveWithChangeDetector {
   void handle(String output) {}
 }
 
-@Directive(selector: '[generic]')
+@directive(selector: '[generic]')
 class BoundedGenericDirectiveWithChangeDetector<T extends Bound> extends IO<T> {
   T? _input;
 
@@ -309,7 +309,7 @@ class BoundedGenericDirectiveWithChangeDetector<T extends Bound> extends IO<T> {
   String get a => _input?.toString() ?? '';
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<div generic [input]="value" (output)="handle"></div>',
   directives: [BoundedGenericDirectiveWithChangeDetector],
@@ -322,13 +322,13 @@ class TestBoundedGenericDirectiveWithChangeDetector {
   void handle(Bound output) {}
 }
 
-@Component(
+@component(
   selector: 'generic',
   template: '',
 )
 class BoundedGenericComponent<T extends Bound> extends IO<T> {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<generic [input]="value" (output)="handle"></generic>',
   directives: [BoundedGenericComponent],
@@ -348,7 +348,7 @@ class Data {
   Data(this.name);
 }
 
-@Component(
+@component(
   selector: 'generic',
   template: '{{render!(value)}}',
 )
@@ -360,7 +360,7 @@ class GenericFunctionComponent<T> {
   T? value;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<generic [render]="render" [value]="value"></generic>',
   directives: [GenericFunctionComponent],

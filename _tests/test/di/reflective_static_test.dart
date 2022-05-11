@@ -38,7 +38,7 @@ void main() {
             deps: const [Object],
           ),
         ],
-        Injector.map(
+        injector.map(
           {
             Object: 'World',
           },
@@ -59,7 +59,7 @@ void main() {
         [
           ExistingProvider(Object, String),
         ],
-        Injector.map(
+        injector.map(
           {
             String: 'Hello World',
           },
@@ -76,7 +76,7 @@ void main() {
             useExisting: String,
           ),
         ],
-        Injector.map(
+        injector.map(
           {
             String: 'Hello World',
           },

@@ -55,7 +55,7 @@ void main() {
   }, tags: 'fails-on-ci');
 }
 
-@Component(
+@component(
   selector: 'unsafe-attribute',
   template: '<a [href]="href">Link Title</a>',
 )
@@ -63,7 +63,7 @@ class UnsafeAttributeComponent {
   String href = 'hello';
 }
 
-@Component(
+@component(
   selector: 'unsafe-style',
   template: '<div [style.background]="backgroundStyle"></div>',
 )
@@ -71,7 +71,7 @@ class UnsafeStyleComponent {
   String backgroundStyle = 'red';
 }
 
-@Component(
+@component(
   selector: 'unsafe-html',
   template: '<div [innerHtml]="html"></div>',
 )

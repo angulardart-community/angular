@@ -18,10 +18,10 @@ void main() {
 /// This demonstrates the code generated to implement `@changeDetectionLink`.
 ///
 /// In practice, you'd only use `@changeDetectionLink` if this component were
-/// passing a [ComponentFactory] that loads another Default component to its
+/// passing a [componentFactory] that loads another Default component to its
 /// OnPush descendants. However, this isn't needed to generate the code in
 /// interest.
-@Component(
+@component(
   selector: 'golden',
   template: '''
     <on-push-link></on-push-link>
@@ -31,7 +31,7 @@ void main() {
 class GoldenComponent {}
 
 @changeDetectionLink
-@Component(
+@component(
   selector: 'on-push-link',
   template: '''
     <template #container></template>
@@ -47,35 +47,35 @@ class GoldenComponent {}
     NestedOnPushLink,
     NgIf,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class OnPushLink {
-  @ViewChild('container', read: ViewContainerRef)
-  set container(ViewContainerRef? _) => deopt(_);
+  @ViewChild('container', read: viewContainerRef)
+  set container(viewContainerRef? _) => deopt(_);
 
-  @ViewChild('embeddedContainer', read: ViewContainerRef)
-  set embeddedContainer(ViewContainerRef? _) => deopt(_);
+  @ViewChild('embeddedContainer', read: viewContainerRef)
+  set embeddedContainer(viewContainerRef? _) => deopt(_);
 
   bool isVisible = deopt();
 }
 
 // Should not be linked.
-@Component(
+@component(
   selector: 'nested-on-push',
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class NestedOnPush {}
 
 @changeDetectionLink
-@Component(
+@component(
   selector: 'nested-on-push-link',
   template: '''
     <template #container></template>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class NestedOnPushLink {
-  @ViewChild('container', read: ViewContainerRef)
-  set container(ViewContainerRef? _) => deopt(_);
+  @ViewChild('container', read: viewContainerRef)
+  set container(viewContainerRef? _) => deopt(_);
 }

@@ -171,7 +171,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'container-for-simple',
   template: '<simple>'
       '<div>A</div>'
@@ -180,7 +180,7 @@ void main() {
 )
 class ContainerWithSimpleComponent {}
 
-@Component(
+@component(
   selector: 'container-with-interpolation',
   template: '{{\'START(\'}}<simple>'
       '{{testValue}}'
@@ -191,13 +191,13 @@ class ContainerWithProjectedInterpolation {
   String testValue = 'VALUE1';
 }
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE(<ng-content></ng-content>)',
 )
 class SimpleComponent {}
 
-@Component(
+@component(
   selector: 'container-with-interpolation2',
   template: '{{\'START(\'}}<simple>'
       '{{testValue}}'
@@ -208,13 +208,13 @@ class ContainerWithProjectedInterpolationNested {
   String testValue = 'VALUE2';
 }
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE(<div><ng-content></ng-content></div>)',
 )
 class SimpleComponent2 {}
 
-@Component(
+@component(
   selector: 'container-with-interpolation3',
   template: '{{\'START(\'}}<simple>'
       '{{testValue}}'
@@ -225,14 +225,14 @@ class ContainerWithProjectedInterpolationBound {
   String testValue = 'VALUE3';
 }
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE(<div><ng-content></ng-content></div>'
       '<div [tabIndex]=\"0\">XY</div>)',
 )
 class SimpleComponentWithBinding {}
 
-@Component(
+@component(
   selector: 'container-for-conditional',
   template: '<conditional-content>'
       '<div class="left">A</div><div>B</div><div>C</div>'
@@ -244,7 +244,7 @@ class ContainerABCWithConditionalComponent {
   ConditionalContentComponent? child;
 }
 
-@Component(
+@component(
   selector: 'conditional-content',
   template: '<div>(<div *manual><ng-content select=".left"></ng-content></div>'
       ', <ng-content></ng-content>)</div>',
@@ -255,12 +255,12 @@ class ConditionalContentComponent {
   ManualViewportDirective? manualViewportDirective;
 }
 
-@Directive(
+@directive(
   selector: '[manual]',
 )
 class ManualViewportDirective {
-  ViewContainerRef vc;
-  TemplateRef templateRef;
+  viewContainerRef vc;
+  templateRef templateRef;
   ManualViewportDirective(this.vc, this.templateRef);
 
   void show() {
@@ -272,7 +272,7 @@ class ManualViewportDirective {
   }
 }
 
-@Component(
+@component(
   selector: 'container-with-style-emu',
   template: '<div class=\"blueStyle\"></div>',
   styles: ['.blueStyle { color: blue}'],
@@ -281,7 +281,7 @@ class ManualViewportDirective {
 )
 class ContainerWithStyleEmulated {}
 
-@Component(
+@component(
   selector: 'container-with-style-not-emu',
   template: '<div class=\"redStyle\"></div>',
   styles: ['.redStyle { color: red}'],
@@ -290,7 +290,7 @@ class ContainerWithStyleEmulated {}
 )
 class ContainerWithStyleNotEmulated {}
 
-@Component(
+@component(
   selector: 'mylist-user',
   template: '<mylist>'
       '<span list-item>item1</span>'
@@ -300,7 +300,7 @@ class ContainerWithStyleNotEmulated {}
 )
 class MyListUserProjectionTest {}
 
-@Component(
+@component(
   selector: 'mylist',
   template: '<mylist-item>'
       '<ng-content select="[list-item]"></ng-content>'
@@ -310,13 +310,13 @@ class MyListUserProjectionTest {}
 )
 class MyListComponent {}
 
-@Component(
+@component(
   selector: 'mylist-item',
   template: '<ng-content></ng-content>',
 )
 class MyListItemComponent {}
 
-@Component(
+@component(
   selector: 'select-exact-attribute',
   template: '''
 <div class="selected">
@@ -328,7 +328,7 @@ class MyListItemComponent {}
 )
 class SelectExactAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-exact-attribute-test',
   template: '''
 <select-exact-attribute>
@@ -339,7 +339,7 @@ class SelectExactAttributeComponent {}
 )
 class SelectExactAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-hyphen-attribute',
   template: '''
 <div class="selected">
@@ -351,7 +351,7 @@ class SelectExactAttributeTestComponent {}
 )
 class SelectHyphenAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-hyphen-attribute-test',
   template: '''
 <select-hyphen-attribute>
@@ -362,7 +362,7 @@ class SelectHyphenAttributeComponent {}
 )
 class SelectHyphenAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-list-attribute',
   template: '''
 <div class="selected">
@@ -374,7 +374,7 @@ class SelectHyphenAttributeTestComponent {}
 )
 class SelectListAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-list-attribute-test',
   template: '''
 <select-list-attribute>
@@ -385,7 +385,7 @@ class SelectListAttributeComponent {}
 )
 class SelectListAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-prefix-attribute',
   template: '''
 <div class="selected">
@@ -397,7 +397,7 @@ class SelectListAttributeTestComponent {}
 )
 class SelectPrefixAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-prefix-attribute-test',
   template: '''
 <select-prefix-attribute>
@@ -408,7 +408,7 @@ class SelectPrefixAttributeComponent {}
 )
 class SelectPrefixAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-set-attribute',
   template: '''
 <div class="selected">
@@ -420,7 +420,7 @@ class SelectPrefixAttributeTestComponent {}
 )
 class SelectSetAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-set-attribute-test',
   template: '''
 <select-set-attribute>
@@ -431,7 +431,7 @@ class SelectSetAttributeComponent {}
 )
 class SelectSetAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-substring-attribute',
   template: '''
 <div class="selected">
@@ -443,7 +443,7 @@ class SelectSetAttributeTestComponent {}
 )
 class SelectSubstringAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-substring-attribute-test',
   template: '''
 <select-substring-attribute>
@@ -454,7 +454,7 @@ class SelectSubstringAttributeComponent {}
 )
 class SelectSubstringAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'select-suffix-attribute',
   template: '''
 <div class="selected">
@@ -466,7 +466,7 @@ class SelectSubstringAttributeTestComponent {}
 )
 class SelectSuffixAttributeComponent {}
 
-@Component(
+@component(
   selector: 'select-suffix-attribute-test',
   template: '''
 <select-suffix-attribute>
@@ -477,7 +477,7 @@ class SelectSuffixAttributeComponent {}
 )
 class SelectSuffixAttributeTestComponent {}
 
-@Component(
+@component(
   selector: 'ng-content-select',
   template: '''
 <div class="selected">
@@ -489,7 +489,7 @@ class SelectSuffixAttributeTestComponent {}
 )
 class NgContentSelectComponent {}
 
-@Component(
+@component(
   selector: 'ng-project-as',
   template: '''
 <ng-content-select>
@@ -502,7 +502,7 @@ class NgContentSelectComponent {}
 )
 class NgProjectAsComponent {}
 
-@Component(
+@component(
   selector: 'ng-project-as-test',
   template: '''
 <ng-project-as>

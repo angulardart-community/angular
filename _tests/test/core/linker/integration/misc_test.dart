@@ -65,7 +65,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'child-cmp-no-template',
   template: '',
 )
@@ -73,7 +73,7 @@ class ChildCompNoTemplate {
   String ctxProp = 'hello';
 }
 
-@Component(
+@component(
   selector: 'var-in-loop',
   template: '<template ngFor [ngForOf]="list" let-i>'
       '<child-cmp-no-template #cmp></child-cmp-no-template>'
@@ -84,7 +84,7 @@ class VarInLoopComponent {
   static const list = [1];
 }
 
-@Directive(
+@directive(
   selector: '[update-host-attributes]',
 )
 class DirectiveUpdatingHostAttributes {
@@ -92,14 +92,14 @@ class DirectiveUpdatingHostAttributes {
   static const hostRole = 'button';
 }
 
-@Component(
+@component(
   selector: 'directive-host-attributes',
   template: '<div update-host-attributes></div>',
   directives: [DirectiveUpdatingHostAttributes],
 )
 class HostAttributeFromDirectiveComponent {}
 
-@Directive(
+@directive(
   selector: '[update-host-properties]',
 )
 class DirectiveUpdatingHostProperties {
@@ -107,7 +107,7 @@ class DirectiveUpdatingHostProperties {
   String id = 'one';
 }
 
-@Component(
+@component(
   selector: 'directive-host-properties',
   template: '<div update-host-properties></div>',
   directives: [DirectiveUpdatingHostProperties],
@@ -122,7 +122,7 @@ class MyService {
   String greeting = 'hello';
 }
 
-@Component(
+@component(
   selector: 'child-cmp-svc',
   template: '{{ctxProp}}',
 )
@@ -134,15 +134,15 @@ class ChildCompUsingService {
   }
 }
 
-@Directive(
+@directive(
   selector: 'dynamic-vp',
 )
 class DynamicViewport {
   late final Future<dynamic> done;
 
-  DynamicViewport(ViewContainerRef vc) {
+  DynamicViewport(viewContainerRef vc) {
     final myService = MyService()..greeting = 'dynamic greet';
-    final injector = Injector.map({
+    final injector = injector.map({
       MyService: myService,
     }, vc.injector);
     final factoryFuture = Future.value(
@@ -153,7 +153,7 @@ class DynamicViewport {
   }
 }
 
-@Component(
+@component(
   selector: 'dynamic-child-component',
   template: '<div><dynamic-vp></dynamic-vp></div>',
   directives: [
@@ -162,7 +162,7 @@ class DynamicViewport {
 )
 class DynamicChildComponent {}
 
-@Directive(
+@directive(
   selector: '[static]',
 )
 class NeedsAttribute {
@@ -176,7 +176,7 @@ class NeedsAttribute {
       @Attribute('foo') this.fooAttribute);
 }
 
-@Component(
+@component(
   selector: 'static-attributes',
   template: '<input static type="text" title>',
   directives: [NeedsAttribute],
@@ -186,7 +186,7 @@ class StaticAttributesComponent {
   NeedsAttribute? needsAttribute;
 }
 
-@Component(
+@component(
   selector: 'unsafe-component',
   template: '''
 <script>alert("Ooops");</script>
@@ -196,7 +196,7 @@ class StaticAttributesComponent {
 )
 class UnsafeComponent {}
 
-@Component(
+@component(
   selector: 'named-arg-method-component',
   template: r'''
     {{getName(name: 'Hello')}}
@@ -208,7 +208,7 @@ class NamedArgMethodComponent {
 
 String? getName({String? name}) => name;
 
-@Component(
+@component(
   selector: 'named-arg-function-component',
   template: r'''
     {{getName(name: 'Hello')}}

@@ -102,7 +102,7 @@ void main() {
 
     test('when provided', () async {
       testBed = testBed.addInjector(
-        (i) => Injector.map({
+        (i) => injector.map({
           urlToken: 'https://google.com',
         }, i),
       );
@@ -145,7 +145,7 @@ void main() {
       ng.createSupportsTypedTokenInNestedViewsFactory(),
     );
     testBed = testBed.addInjector(
-      (i) => Injector.map({
+      (i) => injector.map({
         listOfStringToken: ['A', 'B', 'C'],
       }, i),
     );
@@ -352,7 +352,7 @@ void main() {
     });
 
     test('in a @GenerateInjector', () async {
-      final injector = generatedInjector(Injector.empty());
+      final injector = generatedInjector(injector.empty());
       expect(injector.get(listOfNull), const [null]);
       expect(injector.get(listOfVoid), const [1]);
       expect(injector.get(listOfListOfNull), const [
@@ -416,7 +416,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test-parent',
   template: '<parent></parent>',
   directives: [
@@ -428,7 +428,7 @@ class TestParent {
   CompParent? parent;
 }
 
-@Component(
+@component(
   selector: 'parent',
   template: '<child-1></child-1>',
   directives: [
@@ -445,7 +445,7 @@ class CompParent {
   CompChild1? child1;
 }
 
-@Component(
+@component(
   selector: 'child-1',
   template: '<child-2></child-2>',
   directives: [
@@ -465,7 +465,7 @@ class CompChild1 {
   CompChild2? child2;
 }
 
-@Component(
+@component(
   selector: 'child-2',
   template: '',
 )
@@ -497,17 +497,17 @@ class C {
   String toString() => 'C: $debugMessage';
 }
 
-@Component(
+@component(
   selector: 'using-element-injector',
   template: '',
 )
 class UsingElementInjector {
-  final Injector injector;
+  final injector injector;
 
   UsingElementInjector(this.injector);
 }
 
-@Component(
+@component(
   selector: 'using-inject-and-optional',
   template: '',
   providers: [
@@ -538,7 +538,7 @@ class Arbitrary {
 
 const arbitraryToken = OpaqueToken<Arbitrary>('arbitrary');
 
-@Directive(
+@directive(
   selector: '[arbitrary]',
 )
 class UsesTypedTokensDirective {
@@ -549,7 +549,7 @@ class UsesTypedTokensDirective {
 
 const usPresidentsMulti = MultiToken<String>('usPresidents');
 
-@Component(
+@component(
   selector: 'supports-multi-token',
   providers: [
     ValueProvider.forToken(usPresidentsMulti, 'George Washington'),
@@ -567,7 +567,7 @@ class CustomMultiToken extends MultiToken<String> {
   const CustomMultiToken();
 }
 
-@Component(
+@component(
   selector: 'supports-multi-token',
   providers: [
     ValueProvider.forToken(CustomMultiToken(), 'A'),
@@ -584,7 +584,7 @@ class SupportsCustomMultiToken {
 const fooOpaqueToken = OpaqueToken<List<String>>('fooToken');
 const fooMultiToken = MultiToken<String>('fooToken');
 
-@Component(
+@component(
   selector: 'no-clash-tokens',
   providers: [
     ValueProvider.forToken(fooOpaqueToken, ['Hello']),
@@ -605,7 +605,7 @@ class NoClashTokens {
 const barTypedToken1 = OpaqueToken<Object>('barTypedToken');
 const barTypedToken2 = OpaqueToken<bool>('barTypedToken');
 
-@Component(
+@component(
   selector: 'supports-typed-token',
   providers: [
     ValueProvider.forToken(barTypedToken1, 1),
@@ -614,7 +614,7 @@ const barTypedToken2 = OpaqueToken<bool>('barTypedToken');
   template: '',
 )
 class SupportsTypedToken {
-  final Injector injector;
+  final injector injector;
 
   SupportsTypedToken(this.injector);
 }
@@ -622,7 +622,7 @@ class SupportsTypedToken {
 const aDynamicTokenNamedA = OpaqueToken('A');
 const aDynamicTokenNamedB = OpaqueToken('B');
 
-@Component(
+@component(
   selector: 'proper-token-identity',
   providers: [
     Provider(aDynamicTokenNamedA, useValue: 'A'),
@@ -631,7 +631,7 @@ const aDynamicTokenNamedB = OpaqueToken('B');
   template: '',
 )
 class ProperTokenIdentity {
-  final Injector injector;
+  final injector injector;
 
   ProperTokenIdentity(this.injector);
 }
@@ -639,7 +639,7 @@ class ProperTokenIdentity {
 @Injectable()
 class ExampleService {}
 
-@Component(
+@component(
   selector: 'supports-implicit-class',
   providers: [
     Provider(ExampleService),
@@ -647,7 +647,7 @@ class ExampleService {}
   template: '',
 )
 class SupportsImplicitClass {
-  final Injector injector;
+  final injector injector;
 
   SupportsImplicitClass(this.injector);
 }
@@ -655,7 +655,7 @@ class SupportsImplicitClass {
 const unnamedTokenOfDynamic = OpaqueToken();
 const unnamedTokenOfString = OpaqueToken<String>();
 
-@Component(
+@component(
   selector: 'supports-unnamed-token',
   providers: [
     Provider(unnamedTokenOfDynamic, useValue: 1),
@@ -664,14 +664,14 @@ const unnamedTokenOfString = OpaqueToken<String>();
   template: '',
 )
 class SupportsUnnamedToken {
-  final Injector injector;
+  final injector injector;
 
   SupportsUnnamedToken(this.injector);
 }
 
 const listOfStringToken = OpaqueToken<List<String>>('listOfString');
 
-@Component(
+@component(
   selector: 'supports-typed-token-in-nested-views',
   template: r'''
     <div *ngIf="someValue">
@@ -692,7 +692,7 @@ class SupportsTypedTokenInNestedViews {
   bool someValue = true;
 }
 
-@Component(
+@component(
   selector: 'child-that-injects-token',
   template: '',
 )
@@ -704,7 +704,7 @@ class ChildThatInjectsTypedToken {
 
 class MissingService {}
 
-@Component(
+@component(
   selector: 'will-fail-injecting-1-node',
   template: '',
 )
@@ -716,7 +716,7 @@ class InjectsMissingService {
   InjectsMissingService(MissingService _);
 }
 
-@Component(
+@component(
   selector: 'will-fail-injecting-2-node',
   providers: [
     Provider(
@@ -729,7 +729,7 @@ class WillFailInjecting2Node {
   WillFailInjecting2Node(InjectsMissingService _);
 }
 
-@Component(
+@component(
   selector: 'will-fail-injecting-2-node',
   template: '',
 )
@@ -737,7 +737,7 @@ class WillFailInjecting2NodeParent {
   WillFailInjecting2NodeParent(InjectsMissingService _);
 }
 
-@Component(
+@component(
   selector: 'will-fail-creating-child',
   template: r'''
     <will-fail-injecting-1-node></will-fail-injecting-1-node>
@@ -746,7 +746,7 @@ class WillFailInjecting2NodeParent {
 )
 class WillFailCreatingChild {}
 
-@Component(
+@component(
   selector: 'will-fail-creating-child',
   template: r'''
     <will-fail-injecting-1-node *ngIf="showChild"></will-fail-injecting-1-node>
@@ -760,7 +760,7 @@ class WillFailCreatingChildInTemplate {
   var showChild = true;
 }
 
-@Component(
+@component(
   selector: 'will-fail-querying-service',
   template: r'''
     <lazy-provides-missing-service></lazy-provides-missing-service>
@@ -774,7 +774,7 @@ class WillFailQueryingServiceInTemplate {
   InjectsMissingService? willFailDuringQuery;
 }
 
-@Directive(
+@directive(
   selector: 'lazy-provides-missing-service',
   providers: [
     InjectsMissingService,
@@ -782,7 +782,7 @@ class WillFailQueryingServiceInTemplate {
 )
 class LazilyProvidesMissingService {}
 
-@Component(
+@component(
   selector: 'will-fail-following-factory-provider',
   template: '',
   providers: [
@@ -799,7 +799,7 @@ class WillFailFollowingFactoryProvider {
   WillFailFollowingFactoryProvider(InjectsMissingService _);
 }
 
-@Component(
+@component(
   selector: 'will-fail-following-factory-provider',
   template: '',
   providers: [
@@ -817,7 +817,7 @@ class PrimeInjectsMissingService extends InjectsMissingService {
 
 const baseUrl = OpaqueToken<String>('baseUrl');
 
-@Component(
+@component(
   selector: 'injects-base-url',
   template: '',
   providers: [
@@ -836,7 +836,7 @@ class XsrfToken extends OpaqueToken<String> {
 }
 
 @Injectable()
-@Component(
+@component(
   selector: 'injects-xsrf-token',
   template: '',
   providers: [
@@ -849,7 +849,7 @@ class InjectsXsrfToken {
   InjectsXsrfToken(@XsrfToken() this.token);
 }
 
-@Component(
+@component(
   selector: 'supports-modules',
   template: '',
   providers: [
@@ -868,7 +868,7 @@ class InjectsXsrfToken {
   ],
 )
 class SupportsModules {
-  final Injector injector;
+  final injector injector;
 
   SupportsModules(this.injector);
 }
@@ -895,7 +895,7 @@ class TestConstNamedArgs2 {
 const topLevelValue = TestConstNamedArgs2(name: 'TestConstNamedArgs2');
 const topLevelProvider = ValueProvider(TestConstNamedArgs2, topLevelValue);
 
-@Component(
+@component(
   selector: 'supports-value-provider',
   template: '',
   providers: [
@@ -947,7 +947,7 @@ const _testVoidTokenProviders = [
 @GenerateInjector([_testVoidTokenProviders])
 final InjectorFactory generatedInjector = ng.generatedInjector$Injector;
 
-@Component(
+@component(
   selector: 'comp',
   providers: [_testVoidTokenProviders],
   template: '',
@@ -975,10 +975,10 @@ const isTypedList = TypeMatcher<List<SomeInterface>>();
 const someInterfaces = MultiToken<SomeInterface>('someInterfaces');
 
 abstract class SomeInterface {
-  Injector get injector;
+  injector get injector;
 }
 
-@Component(
+@component(
   selector: 'comp-provides-implicit-types',
   providers: [
     ExistingProvider /* IMPLICIT: <SomeInterface> */ .forToken(
@@ -990,12 +990,12 @@ abstract class SomeInterface {
 )
 class CompProvidesImplicitTypes implements SomeInterface {
   @override
-  final Injector injector;
+  final injector injector;
 
   CompProvidesImplicitTypes(this.injector);
 }
 
-@Component(
+@component(
   selector: 'comp-provides-explicit-types',
   providers: [
     ExistingProvider<List<SomeInterface>>.forToken(
@@ -1007,14 +1007,14 @@ class CompProvidesImplicitTypes implements SomeInterface {
 )
 class CompProvidesExplicitTypes implements SomeInterface {
   @override
-  final Injector injector;
+  final injector injector;
 
   CompProvidesExplicitTypes(this.injector);
 }
 
 const usPresidents = OpaqueToken<List<String>>('usPresidents');
 
-@Component(
+@component(
   selector: 'comp',
   directives: [
     ChildComp,
@@ -1032,7 +1032,7 @@ class CompProvidesUsPresidents {
   ChildComp? child;
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '',
 )

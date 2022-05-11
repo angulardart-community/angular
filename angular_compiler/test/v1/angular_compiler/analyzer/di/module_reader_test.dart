@@ -174,9 +174,9 @@ void main() {
 
   group('ModuleReader.extractProviderObjects', () {
     // These are tests for functionality used by the view compiler.
-    final _extractProviderObjects = const ModuleReader().extractProviderObjects;
+    final extractProviderObjects = const ModuleReader().extractProviderObjects;
     String extractProviderStrings(DartObject value) {
-      final result = _extractProviderObjects(value);
+      final result = extractProviderObjects(value);
       return result.map((o) {
         var value = o.toTypeValue();
         if (value != null) {

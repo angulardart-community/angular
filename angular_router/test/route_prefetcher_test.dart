@@ -96,7 +96,7 @@ void main() {
 @GenerateInjector(routerProvidersTest)
 final appInjector = ng.appInjector$Injector;
 
-@Component(
+@component(
   selector: 'app',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -109,13 +109,13 @@ class AppComponent {
   AppComponent(this.router);
 }
 
-@Component(
+@component(
   selector: 'empty',
   template: '',
 )
 class EmptyComponent {}
 
-@Component(
+@component(
   selector: 'bar',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -124,7 +124,7 @@ class BarComponent {
   static late List<RouteDefinition> routes;
 }
 
-@Component(
+@component(
   selector: 'foo',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],

@@ -25,11 +25,11 @@ NgZone _createNgZone() => NgZone();
 /// If [beforeChangeDetection] is specified, allows interacting with instance of
 /// component created _before_ the initial change detection occurs; for example
 /// setting up properties or state.
-Future<ComponentRef<E>> bootstrapForTest<E extends Object>(
-  ComponentFactory<E> componentFactory,
+Future<componentRef<E>> bootstrapForTest<E extends Object>(
+  componentFactory<E> componentFactory,
   Element hostElement,
   InjectorFactory userInjector, {
-  FutureOr<void> Function(Injector)? beforeComponentCreated,
+  FutureOr<void> Function(injector)? beforeComponentCreated,
   FutureOr<void> Function(E)? beforeChangeDetection,
   NgZone Function() createNgZone = _createNgZone,
 }) async {
@@ -48,14 +48,14 @@ Future<ComponentRef<E>> bootstrapForTest<E extends Object>(
 
   // Code works improperly when .run is typed to return FutureOr:
   // https://github.com/dart-lang/sdk/issues/32285.
-  return appRef.run<ComponentRef<E>>(() {
+  return appRef.run<componentRef<E>>(() {
     return _runAndLoadComponent(
       appRef,
       componentFactory,
       hostElement,
       injector,
       beforeChangeDetection: beforeChangeDetection,
-    ).then((ComponentRef<E> componentRef) async {
+    ).then((componentRef<E> componentRef) async {
       // ComponentRef<E> is due to weirdness around type promotion:
       // https://github.com/dart-lang/sdk/issues/32284
       await ngZone.onTurnDone.first;
@@ -79,16 +79,16 @@ Future<ComponentRef<E>> bootstrapForTest<E extends Object>(
   });
 }
 
-Future<ComponentRef<E>> _runAndLoadComponent<E extends Object>(
+Future<componentRef<E>> _runAndLoadComponent<E extends Object>(
   ApplicationRef appRef,
-  ComponentFactory<E> componentFactory,
+  componentFactory<E> componentFactory,
   Element hostElement,
-  Injector injector, {
+  injector injector, {
   FutureOr<void> Function(E)? beforeChangeDetection,
 }) {
   final componentRef = componentFactory.create(injector);
 
-  Future<ComponentRef<E>> loadComponent() {
+  Future<componentRef<E>> loadComponent() {
     hostElement.append(componentRef.location);
     appRef.registerRootComponent(componentRef);
     return Future.value(componentRef);

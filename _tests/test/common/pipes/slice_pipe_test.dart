@@ -92,7 +92,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test-comp',
   template: r'''
     {{($pipe.slice(data, 1)).join(',') }}

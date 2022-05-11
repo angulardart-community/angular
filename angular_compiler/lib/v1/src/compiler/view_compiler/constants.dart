@@ -28,7 +28,7 @@ o.Expression changeDetectionStrategyToConst(int value) {
   final name = _changeDetectionStrategies[value];
   return o.importExpr(CompileIdentifierMetadata(
     name: 'ChangeDetectionStrategy.$name',
-    moduleUrl: Identifiers.ChangeDetectionStrategy.moduleUrl,
+    moduleUrl: Identifiers.changeDetectionStrategy.moduleUrl,
   ));
 }
 

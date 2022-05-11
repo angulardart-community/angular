@@ -16,7 +16,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     AnotherDirective,
@@ -65,8 +65,8 @@ class GoldenComponent {
     deopt(value);
   }
 
-  @ViewChild('q2', read: ElementRef)
-  set readDIFromElementRef(ElementRef? value) {
+  @ViewChild('q2', read: elementRef)
+  set readDIFromElementRef(elementRef? value) {
     deopt(value);
   }
 
@@ -86,7 +86,7 @@ class GoldenComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'embedded-queries',
   directives: [
     AnotherDirective,
@@ -108,13 +108,13 @@ class EmbeddedQueries {
   }
 }
 
-@Directive(
+@directive(
   selector: 'another',
 )
 class AnotherDirective {}
 
 // This closely mimics a piece of internal code that previously crashed.
-@Component(
+@component(
   selector: 'nested-ng-for-queries',
   directives: [
     AnotherDirective,
@@ -144,7 +144,7 @@ class NestedNgForQueriesList {
 
 // Demonstrates an optimization used to treat a single value query as static
 // when there are dynamic matching results.
-@Component(
+@component(
   selector: 'static-single-query',
   template: '''
     <another></another>
@@ -163,7 +163,7 @@ class StaticSingleQuery {
 
 // Demonstrates an optimization used to prune unnecessary values from a dynamic
 // single value query when there are multiple results.
-@Component(
+@component(
   selector: 'dynamic-single-query',
   template: '''
     <ng-container *ngIf="isVisible">
@@ -185,7 +185,7 @@ class DynamicSingleQuery {
 }
 
 // Queries whether <ng-content> has matched element.
-@Component(
+@component(
   selector: 'content-query',
   template: '''
     <div #header>
@@ -207,7 +207,7 @@ class ContentQuery {
 }
 
 // Put reference on <ng-content>.
-@Component(
+@component(
   selector: 'content-has-reference',
   template: '''
     <ng-content #foo></ng-content>
@@ -217,5 +217,5 @@ class ContentQuery {
 )
 class ContentHasReference {
   @ViewChild('foo')
-  NgContentRef? ref;
+  ngContentRef? ref;
 }

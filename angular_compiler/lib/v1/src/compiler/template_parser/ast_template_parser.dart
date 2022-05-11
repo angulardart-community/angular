@@ -856,9 +856,9 @@ class _ParseContext {
       }
     }
     if (isTemplate) {
-      return Identifiers.TemplateRefToken;
+      return Identifiers.templateRefToken;
     } else if (hasReferenceInNgContent) {
-      return Identifiers.NgContentRefToken;
+      return Identifiers.ngContentRefToken;
     } else {
       return null;
     }
@@ -1600,6 +1600,7 @@ class _PipeCollector extends RecursiveAstVisitor<void> {
   void visitPipe(BindingPipe ast, dynamic context) {
     (pipeInvocations[ast.name] ??= []).add(ast.args.length);
     ast.exp.visit(this);
+    // ignore: void_checks
     visitAll(ast.args, context);
   }
 }

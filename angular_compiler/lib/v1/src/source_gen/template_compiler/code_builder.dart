@@ -15,7 +15,7 @@ String buildGeneratedCode(
 ) {
   final languageVersion =
       CompileContext.current.emitNullSafeCode ? '' : '// @dart=2.9\n\n';
-  final buffer = StringBuffer('$languageVersion');
+  final buffer = StringBuffer(languageVersion);
 
   // Generated code.
   final allocator = Allocator.simplePrefixing();

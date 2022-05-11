@@ -72,7 +72,7 @@ void main() {
 @Injectable()
 class InjectableService {}
 
-@Component(
+@component(
   selector: 'directive-consuming-injectable',
   template: '',
 )
@@ -83,13 +83,13 @@ class DirectiveConsumingInjectable {
       @Host() @Inject(InjectableService) this.injectable);
 }
 
-@Directive(
+@directive(
   selector: 'directive-providing-injectable',
   providers: [InjectableService],
 )
 class DirectiveProvidingInjectable {}
 
-@Component(
+@component(
   selector: 'provide-consume-injectable',
   template: '''
 <directive-providing-injectable>
@@ -105,7 +105,7 @@ class ProvideConsumeInjectableComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@Component(
+@component(
   selector: 'provides-injectable-in-view',
   template: '''
 <directive-consuming-injectable #consumer>
@@ -118,7 +118,7 @@ class ProvidesInjectableInViewComponent {
   DirectiveConsumingInjectable? consumer;
 }
 
-@Component(
+@component(
   selector: 'directive-containing-directive-consuming-an-injectable',
   template: '''
 <directive-consuming-injectable-unbounded>
@@ -130,7 +130,7 @@ class DirectiveContainingDirectiveConsumingAnInjectable {
   DirectiveConsumingInjectableUnbounded? directive;
 }
 
-@Component(
+@component(
   selector: 'directive-consuming-injectable-unbounded',
   template: '',
 )
@@ -143,7 +143,7 @@ class DirectiveConsumingInjectableUnbounded {
   }
 }
 
-@Component(
+@component(
   selector: 'provides-injectable-unbounded',
   template: '''
 <directive-providing-injectable>
@@ -169,7 +169,7 @@ class EventBus {
 
 const grandParentBus = EventBus(null, 'grandparent');
 
-@Directive(
+@directive(
   selector: 'grand-parent-providing-event-bus',
   providers: [
     Provider(EventBus, useValue: grandParentBus),
@@ -185,7 +185,7 @@ EventBus createParentBus(EventBus parentEventBus) {
   return EventBus(parentEventBus, 'parent');
 }
 
-@Component(
+@component(
   selector: 'parent-providing-event-bus',
   providers: [
     Provider(EventBus, useFactory: createParentBus, deps: [
@@ -205,7 +205,7 @@ class ParentProvidingEventBus {
   ParentProvidingEventBus(this.bus, @SkipSelf() this.grandParentBus);
 }
 
-@Directive(
+@directive(
   selector: 'child-consuming-event-bus',
 )
 class ChildConsumingEventBus {
@@ -214,7 +214,7 @@ class ChildConsumingEventBus {
   ChildConsumingEventBus(@SkipSelf() this.bus);
 }
 
-@Component(
+@component(
   selector: 'event-bus',
   template: '''
 <grand-parent-providing-event-bus>
@@ -233,16 +233,16 @@ class EventBusComponent {
   ParentProvidingEventBus? parent;
 }
 
-InjectableService createInjectableWithLogging(Injector injector) {
+InjectableService createInjectableWithLogging(injector injector) {
   injector.get(ComponentProvidingLoggingInjectable).created = true;
   return InjectableService();
 }
 
-@Component(
+@component(
   selector: 'component-providing-logging-injectable',
   providers: [
     Provider(InjectableService,
-        useFactory: createInjectableWithLogging, deps: [Injector])
+        useFactory: createInjectableWithLogging, deps: [injector])
   ],
   template: '<ng-content></ng-content>',
   visibility: Visibility.all,
@@ -251,7 +251,7 @@ class ComponentProvidingLoggingInjectable {
   bool created = false;
 }
 
-@Component(
+@component(
   selector: 'lazy-bindings',
   template: '''
 <component-providing-logging-injectable #providing>
@@ -271,13 +271,13 @@ class LazyBindingsComponent {
   ComponentProvidingLoggingInjectable? providing;
 }
 
-@Directive(
+@directive(
   selector: 'some-directive',
   visibility: Visibility.all,
 )
 class SomeDirective {}
 
-@Component(
+@component(
   selector: 'cmp-with-host',
   template: '<p>Component with an injected host</p>',
   directives: [SomeDirective],
@@ -288,7 +288,7 @@ class CompWithHost {
   CompWithHost(@Host() this.myHost);
 }
 
-@Component(
+@component(
   selector: 'injects-host',
   template:
       '<some-directive><cmp-with-host #cmp></cmp-with-host></some-directive>',
@@ -299,7 +299,7 @@ class InjectsHostComponent {
   CompWithHost? compWithHost;
 }
 
-@Component(
+@component(
   selector: 'injects-host-through-view-container',
   template: '''
 <some-directive>

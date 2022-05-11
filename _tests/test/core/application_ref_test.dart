@@ -17,7 +17,7 @@ void main() {
 
     appRef = internalCreateApplicationRef(
       ngZone,
-      Injector.map({ExceptionHandler: _NullExceptionHandler()}),
+      injector.map({ExceptionHandler: _NullExceptionHandler()}),
     );
 
     // Setup global variables that need to exist before using bootstrap.
@@ -117,7 +117,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'hello-component',
   template: 'Hello World',
 )

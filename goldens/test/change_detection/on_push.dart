@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     Child,
@@ -24,26 +24,26 @@ void main() {
     <child [name]="name"></child>
     <child-with-do-check [name]="name"></child-with-do-check>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class GoldenComponent {
   String name = deopt();
 }
 
-@Component(
+@component(
   selector: 'child',
   template: 'Name: {{name}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class Child {
   @Input()
   String? name;
 }
 
-@Component(
+@component(
   selector: 'child-with-do-check',
   template: 'Name: {{name}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class ChildWithDoCheck implements DoCheck {
   @Input()

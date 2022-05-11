@@ -73,7 +73,7 @@ class _UpdateStatementsVisitor
       if (CompileContext.current.emitNullSafeCode) {
         useSetAttributeIfImmutable = false;
       }
-      renderValue = renderValue!.conditional(o.literal(''), o.NULL_EXPR);
+      renderValue = renderValue!.conditional(o.literal(''), o.nullExpr);
     } else if (attributeBinding.securityContext ==
             TemplateSecurityContext.none &&
         !isInterpolation(bindingSource) &&
@@ -175,7 +175,7 @@ class _UpdateStatementsVisitor
           : currValExpr.callMethod('toString', []);
       final styleWithUnit = styleString.plus(o.literal(styleBinding.unit));
       styleValueExpr =
-          currValExpr.isBlank().conditional(o.NULL_EXPR, styleWithUnit);
+          currValExpr.isBlank().conditional(o.nullExpr, styleWithUnit);
     } else {
       styleValueExpr = bindingSource.isString
           ? currValExpr
@@ -271,7 +271,7 @@ class _UpdateStatementsVisitor
           [o.Expression? renderValue]) =>
       renderNode!.toWriteStmt(appViewInstance!
           .prop(directiveOutput.name)
-          .callMethod(o.BuiltinMethod.SubscribeObservable, [renderValue!],
+          .callMethod(o.BuiltinMethod.subscribeObservable, [renderValue!],
               checked: directiveOutput.isMockLike));
 
   @override

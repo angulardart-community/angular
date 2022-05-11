@@ -46,7 +46,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )
@@ -62,7 +62,7 @@ class CatchSynchronousErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )
@@ -78,7 +78,7 @@ class CatchAsynchronousErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )
@@ -98,7 +98,7 @@ class CatchConstructorErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )
@@ -120,7 +120,7 @@ class CatchConstructorAsyncErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<button (click)="throwError">Throw</button>',
 )
@@ -142,7 +142,7 @@ class CatchNativeEventSynchronousErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<button (click)="throwError">Throw</button>',
 )
@@ -164,7 +164,7 @@ class CatchNativeEventAsynchronousErrors {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )
@@ -185,7 +185,7 @@ class CatchOnInitErrors implements OnInit {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<child [trueToError]="value"></child>',
   directives: [ChildChangeDetectionError],
@@ -204,7 +204,7 @@ class CatchInChangeDetection {
   bool value = false;
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '',
 )
@@ -217,7 +217,7 @@ class ChildChangeDetectionError {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<h1>Hello {{name}}</h1>',
 )
@@ -226,7 +226,7 @@ class NoExceptionsSwallowedTest {
     final simpleHandler = _CapturingExceptionHandler();
     final fixture = await NgTestBed(
       ng.createNoExceptionsSwallowedTestFactory(),
-      rootInjector: (i) => Injector.map(
+      rootInjector: (i) => injector.map(
         {ExceptionHandler: simpleHandler},
         i,
       ),

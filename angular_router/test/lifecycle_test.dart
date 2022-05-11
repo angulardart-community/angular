@@ -375,7 +375,7 @@ const instanceIdsToken = OpaqueToken<Map<String, int>>();
 const lifecycleLogToken = OpaqueToken<List<String>>();
 
 Future<NgTestFixture<T>> setup<T extends Object>(
-  ComponentFactory<T> factory,
+  componentFactory<T> factory,
 ) async {
   final testBed = NgTestBed(factory).addInjector(fakeRoot);
   return testBed.create();
@@ -463,7 +463,7 @@ abstract class RouterLifecycleLogger
   }
 }
 
-@Component(
+@component(
   selector: 'first-child',
   template: '',
 )
@@ -480,7 +480,7 @@ class FirstChildComponent extends RouterLifecycleLogger {
   ) : super('$FirstChildComponent', instanceIds, lifecycleLog);
 }
 
-@Component(
+@component(
   selector: 'second-child',
   template: '',
 )
@@ -496,7 +496,7 @@ class SecondChildComponent extends RouterLifecycleLogger {
   ) : super('$SecondChildComponent', instanceIds, lifecycleLog);
 }
 
-@Component(
+@component(
   selector: 'first-child',
   template: '',
 )
@@ -519,7 +519,7 @@ class FirstReusableChildComponent extends RouterLifecycleLogger {
   }
 }
 
-@Component(
+@component(
   selector: 'cant-navigate-child',
   template: '',
 )
@@ -542,7 +542,7 @@ class CantNavigateChildComponent extends RouterLifecycleLogger {
   }
 }
 
-@Component(
+@component(
   selector: 'parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -565,7 +565,7 @@ class ParentComponent extends RouterLifecycleLogger {
   ) : super('$ParentComponent', instanceIds, lifecycleLog);
 }
 
-@Component(
+@component(
   selector: 'reusable-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -594,7 +594,7 @@ class ReusableParentComponent extends RouterLifecycleLogger {
   }
 }
 
-@Component(
+@component(
   selector: 'first-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -616,7 +616,7 @@ class FirstParentComponent extends RouterLifecycleLogger {
   ) : super('$FirstParentComponent', instanceIds, lifecycleLog);
 }
 
-@Component(
+@component(
   selector: 'second-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -637,7 +637,7 @@ class SecondParentComponent extends RouterLifecycleLogger {
   ) : super('$SecondParentComponent', instanceIds, lifecycleLog);
 }
 
-@Component(
+@component(
   selector: 'first-reusable-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -665,7 +665,7 @@ class FirstReusableParentComponent extends RouterLifecycleLogger {
   }
 }
 
-@Component(
+@component(
   selector: 'test-navigate-to-sibling',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -681,7 +681,7 @@ class TestNavigateToSibling {
   TestNavigateToSibling(@lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-to-sibling-from-reusable-child',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -698,7 +698,7 @@ class TestNavigateToSiblingFromReusableChild {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-to-nested-sibling',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -714,7 +714,7 @@ class TestNavigateToNestedSibling {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-to-nested-sibling-with-shared-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -730,7 +730,7 @@ class TestNavigateToNestedSiblingWithSharedParent {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-between-nested-routes',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -747,7 +747,7 @@ class TestNavigateBetweenNestedRoutes {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-between-nested-routes-with-reusable-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -764,7 +764,7 @@ class TestNavigateBetweenNestedRoutesWithReusableParent {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-navigate-between-nested-routes-with-same-reusable-parent',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -788,7 +788,7 @@ class TestNavigateBetweenNestedRoutesWithSameReusableParent {
       @lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-prevent-navigation',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],
@@ -804,7 +804,7 @@ class TestPreventNavigation {
   TestPreventNavigation(@lifecycleLogToken this.lifecycleLog, this.router);
 }
 
-@Component(
+@component(
   selector: 'test-redirect-to-sibiling',
   template: '<router-outlet [routes]="routes"></router-outlet>',
   directives: [RouterOutlet],

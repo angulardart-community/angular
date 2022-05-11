@@ -15,7 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     MaterialAutoSuggestInputComponent,
@@ -44,14 +44,14 @@ void main() {
   ''',
 )
 class GoldenComponent {
-  GoldenComponent(Injector i) {
+  GoldenComponent(injector i) {
     deopt(i.get);
   }
 }
 
 abstract class ControlContainer {}
 
-@Directive(
+@directive(
   selector: 'form',
   providers: [
     ExistingProvider(ControlContainer, NgForm),
@@ -62,7 +62,7 @@ class NgForm implements ControlContainer {}
 
 abstract class NgControl {}
 
-@Directive(
+@directive(
   selector: '[ngControl]',
   providers: [
     ExistingProvider(NgControl, NgControlName),
@@ -70,7 +70,7 @@ abstract class NgControl {}
 )
 class NgControlName implements NgControl {}
 
-@Directive(
+@directive(
   selector: '[ngControlGroup]',
   providers: [
     ExistingProvider(ControlContainer, NgControlGroup),
@@ -84,7 +84,7 @@ const ngValidators = MultiToken<Validator>();
 
 class DeferredValidator implements Validator {}
 
-@Directive(
+@directive(
   selector: '[required][ngControl]',
   providers: [
     ExistingProvider.forToken(ngValidators, RequiredValidator),
@@ -96,7 +96,7 @@ abstract class HasRenderer {}
 
 abstract class SelectionContainer {}
 
-@Component(
+@component(
   selector: 'material-auto-suggest-input',
   providers: [
     ExistingProvider(HasDisabled, MaterialAutoSuggestInputComponent),
@@ -109,7 +109,7 @@ abstract class SelectionContainer {}
 )
 class MaterialAutoSuggestInputComponent {}
 
-@Component(
+@component(
   selector: 'material-icon',
   template: '',
 )
@@ -123,7 +123,7 @@ abstract class HasDisabled {}
 
 abstract class ReferenceDirective {}
 
-@Directive(
+@directive(
   selector: 'material-input',
   visibility: Visibility.all,
 )
@@ -137,7 +137,7 @@ class ServiceB implements Service {}
 
 const luckyNumber = OpaqueToken<int>('luckyNumber');
 
-@Component(
+@component(
   selector: 'material-input',
   providers: [
     ClassProvider(Service, useClass: ServiceA),

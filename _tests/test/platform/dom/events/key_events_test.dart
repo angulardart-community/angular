@@ -104,7 +104,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'keydown-listener',
   template: '<div></div>',
 )
@@ -123,7 +123,7 @@ class KeydownListenerComponent {
   void onKeyDownShiftA() => receivedKeydownShiftA = true;
 }
 
-@Component(
+@component(
   selector: 'keypress-listener',
   template: '<div></div>',
 )
@@ -134,7 +134,7 @@ class KeypressListenerComponent {
   bool receivedKeypress = false;
 }
 
-@Component(
+@component(
   selector: 'keyup-listener',
   template: '<div></div>',
 )
@@ -153,7 +153,7 @@ class KeyupListenerComponent {
   bool receivedKeyupCtrlEnter = false;
 }
 
-@Component(
+@component(
   selector: 'modifiers-listener',
   template: '<div></div>',
 )

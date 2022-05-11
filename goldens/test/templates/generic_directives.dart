@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     UsesUntypedComp,
@@ -44,7 +44,7 @@ void main() {
 class GoldenComponent {}
 
 /// A component with no generic type parameters.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -54,7 +54,7 @@ class UntypedComp {
 }
 
 /// A component that uses [UntypedComp].
-@Component(
+@component(
   selector: 'uses-unyped-comp',
   directives: [
     UntypedComp,
@@ -66,7 +66,7 @@ class UsesUntypedComp {
 }
 
 /// A component with a single generic type parameter.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -76,7 +76,7 @@ class GenericComp<T> {
 }
 
 /// A component that uses [GenericComp].
-@Component(
+@component(
   selector: 'uses-generic-comp',
   directives: [
     GenericComp,
@@ -91,7 +91,7 @@ class UsesGenericComp {
 }
 
 // A generic component that uses [GenericComp]
-@Component(
+@component(
   selector: 'uses-generic-comp-generic',
   directives: [
     GenericComp,
@@ -108,7 +108,7 @@ class UsesGenericCompGeneric<E> {
 }
 
 /// A component with two type parameters, each with a separate `@Input()`.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -121,7 +121,7 @@ class MappingComp1<K, V> {
 }
 
 /// A component that uses [MappingComp1].
-@Component(
+@component(
   selector: 'uses-mapping-comp-1',
   directives: [
     MappingComp1,
@@ -137,7 +137,7 @@ class UsesMappingComp1 {
 }
 
 /// A component with two type parameters, but with a single `@Input()`.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -147,7 +147,7 @@ class MappingComp2<K, V> {
 }
 
 /// A component that uses [MappingComp2].
-@Component(
+@component(
   selector: 'uses-mapping-comp-2',
   directives: [
     MappingComp2,
@@ -162,7 +162,7 @@ class UsesMappingComp2 {
 }
 
 /// A component with a type parameter with bounds other than `dynamic`.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -172,7 +172,7 @@ class BoundComp<T extends num> {
 }
 
 /// A component that uses [BoundComp].
-@Component(
+@component(
   selector: 'uses-bound-comp-with-bounds',
   directives: [
     BoundComp,
@@ -185,7 +185,7 @@ class UsesBoundCompWithBounds {
 }
 
 /// A component that uses [BoundComp] with an explicit type.
-@Component(
+@component(
   selector: 'comp',
   directives: [
     BoundComp,
@@ -197,7 +197,7 @@ class UsesBoundComp {
 }
 
 /// A component with a type parameter that is bound by another one.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -210,7 +210,7 @@ class SelfBoundComp<A, B extends A> {
 }
 
 /// A component that uses [SelfBoundComp].
-@Component(
+@component(
   selector: 'comp',
   directives: [
     SelfBoundComp,
@@ -223,7 +223,7 @@ class UsesSelfBoundComp {
 }
 
 /// A component that uses function type signatures.
-@Component(
+@component(
   selector: 'comp',
   template: '',
 )
@@ -233,7 +233,7 @@ class FunctionTypeComp<F> {
 }
 
 /// A component that uses [FunctionTypeComp].
-@Component(
+@component(
   selector: 'uses-function-type-comp',
   directives: [
     FunctionTypeComp,
@@ -251,7 +251,7 @@ class UsesFunctionTypeComp {
 }
 
 /// A component that has a child component that needs its generic type.
-@Component(
+@component(
   selector: 'parent',
   directives: [
     NestedChildComp,
@@ -277,7 +277,7 @@ class NestedParentComp<T> {
   Iterable<T>? moreInputs;
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '',
 )
@@ -287,7 +287,7 @@ class NestedChildComp<T> {
 }
 
 /// A component that uses [NestedParentComp].
-@Component(
+@component(
   selector: 'uses-nested-parent-comp',
   directives: [
     NestedParentComp,
@@ -309,7 +309,7 @@ class UsesNestedParentComp {
   List<int> moreBindings = deopt();
 }
 
-@Component(
+@component(
   selector: 'uses-multiple-types-comp',
   directives: [
     GenericComp,
@@ -328,14 +328,14 @@ class UsesMultipleTypesComp {
   int index = deopt();
 }
 
-@Directive(selector: '[generic]')
+@directive(selector: '[generic]')
 class GenericDirective<T extends String> {
   @Input()
   @HostBinding('attr.a')
   T? input;
 }
 
-@Component(
+@component(
   selector: 'uses-generic-change-detector',
   directives: [
     GenericDirective,

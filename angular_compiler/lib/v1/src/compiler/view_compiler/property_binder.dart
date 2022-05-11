@@ -80,7 +80,7 @@ void bindRenderText(
     binding,
     BoundValueConverter.forView(view!),
     view.detectChangesRenderPropertiesMethod,
-    o.THIS_EXPR,
+    o.thisExpr,
     compileNode.renderNode,
     false,
   );
@@ -89,7 +89,7 @@ void bindRenderText(
 void bindRenderInputs(
     List<ir.Binding> bindings, CompileElement compileElement) {
   var appViewInstance = compileElement.component == null
-      ? o.THIS_EXPR
+      ? o.thisExpr
       : compileElement.componentView;
   var renderNode = compileElement.renderNode;
   var view = compileElement.view!;
@@ -328,12 +328,12 @@ void _bind(
   }
   var previousValueField = storage.allocate(
     fieldExpr.name,
-    modifiers: const [o.StmtModifier.Private],
-    outputType: o.OBJECT_TYPE.asNullable(),
+    modifiers: const [o.StmtModifier.private],
+    outputType: o.objectType.asNullable(),
   );
   method
     ..addStmt(
-      currValExpr.set(checkExpression).toDeclStmt(null, [o.StmtModifier.Final]),
+      currValExpr.set(checkExpression).toDeclStmt(null, [o.StmtModifier.finalStmt]),
     )
     ..addStmt(
       o.IfStmt(
@@ -360,7 +360,7 @@ void _bindLiteral(
     String fieldName,
     CompileMethod method,
     bool isNullable) {
-  if (checkExpression == o.NULL_EXPR ||
+  if (checkExpression == o.nullExpr ||
       (checkExpression is o.LiteralExpr && checkExpression.value == null)) {
     // In this case, there is no transition, since change detection variables
     // are initialized to null.
@@ -372,10 +372,10 @@ void _bindLiteral(
       .map(
           (stmt) => o.replaceVarInStatement(currValName, checkExpression, stmt))
       // Replace all 'expr_X' with 'null'
-      .map((stmt) => o.replaceVarInStatement(fieldName, o.NULL_EXPR, stmt));
+      .map((stmt) => o.replaceVarInStatement(fieldName, o.nullExpr, stmt));
   if (isNullable) {
     method.addStmt(
-      o.IfStmt(checkExpression.notEquals(o.NULL_EXPR), mappedActions.toList()),
+      o.IfStmt(checkExpression.notEquals(o.nullExpr), mappedActions.toList()),
     );
   } else {
     method.addStmts(mappedActions.toList());
@@ -423,7 +423,7 @@ void bindDirectiveHostProps(
       [
         compileElement.component != null
             ? compileElement.componentView!
-            : o.THIS_EXPR,
+            : o.thisExpr,
         compileElement.renderNode.toReadExpr(),
       ],
     );

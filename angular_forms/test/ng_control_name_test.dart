@@ -70,7 +70,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'ng-control-name-test',
   directives: [
     formDirectives,
@@ -102,7 +102,7 @@ class NgControlNameTest {
   Control get controlModel => formModel.controls['login'] as Control;
 }
 
-@Component(
+@component(
   selector: 'ng-control-name-accessor-test',
   directives: [
     formDirectives,
@@ -122,7 +122,7 @@ class NgControlNameInitTest {
   TestAccessor? accessor;
 }
 
-@Directive(
+@directive(
   selector: '[test-accessor]',
   providers: [
     ExistingProvider.forToken(

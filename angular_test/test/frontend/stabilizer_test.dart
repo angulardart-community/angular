@@ -15,7 +15,7 @@ void main() {
   }, skip: 'b/140626607');
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )

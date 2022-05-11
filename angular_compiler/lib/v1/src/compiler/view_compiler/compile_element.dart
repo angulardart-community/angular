@@ -103,21 +103,21 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         final token = reference.value;
         referenceTokens[reference.name] = token;
         _publishesTemplateRef = _publishesTemplateRef ||
-            token != null && token.equalsTo(Identifiers.TemplateRefToken);
+            token != null && token.equalsTo(Identifiers.templateRefToken);
       }
     }
 
     // Create new ElementRef(_el_#) expression and provide as instance.
     elementRef = o
-        .importExpr(Identifiers.ElementRef)
+        .importExpr(Identifiers.elementRef)
         .instantiate([renderNode.toReadExpr()]);
 
-    _providers.add(Identifiers.ElementRefToken, elementRef);
-    _providers.add(Identifiers.ElementToken, renderNode.toReadExpr());
-    _providers.add(Identifiers.HtmlElementToken, renderNode.toReadExpr());
+    _providers.add(Identifiers.elementRefToken, elementRef);
+    _providers.add(Identifiers.elementToken, renderNode.toReadExpr());
+    _providers.add(Identifiers.htmlElementToken, renderNode.toReadExpr());
     var readInjectorExpr =
         o.InvokeMemberMethodExpr('injector', [o.literal(this.nodeIndex)]);
-    _providers.add(Identifiers.InjectorToken, readInjectorExpr);
+    _providers.add(Identifiers.injectorToken, readInjectorExpr);
 
     if (hasViewContainer || hasEmbeddedView) {
       appViewContainer = view!.createViewContainer(
@@ -126,7 +126,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         !hasViewContainer,
         isRootElement ? null : parent!.nodeIndex,
       );
-      _providers.add(Identifiers.ViewContainerToken, appViewContainer!);
+      _providers.add(Identifiers.viewContainerToken, appViewContainer!);
     }
 
     // This logic was copied from the setter for `componentView`, which was
@@ -163,15 +163,15 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
     }
     embeddedView = view;
     var createTemplateRefExpr = o
-        .importExpr(Identifiers.TemplateRef)
+        .importExpr(Identifiers.templateRef)
         .instantiate([appViewContainer!, view.viewFactory],
-            type: o.importType(Identifiers.TemplateRef));
+            type: o.importType(Identifiers.templateRef));
     var provider = CompileProviderMetadata(
-        token: identifierToken(Identifiers.TemplateRef),
+        token: identifierToken(Identifiers.templateRef),
         useValue: createTemplateRefExpr);
 
     final isReferencedOutsideBuild = _publishesTemplateRef ||
-        _getQueriesFor(Identifiers.TemplateRefToken).isNotEmpty;
+        _getQueriesFor(Identifiers.templateRefToken).isNotEmpty;
     // Add TemplateRef as first provider as it does not have deps on other
     // providers
     _resolvedProvidersArray.insert(
@@ -180,7 +180,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         provider.token!,
         false,
         [provider],
-        ProviderAstType.Builtin,
+        ProviderAstType.builtin,
         sourceAst!.sourceSpan,
         eager: true,
         isReferencedOutsideBuild: isReferencedOutsideBuild,
@@ -190,19 +190,19 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
 
   void beforeChildren() {
     if (hasViewContainer &&
-        !_providers.containsLocalProvider(Identifiers.ViewContainerRefToken)) {
-      _providers.add(Identifiers.ViewContainerRefToken, appViewContainer!);
+        !_providers.containsLocalProvider(Identifiers.viewContainerRefToken)) {
+      _providers.add(Identifiers.viewContainerRefToken, appViewContainer!);
     }
 
     // Access builtins with special visibility.
     _providers.add(
-        Identifiers.ChangeDetectorRefToken, componentView ?? o.THIS_EXPR);
+        Identifiers.changeDetectorRefToken, componentView ?? o.thisExpr);
 
     // ComponentLoader is currently just an alias for ViewContainerRef with
     // a smaller API that is also usable outside of the context of a
     // structural directive.
     if (appViewContainer != null) {
-      _providers.add(Identifiers.ComponentLoaderToken, appViewContainer!);
+      _providers.add(Identifiers.componentLoaderToken, appViewContainer!);
     }
 
     _providers.addDirectiveProviders(_resolvedProvidersArray, _directives);
@@ -308,7 +308,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
 
       final expression = _providers.get(token)!.build();
       final instance = ProviderInstance(tokens, expression);
-      if (provider.providerType == ProviderAstType.PrivateService) {
+      if (provider.providerType == ProviderAstType.privateService) {
         viewProviders.add(instance);
       } else {
         providers.add(instance);
@@ -390,7 +390,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
 
     o.Expression? changeDetectorRefExpr;
 
-    if (resolvedProvider.providerType == ProviderAstType.Component) {
+    if (resolvedProvider.providerType == ProviderAstType.component) {
       if (directiveMetadata?.changeDetection ==
           ChangeDetectionStrategy.OnPush) {
         changeDetectorRefExpr = componentView;
@@ -408,7 +408,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
     );
 
     /// Accumulate directive instances on this element for later use.
-    if (resolvedProvider.providerType == ProviderAstType.Directive) {
+    if (resolvedProvider.providerType == ProviderAstType.directive) {
       _directiveInstances.add(providerExpr);
     }
 

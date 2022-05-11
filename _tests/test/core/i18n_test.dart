@@ -109,19 +109,19 @@ void main() {
 
 const issuesLink = 'https://github.com/angulardart/angular/issues';
 
-@Component(
+@component(
   selector: 'test',
   template: '<p @i18n="description">A message.</p>',
 )
 class TestI18nNode {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<img alt="A puppy!" @i18n:alt="description">',
 )
 class TestI18nAttribute {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <p @i18n="description">
@@ -132,7 +132,7 @@ class TestI18nAttribute {}
 )
 class TestI18nNodeWithHtml {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <p @i18n="description">
@@ -142,7 +142,7 @@ class TestI18nNodeWithHtml {}
 )
 class TestI18nNodeWithUnsafeHtml {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <p @i18n="description">
@@ -152,7 +152,7 @@ class TestI18nNodeWithUnsafeHtml {}
 )
 class TestI18nNodeWithEscapedHtmlCharacters {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <p @i18n="description">
@@ -162,7 +162,7 @@ class TestI18nNodeWithEscapedHtmlCharacters {}
 )
 class TestI18nNodeWithHtmlAndEscapedHtmlCharacters {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <p
@@ -182,7 +182,7 @@ class TestI18nNodeWithHtmlAndEscapedHtmlCharacters {}
 )
 class TestI18nParameters {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template #message @i18n="Template message description">
@@ -194,13 +194,13 @@ class TestI18nParameters {}
 )
 class TestI18nTemplate {
   @ViewChild('message')
-  TemplateRef? messageTemplate;
+  templateRef? messageTemplate;
 
-  @ViewChild('container', read: ViewContainerRef)
-  ViewContainerRef? viewContainer;
+  @ViewChild('container', read: viewContainerRef)
+  viewContainerRef? viewContainer;
 }
 
-@Component(
+@component(
   selector: 'injects-message',
   template: '',
 )
@@ -210,7 +210,7 @@ class InjectsMessage {
   InjectsMessage(@Attribute('message') this.message);
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <injects-message
@@ -225,7 +225,7 @@ class TestInjectI18nAttribute {
   InjectsMessage? injectsMessage;
 }
 
-@Component(
+@component(
   selector: 'greeting',
   template: '',
 )
@@ -234,7 +234,7 @@ class GreetingComponent {
   String? message;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <greeting
@@ -249,7 +249,7 @@ class TestExplicitI18nInput {
   GreetingComponent? greeting;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <greeting
@@ -264,9 +264,9 @@ class TestImplicitI18nInput {
   GreetingComponent? greeting;
 }
 
-@Directive(selector: '[message]')
+@directive(selector: '[message]')
 class MessageDirective {
-  MessageDirective(TemplateRef templateRef, ViewContainerRef viewContainerRef) {
+  MessageDirective(templateRef templateRef, viewContainerRef viewContainerRef) {
     viewContainerRef.createEmbeddedView(templateRef);
   }
 
@@ -274,7 +274,7 @@ class MessageDirective {
   String? message;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <template

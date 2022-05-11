@@ -112,42 +112,42 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'interpolate-constant-test',
   template: '<div>{{myConst}}</div>',
   exports: [myConst],
 )
 class InterpolateConstantTest {}
 
-@Component(
+@component(
   selector: 'interpolate-static-field-test',
   template: '<div>{{MyClass.staticField}}</div>',
   exports: [MyClass],
 )
 class InterpolateStaticFieldTest {}
 
-@Component(
+@component(
   selector: 'interpolate-enum-test',
   template: '<div>{{MyEnum.a}}</div>',
   exports: [MyEnum],
 )
 class InterpolateEnumTest {}
 
-@Component(
+@component(
   selector: 'interpolate-top-level-function-test',
   template: '<div>{{myFunc("hello")}}</div>',
   exports: [myFunc],
 )
 class InterpolateTopLevelFunctionTest {}
 
-@Component(
+@component(
   selector: 'interpolate-static-function-test',
   template: '<div>{{MyClass.staticFunc("hello")}}</div>',
   exports: [MyClass],
 )
 class InterpolateStaticFunctionTest {}
 
-@Component(
+@component(
   selector: 'static-ng-for-test',
   template: '<div *ngFor="let item of myList">{{item}}</div>',
   exports: [myList],
@@ -155,21 +155,21 @@ class InterpolateStaticFunctionTest {}
 )
 class StaticNgForTest {}
 
-@Component(
+@component(
   selector: 'static-event-handler-test',
   template: '<div (click)="staticClickHandler()"></div>',
   exports: [staticClickHandler],
 )
 class StaticEventHandlerTest {}
 
-@Component(
+@component(
   selector: 'static-event-handler-target-test',
   template: '<div (click)="MyClass.clickHandled = true"></div>',
   exports: [MyClass],
 )
 class StaticEventHandlerTargetTest {}
 
-@Component(
+@component(
   selector: 'static-event-handle-arg-test',
   template: '<div (click)="handleClick(myList)"></div>',
   exports: [myList],
@@ -182,14 +182,14 @@ class StaticEventHandlerArgTest {
   }
 }
 
-@Component(
+@component(
   selector: 'static-library-prefix-test',
   template: '<p>{{lib.myConst}}</p>',
   exports: [lib.myConst],
 )
 class StaticLibraryPrefixTest {}
 
-@Component(
+@component(
   selector: 'self-refer-test',
   template: '<p>{{SelfReferTest.staticField}}</p>',
 )
@@ -197,7 +197,7 @@ class SelfReferTest {
   static String staticField = 'hello';
 }
 
-@Component(
+@component(
   selector: 'self-refer-host-binding-test',
   template: '',
 )

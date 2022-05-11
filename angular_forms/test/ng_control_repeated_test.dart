@@ -20,7 +20,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'root',
   directives: [
     formDirectives,

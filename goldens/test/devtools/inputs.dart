@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     HasInputComponent,
@@ -41,7 +41,7 @@ class GoldenComponent {
   var mutableValue = deopt<String>();
 }
 
-@Component(
+@component(
   selector: 'has-input',
   template: '',
 )
@@ -52,7 +52,7 @@ class HasInputComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'has-inputs',
   template: '',
 )
@@ -68,7 +68,7 @@ class HasInputsComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'has-renamed-input',
   template: '',
 )

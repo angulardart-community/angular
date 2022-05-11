@@ -94,7 +94,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'switch-when-test',
   directives: [NgSwitch, NgSwitchWhen],
   template: '''<div>
@@ -107,7 +107,7 @@ class SwitchWhenTest {
   String? switchValue;
 }
 
-@Component(
+@component(
   selector: 'switch-default-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -120,7 +120,7 @@ class SwitchDefaultTest {
   String? switchValue;
 }
 
-@Component(
+@component(
   selector: 'switch-multiple-when-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -137,7 +137,7 @@ class SwitchMultipleWhenTest {
   String? switchValue;
 }
 
-@Component(
+@component(
   selector: 'switch-when-value-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''<div>
@@ -153,7 +153,7 @@ class SwitchWhenValueTest {
   String? when2;
 }
 
-@Component(
+@component(
   selector: 'switch-equal-strings-test',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault],
   template: '''

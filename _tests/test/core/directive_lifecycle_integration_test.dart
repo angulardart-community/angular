@@ -16,7 +16,7 @@ void main() {
 
       var testBed = NgTestBed(
         ng.createMyCompFactory(),
-        rootInjector: (parent) => Injector.map({Log: log}, parent),
+        rootInjector: (parent) => injector.map({Log: log}, parent),
       );
       fixture = await testBed.create();
     });
@@ -59,7 +59,7 @@ class Log {
   String toString() => logItems.join('; ');
 }
 
-@Directive(
+@directive(
   selector: '[lifecycle-dir]',
 )
 class LifecycleDir implements DoCheck {
@@ -71,7 +71,7 @@ class LifecycleDir implements DoCheck {
   }
 }
 
-@Component(
+@component(
   selector: 'lifecycle',
   template: '<div lifecycle-dir></div>',
   directives: [LifecycleDir],
@@ -127,7 +127,7 @@ class LifecycleCmp
   }
 }
 
-@Component(
+@component(
   selector: 'my-comp',
   template: '<lifecycle [field]="123"></lifecycle>',
   directives: [LifecycleCmp],

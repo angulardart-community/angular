@@ -71,7 +71,7 @@ class Directive implements IRNode {
 
   /// Whether the directive requires a change detector class to be generated.
   ///
-  /// [DirectiveChangeDetector] classes should only be generated if they
+  /// [directiveChangeDetector] classes should only be generated if they
   /// reduce the amount of duplicate code. Therefore we check for the presence
   /// of host bindings to move from each call site to a single method.
   bool get requiresDirectiveChangeDetector => hostProperties!.isNotEmpty;
@@ -347,7 +347,7 @@ class ClassBinding implements BindingTarget {
   /// When a class name is specified, then the [BindingSource] is the actual
   /// class string to be set.
   @override
-  o.OutputType get type => name == null ? o.STRING_TYPE : o.BOOL_TYPE;
+  o.OutputType get type => name == null ? o.stringType : o.boolType;
 }
 
 class TabIndexBinding implements BindingTarget {

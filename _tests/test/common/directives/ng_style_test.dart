@@ -71,7 +71,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'map-update-test',
   directives: [NgStyle],
   template: '<div [ngStyle]="map"></div>',
@@ -80,7 +80,7 @@ class MapUpdateTest {
   Map<String, String>? map;
 }
 
-@Component(
+@component(
   selector: 'map-update-with-default-test',
   directives: [NgStyle],
   template: '<div style="font-size: 12px" [ngStyle]="map"></div>',
@@ -89,7 +89,7 @@ class MapUpdateWithDefaultTest {
   Map<String, String>? map;
 }
 
-@Component(
+@component(
   selector: 'map-update-with-style-expr-test',
   directives: [NgStyle],
   template: '<div [style.font-size.px]="12" [ngStyle]="map"></div>',

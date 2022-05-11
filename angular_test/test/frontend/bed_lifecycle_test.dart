@@ -62,7 +62,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '{{value}}',
 )
@@ -70,7 +70,7 @@ class AngularLifecycle {
   String value = '';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildWithLifeCycles],
   template: '<child [name]="name"></child>',
@@ -82,7 +82,7 @@ class NgAfterChangesInitOrder {
   ChildWithLifeCycles? child;
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '',
   visibility: Visibility.all,

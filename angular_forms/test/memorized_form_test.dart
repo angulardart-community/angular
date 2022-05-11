@@ -133,7 +133,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test-control-component',
   directives: [MemorizedForm, formDirectives, NgIf],
   template: r'''
@@ -152,7 +152,7 @@ class TestControlComponent {
   NgForm? form;
 }
 
-@Component(
+@component(
   selector: 'test-group-component',
   directives: [MemorizedForm, formDirectives, NgIf],
   template: r'''

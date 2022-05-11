@@ -46,19 +46,19 @@ void main() {
   });
 }
 
-@Directive(
+@directive(
   selector: '[some-viewport]',
 )
 class SomeViewport {
-  final ViewContainerRef container;
+  final viewContainerRef container;
 
-  SomeViewport(this.container, TemplateRef templateRef) {
+  SomeViewport(this.container, templateRef templateRef) {
     container.createEmbeddedView(templateRef).setLocal('some-tmpl', 'hello');
     container.createEmbeddedView(templateRef).setLocal('some-tmpl', 'again');
   }
 }
 
-@Component(
+@component(
   selector: 'template-directive',
   template:
       '<template some-viewport let-x="some-tmpl"><div>{{x}}</div></template>',
@@ -68,7 +68,7 @@ class SomeViewport {
 )
 class TemplateDirectiveComponent {}
 
-@Component(
+@component(
   selector: 'destroy-parent-view',
   template: '<div *ngIf="visible">'
       '<template some-viewport let-x="someTmpl"><span>{{x}}</span></template>'
@@ -85,26 +85,26 @@ class DestroyParentViewComponent {
   SomeViewport? viewport;
 }
 
-@Component(
+@component(
   selector: 'empty-template',
   template: '<template></template>',
 )
 class EmptyTemplateComponent {}
 
-@Directive(
+@directive(
   selector: '[toolbarpart]',
 )
 class ToolbarPart {
-  final TemplateRef templateRef;
+  final templateRef templateRef;
 
   ToolbarPart(this.templateRef);
 }
 
-@Directive(
+@directive(
   selector: '[toolbarVc]',
 )
 class ToolbarViewContainer {
-  final ViewContainerRef vc;
+  final viewContainerRef vc;
 
   ToolbarViewContainer(this.vc);
 
@@ -115,7 +115,7 @@ class ToolbarViewContainer {
   }
 }
 
-@Component(
+@component(
   selector: 'toolbar',
   template: '<div *ngFor="let part of query" [toolbarVc]="part"></div>',
   directives: [
@@ -130,13 +130,13 @@ class ToolbarComponent {
   String prop = 'hello world';
 }
 
-@Directive(
+@directive(
   selector: 'some-directive',
   visibility: Visibility.all,
 )
 class SomeDirective {}
 
-@Component(
+@component(
   selector: 'cmp-with-host',
   template: '<p>Component with an injected host</p>',
   directives: [SomeDirective],
@@ -147,7 +147,7 @@ class CompWithHost {
   CompWithHost(@Host() this.myHost);
 }
 
-@Component(
+@component(
   selector: 'template-ref-transplant',
   template: '<some-directive><toolbar>'
       '<template toolbarpart let-toolbarProp="toolbarProp">'

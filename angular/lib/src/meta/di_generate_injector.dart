@@ -2,7 +2,7 @@ import 'package:meta/meta_meta.dart';
 
 import 'di_modules.dart';
 
-/// Annotates a method to generate an [Injector] factory at compile-time.
+/// Annotates a method to generate an [injector] factory at compile-time.
 ///
 /// Using `@GenerateInjector` is conceptually similar to using `@Component` or
 /// `@Directive` with a `providers: const [ ... ]` argument, or to creating an
@@ -26,7 +26,7 @@ class GenerateInjector {
 
   const GenerateInjector(this._providersOrModules);
 
-  /// Generate an [Injector] from [Module]s instead of untyped lists.
+  /// Generate an [injector] from [Module]s instead of untyped lists.
   const factory GenerateInjector.fromModules(
     List<Module> modules,
   ) = GenerateInjector;

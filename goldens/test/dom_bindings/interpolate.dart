@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     SimpleStringInterpolate,
@@ -51,7 +51,7 @@ class GoldenComponent {
   late Object anything;
 }
 
-@Component(
+@component(
   selector: 'simple-string',
   template: '{{value}}',
 )
@@ -60,7 +60,7 @@ class SimpleStringInterpolate {
   String? value;
 }
 
-@Component(
+@component(
   selector: 'simple-unknown',
   template: '{{value}}',
 )
@@ -69,7 +69,7 @@ class SimpleUnknownInterpolate {
   Object? value;
 }
 
-@Component(
+@component(
   selector: 'known-finals',
   template: '''
     <span>{{aConstString}}</span>
@@ -83,7 +83,7 @@ class KnownFinalValuesInterpolate {
   static final aFinalNumber = 3;
 }
 
-@Component(
+@component(
   selector: 'adjacency',
   template: '''
     <span>{{greeting}} {{place}}!</span>
@@ -96,7 +96,7 @@ class AdjacentInterpolate {
   String name = deopt();
 }
 
-@Component(
+@component(
   selector: 'literals',
   template: '''
     <span>{{"Hello"}} {{"World"}}!</span>
@@ -105,7 +105,7 @@ class AdjacentInterpolate {
 )
 class LiteralsInterpolate {}
 
-@Component(
+@component(
   selector: 'property',
   template: '''
     <span title="{{title1}} {{title2}}"></span>
@@ -116,7 +116,7 @@ class PropertyInterpolate {
   String title2 = deopt();
 }
 
-@Component(
+@component(
   selector: 'inputs',
   directives: [
     ChildComponent,
@@ -130,7 +130,7 @@ class InputInterpolate {
   String b = deopt();
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '',
 )
@@ -141,7 +141,7 @@ class ChildComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'max-interpolate-limit',
   template: '''
     <span>
@@ -188,7 +188,7 @@ class MaximumInterpolateLimit {
   static Object hide(Object a) => a;
 }
 
-@Component(
+@component(
   selector: 'null-checked',
   template: '''
     {{maybeNull ?? ''}}

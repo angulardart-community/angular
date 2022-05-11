@@ -10,7 +10,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     PreserveWhitespace,
@@ -23,7 +23,7 @@ void main() {
 )
 class GoldenComponent {}
 
-@Component(
+@component(
   selector: 'preserve-whitespace-true',
   template: r'''
     <div>
@@ -40,7 +40,7 @@ class GoldenComponent {}
 )
 class PreserveWhitespace {}
 
-@Component(
+@component(
   selector: 'preserve-whitespace-false',
   template: r'''
     <div>

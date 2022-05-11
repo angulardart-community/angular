@@ -216,7 +216,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'non-bound-interpolation-test',
   template: '<simple>{{text}}</simple>',
   directives: [NonBoundInterpolationChild],
@@ -225,7 +225,7 @@ class NonBoundInterpolationTest {
   String text = '';
 }
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE('
       '<div><ng-content></ng-content></div>'
@@ -235,33 +235,33 @@ class NonBoundInterpolationChild {
   String text = '';
 }
 
-@Component(
+@component(
   selector: 'project-component-test',
   template: '<simple><other></other></simple>',
   directives: [ProjectComponentSimple, ProjectComponentOther],
 )
 class ProjectComponentTest {}
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE({{0}}|<ng-content></ng-content>|{{2}})',
 )
 class ProjectComponentSimple {}
 
-@Component(
+@component(
   selector: 'other',
   template: '{{1}}',
 )
 class ProjectComponentOther {}
 
-@Component(
+@component(
   selector: 'no-light-dom-test',
   template: '<empty>A</empty>',
   directives: [Empty],
 )
 class NoLightDomTest {}
 
-@Component(
+@component(
   selector: 'multiple-content-tags-test',
   template: '<multiple-content-tags>'
       '<div>B</div>'
@@ -272,7 +272,7 @@ class NoLightDomTest {}
 )
 class MultipleContentTagsTest {}
 
-@Component(
+@component(
   selector: 'only-direct-children-test',
   template: '<multiple-content-tags>'
       '<div>B<div class="left">A</div></div>'
@@ -282,7 +282,7 @@ class MultipleContentTagsTest {}
 )
 class OnlyDirectChildrenTest {}
 
-@Component(
+@component(
   selector: 'light-dom-change-test',
   template: '<multiple-content-tags>'
       '<template manual class="left"><div>A1</div></template>'
@@ -295,7 +295,7 @@ class LightDomChangeTest {
   List<ManualViewportDirective>? viewports;
 }
 
-@Component(
+@component(
   selector: 'nested-component-test',
   template: '<outer-with-indirect-nested>'
       '<div>A</div>'
@@ -305,7 +305,7 @@ class LightDomChangeTest {
 )
 class NestedComponentTest {}
 
-@Component(
+@component(
   selector: 'nested-direct-child-test',
   template: '<outer>'
       '<template manual class="left"><div>A</div></template>'
@@ -319,7 +319,7 @@ class NestedDirectChildTest {
   ManualViewportDirective? viewport;
 }
 
-@Component(
+@component(
   selector: 'shadow-dom-change-test',
   template: '<conditional-content>'
       '<div class="left">A</div>'
@@ -333,14 +333,14 @@ class ShadowDomChangeTest {
   ConditionalContentComponent? conditional;
 }
 
-@Component(
+@component(
   selector: 'text-node-after-content-test',
   template: '<simple stringProp="text"></simple>',
   directives: [TextNodeAfterContentComponent],
 )
 class TextNodeAfterContentTest {}
 
-@Component(
+@component(
   selector: 'simple',
   template: '<ng-content></ng-content><p>P,</p>{{stringProp}}',
 )
@@ -349,14 +349,14 @@ class TextNodeAfterContentComponent {
   String stringProp = '';
 }
 
-@Component(
+@component(
   selector: 'text-node-after-style-test',
   template: '<simple stringProp="text"></simple>',
   directives: [TextNodeAfterStyleComponent],
 )
 class TextNodeAfterStyleTest {}
 
-@Component(
+@component(
   selector: 'simple',
   template: '<style></style><p>P,</p>{{stringProp}}',
 )
@@ -365,7 +365,7 @@ class TextNodeAfterStyleComponent {
   String stringProp = '';
 }
 
-@Component(
+@component(
   selector: 'move-light-dom-test',
   template: '<empty>'
       '  <template manual><div>A</div></template>'
@@ -381,7 +381,7 @@ class MoveLightDomTest {
   ProjectDirective? projectDirective;
 }
 
-@Component(
+@component(
   selector: 'move-projected-light-dom-test',
   template: '<simple><template manual><div>A</div></template></simple>'
       'START(<div project></div>)END',
@@ -395,7 +395,7 @@ class MoveProjectedLightDomTest {
   ProjectDirective? projectDirective;
 }
 
-@Component(
+@component(
   selector: 'move-ng-content-test',
   template: '<conditional-content>'
       '<div class="left">A</div>'
@@ -412,7 +412,7 @@ class MoveNgContentTest {
   ConditionalContentComponent? conditional;
 }
 
-@Component(
+@component(
   selector: 'recursive-tree-test',
   template: '<tree></tree>',
   directives: [Tree],
@@ -422,7 +422,7 @@ class RecursiveTreeTest {
   Tree? tree;
 }
 
-@Component(
+@component(
   selector: 'recursive-tree-multiple-component-test',
   template: '<tree></tree>',
   directives: [RecursiveTree],
@@ -432,7 +432,7 @@ class RecursiveTreeMultipleComponentTest {
   RecursiveTree? tree;
 }
 
-@Component(
+@component(
   selector: 'nested-conditional-test',
   template: '<conditional-text>a</conditional-text>',
   directives: [ConditionalTextComponent],
@@ -442,21 +442,21 @@ class NestedConditionalTest {
   ConditionalTextComponent? conditional;
 }
 
-@Component(
+@component(
   selector: 'switch-order-test',
   template: '<cmp-a><cmp-b></cmp-b></cmp-a>',
   directives: [CmpA, CmpB],
 )
 class SwitchOrderTest {}
 
-@Component(
+@component(
   selector: 'correct-order-test',
   template: '<cmp-a1></cmp-a1><cmp-a2></cmp-a2>',
   directives: [CmpA1, CmpA2],
 )
 class CorrectOrderTest {}
 
-@Component(
+@component(
   selector: 'nested-projection-test',
   template: '<conditional-content>'
       '<div class="left">A</div>'
@@ -474,7 +474,7 @@ class NestedProjectionTest {
   ManualViewportDirective? viewport;
 }
 
-@Component(
+@component(
   selector: 'simple',
   template: 'SIMPLE(<ng-content></ng-content>)',
   directives: [],
@@ -484,14 +484,14 @@ class Simple {
   String stringProp = '';
 }
 
-@Component(
+@component(
   selector: 'empty',
   template: '',
   directives: [],
 )
 class Empty {}
 
-@Component(
+@component(
   selector: 'multiple-content-tags',
   template:
       '(<ng-content select=".left"></ng-content>,&ngsp;<ng-content></ng-content>)',
@@ -499,12 +499,12 @@ class Empty {}
 )
 class MultipleContentTagsComponent {}
 
-@Directive(
+@directive(
   selector: '[manual]',
 )
 class ManualViewportDirective {
-  ViewContainerRef vc;
-  TemplateRef templateRef;
+  viewContainerRef vc;
+  templateRef templateRef;
 
   ManualViewportDirective(this.vc, this.templateRef);
 
@@ -517,13 +517,13 @@ class ManualViewportDirective {
   }
 }
 
-@Directive(
+@directive(
   selector: '[project]',
 )
 class ProjectDirective {
-  ViewContainerRef vc;
+  viewContainerRef vc;
   ProjectDirective(this.vc);
-  void show(TemplateRef templateRef) {
+  void show(templateRef templateRef) {
     vc.insertEmbeddedView(templateRef, 0);
   }
 
@@ -532,14 +532,14 @@ class ProjectDirective {
   }
 }
 
-@Component(
+@component(
   selector: 'outer-with-indirect-nested',
   template: 'OUTER(<simple><div><ng-content></ng-content></div></simple>)',
   directives: [Simple],
 )
 class OuterWithIndirectNestedComponent {}
 
-@Component(
+@component(
   selector: 'outer',
   template: 'OUTER(<inner>'
       '<ng-content select=".left" ngProjectAs=".left"></ng-content>'
@@ -549,7 +549,7 @@ class OuterWithIndirectNestedComponent {}
 )
 class OuterComponent {}
 
-@Component(
+@component(
   selector: 'inner',
   template: 'INNER(<innerinner>'
       '<ng-content select=".left" ngProjectAs=".left"></ng-content>'
@@ -558,7 +558,7 @@ class OuterComponent {}
 )
 class InnerComponent {}
 
-@Component(
+@component(
   selector: 'innerinner',
   template: 'INNERINNER('
       '<ng-content select=".left"></ng-content>,'
@@ -567,7 +567,7 @@ class InnerComponent {}
 )
 class InnerInnerComponent {}
 
-@Component(
+@component(
   selector: 'conditional-content',
   template: '<div>(<div *manual>'
       '<ng-content select=".left"></ng-content></div>,&ngsp;'
@@ -579,7 +579,7 @@ class ConditionalContentComponent {
   ManualViewportDirective? viewport;
 }
 
-@Component(
+@component(
   selector: 'conditional-text',
   template: 'MAIN(<template manual>'
       'FIRST(<template manual>SECOND(<ng-content></ng-content>)</template>)'
@@ -591,7 +591,7 @@ class ConditionalTextComponent {
   List<ManualViewportDirective>? viewports;
 }
 
-@Component(
+@component(
   selector: 'tree2',
   template: 'TREE2({{depth}}:<tree *manual [depth]="depth+1"></tree>)',
   directives: [ManualViewportDirective, RecursiveTree],
@@ -604,7 +604,7 @@ class Tree2 {
   ManualViewportDirective? viewport;
 }
 
-@Component(
+@component(
   selector: 'tree',
   template: 'TREE({{depth}}:<tree *manual [depth]="depth+1"></tree>)',
   directives: [ManualViewportDirective, Tree],
@@ -617,7 +617,7 @@ class Tree {
   ManualViewportDirective? viewport;
 }
 
-@Component(
+@component(
   selector: 'tree',
   template: 'TREE({{depth}}:<tree2 *manual [depth]="depth+1"></tree2>)',
   directives: [ManualViewportDirective, Tree2],
@@ -633,7 +633,7 @@ class RecursiveTree {
   Tree2? tree2;
 }
 
-@Component(
+@component(
   selector: 'cmp-d',
   template: '<d @skipSchemaValidationFor="d">{{tagName}}</d>',
 )
@@ -642,7 +642,7 @@ class CmpD {
   CmpD(Element element) : tagName = element.tagName.toLowerCase();
 }
 
-@Component(
+@component(
   selector: 'cmp-c',
   template: '<c @skipSchemaValidationFor="c">{{tagName}}</c>',
 )
@@ -651,63 +651,63 @@ class CmpC {
   CmpC(Element element) : tagName = element.tagName.toLowerCase();
 }
 
-@Component(
+@component(
   selector: 'cmp-b',
   template: '<ng-content></ng-content><cmp-d></cmp-d>',
   directives: [CmpD],
 )
 class CmpB {}
 
-@Component(
+@component(
   selector: 'cmp-a',
   template: '<ng-content></ng-content><cmp-c></cmp-c>',
   directives: [CmpC],
 )
 class CmpA {}
 
-@Component(
+@component(
   selector: 'cmp-b11',
   template: '{{\'b11\'}}',
   directives: [],
 )
 class CmpB11 {}
 
-@Component(
+@component(
   selector: 'cmp-b12',
   template: '{{\'b12\'}}',
   directives: [],
 )
 class CmpB12 {}
 
-@Component(
+@component(
   selector: 'cmp-b21',
   template: '{{\'b21\'}}',
   directives: [],
 )
 class CmpB21 {}
 
-@Component(
+@component(
   selector: 'cmp-b22',
   template: '{{\'b22\'}}',
   directives: [],
 )
 class CmpB22 {}
 
-@Component(
+@component(
   selector: 'cmp-a1',
   template: '{{\'a1\'}}<cmp-b11></cmp-b11><cmp-b12></cmp-b12>',
   directives: [CmpB11, CmpB12],
 )
 class CmpA1 {}
 
-@Component(
+@component(
   selector: 'cmp-a2',
   template: '{{\'a2\'}}<cmp-b21></cmp-b21><cmp-b22></cmp-b22>',
   directives: [CmpB21, CmpB22],
 )
 class CmpA2 {}
 
-@Component(
+@component(
   selector: 'ng-if-ng-content',
   directives: [NgIf],
   template: '''
@@ -720,7 +720,7 @@ class NgIfNgContent {
   var isContentVisible = true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [NgIfNgContent],
   template: '''

@@ -181,7 +181,7 @@ class ViewBuilderVisitor implements TemplateAstVisitor<void, CompileElement> {
         provider.token!,
         false,
         [provider],
-        ProviderAstType.Builtin,
+        ProviderAstType.builtin,
         ast.sourceSpan,
         eager: true,
       );
@@ -246,7 +246,7 @@ class ViewBuilderVisitor implements TemplateAstVisitor<void, CompileElement> {
       _view.storage,
       // Root elements of a component are always an HtmlElement.
       isComponent
-          ? o.importType(Identifiers.HTML_HTML_ELEMENT)
+          ? o.importType(Identifiers.htmlHtmlElement)
           : o.importType(identifierFromTagName(ast.name)),
       nodeIndex,
     );
@@ -306,7 +306,7 @@ class ViewBuilderVisitor implements TemplateAstVisitor<void, CompileElement> {
       );
     }
 
-    _view.shimCssForNode(elementRef, nodeIndex, Identifiers.HTML_HTML_ELEMENT);
+    _view.shimCssForNode(elementRef, nodeIndex, Identifiers.htmlHtmlElement);
 
     final compileElement = CompileElement(
       parent,
@@ -386,7 +386,7 @@ class ViewBuilderVisitor implements TemplateAstVisitor<void, CompileElement> {
 
     // Set ng_content class for CSS shim.
     var elementType = _view.isRootNodeOfHost(nodeIndex)
-        ? Identifiers.HTML_HTML_ELEMENT
+        ? Identifiers.htmlHtmlElement
         : identifierFromTagName(ast.name);
     _view.shimCssForNode(elementRef, nodeIndex, elementType);
 
@@ -446,7 +446,7 @@ class ViewBuilderVisitor implements TemplateAstVisitor<void, CompileElement> {
       _view.genConfig,
       _view.directiveTypes,
       _view.pipeMetas,
-      o.NULL_EXPR,
+      o.nullExpr,
       _view.viewIndex + _nestedViewCount,
       compileElement,
       ast.variables,
@@ -561,7 +561,7 @@ o.ClassStmt createViewClass(CompileView view, ExpressionParser parser) {
     viewMethods.add(
       o.ClassMethod(
         'detectHostChanges',
-        [o.FnParam(DetectChangesVars.firstCheck.name!, o.BOOL_TYPE)],
+        [o.FnParam(DetectChangesVars.firstCheck.name!, o.boolType)],
         [
           ...maybeCachedCtxDeclarationStatement(statements: methodStatements),
           ...methodStatements,
@@ -616,7 +616,7 @@ o.Constructor _createComponentViewConstructor(CompileView view) {
   }
   final rootElementRef = NodeReference.rootElement();
   final createRootElementExpr = o
-      .importExpr(Identifiers.HTML_DOCUMENT)
+      .importExpr(Identifiers.htmlDocument)
       .callMethod('createElement', [o.literal(tagName)]);
   final body = [
     rootElementRef.toWriteStmt(unsafeCast(createRootElementExpr)),
@@ -641,11 +641,11 @@ o.Constructor _createComponentViewConstructor(CompileView view) {
       ),
       o.FnParam(
         ViewConstructorVars.parentIndex.name!,
-        o.INT_TYPE,
+        o.intType,
       ),
     ],
     initializers: [
-      o.SUPER_EXPR.callFn([
+      o.superExpr.callFn([
         ViewConstructorVars.parentView,
         ViewConstructorVars.parentIndex,
         changeDetectionStrategyToConst(_getChangeDetectionMode(view)),
@@ -664,11 +664,11 @@ o.Constructor _createEmbeddedViewConstructor(CompileView view) {
       ),
       o.FnParam(
         ViewConstructorVars.parentIndex.name!,
-        o.INT_TYPE,
+        o.intType,
       ),
     ],
     initializers: [
-      o.SUPER_EXPR.callFn([
+      o.superExpr.callFn([
         ViewConstructorVars.parentView,
         ViewConstructorVars.parentIndex,
       ]).toStmt(),
@@ -743,7 +743,7 @@ o.Statement _createEmbeddedViewFactory(
   final parentViewType = o.importType(Views.renderView);
   final parameters = [
     o.FnParam(ViewConstructorVars.parentView.name!, parentViewType),
-    o.FnParam(ViewConstructorVars.parentIndex.name!, o.INT_TYPE),
+    o.FnParam(ViewConstructorVars.parentIndex.name!, o.intType),
   ];
   // Unlike host view factories, the return type of an embedded view factory
   // doesn't need to include its component type. This is because we only need
@@ -766,7 +766,7 @@ o.Statement _createEmbeddedViewFactory(
   // return type of all embedded view factories, we allow all of them to share
   // the same type signature, instead of each one being unique, thus reducing
   // code size.
-  final returnType = o.importType(Views.embeddedView, [o.VOID_TYPE]);
+  final returnType = o.importType(Views.embeddedView, [o.voidType]);
   final constructorTypeArguments =
       viewClass.typeParameters.map((t) => t.toType()).toList();
   final body = [
@@ -826,7 +826,7 @@ List<o.Statement> _generateBuildMethod(
     parentRenderNodeStmts.add(
       parentRenderNodeVar.set(parentRenderNodeExpr).toDeclStmt(
         null,
-        [o.StmtModifier.Final],
+        [o.StmtModifier.finalStmt],
       ),
     );
   }
@@ -923,7 +923,7 @@ o.Statement? _generateInitStatement(CompileView view) {
 /// Returns a null expression if there are no subscriptions.
 o.Expression _maybeFilterSubscriptions(CompileView view) {
   if (view.subscriptions.isEmpty) {
-    return o.NULL_EXPR;
+    return o.nullExpr;
   }
   final subscriptionsExpr = o.literalArr(view.subscriptions);
   if (view.subscribesToMockLike) {
@@ -932,7 +932,7 @@ o.Expression _maybeFilterSubscriptions(CompileView view) {
     return subscriptionsExpr.callMethod('where', [
       o.FunctionExpr(
         [o.FnParam('i')],
-        [o.ReturnStatement(o.variable('i').notEquals(o.NULL_EXPR))],
+        [o.ReturnStatement(o.variable('i').notEquals(o.nullExpr))],
       )
     ]).callMethod('toList', []);
   }

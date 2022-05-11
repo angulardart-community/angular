@@ -6,7 +6,7 @@ import 'di_tokens.dart';
 /// A marker that represents a lack-of-value for the `useValue` parameter.
 const Object noValueProvided = '__noValueProvided__';
 
-/// A contract for creating implementations of [Injector] at runtime.
+/// A contract for creating implementations of [injector] at runtime.
 ///
 /// Implementing this interface removes the need to do inspection of the
 /// presence of fields on various [Provider] implementations, as well allows

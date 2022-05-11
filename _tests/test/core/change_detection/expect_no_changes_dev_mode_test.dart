@@ -77,7 +77,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'illegal-change-detection',
   template: r'''
     <div>{{counter}}</div>
@@ -88,7 +88,7 @@ class IllegalChangeDetectionComponent {
   int get counter => _counter++;
 }
 
-@Component(
+@component(
   selector: 'non-primitive-bindings',
   directives: [BindAnythingComponent],
   template: r'''
@@ -102,7 +102,7 @@ class NonPrimitiveBinding {
   Duration get value => _value = Duration(seconds: _value.inSeconds + 1);
 }
 
-@Component(
+@component(
   selector: 'bind-anything',
   template: '',
 )

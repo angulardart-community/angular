@@ -79,7 +79,7 @@ import 'validators.dart' show ValidatorFn;
 ///  }
 /// }
 /// ```
-@Directive(
+@directive(
   selector: '[ngFormModel]',
   providers: [
     ExistingProvider(ControlContainer, NgFormModel),

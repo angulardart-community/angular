@@ -14,7 +14,7 @@ import 'package:angular/src/core/linker/dynamic_component_loader.dart';
 export 'src/frontend/bed.dart' show createDynamicFixture, createDynamicTestBed;
 export 'src/frontend/fixture.dart' show injectFromFixture;
 
-/// Creates an [Injector] similar to creating an application with [providers].
+/// Creates an [injector] similar to creating an application with [providers].
 ///
 /// This function is intended to create a top-level injector that in turn can
 /// be used to manually bootstrap a test. In practice, this is a highly non-
@@ -25,7 +25,7 @@ export 'src/frontend/fixture.dart' show injectFromFixture;
 /// which ACX creates its own test bed and stabilizers (and doesn't use our
 /// `NgTestBed` code at all).
 @experimental
-Injector createTestInjector(List<Object> providers) {
+injector createTestInjector(List<Object> providers) {
   // This seems convoluted, but basically we want to create all of the core
   // Angular services first, and then provide this core service injector as the
   // parent to the user-supplied providers.
@@ -35,7 +35,7 @@ Injector createTestInjector(List<Object> providers) {
   );
 }
 
-/// Create a root (legacy, with `SlowComponentLoader`) application [Injector].
+/// Create a root (legacy, with `SlowComponentLoader`) application [injector].
 ///
 /// Requires [userInjector] to provide app-level services or overrides:
 /// ```dart
@@ -48,14 +48,14 @@ Injector createTestInjector(List<Object> providers) {
 ///
 /// This method was moved from package:angular/experimental.dart after
 /// [createTestInjector] became its sole remaining user.
-Injector _rootLegacyInjector(InjectorFactory userInjector) {
+injector _rootLegacyInjector(InjectorFactory userInjector) {
   // Create a new appInjector, using wrappedUserInjector for provided services.
   // This includes services that will need to overwrite default services, such
   // as ExceptionHandler.
   return appInjector((parent) {
-    return Injector.map({
+    return injector.map({
       SlowComponentLoader: const SlowComponentLoader(
-        ComponentLoader(),
+        componentLoader(),
       ),
     }, userInjector(parent));
   });

@@ -81,7 +81,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'ng-model-test',
   directives: [
     formDirectives,
@@ -99,7 +99,7 @@ class NgModelTest {
   String? loginValue;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [
     CustomEditorWithNgModelSupport,
@@ -114,7 +114,7 @@ class NgModelWithCheckBindingTest {
   String? value;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [
     CustomEditorWithNgModelSupport,
@@ -135,7 +135,7 @@ class NgModelWithNgDisabledTestComponent {
   CustomEditorWithNgModelSupport? editor;
 }
 
-@Component(
+@component(
   selector: 'custom-editor-with-ng-model',
   template: '',
 )

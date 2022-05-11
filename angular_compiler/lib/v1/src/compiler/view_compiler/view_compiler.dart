@@ -133,10 +133,10 @@ class ViewCompiler {
     // factory getter (defined below).
     final declareComponentFactory = componentFactoryVar
         .set(o.importExpr(
-      Identifiers.ComponentFactory,
+      Identifiers.componentFactory,
       typeParams: [componentType],
     ).instantiate(componentFactoryArgs))
-        .toDeclStmt(null, [o.StmtModifier.Const]);
+        .toDeclStmt(null, [o.StmtModifier.constStmt]);
 
     // Declares a getter to access the component factory.
     //
@@ -148,7 +148,7 @@ class ViewCompiler {
     final declareGetComponentFactory = o.fn(
       [], // No parameters.
       [o.ReturnStatement(componentFactoryVar)],
-      o.importType(Identifiers.ComponentFactory, [componentType]),
+      o.importType(Identifiers.componentFactory, [componentType]),
     ).toGetter('${componentName}NgFactory');
 
     // Declares a function to create a component factory.
@@ -163,10 +163,10 @@ class ViewCompiler {
       [], // No parameters.
       [
         o.ReturnStatement(o
-            .importExpr(Identifiers.ComponentFactory)
+            .importExpr(Identifiers.componentFactory)
             .instantiate(componentFactoryArgs)),
       ],
-      o.importType(Identifiers.ComponentFactory, [contextType(view)]),
+      o.importType(Identifiers.componentFactory, [contextType(view)]),
     ).toDeclStmt(
       'create${componentName}Factory',
       typeParameters: view.component.originType!.typeParameters,

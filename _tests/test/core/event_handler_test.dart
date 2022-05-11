@@ -194,7 +194,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
   <button #noArg (click)="onClick()"></button>
@@ -239,7 +239,7 @@ class SuperClick {
   final _clicks = StreamController<void>();
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="foo()"></button>',
 )
@@ -251,7 +251,7 @@ class TestNamedArgsWithDefaultValue1 {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="foo"></button>',
 )
@@ -263,7 +263,7 @@ class TestNamedArgsWithDefaultValue2 {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="foo(field)"></button>',
 )
@@ -276,7 +276,7 @@ class TestPositionalArgsFromComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="foo(bar: field)"></button>',
 )
@@ -289,7 +289,7 @@ class TestNamedArgsFromComponentField {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'''<button (click)="foo(bar: 'bar')"></button>''',
 )
@@ -301,7 +301,7 @@ class TestNamedArgsFromLiteralValue {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [NgFor],
   template: r'''
@@ -325,21 +325,21 @@ void topLevelDoCapture() {
   overrideTopLevelDoCapture();
 }
 
-@Component(
+@component(
   selector: 'test',
   exports: [topLevelDoCapture],
   template: r'<button (click)="topLevelDoCapture"></button>',
 )
 class TestTopLevelMethods {}
 
-@Component(
+@component(
   selector: 'test',
   exports: [topLevelDoCapture],
   template: r'<button (click)="topLevelDoCapture()"></button>',
 )
 class TestTopLevelMethodsDirect {}
 
-@Component(
+@component(
   selector: 'test',
   exports: [],
   template: r'<button (click)="TestStaticMethods.doCapture"></button>',
@@ -352,7 +352,7 @@ class TestStaticMethods {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   exports: [],
   template: r'<button (click)="TestStaticMethodsDirect.doCapture()"></button>',
@@ -365,7 +365,7 @@ class TestStaticMethodsDirect {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="bar.doCapture"></button>',
 )
@@ -373,7 +373,7 @@ class TestChainedMethods {
   final bar = Bar();
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'<button (click)="bar.doCapture()"></button>',
 )
@@ -389,7 +389,7 @@ class Bar {
   }
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )

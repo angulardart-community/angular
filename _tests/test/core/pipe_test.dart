@@ -54,7 +54,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'example',
   template: r'''
     Unpiped:&ngsp;{{now}}
@@ -74,7 +74,7 @@ class NopPipe {
   List<int> transform(List<int> values) => values;
 }
 
-@Component(
+@component(
   selector: 'nop',
   template: r'{{$pipe.nop(values)}}',
   pipes: [NopPipe],
@@ -101,7 +101,7 @@ class PurePipe {
   }
 }
 
-@Component(
+@component(
   selector: 'test-pure-pipe',
   template: r'{{$pipe.pure(value)}}',
   pipes: [PurePipe],
@@ -121,7 +121,7 @@ class OptionalArgumentPipe {
       '$prefix$value$suffix$punctuation';
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'''
     {{function($pipe.optionalArgument(value, prefix, suffix))}}
@@ -146,7 +146,7 @@ class OptionalAnnotationPipe {
   dynamic transform(dynamic value) => value;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'{{$pipe.test(value)}}',
   pipes: [OptionalAnnotationPipe],

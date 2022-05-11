@@ -142,7 +142,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'ng-form-test',
   directives: [
     formDirectives,
@@ -160,7 +160,7 @@ void main() {
 class NgFormTest {
   NgFormTest(this.changeDetectorRef);
 
-  final ChangeDetectorRef changeDetectorRef;
+  final changeDetectorRef changeDetectorRef;
 
   @ViewChild('form')
   NgForm? form;
@@ -177,7 +177,7 @@ class NgFormTest {
   ControlGroup get formModel => form!.form!;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [
     formDirectives,
@@ -191,7 +191,7 @@ class NgFormTest {
       </button>
     </form>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class OnPushControlTest {
   var requiresName = false;
@@ -200,7 +200,7 @@ class OnPushControlTest {
   ButtonElement? submitButton;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [
     formDirectives,
@@ -216,7 +216,7 @@ class OnPushControlTest {
       </button>
     </form>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class OnPushControlGroupTest {
   var requiresGroup = false;

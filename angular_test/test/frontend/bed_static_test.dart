@@ -30,7 +30,7 @@ class MathService {
   num add(num a, num b) => a + b;
 }
 
-@Component(
+@component(
   selector: 'example',
   template: '{{math.add(a, b)}}',
 )

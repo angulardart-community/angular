@@ -13,10 +13,10 @@ void main() {
   });
 
   Future<NgTestFixture<T>> createFixture<T extends Object>(
-    ComponentFactory<T> factory,
+    componentFactory<T> factory,
   ) async {
     final testBed = NgTestBed(factory,
-        rootInjector: (parent) => Injector.map({Log: log}, parent));
+        rootInjector: (parent) => injector.map({Log: log}, parent));
     return await testBed.create();
   }
 
@@ -70,7 +70,7 @@ void main() {
       final fixture =
           await createFixture(ng.createCompWithCustomLocationFactory());
       expect(fixture.text, 'BeforeAfter');
-      late final ComponentRef<DynamicComp> ref;
+      late final componentRef<DynamicComp> ref;
       await fixture.update((comp) {
         ref = comp.loader
             .loadNextToLocation(ng.createDynamicCompFactory(), comp.location!);
@@ -90,7 +90,7 @@ void main() {
       final fixture =
           await createFixture(ng.createCompWithCustomLocationFactory());
       expect(fixture.text, 'BeforeAfter');
-      late final ComponentRef<DynamicComp> ref;
+      late final componentRef<DynamicComp> ref;
       await fixture.update((comp) {
         ref = comp.loader
             .loadNextToLocation(ng.createDynamicCompFactory(), comp.location!);
@@ -108,7 +108,7 @@ void main() {
     test('does not swallow exceptions', () async {
       final fixture =
           await createFixture(ng.createCompWithCustomLocationFactory());
-      late final ComponentRef<DynamicComp> ref;
+      late final componentRef<DynamicComp> ref;
       await fixture.update((comp) {
         ref = comp.loader
             .loadNextToLocation(ng.createDynamicCompFactory(), comp.location!);
@@ -169,7 +169,7 @@ void main() {
       final fixture =
           await createFixture(ng.createCompWithCustomLocationFactory());
       expect(fixture.text, 'BeforeAfter');
-      late final ComponentRef<DynamicOnPushComp> ref;
+      late final componentRef<DynamicOnPushComp> ref;
       await fixture.update((comp) {
         ref = comp.loader.loadNextToLocation(
           ng.createDynamicOnPushCompFactory(),
@@ -198,7 +198,7 @@ void main() {
       final fixture =
           await createFixture(ng.createCompWithCustomLocationFactory());
       expect(fixture.text, 'BeforeAfter');
-      late final ComponentRef<DynamicOnPushComp> ref;
+      late final componentRef<DynamicOnPushComp> ref;
       await fixture.update((comp) {
         ref = comp.loader.loadNextToLocation(
           ng.createDynamicOnPushCompFactory(),
@@ -218,7 +218,7 @@ void main() {
   test('does not swallow exceptions', () async {
     final fixture =
         await createFixture(ng.createCompWithCustomLocationFactory());
-    late final ComponentRef<DynamicOnPushComp> ref;
+    late final componentRef<DynamicOnPushComp> ref;
     await fixture.update((comp) {
       ref = comp.loader.loadNextToLocation(
         ng.createDynamicOnPushCompFactory(),
@@ -249,20 +249,20 @@ class Log {
   String toString() => logItems.join('; ');
 }
 
-@Component(
+@component(
   selector: 'comp-with-custom-location',
   template: r'Before<template #location></template>After',
 )
 class CompWithCustomLocation {
-  final ComponentLoader loader;
+  final componentLoader loader;
 
   CompWithCustomLocation(this.loader);
 
-  @ViewChild('location', read: ViewContainerRef)
-  ViewContainerRef? location;
+  @ViewChild('location', read: viewContainerRef)
+  viewContainerRef? location;
 }
 
-@Component(
+@component(
   selector: 'comp-with-directive',
   directives: [
     DirectiveThatIsLocation,
@@ -271,34 +271,34 @@ class CompWithCustomLocation {
 )
 class CompWithDirective {}
 
-@Directive(
+@directive(
   selector: '[location]',
 )
 class DirectiveThatIsLocation {
-  DirectiveThatIsLocation(ComponentLoader loader) {
+  DirectiveThatIsLocation(componentLoader loader) {
     loader.loadNextTo(ng.createDynamicCompFactory());
   }
 }
 
-@Component(
+@component(
   selector: 'comp-with-service',
   providers: [ClassProvider(Service)],
   template: '',
 )
 class CompWithService {
   final Service service;
-  final Injector context;
+  final injector context;
 
   CompWithService(this.service, this.context);
 }
 
 class Service {
-  final ComponentLoader loader;
+  final componentLoader loader;
 
   Service(this.loader);
 }
 
-@Component(
+@component(
   selector: 'dynamic-comp',
   template: 'Dynamic{{input}}',
 )
@@ -309,10 +309,10 @@ class DynamicComp extends Lifecycles {
   String? input;
 }
 
-@Component(
+@component(
   selector: 'dynamic-comp',
   template: 'Dynamic{{input}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: changeDetectionStrategy.OnPush,
 )
 class DynamicOnPushComp extends Lifecycles {
   DynamicOnPushComp(Log log) : super(log);

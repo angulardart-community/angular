@@ -21,7 +21,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'view-child-test',
   template: r'''
     <div #container>
@@ -43,13 +43,13 @@ class ViewChildTest {
   @ViewChild('container', read: Element)
   Element? containerElement;
 
-  @ViewChild('marker', read: ViewContainerRef)
-  ViewContainerRef? markerViewContainer;
+  @ViewChild('marker', read: viewContainerRef)
+  viewContainerRef? markerViewContainer;
 
   var showChildHost = false;
 }
 
-@Directive(
+@directive(
   selector: '[childHost]',
 )
 class ChildHostDirective {}

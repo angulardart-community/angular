@@ -87,7 +87,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test-prefixed-exports',
   exports: [
     lib.ExternalStaticClass,
@@ -108,7 +108,7 @@ class TestPrefixedExports {
   var name = 'Bob';
 }
 
-@Component(
+@component(
   selector: 'test-non-root-assignment',
   template: r'''
     <button (click)="(a = $event)"></button>
@@ -123,7 +123,7 @@ class TestNonRootAssignment {
   Object c(Object c) => c;
 }
 
-@Component(
+@component(
   selector: 'test-null-aware-functions',
   directives: [
     NgFor,

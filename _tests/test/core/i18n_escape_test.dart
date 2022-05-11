@@ -48,7 +48,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <ng-container @i18n="A message with characters that should be escaped">
@@ -58,7 +58,7 @@ void main() {
 )
 class ShouldEscapeI18nText {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <ng-container @i18n="A message with characters that should be escaped">
@@ -68,7 +68,7 @@ class ShouldEscapeI18nText {}
 )
 class ShouldEscapeI18nHtml {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <div
@@ -80,7 +80,7 @@ class ShouldEscapeI18nHtml {}
 )
 class ShouldEscapeI18nAttribute {}
 
-@Component(
+@component(
   selector: 'test',
   template: '''
     <img
@@ -90,7 +90,7 @@ class ShouldEscapeI18nAttribute {}
 )
 class ShouldEscapeI18nProperty {}
 
-@Component(
+@component(
   selector: 'greeting',
   template: '',
 )
@@ -99,7 +99,7 @@ class GreetingComponent {
   String? message;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: r'''
     <greeting

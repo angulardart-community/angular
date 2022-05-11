@@ -17,7 +17,7 @@ const CHECKBOX_VALUE_ACCESSOR = ExistingProvider.forToken(
 /// ```html
 /// <input type="checkbox" ngControl="rememberLogin">
 /// ```
-@Directive(
+@directive(
   selector: 'input[type=checkbox][ngControl],'
       'input[type=checkbox][ngFormControl],'
       'input[type=checkbox][ngModel]',

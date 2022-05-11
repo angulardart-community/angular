@@ -12,7 +12,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup;
 
 /// A form that will not remove controls if the control is taken out of the
 /// view for example with a [NgIf].
-@Directive(
+@directive(
   selector: '[memorizedForm]',
   providers: [
     Provider(ControlContainer, useExisting: MemorizedForm),
@@ -23,7 +23,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup;
 class MemorizedForm extends NgForm {
   MemorizedForm(
     @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
-    ChangeDetectorRef changeDetectorRef,
+    changeDetectorRef changeDetectorRef,
   ) : super(validators, changeDetectorRef);
 
   /// Add a control if it isn't already found in the container.

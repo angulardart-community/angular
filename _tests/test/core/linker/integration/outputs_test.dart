@@ -81,7 +81,7 @@ void main() {
   }, skip: 'https://github.com/dart-lang/sdk/issues/36832');
 }
 
-@Directive(
+@directive(
   selector: '[emitter]',
 )
 class EventEmitterDirective {
@@ -97,7 +97,7 @@ class EventEmitterDirective {
   }
 }
 
-@Directive(
+@directive(
   selector: '[listener]',
 )
 class EventListenerDirective {
@@ -109,7 +109,7 @@ class EventListenerDirective {
   }
 }
 
-@Component(
+@component(
   selector: 'event-directives',
   template: '<div emitter listener></div>',
   directives: [EventEmitterDirective, EventListenerDirective],
@@ -122,7 +122,7 @@ class ElementWithEventDirectivesComponent {
   EventListenerDirective? listener;
 }
 
-@Component(
+@component(
   selector: 'template-event-directives',
   template: '<template emitter listener (event)="msg=\$event"></template>',
   directives: [EventEmitterDirective, EventListenerDirective],
@@ -137,7 +137,7 @@ class TemplateWithEventDirectivesComponent {
   EventListenerDirective? listener;
 }
 
-@Directive(
+@directive(
   selector: '[two-way]',
 )
 class DirectiveWithTwoWayBinding {
@@ -154,7 +154,7 @@ class DirectiveWithTwoWayBinding {
   }
 }
 
-@Component(
+@component(
   selector: 'two-way-binding',
   template: '<div [(control)]="ctxProp" two-way></div>',
   directives: [DirectiveWithTwoWayBinding],
@@ -166,7 +166,7 @@ class TwoWayBindingComponent {
   DirectiveWithTwoWayBinding? directive;
 }
 
-@Directive(
+@directive(
   selector: '[listener]',
 )
 class DomEventListenerDirective {
@@ -178,7 +178,7 @@ class DomEventListenerDirective {
   }
 }
 
-@Component(
+@component(
   selector: 'element-with-dom-event',
   template: '<div listener></div>',
   directives: [DomEventListenerDirective],
@@ -188,7 +188,7 @@ class ElementWithDomEventComponent {
   DomEventListenerDirective? listener;
 }
 
-@Directive(
+@directive(
   selector: '[listenerprevent]',
 )
 class DirectiveListeningDomEventPrevent {
@@ -198,7 +198,7 @@ class DirectiveListeningDomEventPrevent {
   }
 }
 
-@Directive(
+@directive(
   selector: '[listenernoprevent]',
 )
 class DirectiveListeningDomEventNoPrevent {
@@ -206,7 +206,7 @@ class DirectiveListeningDomEventNoPrevent {
   void onEvent(Event event) {}
 }
 
-@Component(
+@component(
   selector: 'test-prevent-default',
   template: '<input type="checkbox" listenerprevent>'
       '<input type="checkbox" listenernoprevent>',
@@ -217,7 +217,7 @@ class DirectiveListeningDomEventNoPrevent {
 )
 class TestPreventDefaultComponent {}
 
-@Component(
+@component(
   selector: 'output',
   template: '',
 )
@@ -226,7 +226,7 @@ class OutputComponent {
   Stream<String> output = Stream.empty();
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<output (output)="handle"></output>',
   directives: [OutputComponent],

@@ -23,7 +23,7 @@ import 'package:meta/meta_meta.dart';
 /// expect(injector.get(Car).engine, same(engine));
 /// ```
 ///
-/// When `@Inject()` is not present, [Injector] will use the type annotation of
+/// When `@Inject()` is not present, [injector] will use the type annotation of
 /// the parameter.
 ///
 /// ## Example
@@ -119,7 +119,7 @@ class Injectable {
 
 /// A parameter metadata that marks a dependency as optional.
 ///
-/// [Injector] provides `null` if the dependency is not found.
+/// [injector] provides `null` if the dependency is not found.
 ///
 /// ## Example
 ///
@@ -140,7 +140,7 @@ class Optional {
   const Optional();
 }
 
-/// Specifies that an [Injector] should retrieve a dependency only from itself.
+/// Specifies that an [injector] should retrieve a dependency only from itself.
 ///
 /// ## Example
 ///

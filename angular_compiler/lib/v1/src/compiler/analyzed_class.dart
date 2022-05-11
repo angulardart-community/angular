@@ -284,9 +284,9 @@ class _TypeResolver extends ast.AstVisitor<DartType, dynamic> {
       _implicitReceiverType;
 
   @override
-  DartType visitInterpolation(ast.Interpolation _ast, _) {
-    if (_ast.expressions.length == 1) {
-      final type = _ast.expressions[0].visit(this, _);
+  DartType visitInterpolation(ast.Interpolation ast, _) {
+    if (ast.expressions.length == 1) {
+      final type = ast.expressions[0].visit(this, _);
       if (_isPrimitive(type)) {
         return type;
       }

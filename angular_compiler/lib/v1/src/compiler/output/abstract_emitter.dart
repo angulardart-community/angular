@@ -267,7 +267,7 @@ abstract class AbstractEmitterVisitor
     if (!lineWasEmpty) {
       context.print('(');
     }
-    o.THIS_EXPR.visitExpression(this, context);
+    o.thisExpr.visitExpression(this, context);
     context.print('.${expr.name} = ');
     expr.value.visitExpression(this, context);
     if (!lineWasEmpty) {
@@ -319,19 +319,19 @@ abstract class AbstractEmitterVisitor
     var varName = ast.name;
     if (ast.builtin != null) {
       switch (ast.builtin) {
-        case o.BuiltinVar.Super:
+        case o.BuiltinVar.superVar:
           varName = 'super';
           break;
-        case o.BuiltinVar.This:
+        case o.BuiltinVar.thisVar:
           varName = 'this';
           break;
-        case o.BuiltinVar.CatchError:
+        case o.BuiltinVar.catchError:
           varName = catchErrorVar.name;
           break;
-        case o.BuiltinVar.CatchStack:
+        case o.BuiltinVar.catchStack:
           varName = catchStackVar.name;
           break;
-        case o.BuiltinVar.MetadataMap:
+        case o.BuiltinVar.metadataMap:
           varName = 'null';
           break;
         default:
@@ -443,49 +443,49 @@ abstract class AbstractEmitterVisitor
       o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
     String opStr;
     switch (ast.operator) {
-      case o.BinaryOperator.Equals:
+      case o.BinaryOperator.equals:
         opStr = '==';
         break;
-      case o.BinaryOperator.Identical:
+      case o.BinaryOperator.identical:
         opStr = '===';
         break;
-      case o.BinaryOperator.NotEquals:
+      case o.BinaryOperator.notEquals:
         opStr = '!=';
         break;
-      case o.BinaryOperator.NotIdentical:
+      case o.BinaryOperator.notIdentical:
         opStr = '!==';
         break;
-      case o.BinaryOperator.And:
+      case o.BinaryOperator.and:
         opStr = '&&';
         break;
-      case o.BinaryOperator.Or:
+      case o.BinaryOperator.or:
         opStr = '||';
         break;
-      case o.BinaryOperator.Plus:
+      case o.BinaryOperator.plus:
         opStr = '+';
         break;
-      case o.BinaryOperator.Minus:
+      case o.BinaryOperator.minus:
         opStr = '-';
         break;
-      case o.BinaryOperator.Divide:
+      case o.BinaryOperator.divide:
         opStr = '/';
         break;
-      case o.BinaryOperator.Multiply:
+      case o.BinaryOperator.multiply:
         opStr = '*';
         break;
-      case o.BinaryOperator.Modulo:
+      case o.BinaryOperator.modulo:
         opStr = '%';
         break;
-      case o.BinaryOperator.Lower:
+      case o.BinaryOperator.lower:
         opStr = '<';
         break;
-      case o.BinaryOperator.LowerEquals:
+      case o.BinaryOperator.lowerEquals:
         opStr = '<=';
         break;
-      case o.BinaryOperator.Bigger:
+      case o.BinaryOperator.bigger:
         opStr = '>';
         break;
-      case o.BinaryOperator.BiggerEquals:
+      case o.BinaryOperator.biggerEquals:
         opStr = '>=';
         break;
       default:
@@ -580,7 +580,7 @@ abstract class AbstractEmitterVisitor
   void visitAllObjects<T>(void Function(T) handler, List<T> expressions,
       EmitterVisitorContext ctx, String separator,
       {bool newLine = false, bool keepOnSameLine = false}) {
-    const _MAX_OUTPUT_LENGTH = 80;
+    const maxOutputLength = 80;
     var length = expressions.length;
     for (var i = 0; i < length; i++) {
       handler(expressions[i]);
@@ -589,7 +589,7 @@ abstract class AbstractEmitterVisitor
         ctx.print(
             separator,
             keepOnSameLine
-                ? ctx.currentLineLength > _MAX_OUTPUT_LENGTH
+                ? ctx.currentLineLength > maxOutputLength
                 : newLine);
       }
     }

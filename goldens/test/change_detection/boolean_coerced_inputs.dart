@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     FancyButtonComponent,
@@ -32,7 +32,7 @@ class GoldenComponent {
   bool value = deopt();
 }
 
-@Component(
+@component(
   selector: 'fancy-button',
   template: '',
 )

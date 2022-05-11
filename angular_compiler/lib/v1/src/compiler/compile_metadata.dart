@@ -430,10 +430,10 @@ class CompileTemplateMetadata {
 
 enum CompileDirectiveMetadataType {
   /// Metadata type for a class annotated with `@Component`.
-  Component,
+  component,
 
   /// Metadata type for a class annotated with `@Directive`.
-  Directive,
+  directive,
 }
 
 /// Metadata regarding compilation of a directive.
@@ -529,17 +529,17 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   }
 
   bool get isComponent =>
-      metadataType == CompileDirectiveMetadataType.Component;
+      metadataType == CompileDirectiveMetadataType.component;
 
   bool get isOnPush => changeDetection == ChangeDetectionStrategy.OnPush;
 
   /// Whether the directive requires a change detector class to be generated.
   ///
-  /// [DirectiveChangeDetector] classes should only be generated if they
+  /// [directiveChangeDetector] classes should only be generated if they
   /// reduce the amount of duplicate code. Therefore we check for the presence
   /// of host bindings to move from each call site to a single method.
   bool get requiresDirectiveChangeDetector =>
-      metadataType == CompileDirectiveMetadataType.Directive &&
+      metadataType == CompileDirectiveMetadataType.directive &&
       hostProperties.isNotEmpty;
 
   Map<String, ast.AST>? _cachedHostAttributes;
@@ -628,7 +628,7 @@ CompileDirectiveMetadata createHostComponentMeta(
     outputs: const {},
     hostBindings: const {},
     hostListeners: const {},
-    metadataType: CompileDirectiveMetadataType.Component,
+    metadataType: CompileDirectiveMetadataType.component,
     selector: '*',
   );
 }

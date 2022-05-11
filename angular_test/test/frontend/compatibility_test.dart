@@ -28,7 +28,7 @@ void main() {
       SlowComponentLoader,
     );
     expect(
-      () => loader.load(TestSlowComponentLoaderAccess, Injector.empty()),
+      () => loader.load(TestSlowComponentLoaderAccess, injector.empty()),
       returnsNormally,
     );
   });
@@ -42,7 +42,7 @@ void main() {
       testBed = NgTestBed(
         ng.createAngularInjectorFactory(),
         host: testRoot,
-        rootInjector: (i) => Injector.map({TestService: TestService()}, i),
+        rootInjector: (i) => injector.map({TestService: TestService()}, i),
       );
     });
 
@@ -126,7 +126,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '{{value}}',
 )
@@ -143,7 +143,7 @@ class TestService {
   String? value;
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )

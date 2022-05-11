@@ -24,9 +24,9 @@ void main() {
   });
 }
 
-/// Loads [ComponentFactory] and expects its text to have [fontStyle].
+/// Loads [componentFactory] and expects its text to have [fontStyle].
 Future<void> expectTextFontStyle(
-  ComponentFactory<Object> componentFactory,
+  componentFactory<Object> componentFactory,
   String fontStyle,
 ) async {
   final testBed = NgTestBed(componentFactory);
@@ -36,7 +36,7 @@ Future<void> expectTextFontStyle(
   return testFixture.dispose();
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '<p class="text"></p>',
   styles: [
@@ -50,7 +50,7 @@ Future<void> expectTextFontStyle(
 )
 class ItalicTextComponent {}
 
-@Component(
+@component(
   selector: 'test',
   template: '<p class="text"></p>',
 )

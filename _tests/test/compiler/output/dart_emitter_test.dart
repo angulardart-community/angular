@@ -43,18 +43,18 @@ void main() {
       expect(
           emitStmt(someVar
               .set(o.literal(1))
-              .toDeclStmt(null, [o.StmtModifier.Final])),
+              .toDeclStmt(null, [o.StmtModifier.finalStmt])),
           'final someVar = 1;');
       expect(
           emitStmt(someVar
               .set(o.literal(1))
-              .toDeclStmt(null, [o.StmtModifier.Static])),
+              .toDeclStmt(null, [o.StmtModifier.static])),
           'static var someVar = 1;');
       expect(
           emitStmt(someVar
               .set(o.literal(1,
-                  o.BuiltinType(o.BuiltinTypeName.Int, [o.TypeModifier.Const])))
-              .toDeclStmt(null, [o.StmtModifier.Final])),
+                  o.BuiltinType(o.BuiltinTypeName.int, [o.TypeModifier.constant])))
+              .toDeclStmt(null, [o.StmtModifier.finalStmt])),
           'final someVar = 1;');
       expect(
           emitStmt(someVar.set(o.literal(1)).toDeclStmt()), 'var someVar = 1;');
@@ -133,8 +133,8 @@ void main() {
 
     test('should support but hide a nullable built-in type', () {
       final nullableString = o.BuiltinType(
-        o.BuiltinTypeName.String,
-        [o.TypeModifier.Nullable],
+        o.BuiltinTypeName.string,
+        [o.TypeModifier.nullable],
       );
       var writeVarExpr = o.variable('a').set(o.literal(null));
       expect(
@@ -146,8 +146,8 @@ void main() {
     test('should support and write a nullable built-in type', () {
       enableNullSafety();
       final nullableString = o.BuiltinType(
-        o.BuiltinTypeName.String,
-        [o.TypeModifier.Nullable],
+        o.BuiltinTypeName.string,
+        [o.TypeModifier.nullable],
       );
       var writeVarExpr = o.variable('a').set(o.literal(null));
       expect(
@@ -159,7 +159,7 @@ void main() {
     test('should support but hide the late declaration modifier', () {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.Late])),
+        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.late])),
         '/*late*/ String a = \'Hello\';',
       );
     });
@@ -168,7 +168,7 @@ void main() {
       enableNullSafety();
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.Late])),
+        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.late])),
         'late String a = \'Hello\';',
       );
     });
@@ -177,8 +177,8 @@ void main() {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
         emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [
-          o.StmtModifier.Late,
-          o.StmtModifier.Final,
+          o.StmtModifier.late,
+          o.StmtModifier.finalStmt,
         ])),
         '/*late final*/ String a = \'Hello\';',
       );
@@ -189,8 +189,8 @@ void main() {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
         emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [
-          o.StmtModifier.Late,
-          o.StmtModifier.Final,
+          o.StmtModifier.late,
+          o.StmtModifier.finalStmt,
         ])),
         'late final String a = \'Hello\';',
       );
@@ -224,17 +224,17 @@ void main() {
                   'a',
                   o.literalArr(
                     [o.literal(1)],
-                    o.ArrayType(o.INT_TYPE, [o.TypeModifier.Const]),
+                    o.ArrayType(o.INT_TYPE, [o.TypeModifier.constant]),
                   )
                 ],
               ],
-              o.MapType(o.ArrayType(o.INT_TYPE), [o.TypeModifier.Const]),
+              o.MapType(o.ArrayType(o.INT_TYPE), [o.TypeModifier.constant]),
             ),
           ],
           type: o.importType(
             CompileIdentifierMetadata(name: 'SomeClass'),
             [],
-            [o.TypeModifier.Const],
+            [o.TypeModifier.constant],
           ),
         ).toStmt()),
         "const SomeClass(<String, List<int>>{'a': [1]});",
@@ -243,11 +243,11 @@ void main() {
     test('should support builtin methods', () {
       expect(
           emitStmt(o.variable('arr1').callMethod(
-              o.BuiltinMethod.ConcatArray, [o.variable('arr2')]).toStmt()),
+              o.BuiltinMethod.concatArray, [o.variable('arr2')]).toStmt()),
           'arr1..addAll(arr2);');
       expect(
           emitStmt(o.variable('observable').callMethod(
-              o.BuiltinMethod.SubscribeObservable,
+              o.BuiltinMethod.subscribeObservable,
               [o.variable('listener')]).toStmt()),
           'observable.listen(listener);');
     });
@@ -443,7 +443,7 @@ void main() {
                 [
                   o.ClassField('someField',
                       outputType: o.INT_TYPE,
-                      modifiers: const [o.StmtModifier.Final])
+                      modifiers: const [o.StmtModifier.finalStmt])
                 ],
                 [],
                 null,

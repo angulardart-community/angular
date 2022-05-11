@@ -9,7 +9,7 @@ import 'bootstrap_test.template.dart' as ng_generated;
 void main() {
   ng_generated.initReflector();
 
-  Injector _noopInjector(Injector i) => i;
+  injector _noopInjector(injector i) => i;
 
   test('should create a new component in the DOM', () async {
     final host = Element.div();
@@ -51,7 +51,7 @@ void main() {
     final test = await bootstrapForTest(
       ng_generated.createAddProvidersFactory(),
       host,
-      (i) => Injector.map({TestService: TestService()}, i),
+      (i) => injector.map({TestService: TestService()}, i),
     );
     var instance = test.instance;
     expect(instance._testService, isNotNull);
@@ -64,7 +64,7 @@ void main() {
     final test = await bootstrapForTest(
         ng_generated.createAddProvidersFactory(),
         host,
-        (i) => Injector.map({TestService: TestService()}, i),
+        (i) => injector.map({TestService: TestService()}, i),
         beforeComponentCreated: (injector) {
       testService = injector.provideType(TestService);
       testService!.count++;
@@ -87,7 +87,7 @@ void main() {
     final test = await bootstrapForTest(
       ng_generated.createAddProvidersFactory(),
       host,
-      (i) => Injector.map({TestService: TestService()}, i),
+      (i) => injector.map({TestService: TestService()}, i),
       beforeComponentCreated: (injector) =>
           Future.delayed(Duration(milliseconds: 200), () {}).then((_) {
         testService = injector.provideType(TestService);
@@ -107,13 +107,13 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: 'Hello World',
 )
 class NewComponentInDom {}
 
-@Component(
+@component(
   selector: 'test',
   template: 'Hello {{users.first}}!',
 )
@@ -122,7 +122,7 @@ class BeforeChangeDetection {
   final users = <String>[];
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )

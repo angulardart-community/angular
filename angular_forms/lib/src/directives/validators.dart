@@ -51,14 +51,14 @@ abstract class Validator {
 /// invalid string is and the max string length for the input to display.
 typedef ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
 
-/// A [Directive] adding a required validator to controls with `required`:
+/// A [directive] adding a required validator to controls with `required`:
 ///
 /// ```html
 /// <input ngControl="fullName" required />
 /// ```
 ///
 /// A _required_ control must have a non-empty value.
-@Directive(
+@directive(
   selector: ''
       '[required][ngControl],'
       '[required][ngFormControl],'
@@ -76,12 +76,12 @@ class RequiredValidator implements Validator {
       required ? Validators.required(c) : null;
 }
 
-/// A [Directive] adding minimum-length validator to controls with `minlength`.
+/// A [directive] adding minimum-length validator to controls with `minlength`.
 ///
 /// ```html
 /// <input ngControl="fullName" minLength="10" />
 /// ```
-@Directive(
+@directive(
   selector: ''
       '[minlength][ngControl],'
       '[minlength][ngFormControl],'
@@ -115,12 +115,12 @@ class MinLengthValidator implements Validator {
   }
 }
 
-/// A [Directive] adding minimum-length validator to controls with `maxlength`.
+/// A [directive] adding minimum-length validator to controls with `maxlength`.
 ///
 /// ```html
 /// <input ngControl="fullName" maxLength="10" />
 /// ```
-@Directive(
+@directive(
   selector: ''
       '[maxlength][ngControl],'
       '[maxlength][ngFormControl],'
@@ -154,7 +154,7 @@ class MaxLengthValidator implements Validator {
   }
 }
 
-/// A [Directive] that adds a pattern validator to any controls with `pattern`:
+/// A [directive] that adds a pattern validator to any controls with `pattern`:
 ///
 /// ```html
 /// <input ngControl="fullName" pattern="[a-zA-Z ]*" />
@@ -162,7 +162,7 @@ class MaxLengthValidator implements Validator {
 ///
 /// The attribute value is parsed and used as a [RegExp] to validate the control
 /// value against. The regular expression must match the entire control value.
-@Directive(
+@directive(
   selector: ''
       '[pattern][ngControl],'
       '[pattern][ngFormControl],'

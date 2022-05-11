@@ -111,12 +111,12 @@ class TypeLink {
   static const _list = ListEquality();
 
   @override
-  bool operator ==(Object o) {
-    return o is TypeLink &&
-        symbol == o.symbol &&
-        import == o.import &&
-        isNullable == o.isNullable &&
-        _list.equals(generics, o.generics);
+  bool operator ==(Object other) {
+    return other is TypeLink &&
+        symbol == other.symbol &&
+        import == other.import &&
+        isNullable == other.isNullable &&
+        _list.equals(generics, other.generics);
   }
 
   @override

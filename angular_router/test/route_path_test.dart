@@ -155,7 +155,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'test',
   template: '',
 )

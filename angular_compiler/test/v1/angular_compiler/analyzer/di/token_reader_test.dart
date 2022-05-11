@@ -44,7 +44,7 @@ void main() {
       final token = reader.parseTokenObject(tokens[1]);
       expect(token, const TypeMatcher<OpaqueTokenElement>());
       expect(
-        '${(token as OpaqueTokenElement).identifier}',
+        (token as OpaqueTokenElement).identifier,
         'exampleToken',
       );
     });

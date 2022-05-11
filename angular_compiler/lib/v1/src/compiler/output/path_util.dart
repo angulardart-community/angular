@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 
 /// Matches asset:<package-name>/<realm>/<path-to-module>
-var _ASSET_URL_RE = RegExp(r'asset:([^\/]+)\/([^\/]+)\/(.+)');
-var _PATH_SEP = '/';
-var _PATH_SEP_RE = RegExp(r'\/');
+var _assetUrlRe = RegExp(r'asset:([^\/]+)\/([^\/]+)\/(.+)');
+var _pathSep = '/';
+var _pathSepRe = RegExp(r'\/');
 
 /// Returns the absolute or relative path to use to load the source for a
 /// given an import url such as templateUrl or cssUrls.
@@ -16,7 +16,7 @@ String getImportModulePath(String moduleUrlStr, String importedUrlStr) {
   }
   // Import self.
   if (moduleUrlStr == importedUrlStr) {
-    return importedUrl.modulePath.split(_PATH_SEP).last;
+    return importedUrl.modulePath.split(_pathSep).last;
   }
   // Try to create a relative path first
   if (moduleUrl.firstLevelDir == importedUrl.firstLevelDir &&
@@ -35,7 +35,7 @@ class _AssetUrl {
   final String modulePath;
 
   static _AssetUrl? parse(String url, bool allowNonMatching) {
-    var match = _ASSET_URL_RE.firstMatch(url);
+    var match = _assetUrlRe.firstMatch(url);
     if (match != null) {
       return _AssetUrl(match[1]!, match[2]!, match[3]!);
     }
@@ -47,8 +47,8 @@ class _AssetUrl {
 }
 
 String _getRelativePath(String modulePath, String importedPath) {
-  var moduleParts = modulePath.split(_PATH_SEP_RE);
-  var importedParts = importedPath.split(_PATH_SEP_RE);
+  var moduleParts = modulePath.split(_pathSepRe);
+  var importedParts = importedPath.split(_pathSepRe);
   var longestPrefix = _getLongestPathSegmentPrefix(moduleParts, importedParts);
   var resultParts = <Object>[];
   var goParentCount = moduleParts.length - 1 - longestPrefix;
@@ -58,7 +58,7 @@ String _getRelativePath(String modulePath, String importedPath) {
   for (var i = longestPrefix; i < importedParts.length; i++) {
     resultParts.add(importedParts[i]);
   }
-  return resultParts.join(_PATH_SEP);
+  return resultParts.join(_pathSep);
 }
 
 int _getLongestPathSegmentPrefix(List<String> arr1, List<String> arr2) {

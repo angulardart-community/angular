@@ -685,8 +685,8 @@ class _ComponentVisitor
       type: componentType,
       originType: componentType,
       metadataType: isComponent
-          ? CompileDirectiveMetadataType.Component
-          : CompileDirectiveMetadataType.Directive,
+          ? CompileDirectiveMetadataType.component
+          : CompileDirectiveMetadataType.directive,
       selector: coerceString(annotationValue, 'selector'),
       exportAs: coerceString(annotationValue, 'exportAs'),
       changeDetection: changeDetection,

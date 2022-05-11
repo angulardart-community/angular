@@ -33,11 +33,11 @@ class ReflectableEmitter {
   Reference get _registerComponent => _ngRef('registerComponent');
   Reference get _registerFactory => _ngRef('registerFactory');
   Reference get _registerDependencies => _ngRef('registerDependencies');
-  Reference get _SkipSelf => _ngRef('SkipSelf');
-  Reference get _Optional => _ngRef('Optional');
-  Reference get _Self => _ngRef('Self');
-  Reference get _Host => _ngRef('Host');
-  Reference get _Inject => _ngRef('Inject');
+  Reference get _skipSelf => _ngRef('SkipSelf');
+  Reference get _optional => _ngRef('Optional');
+  Reference get _self => _ngRef('Self');
+  Reference get _host => _ngRef('Host');
+  Reference get _inject => _ngRef('Inject');
 
   ReflectableEmitter(
     this._output,
@@ -257,16 +257,16 @@ class ReflectableEmitter {
     for (final param in parameters) {
       final value = <Expression>[_token(param.token)];
       if (param.skipSelf) {
-        value.add(_SkipSelf.constInstance(const []));
+        value.add(_skipSelf.constInstance(const []));
       }
       if (param.optional) {
-        value.add(_Optional.constInstance(const []));
+        value.add(_optional.constInstance(const []));
       }
       if (param.self) {
-        value.add(_Self.constInstance(const []));
+        value.add(_self.constInstance(const []));
       }
       if (param.host) {
-        value.add(_Host.constInstance(const []));
+        value.add(_host.constInstance(const []));
       }
       expressions.add(literalConstList(value));
     }
@@ -280,7 +280,7 @@ class ReflectableEmitter {
         token.identifier.isNotEmpty ? [literalString(token.identifier)] : [],
         {},
       );
-      return _Inject.constInstance([tokenInstance]);
+      return _inject.constInstance([tokenInstance]);
     }
     if (token is TypeTokenElement) {
       return linkToReference(token.link.withoutGenerics(), _library);
@@ -326,7 +326,7 @@ class SplitDartEmitter extends DartEmitter {
         );
 
   @override
-  StringSink visitDirective(Directive spec, [_]) {
+  StringSink visitDirective(Directive spec, [output]) {
     // Always write import/export directives to a separate buffer.
     return super.visitDirective(spec, _writeImports);
   }

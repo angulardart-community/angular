@@ -129,7 +129,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'ng-form-model-test',
   directives: [
     formDirectives,
@@ -166,7 +166,7 @@ class NgFormModelTest {
   });
 }
 
-@Directive(selector: '[dummy]', providers: [
+@directive(selector: '[dummy]', providers: [
   ExistingProvider.forToken(
     ngValueAccessor,
     DummyControlValueAccessor,
@@ -188,7 +188,7 @@ class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
   void onDisabledChanged(bool isDisabled) {}
 }
 
-@Directive(selector: '[matchingPasswords]', providers: [
+@directive(selector: '[matchingPasswords]', providers: [
   ValueProvider.forToken(
       NG_VALIDATORS, MatchingPasswordsValidator.matchingPasswordsValidator),
 ])

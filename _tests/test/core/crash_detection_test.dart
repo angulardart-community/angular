@@ -14,7 +14,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createNoCrashFactory(),
     ).addInjector(
-      (i) => Injector.map({
+      (i) => injector.map({
         ValueService: valueService,
       }, i),
     );
@@ -35,7 +35,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createCrashFactory(),
     ).addInjector(
-      (i) => Injector.map({
+      (i) => injector.map({
         ValueService: valueService,
       }, i),
     );
@@ -70,7 +70,7 @@ void main() {
     final testBed = NgTestBed(
       ng.createCrashOnInitFactory(),
     ).addInjector(
-      (i) => Injector.map({
+      (i) => injector.map({
         ValueService: valueService,
         RpcService: rpcService,
       }, i),
@@ -114,7 +114,7 @@ class ValueService {
 }
 
 /// A top-level component that does not contain any crashing components.
-@Component(
+@component(
   selector: 'no-crash',
   template: '<child></child>',
   directives: [ChildComponent],
@@ -122,7 +122,7 @@ class ValueService {
 class NoCrash {}
 
 /// A child component that renders [ValueService.value].
-@Component(
+@component(
   selector: 'child',
   template: 'Value: {{service.value}}',
 )
@@ -132,7 +132,7 @@ class ChildComponent {
   ChildComponent(this.service);
 }
 
-@Component(
+@component(
   selector: 'crash',
   template: r'''
     <child></child>
@@ -148,7 +148,7 @@ class Crash {
   bool startCrashing = false;
 }
 
-@Component(
+@component(
   selector: 'error',
   template: 'Error({{first}})',
 )
@@ -169,7 +169,7 @@ class RpcService {
   }
 }
 
-@Component(
+@component(
   selector: 'crash-on-init',
   directives: [
     ChildComponent,
@@ -187,7 +187,7 @@ class CrashOnInit {
   bool startCrashing = false;
 }
 
-@Component(
+@component(
   selector: 'oninit',
   template: '',
 )

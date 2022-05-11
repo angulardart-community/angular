@@ -66,7 +66,7 @@ class MyService {
   String greeting = 'hello';
 }
 
-@Component(
+@component(
   selector: 'child',
   template: '{{value}}',
   viewProviders: [
@@ -81,7 +81,7 @@ class ChildComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'component-reference-binding',
   template: '<p><child #alice></child></p>',
   directives: [ChildComponent],
@@ -91,13 +91,13 @@ class ComponentReferenceBindingComponent {
   ChildComponent? child;
 }
 
-@Directive(
+@directive(
   selector: '[export-dir]',
   exportAs: 'dir',
 )
 class ExportDir {}
 
-@Component(
+@component(
   selector: 'directive-reference-binding',
   template: '<div><div export-dir #localdir="dir"></div></div>',
   directives: [ExportDir],
@@ -107,7 +107,7 @@ class DirectiveReferenceBindingComponent {
   ExportDir? directive;
 }
 
-@Component(
+@component(
   selector: 'element-reference-binding',
   template: r'''
     <div #alice>
@@ -123,7 +123,7 @@ class ElementReferenceBindingComponent {
   CaptureReferenceDirective? captured;
 }
 
-@Directive(
+@directive(
   selector: '[capture]',
 )
 class CaptureReferenceDirective {
@@ -131,7 +131,7 @@ class CaptureReferenceDirective {
   dynamic reference;
 }
 
-@Component(
+@component(
   selector: 'use-ref-before-declaration',
   template: '<template [ngIf]="true">{{alice.value}}</template>'
       '|{{alice.value}}|<child #alice></child>',
@@ -142,7 +142,7 @@ class CaptureReferenceDirective {
 )
 class UseRefBeforeDeclarationComponent {}
 
-@Component(
+@component(
   selector: 'two-component-references',
   template: '<p><child #alice></child><child #bob></child></p>',
   directives: [ChildComponent],
@@ -155,7 +155,7 @@ class TwoComponentReferencesComponent {
   ChildComponent? bob;
 }
 
-@Component(
+@component(
   selector: 'case-sensitive-ref',
   template: '<child #superAlice></child>',
   directives: [ChildComponent],

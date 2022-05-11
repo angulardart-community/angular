@@ -15,7 +15,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     SanitizedComponent,
@@ -47,7 +47,7 @@ class GoldenComponent {
   bool boolean = deopt();
 }
 
-@Component(
+@component(
   selector: 'sanitized',
   template: '''
     <!-- Statically add a href -->

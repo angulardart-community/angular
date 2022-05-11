@@ -128,7 +128,7 @@ void main() {
 
 /// A helper for asserting against a new component that implements [ValueTest].
 class _GetValue<T extends ValueTest> {
-  final ComponentFactory<T> _factory;
+  final componentFactory<T> _factory;
 
   const _GetValue(this._factory);
 
@@ -140,7 +140,7 @@ class _GetValue<T extends ValueTest> {
   }
 }
 
-@Component(
+@component(
   selector: 'child',
   template: r'{{value}}',
 )
@@ -155,7 +155,7 @@ abstract class ValueTest {
   dynamic get expected;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'<child [value]="10"></child>',
@@ -169,7 +169,7 @@ class TestLiterals implements ValueTest {
   int get expected => 10;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="'string'"></child>''',
@@ -183,7 +183,7 @@ class TestStripQuotes implements ValueTest {
   String get expected => 'string';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '''<child [value]="value"></child>''',
@@ -200,7 +200,7 @@ class TestNewLines implements ValueTest {
   var value = 'a\n\nb';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="10 + 2"></child>',
@@ -214,7 +214,7 @@ class TestAddOperation implements ValueTest {
   int get expected => 12;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="10 - 2"></child>',
@@ -228,7 +228,7 @@ class TestMinusOperation implements ValueTest {
   int get expected => 8;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="10 * 2"></child>',
@@ -242,7 +242,7 @@ class TestMultiplyOperation implements ValueTest {
   int get expected => 20;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="10 / 2"></child>',
@@ -256,7 +256,7 @@ class TestDivisionOperation implements ValueTest {
   int get expected => 5;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="11 % 2"></child>',
@@ -270,7 +270,7 @@ class TestModulusOperation implements ValueTest {
   int get expected => 1;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="1 == 1"></child>',
@@ -284,7 +284,7 @@ class TestEqualityOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="1 != 1"></child>',
@@ -298,7 +298,7 @@ class TestNotEqualsOperation implements ValueTest {
   Matcher get expected => isFalse;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="identical(1, 1)"></child>',
@@ -313,7 +313,7 @@ class TestIdentityOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="!identical(1, 1)"></child>',
@@ -328,7 +328,7 @@ class TestNotIdenticalOperation implements ValueTest {
   Matcher get expected => isFalse;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="1 < 2"></child>',
@@ -342,7 +342,7 @@ class TestLessThanOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="2 > 1"></child>',
@@ -356,7 +356,7 @@ class TestGreaterThanOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="1 <= 2"></child>',
@@ -370,7 +370,7 @@ class TestLessThanOrEqualsOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="2 >= 1"></child>',
@@ -384,7 +384,7 @@ class TestGreaterThanOrEqualsOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="true && false"></child>',
@@ -398,7 +398,7 @@ class TestAndOperation implements ValueTest {
   Matcher get expected => isFalse;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="val1 || val2"></child>',
@@ -416,7 +416,7 @@ class TestOrOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="!true"></child>',
@@ -430,7 +430,7 @@ class TestNegateOperation implements ValueTest {
   Matcher get expected => isFalse;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: '<child [value]="!!true"></child>',
@@ -444,7 +444,7 @@ class TestDoubleNegationOperation implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="1 > 2 ? 'yes' : 'no'"></child>''',
@@ -458,7 +458,7 @@ class TestTernaryOperation implements ValueTest {
   String get expected => 'no';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="map['foo']"></child>''',
@@ -474,7 +474,7 @@ class TestMapAccess implements ValueTest {
   String get expected => 'bar';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="list[1]"></child>''',
@@ -490,7 +490,7 @@ class TestListAccess implements ValueTest {
   String get expected => 'bar';
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="list.length"></child>''',
@@ -506,7 +506,7 @@ class TestPropertyAccess implements ValueTest {
   int get expected => 2;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="list.length.isEven"></child>''',
@@ -522,7 +522,7 @@ class TestChainedPropertyAccess implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="list.toList().length.isEven"></child>''',
@@ -538,7 +538,7 @@ class TestFunctionCall implements ValueTest {
   bool get expected => true;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="null"></child>''',
@@ -552,7 +552,7 @@ class TestAssignNull implements ValueTest {
   Matcher get expected => isNull;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="map?.keys"></child>''',
@@ -568,7 +568,7 @@ class TestElvisOperation implements ValueTest {
   Matcher get expected => isNull;
 }
 
-@Component(
+@component(
   selector: 'test',
   directives: [ChildComponent],
   template: r'''<child [value]="map?.keys ?? 'Hello'"></child>''',

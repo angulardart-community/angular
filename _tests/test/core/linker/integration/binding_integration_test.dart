@@ -99,7 +99,7 @@ void main() {
   });
 }
 
-@Component(
+@component(
   selector: 'bound-text',
   template: '<div>{{text}}</div>',
 )
@@ -107,7 +107,7 @@ class BoundTextComponent {
   String? text = 'Initial text';
 }
 
-@Component(
+@component(
   selector: 'bound-property',
   template: '<div [id]="id"></div>',
 )
@@ -115,7 +115,7 @@ class BoundPropertyComponent {
   String id = 'Initial ID';
 }
 
-@Component(
+@component(
   selector: 'bound-aria-attribute',
   template: '<div [attr.aria-label]="label"></div>',
 )
@@ -123,7 +123,7 @@ class BoundAriaAttributeComponent {
   String label = 'Initial label';
 }
 
-@Component(
+@component(
   selector: 'bound-attribute',
   template: '<div [attr.foo]="value"></div>',
 )
@@ -131,7 +131,7 @@ class BoundAttributeComponent {
   String? value = 'Initial value';
 }
 
-@Component(
+@component(
   selector: 'bound-style',
   template: '<div [style.height.px]="height"></div>',
 )
@@ -139,7 +139,7 @@ class BoundStyleComponent {
   int? height = 10;
 }
 
-@Component(
+@component(
   selector: 'bound-mismatched-property',
   template: '<div [tabindex]="index"></div>',
 )
@@ -147,7 +147,7 @@ class BoundMismatchedPropertyComponent {
   int? index = 0;
 }
 
-@Component(
+@component(
   selector: 'bound-camel-case-property',
   template: '<div [tabIndex]="index"></div>',
 )
@@ -155,7 +155,7 @@ class BoundCamelCasePropertyComponent {
   int? index = 1;
 }
 
-@Component(
+@component(
   selector: 'bound-inner-html',
   template: '<div [innerHtml]="html"></div>',
 )
@@ -163,7 +163,7 @@ class BoundInnerHtmlComponent {
   String? html = 'Initial <span>HTML</span>';
 }
 
-@Component(
+@component(
   selector: 'bound-class-name-alias',
   template: '<div class="initial" [class]="classes"></div>',
 )

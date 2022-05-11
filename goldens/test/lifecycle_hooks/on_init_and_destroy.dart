@@ -14,7 +14,7 @@ void main() {
   runApp(ng.createGoldenComponentFactory());
 }
 
-@Component(
+@component(
   selector: 'golden',
   directives: [
     UsesOnInit,
@@ -41,7 +41,7 @@ class GoldenComponent {
   }
 }
 
-@Component(
+@component(
   selector: 'uses-on-init',
   template: '',
 )
@@ -61,7 +61,7 @@ class UsesOnInit implements OnInit {
   }
 }
 
-@Component(
+@component(
   selector: 'uses-on-destroy',
   template: '',
 )

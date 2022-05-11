@@ -164,7 +164,7 @@ class _ToBindingVisitor
       CompileDirectiveMetadata directive, ast.BoundDirectivePropertyAst input) {
     // TODO(alorenzen): Determine if we actually need this special case.
     if (directive.identifier!.name == 'NgIf' && input.memberName == 'ngIf') {
-      return o.BOOL_TYPE;
+      return o.boolType;
     }
     var inputTypeMeta = directive.inputTypes[input.memberName];
     return inputTypeMeta != null
