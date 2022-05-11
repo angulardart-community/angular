@@ -1,3 +1,6 @@
+## 7.1.0
+- Bumped to `SDK 2.17`, `analyzer 4.0.0` and `lints 2.0.0`
+
 ## 7.0.2
 
 - Update `README.md`.
