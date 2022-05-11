@@ -36,8 +36,8 @@ dependencies:
   source_gen: ^1.0.0
   source_span: ^1.8.0
 
-dev_dependencies:
   lints: ^2.0.0
+
 
 dependency_overrides:
   angular_compiler:
