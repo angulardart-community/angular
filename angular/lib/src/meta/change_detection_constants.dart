@@ -61,11 +61,11 @@ class ChangeDetectionStrategy {
   /// **WARNING**: It is currently _undefined behavior_ to have a [Default]
   /// configured component as a child (or directive) of a component that is
   /// using [OnPush]. We hope to introduce more guidance here in the future.
-  static const onPush = 5;
+  static const int onPush = 5;
 
   @Deprecated('Not intended to be a public API. Use "ChangeDetectorRef.detach"')
-  // ignore: non_constant_identifier_names
-  static int get OnPush => onPush;
+  // ignore: constant_identifier_names
+  static const int OnPush = onPush;
 
   static String toPrettyString(int strategy) {
     switch (strategy) {
