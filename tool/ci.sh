@@ -67,13 +67,9 @@ for PKG in ${PKGS}; do
       echo
       echo -e "\033[1mPKG: ${PKG}; TASK: ${TASK}\033[22m"
       case ${TASK} in
-      analyze_0)
+      analyze)
         echo 'dart analyze'
         dart analyze || EXIT_CODE=$?
-        ;;
-      analyze_1)
-        echo 'dart analyze --fatal-infos'
-        dart analyze --fatal-infos || EXIT_CODE=$?
         ;;
       command_0)
         echo 'pub run build_runner build --fail-on-severe'

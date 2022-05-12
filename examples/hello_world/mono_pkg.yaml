@@ -5,7 +5,7 @@ sdk:
 stages:
 - analyze:
   - group:
-    - analyze: --fatal-infos
+    - analyze #: --fatal-infos
     sdk: dev
 #  - group:
 #    - analyze
