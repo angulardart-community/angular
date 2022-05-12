@@ -11,4 +11,4 @@ stages:
 #    - analyze
 #    sdk: 2.12.0
 - build:
-  - command: pub run build_runner build --fail-on-severe
+  - command: dart pub run build_runner build --fail-on-severe

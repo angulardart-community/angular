@@ -4,6 +4,6 @@ sdk:
 
 stages:
 - build:
-  - command: pub run build_runner build --fail-on-severe
+  - command: dart pub run build_runner build --fail-on-severe
 - unit_test:
-  - command: pub run build_runner test --fail-on-severe -- -P ci
+  - command: dart pub run build_runner test --fail-on-severe -- -P ci
