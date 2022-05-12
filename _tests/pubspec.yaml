@@ -19,13 +19,13 @@ dev_dependencies:
   angular_forms:
 
   # Actual valid dependencies required.
-  analyzer: ^2.0.0
+  analyzer: ^4.0.0
   build_runner: ^2.0.0
   build_test: ^2.0.0
   build_web_compilers: #^2.0.0
   mockito: ^5.0.0
   package_config: ^2.0.0
-  pedantic: ^1.10.0
+  lints: ^2.0.0
   source_span: ^1.8.0
   term_glyph: ^1.2.0
 
@@ -43,3 +43,4 @@ dependency_overrides:
     path: ../angular_router
   angular_test:
     path: ../angular_test
+  analyzer: ^4.0.0
