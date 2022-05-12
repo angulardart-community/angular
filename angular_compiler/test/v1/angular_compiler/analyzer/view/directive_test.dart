@@ -7,7 +7,7 @@ void main() {
   Future<void> expectBuildError(String source, Object matcherOrString) {
     return compilesExpecting(source, (library) async {
       final visitDirective = const DirectiveVisitor().visitDirective;
-      library.definingCompilationUnit.types.forEach(visitDirective);
+      library.definingCompilationUnit.classes.forEach(visitDirective);
     }, errors: [matcherOrString]);
   }
 
