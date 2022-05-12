@@ -85,7 +85,7 @@ class ReflectableReader {
     final registerClasses = <ReflectableClass>[];
     final registerFunctions = <DependencyInvocation<ExecutableElement>>[];
     for (final unit in _allUnits(library)) {
-      for (final type in unit.types) {
+      for (final type in unit.classes) {
         final reflectable = _resolveClass(type);
         if (reflectable != null) {
           registerClasses.add(reflectable);

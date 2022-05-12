@@ -439,9 +439,10 @@ class _ComponentVisitor
   /// May return null if no setter corresponds to [element], or the [element]
   /// itself is invalid (e.g. a setter without parameters or a body).
   PropertyAccessorElement? _setterFor(Element element) {
+    final dclass = _directiveClassElement!;
     // Resolves specified generic type parameters.
-    final setter = _directiveClassElement!.thisType
-        .lookUpInheritedSetter(element.displayName)!;
+    final setter = dclass.thisType
+        .lookUpSetter2(element.displayName, dclass.library)!;
     if (setter.parameters.isEmpty) {
       CompileContext.current.reportAndRecover(
         BuildError.forElement(

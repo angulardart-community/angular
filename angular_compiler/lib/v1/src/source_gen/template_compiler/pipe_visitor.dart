@@ -47,14 +47,16 @@ class PipeVisitor extends RecursiveElementVisitor<CompilePipeMetadata> {
   ) {
     var elementType = annotation.element.thisType;
     FunctionType? transformType;
-    final transformMethod = elementType.lookUpInheritedMethod('transform');
+    final transformMethod = elementType.lookUpMethod2('transform',
+    annotation.element.library);
     if (transformMethod != null) {
       // The pipe defines a 'transform' method.
       transformType = transformMethod.type;
     } else {
       // The pipe may define a function-typed 'transform' property. This is
       // supported for backwards compatibility.
-      final transformGetter = elementType.lookUpInheritedGetter('transform');
+      final transformGetter = elementType.lookUpGetter2('transform',
+          annotation.element.library);
       final transformGetterType = transformGetter?.returnType;
       if (transformGetterType is FunctionType) {
         transformType = transformGetterType;

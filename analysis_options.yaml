@@ -1,5 +1,5 @@
 # Extend the default sub-set of linter/analyzer rules used in google3.
-include: package:pedantic/analysis_options.yaml
+include: package:lints/recommended.yaml
 
 analyzer:
   strong-mode:
