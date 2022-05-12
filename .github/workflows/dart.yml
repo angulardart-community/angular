@@ -65,43 +65,43 @@ jobs:
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
         working-directory: angular_ast
         run: dart analyze
-  job_003:
-    name: "analyze; PKGS: angular_compiler, examples/hello_world; `dart analyze --fatal-infos`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_compiler-examples/hello_world;commands:analyze_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_compiler-examples/hello_world
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_compiler_pub_upgrade
-        name: angular_compiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
-        run: dart pub upgrade
-      - name: "angular_compiler; dart analyze --fatal-infos"
-        if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
-        run: dart analyze --fatal-infos
-      - id: examples_hello_world_pub_upgrade
-        name: examples/hello_world; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: examples/hello_world
-        run: dart pub upgrade
-      - name: "examples/hello_world; dart analyze --fatal-infos"
-        if: "always() && steps.examples_hello_world_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/hello_world
-        run: dart analyze --fatal-infos
+#  job_003:
+#    name: "analyze; PKGS: angular_compiler, examples/hello_world; `dart analyze --fatal-infos`"
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Cache Pub hosted dependencies
+#        uses: actions/cache@v2.1.7
+#        with:
+#          path: "~/.pub-cache/hosted"
+#          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_compiler-examples/hello_world;commands:analyze_1"
+#          restore-keys: |
+#            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_compiler-examples/hello_world
+#            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+#            os:ubuntu-latest;pub-cache-hosted
+#            os:ubuntu-latest
+#      - uses: dart-lang/setup-dart@v1.3
+#        with:
+#          sdk: dev
+#      - id: checkout
+#        uses: actions/checkout@v2.4.0
+#      - id: angular_compiler_pub_upgrade
+#        name: angular_compiler; dart pub upgrade
+#        if: "always() && steps.checkout.conclusion == 'success'"
+#        working-directory: angular_compiler
+#        run: dart pub upgrade
+#      - name: "angular_compiler; dart analyze --fatal-infos"
+#        if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
+#        working-directory: angular_compiler
+#        run: dart analyze --fatal-infos
+#      - id: examples_hello_world_pub_upgrade
+#        name: examples/hello_world; dart pub upgrade
+#        if: "always() && steps.checkout.conclusion == 'success'"
+#        working-directory: examples/hello_world
+#        run: dart pub upgrade
+#      - name: "examples/hello_world; dart analyze --fatal-infos"
+#        if: "always() && steps.examples_hello_world_pub_upgrade.conclusion == 'success'"
+#        working-directory: examples/hello_world
+#        run: dart analyze --fatal-infos
   job_004:
     name: "build; PKG: _tests; `pub run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
