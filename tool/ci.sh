@@ -72,20 +72,20 @@ for PKG in ${PKGS}; do
         dart analyze || EXIT_CODE=$?
         ;;
       command_0)
-        echo 'pub run build_runner build --fail-on-severe'
-        pub run build_runner build --fail-on-severe || EXIT_CODE=$?
+        echo 'dart pub run build_runner build --fail-on-severe'
+        dart pub run build_runner build --fail-on-severe || EXIT_CODE=$?
         ;;
       command_1)
-        echo 'pub run test -P vm'
-        pub run test -P vm || EXIT_CODE=$?
+        echo 'dart pub run test -P vm'
+        dart pub run test -P vm || EXIT_CODE=$?
         ;;
       command_2)
-        echo 'pub run build_runner test --fail-on-severe -- -P browser'
-        pub run build_runner test --fail-on-severe -- -P browser || EXIT_CODE=$?
+        echo 'dart pub run build_runner test --fail-on-severe -- -P browser'
+        dart pub run build_runner test --fail-on-severe -- -P browser || EXIT_CODE=$?
         ;;
       command_3)
-        echo 'pub run build_runner test --fail-on-severe -- -P ci'
-        pub run build_runner test --fail-on-severe -- -P ci || EXIT_CODE=$?
+        echo 'dart pub run build_runner test --fail-on-severe -- -P ci'
+        dart pub run build_runner test --fail-on-severe -- -P ci || EXIT_CODE=$?
         ;;
       *)
         echo -e "\033[31mUnknown TASK '${TASK}' - TERMINATING JOB\033[0m"
