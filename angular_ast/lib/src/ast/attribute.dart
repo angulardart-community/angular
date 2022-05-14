@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -42,17 +41,15 @@ abstract class AttributeAst implements TemplateAst {
   }
 
   @override
-  bool operator ==(Object o) {
-    if (o is AttributeAst) {
-      return name == o.name &&
-          value == o.value &&
-          _listEquals.equals(mustaches, o.mustaches);
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is AttributeAst &&
+        name == other.name &&
+        value == other.value &&
+        _listEquals.equals(mustaches, other.mustaches);
   }
 
   @override
-  int get hashCode => hash2(name, value);
+  int get hashCode => Object.hash(name, value);
 
   /// Static attribute name.
   String get name;

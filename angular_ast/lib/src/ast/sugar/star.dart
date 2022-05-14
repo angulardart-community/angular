@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../../ast.dart';
-import '../../hash.dart';
 import '../../token/tokens.dart';
 import '../../visitor.dart';
 
@@ -40,15 +39,12 @@ abstract class StarAst implements TemplateAst {
   }
 
   @override
-  bool operator ==(Object o) {
-    if (o is PropertyAst) {
-      return value == o.value && name == o.name;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is PropertyAst && value == other.value && name == other.name;
   }
 
   @override
-  int get hashCode => hash2(value, name);
+  int get hashCode => Object.hash(value, name);
 
   /// Name of the directive being created.
   String get name;

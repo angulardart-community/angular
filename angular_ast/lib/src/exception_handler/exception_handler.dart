@@ -1,7 +1,5 @@
 import 'package:meta/meta.dart';
 
-import '../hash.dart';
-
 part 'angular_parser_exception.dart';
 part 'exceptions.dart';
 

@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -89,23 +88,21 @@ abstract class EmbeddedTemplateAst implements StandaloneTemplateAst {
   set closeComplement(CloseElementAst? closeComplement);
 
   @override
-  bool operator ==(Object o) {
-    if (o is EmbeddedTemplateAst) {
-      return closeComplement == o.closeComplement &&
-          _listEquals.equals(annotations, o.annotations) &&
-          _listEquals.equals(attributes, o.attributes) &&
-          _listEquals.equals(events, o.events) &&
-          _listEquals.equals(properties, o.properties) &&
-          _listEquals.equals(childNodes, o.childNodes) &&
-          _listEquals.equals(references, o.references) &&
-          _listEquals.equals(letBindings, o.letBindings);
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is EmbeddedTemplateAst &&
+        closeComplement == other.closeComplement &&
+        _listEquals.equals(annotations, other.annotations) &&
+        _listEquals.equals(attributes, other.attributes) &&
+        _listEquals.equals(events, other.events) &&
+        _listEquals.equals(properties, other.properties) &&
+        _listEquals.equals(childNodes, other.childNodes) &&
+        _listEquals.equals(references, other.references) &&
+        _listEquals.equals(letBindings, other.letBindings);
   }
 
   @override
   int get hashCode {
-    return hashObjects([
+    return Object.hashAll([
       closeComplement,
       _listEquals.hash(annotations),
       _listEquals.hash(attributes),

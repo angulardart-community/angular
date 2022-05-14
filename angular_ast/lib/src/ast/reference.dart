@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -32,15 +31,14 @@ abstract class ReferenceAst implements TemplateAst {
   ]) = ParsedReferenceAst;
 
   @override
-  bool operator ==(Object o) {
-    if (o is ReferenceAst) {
-      return identifier == o.identifier && variable == o.variable;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is ReferenceAst &&
+        identifier == other.identifier &&
+        variable == other.variable;
   }
 
   @override
-  int get hashCode => hash2(identifier, variable);
+  int get hashCode => Object.hash(identifier, variable);
 
   @override
   R accept<R, C>(TemplateAstVisitor<R, C?> visitor, [C? context]) {

@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 import '../../ast.dart';
-import '../../hash.dart';
 
 final _listEquals = const ListEquality<dynamic>();
 
@@ -31,7 +30,7 @@ class NgMicroAst {
 
   @override
   int get hashCode {
-    return hash2(_listEquals.hash(letBindings), _listEquals.hash(properties));
+    return Object.hash(_listEquals.hash(letBindings), _listEquals.hash(properties));
   }
 
   @override

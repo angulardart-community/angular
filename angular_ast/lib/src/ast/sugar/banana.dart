@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../../ast.dart';
-import '../../hash.dart';
 import '../../token/tokens.dart';
 import '../../visitor.dart';
 
@@ -41,15 +40,12 @@ abstract class BananaAst implements TemplateAst {
   }
 
   @override
-  bool operator ==(Object o) {
-    if (o is BananaAst) {
-      return name == o.name && value == o.value;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is BananaAst && name == other.name && value == other.value;
   }
 
   @override
-  int get hashCode => hash2(name, value);
+  int get hashCode => Object.hash(name, value);
 
   /// Name of the property.
   String get name;

@@ -29,11 +29,8 @@ abstract class CloseElementAst implements TemplateAst {
   }) = ParsedCloseElementAst;
 
   @override
-  bool operator ==(Object o) {
-    if (o is CloseElementAst) {
-      return name == o.name;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is CloseElementAst && name == other.name;
   }
 
   @override

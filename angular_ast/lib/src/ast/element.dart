@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -59,25 +58,23 @@ abstract class ElementAst implements StandaloneTemplateAst {
   }) = ParsedElementAst;
 
   @override
-  bool operator ==(Object o) {
-    if (o is ElementAst) {
-      return name == o.name &&
-          closeComplement == o.closeComplement &&
-          _listEquals.equals(attributes, o.attributes) &&
-          _listEquals.equals(childNodes, o.childNodes) &&
-          _listEquals.equals(events, o.events) &&
-          _listEquals.equals(properties, o.properties) &&
-          _listEquals.equals(references, o.references) &&
-          _listEquals.equals(bananas, o.bananas) &&
-          _listEquals.equals(stars, o.stars) &&
-          _listEquals.equals(annotations, o.annotations);
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is ElementAst &&
+        name == other.name &&
+        closeComplement == other.closeComplement &&
+        _listEquals.equals(attributes, other.attributes) &&
+        _listEquals.equals(childNodes, other.childNodes) &&
+        _listEquals.equals(events, other.events) &&
+        _listEquals.equals(properties, other.properties) &&
+        _listEquals.equals(references, other.references) &&
+        _listEquals.equals(bananas, other.bananas) &&
+        _listEquals.equals(stars, other.stars) &&
+        _listEquals.equals(annotations, other.annotations);
   }
 
   @override
   int get hashCode {
-    return hashObjects([
+    return Object.hashAll([
       name,
       closeComplement,
       _listEquals.hash(attributes),

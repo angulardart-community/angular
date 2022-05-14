@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -64,16 +63,16 @@ abstract class EmbeddedContentAst implements StandaloneTemplateAst {
   set closeComplement(CloseElementAst closeComplement);
 
   @override
-  bool operator ==(Object o) {
-    return o is EmbeddedContentAst &&
-        o.selector == selector &&
-        o.ngProjectAs == ngProjectAs &&
-        o.reference == reference &&
-        o.closeComplement == closeComplement;
+  bool operator ==(Object? other) {
+    return other is EmbeddedContentAst &&
+        other.selector == selector &&
+        other.ngProjectAs == ngProjectAs &&
+        other.reference == reference &&
+        other.closeComplement == closeComplement;
   }
 
   @override
-  int get hashCode => hash4(
+  int get hashCode => Object.hash(
       selector.hashCode, ngProjectAs.hashCode, reference, closeComplement);
 
   @override

@@ -17,7 +17,7 @@ class _LexemeNgSimpleToken extends NgSimpleToken {
   }
 
   @override
-  int get hashCode => hash2(super.hashCode, lexeme);
+  int get hashCode => Object.hash(super.hashCode, lexeme);
 
   @override
   final String lexeme;
@@ -50,7 +50,7 @@ class _LexemeNgToken extends NgToken {
   }
 
   @override
-  int get hashCode => hash2(super.hashCode, lexeme);
+  int get hashCode => Object.hash(super.hashCode, lexeme);
 
   @override
   final String lexeme;

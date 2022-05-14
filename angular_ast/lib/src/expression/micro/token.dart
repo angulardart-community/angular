@@ -1,5 +1,3 @@
-import '../../hash.dart';
-
 /// Represents a section of parsed text from an Angular micro expression.
 ///
 /// Clients should not extend, implement, or mix-in this class.
@@ -63,7 +61,7 @@ class NgMicroToken {
   }
 
   @override
-  int get hashCode => hash3(offset, lexeme, type);
+  int get hashCode => Object.hash(offset, lexeme, type);
 
   /// Indexed location where the token ends in the original source text.
   int get end => offset + length;

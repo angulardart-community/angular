@@ -31,7 +31,9 @@ abstract class CommentAst implements StandaloneTemplateAst {
   }
 
   @override
-  bool operator ==(Object o) => o is CommentAst && value == o.value;
+  bool operator ==(Object? other) {
+    return other is CommentAst && value == other.value;
+  }
 
   @override
   int get hashCode => value.hashCode;

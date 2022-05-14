@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -39,13 +38,14 @@ abstract class EventAst implements TemplateAst {
   ]) = ParsedEventAst;
 
   @override
-  bool operator ==(Object o) =>
-      o is EventAst &&
-      name == o.name &&
-      _listEquals.equals(reductions, o.reductions);
+  bool operator ==(Object? other) {
+    return other is EventAst &&
+        name == other.name &&
+        _listEquals.equals(reductions, other.reductions);
+  }
 
   @override
-  int get hashCode => hash2(name, reductions);
+  int get hashCode => Object.hash(name, reductions);
 
   @override
   R accept<R, C>(TemplateAstVisitor<R, C?> visitor, [C? context]) {

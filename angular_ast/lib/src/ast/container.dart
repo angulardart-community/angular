@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -53,16 +52,16 @@ abstract class ContainerAst implements StandaloneTemplateAst {
   }
 
   @override
-  bool operator ==(Object o) {
-    return o is ContainerAst &&
-        _listEquals.equals(childNodes, o.childNodes) &&
-        _listEquals.equals(stars, o.stars) &&
-        o.closeComplement == closeComplement;
+  bool operator ==(Object? other) {
+    return other is ContainerAst &&
+        _listEquals.equals(childNodes, other.childNodes) &&
+        _listEquals.equals(stars, other.stars) &&
+        other.closeComplement == closeComplement;
   }
 
   @override
   int get hashCode {
-    return hashObjects([
+    return Object.hashAll([
       _listEquals.hash(childNodes),
       _listEquals.hash(stars),
       closeComplement,

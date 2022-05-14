@@ -36,8 +36,8 @@ abstract class InterpolationAst implements StandaloneTemplateAst {
   String get value;
 
   @override
-  bool operator ==(Object o) {
-    return o is InterpolationAst && o.value == value;
+  bool operator ==(Object? other) {
+    return other is InterpolationAst && other.value == value;
   }
 
   @override

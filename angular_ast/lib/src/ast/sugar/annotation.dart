@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../../ast.dart';
-import '../../hash.dart';
 import '../../token/tokens.dart';
 import '../../visitor.dart';
 
@@ -36,15 +35,12 @@ abstract class AnnotationAst implements TemplateAst {
   }
 
   @override
-  bool operator ==(Object o) {
-    if (o is AnnotationAst) {
-      return name == o.name && value == o.value;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is AnnotationAst && name == other.name && value == other.value;
   }
 
   @override
-  int get hashCode => hash2(name, value);
+  int get hashCode => Object.hash(name, value);
 
   /// Static annotation name.
   String get name;

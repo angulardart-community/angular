@@ -1,3 +1,7 @@
+## 2.1.1
+
+- Maintenance release
+
 ## 2.0.1
 
 - Update `README.md`.

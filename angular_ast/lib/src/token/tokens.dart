@@ -1,7 +1,5 @@
 library angular_ast.src.token.tokens;
 
-import '../hash.dart';
-
 part 'lexeme.dart';
 part 'token_types.dart';
 
@@ -195,7 +193,7 @@ class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
   }
 
   @override
-  int get hashCode => hash2(offset, type);
+  int get hashCode => Object.hash(offset, type);
   @override
   int get end => offset + length;
   @override
@@ -274,7 +272,7 @@ class NgSimpleQuoteToken extends _LexemeNgSimpleToken {
   int get contentLength => contentLexeme.length;
 
   @override
-  int get hashCode => hash4(super.hashCode, lexeme, contentOffset, end);
+  int get hashCode => Object.hash(super.hashCode, lexeme, contentOffset, end);
 
   @override
   String toString() => '#$NgSimpleQuoteToken($type) {$offset:$lexeme}';
@@ -480,7 +478,7 @@ class NgToken implements NgBaseToken<NgTokenType> {
   }
 
   @override
-  int get hashCode => hash2(offset, type);
+  int get hashCode => Object.hash(offset, type);
 
   /// Indexed location where the token ends in the original source text.
   @override
@@ -553,7 +551,7 @@ class NgAttributeValueToken extends NgToken {
   }
 
   @override
-  int get hashCode => hash3(leftQuote, innerValue, rightQuote);
+  int get hashCode => Object.hash(leftQuote, innerValue, rightQuote);
 
   @override
   int get end => rightQuote!.end;

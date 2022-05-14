@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -38,15 +37,15 @@ abstract class PropertyAst implements TemplateAst {
   ]) = ParsedPropertyAst;
 
   @override
-  bool operator ==(Object o) {
-    if (o is PropertyAst) {
-      return name == o.name && postfix == o.postfix && unit == o.unit;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is PropertyAst &&
+        name == other.name &&
+        postfix == other.postfix &&
+        unit == other.unit;
   }
 
   @override
-  int get hashCode => hash3(name, postfix, unit);
+  int get hashCode => Object.hash(name, postfix, unit);
 
   @override
   R accept<R, C>(TemplateAstVisitor<R, C?> visitor, [C? context]) {

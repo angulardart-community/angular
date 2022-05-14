@@ -24,7 +24,9 @@ abstract class TextAst implements StandaloneTemplateAst {
   ) = _ParsedTextAst;
 
   @override
-  bool operator ==(Object o) => o is TextAst && value == o.value;
+  bool operator ==(Object? other) {
+    return other is TextAst && value == other.value;
+  }
 
   @override
   int get hashCode => value.hashCode;

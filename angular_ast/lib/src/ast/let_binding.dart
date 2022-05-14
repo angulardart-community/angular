@@ -1,7 +1,6 @@
 import 'package:source_span/source_span.dart';
 
 import '../ast.dart';
-import '../hash.dart';
 import '../token/tokens.dart';
 import '../visitor.dart';
 
@@ -39,11 +38,12 @@ abstract class LetBindingAst implements TemplateAst {
   ]) = ParsedLetBindingAst;
 
   @override
-  bool operator ==(Object o) =>
-      o is LetBindingAst && name == o.name && value == o.value;
+  bool operator ==(Object? other) {
+    return other is LetBindingAst && name == other.name && value == other.value;
+  }
 
   @override
-  int get hashCode => hash2(name, value);
+  int get hashCode => Object.hash(name, value);
 
   @override
   R accept<R, C>(TemplateAstVisitor<R, C?> visitor, [C? context]) {
