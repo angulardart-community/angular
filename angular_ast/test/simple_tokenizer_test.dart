@@ -126,7 +126,7 @@ void main() {
       NgSimpleToken.whitespace(7, ' '),
       NgSimpleToken.identifier(8, 'title'),
       NgSimpleToken.equalSign(13),
-      NgSimpleQuoteToken.doubleQuotedText(14, '"Submit \"quoted text\""', true),
+      NgSimpleQuoteToken.doubleQuotedText(14, '"Submit "quoted text""', true),
       NgSimpleToken.tagEnd(38),
       NgSimpleToken.closeTagStart(39),
       NgSimpleToken.identifier(41, 'button'),

@@ -14,9 +14,7 @@ List<StandaloneTemplateAst> parse(String template) => const NgParser().parse(
 
 void main() {
   String input;
-  if (exceptionHandler is RecoveringExceptionHandler) {
-    exceptionHandler.exceptions.clear();
-  }
+  exceptionHandler.exceptions.clear();
   var fileDir = p.join('test', 'ast_cli_tester_source.html');
   var file = File(fileDir.toString());
   input = file.readAsStringSync();
@@ -27,22 +25,20 @@ void main() {
     print('CORRECT!');
     print(ast);
   }
-  if (exceptionHandler is RecoveringExceptionHandler) {
-    var exceptionsList = exceptionHandler.exceptions;
-    if (exceptionsList.isEmpty) {
-      print('CORRECT!');
-      print(ast);
-    } else {
-      var visitor = const HumanizingTemplateAstVisitor();
-      var fixed = ast.map((t) => t.accept(visitor)).join('');
-      print('ORGNL: $input');
-      print('FIXED: $fixed');
+  var exceptionsList = exceptionHandler.exceptions;
+  if (exceptionsList.isEmpty) {
+    print('CORRECT!');
+    print(ast);
+  } else {
+    var visitor = const HumanizingTemplateAstVisitor();
+    var fixed = ast.map((t) => t.accept(visitor)).join('');
+    print('ORGNL: $input');
+    print('FIXED: $fixed');
 
-      print('\n\nERRORS:');
-      exceptionHandler.exceptions.forEach((e) {
-        var context = input.substring(e.offset!, e.offset! + e.length!);
-        print('${e.errorCode.message} :: $context at ${e.offset}');
-      });
+    print('\n\nERRORS:');
+    for (var e in exceptionHandler.exceptions) {
+      var context = input.substring(e.offset!, e.offset! + e.length!);
+      print('${e.errorCode.message} :: $context at ${e.offset}');
     }
   }
 }

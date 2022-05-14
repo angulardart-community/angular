@@ -31,7 +31,9 @@ abstract class TemplateAstVisitor<R, C> {
 
   /// Visits all container ASTs.
   R? visitContainer(ContainerAst astNode, [C? context]) {
-    astNode.childNodes.forEach((c) => c.accept<R, C?>(this, context));
+    for (var c in astNode.childNodes) {
+      c.accept<R, C?>(this, context);
+    }
     return null;
   }
 
@@ -40,22 +42,38 @@ abstract class TemplateAstVisitor<R, C> {
 
   /// Visits all embedded template ASTs.
   R? visitEmbeddedTemplate(EmbeddedTemplateAst astNode, [C? context]) {
-    astNode
-      ..attributes.forEach((a) => visitAttribute(a, context))
-      ..childNodes.forEach((c) => c.accept<R, C?>(this, context))
-      ..properties.forEach((p) => visitProperty(p, context))
-      ..references.forEach((r) => visitReference(r, context));
+    for (var a in astNode.attributes) {
+      visitAttribute(a, context);
+    }
+    for (var c in astNode.childNodes) {
+      c.accept<R, C?>(this, context);
+    }
+    for (var p in astNode.properties) {
+      visitProperty(p, context);
+    }
+    for (var r in astNode.references) {
+      visitReference(r, context);
+    }
     return null;
   }
 
   /// Visits all element ASTs.
   R? visitElement(ElementAst astNode, [C? context]) {
-    astNode
-      ..attributes.forEach((a) => visitAttribute(a, context))
-      ..childNodes.forEach((c) => c.accept<R, C?>(this, context))
-      ..events.forEach((e) => visitEvent(e, context))
-      ..properties.forEach((p) => visitProperty(p, context))
-      ..references.forEach((r) => visitReference(r, context));
+    for (var a in astNode.attributes) {
+      visitAttribute(a, context);
+    }
+    for (var c in astNode.childNodes) {
+      c.accept<R, C?>(this, context);
+    }
+    for (var e in astNode.events) {
+      visitEvent(e, context);
+    }
+    for (var p in astNode.properties) {
+      visitProperty(p, context);
+    }
+    for (var r in astNode.references) {
+      visitReference(r, context);
+    }
     return null;
   }
 

@@ -14,7 +14,7 @@ class HumanizingTemplateAstVisitor
     if (astNode.value != null) {
       return '${astNode.name}="${astNode.value}"';
     } else {
-      return '${astNode.name}';
+      return astNode.name;
     }
   }
 

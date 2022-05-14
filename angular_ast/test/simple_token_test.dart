@@ -220,59 +220,59 @@ void main() {
 
   test('doubleQuotedText - closed', () {
     var quoteToken = NgSimpleQuoteToken.doubleQuotedText(
-        0, '"this is a \"quoted\" text"', true);
-    expect(quoteToken.lexeme, '"this is a \"quoted\" text"');
-    expect(quoteToken.contentLexeme, 'this is a \"quoted\" text');
+        0, '"this is a "quoted" text"', true);
+    expect(quoteToken.lexeme, '"this is a "quoted" text"');
+    expect(quoteToken.contentLexeme, 'this is a "quoted" text');
     expect(quoteToken.contentEnd, 24);
     expect(quoteToken.contentLength, 23);
     expect(quoteToken.contentOffset, 1);
     expect(quoteToken.quoteEndOffset, 24);
     expect(quoteToken.end, 25);
     expect(quoteToken.offset, 0);
-    expect(quoteToken.lexeme, '"this is a \"quoted\" text"');
+    expect(quoteToken.lexeme, '"this is a "quoted" text"');
     expect(quoteToken.length, 25);
     expect(quoteToken.type, NgSimpleTokenType.doubleQuote);
   });
 
   test('doubleQuotedText - open', () {
     var quoteToken = NgSimpleQuoteToken.doubleQuotedText(
-        0, '"this is a \"quoted\" text', false);
-    expect(quoteToken.contentLexeme, 'this is a \"quoted\" text');
+        0, '"this is a "quoted" text', false);
+    expect(quoteToken.contentLexeme, 'this is a "quoted" text');
     expect(quoteToken.contentEnd, 24);
     expect(quoteToken.contentLength, 23);
     expect(quoteToken.contentOffset, 1);
     expect(quoteToken.quoteEndOffset, null);
     expect(quoteToken.offset, 0);
-    expect(quoteToken.lexeme, '"this is a \"quoted\" text');
+    expect(quoteToken.lexeme, '"this is a "quoted" text');
     expect(quoteToken.length, 24);
     expect(quoteToken.type, NgSimpleTokenType.doubleQuote);
   });
 
   test('singleQuotedText - closed', () {
     var quoteToken = NgSimpleQuoteToken.singleQuotedText(
-        0, "'this is a \'quoted\' text'", true);
-    expect(quoteToken.contentLexeme, "this is a \'quoted\' text");
+        0, "'this is a 'quoted' text'", true);
+    expect(quoteToken.contentLexeme, "this is a 'quoted' text");
     expect(quoteToken.contentEnd, 24);
     expect(quoteToken.contentLength, 23);
     expect(quoteToken.contentOffset, 1);
     expect(quoteToken.quoteEndOffset, 24);
     expect(quoteToken.end, 25);
     expect(quoteToken.offset, 0);
-    expect(quoteToken.lexeme, "'this is a \'quoted\' text'");
+    expect(quoteToken.lexeme, "'this is a 'quoted' text'");
     expect(quoteToken.length, 25);
     expect(quoteToken.type, NgSimpleTokenType.singleQuote);
   });
 
   test('doubleQuotedText - open', () {
     var quoteToken = NgSimpleQuoteToken.singleQuotedText(
-        0, "'this is a \'quoted\' text", false);
-    expect(quoteToken.contentLexeme, "this is a \'quoted\' text");
+        0, "'this is a 'quoted' text", false);
+    expect(quoteToken.contentLexeme, "this is a 'quoted' text");
     expect(quoteToken.end, 24);
     expect(quoteToken.contentLength, 23);
     expect(quoteToken.contentOffset, 1);
     expect(quoteToken.quoteEndOffset, null);
     expect(quoteToken.offset, 0);
-    expect(quoteToken.lexeme, "'this is a \'quoted\' text");
+    expect(quoteToken.lexeme, "'this is a 'quoted' text");
     expect(quoteToken.length, 24);
     expect(quoteToken.type, NgSimpleTokenType.singleQuote);
   });

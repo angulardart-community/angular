@@ -185,11 +185,10 @@ class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
   );
 
   @override
-  bool operator ==(Object o) {
-    if (o is NgSimpleToken) {
-      return o.offset == offset && o.type == type;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is NgSimpleToken &&
+        other.offset == offset &&
+        other.type == type;
   }
 
   @override
@@ -257,14 +256,12 @@ class NgSimpleQuoteToken extends _LexemeNgSimpleToken {
         );
 
   @override
-  bool operator ==(Object o) {
-    if (o is NgSimpleQuoteToken) {
-      return o.offset == offset &&
-          o.type == type &&
-          o.contentOffset == contentOffset &&
-          o.quoteEndOffset == quoteEndOffset;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is NgSimpleQuoteToken &&
+        other.offset == offset &&
+        other.type == type &&
+        other.contentOffset == contentOffset &&
+        other.quoteEndOffset == quoteEndOffset;
   }
 
   /// Lexeme including quotes.
@@ -467,14 +464,13 @@ class NgToken implements NgBaseToken<NgTokenType> {
   });
 
   @override
-  bool operator ==(Object o) {
-    if (o is NgToken) {
-      if (errorSynthetic || o.errorSynthetic) {
-        return o.offset == offset && o.type == type;
-      }
-      return o.offset == offset && o.type == type && o.lexeme == lexeme;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is NgToken &&
+        (errorSynthetic || other.errorSynthetic
+            ? other.offset == offset && other.type == type
+            : other.offset == offset &&
+                other.type == type &&
+                other.lexeme == lexeme);
   }
 
   @override
@@ -541,13 +537,11 @@ class NgAttributeValueToken extends NgToken {
         );
 
   @override
-  bool operator ==(Object o) {
-    if (o is NgAttributeValueToken) {
-      return leftQuote == o.leftQuote &&
-          rightQuote == o.rightQuote &&
-          innerValue == o.innerValue;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is NgAttributeValueToken &&
+        leftQuote == other.leftQuote &&
+        rightQuote == other.rightQuote &&
+        innerValue == other.innerValue;
   }
 
   @override

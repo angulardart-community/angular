@@ -42,9 +42,9 @@ class DesugarVisitor extends IdentityTemplateAstVisitor<void>
   void _visitChildren(TemplateAst astNode) {
     if (astNode.childNodes.isEmpty) return;
     var newChildren = <StandaloneTemplateAst>[];
-    astNode.childNodes.forEach((child) {
+    for (var child in astNode.childNodes) {
       newChildren.add(child.accept(this) as StandaloneTemplateAst);
-    });
+    }
     astNode.childNodes.clear();
     astNode.childNodes.addAll(newChildren);
   }
@@ -117,10 +117,8 @@ class DesugarVisitor extends IdentityTemplateAstVisitor<void>
         exceptionHandler.handle(e);
         return astNode;
       }
-      if (micro != null) {
-        propertiesToAdd.addAll(micro.properties);
-        letBindingsToAdd.addAll(micro.letBindings);
-      }
+      propertiesToAdd.addAll(micro.properties);
+      letBindingsToAdd.addAll(micro.letBindings);
       // If the micro-syntax did not produce a binding to the left-hand side
       // property, add it as an attribute in case a directive selector
       // depends on it.

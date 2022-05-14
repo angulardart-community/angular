@@ -182,7 +182,7 @@ const NAMED_ENTITIES = {
   'prop': '∝',
   'Psi': 'Ψ',
   'psi': 'ψ',
-  'quot': '\"',
+  'quot': '"',
   'radic': '√',
   'rang': '⟩',
   'raquo': '»',

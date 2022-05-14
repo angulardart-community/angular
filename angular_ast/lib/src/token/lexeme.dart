@@ -9,11 +9,10 @@ class _LexemeNgSimpleToken extends NgSimpleToken {
       : super._(type, offset);
 
   @override
-  bool operator ==(Object o) {
-    if (o is _LexemeNgSimpleToken) {
-      return super == o && lexeme == o.lexeme;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is _LexemeNgSimpleToken &&
+        super == other &&
+        lexeme == other.lexeme;
   }
 
   @override
@@ -42,11 +41,8 @@ class _LexemeNgToken extends NgToken {
         );
 
   @override
-  bool operator ==(Object o) {
-    if (o is _LexemeNgToken) {
-      return super == o && lexeme == o.lexeme;
-    }
-    return false;
+  bool operator ==(Object? other) {
+    return other is _LexemeNgToken && super == other && lexeme == other.lexeme;
   }
 
   @override

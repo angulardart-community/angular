@@ -55,7 +55,7 @@ void testRecoverySolution(
     test('should resolve: unexpected $type in $startState', () async {
       var it = tokenizeThrow(errorHtml);
       expect(() {
-        while (it.moveNext() != null) {}
+        while (it.moveNext()) {}
       }, throwsA(TypeMatcher<AngularParserException>()));
 
       var solution = recoveryProtocol.recover(startState, token, reader);
