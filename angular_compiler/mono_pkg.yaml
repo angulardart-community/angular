@@ -5,15 +5,8 @@ sdk:
 
 stages:
   - analyze:
-      - group:
-          - analyze #: --fatal-infos
-        sdk: dev
-      - group:
-          - analyze
-        sdk: stable
-      - group:
-          - analyze
-        sdk: 2.17.0
+      - format
+      - analyze
   - build:
       - command: dart run build_runner build --fail-on-severe
   - unit_test:

@@ -5,7 +5,7 @@ sdk:
 
 stages:
   - analyze:
-      # TODO: add --fata-infos once analysis issues have been resolved
+      - format
       - analyze
   - build:
       - command: dart run build_runner build --fail-on-severe

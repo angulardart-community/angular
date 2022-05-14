@@ -22,6 +22,6 @@ github:
 #           env:
 #             CHAT_WEBHOOK_URL: ${{ secrets.TEAM_CHAT_WEBHOOK_URL }}
 
-self_validate: analyze
+self_validate: true
 merge_stages:
-- analyze
+  - analyze

@@ -1,0 +1,9 @@
+sdk:
+  - dev
+  - stable
+  - 2.17.0
+
+stages:
+  - analyze:
+      - format
+      - analyze

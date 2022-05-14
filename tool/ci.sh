@@ -87,6 +87,10 @@ for PKG in ${PKGS}; do
         echo 'dart run build_runner test --fail-on-severe -- -P ci'
         dart run build_runner test --fail-on-severe -- -P ci || EXIT_CODE=$?
         ;;
+      format)
+        echo 'dart format --output=none --set-exit-if-changed .'
+        dart format --output=none --set-exit-if-changed . || EXIT_CODE=$?
+        ;;
       *)
         echo -e "\033[31mUnknown TASK '${TASK}' - TERMINATING JOB\033[0m"
         exit 64
