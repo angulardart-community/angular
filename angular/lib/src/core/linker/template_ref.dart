@@ -1,4 +1,4 @@
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'view_container.dart';
 import 'view_ref.dart' show EmbeddedViewRef;

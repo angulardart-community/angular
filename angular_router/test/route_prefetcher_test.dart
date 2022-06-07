@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'route_prefetcher_test.template.dart' as ng;
 
@@ -13,7 +13,7 @@ void main() {
 
   setUp(() {
     testBed =
-        NgTestBed(ng.createAppComponentFactory()).addInjector(appInjector);
+        NgTestBed<AppComponent>(ng.createAppComponentFactory()).addInjector(appInjector);
   });
 
   tearDown(disposeAnyRunningTest);

@@ -4,8 +4,8 @@ import 'package:code_builder/code_builder.dart';
 import 'package:meta/meta.dart' hide literal;
 import 'package:path/path.dart' as p;
 import 'package:source_gen/source_gen.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../link.dart';
 import '../types.dart';
@@ -17,7 +17,7 @@ import 'tokens.dart';
 
 /// Determines details for generating code as a result of `@Injector.generate`.
 class InjectorReader {
-  static const _package = 'package:angular';
+  static const _package = 'package:ngdart';
   static const _runtime = '$_package/src/di/injector.dart';
   static const _utilities = '$_package/src/utilities.dart';
   static const _$Injector = Reference('Injector', _runtime);

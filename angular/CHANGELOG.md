@@ -1,3 +1,14 @@
+## 8.0.0
+Renaming forked by AngularDart Community packages to be able publish and use them on pub.dev
+Resolving builds and tests. Fix complained test analyzis. 
+New package names:
+   angular -> ngdart (the existing ngdart package utility will be renamed to ngdart_cli)
+   angular_ast -> ngast
+   angular_compiler -> ngcompiler
+   angular_forms -> ngforms
+   angular_router -> ngrouter
+   angular_test -> ngtest
+
 ## 7.0.2
 
 - Update `README.md`.

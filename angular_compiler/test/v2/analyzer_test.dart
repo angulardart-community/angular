@@ -1,8 +1,8 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v2/analyzer.dart';
-import 'package:angular_compiler/v2/testing.dart';
+import 'package:ngcompiler/v2/analyzer.dart';
+import 'package:ngcompiler/v2/testing.dart';
 
 void main() {
   group('NullableDartType', () {

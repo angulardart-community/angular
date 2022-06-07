@@ -3,8 +3,8 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/nullability_suffix.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../../src/resolve.dart';
 

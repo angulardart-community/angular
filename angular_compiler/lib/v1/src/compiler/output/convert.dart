@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/nullability_suffix.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v1/src/source_gen/common/url_resolver.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/url_resolver.dart';
 import 'package:source_gen/source_gen.dart';
 
 import '../compile_metadata.dart';

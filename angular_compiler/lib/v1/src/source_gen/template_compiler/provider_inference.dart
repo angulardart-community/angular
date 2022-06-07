@@ -1,9 +1,9 @@
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 /// Returns the [CompileTypeMetadata] appropriate for `T` in `Provider<T>`.
 DartType? inferProviderType(DartObject provider, DartObject token) {

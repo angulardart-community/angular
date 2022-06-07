@@ -1,5 +1,5 @@
-import 'package:angular/src/core/linker.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/core/linker.dart';
+import 'package:ngdart/src/meta.dart';
 
 /// Inserts an embedded view, created from a [TemplateRef].
 ///

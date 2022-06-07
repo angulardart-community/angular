@@ -1,9 +1,9 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'ng_form_test.template.dart' as ng;
 
@@ -14,7 +14,7 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     setUp(() async {
-      var testBed = NgTestBed(ng.createNgFormTestFactory());
+      var testBed = NgTestBed<NgFormTest>(ng.createNgFormTestFactory());
       fixture = await testBed.create();
     });
 
@@ -82,7 +82,7 @@ void main() {
       tearDown(() => disposeAnyRunningTest());
 
       setUp(() async {
-        var testBed = NgTestBed(ng.createOnPushControlTestFactory());
+        var testBed = NgTestBed<OnPushControlTest>(ng.createOnPushControlTestFactory());
         fixture = await testBed.create();
       });
 
@@ -114,7 +114,7 @@ void main() {
       tearDown(() => disposeAnyRunningTest());
 
       setUp(() async {
-        var testBed = NgTestBed(ng.createOnPushControlGroupTestFactory());
+        var testBed = NgTestBed<OnPushControlGroupTest>(ng.createOnPushControlGroupTestFactory());
         fixture = await testBed.create();
       });
 

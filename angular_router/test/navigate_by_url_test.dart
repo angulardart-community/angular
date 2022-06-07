@@ -3,10 +3,10 @@
 import 'package:collection/collection.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/src/router/router_impl.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/src/router/router_impl.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 void main() {
   tearDown(disposeAnyRunningTest);

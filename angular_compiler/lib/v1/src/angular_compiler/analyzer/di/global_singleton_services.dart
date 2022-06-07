@@ -3,19 +3,19 @@ import '../link.dart';
 const _globalSingletonServices = [
   TypeLink(
     'ApplicationRef',
-    'asset:angular/lib/src/core/application_ref.dart',
+    'asset:ngdart/lib/src/core/application_ref.dart',
   ),
   TypeLink(
     'AppViewUtils',
-    'asset:angular/lib/src/core/linker/app_view_utils.dart',
+    'asset:ngdart/lib/src/core/linker/app_view_utils.dart',
   ),
   TypeLink(
     'NgZone',
-    'asset:angular/lib/src/core/zone/ng_zone.dart',
+    'asset:ngdart/lib/src/core/zone/ng_zone.dart',
   ),
   TypeLink(
     'Testability',
-    'asset:angular/lib/src/testability/implementation.dart',
+    'asset:ngdart/lib/src/testability/implementation.dart',
   ),
 ];
 

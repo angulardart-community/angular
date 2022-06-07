@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'outputs_test.template.dart' as ng;
 
@@ -12,7 +12,7 @@ void main() {
 
   test('should support directive outputs on regular elements', () async {
     final testBed =
-        NgTestBed(ng.createElementWithEventDirectivesComponentFactory());
+        NgTestBed<ElementWithEventDirectivesComponent>(ng.createElementWithEventDirectivesComponentFactory());
     final testFixture = await testBed.create();
     final emitter = testFixture.assertOnlyInstance.emitter;
     final listener = testFixture.assertOnlyInstance.listener!;
@@ -23,7 +23,7 @@ void main() {
 
   test('should support directive outputs on template elements', () async {
     final testBed =
-        NgTestBed(ng.createTemplateWithEventDirectivesComponentFactory());
+        NgTestBed<TemplateWithEventDirectivesComponent>(ng.createTemplateWithEventDirectivesComponentFactory());
     final testFixture = await testBed.create();
     final component = testFixture.assertOnlyInstance;
     expect(component.msg, isNull);
@@ -34,7 +34,7 @@ void main() {
   });
 
   test('should support [()] syntax', () async {
-    final testBed = NgTestBed(ng.createTwoWayBindingComponentFactory());
+    final testBed = NgTestBed<TwoWayBindingComponent>(ng.createTwoWayBindingComponentFactory());
     final testFixture = await testBed.create();
     final component = testFixture.assertOnlyInstance;
     expect(component.directive!.control, 'one');
@@ -44,7 +44,7 @@ void main() {
   });
 
   test('should support render events', () async {
-    final testBed = NgTestBed(ng.createElementWithDomEventComponentFactory());
+    final testBed = NgTestBed<ElementWithDomEventComponent>(ng.createElementWithDomEventComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.children.first;
     final listener = testFixture.assertOnlyInstance.listener;
@@ -53,7 +53,7 @@ void main() {
   });
 
   test('should support preventing default on render events', () async {
-    final testBed = NgTestBed(ng.createTestPreventDefaultComponentFactory());
+    final testBed = NgTestBed<TestPreventDefaultComponent>(ng.createTestPreventDefaultComponentFactory());
     final testFixture = await testBed.create();
     final inputPrevent = testFixture.rootElement.children[0] as InputElement;
     final inputNoPrevent = testFixture.rootElement.children[1] as InputElement;
@@ -69,7 +69,7 @@ void main() {
   });
 
   test('should provide helpful error for incorrectly typed handler', () async {
-    final testBed = NgTestBed(ng.createTestMismatchedHandlerFactory());
+    final testBed = NgTestBed<TestMismatchedHandler>(ng.createTestMismatchedHandlerFactory());
     expect(
       testBed.create,
       throwsA(const TypeMatcher<AssertionError>().having(

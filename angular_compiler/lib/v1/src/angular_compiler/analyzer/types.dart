@@ -2,7 +2,7 @@ import 'package:source_gen/source_gen.dart';
 
 /// Most metadata is now in this sub-directory.
 const _compilerMetadata = ''
-    'package:angular/src/meta';
+    'package:ngdart/src/meta';
 const _directives = '$_compilerMetadata/directives.dart';
 const _diArguments = '$_compilerMetadata/di_arguments.dart';
 const _diGeneratedInjector = '$_compilerMetadata/di_generate_injector.dart';

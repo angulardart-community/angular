@@ -1,26 +1,26 @@
 import 'package:collection/collection.dart' show IterableExtension;
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileDirectiveMetadata;
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/parser.dart'
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart';
+import 'package:ngcompiler/v1/src/compiler/expression_parser/parser.dart'
     show ExpressionParser;
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/selector.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/binding_converter.dart'
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/selector.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/binding_converter.dart'
     show
         convertHostAttributeToBinding,
         convertHostListenerToBinding,
         convertToBinding;
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/bound_value_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/update_statement_visitor.dart';
-import 'package:angular_compiler/v1/src/compiler/view_type.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/bound_value_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/update_statement_visitor.dart';
+import 'package:ngcompiler/v1/src/compiler/view_type.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'compile_element.dart' show CompileElement, CompileNode;
 import 'compile_view.dart';

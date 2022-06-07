@@ -1,13 +1,13 @@
 import 'package:source_span/source_span.dart' show SourceSpan;
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart';
-import 'package:angular_compiler/v1/src/compiler/chars.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
+import 'package:ngcompiler/v1/src/compiler/chars.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileDirectiveMetadata;
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart'
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
     as compiler_ast;
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v2/context.dart';
 
 final _implicitReceiverVal = o.variable('#implicit');
 

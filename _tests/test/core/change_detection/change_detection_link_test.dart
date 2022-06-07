@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/experimental.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/experimental.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'change_detection_link_test.template.dart' as ng;
 

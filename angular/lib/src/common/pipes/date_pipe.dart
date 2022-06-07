@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'invalid_pipe_argument_exception.dart';
 

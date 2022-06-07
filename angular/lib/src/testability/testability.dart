@@ -8,8 +8,8 @@ import 'dart:html';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart' as js_util;
 import 'package:meta/meta.dart';
-import 'package:angular/src/core/zone/ng_zone.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/core/zone/ng_zone.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'js_api.dart';
 

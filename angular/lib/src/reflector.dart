@@ -23,7 +23,7 @@ library angular.src.reflector;
 // Provides symbols easily accessible when importing this package, i.e.
 //
 // ```
-// import 'package:angular/src/reflector.dart' as _reflector;
+// import 'package:ngdart/src/reflector.dart' as _reflector;
 //
 // void initReflector() {
 //   _reflector.registerDependencies(const _reflector.OpaqueToken(...), [...]);

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:html' show EventListener, PopStateEvent;
 
-import 'package:angular/angular.dart' show Injectable;
-import 'package:angular_router/src/location/location_strategy.dart'
+import 'package:ngdart/angular.dart' show Injectable;
+import 'package:ngrouter/src/location/location_strategy.dart'
     show LocationStrategy;
 
 /// A mock implementation of [LocationStrategy] that allows tests to fire

@@ -14,7 +14,7 @@ import 'package:build_test/build_test.dart';
 import 'package:package_config/package_config.dart';
 
 const _angularPkgPath = 'package:';
-const _angularLibPath = '${_angularPkgPath}angular/angular.dart';
+const _angularLibPath = '${_angularPkgPath}ngdart/angular.dart';
 const _environmentVar = 'ANGULAR_PACKAGE_CONFIG_PATH';
 const _defaultLibrary = 'test_lib';
 final _defaultAssetId = AssetId(_defaultLibrary, 'lib/$_defaultLibrary.dart');
@@ -64,7 +64,7 @@ String _assetToPath(AssetId asset) => '${asset.package}|${asset.path}';
 ///   )
 ///   ```
 ///
-/// * [includeAngularDeps]: Set `false` to not include `import 'angular.dart'`.
+/// * [includeAngularDeps]: Set `false` to not include `import 'ngdart.dart'`.
 ///   This may be used to simulate scenarios where the user has forgotten to add
 ///   an import to Angular, or where you would want the import specified as an
 ///   alternative entry-point.

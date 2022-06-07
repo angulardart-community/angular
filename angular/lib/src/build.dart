@@ -12,10 +12,10 @@
 library angular.builder;
 
 import 'package:build/build.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/stylesheet_compiler/builder.dart';
-import 'package:angular_compiler/v1/src/source_gen/template_compiler/generator.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/stylesheet_compiler/builder.dart';
+import 'package:ngcompiler/v1/src/source_gen/template_compiler/generator.dart';
 
 /// An option to generate a lighter-weight output for complex build systems.
 ///

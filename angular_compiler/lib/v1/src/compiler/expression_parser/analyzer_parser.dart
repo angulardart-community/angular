@@ -5,7 +5,7 @@ import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/src/dart/analysis/experiments.dart';
 import 'package:meta/meta.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 
 import 'ast.dart' as ast;
 import 'parser.dart';

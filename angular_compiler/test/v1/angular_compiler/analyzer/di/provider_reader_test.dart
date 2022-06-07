@@ -1,8 +1,8 @@
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../../src/resolve.dart';
 
@@ -11,7 +11,7 @@ void main() {
 
   final refersToOpaqueToken = TypeLink(
     'OpaqueToken',
-    'asset:angular/lib/src/meta/di_tokens.dart',
+    'asset:ngdart/lib/src/meta/di_tokens.dart',
     generics: [TypeLink.$object],
   );
 

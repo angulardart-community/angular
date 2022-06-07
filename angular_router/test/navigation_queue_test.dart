@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 // ignore: uri_has_not_been_generated
 import 'navigation_queue_test.template.dart' as ng;
@@ -23,7 +23,7 @@ void main() {
     final secondCompleter = Completer<void>();
     final thirdCompleter = Completer<void>();
 
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<TestComponent>(
       ng.createTestComponentFactory(),
     ).addInjector(
       (i) => ReflectiveInjector.resolveStaticAndCreate([

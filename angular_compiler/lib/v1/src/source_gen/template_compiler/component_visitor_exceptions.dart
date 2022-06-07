@@ -4,10 +4,10 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:build/build.dart';
 import 'package:source_span/source_span.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/source_gen/common/annotation_matcher.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/annotation_matcher.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 class IndexedAnnotation<T extends Element> {
   final T element;

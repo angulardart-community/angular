@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:meta/meta.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import '../model.dart'
     show AbstractControl, AbstractControlGroup, ControlGroup, Control;

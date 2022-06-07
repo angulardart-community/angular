@@ -1,4 +1,4 @@
-library angular_ast.src.token.tokens;
+library ngast.src.token.tokens;
 
 part 'lexeme.dart';
 part 'token_types.dart';

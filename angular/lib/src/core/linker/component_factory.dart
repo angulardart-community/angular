@@ -1,11 +1,11 @@
 import 'dart:html';
 
 import 'package:meta/meta.dart';
-import 'package:angular/src/core/change_detection/change_detector_ref.dart';
-import 'package:angular/src/core/zone/ng_zone.dart';
-import 'package:angular/src/di/injector.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/core/change_detection/change_detector_ref.dart';
+import 'package:ngdart/src/core/zone/ng_zone.dart';
+import 'package:ngdart/src/di/injector.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'view_ref.dart' show ViewRef;
 import 'views/host_view.dart';

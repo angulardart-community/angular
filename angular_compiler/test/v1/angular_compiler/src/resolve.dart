@@ -8,7 +8,7 @@ import 'package:build/experiments.dart';
 import 'package:build_test/build_test.dart';
 import 'package:package_config/package_config.dart';
 
-const angular = 'package:angular/angular.dart';
+const angular = 'package:ngdart/angular.dart';
 
 /// A custom package resolver for Angular sources.
 ///

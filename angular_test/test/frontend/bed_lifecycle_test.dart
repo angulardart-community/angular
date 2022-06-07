@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'bed_lifecycle_test.template.dart' as ng;
 
@@ -22,11 +22,11 @@ void main() {
     // We are going to verify that the document root has a new node created (our
     // component), the node is updated (after change detection), and after
     // destroying the test the document root has been cleared.
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<AngularLifecycle>(
       ng.createAngularLifecycleFactory(),
       host: testRoot,
     );
-    final fixture = await testBed.create();
+    final NgTestFixture<AngularLifecycle> fixture = await testBed.create();
     expect(docRoot.text, isEmpty);
     await fixture.update((c) => c.value = 'New value');
     expect(docRoot.text, 'New value');
@@ -36,10 +36,10 @@ void main() {
   });
 
   test('should invoke ngAfterChanges, then ngOnInit', () async {
-    final fixture = await NgTestBed(
+    final NgTestFixture<NgAfterChangesInitOrder> fixture = await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
-      beforeChangeDetection: (root) => root.name = 'Hello',
+      beforeChangeDetection: (NgAfterChangesInitOrder root) => root.name = 'Hello',
     );
     expect(
       fixture.assertOnlyInstance.child!.events,
@@ -50,10 +50,10 @@ void main() {
   test(
       'should invoke ngAfterChanges with asynchronous beforeChangeDetection,'
       ' then ngOnInit', () async {
-    final fixture = await NgTestBed(
+    final NgTestFixture<NgAfterChangesInitOrder> fixture = await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
-      beforeChangeDetection: (root) async => root.name = 'Hello',
+      beforeChangeDetection: (NgAfterChangesInitOrder root) async => root.name = 'Hello',
     );
     expect(
       fixture.assertOnlyInstance.child!.events,

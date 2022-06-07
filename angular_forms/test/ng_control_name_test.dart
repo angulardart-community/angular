@@ -1,9 +1,9 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'ng_control_name_test.template.dart' as ng;
 
@@ -16,7 +16,7 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     setUp(() async {
-      var testBed = NgTestBed(ng.createNgControlNameTestFactory());
+      var testBed = NgTestBed<NgControlNameTest>(ng.createNgControlNameTestFactory());
       fixture = await testBed.create();
     });
 
@@ -56,7 +56,7 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     setUp(() async {
-      var testBed = NgTestBed(ng.createNgControlNameInitTestFactory());
+      var testBed = NgTestBed<NgControlNameInitTest>(ng.createNgControlNameInitTestFactory());
       fixture = await testBed.create();
     });
 

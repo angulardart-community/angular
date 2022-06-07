@@ -1,11 +1,11 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/optimize_ir/merge_events.dart';
-import 'package:angular_compiler/v1/src/compiler/optimize_ir/optimize_lifecycles.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/matched_directive_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart' as ast;
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_element.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/optimize_ir/merge_events.dart';
+import 'package:ngcompiler/v1/src/compiler/optimize_ir/optimize_lifecycles.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/matched_directive_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart' as ast;
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_element.dart';
 
 ir.Element convertElement(
   ast.ElementAst elementAst,

@@ -1,8 +1,8 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'router_hook_test.template.dart' as ng;
 
@@ -16,7 +16,7 @@ void main() {
     late Router router;
 
     setUp(() async {
-      final testBed = NgTestBed(ng.createTestAppComponentFactory())
+      final testBed = NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
           .addInjector(createInjector);
       final testFixture = await testBed.create();
       router = testFixture.assertOnlyInstance.router;
@@ -63,7 +63,7 @@ void main() {
   });
 
   test('can support cyclic dependency with lazy injection', () async {
-    final testBed = NgTestBed(ng.createTestAppComponentFactory())
+    final testBed = NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
         .addInjector(accumulateQueryHookInjector);
     final testFixture = await testBed.create();
     final router = testFixture.assertOnlyInstance.router;

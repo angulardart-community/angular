@@ -1,8 +1,8 @@
 import 'dart:collection';
 
 import 'package:meta/meta.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'errors.dart' as errors;
 

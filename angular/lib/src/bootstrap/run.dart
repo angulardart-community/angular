@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
-import 'package:angular/src/di/injector/runtime.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/testability.dart';
+import 'package:ngdart/src/di/injector/runtime.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/testability.dart';
 
 import '../core/app_host.dart';
 import '../core/application_ref.dart';
@@ -108,7 +108,7 @@ Injector _identityInjector(Injector parent) => parent;
 ///
 /// ```dart
 /// // Assume this file is "main.dart".
-/// import 'package:angular/angular.dart';
+/// import 'package:ngdart/angular.dart';
 /// import 'main.template.dart' as ng;
 ///
 /// @Component(
@@ -132,7 +132,7 @@ Injector _identityInjector(Injector parent) => parent;
 /// services to the root of the application:
 ///
 /// // Assume this file is "main.dart".
-/// import 'package:angular/angular.dart';
+/// import 'package:ngdart/angular.dart';
 /// import 'main.template.dart' as ng;
 ///
 /// @Component(

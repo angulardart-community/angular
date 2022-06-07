@@ -1,6 +1,35 @@
-See https://github.com/angulardart for current updates on this project.
+## Forked and renamed by AndgularDart Community packages 
+
+See https://github.com/angulardart-community for current updates on this project.
 
 ## Packages
+
+[ngdart](https://github.com/angulardart-community/angular/tree/master/angular) 
+[ngforms](https://github.com/angulardart-community/angular/tree/master/angular_forms) 
+[ngrouter](https://github.com/angulardart-community/angular/tree/master/angular_router) 
+[ngtest](https://github.com/angulardart-community/angular/tree/master/angular_test) 
+[ngcomponents](https://github.com/angulardart-community/angular_components)
+[ngast](https://github.com/angulardart-community/angular/tree/master/angular_ast) 
+[ngcompiler](https://github.com/angulardart-community/angular/tree/master/angular_compiler)
+[ngdart_cli](https://github.com/angulardart-community/ngdart) 
+
+
+## Resources
+
+AngularDart Community web-site [https://angulardart.xyz](https://angulardart.xyz).
+
+Source code Git repositories [https://github.com/angulardart-community](https://github.com/angulardart-community)
+
+Join the [Gitter chat room]: https://gitter.im/angulardart/community to ask questions.
+
+
+
+
+
+
+## The original Packages (in the restricted maintenance mode)
+
+See https://github.com/angulardart for current updates on this project.
 
 | Source code                  | Published Version                                                                                                  |
 |------------------------------|:------------------------------------------------------------------------------------------------------------------:|
@@ -24,9 +53,3 @@ Included for completeness._
 [angular_forms]: https://github.com/angulardart/angular/tree/master/angular_forms
 [angular_router]: https://github.com/angulardart/angular/tree/master/angular_router
 [angular_test]: https://github.com/angulardart/angular/tree/master/angular_test
-
-## Resources
-
-Join the [Gitter chat room] to ask questions.
-
-[Gitter chat room]: https://gitter.im/angulardart/community

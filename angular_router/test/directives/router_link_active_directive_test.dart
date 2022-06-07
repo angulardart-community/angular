@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngrouter/src/location/testing/mock_location_strategy.dart'; // by some cause it is not visilble by ngrouter/testing.dart above
+import 'package:ngtest/angular_test.dart';
 
 import 'router_link_active_directive_test.template.dart' as ng;
 
@@ -27,8 +28,7 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should add/remove a CSS class as a route is activated', () async {
-    final fixture = await NgTestBed(
-      ng.createTestRouterLinkActiveFactory(),
+    final fixture = await NgTestBed<TestRouterLinkActive>(ng.createTestRouterLinkActiveFactory(),
     ).addInjector(addInjector).create(beforeChangeDetection: (component) {
       component.link = '/user/bob';
       fakeRouter.current = RouterState('/user/jill', const []);
@@ -42,8 +42,7 @@ void main() {
   });
 
   test('should validate queryParams and fragment', () async {
-    final fixture = await NgTestBed(
-      ng.createTestRouterLinkActiveFactory(),
+    final fixture = await NgTestBed<TestRouterLinkActive>(ng.createTestRouterLinkActiveFactory(),
     ).addInjector(addInjector).create(beforeChangeDetection: (component) {
       component.link = '/user/bob?param=1#frag';
       fakeRouter.current = RouterState('/user/bob', const []);
@@ -70,9 +69,8 @@ void main() {
   test(
       'should ignore the current urls queryParams and fragment if not '
       'specified in the routerLinks', () async {
-    final fixture = await NgTestBed(
-      ng.createTestRouterLinkActiveFactory(),
-    ).addInjector(addInjector).create(beforeChangeDetection: (component) {
+    final fixture = await NgTestBed<TestRouterLinkActive>(ng.createTestRouterLinkActiveFactory())
+        .addInjector(addInjector).create(beforeChangeDetection: (component) {
       component.link = '/user/bob';
       fakeRouter.current = RouterState('/user/bob', const [],
           queryParameters: {'param': '1'}, fragment: 'frag');

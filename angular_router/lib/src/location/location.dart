@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:angular/angular.dart' show Injectable;
+import 'package:ngdart/angular.dart' show Injectable;
 
 import 'location_strategy.dart' show LocationStrategy;
 
@@ -24,8 +24,8 @@ import 'location_strategy.dart' show LocationStrategy;
 /// ### Example
 ///
 /// ```
-/// import 'package:angular/angular.dart';
-/// import 'package:angular_router/angular_router.dart';
+/// import 'package:ngdart/angular.dart';
+/// import 'package:ngrouter/angular_router.dart';
 ///
 /// @Component(
 ///   // Should only be provided at the root.

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import '../lifecycle.dart';
 import '../route_definition.dart';

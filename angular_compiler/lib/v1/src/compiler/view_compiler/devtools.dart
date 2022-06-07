@@ -1,6 +1,6 @@
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart';
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart';
 
 /// Optionally returns a statement that records a [binding] for developer tools.
 ///

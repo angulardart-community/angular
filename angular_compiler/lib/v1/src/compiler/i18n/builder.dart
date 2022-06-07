@@ -1,5 +1,5 @@
-import 'package:angular_ast/angular_ast.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngast/angular_ast.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'message.dart';
 import 'metadata.dart';

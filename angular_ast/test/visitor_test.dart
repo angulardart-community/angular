@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:angular_ast/angular_ast.dart';
+import 'package:ngast/angular_ast.dart';
 
 void main() {
   // DesugarVisitor is tested by parser_test.dart

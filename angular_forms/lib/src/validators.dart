@@ -1,4 +1,4 @@
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'directives/validators.dart' show ValidatorFn;
 import 'model.dart' as model_module;

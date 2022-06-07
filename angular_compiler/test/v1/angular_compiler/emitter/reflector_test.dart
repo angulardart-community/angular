@@ -6,8 +6,8 @@ import 'package:dart_style/dart_style.dart';
 import 'package:mockito/mockito.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../src/resolve.dart';
 
@@ -15,7 +15,7 @@ void main() {
   CompileContext.overrideForTesting();
 
   final dartfmt = DartFormatter().format;
-  final angular = 'package:angular';
+  final angular = 'package:ngdart';
   final libReflection = '$angular/src/core/reflection/reflection.dart';
 
   // We don't have a true "source" library to use in these tests. Its OK.

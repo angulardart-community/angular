@@ -1,8 +1,8 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/src/runtime/check_binding.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/runtime/check_binding.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'ng_model_test.template.dart' as ng;
 
@@ -13,7 +13,7 @@ void main() {
     late NgTestFixture<NgModelTest> fixture;
 
     setUp(() async {
-      final testBed = NgTestBed(ng.createNgModelTestFactory());
+      final testBed = NgTestBed<NgModelTest>(ng.createNgModelTestFactory());
       fixture = await testBed.create();
     });
 
@@ -48,7 +48,7 @@ void main() {
 
     setUp(() async {
       final testBed =
-          NgTestBed(ng.createNgModelWithNgDisabledTestComponentFactory());
+          NgTestBed<NgModelWithNgDisabledTestComponent>(ng.createNgModelWithNgDisabledTestComponentFactory());
       fixture = await testBed.create();
       component = fixture.assertOnlyInstance;
     });
@@ -66,7 +66,7 @@ void main() {
   });
 
   test('throws when violating the checkBinding contract', () async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<NgModelWithCheckBindingTest>(
       ng.createNgModelWithCheckBindingTestFactory(),
     );
 

@@ -1,8 +1,8 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'update_location_on_popstate_test.template.dart' as ng;
 
@@ -12,8 +12,7 @@ void main() {
   late NgTestFixture<AppComponent> testFixture;
 
   setUp(() async {
-    final testBed = NgTestBed(
-      ng.createAppComponentFactory(),
+    final testBed = NgTestBed<AppComponent>(ng.createAppComponentFactory(),
       rootInjector: createInjector,
     );
     testFixture = await testBed.create(beforeComponentCreated: (injector) {

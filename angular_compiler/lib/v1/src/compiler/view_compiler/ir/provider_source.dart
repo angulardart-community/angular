@@ -1,5 +1,5 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 
 /// Provider interface passed to view compiler backends to generate code
 /// to instantiate a provider and consume.

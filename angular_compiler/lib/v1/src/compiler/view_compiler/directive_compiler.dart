@@ -1,6 +1,6 @@
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 
 import 'bound_value_converter.dart';
 import 'compile_method.dart';

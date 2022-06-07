@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:source_gen/source_gen.dart' show LibraryReader;
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../analyzer/di/dependencies.dart';
 import '../analyzer/di/tokens.dart';
@@ -10,7 +10,7 @@ import '../analyzer/reflector.dart';
 
 /// Generates `.dart` source code given a [ReflectableOutput].
 class ReflectableEmitter {
-  static const _package = 'package:angular';
+  static const _package = 'package:ngdart';
 
   /// Where the runtime `reflector.dart` is located.
   final String reflectorSource;

@@ -3,8 +3,8 @@ import 'dart:html';
 
 import 'package:test/test.dart';
 import 'package:_tests/query_tests.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'query_view_test.template.dart' as ng;
 
@@ -14,25 +14,25 @@ void main() {
   group('List', () {
     testViewChildren(
       directViewChildren: TestCase(
-        NgTestBed(ng.createTestDirectViewChildrenListFactory()),
+        NgTestBed<TestDirectViewChildrenList>(ng.createTestDirectViewChildrenListFactory()),
         [1, 2, 3],
       ),
       viewChildrenAndEmbedded: TestCase(
-        NgTestBed(ng.createTestViewChildrenAndEmbeddedListFactory()),
+        NgTestBed<TestViewChildrenAndEmbeddedList>(ng.createTestViewChildrenAndEmbeddedListFactory()),
         [1, 3],
       ),
     );
 
     test('should work even when the property is a setter', () async {
       final testBed =
-          NgTestBed(ng.createTestDirectViewChildrenListSetterFactory());
+          NgTestBed<TestDirectViewChildrenListSetter>(ng.createTestDirectViewChildrenListSetterFactory());
       final fixture = await testBed.create();
       expect(fixture, hasChildValues([1, 2, 3]));
     });
 
     test('should work in a multiple nesting scenario', () async {
       // This is a regression case based on internal code.
-      final testBed = NgTestBed(ng.createTestNestedNgForQueriesListFactory());
+      final testBed = NgTestBed<TestNestedNgForQueriesList>(ng.createTestNestedNgForQueriesListFactory());
       final fixture = await testBed.create();
       expect(
         fixture.assertOnlyInstance.taggedDivs!.map((e) => e.text),
@@ -43,7 +43,7 @@ void main() {
     test('should work in a multiple nesting+static scenario', () async {
       // This is a regression case based on internal code.
       final testBed =
-          NgTestBed(ng.createTestNestedAndStaticNgForQueriesListFactory());
+          NgTestBed<TestNestedAndStaticNgForQueriesList>(ng.createTestNestedAndStaticNgForQueriesListFactory());
       final fixture = await testBed.create();
       expect(
         fixture.assertOnlyInstance.taggedDivs!.map((e) => e.text),
@@ -53,7 +53,7 @@ void main() {
 
     test('should work on type selectors that are not directives', () async {
       final testBed =
-          NgTestBed(ng.createTestNonDirectiveChildSelectorFactory());
+          NgTestBed<TestNonDirectiveChildSelector>(ng.createTestNonDirectiveChildSelectorFactory());
       final fixture = await testBed.create();
       expect(fixture.assertOnlyInstance.children, hasLength(3));
       expect(fixture.assertOnlyInstance.services, hasLength(3));

@@ -7,7 +7,7 @@ import 'dart:html';
 ///
 /// It's possible to instead write a _custom exception handler_:
 /// ```
-/// import 'package:angular/angular.dart';
+/// import 'package:ngdart/angular.dart';
 ///
 /// import 'main.template.dart' as ng;
 ///

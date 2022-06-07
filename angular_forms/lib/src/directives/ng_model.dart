@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:meta/dart2js.dart' as dart2js;
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import '../model.dart' show Control;
 import '../validators.dart' show NG_VALIDATORS;

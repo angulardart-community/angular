@@ -1,14 +1,14 @@
 import 'package:source_span/source_span.dart';
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart'
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart'
     as analyzed;
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/i18n/message.dart';
-import 'package:angular_compiler/v1/src/compiler/security.dart';
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_element.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_view.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/view_compiler_utils.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/i18n/message.dart';
+import 'package:ngcompiler/v1/src/compiler/security.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_element.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_view.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/view_compiler_utils.dart'
     show namespaceUris;
 
 import '../expression_parser/ast.dart' as ast;

@@ -1,4 +1,4 @@
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart';
 
 import '../compile_metadata.dart' show CompileIdentifierMetadata;
 

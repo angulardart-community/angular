@@ -8,7 +8,7 @@ import '../analyzer/di/tokens.dart';
 ///
 /// **NOTE**: This class is _stateful_, and should be used once per injector.
 class InjectorEmitter implements InjectorVisitor {
-  static const _package = 'package:angular';
+  static const _package = 'package:ngdart';
   static const _runtime = '$_package/src/di';
   static const _$override = Reference('override', 'dart:core');
   static final _$Object = TypeReference(

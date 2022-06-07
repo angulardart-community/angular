@@ -1,7 +1,7 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
 
 import 'i18n_test.template.dart' as ng;
@@ -10,13 +10,13 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should render message', () async {
-    final testBed = NgTestBed(ng.createTestI18nNodeFactory());
+    final testBed = NgTestBed<TestI18nNode>(ng.createTestI18nNodeFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'A message.');
   });
 
   test('should render message in attribute', () async {
-    final testBed = NgTestBed(ng.createTestI18nAttributeFactory());
+    final testBed = NgTestBed<TestI18nAttribute>(ng.createTestI18nAttributeFactory());
     final testFixture = await testBed.create();
     final imgElement =
         testFixture.rootElement.querySelector('img') as ImageElement;
@@ -24,7 +24,7 @@ void main() {
   });
 
   test('should render message with HTML', () async {
-    final testBed = NgTestBed(ng.createTestI18nNodeWithHtmlFactory());
+    final testBed = NgTestBed<TestI18nNodeWithHtml>(ng.createTestI18nNodeWithHtmlFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'A message with emphasis!');
     final lineBreaks = testFixture.rootElement.querySelectorAll('br');
@@ -34,7 +34,7 @@ void main() {
   });
 
   test('should render message with unsafe HTML', () async {
-    final testBed = NgTestBed(ng.createTestI18nNodeWithUnsafeHtmlFactory());
+    final testBed = NgTestBed<TestI18nNodeWithUnsafeHtml>(ng.createTestI18nNodeWithUnsafeHtmlFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Click here to file an issue.');
     final anchorElement = testFixture.rootElement.querySelector('a')!;
@@ -43,14 +43,13 @@ void main() {
 
   test('should render message with escaped HTML characters', () async {
     final testBed =
-        NgTestBed(ng.createTestI18nNodeWithEscapedHtmlCharactersFactory());
+        NgTestBed<TestI18nNodeWithEscapedHtmlCharacters>(ng.createTestI18nNodeWithEscapedHtmlCharactersFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Not <i>italic</i>.');
   });
 
   test('should render message with HTML and escaped HTML characters', () async {
-    final testBed = NgTestBed(
-        ng.createTestI18nNodeWithHtmlAndEscapedHtmlCharactersFactory());
+    final testBed = NgTestBed<TestI18nNodeWithHtmlAndEscapedHtmlCharacters>(ng.createTestI18nNodeWithHtmlAndEscapedHtmlCharactersFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Italic, not <i>italic</i>.');
     final italicElement = testFixture.rootElement.querySelector('i')!;
@@ -59,7 +58,7 @@ void main() {
 
   // This test ensures none of our Intl.message() parameters are invalid.
   test('should render message with i18n parameters', () async {
-    final testBed = NgTestBed(ng.createTestI18nParametersFactory());
+    final testBed = NgTestBed<TestI18nParameters>(ng.createTestI18nParametersFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'A paragraph.');
     final imgElement = testFixture.rootElement.querySelector('img')!;
@@ -67,7 +66,7 @@ void main() {
   });
 
   test('should render a message from a template', () async {
-    final testBed = NgTestBed(ng.createTestI18nTemplateFactory());
+    final testBed = NgTestBed<TestI18nTemplate>(ng.createTestI18nTemplateFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, isEmpty);
     await testFixture.update((component) {
@@ -77,7 +76,7 @@ void main() {
   });
 
   test('should inject an i18n attribute', () async {
-    final testBed = NgTestBed(ng.createTestInjectI18nAttributeFactory());
+    final testBed = NgTestBed<TestInjectI18nAttribute>(ng.createTestInjectI18nAttributeFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.injectsMessage!.message,
         'An internationalized message.');
@@ -85,14 +84,14 @@ void main() {
 
   group('should set internationalized property', () {
     test('explicitly', () async {
-      final testBed = NgTestBed(ng.createTestExplicitI18nInputFactory());
+      final testBed = NgTestBed<TestExplicitI18nInput>(ng.createTestExplicitI18nInputFactory());
       final testFixture = await testBed.create();
       expect(testFixture.assertOnlyInstance.greeting!.message,
           'An internationalized property');
     });
 
     test('implicitly', () async {
-      final testBed = NgTestBed(ng.createTestImplicitI18nInputFactory());
+      final testBed = NgTestBed<TestImplicitI18nInput>(ng.createTestImplicitI18nInputFactory());
       final testFixture = await testBed.create();
       expect(testFixture.assertOnlyInstance.greeting!.message,
           'An internationalized property');
@@ -100,7 +99,7 @@ void main() {
   });
 
   test('should support internationalized property on <template>', () async {
-    final testBed = NgTestBed(ng.createTestI18nInputOnTemplateFactory());
+    final testBed = NgTestBed<TestI18nInputOnTemplate>(ng.createTestI18nInputOnTemplateFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.message!.message,
         'An internationalized property');

@@ -2,10 +2,10 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/visitor.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/output/convert.dart';
-import 'package:angular_compiler/v1/src/source_gen/common/annotation_matcher.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/output/convert.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/annotation_matcher.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'annotation_information.dart';
 import 'compile_metadata.dart';

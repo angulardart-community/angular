@@ -1,10 +1,10 @@
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileIdentifierMetadata;
-import 'package:angular_compiler/v1/src/compiler/compiler_utils.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/style_url_resolver.dart'
+import 'package:ngcompiler/v1/src/compiler/compiler_utils.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/style_url_resolver.dart'
     show extractStyleUrls;
 
 import 'shadow_css.dart';

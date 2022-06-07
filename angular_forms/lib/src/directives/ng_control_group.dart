@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import '../model.dart' show AbstractControlGroup;
 import '../validators.dart' show NG_VALIDATORS;

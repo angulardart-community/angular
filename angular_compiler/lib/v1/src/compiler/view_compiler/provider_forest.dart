@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart' show ListEquality;
 import 'package:meta/meta.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileTokenMetadata;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 
 import 'constants.dart' show InjectMethodVars;
 import 'view_compiler_utils.dart' show createDiTokenExpression;

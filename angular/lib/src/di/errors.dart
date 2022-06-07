@@ -1,5 +1,5 @@
 import 'package:meta/dart2js.dart' as dart2js;
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/utilities.dart';
 
 /// Current stack of tokens being requested for an injection.
 List<Object>? _tokenStack;

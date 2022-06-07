@@ -1,8 +1,8 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 import '1348_empty_active_link_test.template.dart' as ng;
 
@@ -12,7 +12,7 @@ final injector = ng.injector$Injector;
 void main() {
   test('router link with empty path should be marked active', () async {
     final testBed =
-        NgTestBed(ng.createAppComponentFactory()).addInjector(injector);
+        NgTestBed<AppComponent>(ng.createAppComponentFactory()).addInjector(injector);
     final testFixture = await testBed.create();
     final anchor = testFixture.rootElement.querySelector('a')!;
     expect(anchor.classes, contains(AppComponent.activeClassName));

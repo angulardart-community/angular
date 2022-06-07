@@ -1,14 +1,14 @@
 import 'package:source_span/source_span.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart'
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
     as ast;
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/schema/element_schema_registry.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/element_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart';
-import 'package:angular_compiler/v1/src/compiler/template_parser.dart';
-import 'package:angular_compiler/v1/src/compiler/view_type.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/element_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart';
+import 'package:ngcompiler/v1/src/compiler/template_parser.dart';
+import 'package:ngcompiler/v1/src/compiler/view_type.dart';
 
 import 'bound_value_converter.dart';
 import 'compile_element.dart' show CompileElement;

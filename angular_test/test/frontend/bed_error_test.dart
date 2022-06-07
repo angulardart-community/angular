@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'bed_error_test.template.dart' as ng;
 
@@ -52,7 +52,7 @@ void main() {
 )
 class CatchSynchronousErrors {
   static Future<void> _runTest() async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<CatchSynchronousErrors>(
       ng.createCatchSynchronousErrorsFactory(),
     ).create();
     expect(
@@ -68,7 +68,7 @@ class CatchSynchronousErrors {
 )
 class CatchAsynchronousErrors {
   static Future<void> _runTest() async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<CatchAsynchronousErrors>(
       ng.createCatchAsynchronousErrorsFactory(),
     ).create();
     expect(
@@ -84,7 +84,7 @@ class CatchAsynchronousErrors {
 )
 class CatchConstructorErrors {
   static Future<void> _runTest() async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CatchConstructorErrors>(
       ng.createCatchConstructorErrorsFactory(),
     );
     expect(
@@ -104,7 +104,7 @@ class CatchConstructorErrors {
 )
 class CatchConstructorAsyncErrors {
   static Future<void> _runTest() async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CatchConstructorAsyncErrors>(
       ng.createCatchConstructorAsyncErrorsFactory(),
     );
     expect(
@@ -126,7 +126,7 @@ class CatchConstructorAsyncErrors {
 )
 class CatchNativeEventSynchronousErrors {
   static Future<void> _runTest() async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<CatchNativeEventSynchronousErrors>(
       ng.createCatchNativeEventSynchronousErrorsFactory(),
     ).create();
     expect(
@@ -148,7 +148,7 @@ class CatchNativeEventSynchronousErrors {
 )
 class CatchNativeEventAsynchronousErrors {
   static Future<void> _runTest() async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<CatchNativeEventSynchronousErrors>(
       ng.createCatchNativeEventSynchronousErrorsFactory(),
     ).create();
     expect(
@@ -170,7 +170,7 @@ class CatchNativeEventAsynchronousErrors {
 )
 class CatchOnInitErrors implements OnInit {
   static Future<void> _runTest() async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CatchOnInitErrors>(
       ng.createCatchOnInitErrorsFactory(),
     );
     expect(
@@ -192,7 +192,7 @@ class CatchOnInitErrors implements OnInit {
 )
 class CatchInChangeDetection {
   static Future<void> _runTest() async {
-    final fixture = await NgTestBed(
+    final NgTestFixture<CatchInChangeDetection> fixture = await NgTestBed<CatchInChangeDetection>(
       ng.createCatchInChangeDetectionFactory(),
     ).create();
     expect(
@@ -224,7 +224,7 @@ class ChildChangeDetectionError {
 class NoExceptionsSwallowedTest {
   static Future<void> _runTest() async {
     final simpleHandler = _CapturingExceptionHandler();
-    final fixture = await NgTestBed(
+    final NgTestFixture<NoExceptionsSwallowedTest> fixture = await NgTestBed<NoExceptionsSwallowedTest>(
       ng.createNoExceptionsSwallowedTestFactory(),
       rootInjector: (i) => Injector.map(
         {ExceptionHandler: simpleHandler},

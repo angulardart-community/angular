@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:angular/src/core/change_detection/change_detector_ref.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/core/change_detection/change_detector_ref.dart';
+import 'package:ngdart/src/meta.dart';
 
 import 'invalid_pipe_argument_exception.dart' show InvalidPipeArgumentException;
 

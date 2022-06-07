@@ -4,21 +4,21 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/visitor.dart';
 import 'package:analyzer/src/dart/element/element.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart'
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
     as ast;
-import 'package:angular_compiler/v1/src/compiler/output/convert.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/template_compiler.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/property_binder.dart'
+import 'package:ngcompiler/v1/src/compiler/output/convert.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/template_compiler.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/property_binder.dart'
     show isPrimitiveTypeName;
-import 'package:angular_compiler/v1/src/source_gen/common/annotation_matcher.dart';
-import 'package:angular_compiler/v1/src/source_gen/common/url_resolver.dart';
-import 'package:angular_compiler/v2/analyzer.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/annotation_matcher.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/url_resolver.dart';
+import 'package:ngcompiler/v2/analyzer.dart';
+import 'package:ngcompiler/v2/context.dart';
 import 'package:build/build.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:path/path.dart' as p;

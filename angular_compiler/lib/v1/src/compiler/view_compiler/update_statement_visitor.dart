@@ -1,13 +1,13 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart'
     show DomHelpers, Identifiers, SafeHtmlAdapters;
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/security.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_view.dart'
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/security.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_view.dart'
     show NodeReference, TextBindingNodeReference;
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'devtools.dart';
 import 'interpolation_utils.dart';

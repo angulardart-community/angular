@@ -2,9 +2,9 @@ import 'dart:html';
 import 'dart:js_util' as js_util;
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'accessor_test.template.dart' as ng;
 
@@ -13,8 +13,7 @@ void main() {
     tearDown(disposeAnyRunningTest);
 
     test('should have error on invalid input', () async {
-      var testBed = NgTestBed(ng.createAccessorTestComponentFactory());
-      var fixture = await testBed.create();
+      NgTestFixture<AccessorTestComponent> fixture = await NgTestBed<AccessorTestComponent>(ng.createAccessorTestComponentFactory()).create();
 
       await fixture.update((AccessorTestComponent c) {
         var model = c.model!;
@@ -28,8 +27,7 @@ void main() {
     });
 
     test('shouldn\'t have error on valid input', () async {
-      var testBed = NgTestBed(ng.createAccessorTestComponentFactory());
-      var fixture = await testBed.create();
+      NgTestFixture<AccessorTestComponent> fixture = await NgTestBed<AccessorTestComponent>(ng.createAccessorTestComponentFactory()).create();
 
       await fixture.update((AccessorTestComponent c) {
         var model = c.model!;

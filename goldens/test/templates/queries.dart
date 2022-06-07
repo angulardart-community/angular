@@ -4,7 +4,7 @@ library golden;
 import 'dart:html';
 
 import 'package:js/js.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'queries.template.dart' as ng;
 

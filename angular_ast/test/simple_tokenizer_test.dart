@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular_ast/src/simple_tokenizer.dart';
-import 'package:angular_ast/src/token/tokens.dart';
+import 'package:ngast/src/simple_tokenizer.dart';
+import 'package:ngast/src/token/tokens.dart';
 
 void main() {
   Iterable<NgSimpleToken> tokenize(String html) =>

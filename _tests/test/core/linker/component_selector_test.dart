@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:_tests/matchers.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'component_selector_test.template.dart' as ng;
 
@@ -10,7 +10,7 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     test('should support attaching component to tr tag', () async {
-      var testBed = NgTestBed(ng.createTrTagTestFactory());
+      var testBed = NgTestBed<TrTagTest>(ng.createTrTagTestFactory());
       var testFixture = await testBed.create();
       var rows = testFixture.rootElement.querySelectorAll('tr[repaired-part]');
       expect(rows, hasLength(3));
@@ -19,7 +19,7 @@ void main() {
 
     test('should support exact attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createExactAttributeSelectorTestComponentFactory());
+          NgTestBed<ExactAttributeSelectorTestComponent>(ng.createExactAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo]')!.text, isEmpty);
@@ -29,7 +29,7 @@ void main() {
 
     test('should support hypen attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createHyphenAttributeSelectorTestComponentFactory());
+          NgTestBed<HyphenAttributeSelectorTestComponent>(ng.createHyphenAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -39,7 +39,7 @@ void main() {
 
     test('should support list attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createListAttributeSelectorTestComponentFactory());
+          NgTestBed<ListAttributeSelectorTestComponent>(ng.createListAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -50,7 +50,7 @@ void main() {
 
     test('should support prefix attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createPrefixAttributeSelectorTestComponentFactory());
+          NgTestBed<PrefixAttributeSelectorTestComponent>(ng.createPrefixAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -60,7 +60,7 @@ void main() {
 
     test('should support set attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createSetAttributeSelectorTestComponentFactory());
+          NgTestBed<SetAttributeSelectorTestComponent>(ng.createSetAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('div')!.text, isEmpty);
@@ -71,7 +71,7 @@ void main() {
 
     test('should support substring attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createSubstringAttributeSelectorTestComponentFactory());
+          NgTestBed<SubstringAttributeSelectorTestComponent>(ng.createSubstringAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -81,7 +81,7 @@ void main() {
 
     test('should support suffix attribute selector', () async {
       final testBed =
-          NgTestBed(ng.createSuffixAttributeSelectorTestComponentFactory());
+          NgTestBed<SuffixAttributeSelectorTestComponent>(ng.createSuffixAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');

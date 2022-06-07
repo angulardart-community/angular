@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../compile_metadata.dart';
 import '../js_split_facade.dart';

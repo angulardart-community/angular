@@ -2,8 +2,8 @@
 // state that might be expected to move into "AppHost" after a refactor of the
 // current APIs.
 
-import 'package:angular/src/di/injector.dart';
-import 'package:angular/src/testability.dart';
+import 'package:ngdart/src/di/injector.dart';
+import 'package:ngdart/src/testability.dart';
 
 /// Maintains all top-level/static state for AngularDart apps.
 ///

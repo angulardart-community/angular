@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 import 'package:pedantic/pedantic.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import '../stabilizer.dart';
 

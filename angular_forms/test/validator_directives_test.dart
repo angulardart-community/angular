@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'validator_directives_test.template.dart' as ng;
 
@@ -10,7 +10,7 @@ void main() {
     late NgTestFixture<DynamicRequiredComponent> fixture;
 
     setUp(() async {
-      var testBed = NgTestBed(ng.createDynamicRequiredComponentFactory());
+      var testBed = NgTestBed<DynamicRequiredComponent>(ng.createDynamicRequiredComponentFactory());
       fixture = await testBed.create();
     });
 
@@ -56,7 +56,7 @@ void main() {
     late NgTestFixture<DynamicPatternComponent> fixture;
 
     setUp(() async {
-      var testBed = NgTestBed(ng.createDynamicPatternComponentFactory());
+      var testBed = NgTestBed<DynamicPatternComponent>(ng.createDynamicPatternComponentFactory());
       fixture = await testBed.create();
     });
 

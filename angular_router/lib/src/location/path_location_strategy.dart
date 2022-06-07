@@ -1,6 +1,6 @@
 import 'dart:html' as html;
 
-import 'package:angular/angular.dart' show Injectable, Inject, Optional;
+import 'package:ngdart/angular.dart' show Injectable, Inject, Optional;
 
 import 'location.dart' show Location;
 import 'location_strategy.dart' show LocationStrategy, appBaseHref;

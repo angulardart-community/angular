@@ -1,4 +1,4 @@
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/utilities.dart';
 
 /// A function that can be used to return a unique key for [item] at [index].
 ///

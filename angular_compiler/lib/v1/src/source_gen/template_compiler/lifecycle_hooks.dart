@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 
 final _typeCheckerToLifecycleHook = {
   $OnInit: LifecycleHooks.onInit,

@@ -1,5 +1,5 @@
 import 'package:source_span/source_span.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../expression_parser/ast.dart';
 import 'message.dart';

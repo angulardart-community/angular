@@ -1,9 +1,9 @@
 import 'dart:html';
 
-import 'package:angular/src/core/change_detection/differs/default_iterable_differ.dart';
-import 'package:angular/src/core/change_detection/differs/default_keyvalue_differ.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/core/change_detection/differs/default_iterable_differ.dart';
+import 'package:ngdart/src/core/change_detection/differs/default_keyvalue_differ.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/utilities.dart';
 
 /// The [NgClass] directive conditionally adds and removes CSS classes on an
 /// HTML element based on an expression's evaluation result.

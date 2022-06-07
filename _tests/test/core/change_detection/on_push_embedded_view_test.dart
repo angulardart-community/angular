@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'on_push_embedded_view_test.template.dart' as ng;
 
@@ -10,7 +10,7 @@ void main() {
   late NgTestFixture<TestComponent> fixture;
 
   setUp(() async {
-    fixture = await NgTestBed(ng.createTestComponentFactory()).create();
+    fixture = await NgTestBed<TestComponent>(ng.createTestComponentFactory()).create();
   });
 
   tearDown(disposeAnyRunningTest);

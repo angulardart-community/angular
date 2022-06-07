@@ -1,4 +1,4 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 
 /// An abstraction representing a component of a parsed Dart expression.
 abstract class AST {

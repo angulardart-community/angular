@@ -1,9 +1,9 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompilePipeMetadata, LifecycleHooks;
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_method.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_method.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
 
 import 'compile_element.dart' show CompileElement;
 import 'compile_view.dart' show CompileView, notThrowOnChanges;

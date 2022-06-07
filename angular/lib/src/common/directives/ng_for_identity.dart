@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
-import 'package:angular/src/core/linker/template_ref.dart';
-import 'package:angular/src/core/linker/view_container_ref.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/core/linker/template_ref.dart';
+import 'package:ngdart/src/core/linker/view_container_ref.dart';
+import 'package:ngdart/src/meta.dart';
 
 /// An alternative to [NgFor] optimized for immutable/unmodified collections.
 ///

@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
-import 'package:angular/src/reflector.dart' as reflector;
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/reflector.dart' as reflector;
+import 'package:ngdart/src/utilities.dart';
 
 import 'component_factory.dart' show ComponentFactory;
 

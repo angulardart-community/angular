@@ -2,11 +2,11 @@
 
 import 'package:test/test.dart';
 import 'package:_tests/matchers.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/experimental.dart';
-import 'package:angular/src/di/injector.dart';
-import 'package:angular/src/reflector.dart' as reflector;
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/experimental.dart';
+import 'package:ngdart/src/di/injector.dart';
+import 'package:ngdart/src/reflector.dart' as reflector;
+import 'package:ngtest/angular_test.dart';
 
 import 'injector_test.template.dart' as ng;
 
@@ -700,8 +700,7 @@ void main() {
   ///   `ElementInjector.provideUntyped()` to `View.injectorGet()`.
   test('View.injectorGet() should handle a null nodeIndex argument', () async {
     final testValue = 'Hello world!';
-    final testBed = NgTestBed(
-      ng.createTestComponentFactory(),
+    final testBed = NgTestBed<TestComponent>(ng.createTestComponentFactory(),
       rootInjector: (parent) => Injector.map({testToken: testValue}, parent),
     );
     final testFixture = await testBed.create();

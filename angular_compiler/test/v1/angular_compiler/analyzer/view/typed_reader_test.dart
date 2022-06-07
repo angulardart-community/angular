@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v1/angular_compiler.dart';
+import 'package:ngcompiler/v1/angular_compiler.dart';
 
 import '../../src/compile.dart';
 import '../../src/resolve.dart';

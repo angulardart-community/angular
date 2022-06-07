@@ -1,6 +1,6 @@
 import 'package:source_span/source_span.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'compile_metadata.dart'
     show

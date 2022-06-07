@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/src/frontend/ng_zone/fake_time_stabilizer.dart';
-import 'package:angular_test/src/frontend/ng_zone/real_time_stabilizer.dart';
-import 'package:angular_test/src/frontend/ng_zone/timer_hook_zone.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/src/frontend/ng_zone/fake_time_stabilizer.dart';
+import 'package:ngtest/src/frontend/ng_zone/real_time_stabilizer.dart';
+import 'package:ngtest/src/frontend/ng_zone/timer_hook_zone.dart';
 
 void main() {
   group('FakeTimeNgZoneStabilizer', () {

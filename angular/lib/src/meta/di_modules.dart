@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/meta.dart';
 
 /// Encapsulates a reusable set of dependency injection configurations.
 ///

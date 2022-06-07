@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'reference_binding_test.template.dart' as ng;
 
@@ -11,21 +11,21 @@ void main() {
 
   test('should assign a component to a reference', () async {
     final testBed =
-        NgTestBed(ng.createComponentReferenceBindingComponentFactory());
+        NgTestBed<ComponentReferenceBindingComponent>(ng.createComponentReferenceBindingComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.child, TypeMatcher<ChildComponent>());
   });
 
   test('should assign a directive to a reference', () async {
     final testBed =
-        NgTestBed(ng.createDirectiveReferenceBindingComponentFactory());
+        NgTestBed<DirectiveReferenceBindingComponent>(ng.createDirectiveReferenceBindingComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.directive, TypeMatcher<ExportDir>());
   });
 
   test('should assign an element to a reference', () async {
     final testBed =
-        NgTestBed(ng.createElementReferenceBindingComponentFactory());
+        NgTestBed<ElementReferenceBindingComponent>(ng.createElementReferenceBindingComponentFactory());
     final testFixture = await testBed.create();
     expect(
       testFixture.assertOnlyInstance.captured!.reference,
@@ -35,14 +35,14 @@ void main() {
 
   test('should be accessible in bindings before declaration', () async {
     final testBed =
-        NgTestBed(ng.createUseRefBeforeDeclarationComponentFactory());
+        NgTestBed<UseRefBeforeDeclarationComponent>(ng.createUseRefBeforeDeclarationComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'hello|hello|hello');
   });
 
   test('should assign two component instances each with a reference', () async {
     final testBed =
-        NgTestBed(ng.createTwoComponentReferencesComponentFactory());
+        NgTestBed<TwoComponentReferencesComponent>(ng.createTwoComponentReferencesComponentFactory());
     final testFixture = await testBed.create();
     final alice = testFixture.assertOnlyInstance.alice;
     final bob = testFixture.assertOnlyInstance.bob;
@@ -52,7 +52,7 @@ void main() {
   });
 
   test('should be case sensitive', () async {
-    final testBed = NgTestBed(ng.createCaseSensitiveRefComponentFactory());
+    final testBed = NgTestBed<CaseSensitiveRefComponent>(ng.createCaseSensitiveRefComponentFactory());
     final testFixture = await testBed.create();
     final caseSensitive = testFixture.assertOnlyInstance.caseSensitive;
     final caseInsensitive = testFixture.assertOnlyInstance.caseInsensitive;

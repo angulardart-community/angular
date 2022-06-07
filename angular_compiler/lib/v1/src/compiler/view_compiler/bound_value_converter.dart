@@ -1,11 +1,11 @@
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileDirectiveMetadata;
-import 'package:angular_compiler/v1/src/compiler/i18n/message.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_view.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/constants.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/i18n/message.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_view.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/constants.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'expression_converter.dart' show NameResolver, convertCdExpressionToIr;
 

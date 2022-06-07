@@ -1,7 +1,7 @@
-name: angular_compiler
+name: ngcompiler
 repository: https://github.com/angulardart/angular
 description: Compiler for AngularDart.
-version: 2.1.0
+version: 2.2.0
 
 environment:
   sdk: '>=2.17.0 <3.0.0'
@@ -9,8 +9,8 @@ environment:
 dependencies:
   analyzer: ^4.0.0
   # Allowing a tiny bit of wiggle here to allow publishing minor updates
-  angular: '>=7.0.0 <8.0.0'
-  angular_ast: ^2.1.0
+  ngdart: '>=8.0.0 <9.0.0'
+  ngast: ^2.2.0
   args: ^2.0.0
   build: ^2.0.0
   build_test: ^2.0.0
@@ -35,8 +35,8 @@ dev_dependencies:
   test: ^1.3.0
 
 dependency_overrides:
-  angular:
+  ngdart:
     path: ../angular
-  angular_ast:
+  ngast:
     path: ../angular_ast
-  analyzer: ^4.0.0
+#  analyzer: ^4.0.0

@@ -1,4 +1,4 @@
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 
 /// Interface implemented by compiler backend to provide persistant storage
 /// of instances for AppView.

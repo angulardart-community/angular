@@ -1,20 +1,20 @@
 import 'dart:collection';
 
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show
         CompileTokenMetadata,
         CompileDirectiveMetadata,
         CompileIdentifierMetadata;
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart'
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
     as ast;
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/binding_converter.dart'
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/binding_converter.dart'
     show convertAllToBinding, convertHostAttributeToBinding;
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart'
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart'
     show ElementAst;
-import 'package:angular_compiler/v1/src/compiler/view_type.dart';
+import 'package:ngcompiler/v1/src/compiler/view_type.dart';
 
 import 'compile_view.dart' show CompileView, ReadNodeReferenceExpr;
 import 'constants.dart';

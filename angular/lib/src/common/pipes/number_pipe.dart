@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/meta.dart';
 
 final RegExp _re = RegExp('^(\\d+)?\\.((\\d+)(\\-(\\d+))?)?\$');
 

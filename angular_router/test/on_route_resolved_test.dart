@@ -1,9 +1,9 @@
 import 'package:async/async.dart' show StreamGroup;
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:angular_router/testing.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngrouter/angular_router.dart';
+import 'package:ngrouter/testing.dart';
+import 'package:ngtest/angular_test.dart';
 
 // ingore: uri_has_not_been_generated
 import 'on_route_resolved_test.template.dart' as ng;
@@ -13,7 +13,7 @@ void main() {
 
   group('Router.onRouteResolved', () {
     test('fires on navigation', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<TestComponent>(
         ng.createTestComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -28,7 +28,7 @@ void main() {
     });
 
     test("doesn't fire when navigation is prohibited", () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<TestComponent>(
         ng.createTestComponentFactory(),
       ).addInjector((i) => Injector.map({canNavigateToken: false}, i));
       final testFixture = await testBed.create();
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('fires when deactivation is prohibited', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<TestComponent>(
         ng.createTestComponentFactory(),
       ).addInjector((i) => Injector.map({canDeactivateToken: false}, i));
       final testFixture = await testBed.create();
@@ -55,7 +55,7 @@ void main() {
     });
 
     test('fires on popstate', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<TestComponent>(
         ng.createTestComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -68,7 +68,7 @@ void main() {
     });
 
     test('fires only once on redirect', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<TestComponent>(
         ng.createTestComponentFactory(),
       );
       final testFixture = await testBed.create();

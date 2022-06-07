@@ -1,6 +1,6 @@
 import 'package:build/build.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v2/testing.dart';
+import 'package:ngcompiler/v2/testing.dart';
 
 void main() {
   test('should resolve a component', () async {

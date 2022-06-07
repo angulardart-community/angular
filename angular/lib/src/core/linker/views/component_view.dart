@@ -3,11 +3,11 @@ import 'dart:html';
 
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:meta/meta.dart';
-import 'package:angular/src/core/change_detection/host.dart';
-import 'package:angular/src/core/linker/style_encapsulation.dart';
-import 'package:angular/src/devtools.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/core/change_detection/host.dart';
+import 'package:ngdart/src/core/linker/style_encapsulation.dart';
+import 'package:ngdart/src/devtools.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'render_view.dart';
 import 'view.dart';

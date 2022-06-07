@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
-import 'package:angular_test/src/errors/will_never_stabilize.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
+import 'package:ngtest/src/errors/will_never_stabilize.dart';
 
 import 'stabilizer_test.template.dart' as template;
 
 void main() {
   test('should throw error when stabilization threshold is exceeded', () async {
     final testBed =
-        NgTestBed(template.createWillNeverStabilizeComponentFactory());
+        NgTestBed<WillNeverStabilizeComponent>(template.createWillNeverStabilizeComponentFactory());
     expect(testBed.create, throwsA(TypeMatcher<WillNeverStabilizeError>()));
   }, skip: 'b/140626607');
 }

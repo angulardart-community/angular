@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/view_type.dart';
-import 'package:angular_compiler/v1/src/source_gen/common/url_resolver.dart'
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/view_type.dart';
+import 'package:ngcompiler/v1/src/source_gen/common/url_resolver.dart'
     show toTemplateExtension;
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../compile_metadata.dart'
     show

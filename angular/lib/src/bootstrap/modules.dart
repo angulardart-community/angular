@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:angular/src/core/application_tokens.dart';
-import 'package:angular/src/core/exception_handler.dart';
-import 'package:angular/src/core/linker/component_loader.dart';
-import 'package:angular/src/di/injector.dart';
+import 'package:ngdart/src/core/application_tokens.dart';
+import 'package:ngdart/src/core/exception_handler.dart';
+import 'package:ngdart/src/core/linker/component_loader.dart';
+import 'package:ngdart/src/di/injector.dart';
 
 /// Returns a simple application [Injector] that is hand-authored.
 ///

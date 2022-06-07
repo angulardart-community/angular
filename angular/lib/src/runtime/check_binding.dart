@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:meta/meta.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/utilities.dart';
 
 /// Whether [_debugCheckBinding] should throw if the values are different.
 var _debugThrowIfChanged = false;

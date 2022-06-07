@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
 
 import 'ng_control_repeated_test.template.dart' as ng;
@@ -12,7 +12,7 @@ void main() {
 
   // Regression test for https://github.com/angulardart/angular/issues/164.
   test('should update an NgForm without throwing an NPE', () async {
-    final testBed = NgTestBed(ng.createAppComponentFactory());
+    final testBed = NgTestBed<AppComponent>(ng.createAppComponentFactory());
     expect(
       (await testBed.create()).rootElement.innerHtml,
       contains(r'<input title="Input #0:true">'),

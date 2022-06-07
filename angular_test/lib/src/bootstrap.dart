@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular/src/bootstrap/run.dart';
-import 'package:angular/src/core/application_ref.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/bootstrap/run.dart';
+import 'package:ngdart/src/core/application_ref.dart';
 
 /// Returns an application injector factory for [providers], if any.
 InjectorFactory testInjectorFactory(List<Object> providers) {

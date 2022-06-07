@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:angular/angular.dart' show ComponentFactory, ComponentRef;
+import 'package:ngdart/angular.dart' show ComponentFactory, ComponentRef;
 
 import '../route_definition.dart';
 import '../route_path.dart';

@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/src/bootstrap.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/src/bootstrap.dart';
 
 import 'bootstrap_test.template.dart' as ng_generated;
 
@@ -13,7 +13,7 @@ void main() {
 
   test('should create a new component in the DOM', () async {
     final host = Element.div();
-    final test = await bootstrapForTest(
+    final test = await bootstrapForTest<NewComponentInDom>(
       ng_generated.createNewComponentInDomFactory(),
       host,
       _noopInjector,
@@ -48,7 +48,7 @@ void main() {
 
   test('should include user-specified providers', () async {
     final host = Element.div();
-    final test = await bootstrapForTest(
+    final test = await bootstrapForTest<AddProviders>(
       ng_generated.createAddProvidersFactory(),
       host,
       (i) => Injector.map({TestService: TestService()}, i),
@@ -61,7 +61,7 @@ void main() {
   test('should be able to call injector before component creation', () async {
     final host = Element.div();
     TestService? testService;
-    final test = await bootstrapForTest(
+    final test = await bootstrapForTest<AddProviders>(
         ng_generated.createAddProvidersFactory(),
         host,
         (i) => Injector.map({TestService: TestService()}, i),
@@ -84,7 +84,7 @@ void main() {
       () async {
     final host = Element.div();
     TestService? testService;
-    final test = await bootstrapForTest(
+    final test = await bootstrapForTest<AddProviders>(
       ng_generated.createAddProvidersFactory(),
       host,
       (i) => Injector.map({TestService: TestService()}, i),

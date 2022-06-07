@@ -1,6 +1,6 @@
 import 'package:csslib/parser.dart';
 import 'package:csslib/visitor.dart';
-import 'package:angular_compiler/v1/cli.dart';
+import 'package:ngcompiler/v1/cli.dart';
 
 /// This is a limited shim for Shadow DOM CSS styling.
 ///

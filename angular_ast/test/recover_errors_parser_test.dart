@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:angular_ast/angular_ast.dart';
+import 'package:ngast/angular_ast.dart';
 
 final recoveringExceptionHandler = RecoveringExceptionHandler();
 

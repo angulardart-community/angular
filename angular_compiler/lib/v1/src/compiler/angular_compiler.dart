@@ -1,17 +1,17 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v1/src/compiler/ast_directive_normalizer.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/compiler_utils.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/directive_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/source_module.dart';
-import 'package:angular_compiler/v1/src/compiler/template_compiler.dart';
-import 'package:angular_compiler/v1/src/compiler/template_parser/ast_template_parser.dart';
-import 'package:angular_compiler/v1/src/source_gen/template_compiler/component_visitor_exceptions.dart';
-import 'package:angular_compiler/v1/src/source_gen/template_compiler/find_components.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v1/src/compiler/ast_directive_normalizer.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/compiler_utils.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/directive_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/source_module.dart';
+import 'package:ngcompiler/v1/src/compiler/template_compiler.dart';
+import 'package:ngcompiler/v1/src/compiler/template_parser/ast_template_parser.dart';
+import 'package:ngcompiler/v1/src/source_gen/template_compiler/component_visitor_exceptions.dart';
+import 'package:ngcompiler/v1/src/source_gen/template_compiler/find_components.dart';
 
 /// The bulk of "compilation" for AngularDart's components and templates.
 ///

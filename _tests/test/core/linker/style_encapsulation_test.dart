@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'style_encapsulation_test.template.dart' as ng;
 
@@ -19,7 +19,7 @@ void main() {
   }
 
   test('should encapsulate usages of [class]=', () async {
-    final testBed = NgTestBed(ng.createTestSetClassPropertyFactory());
+    final testBed = NgTestBed<TestSetClassProperty>(ng.createTestSetClassPropertyFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('div')!;
     expect(
@@ -30,7 +30,7 @@ void main() {
   });
 
   test('should encapsulate usages of [attr.class]=', () async {
-    final testBed = NgTestBed(ng.createTestSetClassAttributeFactory());
+    final testBed = NgTestBed<TestSetClassAttribute>(ng.createTestSetClassAttributeFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('div')!;
     expect(
@@ -41,7 +41,7 @@ void main() {
   });
 
   test('should support encapsulation piercing ::ng-deep', () async {
-    final testBed = NgTestBed(ng.createTestEncapsulationPierceFactory());
+    final testBed = NgTestBed<TestEncapsulationPierce>(ng.createTestEncapsulationPierceFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('button')!;
     expect(

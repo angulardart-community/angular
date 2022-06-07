@@ -1,6 +1,6 @@
-import 'package:angular/src/core/linker.dart';
-import 'package:angular/src/meta.dart';
-import 'package:angular/src/runtime/check_binding.dart';
+import 'package:ngdart/src/core/linker.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngdart/src/runtime/check_binding.dart';
 
 /// Causes an element and its contents to be conditionally added/removed from
 /// the DOM based on the value of the given boolean template expression.

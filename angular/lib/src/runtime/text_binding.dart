@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import 'package:meta/dart2js.dart' as dart2js;
-import 'package:angular/src/runtime/check_binding.dart';
+import 'package:ngdart/src/runtime/check_binding.dart';
 
 import 'interpolate.dart';
 

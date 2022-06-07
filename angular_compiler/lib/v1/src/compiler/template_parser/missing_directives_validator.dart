@@ -1,12 +1,12 @@
-import 'package:angular_compiler/v1/src/compiler/aria_attributes.dart';
-import 'package:angular_compiler/v1/src/compiler/html_events.dart';
-import 'package:angular_compiler/v1/src/compiler/schema/element_schema_registry.dart';
-import 'package:angular_compiler/v1/src/compiler/schema/skip_selectors_validator.dart';
-import 'package:angular_compiler/v1/src/compiler/selector.dart';
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart' as ng;
-import 'package:angular_compiler/v1/src/compiler/template_parser/recursive_template_visitor.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/view_compiler_utils.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/aria_attributes.dart';
+import 'package:ngcompiler/v1/src/compiler/html_events.dart';
+import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart';
+import 'package:ngcompiler/v1/src/compiler/schema/skip_selectors_validator.dart';
+import 'package:ngcompiler/v1/src/compiler/selector.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart' as ng;
+import 'package:ngcompiler/v1/src/compiler/template_parser/recursive_template_visitor.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/view_compiler_utils.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 const String optedOutValidator = 'If your project uses selector css styling '
     'heavily, or the templates contain external custom elements not supported by '

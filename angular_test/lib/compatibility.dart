@@ -7,9 +7,9 @@
 library angular_test.compatibility;
 
 import 'package:meta/meta.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/src/bootstrap/run.dart' show appInjector;
-import 'package:angular/src/core/linker/dynamic_component_loader.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/bootstrap/run.dart' show appInjector;
+import 'package:ngdart/src/core/linker/dynamic_component_loader.dart';
 
 export 'src/frontend/bed.dart' show createDynamicFixture, createDynamicTestBed;
 export 'src/frontend/fixture.dart' show injectFromFixture;
@@ -46,7 +46,7 @@ Injector createTestInjector(List<Object> providers) {
 /// }
 /// ```
 ///
-/// This method was moved from package:angular/experimental.dart after
+/// This method was moved from package:ngdart/experimental.dart after
 /// [createTestInjector] became its sole remaining user.
 Injector _rootLegacyInjector(InjectorFactory userInjector) {
   // Create a new appInjector, using wrappedUserInjector for provided services.

@@ -9,7 +9,7 @@ import 'dart:html' hide document;
 import 'package:js/js.dart';
 import 'package:js/js_util.dart' as js;
 import 'package:meta/dart2js.dart' as dart2js;
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/utilities.dart';
 
 /// https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
 Text _createTextNode(String text) => Text(text);

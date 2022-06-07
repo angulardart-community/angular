@@ -1,4 +1,4 @@
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/meta.dart';
 
 /// Implements uppercase transforms to text.
 @Pipe('uppercase')

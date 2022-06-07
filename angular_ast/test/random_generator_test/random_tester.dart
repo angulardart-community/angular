@@ -3,8 +3,8 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:path/path.dart' as p;
-import 'package:angular_ast/angular_ast.dart';
-import 'package:angular_ast/src/token/tokens.dart';
+import 'package:ngast/angular_ast.dart';
+import 'package:ngast/src/token/tokens.dart';
 
 final int generationCount = 10000;
 final int iterationCount = 100;

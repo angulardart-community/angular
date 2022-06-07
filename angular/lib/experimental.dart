@@ -9,7 +9,7 @@
 library angular.experimental;
 
 import 'package:meta/meta.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'src/bootstrap/run.dart' show appInjector;
 import 'src/runtime/dom_helpers.dart';

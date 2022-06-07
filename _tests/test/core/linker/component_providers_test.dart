@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'component_providers_test.template.dart' as ng;
 
@@ -8,7 +8,7 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should only inject providers from a matched component', () async {
-    final testBed = NgTestBed(ng.createTestFactory());
+    final testBed = NgTestBed<Test>(ng.createTestFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.bar!.foo, TypeMatcher<Foo1>());
   });

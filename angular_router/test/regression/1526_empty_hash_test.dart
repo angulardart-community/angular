@@ -2,7 +2,7 @@
 
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:angular_router/angular_router.dart';
+import 'package:ngrouter/angular_router.dart';
 
 class MockPlatformLocation extends Mock implements PlatformLocation {}
 

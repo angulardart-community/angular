@@ -1,6 +1,6 @@
 import 'dart:html' as html;
 
-import 'package:angular/angular.dart' show Injectable, Inject, Optional;
+import 'package:ngdart/angular.dart' show Injectable, Inject, Optional;
 
 import 'location.dart' show Location;
 import 'location_strategy.dart' show LocationStrategy, appBaseHref;
@@ -17,8 +17,8 @@ import 'platform_location.dart' show PlatformLocation;
 /// ### Example
 ///
 /// ```
-/// import 'package:angular/angular.dart';
-/// import 'package:angular_router/angular_router.dart';
+/// import 'package:ngdart/angular.dart';
+/// import 'package:ngrouter/angular_router.dart';
 ///
 /// @Component(
 ///   // Should only be provided at the root.

@@ -1,17 +1,17 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart' show AssetId;
 import 'package:source_gen/source_gen.dart';
-import 'package:angular_compiler/v1/src/compiler/template_compiler.dart';
-import 'package:angular_compiler/v1/src/source_gen/template_compiler/component_visitor_exceptions.dart';
-import 'package:angular_compiler/v1/src/source_gen/template_compiler/find_components.dart'
+import 'package:ngcompiler/v1/src/compiler/template_compiler.dart';
+import 'package:ngcompiler/v1/src/source_gen/template_compiler/component_visitor_exceptions.dart';
+import 'package:ngcompiler/v1/src/source_gen/template_compiler/find_components.dart'
     show findComponentsAndDirectives;
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
-export 'package:angular_compiler/v1/src/compiler/compile_metadata.dart'
+export 'package:ngcompiler/v1/src/compiler/compile_metadata.dart'
     show CompileDirectiveMetadata;
-export 'package:angular_compiler/v1/src/compiler/template_compiler.dart'
+export 'package:ngcompiler/v1/src/compiler/template_compiler.dart'
     show AngularArtifacts, NormalizedComponentWithViewDirectives;
-export 'package:angular_compiler/v1/src/compiler/template_parser/ast_template_parser.dart'
+export 'package:ngcompiler/v1/src/compiler/template_parser/ast_template_parser.dart'
     show matchElementDirectives;
 
 typedef UncaughtExceptionHandler = bool Function(

@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'query_integration_test.template.dart' as ng;
 
@@ -11,26 +11,26 @@ void main() {
 
   group('query for Directive', () {
     test('should contain first content child', () async {
-      final testBed = NgTestBed(ng.createTestsContentChildComponentFactory());
+      final testBed = NgTestBed<TestsContentChildComponent>(ng.createTestsContentChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '2');
     });
 
     test('should contain all view children', () async {
-      final testBed = NgTestBed(ng.createTestsViewChildrenComponentFactory());
+      final testBed = NgTestBed<TestsViewChildrenComponent>(ng.createTestsViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), 'a|b|c');
     });
 
     test('should contain first view child', () async {
-      final testBed = NgTestBed(ng.createTestsViewChildComponentFactory());
+      final testBed = NgTestBed<TestsViewChildComponent>(ng.createTestsViewChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), 'a');
     });
 
     test('should contain first content child in embedded view', () async {
       final testBed =
-          NgTestBed(ng.createTestsEmbeddedContentChildComponentFactory());
+          NgTestBed<TestsEmbeddedContentChildComponent>(ng.createTestsEmbeddedContentChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), isEmpty);
       await testFixture.update((component) => component.showContent = true);
@@ -39,7 +39,7 @@ void main() {
 
     test('should contain all view children in embedded view', () async {
       final testBed =
-          NgTestBed(ng.createTestsEmbeddedViewChildrenComponentFactory());
+          NgTestBed<TestsEmbeddedViewChildrenComponent>(ng.createTestsEmbeddedViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), isEmpty);
       await testFixture.update((component) => component.showView = true);
@@ -48,7 +48,7 @@ void main() {
 
     test('should contain first view child in embedded view', () async {
       final testBed =
-          NgTestBed(ng.createTestsEmbeddedViewChildComponentFactory());
+          NgTestBed<TestsEmbeddedViewChildComponent>(ng.createTestsEmbeddedViewChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), 'c');
       await testFixture.update((component) => component.showView = true);
@@ -56,7 +56,7 @@ void main() {
     });
 
     test('should handle moved directives', () async {
-      final testBed = NgTestBed(ng.createMovesDirectiveComponentFactory());
+      final testBed = NgTestBed<MovesDirectiveComponent>(ng.createMovesDirectiveComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1|2|3');
       await testFixture.update((component) => component.list = ['3', '2']);
@@ -65,13 +65,13 @@ void main() {
 
     test('should support transclusion', () async {
       final testBed =
-          NgTestBed(ng.createTestsTranscludedContentChildrenComponentFactory());
+          NgTestBed<TestsTranscludedContentChildrenComponent>(ng.createTestsTranscludedContentChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '2|7');
     });
 
     test('should not be affected by unrelated changes', () async {
-      final testBed = NgTestBed(ng.createUnrelatedChangesComponentFactory());
+      final testBed = NgTestBed<UnrelatedChangesComponent>(ng.createUnrelatedChangesComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1');
       await testFixture.update((component) {
@@ -81,7 +81,7 @@ void main() {
     });
 
     test('should handle long ngFor cycles', () async {
-      final testBed = NgTestBed(ng.createLongNgForCycleComponentFactory());
+      final testBed = NgTestBed<LongNgForCycleComponent>(ng.createLongNgForCycleComponentFactory());
       final testFixture = await testBed.create();
       // No significance to 50, just a reasonably long cycle.
       for (var i = 0; i < 50; i++) {
@@ -93,7 +93,7 @@ void main() {
     });
 
     test('should support more than three queries', () async {
-      final testBed = NgTestBed(ng.createFourQueriesComponentFactory());
+      final testBed = NgTestBed<FourQueriesComponent>(ng.createFourQueriesComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1|1|1|1');
     });
@@ -101,7 +101,7 @@ void main() {
 
   group('query for TemplateRef', () {
     test('should find content and view children', () async {
-      final testBed = NgTestBed(ng.createTestsTemplateRefComponentFactory());
+      final testBed = NgTestBed<TestsTemplateRefComponent>(ng.createTestsTemplateRefComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.rootElement.querySelectorAll('.embedded-from-content'),
           hasLength(2));
@@ -111,7 +111,7 @@ void main() {
 
     test('should find named content child and named view child', () async {
       final testBed =
-          NgTestBed(ng.createTestsNamedTemplateRefComponentFactory());
+          NgTestBed<TestsNamedTemplateRefComponent>(ng.createTestsNamedTemplateRefComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.rootElement.querySelectorAll('.embedded-from-content'),
           hasLength(1));
@@ -123,33 +123,33 @@ void main() {
   group('query for a different token via read', () {
     test('should contain all content children', () async {
       final testBed =
-          NgTestBed(ng.createTestsReadsContentChildrenComponentFactory());
+          NgTestBed<TestsReadsContentChildrenComponent>(ng.createTestsReadsContentChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1|3');
     });
 
     test('should contain the first content child', () async {
       final testBed =
-          NgTestBed(ng.createTestsReadsContentChildComponentFactory());
+          NgTestBed<TestsReadsContentChildComponent>(ng.createTestsReadsContentChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '2');
     });
 
     test('should contain all view children', () async {
-      final testBed = NgTestBed(ng.createReadsViewChildrenComponentFactory());
+      final testBed = NgTestBed<ReadsViewChildrenComponent>(ng.createReadsViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '2|3');
     });
 
     test('should contain the first view child', () async {
-      final testBed = NgTestBed(ng.createReadsViewChildComponentFactory());
+      final testBed = NgTestBed<ReadsViewChildComponent>(ng.createReadsViewChildComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '2');
     });
 
     test('should support ViewContainer', () async {
       final testBed =
-          NgTestBed(ng.createTestsReadsViewContainerRefComponentFactory());
+          NgTestBed<TestsReadsViewContainerRefComponent>(ng.createTestsReadsViewContainerRefComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), 'Embedded in view container!');
     });
@@ -157,7 +157,7 @@ void main() {
 
   group('changes', () {
     test('should update query results', () async {
-      final testBed = NgTestBed(ng.createChangesViewChildrenComponentFactory());
+      final testBed = NgTestBed<ChangesViewChildrenComponent>(ng.createChangesViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1|2|3');
       await testFixture.update((component) {
@@ -169,7 +169,7 @@ void main() {
 
     test('should remove destroyed directives from query results', () async {
       final testBed =
-          NgTestBed(ng.createDestroysViewChildrenComponentFactory());
+          NgTestBed<DestroysViewChildrenComponent>(ng.createDestroysViewChildrenComponentFactory());
       late DestroysViewChildrenComponent component;
       final testFixture = await testBed.create(
           beforeChangeDetection: (instance) => component = instance);
@@ -183,20 +183,20 @@ void main() {
 
   group('query for variable binding', () {
     test('should contain all view children', () async {
-      final testBed = NgTestBed(ng.createLabeledViewChildrenComponentFactory());
+      final testBed = NgTestBed<LabeledViewChildrenComponent>(ng.createLabeledViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '1|2|4|8');
     });
 
     test('should support multiple variables', () async {
       final testBed =
-          NgTestBed(ng.createMultipleLabeledViewChildrenComponentFactory());
+          NgTestBed<MultipleLabeledViewChildrenComponent>(ng.createMultipleLabeledViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text!.trim(), '0|1');
     });
 
     test('should support changes', () async {
-      final testBed = NgTestBed(ng.createLabeledViewChildrenComponentFactory());
+      final testBed = NgTestBed<LabeledViewChildrenComponent>(ng.createLabeledViewChildrenComponentFactory());
       final testFixture = await testBed.create();
       await testFixture.update((component) {
         component.list = ['8', '4', '2', '1'];
@@ -206,7 +206,7 @@ void main() {
 
     test('should support element binding', () async {
       final testBed =
-          NgTestBed(ng.createLabeledElementViewChildrenComponentFactory());
+          NgTestBed<LabeledElementViewChildrenComponent>(ng.createLabeledElementViewChildrenComponentFactory());
       var fixture = await testBed.create();
       var component = fixture.assertOnlyInstance;
       final divIt = component.elementRefs!.iterator;
@@ -224,7 +224,7 @@ void main() {
   group('query for view child in multiple embedded views', () {
     late NgTestFixture<TestSingleDynamicResult> testFixture;
     setUp(() async {
-      final testBed = NgTestBed(ng.createTestSingleDynamicResultFactory());
+      final testBed = NgTestBed<TestSingleDynamicResult>(ng.createTestSingleDynamicResultFactory());
       testFixture = await testBed.create();
     });
 

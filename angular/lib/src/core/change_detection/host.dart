@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:meta/meta.dart';
-import 'package:angular/src/core/linker/views/view.dart';
-import 'package:angular/src/runtime/check_binding.dart';
-import 'package:angular/src/utilities.dart';
+import 'package:ngdart/src/core/linker/views/view.dart';
+import 'package:ngdart/src/runtime/check_binding.dart';
+import 'package:ngdart/src/utilities.dart';
 
 import 'change_detector_ref.dart';
 

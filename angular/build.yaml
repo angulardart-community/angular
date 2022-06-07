@@ -1,7 +1,7 @@
 targets:
   $default:
     builders:
-      angular:
+      ngdart:
         generate_for:
           exclude:
             - "lib/src/build.dart"
@@ -9,16 +9,16 @@ targets:
             - "lib/src/source_gen/**"
 
 builders:
-  angular:
-    import: "package:angular/src/build.dart"
+  ngdart:
+    import: "package:ngdart/src/build.dart"
     builder_factories:
       - templatePlaceholder
       - templateCompiler
       - stylesheetCompiler
     auto_apply: dependents
     applies_builders:
-      - "angular|placeholder_cleanup"
-      - "angular|component_source_cleanup"
+      - "ngdart|placeholder_cleanup"
+      - "ngdart|component_source_cleanup"
     # See https://github.com/angulardart/angular/issues/988.
     is_optional: true
     required_inputs:
@@ -31,10 +31,10 @@ builders:
         - ".template.dart"
 post_process_builders:
   placeholder_cleanup:
-    import: "package:angular/src/build.dart"
+    import: "package:ngdart/src/build.dart"
     builder_factory: "placeholderCleanup"
   component_source_cleanup:
-    import: "package:angular/src/build.dart"
+    import: "package:ngdart/src/build.dart"
     builder_factory: "componentSourceCleanup"
     defaults:
       generate_for: ["lib/**"]

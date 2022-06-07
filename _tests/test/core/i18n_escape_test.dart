@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'i18n_escape_test.template.dart' as ng;
 
@@ -14,26 +14,26 @@ void main() {
 
   group('should escape special characters in', () {
     test('text', () async {
-      final testBed = NgTestBed(ng.createShouldEscapeI18nTextFactory());
+      final testBed = NgTestBed<ShouldEscapeI18nText>(ng.createShouldEscapeI18nTextFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text, matches(regExp));
     });
 
     test('text with HTML', () async {
-      final testBed = NgTestBed(ng.createShouldEscapeI18nHtmlFactory());
+      final testBed = NgTestBed<ShouldEscapeI18nHtml>(ng.createShouldEscapeI18nHtmlFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text, matches(regExp));
     });
 
     test('attributes', () async {
-      final testBed = NgTestBed(ng.createShouldEscapeI18nAttributeFactory());
+      final testBed = NgTestBed<ShouldEscapeI18nAttribute>(ng.createShouldEscapeI18nAttributeFactory());
       final testFixture = await testBed.create();
       final element = testFixture.rootElement.querySelector('[foo]')!;
       expect(element.getAttribute('foo'), matches(regExp));
     });
 
     test('properties', () async {
-      final testBed = NgTestBed(ng.createShouldEscapeI18nPropertyFactory());
+      final testBed = NgTestBed<ShouldEscapeI18nProperty>(ng.createShouldEscapeI18nPropertyFactory());
       final testFixture = await testBed.create();
       final imgElement =
           testFixture.rootElement.querySelector('img') as ImageElement;
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('inputs', () async {
-      final testBed = NgTestBed(ng.createShouldEscapeI18nInputFactory());
+      final testBed = NgTestBed<ShouldEscapeI18nInput>(ng.createShouldEscapeI18nInputFactory());
       final testFixture = await testBed.create();
       expect(testFixture.assertOnlyInstance.greeting!.message, matches(regExp));
     });

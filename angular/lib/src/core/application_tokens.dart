@@ -1,4 +1,4 @@
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/src/meta.dart';
 
 /// A dependency injection token representing a unique ID for the application.
 ///

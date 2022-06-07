@@ -1,4 +1,4 @@
-import 'package:angular_compiler/v1/src/compiler/selector.dart';
+import 'package:ngcompiler/v1/src/compiler/selector.dart';
 
 /// CSS selectors that are not required to have a matching element in
 /// `directives: [ ... ]`.

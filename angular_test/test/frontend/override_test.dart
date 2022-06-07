@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'override_test.template.dart' as ng;
 
@@ -9,7 +9,7 @@ void main() {
 
   test('should support overriding providers', () async {
     final fixture =
-        await NgTestBed(ng.createTestViewComponentFactory()).create();
+        await NgTestBed<TestViewComponent>(ng.createTestViewComponentFactory()).create();
     expect(fixture.text, 'Hello World');
   });
 }

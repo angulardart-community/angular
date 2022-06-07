@@ -3,7 +3,7 @@ library golden;
 
 import 'package:js/js.dart';
 import 'package:safe_html/safe_html.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'html_properties.template.dart' as ng;
 

@@ -1,8 +1,8 @@
 // @dart=2.9
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_forms/src/directives/shared.dart';
+import 'package:ngforms/angular_forms.dart';
+import 'package:ngforms/src/directives/shared.dart';
 
 class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
   dynamic writtenValue;

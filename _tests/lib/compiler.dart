@@ -9,8 +9,8 @@ import 'package:build_test/build_test.dart' hide testBuilder;
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:test/test.dart';
-import 'package:angular/src/build.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngdart/src/build.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 /// A 'test' build process (similar to the normal one).
 final Builder _testAngularBuilder = MultiplexingBuilder([
@@ -47,7 +47,7 @@ final Future<PackageAssetReader> _packageAssets = (() async {
 // **NOTE**: Be very careful changing this, there are hard-coded transformation
 // rules as part of open sourcing process to make sure this works both
 // externally and internally.
-const ngPackage = 'angular';
+const ngPackage = 'ngdart';
 const ngCompiler = 'angular_compiler';
 const ngImport = 'package:$ngPackage/angular.dart';
 final _ngFiles = Glob('lib/**.dart');
@@ -132,7 +132,7 @@ Future<void> _testBuilder(
 /// )
 /// ```
 ///
-/// Note that `package:angular/**.dart` is always included.
+/// Note that `package:ngdart/**.dart` is always included.
 Future<void> compilesExpecting(
   String input, {
   String inputSource,

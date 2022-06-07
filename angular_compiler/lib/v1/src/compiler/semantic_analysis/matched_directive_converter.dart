@@ -1,13 +1,13 @@
-import 'package:angular/src/meta.dart';
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart' as core;
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/ir/model.dart' as ir;
-import 'package:angular_compiler/v1/src/compiler/optimize_ir/merge_events.dart';
-import 'package:angular_compiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart' as ast;
-import 'package:angular_compiler/v1/src/compiler/view_compiler/compile_element.dart';
-import 'package:angular_compiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
+import 'package:ngdart/src/meta.dart';
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart' as core;
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
+import 'package:ngcompiler/v1/src/compiler/optimize_ir/merge_events.dart';
+import 'package:ngcompiler/v1/src/compiler/semantic_analysis/binding_converter.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart' as ast;
+import 'package:ngcompiler/v1/src/compiler/view_compiler/compile_element.dart';
+import 'package:ngcompiler/v1/src/compiler/view_compiler/ir/provider_source.dart';
 
 /// Converts a list of [ast.DirectiveAst] nodes into [ir.MatchedDirective]
 /// instances.

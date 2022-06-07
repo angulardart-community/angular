@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'view_creation_test.template.dart' as ng;
 
@@ -11,8 +11,7 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support imperative views', () async {
-    final testBed = NgTestBed(
-      ng.createSimpleImperativeViewComponentFactory(),
+    final testBed = NgTestBed<SimpleImperativeViewComponent>(ng.createSimpleImperativeViewComponentFactory(),
     );
     final testFixture = await testBed.create();
     expect(testFixture.text, 'hello imp view');
@@ -20,8 +19,7 @@ void main() {
 
   test('should support moving embedded views', () async {
     final template = TemplateElement()..append(DivElement());
-    final testBed = NgTestBed(
-      ng.createMovesEmbeddedViewComponentFactory(),
+    final testBed = NgTestBed<MovesEmbeddedViewComponent>(ng.createMovesEmbeddedViewComponentFactory(),
     ).addInjector(
       (i) => Injector.map({
         ANCHOR_ELEMENT: template,
@@ -38,16 +36,14 @@ void main() {
 
   group('property bindings', () {
     test("shouldn't throw if unknown property exists on directive", () async {
-      final testBed = NgTestBed(
-        ng.createUnknownPropertyOnDirectiveComponentFactory(),
+      final testBed = NgTestBed<UnknownPropertyOnDirectiveComponent>(ng.createUnknownPropertyOnDirectiveComponentFactory(),
       );
       await testBed.create();
     });
 
     test("shouldn't be created when a directive property has the same name",
         () async {
-      final testBed = NgTestBed(
-        ng.createOverriddenPropertyComponentFactory(),
+      final testBed = NgTestBed<OverriddenPropertyComponent>(ng.createOverriddenPropertyComponentFactory(),
       );
       final testFixture = await testBed.create();
       final span = testFixture.rootElement.querySelector('span');
@@ -55,8 +51,7 @@ void main() {
     });
 
     test('should allow directive host property to update DOM', () async {
-      final testBed = NgTestBed(
-        ng.createDirectiveUpdatesDomComponentFactory(),
+      final testBed = NgTestBed<DirectiveUpdatesDomComponent>(ng.createDirectiveUpdatesDomComponentFactory(),
       );
       final testFixture = await testBed.create();
       final span = testFixture.rootElement.querySelector('span');
@@ -66,8 +61,7 @@ void main() {
 
   group('property decorators', () {
     test('should support @Input', () async {
-      final testBed = NgTestBed(
-        ng.createDecoratorsComponentFactory(),
+      final testBed = NgTestBed<DecoratorsComponent>(ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
       final directive = testFixture.assertOnlyInstance.directive;
@@ -75,8 +69,7 @@ void main() {
     });
 
     test('should support @HostBinding', () async {
-      final testBed = NgTestBed(
-        ng.createDecoratorsComponentFactory(),
+      final testBed = NgTestBed<DecoratorsComponent>(ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
       await testFixture.update((component) {
@@ -87,8 +80,7 @@ void main() {
     });
 
     test('should support @Output', () async {
-      final testBed = NgTestBed(
-        ng.createDecoratorsComponentFactory(),
+      final testBed = NgTestBed<DecoratorsComponent>(ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
       await testFixture.update((component) {
@@ -99,8 +91,7 @@ void main() {
     });
 
     test('should support @HostListener', () async {
-      final testBed = NgTestBed(
-        ng.createDecoratorsComponentFactory(),
+      final testBed = NgTestBed<DecoratorsComponent>(ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
       final directive = testFixture.assertOnlyInstance.directive!;
@@ -113,8 +104,7 @@ void main() {
   });
 
   test('should support svg elements', () async {
-    final testBed = NgTestBed(
-      ng.createSvgElementsComponentFactory(),
+    final testBed = NgTestBed<SvgElementsComponent>(ng.createSvgElementsComponentFactory(),
     );
     final testFixture = await testBed.create();
     final svg = testFixture.rootElement.querySelector('svg')!;
@@ -132,8 +122,7 @@ void main() {
 
   group('namespace attributes', () {
     test('should be supported', () async {
-      final testBed = NgTestBed(
-        ng.createNamespaceAttributeComponentFactory(),
+      final testBed = NgTestBed<NamespaceAttributeComponent>(ng.createNamespaceAttributeComponentFactory(),
       );
       final testFixture = await testBed.create();
       final use = testFixture.rootElement.querySelector('use')!;
@@ -141,8 +130,7 @@ void main() {
     });
 
     test('should support binding', () async {
-      final testBed = NgTestBed(
-        ng.createNamespaceAttributeBindingComponentFactory(),
+      final testBed = NgTestBed<NamespaceAttributeBindingComponent>(ng.createNamespaceAttributeBindingComponentFactory(),
       );
       final testFixture = await testBed.create();
       final use = testFixture.rootElement.querySelector('use')!;
