@@ -192,7 +192,8 @@ class CatchOnInitErrors implements OnInit {
 )
 class CatchInChangeDetection {
   static Future<void> _runTest() async {
-    final NgTestFixture<CatchInChangeDetection> fixture = await NgTestBed<CatchInChangeDetection>(
+    final NgTestFixture<CatchInChangeDetection> fixture =
+        await NgTestBed<CatchInChangeDetection>(
       ng.createCatchInChangeDetectionFactory(),
     ).create();
     expect(
@@ -224,7 +225,8 @@ class ChildChangeDetectionError {
 class NoExceptionsSwallowedTest {
   static Future<void> _runTest() async {
     final simpleHandler = _CapturingExceptionHandler();
-    final NgTestFixture<NoExceptionsSwallowedTest> fixture = await NgTestBed<NoExceptionsSwallowedTest>(
+    final NgTestFixture<NoExceptionsSwallowedTest> fixture =
+        await NgTestBed<NoExceptionsSwallowedTest>(
       ng.createNoExceptionsSwallowedTestFactory(),
       rootInjector: (i) => Injector.map(
         {ExceptionHandler: simpleHandler},

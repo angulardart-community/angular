@@ -10,7 +10,8 @@ void main() {
     late NgTestFixture<DynamicRequiredComponent> fixture;
 
     setUp(() async {
-      var testBed = NgTestBed<DynamicRequiredComponent>(ng.createDynamicRequiredComponentFactory());
+      var testBed = NgTestBed<DynamicRequiredComponent>(
+          ng.createDynamicRequiredComponentFactory());
       fixture = await testBed.create();
     });
 
@@ -56,7 +57,8 @@ void main() {
     late NgTestFixture<DynamicPatternComponent> fixture;
 
     setUp(() async {
-      var testBed = NgTestBed<DynamicPatternComponent>(ng.createDynamicPatternComponentFactory());
+      var testBed = NgTestBed<DynamicPatternComponent>(
+          ng.createDynamicPatternComponentFactory());
       fixture = await testBed.create();
     });
 

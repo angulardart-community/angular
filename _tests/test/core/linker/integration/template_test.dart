@@ -10,7 +10,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support template directives via <template> elements', () async {
-    final testBed = NgTestBed<TemplateDirectiveComponent>(ng.createTemplateDirectiveComponentFactory());
+    final testBed = NgTestBed<TemplateDirectiveComponent>(
+        ng.createTemplateDirectiveComponentFactory());
     final testFixture = await testBed.create();
     // 1 template + 2 copies.
     expect(testFixture.rootElement.childNodes, hasLength(3));
@@ -19,7 +20,8 @@ void main() {
   });
 
   test('should not detach views when parent is destroyed', () async {
-    final testBed = NgTestBed<DestroyParentViewComponent>(ng.createDestroyParentViewComponentFactory());
+    final testBed = NgTestBed<DestroyParentViewComponent>(
+        ng.createDestroyParentViewComponentFactory());
     final testFixture = await testBed.create();
     final ngIfElement = testFixture.rootElement.children.first;
     final someViewport = testFixture.assertOnlyInstance.viewport!;
@@ -31,7 +33,8 @@ void main() {
   });
 
   test('should use a comment while stamping out <template> elements', () async {
-    final testBed = NgTestBed<EmptyTemplateComponent>(ng.createEmptyTemplateComponentFactory());
+    final testBed = NgTestBed<EmptyTemplateComponent>(
+        ng.createEmptyTemplateComponentFactory());
     final testFixture = await testBed.create();
     final childNodes = testFixture.rootElement.childNodes;
     expect(childNodes, hasLength(1));
@@ -39,7 +42,8 @@ void main() {
   });
 
   test('should transplant TemplateRef into another ViewContainer', () async {
-    final testBed = NgTestBed<TemplateRefTransplantComponent>(ng.createTemplateRefTransplantComponentFactory());
+    final testBed = NgTestBed<TemplateRefTransplantComponent>(
+        ng.createTemplateRefTransplantComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text,
         'From component,From toolbar,Component with an injected host');

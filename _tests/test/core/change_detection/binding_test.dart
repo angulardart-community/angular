@@ -12,7 +12,8 @@ void main() {
   });
 
   test('should strip quotes from literals', () async {
-    await _GetValue<TestStripQuotes>(ng.createTestStripQuotesFactory()).runTest();
+    await _GetValue<TestStripQuotes>(ng.createTestStripQuotesFactory())
+        .runTest();
   });
 
   test('should support newlines in literals', () async {
@@ -20,76 +21,106 @@ void main() {
   });
 
   test('should support + operations', () async {
-    await _GetValue<TestAddOperation>(ng.createTestAddOperationFactory()).runTest();
+    await _GetValue<TestAddOperation>(ng.createTestAddOperationFactory())
+        .runTest();
   });
 
   test('should support - operations', () async {
-    await _GetValue<TestMinusOperation>(ng.createTestMinusOperationFactory()).runTest();
+    await _GetValue<TestMinusOperation>(ng.createTestMinusOperationFactory())
+        .runTest();
   });
 
   test('should support * operations', () async {
-    await _GetValue<TestMultiplyOperation>(ng.createTestMultiplyOperationFactory()).runTest();
+    await _GetValue<TestMultiplyOperation>(
+            ng.createTestMultiplyOperationFactory())
+        .runTest();
   });
 
   test('should support / operations', () async {
-    await _GetValue<TestMultiplyOperation>(ng.createTestMultiplyOperationFactory()).runTest();
+    await _GetValue<TestMultiplyOperation>(
+            ng.createTestMultiplyOperationFactory())
+        .runTest();
   });
 
   test('should support % operations', () async {
-    await _GetValue<TestModulusOperation>(ng.createTestModulusOperationFactory()).runTest();
+    await _GetValue<TestModulusOperation>(
+            ng.createTestModulusOperationFactory())
+        .runTest();
   });
 
   test('should support == operations', () async {
-    await _GetValue<TestEqualityOperation>(ng.createTestEqualityOperationFactory()).runTest();
+    await _GetValue<TestEqualityOperation>(
+            ng.createTestEqualityOperationFactory())
+        .runTest();
   });
 
   test('should support != operations', () async {
-    await _GetValue<TestNotEqualsOperation>(ng.createTestNotEqualsOperationFactory()).runTest();
+    await _GetValue<TestNotEqualsOperation>(
+            ng.createTestNotEqualsOperationFactory())
+        .runTest();
   });
 
   test('should support === operations', () async {
-    await _GetValue<TestIdentityOperation>(ng.createTestIdentityOperationFactory()).runTest();
+    await _GetValue<TestIdentityOperation>(
+            ng.createTestIdentityOperationFactory())
+        .runTest();
   });
 
   test('should support !== operations', () async {
-    await _GetValue<TestNotIdenticalOperation>(ng.createTestNotIdenticalOperationFactory()).runTest();
+    await _GetValue<TestNotIdenticalOperation>(
+            ng.createTestNotIdenticalOperationFactory())
+        .runTest();
   });
 
   test('should support > operations', () async {
-    await _GetValue<TestGreaterThanOperation>(ng.createTestGreaterThanOperationFactory()).runTest();
+    await _GetValue<TestGreaterThanOperation>(
+            ng.createTestGreaterThanOperationFactory())
+        .runTest();
   });
 
   test('should support < operations', () async {
-    await _GetValue<TestLessThanOperation>(ng.createTestLessThanOperationFactory()).runTest();
+    await _GetValue<TestLessThanOperation>(
+            ng.createTestLessThanOperationFactory())
+        .runTest();
   });
 
   test('should support >= operations', () async {
-    await _GetValue<TestGreaterThanOrEqualsOperation>(ng.createTestGreaterThanOrEqualsOperationFactory(),
+    await _GetValue<TestGreaterThanOrEqualsOperation>(
+      ng.createTestGreaterThanOrEqualsOperationFactory(),
     ).runTest();
   });
 
   test('should support <= operations', () async {
-    await _GetValue<TestLessThanOrEqualsOperation>(ng.createTestLessThanOrEqualsOperationFactory()).runTest();
+    await _GetValue<TestLessThanOrEqualsOperation>(
+            ng.createTestLessThanOrEqualsOperationFactory())
+        .runTest();
   });
 
   test('should support && operations', () async {
-    await _GetValue<TestAndOperation>(ng.createTestAndOperationFactory()).runTest();
+    await _GetValue<TestAndOperation>(ng.createTestAndOperationFactory())
+        .runTest();
   });
 
   test('should support || operations', () async {
-    await _GetValue<TestOrOperation>(ng.createTestOrOperationFactory()).runTest();
+    await _GetValue<TestOrOperation>(ng.createTestOrOperationFactory())
+        .runTest();
   });
 
   test('should support ternary operations', () async {
-    await _GetValue<TestTernaryOperation>(ng.createTestTernaryOperationFactory()).runTest();
+    await _GetValue<TestTernaryOperation>(
+            ng.createTestTernaryOperationFactory())
+        .runTest();
   });
 
   test('should support ! operations', () async {
-    await _GetValue<TestNegateOperation>(ng.createTestNegateOperationFactory()).runTest();
+    await _GetValue<TestNegateOperation>(ng.createTestNegateOperationFactory())
+        .runTest();
   });
 
   test('should support !! operations', () async {
-    await _GetValue<TestDoubleNegationOperation>(ng.createTestDoubleNegationOperationFactory()).runTest();
+    await _GetValue<TestDoubleNegationOperation>(
+            ng.createTestDoubleNegationOperationFactory())
+        .runTest();
   });
 
   test('should support keyed access to a map', () async {
@@ -101,15 +132,19 @@ void main() {
   });
 
   test('should support property access', () async {
-    await _GetValue<TestPropertyAccess>(ng.createTestPropertyAccessFactory()).runTest();
+    await _GetValue<TestPropertyAccess>(ng.createTestPropertyAccessFactory())
+        .runTest();
   });
 
   test('should support chained property access', () async {
-    await _GetValue<TestChainedPropertyAccess>(ng.createTestChainedPropertyAccessFactory()).runTest();
+    await _GetValue<TestChainedPropertyAccess>(
+            ng.createTestChainedPropertyAccessFactory())
+        .runTest();
   });
 
   test('should support a function call', () async {
-    await _GetValue<TestFunctionCall>(ng.createTestFunctionCallFactory()).runTest();
+    await _GetValue<TestFunctionCall>(ng.createTestFunctionCallFactory())
+        .runTest();
   });
 
   test('should support assigning explicitly to null', () async {
@@ -117,11 +152,14 @@ void main() {
   });
 
   test('should support assigning explicitly to null', () async {
-    await _GetValue<TestElvisOperation>(ng.createTestElvisOperationFactory()).runTest();
+    await _GetValue<TestElvisOperation>(ng.createTestElvisOperationFactory())
+        .runTest();
   });
 
   test('should support assigning explicitly to null', () async {
-    await _GetValue<TestNullAwareOperation>(ng.createTestNullAwareOperationFactory()).runTest();
+    await _GetValue<TestNullAwareOperation>(
+            ng.createTestNullAwareOperationFactory())
+        .runTest();
   });
 }
 

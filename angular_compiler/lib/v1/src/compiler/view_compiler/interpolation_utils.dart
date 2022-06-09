@@ -1,5 +1,4 @@
-import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
-    as ast;
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart' as ast;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
 
 bool isInterpolation(ir.BindingSource? source) =>

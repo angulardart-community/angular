@@ -89,7 +89,8 @@ void main() {
     });
 
     test('should iterate over an array of objects', () async {
-      var testBed = NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
+      var testBed =
+          NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForOptionsTest component) {
         component.items = [
@@ -134,7 +135,8 @@ void main() {
 
     test('should throw on non-iterable ref and suggest using an array',
         () async {
-      final testBed = NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
+      final testBed =
+          NgTestBed<NgForOptionsTest>(ng.createNgForOptionsTestFactory());
       final testFixture = await testBed.create();
       expect(testFixture.update((component) {
         component.items = 'this is not iterable';
@@ -142,7 +144,8 @@ void main() {
     });
 
     test('should work with duplicates', () async {
-      var testBed = NgTestBed<NgForObjectItemInstanceTest>(ng.createNgForObjectItemInstanceTestFactory());
+      var testBed = NgTestBed<NgForObjectItemInstanceTest>(
+          ng.createNgForObjectItemInstanceTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForObjectItemInstanceTest component) {
         var a = Foo('titleA');
@@ -152,7 +155,8 @@ void main() {
     });
 
     test('should repeat over nested arrays', () async {
-      var testBed = NgTestBed<NgForNestedTest>(ng.createNgForNestedTestFactory());
+      var testBed =
+          NgTestBed<NgForNestedTest>(ng.createNgForNestedTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForNestedTest component) {
         component.items = [
@@ -173,7 +177,8 @@ void main() {
     test(
         'should repeat over nested arrays with no intermediate '
         'element', () async {
-      var testBed = NgTestBed<NgForNestedTemplateTest>(ng.createNgForNestedTemplateTestFactory());
+      var testBed = NgTestBed<NgForNestedTemplateTest>(
+          ng.createNgForNestedTemplateTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForNestedTemplateTest component) {
         component.items = [
@@ -194,7 +199,8 @@ void main() {
     test(
         'should repeat over nested ngIf that are the last node in '
         'the ngFor temlate', () async {
-      var testBed = NgTestBed<NgForNestedLastIfTest>(ng.createNgForNestedLastIfTestFactory());
+      var testBed = NgTestBed<NgForNestedLastIfTest>(
+          ng.createNgForNestedLastIfTestFactory());
       var testFixture = await testBed.create();
       var el = testFixture.rootElement;
       await testFixture.update((NgForNestedLastIfTest component) {
@@ -227,7 +233,9 @@ void main() {
     });
 
     test('should ignore extra spaces after a let assignment', () async {
-      final fixture = await NgTestBed<LetAssignmentSpacingTest>(ng.createLetAssignmentSpacingTestFactory()).create();
+      final fixture = await NgTestBed<LetAssignmentSpacingTest>(
+              ng.createLetAssignmentSpacingTestFactory())
+          .create();
       expect(fixture.text, '012');
     });
 
@@ -284,7 +292,8 @@ void main() {
     });
 
     test('should allow using a custom template', () async {
-      var testBed = NgTestBed<NgForCustomTemplateTest>(ng.createNgForCustomTemplateTestFactory());
+      var testBed = NgTestBed<NgForCustomTemplateTest>(
+          ng.createNgForCustomTemplateTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((component) {
         component.child!.items = ['a', 'b', 'c'];
@@ -293,7 +302,8 @@ void main() {
     });
 
     test('should use a default template if a custom one is null', () async {
-      var testBed = NgTestBed<NgForCustomTemplateNullTest>(ng.createNgForCustomTemplateNullTestFactory());
+      var testBed = NgTestBed<NgForCustomTemplateNullTest>(
+          ng.createNgForCustomTemplateNullTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForCustomTemplateNullTest component) {
         component.child!.items = ['a', 'b', 'c'];
@@ -304,8 +314,8 @@ void main() {
     test(
         'should use a custom template (precedence) when both default and a '
         'custom one are present', () async {
-      var testBed =
-          NgTestBed<NgForCustomTemplatePrecedenceTest>(ng.createNgForCustomTemplatePrecedenceTestFactory());
+      var testBed = NgTestBed<NgForCustomTemplatePrecedenceTest>(
+          ng.createNgForCustomTemplatePrecedenceTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((NgForCustomTemplatePrecedenceTest component) {
         component.child!.items = ['a', 'b', 'c'];
@@ -377,7 +387,8 @@ void main() {
       test(
           'should handle added and removed items properly when tracking '
           'by index', () async {
-        var testBed = NgTestBed<TrackByIndexTest>(ng.createTrackByIndexTestFactory());
+        var testBed =
+            NgTestBed<TrackByIndexTest>(ng.createTrackByIndexTestFactory());
         var testFixture = await testBed.create();
         await testFixture.update((TrackByIndexTest component) {
           component.items = ['a', 'b', 'c', 'd'];
@@ -394,7 +405,8 @@ void main() {
       test(
           'should remove by index when list item or '
           'it\'s hash changes', () async {
-        var testBed = NgTestBed<ObjectEditorComponent>(ng.createObjectEditorComponentFactory());
+        var testBed = NgTestBed<ObjectEditorComponent>(
+            ng.createObjectEditorComponentFactory());
         var testFixture = await testBed.create();
         await testFixture.update((ObjectEditorComponent component) {
           component.entities = ['a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'];
@@ -417,7 +429,8 @@ void main() {
       test(
           'should remove item if hash code is changed before '
           'removing element from list', () async {
-        var testBed = NgTestBed<NgForHashcodeTest>(ng.createNgForHashcodeTestFactory());
+        var testBed =
+            NgTestBed<NgForHashcodeTest>(ng.createNgForHashcodeTestFactory());
         var testFixture = await testBed.create();
         var testItems = [
           HashcodeTestItem(1),

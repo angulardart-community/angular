@@ -47,8 +47,8 @@ void main() {
     late NgModelWithNgDisabledTestComponent component;
 
     setUp(() async {
-      final testBed =
-          NgTestBed<NgModelWithNgDisabledTestComponent>(ng.createNgModelWithNgDisabledTestComponentFactory());
+      final testBed = NgTestBed<NgModelWithNgDisabledTestComponent>(
+          ng.createNgModelWithNgDisabledTestComponentFactory());
       fixture = await testBed.create();
       component = fixture.assertOnlyInstance;
     });

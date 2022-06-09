@@ -28,7 +28,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should attempt to navigate to the provided link', () async {
-    final fixture = await NgTestBed<TestRouterLink>(ng.createTestRouterLinkFactory(),
+    final fixture = await NgTestBed<TestRouterLink>(
+      ng.createTestRouterLinkFactory(),
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob';
     });
@@ -40,7 +41,8 @@ void main() {
   });
 
   test('should attempt to navigate on Enter key press', () async {
-    final testBed = NgTestBed<TestRouterLinkKeyPress>(ng.createTestRouterLinkKeyPressFactory(),
+    final testBed = NgTestBed<TestRouterLinkKeyPress>(
+      ng.createTestRouterLinkKeyPressFactory(),
     ).addInjector(addInjector);
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.querySelector('div')!;
@@ -51,7 +53,8 @@ void main() {
   });
 
   test('should parse out query params and fragment', () async {
-    final fixture = await NgTestBed<TestRouterLink>(ng.createTestRouterLinkFactory(),
+    final fixture = await NgTestBed<TestRouterLink>(
+      ng.createTestRouterLinkFactory(),
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob?param1=one&param2=2#frag';
     });
@@ -67,7 +70,8 @@ void main() {
   });
 
   test('should not use the router when the target is not _self', () async {
-    final fixture = await NgTestBed<TestRouterLinkWithTarget>(ng.createTestRouterLinkWithTargetFactory(),
+    final fixture = await NgTestBed<TestRouterLinkWithTarget>(
+      ng.createTestRouterLinkWithTargetFactory(),
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob';
     });

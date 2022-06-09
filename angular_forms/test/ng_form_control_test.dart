@@ -16,7 +16,8 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     setUp(() async {
-      var testBed = NgTestBed<NgFormControlTest>(ng.createNgFormControlTestFactory());
+      var testBed =
+          NgTestBed<NgFormControlTest>(ng.createNgFormControlTestFactory());
       fixture = await testBed.create();
     });
 
@@ -70,7 +71,8 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     setUp(() async {
-      var testBed = NgTestBed<NgFormControlInitTest>(ng.createNgFormControlInitTestFactory());
+      var testBed = NgTestBed<NgFormControlInitTest>(
+          ng.createNgFormControlInitTestFactory());
       fixture = await testBed.create();
     });
 

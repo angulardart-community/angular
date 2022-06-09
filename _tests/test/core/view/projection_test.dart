@@ -12,7 +12,8 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     test('should support simple html elements', () async {
-      var testBed = NgTestBed<ContainerWithSimpleComponent>(ng.createContainerWithSimpleComponentFactory());
+      var testBed = NgTestBed<ContainerWithSimpleComponent>(
+          ng.createContainerWithSimpleComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       var childElement = element.querySelector('simple');
@@ -22,8 +23,8 @@ void main() {
     test(
         'should support simple components with text interpolation projected'
         'into child', () async {
-      var testBed =
-          NgTestBed<ContainerWithProjectedInterpolation>(ng.createContainerWithProjectedInterpolationFactory());
+      var testBed = NgTestBed<ContainerWithProjectedInterpolation>(
+          ng.createContainerWithProjectedInterpolationFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element, hasTextContent('START(SIMPLE(VALUE1))END'));
@@ -32,7 +33,8 @@ void main() {
     test(
         'should support simple components with text interpolation projected'
         'into child where ng-content is nested inside an element', () async {
-      var testBed = NgTestBed<ContainerWithProjectedInterpolationNested>(ng.createContainerWithProjectedInterpolationNestedFactory());
+      var testBed = NgTestBed<ContainerWithProjectedInterpolationNested>(
+          ng.createContainerWithProjectedInterpolationNestedFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element, hasTextContent('START(SIMPLE(VALUE2))END'));
@@ -41,16 +43,16 @@ void main() {
     test(
         'should support simple components with text interpolation projected'
         'into child with bindings following ng-content', () async {
-      var testBed =
-          NgTestBed<ContainerWithProjectedInterpolationBound>(ng.createContainerWithProjectedInterpolationBoundFactory());
+      var testBed = NgTestBed<ContainerWithProjectedInterpolationBound>(
+          ng.createContainerWithProjectedInterpolationBoundFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element, hasTextContent('START(SIMPLE(VALUE3XY))END'));
     });
 
     test('should redistribute when the shadow dom changes', () async {
-      var testBed =
-          NgTestBed<ContainerABCWithConditionalComponent>(ng.createContainerABCWithConditionalComponentFactory());
+      var testBed = NgTestBed<ContainerABCWithConditionalComponent>(
+          ng.createContainerABCWithConditionalComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element, hasTextContent('(, BC)'));
@@ -68,7 +70,8 @@ void main() {
     });
 
     test('should support non emulated styles', () async {
-      var testBed = NgTestBed<ContainerWithStyleNotEmulated>(ng.createContainerWithStyleNotEmulatedFactory());
+      var testBed = NgTestBed<ContainerWithStyleNotEmulated>(
+          ng.createContainerWithStyleNotEmulatedFactory());
       var testFixture = await testBed.create();
       var mainEl = testFixture.rootElement;
       var div1 = mainEl.children.first;
@@ -80,7 +83,8 @@ void main() {
     });
 
     test('should support emulated style encapsulation', () async {
-      var testBed = NgTestBed<ContainerWithStyleEmulated>(ng.createContainerWithStyleEmulatedFactory());
+      var testBed = NgTestBed<ContainerWithStyleEmulated>(
+          ng.createContainerWithStyleEmulatedFactory());
       var testFixture = await testBed.create();
       var mainEl = testFixture.rootElement;
       var div1 = mainEl.children.first;
@@ -92,14 +96,15 @@ void main() {
     });
 
     test('should project ng-content using select query', () async {
-      var testBed = NgTestBed<MyListUserProjectionTest>(ng.createMyListUserProjectionTestFactory());
+      var testBed = NgTestBed<MyListUserProjectionTest>(
+          ng.createMyListUserProjectionTestFactory());
       var testFixture = await testBed.create();
       expect(testFixture.rootElement, hasTextContent('item1item2TheEnd'));
     });
 
     test('should support exact attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectExactAttributeTestComponent>(ng.createSelectExactAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectExactAttributeTestComponent>(
+          ng.createSelectExactAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -107,8 +112,8 @@ void main() {
     });
 
     test('should support hypen attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectHyphenAttributeTestComponent>(ng.createSelectHyphenAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectHyphenAttributeTestComponent>(
+          ng.createSelectHyphenAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -116,8 +121,8 @@ void main() {
     });
 
     test('should support list attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectListAttributeTestComponent>(ng.createSelectListAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectListAttributeTestComponent>(
+          ng.createSelectListAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -125,8 +130,8 @@ void main() {
     });
 
     test('should support prefix attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectPrefixAttributeTestComponent>(ng.createSelectPrefixAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectPrefixAttributeTestComponent>(
+          ng.createSelectPrefixAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -134,8 +139,8 @@ void main() {
     });
 
     test('should support set attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectSetAttributeTestComponent>(ng.createSelectSetAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectSetAttributeTestComponent>(
+          ng.createSelectSetAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -143,8 +148,8 @@ void main() {
     });
 
     test('should support substring attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectSubstringAttributeTestComponent>(ng.createSelectSubstringAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectSubstringAttributeTestComponent>(
+          ng.createSelectSubstringAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -152,8 +157,8 @@ void main() {
     });
 
     test('should support suffix attribute selector', () async {
-      final testBed =
-          NgTestBed<SelectSuffixAttributeTestComponent>(ng.createSelectSuffixAttributeTestComponentFactory());
+      final testBed = NgTestBed<SelectSuffixAttributeTestComponent>(
+          ng.createSelectSuffixAttributeTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');
@@ -161,7 +166,8 @@ void main() {
     });
 
     test('should support multiple levels with ngProjectAs', () async {
-      final testBed = NgTestBed<NgProjectAsTestComponent>(ng.createNgProjectAsTestComponentFactory());
+      final testBed = NgTestBed<NgProjectAsTestComponent>(
+          ng.createNgProjectAsTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('.selected')!.text!.trim(), 'Should be selected.');

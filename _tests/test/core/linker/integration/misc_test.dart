@@ -8,22 +8,23 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should allow variables in for loops', () async {
-    final testBed = NgTestBed<VarInLoopComponent>(ng.createVarInLoopComponentFactory());
+    final testBed =
+        NgTestBed<VarInLoopComponent>(ng.createVarInLoopComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, '1-hello');
   });
 
   test('should support updating host element via host attribute', () async {
-    final testBed =
-        NgTestBed<HostAttributeFromDirectiveComponent>(ng.createHostAttributeFromDirectiveComponentFactory());
+    final testBed = NgTestBed<HostAttributeFromDirectiveComponent>(
+        ng.createHostAttributeFromDirectiveComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.children.first;
     expect(div.attributes, containsPair('role', 'button'));
   });
 
   test('should support updating host element via host properties', () async {
-    final testBed =
-        NgTestBed<HostPropertyFromDirectiveComponent>(ng.createHostPropertyFromDirectiveComponentFactory());
+    final testBed = NgTestBed<HostPropertyFromDirectiveComponent>(
+        ng.createHostPropertyFromDirectiveComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.children.first;
     expect(div.id, 'one');
@@ -32,13 +33,15 @@ void main() {
   });
 
   test('should allow ViewContainerRef at any bound location', () async {
-    final testBed = NgTestBed<DynamicChildComponent>(ng.createDynamicChildComponentFactory());
+    final testBed = NgTestBed<DynamicChildComponent>(
+        ng.createDynamicChildComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'dynamic greet');
   });
 
   test('should support static attributes', () async {
-    final testBed = NgTestBed<StaticAttributesComponent>(ng.createStaticAttributesComponentFactory());
+    final testBed = NgTestBed<StaticAttributesComponent>(
+        ng.createStaticAttributesComponentFactory());
     final testFixture = await testBed.create();
     final needsAttribute = testFixture.assertOnlyInstance.needsAttribute!;
     expect(needsAttribute.typeAttribute, 'text');
@@ -47,19 +50,22 @@ void main() {
   });
 
   test('should remove script tags from templates', () async {
-    final testBed = NgTestBed<UnsafeComponent>(ng.createUnsafeComponentFactory());
+    final testBed =
+        NgTestBed<UnsafeComponent>(ng.createUnsafeComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.rootElement.querySelectorAll('script'), isEmpty);
   });
 
   test('should support named arguments in method calls', () async {
-    final testBed = NgTestBed<NamedArgMethodComponent>(ng.createNamedArgMethodComponentFactory());
+    final testBed = NgTestBed<NamedArgMethodComponent>(
+        ng.createNamedArgMethodComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Hello');
   });
 
   test('should support named arguments in exported function calls', () async {
-    final testBed = NgTestBed<NamedArgFunctionComponent>(ng.createNamedArgFunctionComponentFactory());
+    final testBed = NgTestBed<NamedArgFunctionComponent>(
+        ng.createNamedArgFunctionComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Hello');
   });

@@ -15,7 +15,8 @@ void main() {
   });
 
   test('renders children in place of self', () async {
-    final testBed = NgTestBed<RendersChildren>(ng.createRendersChildrenFactory());
+    final testBed =
+        NgTestBed<RendersChildren>(ng.createRendersChildrenFactory());
     final testFixture = await testBed.create();
     expect(testFixture.rootElement.innerHtml, html);
   });
@@ -39,7 +40,8 @@ void main() {
   });
 
   test('supports *ngTemplateOutlet', () async {
-    final testBed = NgTestBed<SupportsNgTemplateOutlet>(ng.createSupportsNgTemplateOutletFactory());
+    final testBed = NgTestBed<SupportsNgTemplateOutlet>(
+        ng.createSupportsNgTemplateOutletFactory());
     final testFixture = await testBed.create();
     expect(
         testFixture.rootElement.innerHtml,
@@ -49,7 +51,8 @@ void main() {
   });
 
   test('supports nested *-syntax', () async {
-    final testBed = NgTestBed<SupportsNesting>(ng.createSupportsNestingFactory());
+    final testBed =
+        NgTestBed<SupportsNesting>(ng.createSupportsNestingFactory());
     final testFixture = await testBed.create();
     expect(testFixture.rootElement.innerHtml, anchorHtml);
     await testFixture.update((component) => component.integers = [1, 2, 3]);
@@ -84,7 +87,8 @@ void main() {
   });
 
   test('can host projected content', () async {
-    final testBed = NgTestBed<CanHostProjectedContent>(ng.createCanHostProjectedContentFactory());
+    final testBed = NgTestBed<CanHostProjectedContent>(
+        ng.createCanHostProjectedContentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.rootElement.innerHtml,
         '<contained-content-host>$html</contained-content-host>');

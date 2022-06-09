@@ -9,7 +9,8 @@ void main() {
 
   group('markChildForCheck() should update', () {
     test('content child', () async {
-      final testBed = NgTestBed<TestContentChild>(ng.createTestContentChildFactory());
+      final testBed =
+          NgTestBed<TestContentChild>(ng.createTestContentChildFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text, isEmpty);
       await testFixture.update((component) => component.child!.update('a'));
@@ -17,7 +18,8 @@ void main() {
     });
 
     test('content children', () async {
-      final testBed = NgTestBed<TestContentChildren>(ng.createTestContentChildrenFactory());
+      final testBed =
+          NgTestBed<TestContentChildren>(ng.createTestContentChildrenFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text, isEmpty);
       await testFixture.update((component) => component.child!.update('a'));
@@ -33,7 +35,8 @@ void main() {
     });
 
     test('view children', () async {
-      final testBed = NgTestBed<TestViewChildren>(ng.createTestViewChildrenFactory());
+      final testBed =
+          NgTestBed<TestViewChildren>(ng.createTestViewChildrenFactory());
       final testFixture = await testBed.create();
       expect(testFixture.text, isEmpty);
       await testFixture.update((component) => component.update('a'));
@@ -43,8 +46,8 @@ void main() {
     // This is a common pattern we should be certain works.
     group('existing provider', () {
       test('content children', () async {
-        final testBed =
-            NgTestBed<TestExistingProviderContentChildren>(ng.createTestExistingProviderContentChildrenFactory());
+        final testBed = NgTestBed<TestExistingProviderContentChildren>(
+            ng.createTestExistingProviderContentChildrenFactory());
         final testFixture = await testBed.create();
         expect(testFixture.text, isEmpty);
         await testFixture.update((component) => component.child!.update('a'));
@@ -52,8 +55,8 @@ void main() {
       });
 
       test('view children', () async {
-        final testBed =
-            NgTestBed<TestExistingProviderViewChildren>(ng.createTestExistingProviderViewChildrenFactory());
+        final testBed = NgTestBed<TestExistingProviderViewChildren>(
+            ng.createTestExistingProviderViewChildrenFactory());
         final testFixture = await testBed.create();
         expect(testFixture.text, isEmpty);
         await testFixture.update((component) => component.update('a'));
@@ -63,8 +66,8 @@ void main() {
 
     group('nested', () {
       test('content children', () async {
-        final testBed =
-            NgTestBed<TestEmbeddedContentChildren>(ng.createTestEmbeddedContentChildrenFactory());
+        final testBed = NgTestBed<TestEmbeddedContentChildren>(
+            ng.createTestEmbeddedContentChildrenFactory());
         final testFixture = await testBed.create();
         expect(testFixture.text, isEmpty);
         await testFixture.update((component) => component.child!.update('a'));
@@ -82,7 +85,8 @@ void main() {
       });
 
       test('view children', () async {
-        final testBed = NgTestBed<TestEmbeddedViewChildren>(ng.createTestEmbeddedViewChildrenFactory());
+        final testBed = NgTestBed<TestEmbeddedViewChildren>(
+            ng.createTestEmbeddedViewChildrenFactory());
         final testFixture = await testBed.create();
         expect(testFixture.text, isEmpty);
         await testFixture.update((component) {

@@ -22,7 +22,8 @@ void main() {
       }
 
       setUp(() async {
-        var testBed = NgTestBed<TestControlComponent>(ng.createTestControlComponentFactory());
+        var testBed = NgTestBed<TestControlComponent>(
+            ng.createTestControlComponentFactory());
         fixture = await testBed.create();
         readonlyCmp = fixture.assertOnlyInstance;
       });
@@ -75,7 +76,8 @@ void main() {
       }
 
       setUp(() async {
-        var testBed = NgTestBed<TestGroupComponent>(ng.createTestGroupComponentFactory());
+        var testBed =
+            NgTestBed<TestGroupComponent>(ng.createTestGroupComponentFactory());
         fixture = await testBed.create();
         readonlyCmp = fixture.assertOnlyInstance;
       });

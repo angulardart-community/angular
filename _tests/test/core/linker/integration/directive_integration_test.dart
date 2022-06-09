@@ -11,13 +11,15 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support nested components', () async {
-    final testBed = NgTestBed<ParentComponent>(ng.createParentComponentFactory());
+    final testBed =
+        NgTestBed<ParentComponent>(ng.createParentComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'hello');
   });
 
   test('should consume directive input binding', () async {
-    final testBed = NgTestBed<BoundDirectiveInputComponent>(ng.createBoundDirectiveInputComponentFactory());
+    final testBed = NgTestBed<BoundDirectiveInputComponent>(
+        ng.createBoundDirectiveInputComponentFactory());
     final testFixture = await testBed.create();
     final directives = testFixture.assertOnlyInstance.directives!;
     await testFixture.update((component) => component.value = 'New property');
@@ -28,7 +30,8 @@ void main() {
   });
 
   test('should support multiple directives on a single node', () async {
-    final testBed = NgTestBed<MultipleDirectivesComponent>(ng.createMultipleDirectivesComponentFactory());
+    final testBed = NgTestBed<MultipleDirectivesComponent>(
+        ng.createMultipleDirectivesComponentFactory());
     final testFixture = await testBed.create();
     final directive = testFixture.assertOnlyInstance.directive;
     expect(directive!.dirProp, 'Hello world!');
@@ -36,22 +39,24 @@ void main() {
   });
 
   test('should support directives missing input bindings', () async {
-    final testBed = NgTestBed<UnboundDirectiveInputComponent>(ng.createUnboundDirectiveInputComponentFactory());
+    final testBed = NgTestBed<UnboundDirectiveInputComponent>(
+        ng.createUnboundDirectiveInputComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, isEmpty);
   });
 
   test('should execute a directive once, even if specified multiple times',
       () async {
-    final testBed = NgTestBed<DuplicateDirectivesComponent>(ng.createDuplicateDirectivesComponentFactory());
+    final testBed = NgTestBed<DuplicateDirectivesComponent>(
+        ng.createDuplicateDirectivesComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'noduplicate');
   });
 
   test('should support directives whose selector matches native property',
       () async {
-    final testBed =
-        NgTestBed<OverrideNativePropertyComponent>(ng.createOverrideNativePropertyComponentFactory());
+    final testBed = NgTestBed<OverrideNativePropertyComponent>(
+        ng.createOverrideNativePropertyComponentFactory());
     final testFixture = await testBed.create();
     final directive = testFixture.assertOnlyInstance.directive!;
     expect(directive.id, 'some_id');
@@ -61,21 +66,23 @@ void main() {
 
   test('should support directives whose selector matches event binding',
       () async {
-    final testBed = NgTestBed<EventDirectiveComponent>(ng.createEventDirectiveComponentFactory());
+    final testBed = NgTestBed<EventDirectiveComponent>(
+        ng.createEventDirectiveComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.assertOnlyInstance.directive, isNotNull);
   });
 
   test('should read directives metadata from their binding token', () async {
-    final testBed =
-        NgTestBed<RetrievesDependencyFromHostComponent>(ng.createRetrievesDependencyFromHostComponentFactory());
+    final testBed = NgTestBed<RetrievesDependencyFromHostComponent>(
+        ng.createRetrievesDependencyFromHostComponentFactory());
     final testFixture = await testBed.create();
     final needsPublicApi = testFixture.assertOnlyInstance.needsPublicApi;
     expect(needsPublicApi!.api, const TypeMatcher<PrivateImpl>());
   });
 
   test('should consume pipe binding', () async {
-    final testBed = NgTestBed<PipedDirectiveInputComponent>(ng.createPipedDirectiveInputComponentFactory());
+    final testBed = NgTestBed<PipedDirectiveInputComponent>(
+        ng.createPipedDirectiveInputComponentFactory());
     final testFixture = await testBed.create();
     final directive = testFixture.assertOnlyInstance.directive;
     expect(directive!.dirProp, 'aa');

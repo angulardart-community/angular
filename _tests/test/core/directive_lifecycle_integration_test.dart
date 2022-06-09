@@ -14,7 +14,8 @@ void main() {
     setUp(() async {
       log = Log();
 
-      var testBed = NgTestBed<MyComp>(ng.createMyCompFactory(),
+      var testBed = NgTestBed<MyComp>(
+        ng.createMyCompFactory(),
         rootInjector: (parent) => Injector.map({Log: log}, parent),
       );
       fixture = await testBed.create();

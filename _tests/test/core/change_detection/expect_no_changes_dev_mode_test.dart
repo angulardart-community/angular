@@ -8,7 +8,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should throw during change detection', () async {
-    final testBed = NgTestBed<IllegalChangeDetectionComponent>(ng.createIllegalChangeDetectionComponentFactory());
+    final testBed = NgTestBed<IllegalChangeDetectionComponent>(
+        ng.createIllegalChangeDetectionComponentFactory());
     expect(
       testBed.create(),
       throwsA(predicate(
@@ -20,7 +21,8 @@ void main() {
   });
 
   test('misses throwing on a non-primitive expression', () {
-    final testBed = NgTestBed<NonPrimitiveBinding>(ng.createNonPrimitiveBindingFactory());
+    final testBed =
+        NgTestBed<NonPrimitiveBinding>(ng.createNonPrimitiveBindingFactory());
     expect(testBed.create(), completes);
   });
 
@@ -34,7 +36,8 @@ void main() {
     });
 
     test('should throw during change detection of a primitive', () async {
-      final testBed = NgTestBed<IllegalChangeDetectionComponent>(ng.createIllegalChangeDetectionComponentFactory());
+      final testBed = NgTestBed<IllegalChangeDetectionComponent>(
+          ng.createIllegalChangeDetectionComponentFactory());
       expect(
         testBed.create(),
         throwsA(predicate(
@@ -46,7 +49,8 @@ void main() {
     });
 
     test('should throw during change detection of a non-primitive', () async {
-      final testBed = NgTestBed<NonPrimitiveBinding>(ng.createNonPrimitiveBindingFactory());
+      final testBed =
+          NgTestBed<NonPrimitiveBinding>(ng.createNonPrimitiveBindingFactory());
       expect(
         testBed.create(),
         throwsA(predicate(

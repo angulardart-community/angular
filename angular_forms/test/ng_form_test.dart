@@ -82,7 +82,8 @@ void main() {
       tearDown(() => disposeAnyRunningTest());
 
       setUp(() async {
-        var testBed = NgTestBed<OnPushControlTest>(ng.createOnPushControlTestFactory());
+        var testBed =
+            NgTestBed<OnPushControlTest>(ng.createOnPushControlTestFactory());
         fixture = await testBed.create();
       });
 
@@ -114,7 +115,8 @@ void main() {
       tearDown(() => disposeAnyRunningTest());
 
       setUp(() async {
-        var testBed = NgTestBed<OnPushControlGroupTest>(ng.createOnPushControlGroupTestFactory());
+        var testBed = NgTestBed<OnPushControlGroupTest>(
+            ng.createOnPushControlGroupTestFactory());
         fixture = await testBed.create();
       });
 

@@ -3,8 +3,7 @@ import 'package:ngcompiler/v1/angular_compiler.dart';
 import 'package:ngcompiler/v1/cli.dart';
 import 'package:ngcompiler/v1/src/compiler/angular_compiler.dart';
 import 'package:ngcompiler/v1/src/compiler/ast_directive_normalizer.dart';
-import 'package:ngcompiler/v1/src/compiler/expression_parser/parser.dart'
-    as ng;
+import 'package:ngcompiler/v1/src/compiler/expression_parser/parser.dart' as ng;
 import 'package:ngcompiler/v1/src/compiler/output/dart_emitter.dart';
 import 'package:ngcompiler/v1/src/compiler/schema/dom_element_schema_registry.dart';
 import 'package:ngcompiler/v1/src/compiler/semantic_analysis/directive_converter.dart';

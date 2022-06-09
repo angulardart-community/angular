@@ -9,14 +9,16 @@ void main() {
 
   group('Property access', () {
     test('should not fallback on map access if property missing', () async {
-      var testBed = NgTestBed<ContainerWithNoPropertyAccess>(ng.createContainerWithNoPropertyAccessFactory());
+      var testBed = NgTestBed<ContainerWithNoPropertyAccess>(
+          ng.createContainerWithNoPropertyAccessFactory());
       expect(testBed.create(), throwsStateError);
     });
   });
 
   group('Reference in Template element', () {
     test('should assign the TemplateRef to a user-defined variable', () async {
-      var testBed = NgTestBed<MyCompWithTemplateRef>(ng.createMyCompWithTemplateRefFactory());
+      var testBed = NgTestBed<MyCompWithTemplateRef>(
+          ng.createMyCompWithTemplateRefFactory());
       var testFixture = await testBed.create();
       var refReader = testFixture.assertOnlyInstance.refReaderComponent;
       expect(refReader!.ref1, TypeMatcher<TemplateRef>());

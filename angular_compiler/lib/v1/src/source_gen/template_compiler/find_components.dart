@@ -8,8 +8,7 @@ import 'package:ngdart/src/meta.dart';
 import 'package:ngcompiler/v1/angular_compiler.dart';
 import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
 import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
-import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
-    as ast;
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart' as ast;
 import 'package:ngcompiler/v1/src/compiler/output/convert.dart';
 import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 import 'package:ngcompiler/v1/src/compiler/template_compiler.dart';

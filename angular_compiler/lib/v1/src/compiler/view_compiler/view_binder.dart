@@ -1,6 +1,5 @@
 import 'package:source_span/source_span.dart';
-import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart'
-    as ast;
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart' as ast;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
 import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart';

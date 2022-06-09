@@ -19,7 +19,8 @@ void main() {
   }
 
   test('should encapsulate usages of [class]=', () async {
-    final testBed = NgTestBed<TestSetClassProperty>(ng.createTestSetClassPropertyFactory());
+    final testBed =
+        NgTestBed<TestSetClassProperty>(ng.createTestSetClassPropertyFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('div')!;
     expect(
@@ -30,7 +31,8 @@ void main() {
   });
 
   test('should encapsulate usages of [attr.class]=', () async {
-    final testBed = NgTestBed<TestSetClassAttribute>(ng.createTestSetClassAttributeFactory());
+    final testBed = NgTestBed<TestSetClassAttribute>(
+        ng.createTestSetClassAttributeFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('div')!;
     expect(
@@ -41,7 +43,8 @@ void main() {
   });
 
   test('should support encapsulation piercing ::ng-deep', () async {
-    final testBed = NgTestBed<TestEncapsulationPierce>(ng.createTestEncapsulationPierceFactory());
+    final testBed = NgTestBed<TestEncapsulationPierce>(
+        ng.createTestEncapsulationPierceFactory());
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('button')!;
     expect(

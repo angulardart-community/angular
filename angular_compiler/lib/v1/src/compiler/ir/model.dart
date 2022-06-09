@@ -1,6 +1,5 @@
 import 'package:source_span/source_span.dart';
-import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart'
-    as analyzed;
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart' as analyzed;
 import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 import 'package:ngcompiler/v1/src/compiler/i18n/message.dart';
 import 'package:ngcompiler/v1/src/compiler/security.dart';

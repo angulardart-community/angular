@@ -36,10 +36,12 @@ void main() {
   });
 
   test('should invoke ngAfterChanges, then ngOnInit', () async {
-    final NgTestFixture<NgAfterChangesInitOrder> fixture = await NgTestBed<NgAfterChangesInitOrder>(
+    final NgTestFixture<NgAfterChangesInitOrder> fixture =
+        await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
-      beforeChangeDetection: (NgAfterChangesInitOrder root) => root.name = 'Hello',
+      beforeChangeDetection: (NgAfterChangesInitOrder root) =>
+          root.name = 'Hello',
     );
     expect(
       fixture.assertOnlyInstance.child!.events,
@@ -50,10 +52,12 @@ void main() {
   test(
       'should invoke ngAfterChanges with asynchronous beforeChangeDetection,'
       ' then ngOnInit', () async {
-    final NgTestFixture<NgAfterChangesInitOrder> fixture = await NgTestBed<NgAfterChangesInitOrder>(
+    final NgTestFixture<NgAfterChangesInitOrder> fixture =
+        await NgTestBed<NgAfterChangesInitOrder>(
       ng.createNgAfterChangesInitOrderFactory(),
     ).create(
-      beforeChangeDetection: (NgAfterChangesInitOrder root) async => root.name = 'Hello',
+      beforeChangeDetection: (NgAfterChangesInitOrder root) async =>
+          root.name = 'Hello',
     );
     expect(
       fixture.assertOnlyInstance.child!.events,

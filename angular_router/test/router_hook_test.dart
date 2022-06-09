@@ -16,8 +16,9 @@ void main() {
     late Router router;
 
     setUp(() async {
-      final testBed = NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
-          .addInjector(createInjector);
+      final testBed =
+          NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
+              .addInjector(createInjector);
       final testFixture = await testBed.create();
       router = testFixture.assertOnlyInstance.router;
     });
@@ -63,8 +64,9 @@ void main() {
   });
 
   test('can support cyclic dependency with lazy injection', () async {
-    final testBed = NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
-        .addInjector(accumulateQueryHookInjector);
+    final testBed =
+        NgTestBed<TestAppComponent>(ng.createTestAppComponentFactory())
+            .addInjector(accumulateQueryHookInjector);
     final testFixture = await testBed.create();
     final router = testFixture.assertOnlyInstance.router;
     expect(router.current!.queryParameters, isEmpty);

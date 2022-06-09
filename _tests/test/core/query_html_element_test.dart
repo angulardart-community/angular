@@ -10,24 +10,29 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support @ViewChild with Element', () async {
-    final fixture = await NgTestBed<UsesElement>(ng.createUsesElementFactory()).create();
+    final fixture =
+        await NgTestBed<UsesElement>(ng.createUsesElementFactory()).create();
     expect(fixture.assertOnlyInstance.element!.text, '1');
   });
 
   test('should support @ViewChild with HtmlElement', () async {
-    final fixture = await NgTestBed<UsesHtmlElement>(ng.createUsesHtmlElementFactory()).create();
+    final fixture =
+        await NgTestBed<UsesHtmlElement>(ng.createUsesHtmlElementFactory())
+            .create();
     expect(fixture.assertOnlyInstance.element!.text, '2');
   });
 
   test('should support @ViewChildren with Element', () async {
     final fixture =
-        await NgTestBed<UsesListOfElement>(ng.createUsesListOfElementFactory()).create();
+        await NgTestBed<UsesListOfElement>(ng.createUsesListOfElementFactory())
+            .create();
     expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
   });
 
   test('should support @ViewChildren with HtmlElement', () async {
-    final fixture =
-        await NgTestBed<UsesListOfHtmlElement>(ng.createUsesListOfHtmlElementFactory()).create();
+    final fixture = await NgTestBed<UsesListOfHtmlElement>(
+            ng.createUsesListOfHtmlElementFactory())
+        .create();
     expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
   });
 }

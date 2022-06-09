@@ -9,7 +9,8 @@ void main() {
 
   test('should support overriding providers', () async {
     final fixture =
-        await NgTestBed<TestViewComponent>(ng.createTestViewComponentFactory()).create();
+        await NgTestBed<TestViewComponent>(ng.createTestViewComponentFactory())
+            .create();
     expect(fixture.text, 'Hello World');
   });
 }

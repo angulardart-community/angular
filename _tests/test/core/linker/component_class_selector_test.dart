@@ -9,13 +9,15 @@ void main() {
 
   group('component with class selector', () {
     test('should not mangle host element name', () async {
-      final testBed = NgTestBed<ClassSelectorComponent>(ng.createClassSelectorComponentFactory());
+      final testBed = NgTestBed<ClassSelectorComponent>(
+          ng.createClassSelectorComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.rootElement.tagName, equalsIgnoringCase('foo'));
     });
 
     test('should only match element with that class', () async {
-      final testBed = NgTestBed<MatchClassSelectorComponent>(ng.createMatchClassSelectorComponentFactory());
+      final testBed = NgTestBed<MatchClassSelectorComponent>(
+          ng.createMatchClassSelectorComponentFactory());
       final testFixture = await testBed.create();
       expect(testFixture.rootElement.querySelectorAll('foo'), hasLength(2));
       expect(testFixture.rootElement.querySelectorAll('foo.bar'), hasLength(1));

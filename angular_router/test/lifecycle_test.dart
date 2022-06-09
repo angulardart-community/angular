@@ -12,7 +12,8 @@ void main() {
 
   // /first-child -> /second-child
   test('navigate to and from a sibling', () async {
-    final NgTestFixture<TestNavigateToSibling> fixture = await setup(ng.createTestNavigateToSiblingFactory());
+    final NgTestFixture<TestNavigateToSibling> fixture =
+        await setup(ng.createTestNavigateToSiblingFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [
@@ -48,7 +49,8 @@ void main() {
 
   // /first-reusable-child -> /second-child -> /first-reusable-child
   test('navigate from a reusable component to a sibling and back', () async {
-    final NgTestFixture<TestNavigateToSiblingFromReusableChild> fixture = await setup(
+    final NgTestFixture<TestNavigateToSiblingFromReusableChild> fixture =
+        await setup(
       ng.createTestNavigateToSiblingFromReusableChildFactory(),
     );
     final log = fixture.assertOnlyInstance.lifecycleLog;
@@ -85,7 +87,8 @@ void main() {
 
   // /parent/first-child -> /parent/second-child -> /parent/first-child
   test('navigate to a nested sibling and back', () async {
-    final NgTestFixture<TestNavigateToNestedSibling> fixture = await setup(ng.createTestNavigateToNestedSiblingFactory());
+    final NgTestFixture<TestNavigateToNestedSibling> fixture =
+        await setup(ng.createTestNavigateToNestedSiblingFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [
@@ -144,7 +147,8 @@ void main() {
 
   // /reusable-parent/first-child -> /reusable-parent/second-child
   test('navigate to a nested sibling with a reusable parent', () async {
-    final NgTestFixture<TestNavigateToNestedSiblingWithSharedParent> fixture = await setup(
+    final NgTestFixture<TestNavigateToNestedSiblingWithSharedParent> fixture =
+        await setup(
       ng.createTestNavigateToNestedSiblingWithSharedParentFactory(),
     );
     final log = fixture.assertOnlyInstance.lifecycleLog;
@@ -217,7 +221,8 @@ void main() {
 
   // /first-reusable-parent/first-child -> /second-parent/second-child
   test('navigate between nested routes with a reusable parent', () async {
-    final NgTestFixture<TestNavigateBetweenNestedRoutesWithReusableParent> fixture = await setup(
+    final NgTestFixture<TestNavigateBetweenNestedRoutesWithReusableParent>
+        fixture = await setup(
       ng.createTestNavigateBetweenNestedRoutesWithReusableParentFactory(),
     );
     final log = fixture.assertOnlyInstance.lifecycleLog;
@@ -256,7 +261,8 @@ void main() {
   // map to the same component factory, which should be reused.
   test('navigate between nested routes with the same reusable parent',
       () async {
-    final NgTestFixture<TestNavigateBetweenNestedRoutesWithSameReusableParent> fixture = await setup(
+    final NgTestFixture<TestNavigateBetweenNestedRoutesWithSameReusableParent>
+        fixture = await setup(
       ng.createTestNavigateBetweenNestedRoutesWithSameReusableParentFactory(),
     );
     final log = fixture.assertOnlyInstance.lifecycleLog;
@@ -291,7 +297,8 @@ void main() {
   });
 
   test('navigate to the same route should do nothing', () async {
-    final NgTestFixture<TestNavigateToSibling> fixture = await setup(ng.createTestNavigateToSiblingFactory());
+    final NgTestFixture<TestNavigateToSibling> fixture =
+        await setup(ng.createTestNavigateToSiblingFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [
@@ -307,7 +314,8 @@ void main() {
   });
 
   test('reload the same route', () async {
-    final NgTestFixture<TestNavigateToSibling> fixture = await setup(ng.createTestNavigateToSiblingFactory());
+    final NgTestFixture<TestNavigateToSibling> fixture =
+        await setup(ng.createTestNavigateToSiblingFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [
@@ -331,7 +339,8 @@ void main() {
   });
 
   test('prevent navigation before other lifecycle callbacks', () async {
-    final NgTestFixture<TestPreventNavigation> fixture = await setup(ng.createTestPreventNavigationFactory());
+    final NgTestFixture<TestPreventNavigation> fixture =
+        await setup(ng.createTestPreventNavigationFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [
@@ -348,7 +357,8 @@ void main() {
   });
 
   test('redirect to a sibling', () async {
-    final NgTestFixture<TestRedirectToSibling> fixture = await setup(ng.createTestRedirectToSiblingFactory());
+    final NgTestFixture<TestRedirectToSibling> fixture =
+        await setup(ng.createTestRedirectToSiblingFactory());
     final log = fixture.assertOnlyInstance.lifecycleLog;
     final router = fixture.assertOnlyInstance.router;
     expect(log, [

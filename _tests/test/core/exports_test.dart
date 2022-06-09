@@ -12,42 +12,47 @@ void main() {
 
     group('can interpolate', () {
       test('constants', () async {
-        var testBed = NgTestBed<InterpolateConstantTest>(ng.createInterpolateConstantTestFactory());
+        var testBed = NgTestBed<InterpolateConstantTest>(
+            ng.createInterpolateConstantTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'hello');
       });
       test('static fields', () async {
-        var testBed = NgTestBed<InterpolateStaticFieldTest>(ng.createInterpolateStaticFieldTestFactory());
+        var testBed = NgTestBed<InterpolateStaticFieldTest>(
+            ng.createInterpolateStaticFieldTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'static field');
       });
       test('enums', () async {
-        var testBed = NgTestBed<InterpolateEnumTest>(ng.createInterpolateEnumTestFactory());
+        var testBed = NgTestBed<InterpolateEnumTest>(
+            ng.createInterpolateEnumTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'MyEnum.a');
       });
       test('top-level functions', () async {
-        var testBed =
-            NgTestBed<InterpolateTopLevelFunctionTest>(ng.createInterpolateTopLevelFunctionTestFactory());
+        var testBed = NgTestBed<InterpolateTopLevelFunctionTest>(
+            ng.createInterpolateTopLevelFunctionTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'hello!!!');
       });
       test('static functions', () async {
-        var testBed =
-            NgTestBed<InterpolateStaticFunctionTest>(ng.createInterpolateStaticFunctionTestFactory());
+        var testBed = NgTestBed<InterpolateStaticFunctionTest>(
+            ng.createInterpolateStaticFunctionTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'hello???');
       });
     });
 
     test('can be used in NgFor', () async {
-      var testBed = NgTestBed<StaticNgForTest>(ng.createStaticNgForTestFactory());
+      var testBed =
+          NgTestBed<StaticNgForTest>(ng.createStaticNgForTestFactory());
       var fixture = await testBed.create();
       expect(fixture.text, '123');
     });
 
     test('can be used in event handlers', () async {
-      var testBed = NgTestBed<StaticEventHandlerTest>(ng.createStaticEventHandlerTestFactory());
+      var testBed = NgTestBed<StaticEventHandlerTest>(
+          ng.createStaticEventHandlerTestFactory());
       var fixture = await testBed.create();
       var div = fixture.rootElement.querySelector('div')!;
       clickHandled = false;
@@ -58,7 +63,8 @@ void main() {
     });
 
     test('can be assigned in an event handler', () async {
-      var testBed = NgTestBed<StaticEventHandlerTargetTest>(ng.createStaticEventHandlerTargetTestFactory());
+      var testBed = NgTestBed<StaticEventHandlerTargetTest>(
+          ng.createStaticEventHandlerTargetTestFactory());
       var fixture = await testBed.create();
       var div = fixture.rootElement.querySelector('div')!;
       MyClass.clickHandled = false;
@@ -69,7 +75,8 @@ void main() {
     });
 
     test('can be used as event handler arguments', () async {
-      var testBed = NgTestBed<StaticEventHandlerArgTest>(ng.createStaticEventHandlerArgTestFactory());
+      var testBed = NgTestBed<StaticEventHandlerArgTest>(
+          ng.createStaticEventHandlerArgTestFactory());
       var fixture = await testBed.create();
       var div = fixture.rootElement.querySelector('div')!;
       late List<Object> listArg;
@@ -93,7 +100,8 @@ void main() {
     });
 
     test('can refer to own statics automatically with @HostBinding', () async {
-      var testBed = NgTestBed<SelfReferHostBindingTest>(ng.createSelfReferHostBindingTestFactory());
+      var testBed = NgTestBed<SelfReferHostBindingTest>(
+          ng.createSelfReferHostBindingTestFactory());
       var fixture = await testBed.create();
       expect(fixture.rootElement.title, 'hello');
       await fixture.update((_) {
@@ -104,7 +112,8 @@ void main() {
 
     group('can be prefixed', () {
       test('with library prefix', () async {
-        var testBed = NgTestBed<StaticLibraryPrefixTest>(ng.createStaticLibraryPrefixTestFactory());
+        var testBed = NgTestBed<StaticLibraryPrefixTest>(
+            ng.createStaticLibraryPrefixTestFactory());
         var fixture = await testBed.create();
         expect(fixture.text, 'hello');
       });

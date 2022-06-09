@@ -11,7 +11,8 @@ void main() {
 
   test('Should normally run change detection', () async {
     final valueService = ValueService()..value = 'Hello';
-    final testBed = NgTestBed<NoCrash>(ng.createNoCrashFactory(),
+    final testBed = NgTestBed<NoCrash>(
+      ng.createNoCrashFactory(),
     ).addInjector(
       (i) => Injector.map({
         ValueService: valueService,
@@ -31,7 +32,8 @@ void main() {
 
   test('Should disable change detection on components that throw', () async {
     final valueService = ValueService()..value = '1';
-    final testBed = NgTestBed<Crash>(ng.createCrashFactory(),
+    final testBed = NgTestBed<Crash>(
+      ng.createCrashFactory(),
     ).addInjector(
       (i) => Injector.map({
         ValueService: valueService,
@@ -65,7 +67,8 @@ void main() {
   test('Should disable change detection to avoid infinite ngOnInit', () async {
     final valueService = ValueService()..value = '1';
     final rpcService = RpcService();
-    final testBed = NgTestBed<CrashOnInit>(ng.createCrashOnInitFactory(),
+    final testBed = NgTestBed<CrashOnInit>(
+      ng.createCrashOnInitFactory(),
     ).addInjector(
       (i) => Injector.map({
         ValueService: valueService,

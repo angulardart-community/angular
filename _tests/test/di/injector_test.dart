@@ -700,7 +700,8 @@ void main() {
   ///   `ElementInjector.provideUntyped()` to `View.injectorGet()`.
   test('View.injectorGet() should handle a null nodeIndex argument', () async {
     final testValue = 'Hello world!';
-    final testBed = NgTestBed<TestComponent>(ng.createTestComponentFactory(),
+    final testBed = NgTestBed<TestComponent>(
+      ng.createTestComponentFactory(),
       rootInjector: (parent) => Injector.map({testToken: testValue}, parent),
     );
     final testFixture = await testBed.create();

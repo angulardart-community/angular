@@ -8,7 +8,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should handle shadowed inherited members', () async {
-    final testBed = NgTestBed<TestShadowedInheritedMembers>(ng.createTestShadowedInheritedMembersFactory());
+    final testBed = NgTestBed<TestShadowedInheritedMembers>(
+        ng.createTestShadowedInheritedMembersFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Hello world!');
   });

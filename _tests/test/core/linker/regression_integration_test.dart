@@ -8,8 +8,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should evaluate conditional operator with right precedence', () async {
-    final testBed =
-        NgTestBed<RightPrecedenceConditionalComponent>(ng.createRightPrecedenceConditionalComponentFactory());
+    final testBed = NgTestBed<RightPrecedenceConditionalComponent>(
+        ng.createRightPrecedenceConditionalComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'red');
     await testFixture.update((component) => component.hasBorder = true);
@@ -42,15 +42,16 @@ void main() {
   });
 
   test("should interpolate previous element's class binding", () async {
-    final testBed =
-        NgTestBed<InterpolateClassBindingComponent>(ng.createInterpolateClassBindingComponentFactory());
+    final testBed = NgTestBed<InterpolateClassBindingComponent>(
+        ng.createInterpolateClassBindingComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'foo');
   });
 
   test('should support ngClass before a component and transclusion inside ngIf',
       () async {
-    final testBed = NgTestBed<ContentProviderComponent>(ng.createContentProviderComponentFactory());
+    final testBed = NgTestBed<ContentProviderComponent>(
+        ng.createContentProviderComponentFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'ABC');
   });

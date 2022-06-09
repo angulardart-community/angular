@@ -35,12 +35,14 @@ void main() {
     });
 
     test('should be able to load into a structural directive', () async {
-      final fixture = await createFixture<CompWithDirective>(ng.createCompWithDirectiveFactory());
+      final fixture = await createFixture<CompWithDirective>(
+          ng.createCompWithDirectiveFactory());
       expect(fixture.text, 'BeforeDynamicAfter');
     });
 
     test('should be able to load from a service', () async {
-      final NgTestFixture<CompWithService> fixture = await createFixture(ng.createCompWithServiceFactory());
+      final NgTestFixture<CompWithService> fixture =
+          await createFixture(ng.createCompWithServiceFactory());
       await fixture.update((comp) {
         final ref = comp.service.loader.loadDetached<DynamicComp>(
           ng.createDynamicCompFactory(),
@@ -134,12 +136,14 @@ void main() {
     });
 
     test('should be able to load into a structural directive', () async {
-      final fixture = await createFixture<CompWithDirective>(ng.createCompWithDirectiveFactory());
+      final fixture = await createFixture<CompWithDirective>(
+          ng.createCompWithDirectiveFactory());
       expect(fixture.text, 'BeforeDynamicAfter');
     });
 
     test('should be able to load from a service', () async {
-      final NgTestFixture<CompWithService> fixture = await createFixture(ng.createCompWithServiceFactory());
+      final NgTestFixture<CompWithService> fixture =
+          await createFixture(ng.createCompWithServiceFactory());
       await fixture.update((comp) {
         final ref = comp.service.loader.loadDetached<DynamicOnPushComp>(
           ng.createDynamicOnPushCompFactory(),
@@ -154,7 +158,8 @@ void main() {
           await createFixture(ng.createCompWithCustomLocationFactory());
       expect(log.toString(), isEmpty);
       await fixture.update((comp) {
-        comp.loader.loadNextTo<DynamicOnPushComp>(ng.createDynamicOnPushCompFactory());
+        comp.loader
+            .loadNextTo<DynamicOnPushComp>(ng.createDynamicOnPushCompFactory());
       });
       expect(
           log.toString(),

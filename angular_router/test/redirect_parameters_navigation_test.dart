@@ -24,7 +24,8 @@ void main() {
 /// Returns any URL changes that occurred due to navigation.
 Future<List<String>> redirect(String from) async {
   final testBed =
-      NgTestBed<TestRedirectComponent>(ng.createTestRedirectComponentFactory()).addInjector(injector);
+      NgTestBed<TestRedirectComponent>(ng.createTestRedirectComponentFactory())
+          .addInjector(injector);
   final testFixture = await testBed.create();
   final urlChanges = testFixture.assertOnlyInstance.locationStrategy.urlChanges;
   final router = testFixture.assertOnlyInstance.router;

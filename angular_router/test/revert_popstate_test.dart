@@ -16,7 +16,8 @@ void main() {
 
   setUp(() async {
     routerHook = TestRouterHook();
-    final testBed = NgTestBed<TestComponent>(ng.createTestComponentFactory(),
+    final testBed = NgTestBed<TestComponent>(
+      ng.createTestComponentFactory(),
       rootInjector: (parent) {
         return createInjector(Injector.map({RouterHook: routerHook}, parent));
       },

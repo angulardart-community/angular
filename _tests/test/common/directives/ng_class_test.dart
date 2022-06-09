@@ -11,7 +11,8 @@ void main() {
 
   group('ngClass', () {
     test('should clean up when the directive is destroyed', () async {
-      var testBed = NgTestBed<DestroyClassTest>(ng.createDestroyClassTestFactory());
+      var testBed =
+          NgTestBed<DestroyClassTest>(ng.createDestroyClassTestFactory());
       var testFixture = await testBed.create();
       await testFixture.update((DestroyClassTest component) {
         component.items = [
@@ -40,7 +41,8 @@ void main() {
     });
 
     test('should update classes based on changes in map values', () async {
-      var testBed = NgTestBed<ConditionMapTest>(ng.createConditionMapTestFactory());
+      var testBed =
+          NgTestBed<ConditionMapTest>(ng.createConditionMapTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo']));
@@ -156,7 +158,8 @@ void main() {
 
     test('should take initial classes into account when a reference changes',
         () async {
-      var testBed = NgTestBed<ListUpdateWithInitialTest>(ng.createListUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<ListUpdateWithInitialTest>(
+          ng.createListUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo']));
@@ -167,7 +170,8 @@ void main() {
     });
 
     test('should ignore empty or blank class names', () async {
-      var testBed = NgTestBed<ListUpdateWithInitialTest>(ng.createListUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<ListUpdateWithInitialTest>(
+          ng.createListUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((ListUpdateWithInitialTest component) {
@@ -177,7 +181,8 @@ void main() {
     });
 
     test('should trim blanks from class names', () async {
-      var testBed = NgTestBed<ListUpdateWithInitialTest>(ng.createListUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<ListUpdateWithInitialTest>(
+          ng.createListUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((ListUpdateWithInitialTest component) {
@@ -220,14 +225,16 @@ void main() {
     });
 
     test('should add classes specified in a string literal', () async {
-      var testBed = NgTestBed<StringLiteralTest>(ng.createStringLiteralTestFactory());
+      var testBed =
+          NgTestBed<StringLiteralTest>(ng.createStringLiteralTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo', 'bar', 'foo-bar', 'fooBar']));
     });
 
     test('should update classes based on changes to the string', () async {
-      var testBed = NgTestBed<StringUpdateTest>(ng.createStringUpdateTestFactory());
+      var testBed =
+          NgTestBed<StringUpdateTest>(ng.createStringUpdateTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo']));
@@ -243,7 +250,8 @@ void main() {
 
     test('should remove active classes when switching from string to null',
         () async {
-      var testBed = NgTestBed<StringUpdateTest>(ng.createStringUpdateTestFactory());
+      var testBed =
+          NgTestBed<StringUpdateTest>(ng.createStringUpdateTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo']));
@@ -256,7 +264,8 @@ void main() {
     test(
         'should take initial classes into account when '
         'switching from string to null', () async {
-      var testBed = NgTestBed<StringUpdateWithInitialTest>(ng.createStringUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<StringUpdateWithInitialTest>(
+          ng.createStringUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo']));
@@ -267,7 +276,8 @@ void main() {
     });
 
     test('should ignore empty and blank strings', () async {
-      var testBed = NgTestBed<StringUpdateWithInitialTest>(ng.createStringUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<StringUpdateWithInitialTest>(
+          ng.createStringUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((StringUpdateWithInitialTest component) {
@@ -277,7 +287,8 @@ void main() {
     });
 
     test('should cooperate with the class attribute', () async {
-      var testBed = NgTestBed<MapUpdateWithInitialTest>(ng.createMapUpdateWithInitialTestFactory());
+      var testBed = NgTestBed<MapUpdateWithInitialTest>(
+          ng.createMapUpdateWithInitialTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((MapUpdateWithInitialTest component) {
@@ -295,8 +306,8 @@ void main() {
     });
 
     test('should cooperate with interpolated class attribute', () async {
-      var testBed =
-          NgTestBed<MapUpdateWithInitialInterpolationTest>(ng.createMapUpdateWithInitialInterpolationTestFactory());
+      var testBed = NgTestBed<MapUpdateWithInitialInterpolationTest>(
+          ng.createMapUpdateWithInitialInterpolationTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture
@@ -317,8 +328,8 @@ void main() {
     });
 
     test('should cooperate with class attribute and binding to it', () async {
-      var testBed =
-          NgTestBed<MapUpdateWithInitialBindingTest>(ng.createMapUpdateWithInitialBindingTestFactory());
+      var testBed = NgTestBed<MapUpdateWithInitialBindingTest>(
+          ng.createMapUpdateWithInitialBindingTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((MapUpdateWithInitialBindingTest component) {
@@ -337,8 +348,8 @@ void main() {
 
     test('should cooperate with class attribute and class.name binding',
         () async {
-      var testBed =
-          NgTestBed<MapUpdateWithConditionBindingTest>(ng.createMapUpdateWithConditionBindingTestFactory());
+      var testBed = NgTestBed<MapUpdateWithConditionBindingTest>(
+          ng.createMapUpdateWithConditionBindingTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['init', 'foo', 'baz']));
@@ -359,7 +370,8 @@ void main() {
     test(
         'should cooperate with initial class and class '
         'attribute binding when binding changes', () async {
-      var testBed = NgTestBed<MapUpdateWithStringBindingTest>(ng.createMapUpdateWithStringBindingTestFactory());
+      var testBed = NgTestBed<MapUpdateWithStringBindingTest>(
+          ng.createMapUpdateWithStringBindingTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['init', 'foo']));
@@ -380,8 +392,8 @@ void main() {
     test(
         'should cooperate with interpolated class attribute '
         'and clas.name binding', () async {
-      var testBed =
-          NgTestBed<InterpolationWithConditionBindingTest>(ng.createInterpolationWithConditionBindingTestFactory());
+      var testBed = NgTestBed<InterpolationWithConditionBindingTest>(
+          ng.createInterpolationWithConditionBindingTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       expect(content.classes, equals(['foo', 'baz']));

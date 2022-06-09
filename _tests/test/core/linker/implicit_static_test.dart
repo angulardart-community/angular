@@ -10,25 +10,29 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support implicit static field', () async {
-    final testBed = NgTestBed<TestStaticField>(ng.createTestStaticFieldFactory());
+    final testBed =
+        NgTestBed<TestStaticField>(ng.createTestStaticFieldFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, TestStaticField.field);
   });
 
   test('should support implicit static getter', () async {
-    final testBed = NgTestBed<TestStaticGetter>(ng.createTestStaticGetterFactory());
+    final testBed =
+        NgTestBed<TestStaticGetter>(ng.createTestStaticGetterFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, TestStaticGetter.getter);
   });
 
   test('should support implicit static method', () async {
-    final testBed = NgTestBed<TestStaticMethod>(ng.createTestStaticMethodFactory());
+    final testBed =
+        NgTestBed<TestStaticMethod>(ng.createTestStaticMethodFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, TestStaticMethod.method());
   });
 
   test('should support implicit static setter', () async {
-    final testBed = NgTestBed<TestStaticSetter>(ng.createTestStaticSetterFactory());
+    final testBed =
+        NgTestBed<TestStaticSetter>(ng.createTestStaticSetterFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, isEmpty);
     await testFixture.update((_) {
@@ -38,13 +42,15 @@ void main() {
   });
 
   test('should support calling an implicit static field', () async {
-    final testBed = NgTestBed<TestCallingStaticField>(ng.createTestCallingStaticFieldFactory());
+    final testBed = NgTestBed<TestCallingStaticField>(
+        ng.createTestCallingStaticFieldFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, TestCallingStaticField.field());
   });
 
   test('should support binding an implicit static tear-off', () async {
-    final testBed = NgTestBed<TestStaticTearOff>(ng.createTestStaticTearOffFactory());
+    final testBed =
+        NgTestBed<TestStaticTearOff>(ng.createTestStaticTearOffFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, TestStaticTearOff.method());
   });

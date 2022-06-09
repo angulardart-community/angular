@@ -2,8 +2,7 @@ import 'dart:html';
 import 'dart:js_util' as js_util;
 
 import 'package:ngdart/angular.dart';
-import 'package:ngforms/src/directives/shared.dart'
-    show setElementDisabled;
+import 'package:ngforms/src/directives/shared.dart' show setElementDisabled;
 
 import 'control_value_accessor.dart'
     show ChangeHandler, ControlValueAccessor, ngValueAccessor, TouchHandler;

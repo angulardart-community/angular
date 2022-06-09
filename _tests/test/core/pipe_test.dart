@@ -8,7 +8,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support pipes with optional paramters', () async {
-    final fixture = await NgTestBed<Example>(ng.createExampleFactory()).create();
+    final fixture =
+        await NgTestBed<Example>(ng.createExampleFactory()).create();
     expect(fixture.text, contains('Unpiped: 2014-04-29 06:04:00.000'));
     expect(fixture.text, contains('Piped: Apr 29, 2014'));
   });
@@ -21,7 +22,8 @@ void main() {
   });
 
   test('pure pipe should only be invoked when its input changes', () async {
-    final testBed = NgTestBed<TestPurePipeComponent>(ng.createTestPurePipeComponentFactory());
+    final testBed = NgTestBed<TestPurePipeComponent>(
+        ng.createTestPurePipeComponentFactory());
     final testFixture = await testBed.create();
     // Initial invocation.
     expect(PurePipe.singleton.invocations, equals(1));
@@ -35,7 +37,8 @@ void main() {
 
   test('should pass a pipe with multiple arguments as argument to function',
       () async {
-    final testBed = NgTestBed<TestOptionalArgument>(ng.createTestOptionalArgumentFactory());
+    final testBed =
+        NgTestBed<TestOptionalArgument>(ng.createTestOptionalArgumentFactory());
     final testFixture = await testBed.create(
       beforeChangeDetection: (component) {
         component
@@ -49,7 +52,8 @@ void main() {
   });
 
   test('a missing @Optional() pipe dependency does not throw', () async {
-    var testBed = NgTestBed<TestOptionalAnnotation>(ng.createTestOptionalAnnotationFactory());
+    var testBed = NgTestBed<TestOptionalAnnotation>(
+        ng.createTestOptionalAnnotationFactory());
     expect(testBed.create(), completes);
   });
 }

@@ -37,7 +37,8 @@ void main() {
     });
 
     test('should cooperate with the style attribute', () async {
-      var testBed = NgTestBed<MapUpdateWithDefaultTest>(ng.createMapUpdateWithDefaultTestFactory());
+      var testBed = NgTestBed<MapUpdateWithDefaultTest>(
+          ng.createMapUpdateWithDefaultTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((MapUpdateWithDefaultTest component) {
@@ -54,7 +55,8 @@ void main() {
 
     test('should cooperate with the style.[styleName]="expr" special-case',
         () async {
-      var testBed = NgTestBed<MapUpdateWithStyleExprTest>(ng.createMapUpdateWithStyleExprTestFactory());
+      var testBed = NgTestBed<MapUpdateWithStyleExprTest>(
+          ng.createMapUpdateWithStyleExprTestFactory());
       var testFixture = await testBed.create();
       var content = testFixture.rootElement.querySelector('div')!;
       await testFixture.update((MapUpdateWithStyleExprTest component) {

@@ -18,8 +18,8 @@ void main() {
     });
 
     test('should support exact attribute selector', () async {
-      final testBed =
-          NgTestBed<ExactAttributeSelectorTestComponent>(ng.createExactAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<ExactAttributeSelectorTestComponent>(
+          ng.createExactAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo]')!.text, isEmpty);
@@ -28,8 +28,8 @@ void main() {
     });
 
     test('should support hypen attribute selector', () async {
-      final testBed =
-          NgTestBed<HyphenAttributeSelectorTestComponent>(ng.createHyphenAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<HyphenAttributeSelectorTestComponent>(
+          ng.createHyphenAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -38,8 +38,8 @@ void main() {
     });
 
     test('should support list attribute selector', () async {
-      final testBed =
-          NgTestBed<ListAttributeSelectorTestComponent>(ng.createListAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<ListAttributeSelectorTestComponent>(
+          ng.createListAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -49,8 +49,8 @@ void main() {
     });
 
     test('should support prefix attribute selector', () async {
-      final testBed =
-          NgTestBed<PrefixAttributeSelectorTestComponent>(ng.createPrefixAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<PrefixAttributeSelectorTestComponent>(
+          ng.createPrefixAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -59,8 +59,8 @@ void main() {
     });
 
     test('should support set attribute selector', () async {
-      final testBed =
-          NgTestBed<SetAttributeSelectorTestComponent>(ng.createSetAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<SetAttributeSelectorTestComponent>(
+          ng.createSetAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('div')!.text, isEmpty);
@@ -70,8 +70,8 @@ void main() {
     });
 
     test('should support substring attribute selector', () async {
-      final testBed =
-          NgTestBed<SubstringAttributeSelectorTestComponent>(ng.createSubstringAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<SubstringAttributeSelectorTestComponent>(
+          ng.createSubstringAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
@@ -80,8 +80,8 @@ void main() {
     });
 
     test('should support suffix attribute selector', () async {
-      final testBed =
-          NgTestBed<SuffixAttributeSelectorTestComponent>(ng.createSuffixAttributeSelectorTestComponentFactory());
+      final testBed = NgTestBed<SuffixAttributeSelectorTestComponent>(
+          ng.createSuffixAttributeSelectorTestComponentFactory());
       final testFixture = await testBed.create();
       final select = testFixture.rootElement.querySelector;
       expect(select('[foo=bar]')!.text, 'Matched!');
