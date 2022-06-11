@@ -4,14 +4,14 @@ See https://github.com/angulardart-community for current updates on this project
 
 ## Packages
 
-[ngdart](https://github.com/angulardart-community/angular/tree/master/angular) 
-[ngforms](https://github.com/angulardart-community/angular/tree/master/angular_forms) 
-[ngrouter](https://github.com/angulardart-community/angular/tree/master/angular_router) 
-[ngtest](https://github.com/angulardart-community/angular/tree/master/angular_test) 
+[ngdart](https://github.com/angulardart-community/angular/tree/master/ngdart) 
+[ngforms](https://github.com/angulardart-community/angular/tree/master/ngforms) 
+[ngrouter](https://github.com/angulardart-community/angular/tree/master/ngrouter) 
+[ngtest](https://github.com/angulardart-community/angular/tree/master/ngtest) 
 [ngcomponents](https://github.com/angulardart-community/angular_components)
-[ngast](https://github.com/angulardart-community/angular/tree/master/angular_ast) 
-[ngcompiler](https://github.com/angulardart-community/angular/tree/master/angular_compiler)
-[ngdart_cli](https://github.com/angulardart-community/ngdart) 
+[ngast](https://github.com/angulardart-community/angular/tree/master/ngast) 
+[ngcompiler](https://github.com/angulardart-community/angular/tree/master/ngcompiler)
+[ngdart_cli](https://github.com/angulardart-community/ngdart_cli) 
 
 
 ## Resources

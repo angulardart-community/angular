@@ -59,29 +59,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: angular; dart analyze
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart analyze
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: angular_ast; dart analyze
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart analyze
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: angular_compiler; dart analyze
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart analyze
     needs:
       - job_001
@@ -107,29 +107,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: "angular; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: "dart format --output=none --set-exit-if-changed ."
     needs:
       - job_001
@@ -155,29 +155,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: angular; dart analyze
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart analyze
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: angular_ast; dart analyze
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart analyze
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: angular_compiler; dart analyze
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart analyze
     needs:
       - job_001
@@ -203,29 +203,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: "angular; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: "dart format --output=none --set-exit-if-changed ."
     needs:
       - job_001
@@ -251,29 +251,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: angular; dart analyze
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart analyze
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: angular_ast; dart analyze
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart analyze
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: angular_compiler; dart analyze
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart analyze
     needs:
       - job_001
@@ -299,29 +299,29 @@ jobs:
       - id: angular_pub_upgrade
         name: angular; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: dart pub upgrade
       - name: "angular; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_pub_upgrade.conclusion == 'success'"
-        working-directory: angular
+        working-directory: ngdart
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: "dart format --output=none --set-exit-if-changed ."
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: "dart format --output=none --set-exit-if-changed ."
     needs:
       - job_001
@@ -383,11 +383,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -419,11 +419,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -455,11 +455,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -491,11 +491,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -527,11 +527,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -599,11 +599,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -635,11 +635,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -671,11 +671,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -707,11 +707,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -743,11 +743,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -815,11 +815,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -851,11 +851,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -887,11 +887,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -923,11 +923,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -959,11 +959,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner build --fail-on-severe"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
@@ -1103,11 +1103,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1157,11 +1157,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1211,11 +1211,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1265,11 +1265,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1319,11 +1319,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1481,11 +1481,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1535,11 +1535,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1589,11 +1589,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1643,11 +1643,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1697,11 +1697,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1859,11 +1859,11 @@ jobs:
       - id: angular_ast_pub_upgrade
         name: angular_ast; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart pub upgrade
       - name: "angular_ast; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_ast_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_ast
+        working-directory: ngast
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1913,11 +1913,11 @@ jobs:
       - id: angular_compiler_pub_upgrade
         name: angular_compiler; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart pub upgrade
       - name: "angular_compiler; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_compiler_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_compiler
+        working-directory: ngcompiler
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -1967,11 +1967,11 @@ jobs:
       - id: angular_forms_pub_upgrade
         name: angular_forms; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart pub upgrade
       - name: "angular_forms; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_forms_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_forms
+        working-directory: ngforms
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -2021,11 +2021,11 @@ jobs:
       - id: angular_router_pub_upgrade
         name: angular_router; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart pub upgrade
       - name: "angular_router; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_router_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_router
+        working-directory: ngrouter
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001
@@ -2075,11 +2075,11 @@ jobs:
       - id: angular_test_pub_upgrade
         name: angular_test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart pub upgrade
       - name: "angular_test; dart run build_runner test --fail-on-severe -- -P ci"
         if: "always() && steps.angular_test_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_test
+        working-directory: ngtest
         run: dart run build_runner test --fail-on-severe -- -P ci
     needs:
       - job_001

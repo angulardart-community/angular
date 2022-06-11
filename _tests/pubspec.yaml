@@ -32,15 +32,15 @@ dev_dependencies:
 # DO NOT REMOVE. We don't publish this package, it is just for testing.
 dependency_overrides:
   ngdart:
-    path: ../angular
+    path: ../ngdart
   ngast:
-    path: ../angular_ast
+    path: ../ngast
   ngcompiler:
-    path: ../angular_compiler
+    path: ../ngcompiler
   ngforms:
-    path: ../angular_forms
+    path: ../ngforms
   ngrouter:
-    path: ../angular_router
+    path: ../ngrouter
   ngtest:
-    path: ../angular_test
+    path: ../ngtest
   analyzer: ^4.0.0

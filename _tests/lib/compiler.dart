@@ -28,17 +28,17 @@ final Future<PackageAssetReader> _packageAssets = (() async {
   }
   final root = Platform.environment['PKG_ANGULAR_ROOT'];
   final path = '$runfiles/$root';
-  if (!FileSystemEntity.isFileSync('$path/angular/lib/angular.dart')) {
-    throw StateError('Could not find $path/angular/lib/angular.dart');
+  if (!FileSystemEntity.isFileSync('$path/ngdart/lib/angular.dart')) {
+    throw StateError('Could not find $path/ngdart/lib/angular.dart');
   }
-  final pathToMeta = '$path/angular/lib/src/meta.dart';
+  final pathToMeta = '$path/ngdart/lib/src/meta.dart';
   if (!FileSystemEntity.isFileSync(pathToMeta)) {
     throw StateError('Could not find $pathToMeta');
   }
-  print('file://$path/angular/lib');
+  print('file://$path/ngdart/lib');
   return PackageAssetReader.forPackages({
-    ngPackage: '$path/angular/',
-    ngCompiler: '$path/angular_compiler/',
+    ngPackage: '$path/ngdart/',
+    ngCompiler: '$path/ngcompiler/',
   });
 })();
 
@@ -48,7 +48,7 @@ final Future<PackageAssetReader> _packageAssets = (() async {
 // rules as part of open sourcing process to make sure this works both
 // externally and internally.
 const ngPackage = 'ngdart';
-const ngCompiler = 'angular_compiler';
+const ngCompiler = 'ngcompiler';
 const ngImport = 'package:$ngPackage/angular.dart';
 final _ngFiles = Glob('lib/**.dart');
 
