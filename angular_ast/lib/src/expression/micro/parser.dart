@@ -35,7 +35,7 @@ class _RecursiveMicroAstParser {
   final String _directive;
   final int? _expressionOffset;
   final int? _expressionLength;
-//  final String _sourceUrl;
+  // final String _sourceUrl;
   final Iterator<NgMicroToken> _tokens;
 
   final letBindings = <LetBindingAst>[];
@@ -60,7 +60,7 @@ class _RecursiveMicroAstParser {
         _parseLet();
       } else if (token.type == NgMicroTokenType.bindIdentifier) {
         _parseBind();
-      } else if (token.type == NgMicroTokenType.bindExpression && first) {
+      } else if (first && token.type == NgMicroTokenType.bindExpression) {
         _parseImplicitBind();
       } else if (token.type != NgMicroTokenType.endExpression) {
         throw _unexpected(token);
@@ -143,7 +143,7 @@ class _RecursiveMicroAstParser {
   AngularParserException _unexpected([NgMicroToken? token]) {
     token ??= _tokens.current;
     return AngularParserException(
-      ParserErrorCode.INVALID_MICRO_EXPRESSION,
+      ParserErrorCode.invalidMicroExpression,
       _expressionOffset,
       _expressionLength,
     );

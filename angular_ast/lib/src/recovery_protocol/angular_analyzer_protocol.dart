@@ -19,7 +19,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
     NgScannerState? returnState;
     NgToken? returnToken;
 
-    if (current.type == NgSimpleTokenType.EOF) {
+    if (current.type == NgSimpleTokenType.eof) {
       reader.putBack(current);
       returnState = NgScannerState.scanStart;
       returnToken = NgToken.generateErrorSynthetic(
@@ -52,7 +52,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
       returnToken = NgToken.generateErrorSynthetic(
           offset, NgTokenType.beforeElementDecorator,
           lexeme: ' ');
-    } else if (type == NgSimpleTokenType.EOF ||
+    } else if (type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart) {
@@ -97,7 +97,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
       returnToken = NgToken.generateErrorSynthetic(
           offset, NgTokenType.beforeElementDecorator,
           lexeme: ' ');
-    } else if (type == NgSimpleTokenType.EOF ||
+    } else if (type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart) {
@@ -121,7 +121,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
     if (type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.voidCloseTag) {
       if (type != NgSimpleTokenType.voidCloseTag) {
         reader.putBack(current);
@@ -161,7 +161,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
     } else if (type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart ||
-        type == NgSimpleTokenType.EOF) {
+        type == NgSimpleTokenType.eof) {
       reader.putBack(current);
       returnToken = NgToken.generateErrorSynthetic(
           current.offset, NgTokenType.openElementEnd);
@@ -175,7 +175,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
   RecoverySolution scanAfterInterpolation(
       NgSimpleToken current, NgTokenReversibleReader<Object> reader) {
     var type = current.type;
-    if (type == NgSimpleTokenType.EOF ||
+    if (type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.mustacheBegin ||
         type == NgSimpleTokenType.whitespace) {
       reader.putBack(current);
@@ -211,7 +211,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
   @override
   RecoverySolution scanComment(
       NgSimpleToken current, NgTokenReversibleReader<Object> reader) {
-    if (current.type == NgSimpleTokenType.EOF) {
+    if (current.type == NgSimpleTokenType.eof) {
       return RecoverySolution(
           NgScannerState.scanStart,
           NgToken.generateErrorSynthetic(
@@ -227,7 +227,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
     NgToken? returnToken;
     var type = current.type;
 
-    if (type == NgSimpleTokenType.EOF ||
+    if (type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.mustacheBegin ||
         type == NgSimpleTokenType.mustacheEnd ||
         type == NgSimpleTokenType.whitespace) {
@@ -252,7 +252,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
         type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.doubleQuote ||
         type == NgSimpleTokenType.singleQuote) {
       reader.putBack(current);
@@ -298,7 +298,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
         type == NgSimpleTokenType.closeTagStart ||
         type == NgSimpleTokenType.tagEnd ||
         type == NgSimpleTokenType.voidCloseTag ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.equalSign ||
         type == NgSimpleTokenType.hash ||
         type == NgSimpleTokenType.star ||
@@ -340,7 +340,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
     if (type == NgSimpleTokenType.commentBegin ||
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.voidCloseTag) {
       if (type != NgSimpleTokenType.voidCloseTag) {
         reader.putBack(current);
@@ -371,7 +371,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.tagEnd ||
         type == NgSimpleTokenType.commentBegin ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.whitespace) {
       reader.putBack(current);
       returnToken =
@@ -403,7 +403,7 @@ class NgAnalyzerRecoveryProtocol extends RecoveryProtocol {
         type == NgSimpleTokenType.openTagStart ||
         type == NgSimpleTokenType.closeTagStart ||
         type == NgSimpleTokenType.tagEnd ||
-        type == NgSimpleTokenType.EOF ||
+        type == NgSimpleTokenType.eof ||
         type == NgSimpleTokenType.equalSign ||
         type == NgSimpleTokenType.whitespace ||
         type == NgSimpleTokenType.doubleQuote ||

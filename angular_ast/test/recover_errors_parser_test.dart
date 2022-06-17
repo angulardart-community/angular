@@ -41,7 +41,7 @@ void main() {
     expect(element.closeComplement!.isSynthetic, true);
     expect(astsToString(asts), '<div></div>');
 
-    checkException(ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE, 0, 5);
+    checkException(ParserErrorCode.cannotFindMatchingClose, 0, 5);
   });
 
   test('Should add open element tag to dangling close tag', () {
@@ -55,7 +55,7 @@ void main() {
     expect(element.closeComplement!.isSynthetic, false);
     expect(astsToString(asts), '<div></div>');
 
-    checkException(ParserErrorCode.DANGLING_CLOSE_ELEMENT, 0, 6);
+    checkException(ParserErrorCode.danglingCloseElement, 0, 6);
   });
 
   test('Should not close a void tag', () {
@@ -77,7 +77,7 @@ void main() {
     expect(element.closeComplement!.isSynthetic, true);
     expect(astsToString(asts), '<div><div><div>text1</div>text2</div></div>');
 
-    checkException(ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE, 0, 5);
+    checkException(ParserErrorCode.cannotFindMatchingClose, 0, 5);
   });
 
   test('Should add synthetic open to dangling close within nested', () {
@@ -91,7 +91,7 @@ void main() {
     var exceptions = recoveringExceptionHandler.exceptions;
     expect(exceptions.length, 1);
     var e = exceptions[0];
-    expect(e.errorCode, ParserErrorCode.DANGLING_CLOSE_ELEMENT);
+    expect(e.errorCode, ParserErrorCode.danglingCloseElement);
     expect(e.offset, 32);
     expect(e.length, 6);
   });
@@ -127,19 +127,19 @@ void main() {
 
     // Dangling '</c>'
     var e1 = exceptions[0];
-    expect(e1.errorCode, ParserErrorCode.DANGLING_CLOSE_ELEMENT);
+    expect(e1.errorCode, ParserErrorCode.danglingCloseElement);
     expect(e1.offset, 6);
     expect(e1.length, 4);
 
     // Unmatching '</a>'; error at <b>
     var e2 = exceptions[1];
-    expect(e2.errorCode, ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE);
+    expect(e2.errorCode, ParserErrorCode.cannotFindMatchingClose);
     expect(e2.offset, 3);
     expect(e2.length, 3);
 
     // Dangling '</b>'
     var e3 = exceptions[2];
-    expect(e3.errorCode, ParserErrorCode.DANGLING_CLOSE_ELEMENT);
+    expect(e3.errorCode, ParserErrorCode.danglingCloseElement);
     expect(e3.offset, 14);
     expect(e3.length, 4);
   });
@@ -157,7 +157,7 @@ void main() {
     expect((ngContainer as ContainerAst).closeComplement.isSynthetic, true);
     expect(astsToString(asts), '<div><ng-container></ng-container></div>');
 
-    checkException(ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE, 5, 14);
+    checkException(ParserErrorCode.cannotFindMatchingClose, 5, 14);
   });
 
   test('Should resolve dangling close ng-container', () {
@@ -173,7 +173,7 @@ void main() {
     expect((ngContainer as ContainerAst).closeComplement.isSynthetic, false);
     expect(astsToString(asts), '<div><ng-container></ng-container></div>');
 
-    checkException(ParserErrorCode.DANGLING_CLOSE_ELEMENT, 5, 15);
+    checkException(ParserErrorCode.danglingCloseElement, 5, 15);
   });
 
   test('Should handle ng-container used with void end', () {
@@ -184,7 +184,7 @@ void main() {
     expect(ngContainer, const TypeMatcher<ContainerAst>());
     expect(astsToString(asts), '<ng-container></ng-container>');
 
-    checkException(ParserErrorCode.NONVOID_ELEMENT_USING_VOID_END, 13, 2);
+    checkException(ParserErrorCode.nonVoidElementUsingVoidEnd, 13, 2);
   });
 
   test('Should drop invalid decorators on ng-container', () {
@@ -208,32 +208,32 @@ void main() {
     expect(exceptions, hasLength(5));
 
     final attrException = exceptions[0];
-    expect(attrException.errorCode,
-        ParserErrorCode.INVALID_DECORATOR_IN_NGCONTAINER);
+    expect(
+        attrException.errorCode, ParserErrorCode.invalidDecoratorInNgContainer);
     expect(attrException.offset, 27);
     expect(attrException.length, 12);
 
     final propException = exceptions[1];
-    expect(propException.errorCode,
-        ParserErrorCode.INVALID_DECORATOR_IN_NGCONTAINER);
+    expect(
+        propException.errorCode, ParserErrorCode.invalidDecoratorInNgContainer);
     expect(propException.offset, 40);
     expect(propException.length, 13);
 
     final eventException = exceptions[2];
     expect(eventException.errorCode,
-        ParserErrorCode.INVALID_DECORATOR_IN_NGCONTAINER);
+        ParserErrorCode.invalidDecoratorInNgContainer);
     expect(eventException.offset, 54);
     expect(eventException.length, 14);
 
     final letException = exceptions[3];
-    expect(letException.errorCode,
-        ParserErrorCode.INVALID_DECORATOR_IN_NGCONTAINER);
+    expect(
+        letException.errorCode, ParserErrorCode.invalidDecoratorInNgContainer);
     expect(letException.offset, 69);
     expect(letException.length, 14);
 
     final refException = exceptions[4];
-    expect(refException.errorCode,
-        ParserErrorCode.INVALID_DECORATOR_IN_NGCONTAINER);
+    expect(
+        refException.errorCode, ParserErrorCode.invalidDecoratorInNgContainer);
     expect(refException.offset, 84);
     expect(refException.length, 4);
   });
@@ -253,7 +253,7 @@ void main() {
     expect(
         astsToString(asts), '<div><ng-content select="*"></ng-content></div>');
 
-    checkException(ParserErrorCode.NGCONTENT_MUST_CLOSE_IMMEDIATELY, 5, 12);
+    checkException(ParserErrorCode.ngContentMustCLoseImmediately, 5, 12);
   });
 
   test('Should resolve dangling close ng-content', () {
@@ -271,7 +271,7 @@ void main() {
     expect(
         astsToString(asts), '<div><ng-content select="*"></ng-content></div>');
 
-    checkException(ParserErrorCode.DANGLING_CLOSE_ELEMENT, 5, 13);
+    checkException(ParserErrorCode.danglingCloseElement, 5, 13);
   });
 
   test('Should resolve ng-content with children', () {
@@ -305,12 +305,12 @@ void main() {
     expect(exceptions.length, 2);
 
     var e1 = exceptions[0];
-    expect(e1.errorCode, ParserErrorCode.NGCONTENT_MUST_CLOSE_IMMEDIATELY);
+    expect(e1.errorCode, ParserErrorCode.ngContentMustCLoseImmediately);
     expect(e1.offset, 0);
     expect(e1.length, 12);
 
     var e2 = exceptions[1];
-    expect(e2.errorCode, ParserErrorCode.DANGLING_CLOSE_ELEMENT);
+    expect(e2.errorCode, ParserErrorCode.danglingCloseElement);
     expect(e2.offset, 23);
     expect(e2.length, 13);
   });
@@ -323,7 +323,7 @@ void main() {
     expect(ngContent, TypeMatcher<EmbeddedContentAst>());
     expect(astsToString(asts), '<ng-content select="*"></ng-content>');
 
-    checkException(ParserErrorCode.NONVOID_ELEMENT_USING_VOID_END, 11, 2);
+    checkException(ParserErrorCode.nonVoidElementUsingVoidEnd, 11, 2);
   });
 
   test('Should allow (and drop) whitespace inside ng-content', () {
@@ -354,7 +354,7 @@ void main() {
         '<div><template ngFor [ngForOf]="items" let-item let-i="index">'
         '</template></div>');
 
-    checkException(ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE, 5, 57);
+    checkException(ParserErrorCode.cannotFindMatchingClose, 5, 57);
   });
 
   test('Should resolve dangling close template', () {
@@ -371,7 +371,7 @@ void main() {
         (template as EmbeddedTemplateAst).closeComplement!.isSynthetic, false);
     expect(astsToString(asts), '<div><template></template></div>');
 
-    checkException(ParserErrorCode.DANGLING_CLOSE_ELEMENT, 5, 11);
+    checkException(ParserErrorCode.danglingCloseElement, 5, 11);
   });
 
   test('Should handle template used with void end', () {
@@ -386,7 +386,7 @@ void main() {
         '<template ngFor [ngForOf]="items" let-item let-i="index">'
         '</template>');
 
-    checkException(ParserErrorCode.NONVOID_ELEMENT_USING_VOID_END, 56, 2);
+    checkException(ParserErrorCode.nonVoidElementUsingVoidEnd, 56, 2);
   });
 
   test('Should drop invalid attrs in ng-content', () {
@@ -403,12 +403,12 @@ void main() {
     expect(exceptions.length, 2);
 
     var e1 = exceptions[0];
-    expect(e1.errorCode, ParserErrorCode.INVALID_DECORATOR_IN_NGCONTENT);
+    expect(e1.errorCode, ParserErrorCode.invalidDecoratorInNgContent);
     expect(e1.offset, 12);
     expect(e1.length, 16);
 
     var e2 = exceptions[1];
-    expect(e2.errorCode, ParserErrorCode.INVALID_DECORATOR_IN_NGCONTENT);
+    expect(e2.errorCode, ParserErrorCode.invalidDecoratorInNgContent);
     expect(e2.offset, 40);
     expect(e2.length, 26);
   });
@@ -421,7 +421,7 @@ void main() {
     var ngcontent = asts[0] as EmbeddedContentAst;
     expect(ngcontent.selector, '*');
 
-    checkException(ParserErrorCode.DUPLICATE_SELECT_DECORATOR, 25, 20);
+    checkException(ParserErrorCode.duplicateSelectDecorator, 25, 20);
   });
 
   test('Should drop duplicate reference attrs in ng-content', () {
@@ -432,7 +432,7 @@ void main() {
     var ngcontent = asts[0] as EmbeddedContentAst;
     expect(ngcontent.reference, ReferenceAst('foo'));
 
-    checkException(ParserErrorCode.DUPLICATE_REFERENCE_DECORATOR, 17, 4);
+    checkException(ParserErrorCode.duplicateReferenceDecorator, 17, 4);
   });
 
   test('Should resolve property name with too many fixes', () {
@@ -446,7 +446,7 @@ void main() {
     expect(property.postfix, 'postfix');
     expect(property.unit, 'unit');
 
-    checkException(ParserErrorCode.PROPERTY_NAME_TOO_MANY_FIXES, 6, 25);
+    checkException(ParserErrorCode.propertyNameTooManyFixes, 6, 25);
   });
 
   test('Should resolve on- event prefix without decorator', () {
@@ -460,7 +460,7 @@ void main() {
     expect(event.prefixToken.lexeme, 'on-');
     expect(event.value, 'someValue');
 
-    checkException(ParserErrorCode.ELEMENT_DECORATOR_AFTER_PREFIX, 5, 3);
+    checkException(ParserErrorCode.elementDecoratorAfterPrefix, 5, 3);
   });
 
   test('Should resolve bind- event prefix without decorator', () {
@@ -474,7 +474,7 @@ void main() {
     expect(property.prefixToken.lexeme, 'bind-');
     expect(property.value, 'someValue');
 
-    checkException(ParserErrorCode.ELEMENT_DECORATOR_AFTER_PREFIX, 5, 5);
+    checkException(ParserErrorCode.elementDecoratorAfterPrefix, 5, 5);
   });
 
   test('Should resolve unterminated mustache in attr value', () {
@@ -513,11 +513,11 @@ void main() {
     var e1 = exceptions[0];
     var e2 = exceptions[1];
 
-    expect(e1.errorCode, ParserErrorCode.UNTERMINATED_MUSTACHE);
+    expect(e1.errorCode, ParserErrorCode.unterminatedMustache);
     expect(e1.offset, 15);
     expect(e1.length, 2);
 
-    expect(e2.errorCode, ParserErrorCode.UNTERMINATED_MUSTACHE);
+    expect(e2.errorCode, ParserErrorCode.unterminatedMustache);
     expect(e2.offset, 27);
     expect(e2.length, 2);
   });
@@ -533,7 +533,7 @@ void main() {
     expect(exceptions.length, 1);
     var e = exceptions[0];
 
-    expect(e.errorCode, ParserErrorCode.INVALID_LET_BINDING_IN_NONTEMPLATE);
+    expect(e.errorCode, ParserErrorCode.invalidLetBindingInNoTemplate);
     expect(e.offset, 5);
     expect(e.length, 11);
   });
@@ -549,7 +549,7 @@ void main() {
     expect(exceptions.length, 1);
     var e = exceptions[0];
 
-    expect(e.errorCode, ParserErrorCode.ELEMENT_DECORATOR_AFTER_PREFIX);
+    expect(e.errorCode, ParserErrorCode.elementDecoratorAfterPrefix);
     expect(e.offset, 10);
     expect(e.length, 4);
   });
@@ -590,11 +590,11 @@ void main() {
     var e1 = exceptions[0];
     var e2 = exceptions[1];
 
-    expect(e1.errorCode, ParserErrorCode.UNOPENED_MUSTACHE);
+    expect(e1.errorCode, ParserErrorCode.unopenedMustache);
     expect(e1.offset, 25);
     expect(e1.length, 2);
 
-    expect(e2.errorCode, ParserErrorCode.UNOPENED_MUSTACHE);
+    expect(e2.errorCode, ParserErrorCode.unopenedMustache);
     expect(e2.offset, 38);
     expect(e2.length, 2);
   });
@@ -616,17 +616,17 @@ void main() {
     expect(exceptions, hasLength(3));
 
     final e1 = exceptions[0];
-    expect(e1.errorCode, ParserErrorCode.UNCLOSED_QUOTE);
+    expect(e1.errorCode, ParserErrorCode.enclosedQuote);
     expect(e1.offset, 7);
     expect(e1.length, 9);
 
     final e2 = exceptions[1];
-    expect(e2.errorCode, ParserErrorCode.EXPECTED_TAG_CLOSE);
+    expect(e2.errorCode, ParserErrorCode.expectedTagClose);
     expect(e2.offset, 7);
     expect(e2.length, 9);
 
     final e3 = exceptions[2];
-    expect(e3.errorCode, ParserErrorCode.CANNOT_FIND_MATCHING_CLOSE);
+    expect(e3.errorCode, ParserErrorCode.cannotFindMatchingClose);
     expect(e3.offset, 0);
     expect(e3.length, 16);
   });

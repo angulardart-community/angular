@@ -181,7 +181,7 @@ class NgMicroScanner {
   AngularParserException _unexpected() {
     _state = _NgMicroScannerState.hasError;
     return AngularParserException(
-      ParserErrorCode.INVALID_MICRO_EXPRESSION,
+      ParserErrorCode.invalidMicroExpression,
       _expressionOffset,
       _expressionLength,
     );
