@@ -19,7 +19,8 @@ void main() {
     }
 
     test('@ContentChildren', () async {
-      fixture = await NgTestBed<TestNgForReorderContentChildren>(ng.createTestNgForReorderContentChildrenFactory(),
+      fixture = await NgTestBed<TestNgForReorderContentChildren>(
+        ng.createTestNgForReorderContentChildrenFactory(),
       ).create(
         beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
@@ -36,9 +37,10 @@ void main() {
     });
 
     test('@ContentChildren, when nested', () async {
-      fixture = await NgTestBed<TestNestedNgForReorderContentChildren>(ng.createTestNestedNgForReorderContentChildrenFactory() )
-        .create(
-          beforeChangeDetection: (c) => c.items = [1, 2, 3],
+      fixture = await NgTestBed<TestNestedNgForReorderContentChildren>(
+              ng.createTestNestedNgForReorderContentChildrenFactory())
+          .create(
+        beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
 
       expect(
@@ -53,9 +55,10 @@ void main() {
     });
 
     test('@ContentChildren, when nested with a #referenced child', () async {
-      fixture = await NgTestBed<TestReferencedNgForReorderContentChildren>(ng.createTestReferencedNgForReorderContentChildrenFactory())
-        .create(
-          beforeChangeDetection: (c) => c.items = [1, 2, 3],
+      fixture = await NgTestBed<TestReferencedNgForReorderContentChildren>(
+              ng.createTestReferencedNgForReorderContentChildrenFactory())
+          .create(
+        beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
 
       expect(
@@ -71,9 +74,10 @@ void main() {
     });
 
     test('@ViewChildren', () async {
-      fixture = await NgTestBed<TestNgForReorderViewChildren>(ng.createTestNgForReorderViewChildrenFactory())
-        .create(
-          beforeChangeDetection: (c) => c.items = [1, 2, 3],
+      fixture = await NgTestBed<TestNgForReorderViewChildren>(
+              ng.createTestNgForReorderViewChildrenFactory())
+          .create(
+        beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
 
       expect(
@@ -88,9 +92,10 @@ void main() {
     });
 
     test('@ViewChildren, when nested', () async {
-      fixture = await NgTestBed<TestNestedNgForReorderViewChildren>(ng.createTestNestedNgForReorderViewChildrenFactory())
-        .create(
-          beforeChangeDetection: (c) => c.items = [1, 2, 3],
+      fixture = await NgTestBed<TestNestedNgForReorderViewChildren>(
+              ng.createTestNestedNgForReorderViewChildrenFactory())
+          .create(
+        beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
 
       expect(
@@ -105,9 +110,10 @@ void main() {
     });
 
     test('@ViewChildren, when nested with a #referenced child', () async {
-      fixture = await NgTestBed<TestReferencedNgForReorderViewChildren>(ng.createTestReferencedNgForReorderViewChildrenFactory())
-        .create(
-          beforeChangeDetection: (c) => c.items = [1, 2, 3],
+      fixture = await NgTestBed<TestReferencedNgForReorderViewChildren>(
+              ng.createTestReferencedNgForReorderViewChildrenFactory())
+          .create(
+        beforeChangeDetection: (c) => c.items = [1, 2, 3],
       );
 
       expect(

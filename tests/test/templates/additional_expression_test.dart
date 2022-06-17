@@ -12,7 +12,9 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should parse identifiers from prefixed exports', () async {
-    final fixture = await NgTestBed<TestPrefixedExports>(ng.createTestPrefixedExportsFactory()).create();
+    final fixture = await NgTestBed<TestPrefixedExports>(
+            ng.createTestPrefixedExportsFactory())
+        .create();
     expect(
       fixture.text,
       allOf(
@@ -28,7 +30,9 @@ void main() {
     late NgTestFixture<TestNonRootAssignment> fixture;
 
     setUp(() async {
-      fixture = await NgTestBed<TestNonRootAssignment>(ng.createTestNonRootAssignmentFactory()).create();
+      fixture = await NgTestBed<TestNonRootAssignment>(
+              ng.createTestNonRootAssignmentFactory())
+          .create();
     });
 
     test('(a = event)', () async {
@@ -67,7 +71,9 @@ void main() {
   });
 
   test('should parse null-aware method invocations', () async {
-    final fixture = await NgTestBed<TestNullAwareFunctions>(ng.createTestNullAwareFunctionsFactory()).create();
+    final fixture = await NgTestBed<TestNullAwareFunctions>(
+            ng.createTestNullAwareFunctionsFactory())
+        .create();
     expect(
       fixture.text,
       allOf(

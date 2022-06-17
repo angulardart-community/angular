@@ -171,8 +171,7 @@ class ModuleElement {
       iterableEquality.hash(provide) ^ iterableEquality.hash(include);
 
   @override
-  String toString() =>
-      'ModuleElement ${{
+  String toString() => 'ModuleElement ${{
         'provide': '$provide',
         'include': '$include',
       }}';

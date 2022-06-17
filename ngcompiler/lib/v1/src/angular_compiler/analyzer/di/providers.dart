@@ -255,8 +255,7 @@ class UseClassProviderElement extends ProviderElement {
       useClass.hashCode ^ dependencies.hashCode ^ super.hashCode;
 
   @override
-  String toString() =>
-      'UseClassProviderElement ${{
+  String toString() => 'UseClassProviderElement ${{
         'token': '$token',
         'useClass': '$useClass',
         'dependencies': '$dependencies',
@@ -281,8 +280,7 @@ class UseExistingProviderElement extends ProviderElement {
   int get hashCode => redirect.hashCode ^ super.hashCode;
 
   @override
-  String toString() =>
-      'UseFactoryProviderElement ${{
+  String toString() => 'UseFactoryProviderElement ${{
         'token': '$token',
         'redirect': '$redirect',
       }}';
@@ -319,8 +317,7 @@ class UseFactoryProviderElement extends ProviderElement {
       useFactory.hashCode ^ dependencies.hashCode ^ super.hashCode;
 
   @override
-  String toString() =>
-      'UseFactoryProviderElement ${{
+  String toString() => 'UseFactoryProviderElement ${{
         'token': '$token',
         'useClass': '$useFactory',
         'dependencies': '$dependencies',
