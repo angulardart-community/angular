@@ -580,7 +580,7 @@ abstract class AbstractEmitterVisitor
   void visitAllObjects<T>(void Function(T) handler, List<T> expressions,
       EmitterVisitorContext ctx, String separator,
       {bool newLine = false, bool keepOnSameLine = false}) {
-    const _MAX_OUTPUT_LENGTH = 80;
+    const MAX_OUTPUT_LENGTH = 80;
     var length = expressions.length;
     for (var i = 0; i < length; i++) {
       handler(expressions[i]);
@@ -589,7 +589,7 @@ abstract class AbstractEmitterVisitor
         ctx.print(
             separator,
             keepOnSameLine
-                ? ctx.currentLineLength > _MAX_OUTPUT_LENGTH
+                ? ctx.currentLineLength > MAX_OUTPUT_LENGTH
                 : newLine);
       }
     }

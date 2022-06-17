@@ -256,12 +256,11 @@ class UseClassProviderElement extends ProviderElement {
 
   @override
   String toString() =>
-      'UseClassProviderElement ' +
-      {
+      'UseClassProviderElement ${{
         'token': '$token',
         'useClass': '$useClass',
         'dependencies': '$dependencies',
-      }.toString();
+      }}';
 }
 
 /// A statically parsed `Provider` that redirects one token to another.
@@ -283,11 +282,10 @@ class UseExistingProviderElement extends ProviderElement {
 
   @override
   String toString() =>
-      'UseFactoryProviderElement ' +
-      {
+      'UseFactoryProviderElement ${{
         'token': '$token',
         'redirect': '$redirect',
-      }.toString();
+      }}';
 }
 
 /// A statically parsed `Provider` that describes a function invocation.
@@ -322,12 +320,11 @@ class UseFactoryProviderElement extends ProviderElement {
 
   @override
   String toString() =>
-      'UseFactoryProviderElement ' +
-      {
+      'UseFactoryProviderElement ${{
         'token': '$token',
         'useClass': '$useFactory',
         'dependencies': '$dependencies',
-      }.toString();
+      }}';
 }
 
 /// A statically parsed `Provider` that describes a constant expression.

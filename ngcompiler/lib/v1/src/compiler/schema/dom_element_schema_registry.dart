@@ -215,7 +215,7 @@ class DomElementSchemaRegistry extends ElementSchemaRegistry {
     for (var encodedType in _schema) {
       var parts = encodedType.split('|');
       var properties = parts[1].split(',');
-      var typeParts = (parts[0] + '^').split('^');
+      var typeParts = ('${parts[0]}^').split('^');
       var typeName = typeParts[0];
       var type = <String, String>{};
       var attributes = <String>{};

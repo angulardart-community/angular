@@ -1189,7 +1189,7 @@ class CompileView {
     o.OutputType? changeDetectorType;
     if (providerHasChangeDetector) {
       changeDetectorClass = CompileIdentifierMetadata(
-          name: directiveMetadata.identifier!.name + 'NgCd',
+          name: '${directiveMetadata.identifier!.name}NgCd',
           moduleUrl:
               toTemplateExtension(directiveMetadata.identifier!.moduleUrl));
       changeDetectorType = o.importType(

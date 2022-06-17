@@ -213,12 +213,11 @@ class DependencyInvocation<E extends Element?> {
 
   @override
   String toString() =>
-      'DependencyInvocation ' +
-      {
+      'DependencyInvocation ${{
         'bound': '${urlOf(bound)}',
         'positional': '$positional',
         'named': '$named',
-      }.toString();
+      }}';
 }
 
 /// Statically analyzed information necessary to satisfy a dependency.
@@ -274,13 +273,12 @@ class DependencyElement {
 
   @override
   String toString() =>
-      'DependencyElement ' +
-      {
+      'DependencyElement ${{
         'token': token,
         'type': type,
         'host': host,
         'optional': optional,
         'self': self,
         'skipSelf': skipSelf,
-      }.toString();
+      }}';
 }

@@ -172,9 +172,8 @@ class ModuleElement {
 
   @override
   String toString() =>
-      'ModuleElement ' +
-      {
+      'ModuleElement ${{
         'provide': '$provide',
         'include': '$include',
-      }.toString();
+      }}';
 }

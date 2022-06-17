@@ -253,12 +253,11 @@ class ReflectableOutput {
 
   @override
   String toString() =>
-      'ReflectableOutput ' +
-      {
+      'ReflectableOutput ${{
         'urlsNeedingInitReflector': urlsNeedingInitReflector,
         'registerClasses': registerClasses,
         'registerFunctions': registerFunctions,
-      }.toString();
+      }}';
 }
 
 class ReflectableClass {
@@ -295,10 +294,9 @@ class ReflectableClass {
 
   @override
   String toString() =>
-      'ReflectableClass' +
-      {
+      'ReflectableClass${{
         'factory': factory,
         'name': name,
         'registerComponentFactory': registerComponentFactory,
-      }.toString();
+      }}';
 }

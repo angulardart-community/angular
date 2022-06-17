@@ -255,7 +255,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
       type.visitType(this, context);
       context.print(' ');
     }
-    context.print('${field.name}');
+    context.print(field.name);
     var initializer = field.initializer;
     if (initializer != null) {
       context.print(' = ');

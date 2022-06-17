@@ -95,7 +95,7 @@ class DirectiveCompiler {
 
     final method = CompileMethod();
 
-    final _boundValueConverter = BoundValueConverter.forDirective(
+    final boundValueConverter = BoundValueConverter.forDirective(
       directive.metadata,
       _implicitReceiver,
       nameResolver,
@@ -103,7 +103,7 @@ class DirectiveCompiler {
 
     bindAndWriteToRenderer(
       hostProperties,
-      _boundValueConverter,
+      boundValueConverter,
       o.variable('view'),
       el,
       false,
