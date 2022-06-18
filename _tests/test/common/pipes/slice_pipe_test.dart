@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:_tests/matchers.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'slice_pipe_test.template.dart' as ng;
 
@@ -75,7 +75,7 @@ void main() {
     });
     group('integration', () {
       test('should work with mutable arrays', () async {
-        var testBed = NgTestBed(ng.createTestCompFactory());
+        var testBed = NgTestBed<TestComp>(ng.createTestCompFactory());
         var testFixture = await testBed.create();
         var el = testFixture.rootElement;
         var mutable = <num>[1, 2];

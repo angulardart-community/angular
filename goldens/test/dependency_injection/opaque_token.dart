@@ -2,7 +2,7 @@
 library golden;
 
 import 'package:js/js.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'opaque_token.template.dart' as ng;
 

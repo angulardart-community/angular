@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/src/core/application_ref.dart';
-import 'package:angular/src/core/linker/app_view_utils.dart';
-import 'package:angular/src/runtime/dom_events.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/core/application_ref.dart';
+import 'package:ngdart/src/core/linker/app_view_utils.dart';
+import 'package:ngdart/src/runtime/dom_events.dart';
 
 import 'application_ref_test.template.dart' as ng;
 
@@ -57,7 +57,8 @@ void main() {
     test('replace an existing element if in the DOM', () {
       final existing = Element.tag('hello-component')..text = 'Loading...';
       document.body!.append(existing);
-      final comp = appRef.bootstrap(ng.createHelloComponentFactory());
+      final comp =
+          appRef.bootstrap<HelloComponent>(ng.createHelloComponentFactory());
       expect(comp.location.text, 'Hello World');
       expect(
         document.body!.querySelector('hello-component'),
@@ -66,7 +67,8 @@ void main() {
     });
 
     test('create a new element if missing from the DOM', () {
-      final comp = appRef.bootstrap(ng.createHelloComponentFactory());
+      final comp =
+          appRef.bootstrap<HelloComponent>(ng.createHelloComponentFactory());
       expect(comp.location.text, 'Hello World');
       expect(
         document.body!.querySelector('hello-component'),

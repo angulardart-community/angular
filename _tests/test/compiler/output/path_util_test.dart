@@ -2,7 +2,7 @@
 
 import 'package:test/test.dart';
 import 'package:_tests/test_util.dart';
-import 'package:angular_compiler/v1/src/compiler/output/path_util.dart'
+import 'package:ngcompiler/v1/src/compiler/output/path_util.dart'
     show getImportModulePath;
 
 void main() {

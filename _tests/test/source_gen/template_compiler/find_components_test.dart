@@ -2,7 +2,7 @@
 
 import 'package:meta/meta.dart';
 import 'package:test/test.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import '../../resolve_util.dart';
 

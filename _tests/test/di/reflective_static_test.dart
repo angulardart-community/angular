@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:_tests/matchers.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'reflective_static_test.template.dart' as ng;
 

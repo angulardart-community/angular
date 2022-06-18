@@ -1,10 +1,9 @@
 // @dart=2.9
 
 import 'package:test/test.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/analyzer_parser.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/ast.dart'
-    as ast;
-import 'package:angular_compiler/v1/src/compiler/expression_parser/parser.dart';
+import 'package:ngcompiler/v1/src/compiler/expression_parser/analyzer_parser.dart';
+import 'package:ngcompiler/v1/src/compiler/expression_parser/ast.dart' as ast;
+import 'package:ngcompiler/v1/src/compiler/expression_parser/parser.dart';
 
 import 'unparser.dart';
 

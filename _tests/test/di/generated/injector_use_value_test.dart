@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'injector_use_value_test.template.dart' as ng;
 

@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'shadowed_inherited_members_test.template.dart' as ng;
 
@@ -8,7 +8,8 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should handle shadowed inherited members', () async {
-    final testBed = NgTestBed(ng.createTestShadowedInheritedMembersFactory());
+    final testBed = NgTestBed<TestShadowedInheritedMembers>(
+        ng.createTestShadowedInheritedMembersFactory());
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Hello world!');
   });

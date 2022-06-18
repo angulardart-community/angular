@@ -7,7 +7,7 @@ library golden;
 // https://source.corp.google.com/piper///depot/google3/ads/awapps2/cm/client/overview/root/lib/overview.template.dart
 
 import 'package:js/js.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'large_templates_opt_out.template.dart' as ng;
 

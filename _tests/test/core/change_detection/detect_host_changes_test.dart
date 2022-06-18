@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'detect_host_changes_test.template.dart' as ng;
 
@@ -16,7 +16,7 @@ void main() {
   tearDown(() => disposeAnyRunningTest());
 
   test('Should update bound properties when setState is called', () async {
-    var testBed = NgTestBed(ng.createTestContainerFactory());
+    var testBed = NgTestBed<TestContainer>(ng.createTestContainerFactory());
     var testRoot = await testBed.create();
     var targetElement = testRoot.rootElement.querySelector('.mytarget')!;
     expect(targetElement.firstChild!.text, 'ChildHello');

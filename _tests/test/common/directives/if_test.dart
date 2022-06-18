@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular/src/runtime/check_binding.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/runtime/check_binding.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'if_test.template.dart' as ng;
 
@@ -10,7 +10,8 @@ void main() {
     tearDown(() => disposeAnyRunningTest());
 
     test('should work in a template element', () async {
-      var testBed = NgTestBed(ng.createNgIfInTemplateComponentFactory());
+      var testBed = NgTestBed<NgIfInTemplateComponent>(
+          ng.createNgIfInTemplateComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element.querySelectorAll('copy-me'), hasLength(1));
@@ -18,7 +19,8 @@ void main() {
     });
 
     test('should toggle node when condition changes', () async {
-      var testBed = NgTestBed(ng.createNgIfToggleTestComponentFactory());
+      var testBed = NgTestBed<NgIfToggleTestComponent>(
+          ng.createNgIfToggleTestComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
 
@@ -39,7 +41,8 @@ void main() {
     });
 
     test('should handle nested if correctly', () async {
-      var testBed = NgTestBed(ng.createNgIfNestedTestComponentFactory());
+      var testBed = NgTestBed<NgIfNestedTestComponent>(
+          ng.createNgIfNestedTestComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
 
@@ -75,7 +78,8 @@ void main() {
     });
 
     test('should update multiple bindings', () async {
-      var testBed = NgTestBed(ng.createNgIfMultiUpdateTestComponentFactory());
+      var testBed = NgTestBed<NgIfMultiUpdateTestComponent>(
+          ng.createNgIfMultiUpdateTestComponentFactory());
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       // Check startup.
@@ -100,8 +104,8 @@ void main() {
     });
 
     test('should throw during change detection if getter changes', () async {
-      var testBed =
-          NgTestBed(ng.createNgIfThrowsDuringChangeDetectionFactory());
+      var testBed = NgTestBed<NgIfThrowsDuringChangeDetection>(
+          ng.createNgIfThrowsDuringChangeDetectionFactory());
       var fixture = await testBed.create();
       expect(
         fixture.update((c) => c.startFailing = true),
