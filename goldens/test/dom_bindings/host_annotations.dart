@@ -4,7 +4,7 @@ library golden;
 import 'dart:async';
 
 import 'package:js/js.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'host_annotations.template.dart' as ng;
 

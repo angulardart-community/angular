@@ -1,7 +1,7 @@
 // @dart=2.9
 
-import 'package:angular_compiler/v1/src/compiler/schema/element_schema_registry.dart';
-import 'package:angular_compiler/v1/src/compiler/security.dart';
+import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart';
+import 'package:ngcompiler/v1/src/compiler/security.dart';
 
 class MockSchemaRegistry implements ElementSchemaRegistry {
   final Map<String, bool> existingProperties;

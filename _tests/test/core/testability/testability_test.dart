@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 // Schedules a microtasks (using a resolved promise .then())
 void microTask(void Function() fn) {

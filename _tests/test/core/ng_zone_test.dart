@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 void main() {
   group('$NgZone', () {

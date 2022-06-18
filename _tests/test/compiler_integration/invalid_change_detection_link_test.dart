@@ -2,7 +2,7 @@
 
 import 'package:test/test.dart';
 import 'package:_tests/compiler.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 const ngExperimentalImport = 'package:$ngPackage/experimental.dart';
 

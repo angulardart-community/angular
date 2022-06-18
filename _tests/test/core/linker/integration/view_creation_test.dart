@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'view_creation_test.template.dart' as ng;
 
@@ -11,7 +11,7 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support imperative views', () async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<SimpleImperativeViewComponent>(
       ng.createSimpleImperativeViewComponentFactory(),
     );
     final testFixture = await testBed.create();
@@ -20,7 +20,7 @@ void main() {
 
   test('should support moving embedded views', () async {
     final template = TemplateElement()..append(DivElement());
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<MovesEmbeddedViewComponent>(
       ng.createMovesEmbeddedViewComponentFactory(),
     ).addInjector(
       (i) => Injector.map({
@@ -38,7 +38,7 @@ void main() {
 
   group('property bindings', () {
     test("shouldn't throw if unknown property exists on directive", () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<UnknownPropertyOnDirectiveComponent>(
         ng.createUnknownPropertyOnDirectiveComponentFactory(),
       );
       await testBed.create();
@@ -46,7 +46,7 @@ void main() {
 
     test("shouldn't be created when a directive property has the same name",
         () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<OverriddenPropertyComponent>(
         ng.createOverriddenPropertyComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -55,7 +55,7 @@ void main() {
     });
 
     test('should allow directive host property to update DOM', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<DirectiveUpdatesDomComponent>(
         ng.createDirectiveUpdatesDomComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -66,7 +66,7 @@ void main() {
 
   group('property decorators', () {
     test('should support @Input', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<DecoratorsComponent>(
         ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -75,7 +75,7 @@ void main() {
     });
 
     test('should support @HostBinding', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<DecoratorsComponent>(
         ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -87,7 +87,7 @@ void main() {
     });
 
     test('should support @Output', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<DecoratorsComponent>(
         ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -99,7 +99,7 @@ void main() {
     });
 
     test('should support @HostListener', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<DecoratorsComponent>(
         ng.createDecoratorsComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -113,7 +113,7 @@ void main() {
   });
 
   test('should support svg elements', () async {
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<SvgElementsComponent>(
       ng.createSvgElementsComponentFactory(),
     );
     final testFixture = await testBed.create();
@@ -132,7 +132,7 @@ void main() {
 
   group('namespace attributes', () {
     test('should be supported', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<NamespaceAttributeComponent>(
         ng.createNamespaceAttributeComponentFactory(),
       );
       final testFixture = await testBed.create();
@@ -141,7 +141,7 @@ void main() {
     });
 
     test('should support binding', () async {
-      final testBed = NgTestBed(
+      final testBed = NgTestBed<NamespaceAttributeBindingComponent>(
         ng.createNamespaceAttributeBindingComponentFactory(),
       );
       final testFixture = await testBed.create();

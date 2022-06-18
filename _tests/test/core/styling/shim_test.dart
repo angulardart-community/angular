@@ -3,8 +3,8 @@ library angular2.test.common.styling.shim_test;
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'shim_test.template.dart' as ng;
 
@@ -13,14 +13,16 @@ void main() {
     tearDown(disposeAnyRunningTest);
 
     test('should apply host style', () async {
-      var testBed = NgTestBed(ng.createHostStyleTestComponentFactory());
+      var testBed = NgTestBed<HostStyleTestComponent>(
+          ng.createHostStyleTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement;
       expectColor(elm, '#40FF7F');
     });
 
     test('should apply host style to nested components', () async {
-      var testBed = NgTestBed(ng.createHostStyleContainerComponentFactory());
+      var testBed = NgTestBed<HostStyleContainerComponent>(
+          ng.createHostStyleContainerComponentFactory());
       var testFixture = await testBed.create();
       var host1 = testFixture.rootElement.querySelector('host-test')!;
       var host2 = testFixture.rootElement.querySelector('host-test2')!;
@@ -29,8 +31,8 @@ void main() {
     });
 
     test('should apply style to element under host', () async {
-      var testBed =
-          NgTestBed(ng.createHostElementSelectorTestComponentFactory());
+      var testBed = NgTestBed<HostElementSelectorTestComponent>(
+          ng.createHostElementSelectorTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('div')!;
       expectColor(elm, '#FF0000');
@@ -40,7 +42,8 @@ void main() {
     });
 
     test('should apply style using element selector', () async {
-      var testBed = NgTestBed(ng.createElementSelectorTestComponentFactory());
+      var testBed = NgTestBed<ElementSelectorTestComponent>(
+          ng.createElementSelectorTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('div')!;
       expectColor(elm, '#A0B0C0');
@@ -51,7 +54,8 @@ void main() {
 
     test('should apply style using element selector in nested components',
         () async {
-      var testBed = NgTestBed(ng.createContentSelectorTestComponentFactory());
+      var testBed = NgTestBed<ContentSelectorTestComponent>(
+          ng.createContentSelectorTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('#section1')!;
       expectColor(elm, '#008000');
@@ -64,28 +68,32 @@ void main() {
     });
 
     test('element selector style should not leak into children', () async {
-      var testBed = NgTestBed(ng.createContentSelectorTestComponentFactory());
+      var testBed = NgTestBed<ContentSelectorTestComponent>(
+          ng.createContentSelectorTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('#sectionA')!;
       expectColor(elm, '#000000');
     });
 
     test('host selector should not override class binding on host', () async {
-      var testBed = NgTestBed(ng.createClassOnHostTestComponentFactory());
+      var testBed = NgTestBed<ClassOnHostTestComponent>(
+          ng.createClassOnHostTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement;
       expect(elm.className, startsWith('customhostclass _nghost-'));
     });
 
     test('should support [attr.class] bindings', () async {
-      var testBed = NgTestBed(ng.createClassAttribBindingComponentFactory());
+      var testBed = NgTestBed<ClassAttribBindingComponent>(
+          ng.createClassAttribBindingComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('#item1')!;
       expect(elm.className, startsWith('xyz _ngcontent-'));
     });
 
     test('should support class interpolation', () async {
-      var testBed = NgTestBed(ng.createClassInterpolateComponentFactory());
+      var testBed = NgTestBed<ClassInterpolateComponent>(
+          ng.createClassInterpolateComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('#item1')!;
       expect(elm.className, startsWith('prefix xyz postfix _ngcontent-'));
@@ -94,8 +102,8 @@ void main() {
     test(
         'binding class on a component should add both content '
         'and host selector', () async {
-      var testBed =
-          NgTestBed(ng.createComponentContainerTestComponentFactory());
+      var testBed = NgTestBed<ComponentContainerTestComponent>(
+          ng.createComponentContainerTestComponentFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('child-component1')!;
       expect(elm.className, contains('_ngcontent'));
@@ -104,19 +112,22 @@ void main() {
 
     test('Should apply shim class on top of host attr.class property',
         () async {
-      var testBed = NgTestBed(ng.createNgHostAttribShimTestFactory());
+      var testBed = NgTestBed<NgHostAttribShimTest>(
+          ng.createNgHostAttribShimTestFactory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement.querySelector('feature-promo')!;
       expect(elm.className, startsWith('position-class _nghost-'));
     });
 
     test('Should shim svg elements with no compile type errors', () async {
-      var testBed = NgTestBed(ng.createSvgComponentTestFactory());
+      var testBed =
+          NgTestBed<SvgComponentTest>(ng.createSvgComponentTestFactory());
       await testBed.create();
     });
 
     test('Should support class binding to host component', () async {
-      var testBed = NgTestBed(ng.createFeaturePromoComponent2Factory());
+      var testBed = NgTestBed<FeaturePromoComponent2>(
+          ng.createFeaturePromoComponent2Factory());
       var testFixture = await testBed.create();
       var elm = testFixture.rootElement;
       expect(elm.tagName.toLowerCase(), 'feature-promo2');

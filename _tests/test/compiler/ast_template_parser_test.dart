@@ -6,20 +6,20 @@ import 'package:logging/logging.dart';
 import 'package:term_glyph/term_glyph.dart' as term_glyph;
 import 'package:test/test.dart';
 import 'package:_tests/test_util.dart';
-import 'package:angular_compiler/v1/cli.dart';
-import 'package:angular_compiler/v1/src/compiler/analyzed_class.dart';
-import 'package:angular_compiler/v1/src/compiler/compile_metadata.dart';
-import 'package:angular_compiler/v1/src/compiler/expression_parser/parser.dart';
-import 'package:angular_compiler/v1/src/compiler/identifiers.dart'
+import 'package:ngcompiler/v1/cli.dart';
+import 'package:ngcompiler/v1/src/compiler/analyzed_class.dart';
+import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
+import 'package:ngcompiler/v1/src/compiler/expression_parser/parser.dart';
+import 'package:ngcompiler/v1/src/compiler/identifiers.dart'
     show identifierToken, Identifiers;
-import 'package:angular_compiler/v1/src/compiler/js_split_facade.dart';
-import 'package:angular_compiler/v1/src/compiler/output/output_ast.dart' as o;
-import 'package:angular_compiler/v1/src/compiler/schema/dom_element_schema_registry.dart';
-import 'package:angular_compiler/v1/src/compiler/schema/element_schema_registry.dart'
+import 'package:ngcompiler/v1/src/compiler/js_split_facade.dart';
+import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
+import 'package:ngcompiler/v1/src/compiler/schema/dom_element_schema_registry.dart';
+import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart'
     show ElementSchemaRegistry;
-import 'package:angular_compiler/v1/src/compiler/template_ast.dart';
-import 'package:angular_compiler/v1/src/compiler/template_parser/ast_template_parser.dart';
-import 'package:angular_compiler/v2/context.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart';
+import 'package:ngcompiler/v1/src/compiler/template_parser/ast_template_parser.dart';
+import 'package:ngcompiler/v2/context.dart';
 
 import 'schema_registry_mock.dart' show MockSchemaRegistry;
 import 'template_humanizer_util.dart';

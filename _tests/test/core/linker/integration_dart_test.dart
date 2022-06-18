@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'integration_dart_test.template.dart' as ng;
 
@@ -9,14 +9,16 @@ void main() {
 
   group('Property access', () {
     test('should not fallback on map access if property missing', () async {
-      var testBed = NgTestBed(ng.createContainerWithNoPropertyAccessFactory());
+      var testBed = NgTestBed<ContainerWithNoPropertyAccess>(
+          ng.createContainerWithNoPropertyAccessFactory());
       expect(testBed.create(), throwsStateError);
     });
   });
 
   group('Reference in Template element', () {
     test('should assign the TemplateRef to a user-defined variable', () async {
-      var testBed = NgTestBed(ng.createMyCompWithTemplateRefFactory());
+      var testBed = NgTestBed<MyCompWithTemplateRef>(
+          ng.createMyCompWithTemplateRefFactory());
       var testFixture = await testBed.create();
       var refReader = testFixture.assertOnlyInstance.refReaderComponent;
       expect(refReader!.ref1, TypeMatcher<TemplateRef>());

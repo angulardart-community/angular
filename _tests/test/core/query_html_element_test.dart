@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'query_html_element_test.template.dart' as ng;
 
@@ -10,24 +10,29 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should support @ViewChild with Element', () async {
-    final fixture = await NgTestBed(ng.createUsesElementFactory()).create();
+    final fixture =
+        await NgTestBed<UsesElement>(ng.createUsesElementFactory()).create();
     expect(fixture.assertOnlyInstance.element!.text, '1');
   });
 
   test('should support @ViewChild with HtmlElement', () async {
-    final fixture = await NgTestBed(ng.createUsesHtmlElementFactory()).create();
+    final fixture =
+        await NgTestBed<UsesHtmlElement>(ng.createUsesHtmlElementFactory())
+            .create();
     expect(fixture.assertOnlyInstance.element!.text, '2');
   });
 
   test('should support @ViewChildren with Element', () async {
     final fixture =
-        await NgTestBed(ng.createUsesListOfElementFactory()).create();
+        await NgTestBed<UsesListOfElement>(ng.createUsesListOfElementFactory())
+            .create();
     expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
   });
 
   test('should support @ViewChildren with HtmlElement', () async {
-    final fixture =
-        await NgTestBed(ng.createUsesListOfHtmlElementFactory()).create();
+    final fixture = await NgTestBed<UsesListOfHtmlElement>(
+            ng.createUsesListOfHtmlElementFactory())
+        .create();
     expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
   });
 }

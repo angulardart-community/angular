@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'crash_detection_test.template.dart' as ng;
 
@@ -11,7 +11,7 @@ void main() {
 
   test('Should normally run change detection', () async {
     final valueService = ValueService()..value = 'Hello';
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<NoCrash>(
       ng.createNoCrashFactory(),
     ).addInjector(
       (i) => Injector.map({
@@ -32,7 +32,7 @@ void main() {
 
   test('Should disable change detection on components that throw', () async {
     final valueService = ValueService()..value = '1';
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<Crash>(
       ng.createCrashFactory(),
     ).addInjector(
       (i) => Injector.map({
@@ -67,7 +67,7 @@ void main() {
   test('Should disable change detection to avoid infinite ngOnInit', () async {
     final valueService = ValueService()..value = '1';
     final rpcService = RpcService();
-    final testBed = NgTestBed(
+    final testBed = NgTestBed<CrashOnInit>(
       ng.createCrashOnInitFactory(),
     ).addInjector(
       (i) => Injector.map({

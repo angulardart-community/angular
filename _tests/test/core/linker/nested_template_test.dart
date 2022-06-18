@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:angular/angular.dart';
-import 'package:angular_test/angular_test.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngtest/angular_test.dart';
 
 import 'nested_template_test.template.dart' as ng;
 
@@ -8,7 +8,7 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should render a nested template', () async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<NestedTemplateTest>(
       ng.createNestedTemplateTestFactory(),
     ).create();
 
@@ -38,7 +38,7 @@ void main() {
   });
 
   test('should render a nested template with a custom directive', () async {
-    final fixture = await NgTestBed(
+    final fixture = await NgTestBed<NestedCustomTest>(
       ng.createNestedCustomTestFactory(),
     ).create();
 
