@@ -113,7 +113,7 @@ class ViewCompiler {
   /// These component factories are registered in `initReflector()` and used in
   /// user code.
   List<o.Statement> _registerComponentFactory(CompileView view) {
-    final componentTypeMetadata = view.component.type!;
+    final componentTypeMetadata = view.component.type;
     final componentType = o.importType(componentTypeMetadata)!;
     final componentName = componentTypeMetadata.name;
     final componentFactoryVar = o.variable('_${componentName}NgFactory');

@@ -448,7 +448,7 @@ class CompileView {
     storage = CompileViewStorage();
     viewType = _getViewType(component, viewIndex);
     className = '${viewIndex == 0 && viewType != ViewType.host ? '' : '_'}'
-        'View${component.type!.name}$viewIndex';
+        'View${component.type.name}$viewIndex';
     classType = o.importType(CompileIdentifierMetadata(name: className))!;
     viewFactoryName = getViewFactoryName(component, viewIndex);
     viewFactory = getViewFactory(component, viewFactoryName);
@@ -1331,7 +1331,7 @@ class CompileView {
 
   void createPipeInstance(String name, CompilePipeMetadata pipeMeta) {
     var usesInjectorGet = false;
-    final deps = pipeMeta.type!.diDeps.map((diDep) {
+    final deps = pipeMeta.type.diDeps.map((diDep) {
       if (diDep.token!
           .equalsTo(identifierToken(Identifiers.ChangeDetectorRef))) {
         return o.THIS_EXPR;
@@ -1348,7 +1348,7 @@ class CompileView {
         o.StmtModifier.Final,
       ],
     );
-    final typeExpression = o.importExpr(pipeMeta.type!);
+    final typeExpression = o.importExpr(pipeMeta.type);
     if (usesInjectorGet) {
       _createMethod.addStmt(debugInjectorEnter(typeExpression));
     }
@@ -1620,7 +1620,7 @@ ViewType _getViewType(
     CompileDirectiveMetadata component, int embeddedTemplateIndex) {
   if (embeddedTemplateIndex > 0) {
     return ViewType.embedded;
-  } else if (component.type!.isHost) {
+  } else if (component.type.isHost) {
     return ViewType.host;
   } else {
     return ViewType.component;

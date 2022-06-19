@@ -165,13 +165,13 @@ List<T> removeDuplicates<T>(List<T> items) {
       if (r is CompilePipeMetadata) {
         CompilePipeMetadata rMeta = r;
         var itemMeta = item as CompilePipeMetadata;
-        return rMeta.type!.name == itemMeta.type!.name &&
-            rMeta.type!.moduleUrl == itemMeta.type!.moduleUrl;
+        return rMeta.type.name == itemMeta.type.name &&
+            rMeta.type.moduleUrl == itemMeta.type.moduleUrl;
       } else if (r is CompileDirectiveMetadata) {
         CompileDirectiveMetadata rMeta = r;
         var itemMeta = item as CompileDirectiveMetadata;
-        return rMeta.type!.name == itemMeta.type!.name &&
-            rMeta.type!.moduleUrl == itemMeta.type!.moduleUrl;
+        return rMeta.type.name == itemMeta.type.name &&
+            rMeta.type.moduleUrl == itemMeta.type.moduleUrl;
       } else {
         throw ArgumentError();
       }

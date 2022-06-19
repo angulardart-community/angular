@@ -6,7 +6,6 @@ import 'compile_metadata.dart'
     show
         CompileDiDependencyMetadata,
         CompileDirectiveMetadata,
-        CompileDirectiveMetadataType,
         CompileProviderMetadata,
         CompileQueryMetadata,
         CompileTokenMap,
@@ -345,7 +344,7 @@ class ProviderElementContext implements ElementProviderUsage {
       // check @Host restriction
       if (result == null) {
         if (!dep.isHost ||
-            _rootProviderContext.component.type!.isHost ||
+            _rootProviderContext.component.type.isHost ||
             identifierToken(_rootProviderContext.component.type)
                 .equalsTo(dep.token!) ||
             _rootProviderContext.viewProviders.get(dep.token!) != null) {

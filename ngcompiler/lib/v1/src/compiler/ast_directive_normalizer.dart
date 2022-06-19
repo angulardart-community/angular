@@ -26,7 +26,7 @@ class AstDirectiveNormalizer {
     return CompileDirectiveMetadata.from(
       directive,
       template: await _normalizeTemplate(
-        directive.type!,
+        directive.type,
         directive.template,
       ),
     );

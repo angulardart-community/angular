@@ -147,21 +147,76 @@ abstract class TypeVisitor<R, C> {
 
 ///// Expressions
 enum BinaryOperator {
-  Equals,
-  NotEquals,
-  Identical,
-  NotIdentical,
-  Minus,
-  Plus,
-  Divide,
-  Multiply,
-  Modulo,
-  And,
-  Or,
-  Lower,
-  LowerEquals,
-  Bigger,
-  BiggerEquals
+  Equals('=='),
+  NotEquals('!='),
+  Identical('==='),
+  NotIdentical('!=='),
+  Minus('-'),
+  Plus('+'),
+  Divide('/'),
+  Multiply('*'),
+  Modulo('%'),
+  And('&&'),
+  Or('||'),
+  Lower('<'),
+  LowerEquals('<='),
+  Bigger('>'),
+  BiggerEquals('>=');
+
+  final String opStr;
+  const BinaryOperator(this.opStr);
+
+  static BinaryOperator? byOpStr(String opStr) {
+    BinaryOperator? retval = null;
+    switch (opStr) {
+      case '+':
+        retval = Plus;
+        break;
+      case '-':
+        retval = Minus;
+        break;
+      case '*':
+        retval = Multiply;
+        break;
+      case '/':
+        retval = Divide;
+        break;
+      case '%':
+        retval = Modulo;
+        break;
+      case '&&':
+        retval = And;
+        break;
+      case '||':
+        retval = Or;
+        break;
+      case '==':
+        retval = Equals;
+        break;
+      case '!=':
+        retval = NotEquals;
+        break;
+      case '===':
+        retval = Identical;
+        break;
+      case '!==':
+        retval = NotIdentical;
+        break;
+      case '<':
+        retval = Lower;
+        break;
+      case '>':
+        retval = Bigger;
+        break;
+      case '<=':
+        retval = LowerEquals;
+        break;
+      case '>=':
+        retval = BiggerEquals;
+        break;
+    }
+    return retval;
+  }
 }
 
 abstract class Expression {
@@ -453,7 +508,13 @@ class WritePropExpr extends Expression {
   }
 }
 
-enum BuiltinMethod { ConcatArray, SubscribeObservable }
+enum BuiltinMethod {
+  ConcatArray('.addAll'),
+  SubscribeObservable('listen');
+
+  final String methodName;
+  const BuiltinMethod(this.methodName);
+}
 
 class InvokeMethodExpr extends Expression {
   final Expression receiver;

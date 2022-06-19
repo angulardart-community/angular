@@ -282,7 +282,7 @@ abstract class AbstractEmitterVisitor
     var name = expr.name;
     var builtin = expr.builtin;
     if (builtin != null) {
-      name = getBuiltinMethodName(builtin);
+      name = builtin.methodName;
     }
     if (expr.checked) {
       context.print('?');
@@ -312,9 +312,7 @@ abstract class AbstractEmitterVisitor
     context.print(')');
   }
 
-  String getBuiltinMethodName(o.BuiltinMethod method);
-
-  @override
+   @override
   void visitReadVarExpr(o.ReadVarExpr ast, EmitterVisitorContext context) {
     var varName = ast.name;
     if (ast.builtin != null) {
@@ -439,61 +437,10 @@ abstract class AbstractEmitterVisitor
       o.DeclareFunctionStmt stmt, EmitterVisitorContext context);
 
   @override
-  void visitBinaryOperatorExpr(
-      o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
-    String opStr;
-    switch (ast.operator) {
-      case o.BinaryOperator.Equals:
-        opStr = '==';
-        break;
-      case o.BinaryOperator.Identical:
-        opStr = '===';
-        break;
-      case o.BinaryOperator.NotEquals:
-        opStr = '!=';
-        break;
-      case o.BinaryOperator.NotIdentical:
-        opStr = '!==';
-        break;
-      case o.BinaryOperator.And:
-        opStr = '&&';
-        break;
-      case o.BinaryOperator.Or:
-        opStr = '||';
-        break;
-      case o.BinaryOperator.Plus:
-        opStr = '+';
-        break;
-      case o.BinaryOperator.Minus:
-        opStr = '-';
-        break;
-      case o.BinaryOperator.Divide:
-        opStr = '/';
-        break;
-      case o.BinaryOperator.Multiply:
-        opStr = '*';
-        break;
-      case o.BinaryOperator.Modulo:
-        opStr = '%';
-        break;
-      case o.BinaryOperator.Lower:
-        opStr = '<';
-        break;
-      case o.BinaryOperator.LowerEquals:
-        opStr = '<=';
-        break;
-      case o.BinaryOperator.Bigger:
-        opStr = '>';
-        break;
-      case o.BinaryOperator.BiggerEquals:
-        opStr = '>=';
-        break;
-      default:
-        throw StateError('Unknown operator ${ast.operator}');
-    }
+  void visitBinaryOperatorExpr(o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
     context.print('(');
     ast.lhs.visitExpression(this, context);
-    context.print(' $opStr ');
+    context.print(' ${ast.operator.opStr} ');
     ast.rhs.visitExpression(this, context);
     context.print(')');
   }

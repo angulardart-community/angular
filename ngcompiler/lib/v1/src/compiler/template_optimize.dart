@@ -46,7 +46,7 @@ void _typeNgForLocals(
   List<VariableAst> variables,
 ) {
   final ngFor = directives.firstWhereOrNull((directive) =>
-      directive.directive.type!.moduleUrl ==
+      directive.directive.type.moduleUrl ==
       Identifiers.NG_FOR_DIRECTIVE.moduleUrl);
   if (ngFor == null) return; // No `NgFor` to optimize.
   BoundExpression? ngForOfValue;

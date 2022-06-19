@@ -149,10 +149,10 @@ o.Expression debugInjectorWrap(o.Expression identifier, o.Expression wrap) =>
 /// Each generated view of [component], be it component, host, or embedded has
 /// an associated [index] that is used to distinguish between embedded views.
 String getViewFactoryName(CompileDirectiveMetadata component, int index) =>
-    _viewFactoryName(component.type!.name, index);
+    _viewFactoryName(component.type.name, index);
 
 String getHostViewFactoryName(CompileDirectiveMetadata component) =>
-    _viewFactoryName('${component.type!.name}Host', 0);
+    _viewFactoryName('${component.type.name}Host', 0);
 
 String _viewFactoryName(String componentName, int index) =>
     'viewFactory_$componentName$index';

@@ -101,7 +101,7 @@ class AngularCompiler {
     NormalizedComponentWithViewDirectives componentWithDirs,
   ) {
     return ir.Component(
-      componentWithDirs.component.type!.name,
+      componentWithDirs.component.type.name,
       encapsulation: _encapsulation(componentWithDirs),
       styles: componentWithDirs.component.template!.styles,
       styleUrls: componentWithDirs.component.template!.styleUrls,
@@ -135,7 +135,7 @@ class AngularCompiler {
       componentWithDirs.component.template!.template!,
       componentWithDirs.directives,
       componentWithDirs.pipes,
-      componentWithDirs.component.type!.name,
+      componentWithDirs.component.type.name,
       componentWithDirs.component.template!.templateUrl!,
     );
     return ir.ComponentView(
@@ -148,7 +148,7 @@ class AngularCompiler {
 
   ir.View _hostView(CompileDirectiveMetadata component) {
     var hostMeta = createHostComponentMeta(
-      component.type!,
+      component.type,
       component.selector!,
       component.analyzedClass,
       component.template!.preserveWhitespace,
@@ -158,21 +158,21 @@ class AngularCompiler {
       hostMeta.template!.template!,
       [component],
       [],
-      hostMeta.type!.name,
+      hostMeta.type.name,
       hostMeta.template!.templateUrl!,
     );
     return ir.HostView(
       cmpMetadata: hostMeta,
       parsedTemplate: parsedTemplate,
-      directiveTypes: createHostDirectiveTypes(component.type!),
+      directiveTypes: createHostDirectiveTypes(component.type),
     );
   }
 
   static String _moduleUrlFor(AngularArtifacts artifacts) {
     if (artifacts.components.isNotEmpty) {
-      return templateModuleUrl(artifacts.components.first.component.type!);
+      return templateModuleUrl(artifacts.components.first.component.type);
     } else if (artifacts.directives.isNotEmpty) {
-      return templateModuleUrl(artifacts.directives.first.type!);
+      return templateModuleUrl(artifacts.directives.first.type);
     } else {
       throw StateError('No components nor injectorModules given');
     }

@@ -524,11 +524,11 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   CompileIdentifierMetadata? get identifier => type;
 
   String toPrettyString() {
-    var name = type!.name;
+    var name = type.name;
     if (name.endsWith('Host')) {
       name = name.substring(0, name.length - 4);
     }
-    return '$name in ${type!.moduleUrl} '
+    return '$name in ${type.moduleUrl} '
         '(changeDetection: ${ChangeDetectionStrategy.toPrettyString(changeDetection!)})';
   }
 

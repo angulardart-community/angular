@@ -1238,7 +1238,7 @@ class _OnPushValidator extends InPlaceRecursiveTemplateVisitor<void> {
     if (!ast.skipOnPushValidation) {
       final componentAst = _ParseContext._firstComponent(ast.directives);
       if (componentAst != null && !componentAst.directive.isOnPush) {
-        final name = componentAst.directive.type!.name;
+        final name = componentAst.directive.type.name;
         logWarning(componentAst.sourceSpan.message(
           messages.warningForOnPushCompatibility(name),
         ));

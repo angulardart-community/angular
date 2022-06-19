@@ -68,7 +68,7 @@ class DirectiveCompiler {
     NodeReference el,
   ) {
     final instanceType = o.importType(
-      directive.metadata!.type!.identifier,
+      directive.metadata!.type.identifier,
       directive.typeParameters!.map((t) => t.toType()).toList(),
     );
     storage.allocate(

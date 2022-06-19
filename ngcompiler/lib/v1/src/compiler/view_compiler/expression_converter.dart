@@ -90,63 +90,18 @@ class _AstToExpressionVisitor
 
   @override
   o.Expression visitBinary(compiler_ast.Binary ast, _) {
-    o.BinaryOperator op;
-    switch (ast.operator) {
-      case '+':
-        op = o.BinaryOperator.Plus;
-        break;
-      case '-':
-        op = o.BinaryOperator.Minus;
-        break;
-      case '*':
-        op = o.BinaryOperator.Multiply;
-        break;
-      case '/':
-        op = o.BinaryOperator.Divide;
-        break;
-      case '%':
-        op = o.BinaryOperator.Modulo;
-        break;
-      case '&&':
-        op = o.BinaryOperator.And;
-        break;
-      case '||':
-        op = o.BinaryOperator.Or;
-        break;
-      case '==':
-        op = o.BinaryOperator.Equals;
-        break;
-      case '!=':
-        op = o.BinaryOperator.NotEquals;
-        break;
-      case '===':
-        op = o.BinaryOperator.Identical;
-        break;
-      case '!==':
-        op = o.BinaryOperator.NotIdentical;
-        break;
-      case '<':
-        op = o.BinaryOperator.Lower;
-        break;
-      case '>':
-        op = o.BinaryOperator.Bigger;
-        break;
-      case '<=':
-        op = o.BinaryOperator.LowerEquals;
-        break;
-      case '>=':
-        op = o.BinaryOperator.BiggerEquals;
-        break;
-      default:
+    o.BinaryOperator? op = o.BinaryOperator.byOpStr(ast.operator);
+    if (op == null) {
         throw BuildError.withoutContext(
           'Unsupported operation "${ast.operator}"',
         );
+    } else {
+      return o.BinaryOperatorExpr(
+        op,
+        ast.left.visit(this, false /* visitingRoot */),
+        ast.right.visit(this, false /* visitingRoot */),
+      );
     }
-    return o.BinaryOperatorExpr(
-      op,
-      ast.left.visit(this, false /* visitingRoot */),
-      ast.right.visit(this, false /* visitingRoot */),
-    );
   }
 
   @override

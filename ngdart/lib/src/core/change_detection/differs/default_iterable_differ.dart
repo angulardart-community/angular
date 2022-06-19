@@ -723,7 +723,7 @@ class _DuplicateMap {
   /// first or second.
   CollectionChangeRecord? get(dynamic trackById, [int? afterIndex]) {
     var recordList = _map[trackById];
-    return recordList == null ? null : recordList.get(trackById, afterIndex);
+    return recordList?.get(trackById, afterIndex);
   }
 
   /// Removes a [CollectionChangeRecord] from the list of duplicates.
