@@ -456,8 +456,7 @@ class _ProviderResolver {
           token: CompileTokenMetadata(identifier: directive.type),
           useClass: directive.type,
           visibility: directive.visibility);
-      final providerAstType =
-          _providerAstTypeFromMetadataType(directive.metadataType);
+      final providerAstType = directive.metadataType.providerAstType;
       _resolveProviders([dirProvider], providerAstType, eager: true);
     }
     // Note: We need an ordered list where components preceded directives so
@@ -553,19 +552,6 @@ void _addQueryToTokenMap(CompileTokenMap<List<CompileQueryMetadata>> map,
       map.add(token, entry);
     }
     entry.add(query);
-  }
-}
-
-ProviderAstType _providerAstTypeFromMetadataType(
-  CompileDirectiveMetadataType? type,
-) {
-  switch (type) {
-    case CompileDirectiveMetadataType.Component:
-      return ProviderAstType.Component;
-    case CompileDirectiveMetadataType.Directive:
-      return ProviderAstType.Directive;
-    default:
-      throw ArgumentError("Can't create '$ProviderAstType' from '$type'");
   }
 }
 

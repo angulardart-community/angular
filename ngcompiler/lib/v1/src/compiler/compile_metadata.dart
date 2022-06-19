@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:ngcompiler/v1/src/compiler/template_ast.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngcompiler/v1/cli.dart';
 import 'package:ngcompiler/v2/context.dart';
@@ -15,7 +16,7 @@ abstract class CompileMetadataWithIdentifier {
 }
 
 abstract class CompileMetadataWithType extends CompileMetadataWithIdentifier {
-  CompileTypeMetadata? get type;
+  CompileTypeMetadata get type;
 }
 
 class CompileIdentifierMetadata implements CompileMetadataWithIdentifier {
@@ -430,21 +431,24 @@ class CompileTemplateMetadata {
 
 enum CompileDirectiveMetadataType {
   /// Metadata type for a class annotated with `@Component`.
-  Component,
+  Component(ProviderAstType.Component),
 
   /// Metadata type for a class annotated with `@Directive`.
-  Directive,
+  Directive(ProviderAstType.Directive);
+
+  final ProviderAstType providerAstType;
+  const CompileDirectiveMetadataType(this.providerAstType);
 }
 
 /// Metadata regarding compilation of a directive.
 class CompileDirectiveMetadata implements CompileMetadataWithType {
   @override
-  final CompileTypeMetadata? type;
+  final CompileTypeMetadata type;
 
   /// User-land class where the component annotation originated.
   final CompileTypeMetadata? originType;
 
-  final CompileDirectiveMetadataType? metadataType;
+  final CompileDirectiveMetadataType metadataType;
   final String? selector;
   final String? exportAs;
   final int? changeDetection;
@@ -469,9 +473,9 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   final bool isChangeDetectionLink;
 
   CompileDirectiveMetadata({
-    this.type,
+    required this.type,
     this.originType,
-    this.metadataType,
+    required this.metadataType,
     this.selector,
     this.exportAs,
     this.changeDetection,
@@ -654,14 +658,14 @@ List<CompileTypedMetadata> createHostDirectiveTypes(
 
 class CompilePipeMetadata implements CompileMetadataWithType {
   @override
-  final CompileTypeMetadata? type;
+  final CompileTypeMetadata type;
   final o.FunctionType? transformType;
   final String? name;
   final bool? pure;
   final List<LifecycleHooks> lifecycleHooks;
 
   CompilePipeMetadata({
-    this.type,
+    required this.type,
     this.transformType,
     this.name,
     this.pure = true,

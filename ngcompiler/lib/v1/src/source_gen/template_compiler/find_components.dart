@@ -646,7 +646,7 @@ class _ComponentVisitor
     // assume they have at least defaults.
     var componentType = element.accept(
       CompileTypeMetadataVisitor(_library, directiveInfo, _exceptionHandler),
-    );
+    )!;
 
     final template = isComponent
         ? _createTemplateMetadata(directiveInfo, componentType)
@@ -922,7 +922,7 @@ void _errorOnUnusedDirectiveTypes(
 
   // The set of directives declared for use.
   var used =
-      directives.map((d) => key(d!.type!.moduleUrl, d.type!.name)).toSet();
+      directives.map((d) => key(d!.type.moduleUrl, d.type.name)).toSet();
 
   // Throw if the user attempts to type any directives that aren't used.
   for (var directiveType in directiveTypes) {

@@ -9,7 +9,7 @@ void main() {
 
   test('should be called at least once on initial load', () async {
     final testBed =
-        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory());
+        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory() as ComponentFactory<TestAfterChanges>);
     final fixture = await testBed.create(beforeChangeDetection: (instance) {
       instance
         ..name = 'Buzz Lightyear'
@@ -21,7 +21,7 @@ void main() {
 
   test('should be called after there is a change to an @Input', () async {
     final testBed =
-        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory());
+        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory() as ComponentFactory<TestAfterChanges>);
     final fixture = await testBed.create();
     expect(fixture.text, isEmpty);
     expect(AfterChangesExample.ngAfterChangesCalled, 0);
@@ -43,7 +43,7 @@ void main() {
 
   test('should be skipped if inputs do not change identity', () async {
     final testBed =
-        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory());
+        NgTestBed<TestAfterChanges>(ng.createTestAfterChangesFactory() as ComponentFactory<TestAfterChanges>);
     final fixture = await testBed.create();
     expect(fixture.text, isEmpty);
     expect(AfterChangesExample.ngAfterChangesCalled, 0);
@@ -65,7 +65,7 @@ void main() {
 
   test('should also be supported on a @Directive', () async {
     final testBed = NgTestBed<TestAfterChangesDirective>(
-        ng.createTestAfterChangesDirectiveFactory());
+        ng.createTestAfterChangesDirectiveFactory() as ComponentFactory<TestAfterChangesDirective>);
     final fixture = await testBed.create(beforeChangeDetection: (instance) {
       instance.name = 'Buzz Lightyear';
     });

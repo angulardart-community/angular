@@ -36,7 +36,7 @@ void testRecoverySolution(
 }) {
   var recoveryOffset = baseHtml.length;
 
-  for (var type in encounteredTokens) {
+  for (NgSimpleTokenType type in encounteredTokens) {
     var reader = NgTokenReversibleReader<Object>(null, []);
     var token = NgSimpleToken(type, recoveryOffset);
 
@@ -48,7 +48,7 @@ void testRecoverySolution(
     } else if (type == NgSimpleTokenType.identifier) {
       errorString = 'some-identifier';
     } else {
-      errorString = NgSimpleToken.lexemeMap[type]!;
+      errorString = type.symbols;
     }
     var errorHtml = baseHtml + errorString;
 

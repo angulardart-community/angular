@@ -15,37 +15,6 @@ abstract class NgBaseToken<T> {
 ///
 /// Clients should not extend, implement, or mix-in this class.
 class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
-  static final Map<NgSimpleTokenType, String> lexemeMap = const {
-    NgSimpleTokenType.atSign: '@',
-    NgSimpleTokenType.backSlash: '\\',
-    NgSimpleTokenType.bang: '!',
-    NgSimpleTokenType.closeBanana: ')]',
-    NgSimpleTokenType.closeBracket: ']',
-    NgSimpleTokenType.closeParen: ')',
-    NgSimpleTokenType.closeTagStart: '</',
-    NgSimpleTokenType.commentBegin: '<!--',
-    NgSimpleTokenType.commentEnd: '-->',
-    NgSimpleTokenType.dash: '-',
-    NgSimpleTokenType.openTagStart: '<',
-    NgSimpleTokenType.tagEnd: '>',
-    NgSimpleTokenType.EOF: '',
-    NgSimpleTokenType.equalSign: '=',
-    NgSimpleTokenType.forwardSlash: '/',
-    NgSimpleTokenType.hash: '#',
-    NgSimpleTokenType.identifier: '',
-    NgSimpleTokenType.mustacheBegin: '{{',
-    NgSimpleTokenType.mustacheEnd: '}}',
-    NgSimpleTokenType.openBanana: '[(',
-    NgSimpleTokenType.openBracket: '[',
-    NgSimpleTokenType.openParen: '(',
-    NgSimpleTokenType.percent: '%',
-    NgSimpleTokenType.period: '.',
-    NgSimpleTokenType.star: '*',
-    NgSimpleTokenType.text: '',
-    NgSimpleTokenType.unexpectedChar: '?',
-    NgSimpleTokenType.voidCloseTag: '/>',
-    NgSimpleTokenType.whitespace: ' ',
-  };
 
   factory NgSimpleToken.atSign(int offset) {
     return NgSimpleToken._(NgSimpleTokenType.atSign, offset);
@@ -203,7 +172,7 @@ class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
   @override
   final NgSimpleTokenType type;
   @override
-  String get lexeme => lexemeMap[type]!;
+  String get lexeme => type.symbols;
 
   @override
   String toString() => '#$NgSimpleToken($type) {$offset:$lexeme}';
@@ -279,32 +248,6 @@ class NgSimpleQuoteToken extends _LexemeNgSimpleToken {
 ///
 /// Clients should not extend, implement, or mix-in this class.
 class NgToken implements NgBaseToken<NgTokenType> {
-  static final Map<NgTokenType, String> lexemeMap = const {
-    NgTokenType.annotationPrefix: '@',
-    NgTokenType.bananaPrefix: '[(',
-    NgTokenType.bananaSuffix: ')]',
-    NgTokenType.beforeElementDecoratorValue: '=',
-    NgTokenType.bindPrefix: 'bind-',
-    NgTokenType.closeElementEnd: '>',
-    NgTokenType.closeElementStart: '</',
-    NgTokenType.commentEnd: '-->',
-    NgTokenType.commentStart: '<!--',
-    NgTokenType.doubleQuote: '"',
-    NgTokenType.eventPrefix: '(',
-    NgTokenType.eventSuffix: ')',
-    NgTokenType.interpolationEnd: '}}',
-    NgTokenType.interpolationStart: '{{',
-    NgTokenType.letPrefix: 'let-',
-    NgTokenType.openElementEnd: '>',
-    NgTokenType.openElementEndVoid: '/>',
-    NgTokenType.openElementStart: '<',
-    NgTokenType.onPrefix: 'on-',
-    NgTokenType.propertyPrefix: '[',
-    NgTokenType.propertySuffix: ']',
-    NgTokenType.referencePrefix: '#',
-    NgTokenType.singleQuote: "'",
-    NgTokenType.templatePrefix: '*',
-  };
 
   factory NgToken.generateErrorSynthetic(int offset, NgTokenType type,
       {String lexeme = ''}) {
@@ -486,7 +429,7 @@ class NgToken implements NgBaseToken<NgTokenType> {
 
   /// What characters were scanned and represent this token.
   @override
-  String get lexeme => lexemeMap[type]!;
+  String get lexeme => type.symbols;
 
   /// Indexed location where the token begins in the original source text.
   @override

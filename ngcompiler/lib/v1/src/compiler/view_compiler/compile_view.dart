@@ -875,7 +875,7 @@ class CompileView {
       NodeReference elementRef,
       int nodeIndex,
       ElementAst ast) {
-    var childComponentType = childComponent.type!;
+    var childComponentType = childComponent.type;
     var componentViewIdentifier = CompileIdentifierMetadata(
         name: 'View${childComponentType.name}0',
         moduleUrl: templateModuleUrl(childComponentType));

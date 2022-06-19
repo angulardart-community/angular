@@ -96,7 +96,7 @@ String generateHtmlString() {
       case State.comment:
         if (type == NgSimpleTokenType.commentEnd) {
           state = State.text;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else {
           sb.write(' some comment');
         }
@@ -104,7 +104,7 @@ String generateHtmlString() {
       case State.element:
         if (type == NgSimpleTokenType.commentBegin) {
           state = State.comment;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else if (type == NgSimpleTokenType.doubleQuote) {
           sb.write('"someDoubleQuoteValue"');
         } else if (type == NgSimpleTokenType.singleQuote) {
@@ -117,15 +117,15 @@ String generateHtmlString() {
         } else if (type == NgSimpleTokenType.voidCloseTag ||
             type == NgSimpleTokenType.tagEnd) {
           state = State.text;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else {
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         }
         break;
       case State.interpolation:
         if (type == NgSimpleTokenType.mustacheEnd) {
           state = State.text;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else {
           sb.write(genericExpression);
         }
@@ -133,14 +133,14 @@ String generateHtmlString() {
       case State.text:
         if (type == NgSimpleTokenType.commentBegin) {
           state = State.comment;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else if (type == NgSimpleTokenType.openTagStart ||
             type == NgSimpleTokenType.closeTagStart) {
           state = State.element;
-          sb.write(NgSimpleToken.lexemeMap[type]);
+          sb.write(type.symbols);
         } else if (type == NgSimpleTokenType.mustacheBegin) {
           state = State.interpolation;
-          sb.write('${NgSimpleToken.lexemeMap[type]}0');
+          sb.write('${type.symbols}0');
         } else {
           sb.write('lorem ipsum');
         }
