@@ -92,9 +92,9 @@ class _AstToExpressionVisitor
   o.Expression visitBinary(compiler_ast.Binary ast, _) {
     o.BinaryOperator? op = o.BinaryOperator.byOpStr(ast.operator);
     if (op == null) {
-        throw BuildError.withoutContext(
-          'Unsupported operation "${ast.operator}"',
-        );
+      throw BuildError.withoutContext(
+        'Unsupported operation "${ast.operator}"',
+      );
     } else {
       return o.BinaryOperatorExpr(
         op,

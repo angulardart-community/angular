@@ -921,8 +921,7 @@ void _errorOnUnusedDirectiveTypes(
   String key(String? moduleUrl, String name) => '$moduleUrl#$name';
 
   // The set of directives declared for use.
-  var used =
-      directives.map((d) => key(d!.type.moduleUrl, d.type.name)).toSet();
+  var used = directives.map((d) => key(d!.type.moduleUrl, d.type.name)).toSet();
 
   // Throw if the user attempts to type any directives that aren't used.
   for (var directiveType in directiveTypes) {

@@ -5,7 +5,6 @@
 // could be merged as there is a conversion at
 //    > ngcompiler/lib/v1/src/compiler/angular_compiler.dart:118
 
-
 /// Defines template and style encapsulation options available for Component's
 /// [View].
 ///

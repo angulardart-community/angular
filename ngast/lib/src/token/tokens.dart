@@ -15,7 +15,6 @@ abstract class NgBaseToken<T> {
 ///
 /// Clients should not extend, implement, or mix-in this class.
 class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
-
   factory NgSimpleToken.atSign(int offset) {
     return NgSimpleToken._(NgSimpleTokenType.atSign, offset);
   }
@@ -248,7 +247,6 @@ class NgSimpleQuoteToken extends _LexemeNgSimpleToken {
 ///
 /// Clients should not extend, implement, or mix-in this class.
 class NgToken implements NgBaseToken<NgTokenType> {
-
   factory NgToken.generateErrorSynthetic(int offset, NgTokenType type,
       {String lexeme = ''}) {
     if (type == NgTokenType.beforeElementDecorator ||

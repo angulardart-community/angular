@@ -312,7 +312,7 @@ abstract class AbstractEmitterVisitor
     context.print(')');
   }
 
-   @override
+  @override
   void visitReadVarExpr(o.ReadVarExpr ast, EmitterVisitorContext context) {
     var varName = ast.name;
     if (ast.builtin != null) {
@@ -437,7 +437,8 @@ abstract class AbstractEmitterVisitor
       o.DeclareFunctionStmt stmt, EmitterVisitorContext context);
 
   @override
-  void visitBinaryOperatorExpr(o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
+  void visitBinaryOperatorExpr(
+      o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
     context.print('(');
     ast.lhs.visitExpression(this, context);
     context.print(' ${ast.operator.opStr} ');

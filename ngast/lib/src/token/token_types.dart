@@ -6,7 +6,7 @@ enum NgSimpleTokenType {
   bang('!'),
   backSlash('\\'),
   closeBanana(')]'),
-  closeBrace('}'),  // ???
+  closeBrace('}'),
   closeBracket(']'),
   closeParen(')'),
   closeTagStart('</'),
@@ -24,7 +24,7 @@ enum NgSimpleTokenType {
   mustacheBegin('{{'),
   mustacheEnd('}}'),
   openBanana('[('),
-  openBrace('{'),  // ???
+  openBrace('{'),
   openBracket('['),
   openParen('('),
   period('.'),
@@ -46,22 +46,22 @@ enum NgTokenType {
   bananaPrefix('[('),
   bananaSuffix(')]'),
   bindPrefix('bind-'), // Not used in NgScanner.
-  beforeElementDecorator(''),  // ???
+  beforeElementDecorator(''),
   beforeElementDecoratorValue('='),
   closeElementEnd('>'),
   closeElementStart('</'),
   commentEnd('-->'),
   commentStart('<!--'),
-  commentValue(''), // ???
+  commentValue(''),
   doubleQuote('"'),
-  elementDecorator(''),  // ???
-  elementDecoratorValue(''),  // ???
-  elementIdentifier(''),  // ???
+  elementDecorator(''),
+  elementDecoratorValue(''),
+  elementIdentifier(''),
   eventPrefix('('),
   eventSuffix(')'),
   interpolationEnd('}}'),
   interpolationStart('{{'),
-  interpolationValue(''),  // ???
+  interpolationValue(''),
   letPrefix('let-'),
   openElementEnd('>'),
   openElementEndVoid('/>'),
