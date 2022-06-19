@@ -571,7 +571,8 @@ o.ClassStmt createViewClass(CompileView view, ExpressionParser parser) {
   }
   for (final method in viewMethods) {
     NodeReferenceStorageVisitor.visitScopedStatements(
-        method.body as List<o.Statement>);
+      method.body.whereType<o.Statement>().toList(),
+    );
   }
   for (final getter in view.getters) {
     NodeReferenceStorageVisitor.visitScopedStatements(getter.body);
