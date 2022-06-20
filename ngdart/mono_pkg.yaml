@@ -5,6 +5,5 @@ sdk:
 
 stages:
   - analyze:
-      - command: dart pub global activate melos; melos bs
       - format
       - analyze

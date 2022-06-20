@@ -116,54 +116,6 @@ jobs:
     needs:
       - job_001
   job_004:
-    name: "analyze; Dart 2.17.0; PKGS: ngast, ngcompiler, ngdart; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast-ngcompiler-ngdart;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast-ngcompiler-ngdart
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-      - id: ngdart_pub_upgrade
-        name: ngdart; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub upgrade
-      - name: ngdart; dart pub global activate melos; melos bs
-        if: "always() && steps.ngdart_pub_upgrade.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-  job_005:
     name: "analyze; Dart 2.17.0; PKGS: ngcompiler, ngdart; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
@@ -202,7 +154,7 @@ jobs:
         run: dart analyze
     needs:
       - job_001
-  job_006:
+  job_005:
     name: "analyze; Dart dev; PKG: ngast; `dart analyze --fatal-infos`"
     runs-on: ubuntu-latest
     steps:
@@ -232,7 +184,7 @@ jobs:
         run: dart analyze --fatal-infos
     needs:
       - job_001
-  job_007:
+  job_006:
     name: "analyze; Dart dev; PKGS: ngast, ngcompiler, ngdart; `dart format --output=none --set-exit-if-changed .`"
     runs-on: ubuntu-latest
     steps:
@@ -280,55 +232,7 @@ jobs:
         run: "dart format --output=none --set-exit-if-changed ."
     needs:
       - job_001
-  job_008:
-    name: "analyze; Dart dev; PKGS: ngast, ngcompiler, ngdart; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast-ngcompiler-ngdart;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast-ngcompiler-ngdart
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-      - id: ngdart_pub_upgrade
-        name: ngdart; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub upgrade
-      - name: ngdart; dart pub global activate melos; melos bs
-        if: "always() && steps.ngdart_pub_upgrade.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-  job_009:
+  job_007:
     name: "analyze; Dart dev; PKGS: ngcompiler, ngdart; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
@@ -367,7 +271,7 @@ jobs:
         run: dart analyze
     needs:
       - job_001
-  job_010:
+  job_008:
     name: "analyze; Dart stable; PKG: ngast; `dart analyze --fatal-infos`"
     runs-on: ubuntu-latest
     steps:
@@ -397,7 +301,7 @@ jobs:
         run: dart analyze --fatal-infos
     needs:
       - job_001
-  job_011:
+  job_009:
     name: "analyze; Dart stable; PKGS: ngast, ngcompiler, ngdart; `dart format --output=none --set-exit-if-changed .`"
     runs-on: ubuntu-latest
     steps:
@@ -445,55 +349,7 @@ jobs:
         run: "dart format --output=none --set-exit-if-changed ."
     needs:
       - job_001
-  job_012:
-    name: "analyze; Dart stable; PKGS: ngast, ngcompiler, ngdart; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast-ngcompiler-ngdart;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast-ngcompiler-ngdart
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-      - id: ngdart_pub_upgrade
-        name: ngdart; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub upgrade
-      - name: ngdart; dart pub global activate melos; melos bs
-        if: "always() && steps.ngdart_pub_upgrade.conclusion == 'success'"
-        working-directory: ngdart
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-  job_013:
+  job_010:
     name: "analyze; Dart stable; PKGS: ngcompiler, ngdart; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
@@ -532,259 +388,7 @@ jobs:
         run: dart analyze
     needs:
       - job_001
-  job_014:
-    name: "build; Dart 2.17.0; PKG: _tests; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_015:
-    name: "build; Dart 2.17.0; PKG: ngast; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_016:
-    name: "build; Dart 2.17.0; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_017:
-    name: "build; Dart 2.17.0; PKG: ngforms; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_018:
-    name: "build; Dart 2.17.0; PKG: ngrouter; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_019:
-    name: "build; Dart 2.17.0; PKG: ngtest; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_020:
+  job_011:
     name: "build; Dart 2.17.0; PKG: _tests; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -792,7 +396,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -823,10 +427,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_021:
+  job_012:
     name: "build; Dart 2.17.0; PKG: ngast; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -834,7 +435,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -865,10 +466,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_022:
+  job_013:
     name: "build; Dart 2.17.0; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -876,7 +474,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -907,10 +505,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_023:
+  job_014:
     name: "build; Dart 2.17.0; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -918,7 +513,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -949,10 +544,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_024:
+  job_015:
     name: "build; Dart 2.17.0; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -960,7 +552,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -991,10 +583,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_025:
+  job_016:
     name: "build; Dart 2.17.0; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -1002,7 +591,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -1033,11 +622,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_026:
-    name: "build; Dart dev; PKG: _tests; `dart pub global activate melos; melos bs`"
+  job_017:
+    name: "build; Dart dev; PKG: _tests; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1060,10 +646,10 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
         run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
+      - name: "_tests; dart run build_runner build --fail-on-severe"
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
-        run: dart pub global activate melos; melos bs
+        run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
       - job_002
@@ -1075,11 +661,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_027:
-    name: "build; Dart dev; PKG: ngast; `dart pub global activate melos; melos bs`"
+  job_018:
+    name: "build; Dart dev; PKG: ngast; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1102,10 +685,10 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngast
         run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
+      - name: "ngast; dart run build_runner build --fail-on-severe"
         if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
         working-directory: ngast
-        run: dart pub global activate melos; melos bs
+        run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
       - job_002
@@ -1117,11 +700,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_028:
-    name: "build; Dart dev; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
+  job_019:
+    name: "build; Dart dev; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1144,10 +724,10 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngcompiler
         run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
+      - name: "ngcompiler; dart run build_runner build --fail-on-severe"
         if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
         working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
+        run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
       - job_002
@@ -1159,11 +739,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_029:
-    name: "build; Dart dev; PKG: ngforms; `dart pub global activate melos; melos bs`"
+  job_020:
+    name: "build; Dart dev; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1186,10 +763,10 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
         run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
+      - name: "ngforms; dart run build_runner build --fail-on-severe"
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
-        run: dart pub global activate melos; melos bs
+        run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
       - job_002
@@ -1201,11 +778,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_030:
-    name: "build; Dart dev; PKG: ngrouter; `dart pub global activate melos; melos bs`"
+  job_021:
+    name: "build; Dart dev; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1228,10 +802,10 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
         run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
+      - name: "ngrouter; dart run build_runner build --fail-on-severe"
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
+        run: dart run build_runner build --fail-on-severe
     needs:
       - job_001
       - job_002
@@ -1243,11 +817,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_031:
-    name: "build; Dart dev; PKG: ngtest; `dart pub global activate melos; melos bs`"
+  job_022:
+    name: "build; Dart dev; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1270,258 +841,6 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
         run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_032:
-    name: "build; Dart dev; PKG: _tests; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: "_tests; dart run build_runner build --fail-on-severe"
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart run build_runner build --fail-on-severe
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_033:
-    name: "build; Dart dev; PKG: ngast; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: "ngast; dart run build_runner build --fail-on-severe"
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart run build_runner build --fail-on-severe
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_034:
-    name: "build; Dart dev; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: "ngcompiler; dart run build_runner build --fail-on-severe"
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart run build_runner build --fail-on-severe
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_035:
-    name: "build; Dart dev; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: "ngforms; dart run build_runner build --fail-on-severe"
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart run build_runner build --fail-on-severe
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_036:
-    name: "build; Dart dev; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: "ngrouter; dart run build_runner build --fail-on-severe"
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart run build_runner build --fail-on-severe
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_037:
-    name: "build; Dart dev; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
       - name: "ngtest; dart run build_runner build --fail-on-severe"
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
@@ -1537,11 +856,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_038:
-    name: "build; Dart stable; PKG: _tests; `dart pub global activate melos; melos bs`"
+  job_023:
+    name: "build; Dart stable; PKG: _tests; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1564,258 +880,6 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
         run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_039:
-    name: "build; Dart stable; PKG: ngast; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_040:
-    name: "build; Dart stable; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_041:
-    name: "build; Dart stable; PKG: ngforms; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_042:
-    name: "build; Dart stable; PKG: ngrouter; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_043:
-    name: "build; Dart stable; PKG: ngtest; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_044:
-    name: "build; Dart stable; PKG: _tests; `dart run build_runner build --fail-on-severe`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_1"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
       - name: "_tests; dart run build_runner build --fail-on-severe"
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
@@ -1831,10 +895,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_045:
+  job_024:
     name: "build; Dart stable; PKG: ngast; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -1842,7 +903,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -1873,10 +934,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_046:
+  job_025:
     name: "build; Dart stable; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -1884,7 +942,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -1915,10 +973,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_047:
+  job_026:
     name: "build; Dart stable; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -1926,7 +981,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -1957,10 +1012,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_048:
+  job_027:
     name: "build; Dart stable; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -1968,7 +1020,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -1999,10 +1051,7 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_049:
+  job_028:
     name: "build; Dart stable; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
@@ -2010,7 +1059,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -2041,557 +1090,8 @@ jobs:
       - job_008
       - job_009
       - job_010
-      - job_011
-      - job_012
-      - job_013
-  job_050:
-    name: "unit_test; Dart 2.17.0; PKG: _tests; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_051:
-    name: "unit_test; Dart 2.17.0; PKG: ngast; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_052:
-    name: "unit_test; Dart 2.17.0; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_053:
-    name: "unit_test; Dart 2.17.0; PKG: ngforms; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_054:
-    name: "unit_test; Dart 2.17.0; PKG: ngrouter; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_055:
-    name: "unit_test; Dart 2.17.0; PKG: ngtest; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_056:
+  job_029:
     name: "unit_test; Dart 2.17.0; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_3"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: "2.17.0"
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart run build_runner test --fail-on-severe -- -P browser
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_057:
-    name: "unit_test; Dart 2.17.0; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -2614,6 +1114,63 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
         run: dart pub upgrade
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
+        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
+        working-directory: _tests
+        run: dart run build_runner test --fail-on-severe -- -P browser
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+  job_030:
+    name: "unit_test; Dart 2.17.0; PKG: _tests; `dart run test -P vm`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests;commands:command_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: _tests_pub_upgrade
+        name: _tests; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _tests
+        run: dart pub upgrade
       - name: "_tests; dart run test -P vm"
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
@@ -2647,28 +1204,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_058:
+  job_031:
     name: "unit_test; Dart 2.17.0; PKG: ngast; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -2676,7 +1212,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -2725,28 +1261,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_059:
+  job_032:
     name: "unit_test; Dart 2.17.0; PKG: ngcompiler; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -2754,7 +1269,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -2803,28 +1318,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_060:
+  job_033:
     name: "unit_test; Dart 2.17.0; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -2832,7 +1326,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -2881,28 +1375,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_061:
+  job_034:
     name: "unit_test; Dart 2.17.0; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -2910,7 +1383,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -2959,28 +1432,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_062:
+  job_035:
     name: "unit_test; Dart 2.17.0; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -2988,7 +1440,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -3037,575 +1489,8 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_063:
-    name: "unit_test; Dart dev; PKG: _tests; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_064:
-    name: "unit_test; Dart dev; PKG: ngast; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_065:
-    name: "unit_test; Dart dev; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_066:
-    name: "unit_test; Dart dev; PKG: ngforms; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_067:
-    name: "unit_test; Dart dev; PKG: ngrouter; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_068:
-    name: "unit_test; Dart dev; PKG: ngtest; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_069:
+  job_036:
     name: "unit_test; Dart dev; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_3"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart run build_runner test --fail-on-severe -- -P browser
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_070:
-    name: "unit_test; Dart dev; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -3628,6 +1513,63 @@ jobs:
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
         run: dart pub upgrade
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
+        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
+        working-directory: _tests
+        run: dart run build_runner test --fail-on-severe -- -P browser
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+  job_037:
+    name: "unit_test; Dart dev; PKG: _tests; `dart run test -P vm`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: dev
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: _tests_pub_upgrade
+        name: _tests; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _tests
+        run: dart pub upgrade
       - name: "_tests; dart run test -P vm"
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
@@ -3661,28 +1603,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_071:
+  job_038:
     name: "unit_test; Dart dev; PKG: ngast; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -3690,7 +1611,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -3739,28 +1660,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_072:
+  job_039:
     name: "unit_test; Dart dev; PKG: ngcompiler; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -3768,7 +1668,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -3817,28 +1717,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_073:
+  job_040:
     name: "unit_test; Dart dev; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -3846,7 +1725,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -3895,28 +1774,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_074:
+  job_041:
     name: "unit_test; Dart dev; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -3924,7 +1782,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -3973,28 +1831,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_075:
+  job_042:
     name: "unit_test; Dart dev; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -4002,7 +1839,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -4051,496 +1888,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_076:
-    name: "unit_test; Dart stable; PKG: _tests; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: _tests_pub_upgrade
-        name: _tests; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub upgrade
-      - name: _tests; dart pub global activate melos; melos bs
-        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
-        working-directory: _tests
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_077:
-    name: "unit_test; Dart stable; PKG: ngast; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngast_pub_upgrade
-        name: ngast; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub upgrade
-      - name: ngast; dart pub global activate melos; melos bs
-        if: "always() && steps.ngast_pub_upgrade.conclusion == 'success'"
-        working-directory: ngast
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_078:
-    name: "unit_test; Dart stable; PKG: ngcompiler; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngcompiler_pub_upgrade
-        name: ngcompiler; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub upgrade
-      - name: ngcompiler; dart pub global activate melos; melos bs
-        if: "always() && steps.ngcompiler_pub_upgrade.conclusion == 'success'"
-        working-directory: ngcompiler
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_079:
-    name: "unit_test; Dart stable; PKG: ngforms; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngforms_pub_upgrade
-        name: ngforms; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub upgrade
-      - name: ngforms; dart pub global activate melos; melos bs
-        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
-        working-directory: ngforms
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_080:
-    name: "unit_test; Dart stable; PKG: ngrouter; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngrouter_pub_upgrade
-        name: ngrouter; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub upgrade
-      - name: ngrouter; dart pub global activate melos; melos bs
-        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
-        working-directory: ngrouter
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_081:
-    name: "unit_test; Dart stable; PKG: ngtest; `dart pub global activate melos; melos bs`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - id: checkout
-        uses: actions/checkout@v3
-      - id: ngtest_pub_upgrade
-        name: ngtest; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub upgrade
-      - name: ngtest; dart pub global activate melos; melos bs
-        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
-        working-directory: ngtest
-        run: dart pub global activate melos; melos bs
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-      - job_005
-      - job_006
-      - job_007
-      - job_008
-      - job_009
-      - job_010
-      - job_011
-      - job_012
-      - job_013
-      - job_014
-      - job_015
-      - job_016
-      - job_017
-      - job_018
-      - job_019
-      - job_020
-      - job_021
-      - job_022
-      - job_023
-      - job_024
-      - job_025
-      - job_026
-      - job_027
-      - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_082:
+  job_043:
     name: "unit_test; Dart stable; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
     runs-on: ubuntu-latest
     steps:
@@ -4548,7 +1896,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_2"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4597,28 +1945,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_083:
+  job_044:
     name: "unit_test; Dart stable; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
@@ -4626,7 +1953,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_2"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests;commands:command_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:_tests
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4675,28 +2002,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_084:
+  job_045:
     name: "unit_test; Dart stable; PKG: ngast; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -4704,7 +2010,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4753,28 +2059,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_085:
+  job_046:
     name: "unit_test; Dart stable; PKG: ngcompiler; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -4782,7 +2067,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4831,28 +2116,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_086:
+  job_047:
     name: "unit_test; Dart stable; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -4860,7 +2124,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4909,28 +2173,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_087:
+  job_048:
     name: "unit_test; Dart stable; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -4938,7 +2181,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -4987,28 +2230,7 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
-  job_088:
+  job_049:
     name: "unit_test; Dart stable; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -5016,7 +2238,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest;commands:command_3"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -5065,24 +2287,3 @@ jobs:
       - job_026
       - job_027
       - job_028
-      - job_029
-      - job_030
-      - job_031
-      - job_032
-      - job_033
-      - job_034
-      - job_035
-      - job_036
-      - job_037
-      - job_038
-      - job_039
-      - job_040
-      - job_041
-      - job_042
-      - job_043
-      - job_044
-      - job_045
-      - job_046
-      - job_047
-      - job_048
-      - job_049
