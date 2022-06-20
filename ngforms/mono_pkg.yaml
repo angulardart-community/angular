@@ -5,6 +5,8 @@ sdk:
 
 stages:
   - build:
+      - command: dart pub global activate melos; melos bs
       - command: dart run build_runner build --fail-on-severe
   - unit_test:
+      - command: dart pub global activate melos; melos bs
       - command: dart run build_runner test --fail-on-severe -- -P ci
