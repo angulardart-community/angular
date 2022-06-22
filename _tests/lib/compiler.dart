@@ -54,7 +54,7 @@ final _ngFiles = Glob('lib/**.dart');
 Future<void> _testBuilder(
   Builder builder,
   Map<String, String> sourceAssets, {
-  required List<AssetId> runBuilderOn,
+  List<AssetId>? runBuilderOn,
   required void Function(LogRecord) onLog,
   String? rootPackage,
 }) async {
@@ -73,13 +73,13 @@ Future<void> _testBuilder(
 
   // Load user sources.
   final writer = InMemoryAssetWriter();
-  final inputIds = runBuilderOn;
+  final inputIds = runBuilderOn ?? [];
   sourceAssets.forEach((serializedId, contents) {
     final id = makeAssetId(serializedId);
     sources.cacheStringAsset(id, contents);
-    // if (runBuilderOn == null) {
-    //   inputIds.add(id);
-    // }
+    if (runBuilderOn == null) {
+      inputIds.add(id);
+    }
   });
 
   if (inputIds.isEmpty) {
@@ -175,11 +175,11 @@ Future<void> compilesExpecting(
   }
 }
 
-void expectLogRecords(List<LogRecord> logs, matcher, String reasonPrefix) {
+void expectLogRecords(List<LogRecord>? logs, matcher, String reasonPrefix) {
   if (matcher == null) {
     return;
   }
-  //logs ??= [];
+  logs ??= [];
   expect(logs.map(formattedLogMessage), matcher,
       reason:
           '$reasonPrefix: \n${logs.map((l) => '${formattedLogMessage(l)} at:\n ${l.stackTrace}')}');
