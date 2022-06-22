@@ -1,6 +1,5 @@
 part of 'exception_handler.dart';
 
-@sealed
 enum ParserErrorCode {
   cannotFindMatchingClose('Cannot find matching close element to this'),
   danglingCloseElement(
