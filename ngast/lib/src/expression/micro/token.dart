@@ -78,25 +78,17 @@ class NgMicroToken {
   final NgMicroTokenType type;
 
   @override
-  String toString() => '#$NgMicroToken(${type._name}) {$offset:$lexeme}';
+  String toString() => '#$NgMicroToken(${type.name}) {$offset:$lexeme}';
 }
 
-class NgMicroTokenType {
-  static const endExpression = NgMicroTokenType._('endExpression');
-  static const bindExpression = NgMicroTokenType._('bindExpression');
-  static const bindExpressionBefore = NgMicroTokenType._(
-    'bindExpressionBefore',
-  );
-  static const bindIdentifier = NgMicroTokenType._('bindIdentifier');
-  static const letAssignment = NgMicroTokenType._('letAssignment');
-  static const letAssignmentBefore = NgMicroTokenType._(
-    'letAssignmentBefore',
-  );
-  static const letIdentifier = NgMicroTokenType._('letIdentifier');
-  static const letKeyword = NgMicroTokenType._('letKeyword');
-  static const letKeywordAfter = NgMicroTokenType._('letKeywordAfter');
-
-  final String _name;
-
-  const NgMicroTokenType._(this._name);
+enum NgMicroTokenType {
+  endExpression,
+  bindExpression,
+  bindExpressionBefore,
+  bindIdentifier,
+  letAssignment,
+  letAssignmentBefore,
+  letIdentifier,
+  letKeyword,
+  letKeywordAfter
 }
