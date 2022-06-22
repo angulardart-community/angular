@@ -17,7 +17,7 @@ enum NgSimpleTokenType {
   openTagStart('<'),
   tagEnd('>'),
   equalSign('='),
-  EOF(''),
+  eof(''),
   forwardSlash('/'),
   hash('#'),
   identifier(''),

@@ -13,14 +13,14 @@ void main() {
   test('should tokenize plain text', () {
     expect(tokenize('Hello World'), [
       NgSimpleToken.text(0, 'Hello World'),
-      NgSimpleToken.EOF(11),
+      NgSimpleToken.eof(11),
     ]);
   });
 
   test('should tokenize multiline text', () {
     expect(tokenize('Hello\nWorld'), [
       NgSimpleToken.text(0, 'Hello\nWorld'),
-      NgSimpleToken.EOF(11),
+      NgSimpleToken.eof(11),
     ]);
   });
 
@@ -32,7 +32,7 @@ void main() {
       NgSimpleToken.closeTagStart(5),
       NgSimpleToken.identifier(7, 'div'),
       NgSimpleToken.tagEnd(10),
-      NgSimpleToken.EOF(11),
+      NgSimpleToken.eof(11),
     ]);
   });
 
@@ -44,7 +44,7 @@ void main() {
       NgSimpleToken.closeTagStart(8),
       NgSimpleToken.identifier(10, 'my-tag'),
       NgSimpleToken.tagEnd(16),
-      NgSimpleToken.EOF(17),
+      NgSimpleToken.eof(17),
     ]);
   });
 
@@ -59,7 +59,7 @@ void main() {
       NgSimpleToken.closeTagStart(12),
       NgSimpleToken.identifier(14, 'div'),
       NgSimpleToken.tagEnd(17),
-      NgSimpleToken.EOF(18),
+      NgSimpleToken.eof(18),
     ]);
   });
 
@@ -68,7 +68,7 @@ void main() {
       NgSimpleToken.openTagStart(0),
       NgSimpleToken.identifier(1, 'hr'),
       NgSimpleToken.voidCloseTag(3),
-      NgSimpleToken.EOF(5),
+      NgSimpleToken.eof(5),
     ]);
   });
 
@@ -86,7 +86,7 @@ void main() {
       NgSimpleToken.closeTagStart(18),
       NgSimpleToken.identifier(20, 'div'),
       NgSimpleToken.tagEnd(23),
-      NgSimpleToken.EOF(24),
+      NgSimpleToken.eof(24),
     ]);
   });
 
@@ -99,7 +99,7 @@ void main() {
       NgSimpleToken.closeTagStart(23),
       NgSimpleToken.identifier(25, 'div'),
       NgSimpleToken.tagEnd(28),
-      NgSimpleToken.EOF(29),
+      NgSimpleToken.eof(29),
     ]);
   });
 
@@ -131,7 +131,7 @@ void main() {
       NgSimpleToken.closeTagStart(39),
       NgSimpleToken.identifier(41, 'button'),
       NgSimpleToken.tagEnd(47),
-      NgSimpleToken.EOF(48),
+      NgSimpleToken.eof(48),
     ]);
   });
 
@@ -152,7 +152,7 @@ void main() {
       NgSimpleToken.closeTagStart(21),
       NgSimpleToken.identifier(23, 'my-tag'),
       NgSimpleToken.tagEnd(29),
-      NgSimpleToken.EOF(30),
+      NgSimpleToken.eof(30),
     ]);
   });
 
@@ -172,7 +172,7 @@ void main() {
       NgSimpleToken.period(19),
       NgSimpleToken.percent(20),
       NgSimpleToken.tagEnd(21),
-      NgSimpleToken.EOF(22),
+      NgSimpleToken.eof(22),
     ]);
   });
 
@@ -185,7 +185,7 @@ void main() {
       NgSimpleToken.identifier(10, 'banana'),
       NgSimpleToken.closeBanana(16),
       NgSimpleToken.tagEnd(18),
-      NgSimpleToken.EOF(19),
+      NgSimpleToken.eof(19),
     ]);
   });
 
@@ -215,7 +215,7 @@ void main() {
       NgSimpleToken.commentBegin(0),
       NgSimpleToken.text(4, 'Hello World'),
       NgSimpleToken.commentEnd(15),
-      NgSimpleToken.EOF(18),
+      NgSimpleToken.eof(18),
     ]);
   });
 
@@ -232,7 +232,7 @@ void main() {
           '\n  Copyright (c) 2016, the Dart project authors.\n',
         ),
         NgSimpleToken.commentEnd(53),
-        NgSimpleToken.EOF(56),
+        NgSimpleToken.eof(56),
       ],
     );
   });
@@ -250,7 +250,7 @@ void main() {
       NgSimpleToken.closeTagStart(24),
       NgSimpleToken.identifier(26, 'span'),
       NgSimpleToken.tagEnd(30),
-      NgSimpleToken.EOF(31),
+      NgSimpleToken.eof(31),
     ]);
   });
 
@@ -265,7 +265,7 @@ void main() {
       NgSimpleToken.closeTagStart(15),
       NgSimpleToken.identifier(17, 'div'),
       NgSimpleToken.tagEnd(20),
-      NgSimpleToken.EOF(21),
+      NgSimpleToken.eof(21),
     ]);
   });
 
@@ -282,7 +282,7 @@ void main() {
             4,
             '\n  Copyright (c) 2016, the Dart project authors.\n',
           ),
-          NgSimpleToken.EOF(53),
+          NgSimpleToken.eof(53),
         ]);
   });
 
@@ -291,7 +291,7 @@ void main() {
       NgSimpleToken.openTagStart(0),
       NgSimpleToken.identifier(1, 'div'),
       NgSimpleToken.whitespace(4, ' '),
-      NgSimpleToken.EOF(5),
+      NgSimpleToken.eof(5),
     ]);
   });
 
@@ -312,7 +312,7 @@ void main() {
           NgSimpleToken.closeTagStart(32),
           NgSimpleToken.identifier(34, 'div'),
           NgSimpleToken.tagEnd(37),
-          NgSimpleToken.EOF(38),
+          NgSimpleToken.eof(38),
         ]);
   });
 
@@ -327,7 +327,7 @@ void main() {
       NgSimpleToken.equalSign(16),
       NgSimpleQuoteToken.doubleQuotedText(
           17, '" (someEvent)=\'do something\'>', false),
-      NgSimpleToken.EOF(46),
+      NgSimpleToken.eof(46),
     ]);
   });
 
@@ -342,7 +342,7 @@ void main() {
       NgSimpleToken.equalSign(16),
       NgSimpleQuoteToken.singleQuotedText(
           17, "' (someEvent)=\"do something\">", false),
-      NgSimpleToken.EOF(46),
+      NgSimpleToken.eof(46),
     ]);
   });
 
@@ -353,7 +353,7 @@ void main() {
       NgSimpleToken.whitespace(4, ' '),
       NgSimpleToken.identifier(5, 'someAttr'),
       NgSimpleToken.whitespace(13, ' '),
-      NgSimpleToken.EOF(14),
+      NgSimpleToken.eof(14),
     ]);
   });
 
@@ -365,7 +365,7 @@ void main() {
       NgSimpleToken.identifier(5, 'someAttr'),
       NgSimpleToken.whitespace(13, ' '),
       NgSimpleToken.equalSign(14),
-      NgSimpleToken.EOF(15),
+      NgSimpleToken.eof(15),
     ]);
   });
 
@@ -373,7 +373,7 @@ void main() {
     expect(tokenize('}} some text'), [
       NgSimpleToken.mustacheEnd(0),
       NgSimpleToken.text(2, ' some text'),
-      NgSimpleToken.EOF(12),
+      NgSimpleToken.eof(12),
     ]);
   });
 
@@ -391,7 +391,7 @@ void main() {
       NgSimpleToken.mustacheBegin(37),
       NgSimpleToken.text(39, ' blah '),
       NgSimpleToken.mustacheEnd(45),
-      NgSimpleToken.EOF(47),
+      NgSimpleToken.eof(47),
     ]);
   });
 
@@ -401,7 +401,7 @@ void main() {
       NgSimpleToken.text(2, ' some mustache '),
       NgSimpleToken.whitespace(17, '\n'),
       NgSimpleToken.text(18, ' unclosed'),
-      NgSimpleToken.EOF(27),
+      NgSimpleToken.eof(27),
     ]);
   });
 
@@ -410,7 +410,7 @@ void main() {
       NgSimpleToken.mustacheBegin(0),
       NgSimpleToken.whitespace(2, '\n'),
       NgSimpleToken.text(3, '  blah'),
-      NgSimpleToken.EOF(9),
+      NgSimpleToken.eof(9),
     ]);
   });
 
@@ -421,7 +421,7 @@ void main() {
       NgSimpleToken.mustacheBegin(0),
       NgSimpleToken.text(2, ' 5 < 3 '),
       NgSimpleToken.mustacheEnd(9),
-      NgSimpleToken.EOF(11),
+      NgSimpleToken.eof(11),
     ]);
   });
 
@@ -436,14 +436,14 @@ void main() {
       NgSimpleToken.whitespace(6, ' '),
       NgSimpleToken.unexpectedChar(7, '}'),
       NgSimpleToken.unexpectedChar(8, '}'),
-      NgSimpleToken.EOF(9),
+      NgSimpleToken.eof(9),
     ]);
   });
 
   test('should tokenize simple doctype declaration', () {
     expect(tokenize('<!DOCTYPE html>'), [
       NgSimpleToken.text(0, '<!DOCTYPE html>'),
-      NgSimpleToken.EOF(15),
+      NgSimpleToken.eof(15),
     ]);
   });
 
@@ -452,7 +452,7 @@ void main() {
         ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
     expect(tokenize(html), [
       NgSimpleToken.text(0, html),
-      NgSimpleToken.EOF(109),
+      NgSimpleToken.eof(109),
     ]);
   });
 
@@ -471,28 +471,28 @@ void main() {
       NgSimpleToken.closeTagStart(22),
       NgSimpleToken.identifier(24, 'div'),
       NgSimpleToken.tagEnd(27),
-      NgSimpleToken.EOF(28),
+      NgSimpleToken.eof(28),
     ]);
   });
 
   test('should escape named entities', () {
     expect(tokenize('&lt;div&gt;'), [
       NgSimpleToken.text(0, '<div>'),
-      NgSimpleToken.EOF(11),
+      NgSimpleToken.eof(11),
     ]);
   });
 
   test('should escape dec values', () {
     expect(tokenize('&#8721;'), [
       NgSimpleToken.text(0, '∑'),
-      NgSimpleToken.EOF(7),
+      NgSimpleToken.eof(7),
     ]);
   });
 
   test('should escape hex values', () {
     expect(tokenize('&#x2211;'), [
       NgSimpleToken.text(0, '∑'),
-      NgSimpleToken.EOF(8),
+      NgSimpleToken.eof(8),
     ]);
   });
 }

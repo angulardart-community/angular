@@ -15,7 +15,7 @@ class NgSimpleTokenizer {
     var scanner = NgSimpleScanner(template);
     scanner.resetState();
     var token = scanner.scan();
-    while (token.type != NgSimpleTokenType.EOF) {
+    while (token.type != NgSimpleTokenType.eof) {
       yield token;
       token = scanner.scan();
     }
@@ -116,7 +116,7 @@ class NgSimpleScanner {
   NgSimpleToken scanDoctype() {
     var offset = _scanner.position;
     if (_scanner.isDone) {
-      return NgSimpleToken.EOF(offset);
+      return NgSimpleToken.eof(offset);
     }
     _state = _NgSimpleScannerState.text;
 
@@ -139,7 +139,7 @@ class NgSimpleScanner {
   NgSimpleToken scanElement() {
     var offset = _scanner.position;
     if (_scanner.isDone) {
-      return NgSimpleToken.EOF(offset);
+      return NgSimpleToken.eof(offset);
     }
     if (_scanner.scan(_allElementMatches)) {
       var match = _scanner.lastMatch!;
@@ -241,7 +241,7 @@ class NgSimpleScanner {
   NgSimpleToken scanText() {
     var offset = _scanner.position;
     if (_scanner.isDone) {
-      return NgSimpleToken.EOF(offset);
+      return NgSimpleToken.eof(offset);
     }
     if (_scanner.scan(_allTextMatches)) {
       var match = _scanner.lastMatch!;
@@ -297,7 +297,7 @@ class NgSimpleScanner {
     // used in interpolation expression.
     var offset = _scanner.position;
     if (_scanner.peekChar() == null) {
-      return NgSimpleToken.EOF(offset);
+      return NgSimpleToken.eof(offset);
     }
     var text = _scanner.string.substring(offset);
     var match = _mustaches.firstMatch(text);
@@ -368,7 +368,7 @@ class NgSimpleScanner {
       }
       // named
       if (matchesGroup(match, 3)) {
-        return NAMED_ENTITIES[match.group(3)] ?? match.group(3)!;
+        return namedEntities[match.group(3)] ?? match.group(3)!;
       }
 
       return '';

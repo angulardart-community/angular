@@ -22,7 +22,7 @@ abstract class RecursiveTemplateVisitor<C>
   }
 
   T? visit<T extends TemplateAst>(T? astNode, [C? context]) =>
-      astNode?.visit(this, context) as T;
+      astNode?.visit(this, context) as T?;
 
   @override
   @mustCallSuper

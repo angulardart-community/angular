@@ -7,25 +7,25 @@ class HumanizingTemplateAstVisitor
   const HumanizingTemplateAstVisitor();
 
   @override
-  String visitAnnotation(AnnotationAst astNode, [_]) => '@${astNode.name}';
-
-  @override
-  String visitAttribute(AttributeAst astNode, [_]) {
-    if (astNode.value != null) {
-      return '${astNode.name}="${astNode.value}"';
-    } else {
-      return astNode.name;
-    }
+  String visitAnnotation(AnnotationAst astNode, [StringBuffer? context]) {
+    return '@${astNode.name}';
   }
 
   @override
-  String visitBanana(BananaAst astNode, [_]) {
+  String visitAttribute(AttributeAst astNode, [StringBuffer? context]) {
+    if (astNode.value != null) {
+      return '${astNode.name}="${astNode.value}"';
+    }
+    return astNode.name;
+  }
+
+  @override
+  String visitBanana(BananaAst astNode, [StringBuffer? context]) {
     var name = '[(${astNode.name})]';
     if (astNode.value != null) {
       return '$name="${astNode.value}"';
-    } else {
-      return name;
     }
+    return name;
   }
 
   @override
@@ -39,7 +39,7 @@ class HumanizingTemplateAstVisitor
   }
 
   @override
-  String visitComment(CommentAst astNode, [_]) {
+  String visitComment(CommentAst astNode, [StringBuffer? context]) {
     return '<!--${astNode.value}-->';
   }
 
@@ -192,12 +192,12 @@ class HumanizingTemplateAstVisitor
   }
 
   @override
-  String visitInterpolation(InterpolationAst astNode, [_]) {
+  String visitInterpolation(InterpolationAst astNode, [StringBuffer? context]) {
     return '{{${astNode.value}}}';
   }
 
   @override
-  String visitLetBinding(LetBindingAst astNode, [_]) {
+  String visitLetBinding(LetBindingAst astNode, [StringBuffer? context]) {
     if (astNode.value == null) {
       return 'let-${astNode.name}';
     }
@@ -222,7 +222,7 @@ class HumanizingTemplateAstVisitor
   }
 
   @override
-  String visitReference(ReferenceAst astNode, [_]) {
+  String visitReference(ReferenceAst astNode, [StringBuffer? context]) {
     var variable = '#${astNode.variable}';
     if (astNode.identifier != null) {
       return '$variable="${astNode.identifier}"';
@@ -232,7 +232,7 @@ class HumanizingTemplateAstVisitor
   }
 
   @override
-  String visitStar(StarAst astNode, [_]) {
+  String visitStar(StarAst astNode, [StringBuffer? context]) {
     var name = '*${astNode.name}';
     if (astNode.value != null) {
       return '$name="${astNode.value}"';
@@ -242,5 +242,7 @@ class HumanizingTemplateAstVisitor
   }
 
   @override
-  String visitText(TextAst astNode, [_]) => astNode.value;
+  String visitText(TextAst astNode, [StringBuffer? context]) {
+    return astNode.value;
+  }
 }

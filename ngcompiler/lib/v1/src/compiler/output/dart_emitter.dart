@@ -321,7 +321,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
     _visitParams(method.params, context);
     context.println(') {');
     context.incIndent();
-    visitAllStatements(method.body as List<o.Statement>, context);
+    visitAllStatements(method.body.whereType<o.Statement>().toList(), context);
     context.decIndent();
     context.println('}');
   }

@@ -1,5 +1,3 @@
-// @dart=2.9
-
 /// Configuration for using `package:build`-compatible build systems.
 ///
 /// See:
@@ -105,7 +103,7 @@ PostProcessBuilder componentSourceCleanup(BuilderOptions options) {
   return FileDeletingBuilder.withExcludes(
     const ['.html', '.css'],
     List<String>.from(
-      options.config['exclude'] as List ?? const [],
+      options.config['exclude'] as List? ?? const [],
     ),
     isEnabled: options.config['enabled'] == true,
   );

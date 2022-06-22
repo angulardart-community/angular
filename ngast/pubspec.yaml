@@ -1,5 +1,5 @@
 name: ngast
-repository: _GetValue<$1>\(ng.create$1Factory/angular
+repository: https://github.com/angulardart-community/angular
 description: Parser and utilities for AngularDart templates
 version: 2.2.0
 

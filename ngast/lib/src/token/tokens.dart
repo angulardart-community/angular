@@ -63,8 +63,8 @@ class NgSimpleToken implements NgBaseToken<NgSimpleTokenType> {
     return NgSimpleToken._(NgSimpleTokenType.tagEnd, offset);
   }
 
-  factory NgSimpleToken.EOF(int offset) {
-    return NgSimpleToken._(NgSimpleTokenType.EOF, offset);
+  factory NgSimpleToken.eof(int offset) {
+    return NgSimpleToken._(NgSimpleTokenType.eof, offset);
   }
 
   factory NgSimpleToken.equalSign(int offset) {
