@@ -434,7 +434,7 @@ void main() {
           CssSelector.parse('Blink.neon.hotpink[Sweet][Dismissable=false]')[0];
       var template = selector.getMatchingElementTemplate();
       expect(template,
-          '<Blink class=\"neon hotpink\" Sweet Dismissable=\"false\"></Blink>');
+          '<Blink class="neon hotpink" Sweet Dismissable="false"></Blink>');
     });
     test('should create an element without a tag name', () {
       var selector = CssSelector.parse('[fancy]')[0];

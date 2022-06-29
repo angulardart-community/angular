@@ -19,7 +19,7 @@ class _HasTextContent extends Matcher {
 
   @override
   Description describe(Description description) =>
-      description.add('$expectedText');
+      description.add(expectedText);
 
   @override
   Description describeMismatch(

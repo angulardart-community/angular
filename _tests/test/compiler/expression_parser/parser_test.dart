@@ -78,8 +78,8 @@ void _runTests(ExpressionParser Function() createParser) {
         checkAction('1');
       });
       test('should parse strings', () {
-        checkAction("'1'", '\"1\"');
-        checkAction('\"1\"');
+        checkAction("'1'", '"1"');
+        checkAction('"1"');
       });
       test('should require escaping \$ in strings', () {
         expectActionError(r"'$100 USD'", _throwsParseException);
@@ -150,7 +150,7 @@ void _runTests(ExpressionParser Function() createParser) {
         test('should only allow identifier or keyword as member names', () {
           expectActionError('x.(', _throwsParseException);
           expectActionError('x. 1234', _throwsParseException);
-          expectActionError('x.\"foo\"', _throwsParseException);
+          expectActionError('x."foo"', _throwsParseException);
         });
         test('should parse safe field access', () {
           checkAction('a?.a');
@@ -332,15 +332,15 @@ void _runTests(ExpressionParser Function() createParser) {
         checkInterpolation('{{ a < b ? a : b }}');
       });
       test('should parse expression with newline characters', () {
-        checkInterpolation('''{{ \'foo\' +
- \'bar\' +
- \'baz\' }}''', '''{{ "foo" + "bar" + "baz" }}''');
+        checkInterpolation('''{{ 'foo' +
+ 'bar' +
+ 'baz' }}''', '''{{ "foo" + "bar" + "baz" }}''');
       });
       group('non-comment slashes should parse in', () {
         test('single quote strings', () {
           checkInterpolation(
-            "{{ \'http://www.google.com\' }}",
-            '{{ \"http://www.google.com\" }}',
+            "{{ 'http://www.google.com' }}",
+            '{{ "http://www.google.com" }}',
           );
         });
         test('double quote strings', () {
@@ -367,13 +367,13 @@ void _runTests(ExpressionParser Function() createParser) {
         });
         test('complex strings', () {
           expectInterpolationError(
-            '''{{"//a\'//b`//c`//d\'//e" //comment}}''',
+            '''{{"//a'//b`//c`//d'//e" //comment}}''',
             _throwsParseException,
           );
         });
         test('nested, unterminated strings', () {
           expectInterpolationError(
-            '''{{ "a\'b`" //comment}}''',
+            '''{{ "a'b`" //comment}}''',
             _throwsParseException,
           );
         });

@@ -52,11 +52,11 @@ void main() {
       test('should not dispose of existing subscription when Streams are equal',
           () async {
         // See https://github.com/angulardart/angular/issues/260
-        var _ctrl = StreamController.broadcast();
-        expect(pipe.transform(_ctrl.stream), isNull);
-        _ctrl.add(message);
+        var ctrl = StreamController.broadcast();
+        expect(pipe.transform(ctrl.stream), isNull);
+        ctrl.add(message);
         Timer.run(expectAsync0(() {
-          expect(pipe.transform(_ctrl.stream), isNotNull);
+          expect(pipe.transform(ctrl.stream), isNotNull);
         }));
       });
       test('should request a change detection check upon receiving a new value',

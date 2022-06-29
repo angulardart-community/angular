@@ -77,14 +77,14 @@ void main() {
       type: CompileTypeMetadata(moduleUrl: someModuleUrl, name: 'Root'),
       metadataType: CompileDirectiveMetadataType.Component);
 
-  ParseTemplate _parse;
+  ParseTemplate parseTemplate;
 
   List<TemplateAst> parse(
     String template, [
     List<CompileDirectiveMetadata> directive,
     List<CompilePipeMetadata> pipes,
   ]) {
-    return runZoned(() => _parse(template, directive, pipes), zoneValues: {
+    return runZoned(() => parseTemplate(template, directive, pipes), zoneValues: {
       #buildLog: Logger.root,
     });
   }
@@ -102,7 +102,7 @@ void main() {
       ExpressionParser(),
       compilerFlags ?? CompilerFlags(),
     );
-    _parse = (template, [directives, pipes]) {
+    parseTemplate = (template, [directives, pipes]) {
       return parser.parse(
         component,
         template,

@@ -7,19 +7,19 @@ import 'package:ngcompiler/v1/src/compiler/style_url_resolver.dart'
 
 void main() {
   group('extractStyleUrls', () {
-    test('should not resolve \"url()\" urls', () {
+    test('should not resolve "url()" urls', () {
       var css = '''
       .foo {
         background-image: url("double.jpg");
-        background-image: url(\'simple.jpg\');
+        background-image: url('simple.jpg');
         background-image: url(noquote.jpg);
       }''';
       var resolvedCss = extractStyleUrls('http://ng.io', css).style;
       expect(resolvedCss, css);
     });
-    test('should extract \"@import\" urls', () {
+    test('should extract "@import" urls', () {
       var css = '''
-      @import \'1.css\';
+      @import '1.css';
       @import "2.css";
       ''';
       var styleWithImports = extractStyleUrls('http://ng.io', css);
@@ -27,9 +27,9 @@ void main() {
       expect(styleWithImports.styleUrls,
           ['http://ng.io/1.css', 'http://ng.io/2.css']);
     });
-    test('should extract \"@import url()\" urls', () {
+    test('should extract "@import url()" urls', () {
       var css = '''
-      @import url(\'3.css\');
+      @import url('3.css');
       @import url("4.css");
       @import url(5.css);
       ''';
@@ -38,15 +38,15 @@ void main() {
       expect(styleWithImports.styleUrls,
           ['http://ng.io/3.css', 'http://ng.io/4.css', 'http://ng.io/5.css']);
     });
-    test('should extract \"@import urls and keep rules in the same line', () {
-      var css = '''@import url(\'some.css\');div {color: red};''';
+    test('should extract "@import urls and keep rules in the same line', () {
+      var css = '''@import url('some.css');div {color: red};''';
       var styleWithImports = extractStyleUrls('http://ng.io', css);
       expect(styleWithImports.style.trim(), 'div {color: red};');
       expect(styleWithImports.styleUrls, ['http://ng.io/some.css']);
     });
-    test('should extract media query in \"@import\"', () {
+    test('should extract media query in "@import"', () {
       var css = '''
-      @import \'print1.css\' print;
+      @import 'print1.css' print;
       @import url(print2.css) print;
       ''';
       var styleWithImports = extractStyleUrls('http://ng.io', css);
@@ -55,14 +55,14 @@ void main() {
           ['http://ng.io/print1.css', 'http://ng.io/print2.css']);
     });
     test('should leave absolute non-package @import urls intact', () {
-      var css = '''@import url(\'http://server.com/some.css\');''';
+      var css = '''@import url('http://server.com/some.css');''';
       var styleWithImports = extractStyleUrls('http://ng.io', css);
       expect(styleWithImports.style.trim(),
-          '''@import url(\'http://server.com/some.css\');''');
+          '''@import url('http://server.com/some.css');''');
       expect(styleWithImports.styleUrls, []);
     });
     test('should resolve package @import urls', () {
-      var css = '''@import url(\'package:a/b/some.css\');''';
+      var css = '''@import url('package:a/b/some.css');''';
       var styleWithImports = extractStyleUrls('http://ng.io', css);
       expect(styleWithImports.style.trim(), '''''');
       expect(styleWithImports.styleUrls, ['package:a/b/some.css']);
