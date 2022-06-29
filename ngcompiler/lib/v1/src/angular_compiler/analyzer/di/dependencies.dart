@@ -199,11 +199,11 @@ class DependencyInvocation<E extends Element?> {
   });
 
   @override
-  bool operator ==(Object o) =>
-      o is DependencyInvocation<E> &&
-      urlOf(bound) == urlOf(o.bound) &&
-      const ListEquality<Object>().equals(positional, o.positional) &&
-      const MapEquality<Object, Object>().equals(named, o.named);
+  bool operator ==(Object other) =>
+      other is DependencyInvocation<E> &&
+      urlOf(bound) == urlOf(other.bound) &&
+      const ListEquality<Object>().equals(positional, other.positional) &&
+      const MapEquality<Object, Object>().equals(named, other.named);
 
   @override
   int get hashCode =>
@@ -252,14 +252,14 @@ class DependencyElement {
   });
 
   @override
-  bool operator ==(Object o) =>
-      o is DependencyElement &&
-      token == o.token &&
-      type == o.type &&
-      host == o.host &&
-      optional == o.optional &&
-      self == o.self &&
-      skipSelf == o.skipSelf;
+  bool operator ==(Object other) =>
+      other is DependencyElement &&
+      token == other.token &&
+      type == other.type &&
+      host == other.host &&
+      optional == other.optional &&
+      self == other.self &&
+      skipSelf == other.skipSelf;
 
   @override
   int get hashCode =>

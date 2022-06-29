@@ -429,22 +429,10 @@ String iterableChangesAsString({
   List<Object> removals = const [],
   List<Object> identityChanges = const [],
 }) {
-  return 'collection: ' +
-      collection.join(', ') +
-      '\n' +
-      'previous: ' +
-      previous.join(', ') +
-      '\n' +
-      'additions: ' +
-      additions.join(', ') +
-      '\n' +
-      'moves: ' +
-      moves.join(', ') +
-      '\n' +
-      'removals: ' +
-      removals.join(', ') +
-      '\n' +
-      'identityChanges: ' +
-      identityChanges.join(', ') +
-      '\n';
+  return 'collection: ${collection.join(', ')}\n'
+      'previous: ${previous.join(', ')}\n'
+      'additions: ${additions.join(', ')}\n'
+      'moves: ${moves.join(', ')}\n'
+      'removals: ${removals.join(', ')}\n'
+      'identityChanges: ${identityChanges.join(', ')}\n';
 }

@@ -6,15 +6,15 @@ part of 'model.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = ( Serializers().toBuilder()
       ..add(InspectorDirective.serializer)
       ..add(InspectorNode.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(InspectorDirective)]),
-          () => new ListBuilder<InspectorDirective>())
+          () => ListBuilder<InspectorDirective>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(InspectorNode)]),
-          () => new ListBuilder<InspectorNode>()))
+          () => ListBuilder<InspectorNode>()))
     .build();
 Serializer<InspectorNode> _$inspectorNodeSerializer =
     new _$InspectorNodeSerializer();
@@ -55,7 +55,7 @@ class _$InspectorNodeSerializer implements StructuredSerializer<InspectorNode> {
   InspectorNode deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new InspectorNodeBuilder();
+    final result = InspectorNodeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -112,7 +112,7 @@ class _$InspectorDirectiveSerializer
   InspectorDirective deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new InspectorDirectiveBuilder();
+    final result = InspectorDirectiveBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -160,7 +160,7 @@ class _$InspectorNode extends InspectorNode {
       (toBuilder()..update(updates)).build();
 
   @override
-  InspectorNodeBuilder toBuilder() => new InspectorNodeBuilder()..replace(this);
+  InspectorNodeBuilder toBuilder() => InspectorNodeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -193,19 +193,19 @@ class InspectorNodeBuilder
 
   InspectorDirectiveBuilder? _component;
   InspectorDirectiveBuilder get component =>
-      _$this._component ??= new InspectorDirectiveBuilder();
+      _$this._component ??= InspectorDirectiveBuilder();
   set component(InspectorDirectiveBuilder? component) =>
       _$this._component = component;
 
   ListBuilder<InspectorDirective>? _directives;
   ListBuilder<InspectorDirective> get directives =>
-      _$this._directives ??= new ListBuilder<InspectorDirective>();
+      _$this._directives ??= ListBuilder<InspectorDirective>();
   set directives(ListBuilder<InspectorDirective>? directives) =>
       _$this._directives = directives;
 
   ListBuilder<InspectorNode>? _children;
   ListBuilder<InspectorNode> get children =>
-      _$this._children ??= new ListBuilder<InspectorNode>();
+      _$this._children ??= ListBuilder<InspectorNode>();
   set children(ListBuilder<InspectorNode>? children) =>
       _$this._children = children;
 
@@ -235,10 +235,10 @@ class InspectorNodeBuilder
 
   @override
   _$InspectorNode build() {
-    _$InspectorNode _$result;
+    _$InspectorNode $result;
     try {
-      _$result = _$v ??
-          new _$InspectorNode._(
+      $result = _$v ??
+              _$InspectorNode._(
               component: _component?.build(),
               directives: directives.build(),
               children: children.build());
@@ -252,13 +252,13 @@ class InspectorNodeBuilder
         _$failedField = 'children';
         children.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'InspectorNode', _$failedField, e.toString());
       }
       rethrow;
     }
-    replace(_$result);
-    return _$result;
+    replace($result);
+    return $result;
   }
 }
 

@@ -23,9 +23,9 @@ class TypedElement {
   int get hashCode => on.hashCode ^ typeLink.hashCode;
 
   @override
-  bool operator ==(Object o) {
-    if (o is TypedElement) {
-      return on == o.on && typeLink == o.typeLink;
+  bool operator ==(Object other) {
+    if (other is TypedElement) {
+      return on == other.on && typeLink == other.typeLink;
     }
     return false;
   }

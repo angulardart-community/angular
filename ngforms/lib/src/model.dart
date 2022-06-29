@@ -340,22 +340,20 @@ abstract class AbstractControl<T> {
     return VALID;
   }
 
-  void _updateTouched(bool? updateParent) {
-    var _updateParent = updateParent ?? false;
+  void _updateTouched([bool updateParent = false]) {
     _touched = _anyControlsTouched();
 
     var parent = _parent;
-    if (parent != null && _updateParent) {
-      parent._updateTouched(_updateParent);
+    if (parent != null && updateParent) {
+      parent._updateTouched(updateParent);
     }
   }
 
-  void _updatePristine({bool? updateParent}) {
-    var _updateParent = updateParent ?? false;
+  void _updatePristine({bool updateParent = false}) {
     _pristine = !_anyControlsDirty();
 
     var parent = _parent;
-    if (parent != null && _updateParent) {
+    if (parent != null && updateParent) {
       parent._updatePristine(updateParent: updateParent);
     }
   }

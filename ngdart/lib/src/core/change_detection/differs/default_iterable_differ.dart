@@ -583,24 +583,12 @@ class DefaultIterableDiffer {
       forEachRemovedItem((record) => removals.add(record));
       var identityChanges = <Object>[];
       forEachIdentityChange((record) => identityChanges.add(record));
-      return 'collection: ' +
-          list.join(', ') +
-          '\n' +
-          'previous: ' +
-          previous.join(', ') +
-          '\n' +
-          'additions: ' +
-          additions.join(', ') +
-          '\n' +
-          'moves: ' +
-          moves.join(', ') +
-          '\n' +
-          'removals: ' +
-          removals.join(', ') +
-          '\n' +
-          'identityChanges: ' +
-          identityChanges.join(', ') +
-          '\n';
+      return 'collection: ${list.join(', ')}\n'
+          'previous: ${previous.join(', ')}\n'
+          'additions: ${additions.join(', ')}\n'
+          'moves: ${moves.join(', ')}\n'
+          'removals: ${removals.join(', ')}\n'
+          'identityChanges: ${identityChanges.join(', ')}\n';
     } else {
       return super.toString();
     }

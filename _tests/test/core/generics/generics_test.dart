@@ -66,7 +66,7 @@ void main() {
 
   group('component factories', () {
     test('should support a single type argument', () async {
-      final testBed = NgTestBed<SingleGenericComponent>(
+      final testBed = NgTestBed<SingleGenericComponent<String>>(
           ng.createSingleGenericComponentFactory<String>());
       final testFixture = await testBed.create();
       expect(testFixture.assertOnlyInstance,
@@ -74,7 +74,7 @@ void main() {
     });
 
     test('should support multiple type arguments', () async {
-      final testBed = NgTestBed<MultipleGenericComponent>(
+      final testBed = NgTestBed<MultipleGenericComponent<String, int>>(
           ng.createMultipleGenericComponentFactory<String, int>());
       final testFixture = await testBed.create();
       expect(testFixture.assertOnlyInstance,

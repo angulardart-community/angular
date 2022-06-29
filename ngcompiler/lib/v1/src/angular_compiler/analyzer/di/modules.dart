@@ -161,10 +161,10 @@ class ModuleElement {
   }
 
   @override
-  bool operator ==(Object o) =>
-      o is ModuleElement &&
-      iterableEquality.equals(provide, o.provide) &&
-      iterableEquality.equals(include, o.include);
+  bool operator ==(Object other) =>
+      other is ModuleElement &&
+      iterableEquality.equals(provide, other.provide) &&
+      iterableEquality.equals(include, other.include);
 
   @override
   int get hashCode =>

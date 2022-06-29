@@ -178,7 +178,7 @@ class TypeTokenElement implements TokenElement {
   const TypeTokenElement(this.link);
 
   @override
-  bool operator ==(Object o) => o is TypeTokenElement && link == o.link;
+  bool operator ==(Object other) => other is TypeTokenElement && link == other.link;
 
   @override
   int get hashCode => link.hashCode;
@@ -213,12 +213,12 @@ class OpaqueTokenElement implements TokenElement {
   });
 
   @override
-  bool operator ==(Object o) {
-    return o is OpaqueTokenElement &&
-        identifier == o.identifier &&
-        classUrl == o.classUrl &&
-        isMultiToken == o.isMultiToken &&
-        typeUrl == o.typeUrl;
+  bool operator ==(Object other) {
+    return other is OpaqueTokenElement &&
+        identifier == other.identifier &&
+        classUrl == other.classUrl &&
+        isMultiToken == other.isMultiToken &&
+        typeUrl == other.typeUrl;
   }
 
   @override

@@ -116,7 +116,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
     _providers.add(Identifiers.ElementToken, renderNode.toReadExpr());
     _providers.add(Identifiers.HtmlElementToken, renderNode.toReadExpr());
     var readInjectorExpr =
-        o.InvokeMemberMethodExpr('injector', [o.literal(this.nodeIndex)]);
+        o.InvokeMemberMethodExpr('injector', [o.literal(nodeIndex)]);
     _providers.add(Identifiers.InjectorToken, readInjectorExpr);
 
     if (hasViewContainer || hasEmbeddedView) {

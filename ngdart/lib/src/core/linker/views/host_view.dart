@@ -209,8 +209,8 @@ abstract class HostView<T extends Object> extends View implements DynamicView {
   // Dependency injection ------------------------------------------------------
 
   @override
-  Object? injectFromAncestry(Object token, Object? notFoundValue) =>
-      unsafeCast(_injector.get(token, notFoundValue));
+  Object? injectFromAncestry(Object token, Object? notFoundResult) =>
+      unsafeCast(_injector.get(token, notFoundResult));
 
   // View manipulation ---------------------------------------------------------
 

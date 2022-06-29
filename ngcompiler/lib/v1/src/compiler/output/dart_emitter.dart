@@ -400,7 +400,6 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
     context.println('}');
   }
 
-  @override
   String getBuiltinMethodName(o.BuiltinMethod method) {
     switch (method) {
       case o.BuiltinMethod.ConcatArray:

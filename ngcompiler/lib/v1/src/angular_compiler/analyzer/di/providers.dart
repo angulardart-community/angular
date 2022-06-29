@@ -214,7 +214,7 @@ abstract class ProviderElement {
   );
 
   @override
-  bool operator ==(Object o) => o is ProviderElement && o.token == token;
+  bool operator ==(Object other) => other is ProviderElement && other.token == token;
 
   /// Whether this represents a multi-binding.
   bool get isMulti {
@@ -244,11 +244,11 @@ class UseClassProviderElement extends ProviderElement {
   }) : super._(e, providerType);
 
   @override
-  bool operator ==(Object o) =>
-      o is UseClassProviderElement &&
-      o.useClass == useClass &&
-      o.dependencies == dependencies &&
-      super == o;
+  bool operator ==(Object other) =>
+      other is UseClassProviderElement &&
+      other.useClass == useClass &&
+      other.dependencies == dependencies &&
+      super == other;
 
   @override
   int get hashCode =>
@@ -273,8 +273,8 @@ class UseExistingProviderElement extends ProviderElement {
   ) : super._(e, providerType);
 
   @override
-  bool operator ==(Object o) =>
-      o is UseExistingProviderElement && o.redirect == redirect && super == o;
+  bool operator ==(Object other) =>
+      other is UseExistingProviderElement && other.redirect == redirect && super == other;
 
   @override
   int get hashCode => redirect.hashCode ^ super.hashCode;
@@ -306,11 +306,11 @@ class UseFactoryProviderElement extends ProviderElement {
         );
 
   @override
-  bool operator ==(Object o) =>
-      o is UseFactoryProviderElement &&
-      o.useFactory == useFactory &&
-      o.dependencies == dependencies &&
-      super == o;
+  bool operator ==(Object other) =>
+      other is UseFactoryProviderElement &&
+      other.useFactory == useFactory &&
+      other.dependencies == dependencies &&
+      super == other;
 
   @override
   int get hashCode =>

@@ -239,11 +239,11 @@ class ReflectableOutput {
   static const _list = ListEquality<Object?>();
 
   @override
-  bool operator ==(Object o) =>
-      o is ReflectableOutput &&
-      _list.equals(urlsNeedingInitReflector, o.urlsNeedingInitReflector) &&
-      _list.equals(registerClasses, o.registerClasses) &&
-      _list.equals(registerFunctions, o.registerFunctions);
+  bool operator ==(Object other) =>
+      other is ReflectableOutput &&
+      _list.equals(urlsNeedingInitReflector, other.urlsNeedingInitReflector) &&
+      _list.equals(registerClasses, other.registerClasses) &&
+      _list.equals(registerFunctions, other.registerFunctions);
 
   @override
   int get hashCode =>
@@ -281,11 +281,11 @@ class ReflectableClass {
   });
 
   @override
-  bool operator ==(Object o) =>
-      o is ReflectableClass &&
-      factory == o.factory &&
-      name == o.name &&
-      registerComponentFactory == o.registerComponentFactory;
+  bool operator ==(Object other) =>
+      other is ReflectableClass &&
+      factory == other.factory &&
+      name == other.name &&
+      registerComponentFactory == other.registerComponentFactory;
 
   @override
   int get hashCode =>
