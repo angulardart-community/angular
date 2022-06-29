@@ -39,8 +39,8 @@ class BuiltinType extends OutputType {
 
   const BuiltinType(
     this.name, [
-    List<TypeModifier> modifiers = const [],
-  ]) : super(modifiers);
+    super.modifiers = const [],
+  ]) ;
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>
@@ -58,8 +58,8 @@ class ExternalType extends OutputType {
   ExternalType(
     this.value, [
     this.typeParams,
-    List<TypeModifier>? modifiers = const [],
-  ]) : super(modifiers);
+    super.modifiers = const [],
+  ]);
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>

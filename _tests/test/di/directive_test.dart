@@ -798,7 +798,7 @@ class WillFailFollowingExistingProvider {
 }
 
 class PrimeInjectsMissingService extends InjectsMissingService {
-  PrimeInjectsMissingService(MissingService d) : super(d);
+  PrimeInjectsMissingService(super.d);
 }
 
 const baseUrl = OpaqueToken<String>('baseUrl');

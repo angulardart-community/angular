@@ -9,7 +9,7 @@ abstract class AttributeMatcher {
   final String name;
   final String? value;
 
-  const AttributeMatcher(this.name, this.value);
+  const AttributeMatcher(this.name, [this.value]);
 
   bool matches(String? value);
 }
@@ -18,7 +18,7 @@ abstract class AttributeMatcher {
 ///
 /// https://www.w3.org/TR/selectors4/#attribute-representation
 class ExactAttributeMatcher extends AttributeMatcher {
-  ExactAttributeMatcher(String name, String? value) : super(name, value);
+  ExactAttributeMatcher(super.name, super.value);
 
   @override
   bool matches(String? value) => value == this.value;
@@ -33,9 +33,8 @@ class ExactAttributeMatcher extends AttributeMatcher {
 class HyphenAttributeMatcher extends AttributeMatcher {
   final String _prefix;
 
-  HyphenAttributeMatcher(String name, String? value)
-      : _prefix = '$value-',
-        super(name, value);
+  HyphenAttributeMatcher(super.name, super.value)
+      : _prefix = '$value-';
 
   @override
   bool matches(String? value) =>
@@ -51,7 +50,7 @@ class HyphenAttributeMatcher extends AttributeMatcher {
 class ListAttributeMatcher extends AttributeMatcher {
   static final _whitespaceRe = RegExp(r'\s+');
 
-  ListAttributeMatcher(String name, String? item) : super(name, item);
+  ListAttributeMatcher(super.name, super.item);
 
   @override
   bool matches(String? value) =>
@@ -65,7 +64,7 @@ class ListAttributeMatcher extends AttributeMatcher {
 ///
 /// https://www.w3.org/TR/selectors4/#attribute-substrings
 class PrefixAttributeMatcher extends AttributeMatcher {
-  PrefixAttributeMatcher(String name, String? prefix) : super(name, prefix);
+  PrefixAttributeMatcher(super.name, super.prefix);
 
   @override
   bool matches(String? value) => value!.startsWith(this.value!);
@@ -78,7 +77,7 @@ class PrefixAttributeMatcher extends AttributeMatcher {
 ///
 /// https://www.w3.org/TR/selectors4/#attribute-representation
 class SetAttributeMatcher extends AttributeMatcher {
-  SetAttributeMatcher(String name) : super(name, null);
+  SetAttributeMatcher(super.name);
 
   @override
   bool matches(String? value) => true;
@@ -91,8 +90,7 @@ class SetAttributeMatcher extends AttributeMatcher {
 ///
 /// https://www.w3.org/TR/selectors4/#attribute-substrings
 class SubstringAttributeMatcher extends AttributeMatcher {
-  SubstringAttributeMatcher(String name, String? substring)
-      : super(name, substring);
+  SubstringAttributeMatcher(super.name, super.substring);
 
   @override
   bool matches(String? value) => value!.contains(this.value!);
@@ -105,7 +103,7 @@ class SubstringAttributeMatcher extends AttributeMatcher {
 ///
 /// https://www.w3.org/TR/selectors4/#attribute-substrings
 class SuffixAttributeMatcher extends AttributeMatcher {
-  SuffixAttributeMatcher(String name, String? suffix) : super(name, suffix);
+  SuffixAttributeMatcher(super.name, super.suffix);
 
   @override
   bool matches(String? value) => value!.endsWith(this.value!);

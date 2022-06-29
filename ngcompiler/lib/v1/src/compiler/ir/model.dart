@@ -469,7 +469,7 @@ abstract class BoundEvent implements BindingTarget {
 }
 
 class NativeEvent extends BoundEvent {
-  NativeEvent(String name) : super(name);
+  NativeEvent(super.name);
 
   @override
   R accept<R, C, CO extends C>(BindingTargetVisitor<R, C> visitor,
@@ -478,7 +478,7 @@ class NativeEvent extends BoundEvent {
 }
 
 class CustomEvent extends BoundEvent {
-  CustomEvent(String name) : super(name);
+  CustomEvent(super.name);
 
   @override
   R accept<R, C, CO extends C>(BindingTargetVisitor<R, C> visitor,
@@ -497,7 +497,7 @@ class DirectiveOutput extends BoundEvent {
   /// longer support null streams/stream subscriptions in the generated code.
   final bool isMockLike;
 
-  DirectiveOutput(String name, this.isMockLike) : super(name);
+  DirectiveOutput(super.name, this.isMockLike);
 
   @override
   R accept<R, C, CO extends C>(BindingTargetVisitor<R, C> visitor,

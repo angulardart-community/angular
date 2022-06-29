@@ -308,7 +308,7 @@ class Service {
   template: 'Dynamic{{input}}',
 )
 class DynamicComp extends Lifecycles {
-  DynamicComp(Log log) : super(log);
+  DynamicComp(super.log);
 
   @Input()
   String? input;
@@ -320,7 +320,7 @@ class DynamicComp extends Lifecycles {
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class DynamicOnPushComp extends Lifecycles {
-  DynamicOnPushComp(Log log) : super(log);
+  DynamicOnPushComp(super.log);
 
   @Input()
   String? input;
