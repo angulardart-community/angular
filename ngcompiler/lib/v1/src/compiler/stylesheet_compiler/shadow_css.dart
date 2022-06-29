@@ -573,8 +573,7 @@ class _ShadowTransformer extends Visitor {
 }
 
 class _LegacyShadowTransformer extends _ShadowTransformer {
-  _LegacyShadowTransformer(String contentClass, String hostClass)
-      : super(contentClass, hostClass);
+  _LegacyShadowTransformer(super.contentClass, super.hostClass);
 
   final _unscopedSelectorGroups = <SelectorGroup>{};
 

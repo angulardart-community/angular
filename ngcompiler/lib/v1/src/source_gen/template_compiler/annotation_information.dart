@@ -20,11 +20,10 @@ class AnnotationInformation<T extends Element> extends IndexedAnnotation<T> {
   final DartObject? constantValue;
   final List<AnalysisError> constantEvaluationErrors;
 
-  AnnotationInformation(T element, ElementAnnotation annotation,
-      int annotationIndex, this._exceptionHandler)
+  AnnotationInformation(super.element, super.annotation,
+      super.annotationIndex, this._exceptionHandler)
       : constantValue = annotation.computeConstantValue(),
-        constantEvaluationErrors = annotation.constantEvaluationErrors ?? [],
-        super(element, annotation, annotationIndex);
+        constantEvaluationErrors = annotation.constantEvaluationErrors ?? [];
 
   bool get isInputType => _isTypeExactly($Input);
   bool get isOutputType => _isTypeExactly($Output);

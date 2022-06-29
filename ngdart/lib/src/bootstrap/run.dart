@@ -83,8 +83,8 @@ class _LazyInjector extends HierarchicalInjector {
 
   const _LazyInjector(
     this._providers, [
-    Injector? parent,
-  ]) : super(parent);
+    super.parent,
+  ]);
 
   @override
   Object? injectFromSelfOptional(

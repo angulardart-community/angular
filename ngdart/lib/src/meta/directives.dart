@@ -231,10 +231,10 @@ class Component extends Directive {
   final ViewEncapsulation encapsulation;
 
   const Component({
-    required String selector,
-    String? exportAs,
-    List<Object> providers = const [],
-    Visibility visibility = Visibility.local,
+    required super.selector,
+    super.exportAs,
+    super.providers = const [],
+    super.visibility = Visibility.local,
     this.viewProviders = const [],
     this.exports = const [],
     this.changeDetection = ChangeDetectionStrategy.Default,
@@ -247,12 +247,7 @@ class Component extends Directive {
     this.directiveTypes = const [],
     this.pipes = const [],
     this.encapsulation = ViewEncapsulation.Emulated,
-  }) : super(
-          selector: selector,
-          exportAs: exportAs,
-          providers: providers,
-          visibility: visibility,
-        );
+  });
 }
 
 /// Declare reusable pipe function.
@@ -378,14 +373,10 @@ abstract class _Query {
 })
 class ContentChildren extends _Query {
   const ContentChildren(
-    Object selector, {
-    bool descendants = true,
-    Object? read,
-  }) : super(
-          selector,
-          descendants: descendants,
-          read: read,
-        );
+    super.selector, {
+    super.descendants = true,
+    super.read,
+  });
 }
 
 /// Declares a reference to a single child node projected into `<ng-content>`.
@@ -413,16 +404,11 @@ class ContentChild extends _Query {
 
 abstract class _ViewQuery extends _Query {
   const _ViewQuery(
-    Object selector, {
-    bool descendants = false,
-    bool first = false,
-    Object? read,
-  }) : super(
-          selector,
-          descendants: descendants,
-          first: first,
-          read: read,
-        );
+    super.selector, {
+    super.descendants = false,
+    super.first = false,
+    super.read,
+  });
 }
 
 /// Declares a reference to multiple child nodes in a component's template.

@@ -226,7 +226,7 @@ abstract class ProviderResolverHost {
 class BuiltInSource extends ProviderSource {
   final o.Expression _value;
 
-  BuiltInSource(CompileTokenMetadata token, this._value) : super(token);
+  BuiltInSource(super.token, this._value);
 
   @override
   o.Expression build() => _value;
@@ -241,11 +241,10 @@ class ExpressionProviderSource extends ProviderSource {
   final o.Expression? _changeDetectorRef;
 
   ExpressionProviderSource(
-    CompileTokenMetadata? token,
+    super.token,
     this._value, {
     o.Expression? changeDetectorRef,
-  })  : _changeDetectorRef = changeDetectorRef,
-        super(token);
+  })  : _changeDetectorRef = changeDetectorRef;
 
   @override
   o.Expression build() => _value;
@@ -268,8 +267,7 @@ class FactoryProviderSource extends ProviderSource {
   final List<ProviderSource> _parameters;
 
   FactoryProviderSource(
-      CompileTokenMetadata token, this._factory, this._parameters)
-      : super(token);
+      super.token, this._factory, this._parameters);
 
   @override
   o.Expression build() {
@@ -294,12 +292,11 @@ class ClassProviderSource extends ProviderSource {
   final List<o.OutputType> _typeArguments;
 
   ClassProviderSource(
-    CompileTokenMetadata token,
+    super.token,
     this._classType,
     this._parameters, {
     List<o.OutputType> typeArguments = const [],
-  })  : _typeArguments = typeArguments,
-        super(token);
+  })  : _typeArguments = typeArguments;
 
   @override
   o.Expression build() {
@@ -331,13 +328,12 @@ class DynamicProviderSource extends ProviderSource {
   final bool _isOptional;
 
   DynamicProviderSource(
-    CompileTokenMetadata? token,
+    super.token,
     this._element,
     this._resolver,
     this._source, {
     required bool isOptional,
-  })  : _isOptional = isOptional,
-        super(token);
+  })  : _isOptional = isOptional;
 
   @override
   o.Expression build() {

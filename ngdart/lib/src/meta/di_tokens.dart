@@ -126,7 +126,7 @@ class OpaqueToken<T extends Object> {
 /// referenced using the `const` operator.
 @optionalTypeArgs
 class MultiToken<T extends Object> extends OpaqueToken<List<T>> {
-  const MultiToken([String uniqueName = '']) : super(uniqueName);
+  const MultiToken([super.uniqueName = '']);
 
   /// See [listOfMultiToken].
   List<T> _listOf() => <T>[];

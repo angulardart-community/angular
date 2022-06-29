@@ -78,8 +78,8 @@ class FunctionType extends OutputType {
   FunctionType(
     this.returnType,
     this.paramTypes, [
-    List<TypeModifier> modifiers = const [],
-  ]) : super(modifiers);
+    super.modifiers = const [],
+  ]);
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>
@@ -97,8 +97,8 @@ class ArrayType extends OutputType {
 
   ArrayType(
     this.of, [
-    List<TypeModifier> modifiers = const [],
-  ]) : super(modifiers);
+    super.modifiers = const [],
+  ]);
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>
@@ -113,7 +113,7 @@ class ArrayType extends OutputType {
 class MapType extends OutputType {
   final OutputType? valueType;
 
-  MapType(this.valueType, [List<TypeModifier>? modifiers]) : super(modifiers);
+  MapType(this.valueType, [super.modifiers]);
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>
@@ -383,8 +383,7 @@ enum BuiltinVar { This, Super, CatchError, CatchStack, MetadataMap }
 class ReadVarExpr extends Expression {
   String? name;
   BuiltinVar? builtin;
-  ReadVarExpr(dynamic /* String | BuiltinVar */ name, [OutputType? type])
-      : super(type) {
+  ReadVarExpr(dynamic /* String | BuiltinVar */ name, [super.type]) {
     if (name is String) {
       this.name = name;
       builtin = null;
@@ -417,7 +416,7 @@ class ReadStaticMemberExpr extends Expression {
 
 class ReadClassMemberExpr extends Expression {
   final String name;
-  ReadClassMemberExpr(this.name, [OutputType? type]) : super(type);
+  ReadClassMemberExpr(this.name, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -435,7 +434,7 @@ class ReadClassMemberExpr extends Expression {
 class WriteClassMemberExpr extends Expression {
   final String name;
   final Expression value;
-  WriteClassMemberExpr(this.name, this.value, [OutputType? type]) : super(type);
+  WriteClassMemberExpr(this.name, this.value, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -607,7 +606,7 @@ class InstantiateExpr extends Expression {
 
 class LiteralExpr extends Expression {
   final dynamic value;
-  LiteralExpr(this.value, [OutputType? type]) : super(type);
+  LiteralExpr(this.value, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -694,7 +693,7 @@ class SpreadExpr extends Expression {
 
 class CastExpr extends Expression {
   final Expression value;
-  CastExpr(this.value, OutputType? type) : super(type);
+  CastExpr(this.value, super.type);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -712,7 +711,7 @@ class FunctionExpr extends Expression {
   final List<FnParam> params;
   final List<Statement> statements;
 
-  FunctionExpr(this.params, this.statements, [OutputType? type]) : super(type);
+  FunctionExpr(this.params, this.statements, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -785,7 +784,7 @@ class ReadKeyExpr extends Expression {
   final Expression receiver;
   final Expression index;
 
-  ReadKeyExpr(this.receiver, this.index, [OutputType? type]) : super(type);
+  ReadKeyExpr(this.receiver, this.index, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -812,7 +811,7 @@ class LiteralVargsExpr extends Expression {
 class LiteralArrayExpr extends Expression {
   final List<Expression> entries;
 
-  LiteralArrayExpr(this.entries, [OutputType? type]) : super(type);
+  LiteralArrayExpr(this.entries, [super.type]);
 
   @override
   R visitExpression<R, C>(ExpressionVisitor<R, C> visitor, C context) {
@@ -894,8 +893,8 @@ class DeclareVarStmt extends Statement {
     this.name,
     this.value, [
     this.type,
-    List<StmtModifier> modifiers = const [],
-  ]) : super(modifiers);
+    super.modifiers = const [],
+  ]);
 
   @override
   R visitStatement<R, C>(StatementVisitor<R, C> visitor, C context) {

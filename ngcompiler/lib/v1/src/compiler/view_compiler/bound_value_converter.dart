@@ -139,10 +139,10 @@ abstract class BoundValueConverter
 /// Converts values bound by a directive change detector.
 class _DirectiveBoundValueConverter extends BoundValueConverter {
   _DirectiveBoundValueConverter(
-    CompileDirectiveMetadata? metadata,
-    o.Expression implicitReceiver,
-    NameResolver nameResolver,
-  ) : super(metadata, implicitReceiver, nameResolver);
+    super.metadata,
+    super.implicitReceiver,
+    super.nameResolver,
+  );
 
   @override
   BoundValueConverter scopeNamespace() => _DirectiveBoundValueConverter(

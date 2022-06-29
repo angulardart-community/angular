@@ -273,8 +273,8 @@ class ErrorMessageForAnnotation extends AsyncBuildError {
 
   ErrorMessageForAnnotation(
     this.indexedAnnotation,
-    String message,
-  ) : super(message);
+    super.message,
+  );
 
   @override
   Future<BuildError> resolve(Resolver resolver) async {
