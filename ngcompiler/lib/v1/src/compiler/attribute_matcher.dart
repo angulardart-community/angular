@@ -33,8 +33,7 @@ class ExactAttributeMatcher extends AttributeMatcher {
 class HyphenAttributeMatcher extends AttributeMatcher {
   final String _prefix;
 
-  HyphenAttributeMatcher(super.name, super.value)
-      : _prefix = '$value-';
+  HyphenAttributeMatcher(super.name, super.value) : _prefix = '$value-';
 
   @override
   bool matches(String? value) =>

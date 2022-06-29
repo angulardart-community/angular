@@ -349,7 +349,7 @@ class _MapInjector extends HierarchicalInjector implements Injector {
   _MapInjector(
     Map<Object, Object> providers, [
     super.parent,
-  ])  : _providers = HashMap.identity()..addAll(providers) {
+  ]) : _providers = HashMap.identity()..addAll(providers) {
     assert(!providers.containsKey(Injector));
   }
 

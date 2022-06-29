@@ -84,9 +84,10 @@ void main() {
     List<CompileDirectiveMetadata> directive,
     List<CompilePipeMetadata> pipes,
   ]) {
-    return runZoned(() => parseTemplate(template, directive, pipes), zoneValues: {
-      #buildLog: Logger.root,
-    });
+    return runZoned(() => parseTemplate(template, directive, pipes),
+        zoneValues: {
+          #buildLog: Logger.root,
+        });
   }
 
   void setUpParser({

@@ -6,7 +6,7 @@ part of 'model.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = ( Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(InspectorDirective.serializer)
       ..add(InspectorNode.serializer)
       ..addBuilderFactory(
@@ -238,7 +238,7 @@ class InspectorNodeBuilder
     _$InspectorNode $result;
     try {
       $result = _$v ??
-              _$InspectorNode._(
+          _$InspectorNode._(
               component: _component?.build(),
               directives: directives.build(),
               children: children.build());

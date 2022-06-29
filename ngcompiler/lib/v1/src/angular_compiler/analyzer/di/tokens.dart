@@ -178,7 +178,8 @@ class TypeTokenElement implements TokenElement {
   const TypeTokenElement(this.link);
 
   @override
-  bool operator ==(Object other) => other is TypeTokenElement && link == other.link;
+  bool operator ==(Object other) =>
+      other is TypeTokenElement && link == other.link;
 
   @override
   int get hashCode => link.hashCode;

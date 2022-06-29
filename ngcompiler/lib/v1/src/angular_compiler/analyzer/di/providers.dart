@@ -214,7 +214,8 @@ abstract class ProviderElement {
   );
 
   @override
-  bool operator ==(Object other) => other is ProviderElement && other.token == token;
+  bool operator ==(Object other) =>
+      other is ProviderElement && other.token == token;
 
   /// Whether this represents a multi-binding.
   bool get isMulti {
@@ -274,7 +275,9 @@ class UseExistingProviderElement extends ProviderElement {
 
   @override
   bool operator ==(Object other) =>
-      other is UseExistingProviderElement && other.redirect == redirect && super == other;
+      other is UseExistingProviderElement &&
+      other.redirect == redirect &&
+      super == other;
 
   @override
   int get hashCode => redirect.hashCode ^ super.hashCode;

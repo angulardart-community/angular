@@ -40,7 +40,7 @@ class BuiltinType extends OutputType {
   const BuiltinType(
     this.name, [
     super.modifiers = const [],
-  ]) ;
+  ]);
 
   @override
   R visitType<R, C>(TypeVisitor<R, C> visitor, C context) =>

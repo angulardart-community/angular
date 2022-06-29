@@ -244,7 +244,7 @@ class ExpressionProviderSource extends ProviderSource {
     super.token,
     this._value, {
     o.Expression? changeDetectorRef,
-  })  : _changeDetectorRef = changeDetectorRef;
+  }) : _changeDetectorRef = changeDetectorRef;
 
   @override
   o.Expression build() => _value;
@@ -266,8 +266,7 @@ class FactoryProviderSource extends ProviderSource {
   final CompileFactoryMetadata? _factory;
   final List<ProviderSource> _parameters;
 
-  FactoryProviderSource(
-      super.token, this._factory, this._parameters);
+  FactoryProviderSource(super.token, this._factory, this._parameters);
 
   @override
   o.Expression build() {
@@ -296,7 +295,7 @@ class ClassProviderSource extends ProviderSource {
     this._classType,
     this._parameters, {
     List<o.OutputType> typeArguments = const [],
-  })  : _typeArguments = typeArguments;
+  }) : _typeArguments = typeArguments;
 
   @override
   o.Expression build() {
@@ -333,7 +332,7 @@ class DynamicProviderSource extends ProviderSource {
     this._resolver,
     this._source, {
     required bool isOptional,
-  })  : _isOptional = isOptional;
+  }) : _isOptional = isOptional;
 
   @override
   o.Expression build() {
