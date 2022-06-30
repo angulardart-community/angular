@@ -1,3 +1,7 @@
+[![Pub package](https://img.shields.io/pub/v/ngtest.svg)](https://pub.dev/packages/ngtest)
+[![Build Status](https://img.shields.io/github/workflow/status/angulardart-community/angular/Dart%20CI)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
+[![Gitter](https://img.shields.io/gitter/room/angulardart/community)](https://gitter.im/angulardart/community)
+
 Testing infrastructure for [AngularDart][webdev_angular], used with the
 [`build_runner` package][build_runner].
 
@@ -49,6 +53,7 @@ class HelloWorldComponent {
 To use `ngtest`, configure your package's `pubspec.yaml` as follows:
 
 ```yaml
+# Use the latest versions if possible.
 dev_dependencies:
   build_runner: ^2.0.0
   build_test: ^2.0.0
