@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: ngast,ngdart
+dependency_overrides:
+  ngast:
+    path: ../ngast
+  ngdart:
+    path: ../ngdart

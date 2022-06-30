@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: ngast,ngcompiler
+dependency_overrides:
+  ngast:
+    path: ../ngast
+  ngcompiler:
+    path: ../ngcompiler
