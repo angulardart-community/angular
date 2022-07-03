@@ -20,7 +20,7 @@ void main() {
         expect(escapeSingleQuoteString('\r', false), r"'\r'");
       });
       test('should escape \$', () {
-        expect(escapeSingleQuoteString('\$', true),  "'\\\$'");
+        expect(escapeSingleQuoteString('\$', true), "'\\\$'");
       });
       test('should not escape \$', () {
         expect(escapeSingleQuoteString('\$', false), "'\$'");

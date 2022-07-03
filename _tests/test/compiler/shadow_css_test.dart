@@ -27,9 +27,11 @@ const _regExpSpecialChars = [
   '\$',
   '|'
 ];
-final _escapedRegExpSpecialChars = RegExp('[\\${_regExpSpecialChars.join('\\')}]');
+final _escapedRegExpSpecialChars =
+    RegExp('[\\${_regExpSpecialChars.join('\\')}]');
 RegExp containsRegexp(String input) {
-  return RegExp(input.replaceAllMapped(_escapedRegExpSpecialChars, (match) => '\\${match[0]}'));
+  return RegExp(input.replaceAllMapped(
+      _escapedRegExpSpecialChars, (match) => '\\${match[0]}'));
 }
 
 RegExp _normalizerExp1,

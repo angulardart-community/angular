@@ -46,7 +46,8 @@ class MockLocationStrategy extends LocationStrategy {
   }
 
   @override
-  void replaceState(Object? state, String title, String url, String queryParams) {
+  void replaceState(
+      Object? state, String title, String url, String queryParams) {
     internalTitle = title;
     var fullUrl = url + (queryParams.isNotEmpty ? '?$queryParams' : '');
     internalPath = fullUrl;

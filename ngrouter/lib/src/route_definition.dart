@@ -156,8 +156,8 @@ abstract class RouteDefinition {
   }
 
   /// Returns as a regular expression that matches this route.
-  RegExp toRegExp() => RegExp('/?${path.replaceAll(_findParameters,
-          r"((?:[\w'\.\-~!\$&\(\)\*\+,;=:@]|%[0-9a-fA-F]{2})+)")}');
+  RegExp toRegExp() => RegExp(
+      '/?${path.replaceAll(_findParameters, r"((?:[\w'\.\-~!\$&\(\)\*\+,;=:@]|%[0-9a-fA-F]{2})+)")}');
 
   /// Returns as a valid URL with [paramValues] filled into [parameters].
   String toUrl([Map<String, String> paramValues = const {}]) {
