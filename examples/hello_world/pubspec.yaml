@@ -1,4 +1,4 @@
-name: examples.hello_world
+name: examples_hello_world
 
 environment:
   sdk: '>=2.14.0 <3.0.0'
@@ -8,10 +8,11 @@ dependencies:
   ngdart:
 
 dev_dependencies:
+  analyzer: ^4.2.0
+  lints: ^2.0.0
   build_runner: ^2.0.0
   build_test: ^2.0.0
   build_web_compilers: ^3.0.0
-  pedantic: ^1.0.0
 
 # DO NOT REMOVE. We don't publish this package, it is just for testing.
 dependency_overrides:

@@ -22,7 +22,7 @@ void main() {
         navigate(router, '/destination'),
         emitsInOrder([
           '#RouterState {/destination} popstate:false',
-          NavigationResult.SUCCESS,
+          NavigationResult.success,
         ]),
       );
     });
@@ -35,7 +35,7 @@ void main() {
       final router = testFixture.assertOnlyInstance.router;
       await expectLater(
         navigate(router, '/destination'),
-        emits(NavigationResult.BLOCKED_BY_GUARD),
+        emits(NavigationResult.blockedByGuard),
       );
     });
 
@@ -49,7 +49,7 @@ void main() {
         navigate(router, '/destination'),
         emitsInOrder([
           '#RouterState {/destination} popstate:false',
-          NavigationResult.BLOCKED_BY_GUARD,
+          NavigationResult.blockedByGuard,
         ]),
       );
     });
@@ -77,7 +77,7 @@ void main() {
         navigate(router, '/redirection'),
         emitsInOrder([
           '#RouterState {/destination} popstate:false',
-          NavigationResult.SUCCESS,
+          NavigationResult.success,
         ]),
       );
     });

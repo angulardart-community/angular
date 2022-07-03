@@ -4,7 +4,7 @@ import 'package:ngrouter/ngrouter.dart';
 import 'package:ngrouter/testing.dart';
 import 'package:ngtest/angular_test.dart';
 
-import '1374_redirect_test.template.dart' as ng;
+import 'redirect_test.template.dart' as ng;
 
 void main() {
   tearDown(disposeAnyRunningTest);
@@ -47,7 +47,7 @@ Future<List<String>> redirect([NavigationParams? params]) async {
   final urlChanges = testFixture.assertOnlyInstance.locationStrategy.urlChanges;
   final router = testFixture.assertOnlyInstance.router;
   final result = await router.navigate('/from', params);
-  expect(result, NavigationResult.SUCCESS);
+  expect(result, NavigationResult.success);
   return urlChanges;
 }
 

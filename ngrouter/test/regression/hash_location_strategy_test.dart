@@ -8,7 +8,7 @@ import 'package:ngdart/angular.dart';
 import 'package:ngrouter/ngrouter.dart';
 import 'package:ngtest/angular_test.dart';
 
-import '748_hash_location_strategy_test.template.dart' as ng;
+import 'hash_location_strategy_test.template.dart' as ng;
 
 final platformLocation = MockPlatformLocation();
 

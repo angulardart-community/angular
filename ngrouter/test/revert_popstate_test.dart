@@ -36,11 +36,11 @@ void main() {
   test('preventing back should preserve previous history', () async {
     // Navigate from /a -> /b.
     var result = await router.navigate('/b');
-    expect(result, NavigationResult.SUCCESS);
+    expect(result, NavigationResult.success);
 
     // Navigate from /b -> /c.
     result = await router.navigate('/c');
-    expect(result, NavigationResult.SUCCESS);
+    expect(result, NavigationResult.success);
 
     // The `popstate` event triggered by `History.back()` is not guaranteed to
     // occur before the future returned by `NgTestFixture.update()` has

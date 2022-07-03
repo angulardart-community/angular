@@ -93,10 +93,10 @@ class HashLocationStrategy extends LocationStrategy {
 
   @override
   void replaceState(
-      Object? state, String title, String path, String queryParams) {
-    var url =
-        prepareExternalUrl(path + Location.normalizeQueryParams(queryParams));
-    _platformLocation.replaceState(state, title, url);
+      Object? state, String title, String url, String queryParams) {
+    var normalizedUrl =
+        prepareExternalUrl(url + Location.normalizeQueryParams(queryParams));
+    _platformLocation.replaceState(state, title, normalizedUrl);
   }
 
   @override

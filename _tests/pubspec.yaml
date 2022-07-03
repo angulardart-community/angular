@@ -18,13 +18,13 @@ dependencies:
 
 dev_dependencies:
   # Actual valid dependencies required.
-  analyzer: ^4.0.0
+  analyzer: ^4.2.0
+  lints: ^2.0.0
   build_runner: ^2.0.0
   build_test: ^2.0.0
   build_web_compilers: #^2.0.0
   mockito: ^5.0.0
   package_config: ^2.0.0
-  lints: ^2.0.0
   source_span: ^1.8.0
   term_glyph: ^1.2.0
 

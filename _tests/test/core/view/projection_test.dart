@@ -233,7 +233,7 @@ class ContainerWithProjectedInterpolationBound {
 @Component(
   selector: 'simple',
   template: 'SIMPLE(<div><ng-content></ng-content></div>'
-      '<div [tabIndex]=\"0\">XY</div>)',
+      '<div [tabIndex]="0">XY</div>)',
 )
 class SimpleComponentWithBinding {}
 
@@ -279,7 +279,7 @@ class ManualViewportDirective {
 
 @Component(
   selector: 'container-with-style-emu',
-  template: '<div class=\"blueStyle\"></div>',
+  template: '<div class="blueStyle"></div>',
   styles: ['.blueStyle { color: blue}'],
   encapsulation: ViewEncapsulation.Emulated,
   directives: [SimpleComponent],
@@ -288,7 +288,7 @@ class ContainerWithStyleEmulated {}
 
 @Component(
   selector: 'container-with-style-not-emu',
-  template: '<div class=\"redStyle\"></div>',
+  template: '<div class="redStyle"></div>',
   styles: ['.redStyle { color: red}'],
   encapsulation: ViewEncapsulation.None,
   directives: [SimpleComponent],

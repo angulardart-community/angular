@@ -134,7 +134,7 @@ class FakeRouter implements Router {
   ]) async {
     lastNavigatedPath = routerLink;
     lastNavigatedParams = navigationParams;
-    return NavigationResult.SUCCESS;
+    return NavigationResult.success;
   }
 
   @override

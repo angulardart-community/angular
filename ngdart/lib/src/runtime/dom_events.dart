@@ -115,7 +115,7 @@ class _KeyEventsHandler {
   static String _addModifiersIfAny(String key, List<String> parts) {
     for (final modifier in _modifiers.keys) {
       if (parts.remove(modifier)) {
-        key += '.' + modifier;
+        key += '.$modifier';
       }
     }
     return key;

@@ -55,7 +55,7 @@ class RouterImpl extends Router {
         // change was triggered by the browser's back button because the browser
         // provides no mechanism for determining its origin.
         final activeState = _activeState;
-        if (navigationResult == NavigationResult.BLOCKED_BY_GUARD &&
+        if (navigationResult == NavigationResult.blockedByGuard &&
             // In rare cases where the initial navigation was also blocked, it's
             // possible for the active state to be null.
             activeState != null) {
@@ -173,7 +173,7 @@ class RouterImpl extends Router {
     if (!isRedirect) {
       // Don't check `CanNavigate` or trigger `onNavigationStart` on redirect.
       if (!await _canNavigate()) {
-        return NavigationResult.BLOCKED_BY_GUARD;
+        return NavigationResult.blockedByGuard;
       } else {
         _onNavigationStart?.add(path);
       }
@@ -206,14 +206,14 @@ class RouterImpl extends Router {
       if (path != _location.path()) {
         _location.replaceState(current.toUrl());
       }
-      return NavigationResult.SUCCESS;
+      return NavigationResult.success;
     }
 
     var nextState = await _resolveState(path, navigationParams, isPopState);
     // In the event that `path` is empty and doesn't match any routes,
     // `_resolveState` will return a state with no routes, instead of null.
     if (nextState == null || nextState.routes.isEmpty) {
-      return NavigationResult.INVALID_ROUTE;
+      return NavigationResult.invalidRoute;
     }
 
     if (nextState.routes.isNotEmpty) {
@@ -229,10 +229,10 @@ class RouterImpl extends Router {
     _onRouteResolved?.add(nextState.build());
 
     if (!await _canDeactivate(nextState)) {
-      return NavigationResult.BLOCKED_BY_GUARD;
+      return NavigationResult.blockedByGuard;
     }
     if (!await _canActivate(nextState)) {
-      return NavigationResult.BLOCKED_BY_GUARD;
+      return NavigationResult.blockedByGuard;
     }
 
     await _activateRouterState(nextState);
@@ -245,7 +245,7 @@ class RouterImpl extends Router {
       }
     }
 
-    return NavigationResult.SUCCESS;
+    return NavigationResult.success;
   }
 
   /// Takes a relative or absolute path and converts it to an absolute path.

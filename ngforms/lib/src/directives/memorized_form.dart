@@ -65,16 +65,16 @@ class MemorizedForm extends NgForm {
   }
 
   @override
-  void removeControl(NgControl? ctrl) {
+  void removeControl(NgControl? dir) {
     // We will not remove the control if it is dropped, but we need to cleanup
     // any validators that may have been added.
-    ctrl?.control?.validator = null;
+    dir?.control?.validator = null;
   }
 
   @override
-  void removeControlGroup(NgControlGroup? ctrl) {
+  void removeControlGroup(NgControlGroup? dir) {
     // We will not remove the control group if it is dropped, but we need to cleanup
     // any validators that may have been added.
-    ctrl?.control?.validator = null;
+    dir?.control?.validator = null;
   }
 }

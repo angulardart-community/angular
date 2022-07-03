@@ -129,7 +129,7 @@ class I18nBuilder extends TemplateAstVisitor<void, StringBuffer> {
   }
 
   @override
-  void visitStar(StarAst starAst, [_]) {
+  void visitStar(StarAst astNode, [_]) {
     throw UnimplementedError();
   }
 

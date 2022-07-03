@@ -30,7 +30,7 @@ Future<List<String>> redirect(String from) async {
   final urlChanges = testFixture.assertOnlyInstance.locationStrategy.urlChanges;
   final router = testFixture.assertOnlyInstance.router;
   final result = await router.navigate(from);
-  expect(result, NavigationResult.SUCCESS);
+  expect(result, NavigationResult.success);
   return urlChanges;
 }
 

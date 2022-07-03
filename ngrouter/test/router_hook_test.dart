@@ -29,7 +29,7 @@ void main() {
         return newState.path != TestAppComponent.fooPath;
       };
       final navigationResult = await router.navigate(TestAppComponent.fooPath);
-      expect(navigationResult, NavigationResult.BLOCKED_BY_GUARD);
+      expect(navigationResult, NavigationResult.blockedByGuard);
     });
 
     test('canDeactivate should block navigation', () async {
@@ -38,7 +38,7 @@ void main() {
         return oldState.path != TestAppComponent.indexPath;
       };
       final navigationResult = await router.navigate(TestAppComponent.fooPath);
-      expect(navigationResult, NavigationResult.BLOCKED_BY_GUARD);
+      expect(navigationResult, NavigationResult.blockedByGuard);
     });
 
     test('canNavigate should block navigation', () async {
@@ -47,7 +47,7 @@ void main() {
         return false;
       };
       final navigationResult = await router.navigate(TestAppComponent.fooPath);
-      expect(navigationResult, NavigationResult.BLOCKED_BY_GUARD);
+      expect(navigationResult, NavigationResult.blockedByGuard);
     });
 
     test('canReuse should allow reuse', () async {
@@ -56,7 +56,7 @@ void main() {
         return oldState.path == TestAppComponent.indexPath;
       };
       final navigationResult = await router.navigate(TestAppComponent.fooPath);
-      expect(navigationResult, NavigationResult.SUCCESS);
+      expect(navigationResult, NavigationResult.success);
       // The index route instance should have been cached for reuse, rather than
       // destroyed.
       expect(IndexComponent.instanceCount, 1);
@@ -72,12 +72,12 @@ void main() {
     expect(router.current!.queryParameters, isEmpty);
     var navigationResult = await router.navigate(
         '/foo', NavigationParams(queryParameters: {'a': 'b'}));
-    expect(navigationResult, NavigationResult.SUCCESS);
+    expect(navigationResult, NavigationResult.success);
     expect(router.current!.queryParameters, {'a': 'b'});
     // Router hook should combine new query parameters with existing ones.
     navigationResult = await router.navigate(
         '/foo', NavigationParams(queryParameters: {'x': 'y'}));
-    expect(navigationResult, NavigationResult.SUCCESS);
+    expect(navigationResult, NavigationResult.success);
     expect(router.current!.queryParameters, {'a': 'b', 'x': 'y'});
   });
 }

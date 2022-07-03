@@ -3,7 +3,7 @@ import 'navigation_params.dart';
 import 'router_state.dart';
 
 /// Result of the Navigation when calling Router.navigate.
-enum NavigationResult { SUCCESS, BLOCKED_BY_GUARD, INVALID_ROUTE }
+enum NavigationResult { success, blockedByGuard, invalidRoute }
 
 /// The Angular router, which is represented as a stream of state changes.
 ///

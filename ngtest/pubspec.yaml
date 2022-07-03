@@ -11,9 +11,10 @@ dependencies:
   ngdart: ^7.0.0
   collection: ^1.15.0
   meta: ^1.3.0
-  pedantic: ^1.10.0
 
 dev_dependencies:
+  analyzer: ^4.2.0
+  lints: ^2.0.0
   build_runner: ^2.0.0
   build_test: ^2.0.0
   build_web_compilers: ^3.0.0

@@ -243,17 +243,17 @@ class InspectorNodeBuilder
               directives: directives.build(),
               children: children.build());
     } catch (_) {
-      late String _$failedField;
+      late String $failedField;
       try {
-        _$failedField = 'component';
+        $failedField = 'component';
         _component?.build();
-        _$failedField = 'directives';
+        $failedField = 'directives';
         directives.build();
-        _$failedField = 'children';
+        $failedField = 'children';
         children.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'InspectorNode', _$failedField, e.toString());
+            'InspectorNode', $failedField, e.toString());
       }
       rethrow;
     }
@@ -345,14 +345,14 @@ class InspectorDirectiveBuilder
 
   @override
   _$InspectorDirective build() {
-    final _$result = _$v ??
+    final $result = _$v ??
         new _$InspectorDirective._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, 'InspectorDirective', 'name'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, 'InspectorDirective', 'id'));
-    replace(_$result);
-    return _$result;
+    replace($result);
+    return $result;
   }
 }
 

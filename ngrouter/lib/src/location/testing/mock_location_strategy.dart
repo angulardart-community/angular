@@ -37,20 +37,20 @@ class MockLocationStrategy extends LocationStrategy {
   }
 
   @override
-  void pushState(Object? ctx, String title, String path, String query) {
+  void pushState(Object? state, String title, String url, String queryParams) {
     internalTitle = title;
-    var internalUrl = path + (query.isNotEmpty ? '?$query' : '');
+    var internalUrl = url + (queryParams.isNotEmpty ? '?$queryParams' : '');
     internalPath = internalUrl;
     var externalUrl = prepareExternalUrl(internalUrl);
     urlChanges.add(externalUrl);
   }
 
   @override
-  void replaceState(Object? ctx, String title, String path, String query) {
+  void replaceState(Object? state, String title, String url, String queryParams) {
     internalTitle = title;
-    var url = path + (query.isNotEmpty ? '?$query' : '');
-    internalPath = url;
-    var externalUrl = prepareExternalUrl(url);
+    var fullUrl = url + (queryParams.isNotEmpty ? '?$queryParams' : '');
+    internalPath = fullUrl;
+    var externalUrl = prepareExternalUrl(fullUrl);
     urlChanges.add('replace: $externalUrl');
   }
 

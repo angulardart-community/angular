@@ -19,7 +19,7 @@ class Unparser implements AstVisitor<void, String> {
     void _,
   ) {
     _visit(ast.receiver);
-    sb.write(ast.receiver is ImplicitReceiver ? '${ast.name}' : '.${ast.name}');
+    sb.write(ast.receiver is ImplicitReceiver ? ast.name : '.${ast.name}');
   }
 
   @override

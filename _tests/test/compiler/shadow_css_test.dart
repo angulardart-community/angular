@@ -9,7 +9,7 @@ import 'package:ngcompiler/v1/src/compiler/stylesheet_compiler/shadow_css.dart';
 const content = 'content';
 const host = 'host';
 
-const _RE_SPECIAL_CHARS = [
+const _regExpSpecialChars = [
   '-',
   '[',
   ']',
@@ -27,9 +27,9 @@ const _RE_SPECIAL_CHARS = [
   '\$',
   '|'
 ];
-final _ESCAPE_RE = RegExp('[\\${_RE_SPECIAL_CHARS.join('\\')}]');
+final _escapedRegExpSpecialChars = RegExp('[\\${_regExpSpecialChars.join('\\')}]');
 RegExp containsRegexp(String input) {
-  return RegExp(input.replaceAllMapped(_ESCAPE_RE, (match) => '\\${match[0]}'));
+  return RegExp(input.replaceAllMapped(_escapedRegExpSpecialChars, (match) => '\\${match[0]}'));
 }
 
 RegExp _normalizerExp1,

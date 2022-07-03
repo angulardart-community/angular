@@ -22,7 +22,7 @@ void main() {
       '$FirstChildComponent[0].onActivate',
     ]);
     log.clear();
-    expect(await router.navigate('/second-child'), NavigationResult.SUCCESS);
+    expect(await router.navigate('/second-child'), NavigationResult.success);
     expect(log, [
       '$FirstChildComponent[0].canNavigate',
       '$SecondChildComponent[0].ngOnInit',
@@ -34,7 +34,7 @@ void main() {
       '$SecondChildComponent[0].onActivate',
     ]);
     log.clear();
-    expect(await router.navigate('/first-child'), NavigationResult.SUCCESS);
+    expect(await router.navigate('/first-child'), NavigationResult.success);
     expect(log, [
       '$SecondChildComponent[0].canNavigate',
       '$FirstChildComponent[1].ngOnInit',
@@ -61,7 +61,7 @@ void main() {
       '$FirstReusableChildComponent[0].onActivate',
     ]);
     log.clear();
-    expect(await router.navigate('/second-child'), NavigationResult.SUCCESS);
+    expect(await router.navigate('/second-child'), NavigationResult.success);
     expect(log, [
       '$FirstReusableChildComponent[0].canNavigate',
       '$SecondChildComponent[0].ngOnInit',
@@ -73,7 +73,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/first-reusable-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$SecondChildComponent[0].canNavigate',
       '$SecondChildComponent[0].canDeactivate',
@@ -101,7 +101,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/parent/second-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$ParentComponent[0].canNavigate',
       '$FirstChildComponent[0].canNavigate',
@@ -123,7 +123,7 @@ void main() {
     ]);
     log.clear();
     expect(
-        await router.navigate('/parent/first-child'), NavigationResult.SUCCESS);
+        await router.navigate('/parent/first-child'), NavigationResult.success);
     expect(log, [
       '$ParentComponent[1].canNavigate',
       '$SecondChildComponent[1].canNavigate',
@@ -163,7 +163,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/reusable-parent/second-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$ReusableParentComponent[0].canNavigate',
       '$FirstChildComponent[0].canNavigate',
@@ -199,7 +199,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/second-parent/second-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$FirstParentComponent[0].canNavigate',
       '$FirstChildComponent[0].canNavigate',
@@ -237,7 +237,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/second-parent/second-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$FirstReusableParentComponent[0].canNavigate',
       '$FirstChildComponent[0].canNavigate',
@@ -277,7 +277,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/second-reusable-parent/second-child'),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$ReusableParentComponent[0].canNavigate',
       '$FirstChildComponent[0].canNavigate',
@@ -307,7 +307,7 @@ void main() {
       '$FirstChildComponent[0].onActivate',
     ]);
     log.clear();
-    expect(await router.navigate('/'), NavigationResult.SUCCESS);
+    expect(await router.navigate('/'), NavigationResult.success);
     expect(log, [
       '$FirstChildComponent[0].canNavigate',
     ]);
@@ -325,7 +325,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/', NavigationParams(reload: true)),
-        NavigationResult.SUCCESS);
+        NavigationResult.success);
     expect(log, [
       '$FirstChildComponent[0].canNavigate',
       '$FirstChildComponent[0].canDeactivate',
@@ -350,7 +350,7 @@ void main() {
     ]);
     log.clear();
     expect(await router.navigate('/second-child'),
-        NavigationResult.BLOCKED_BY_GUARD);
+        NavigationResult.blockedByGuard);
     expect(log, [
       '$CantNavigateChildComponent[0].canNavigate',
     ]);
@@ -367,7 +367,7 @@ void main() {
       '$FirstChildComponent[0].onActivate',
     ]);
     log.clear();
-    expect(await router.navigate('/foo'), NavigationResult.SUCCESS);
+    expect(await router.navigate('/foo'), NavigationResult.success);
     expect(log, [
       '$FirstChildComponent[0].canNavigate',
       '$SecondChildComponent[0].ngOnInit',

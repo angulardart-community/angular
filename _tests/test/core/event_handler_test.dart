@@ -147,7 +147,7 @@ void main() {
     await fixture.update((_) {
       fixture.rootElement.querySelector('button')!.click();
     });
-  }, skip: "https://github.com/angulardart-community/angular/issues/3");
+  });
 
   test('should support static methods invoked for events', () async {
     final testBed = NgTestBed<TestStaticMethodsDirect>(
@@ -342,7 +342,7 @@ class TestTopLevelMethodsDirect {}
 @Component(
   selector: 'test',
   exports: [TestStaticMethods],
-  template: r'<button (click)="TestStaticMethods.doCapture"></button>',
+  template: r'<button (click)="TestStaticMethods.doCapture()"></button>',
 )
 class TestStaticMethods {
   // ignore: prefer_function_declarations_over_variables
