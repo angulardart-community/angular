@@ -12,6 +12,11 @@ presets:
     - test/di
     - test/integration
     - test/platform
+    # re-integrate from 'tests'
+    - test/devtools
+    - test/directives
+    - test/lifecycle_hooks
+    - test/templates
     add_presets: [ci]
 
   vm:
