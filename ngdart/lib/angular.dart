@@ -17,8 +17,7 @@
 
 library angular;
 
-export 'src/bootstrap/run.dart'
-    show runApp, runAppAsync, runAppLegacy, runAppLegacyAsync, bootstrapStatic;
+export 'src/bootstrap/run.dart' show runApp, runAppAsync;
 export 'src/common/directives.dart';
 export 'src/common/pipes.dart';
 export 'src/core/application_ref.dart' show ApplicationRef;
@@ -30,7 +29,6 @@ export 'src/core/zone/ng_zone.dart' show NgZone, UncaughtError;
 export 'src/devtools.dart' show enableDevTools, registerContentRoot;
 export 'src/di/errors.dart' show InjectionError, NoProviderError;
 export 'src/di/injector.dart' show Injector, InjectorFactory;
-export 'src/di/injector/runtime.dart' show ReflectiveInjector;
 export 'src/meta.dart'
     show
         AfterChanges,

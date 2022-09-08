@@ -5,7 +5,6 @@
 ///
 /// See go/angular-di.dart-deprecated.
 export 'src/di/injector.dart' show Injector, InjectorFactory;
-export 'src/di/injector/runtime.dart' show ReflectiveInjector;
 export 'src/meta.dart'
     show
         ClassProvider,

@@ -17,11 +17,11 @@ void main() {
     fakeRouter = FakeRouter();
     addInjector = (i) {
       final strategy = MockLocationStrategy();
-      return ReflectiveInjector.resolveStaticAndCreate([
-        FactoryProvider(Location, () => Location(strategy), deps: []),
-        ValueProvider(LocationStrategy, strategy),
-        ValueProvider(Router, fakeRouter),
-      ], i);
+      return Injector.map({
+        Location: Location(strategy),
+        LocationStrategy: strategy,
+        Router: fakeRouter,
+      }, i);
     };
   });
 

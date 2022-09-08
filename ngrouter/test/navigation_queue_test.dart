@@ -25,11 +25,11 @@ void main() {
     final testBed = NgTestBed<TestComponent>(
       ng.createTestComponentFactory(),
     ).addInjector(
-      (i) => ReflectiveInjector.resolveStaticAndCreate([
-        ValueProvider.forToken(firstToken, firstCompleter.future),
-        ValueProvider.forToken(secondToken, secondCompleter.future),
-        ValueProvider.forToken(thirdToken, thirdCompleter.future),
-      ], i),
+      (i) => Injector.map({
+        firstToken: firstCompleter.future,
+        secondToken: secondCompleter.future,
+        thirdToken: thirdCompleter.future,
+      }, i),
     );
 
     final testFixture = await testBed.create();

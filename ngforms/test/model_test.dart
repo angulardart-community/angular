@@ -4,8 +4,6 @@ import 'package:ngforms/ngforms.dart';
 import 'model_test.template.dart' as ng_generated;
 
 void main() {
-  ng_generated.initReflector();
-
   group('Form Model', () {
     group('Control', () {
       test('should default the value to null', () {

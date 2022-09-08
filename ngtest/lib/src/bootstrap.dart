@@ -5,15 +5,6 @@ import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/bootstrap/run.dart';
 import 'package:ngdart/src/core/application_ref.dart';
 
-/// Returns an application injector factory for [providers], if any.
-InjectorFactory testInjectorFactory(List<Object> providers) {
-  return (parent) {
-    return ReflectiveInjector.resolveAndCreate([
-      providers,
-    ], parent);
-  };
-}
-
 /// Used as a "tear-off" of [NgZone].
 NgZone _createNgZone() => NgZone();
 

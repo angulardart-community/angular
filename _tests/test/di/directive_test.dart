@@ -4,6 +4,19 @@ import 'package:test/test.dart';
 
 import 'directive_test.template.dart' as ng;
 
+Object missingServicFactory(Object willNotBeCalled) {
+  throw AssertionError();
+}
+
+@GenerateInjector([
+  Provider(
+    InjectsMissingService,
+    useFactory: missingServicFactory,
+    deps: [MissingService],
+  ),
+])
+final InjectorFactory injector = ng.injector$Injector;
+
 /// Verifies whether injection through directives/components is correct.
 void main() {
   tearDown(disposeAnyRunningTest);
@@ -250,17 +263,7 @@ void main() {
   test('should throw a readable error message on a 2-node/parent failure', () {
     final testBed = NgTestBed<WillFailInjecting2NodeParent>(
             ng.createWillFailInjecting2NodeParentFactory())
-        .addInjector(
-      (i) => ReflectiveInjector.resolveStaticAndCreate([
-        Provider(
-          InjectsMissingService,
-          useFactory: (Object willNotBeCalled) => null,
-          deps: const [
-            MissingService,
-          ],
-        )
-      ], i),
-    );
+        .addInjector(injector);
     expect(
       () => testBed.create(),
       throwsA(

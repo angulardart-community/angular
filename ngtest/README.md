@@ -32,7 +32,6 @@ Additional resources:
 import 'my_test.template.dart' as ng;
 
 void main() {
-  ng.initReflector();
   tearDown(disposeAnyRunningTest);
 
   test('should render "Hello World"', () async {

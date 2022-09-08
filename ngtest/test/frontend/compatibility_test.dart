@@ -2,15 +2,12 @@ import 'dart:html';
 
 import 'package:test/test.dart';
 import 'package:ngdart/angular.dart';
-import 'package:ngdart/src/core/linker/dynamic_component_loader.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:ngtest/compatibility.dart';
 
 import 'compatibility_test.template.dart' as ng;
 
 void main() {
-  ng.initReflector();
-
   late Element docRoot;
   late Element testRoot;
 
@@ -21,17 +18,6 @@ void main() {
   });
 
   tearDown(disposeAnyRunningTest);
-
-  test('createTestInjector should support SlowComponentLoader', () async {
-    final injector = createTestInjector([]);
-    final loader = injector.provideType<SlowComponentLoader>(
-      SlowComponentLoader,
-    );
-    expect(
-      () => loader.load(TestSlowComponentLoaderAccess, Injector.empty()),
-      returnsNormally,
-    );
-  });
 
   group('with injector', () {
     late NgTestBed<AngularInjector> testBed;
@@ -142,9 +128,3 @@ class AngularInjector {
 class TestService {
   String? value;
 }
-
-@Component(
-  selector: 'test',
-  template: '',
-)
-class TestSlowComponentLoaderAccess {}

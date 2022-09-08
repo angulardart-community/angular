@@ -16,9 +16,6 @@ export 'src/angular_compiler/analyzer.dart'
         OpaqueTokenElement,
         ProviderElement,
         ProviderReader,
-        ReflectableClass,
-        ReflectableOutput,
-        ReflectableReader,
         TokenElement,
         TokenReader,
         TypedElement,
@@ -59,6 +56,6 @@ export 'src/angular_compiler/analyzer.dart'
         $ViewChildren;
 export 'src/angular_compiler/asset.dart' show NgAssetReader;
 export 'src/angular_compiler/emitter/injector.dart' show InjectorEmitter;
-export 'src/angular_compiler/emitter/reflector.dart'
-    show ReflectableEmitter, SplitDartEmitter;
+export 'src/angular_compiler/emitter/split_dart_emitter.dart'
+    show SplitDartEmitter;
 export 'src/angular_compiler/outliner.dart' show TemplateOutliner;

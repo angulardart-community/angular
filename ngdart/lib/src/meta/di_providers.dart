@@ -95,14 +95,7 @@ class Provider<T extends Object> {
 
   /// A factory function to invoke when [token] is injected.
   ///
-  /// For static forms of injection (i.e. compile-time), the [deps] argument is
-  /// **not required**, but to use with `ReflectiveInjector` it is required
-  /// unless you have no arguments:
-  /// ```dart
-  /// ReflectiveInjector.resolveAndCreate([
-  ///   Provider(Foo, useFactory: (Bar bar) => new Foo(bar), deps: [Bar]),
-  /// ]);
-  /// ```
+  /// For static forms of injection (i.e. compile-time).
   final Function? useFactory;
 
   /// Optional; dependencies to inject and provide when invoking [useFactory].
@@ -225,14 +218,7 @@ class ExistingProvider<T extends Object> extends Provider<T> {
 
 /// Describes at compile-time configuring to invoke a factory function.
 ///
-/// For static forms of injection (i.e. compile-time), the [deps] argument is
-/// **not required**, but to use with `ReflectiveInjector` it is required
-/// unless you have no arguments:
-/// ```dart
-/// ReflectiveInjector.resolveAndCreate([
-///   FactoryProvider(Foo, (Bar bar) => new Foo(bar), deps: [Bar]),
-/// ]);
-/// ```
+/// For static forms of injection (i.e. compile-time).
 @optionalTypeArgs
 class FactoryProvider<T extends Object> extends Provider<T> {
   const factory FactoryProvider(

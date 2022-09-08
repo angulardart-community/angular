@@ -7,8 +7,6 @@ import 'package:ngtest/src/bootstrap.dart';
 import 'bootstrap_test.template.dart' as ng_generated;
 
 void main() {
-  ng_generated.initReflector();
-
   Injector _noopInjector(Injector i) => i;
 
   test('should create a new component in the DOM', () async {

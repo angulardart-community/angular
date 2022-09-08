@@ -1,5 +1,4 @@
 import 'package:meta/meta.dart';
-import 'package:ngdart/src/di/injector/runtime.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/testability.dart';
 
@@ -8,7 +7,6 @@ import '../core/application_ref.dart';
 import '../core/application_tokens.dart';
 import '../core/linker.dart' show ComponentFactory, ComponentRef;
 import '../core/linker/app_view_utils.dart';
-import '../core/linker/component_resolver.dart' show typeToFactory;
 import '../core/zone/ng_zone.dart';
 import '../devtools.dart';
 import '../di/injector.dart';
@@ -196,79 +194,3 @@ Future<ComponentRef<T>> runAppAsync<T extends Object>(
     return future.then((_) => appRef.bootstrap(componentFactory));
   });
 }
-
-/// Starts a new AngularDart application with [componentType] as the root.
-///
-/// This method is **soft deprecated**, and [runApp] is preferred as soon as
-/// [initReflector] is no longer needed in your application. Specifically, using
-/// this method enables the use of the following deprecated APIs:
-/// * `ReflectiveInjector`
-///
-/// ... if neither your app nor your dependencies requires these APIs, it is
-/// recommended to switch to [runApp] instead, which has significant code-size
-/// and startup time benefits.
-ComponentRef<T> runAppLegacy<T extends Object>(
-  Type componentType, {
-  List<Object> createInjectorFromProviders = const [],
-  void Function()? initReflector,
-}) {
-  assert(T == Object || T == componentType, 'Expected $componentType == $T');
-  if (initReflector != null) {
-    initReflector();
-  }
-  return runApp(
-    unsafeCast(typeToFactory(componentType)),
-    createInjector: (parent) {
-      return ReflectiveInjector.resolveAndCreate(
-        [
-          createInjectorFromProviders,
-        ],
-        unsafeCast(parent),
-      );
-    },
-  );
-}
-
-/// Starts a new AngularDart application with [componentType] as the root.
-///
-/// This is the [runAppLegacy] variant of the [runAppAsync] function.
-Future<ComponentRef<T>> runAppLegacyAsync<T extends Object>(
-  Type componentType, {
-  required Future<void> Function(Injector) beforeComponentCreated,
-  List<Object> createInjectorFromProviders = const [],
-  void Function()? initReflector,
-}) {
-  assert(T == Object || T == componentType, 'Expected $componentType == $T');
-  if (initReflector != null) {
-    initReflector();
-  }
-  return runAppAsync(
-    unsafeCast(typeToFactory(componentType)),
-    beforeComponentCreated: beforeComponentCreated,
-    createInjector: (parent) {
-      return ReflectiveInjector.resolveAndCreate(
-        [
-          createInjectorFromProviders,
-        ],
-        unsafeCast(parent),
-      );
-    },
-  );
-}
-
-/// Starts a new AngularDart application with [componentType] as the root.
-///
-/// See [runAppLegacy] for the new name of this method.
-@Deprecated('Renamed "runAppLegacy". See "runApp" for the preferred API.')
-Future<ComponentRef<T>> bootstrapStatic<T extends Object>(
-  Type componentType, [
-  List<Object> providers = const [],
-  void Function()? initReflector,
-]) =>
-    Future.microtask(
-      () => runAppLegacy(
-        componentType,
-        createInjectorFromProviders: providers,
-        initReflector: initReflector,
-      ),
-    );

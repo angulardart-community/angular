@@ -17,7 +17,6 @@ import 'src/runtime/dom_helpers.dart';
 export 'src/common/directives/ng_for_identity.dart' show NgForIdentity;
 export 'src/core/linker/component_factory.dart'
     show debugUsesDefaultChangeDetection;
-export 'src/core/linker/component_resolver.dart' show typeToFactory;
 export 'src/core/zone/ng_zone.dart' show longestPendingTimer, inAngularZone;
 export 'src/meta.dart' show changeDetectionLink;
 

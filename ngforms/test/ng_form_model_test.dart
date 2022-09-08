@@ -9,8 +9,6 @@ Matcher throwsWith(String s) =>
     throwsA(predicate((e) => e.toString().contains(s)));
 
 void main() {
-  ng.initReflector();
-
   group('NgFormModel', () {
     late NgTestFixture<NgFormModelTest> fixture;
 

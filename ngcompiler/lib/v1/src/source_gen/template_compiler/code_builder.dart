@@ -20,20 +20,12 @@ String buildGeneratedCode(
   // Generated code.
   final allocator = Allocator.simplePrefixing();
   final compilerOutput = outputs.templateSource?.sourceCode ?? '';
-  final reflectableOutput = ReflectableEmitter(
-    outputs.reflectableOutput,
-    LibraryReader(element),
-    allocator: allocator,
-  );
 
   // Write the input file as an import and an export.
   buffer.writeln("import '$sourceFile';");
   if (flags.exportUserCodeFromTemplate) {
     buffer.writeln("export '$sourceFile';");
   }
-
-  // Write imports required for initReflector.
-  buffer.writeln(reflectableOutput.emitImports());
 
   if (outputs.injectorsOutput.isNotEmpty) {
     final imports = StringBuffer();
@@ -65,9 +57,6 @@ String buildGeneratedCode(
     // Write generated code.
     buffer.writeln(compilerOutput);
   }
-
-  // Write initReflector.
-  buffer.writeln(reflectableOutput.emitInitReflector());
 
   return buffer.toString();
 }

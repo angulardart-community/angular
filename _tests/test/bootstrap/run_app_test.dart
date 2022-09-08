@@ -1,5 +1,4 @@
 @JS()
-
 library angular.test.bootstrap.run_app_test;
 
 import 'dart:async';
@@ -13,8 +12,6 @@ import 'run_app_test.template.dart' as ng;
 
 /// A set of functional tests for the bootstrapping process.
 void main() {
-  ng.initReflector();
-
   late ComponentRef<HelloWorldComponent> component;
   late Element rootDomContainer;
 
@@ -97,33 +94,6 @@ void main() {
       },
     );
     verifyDomAndStyles(innerText: 'Hello Async World!');
-  });
-
-  // i.e. "bootstrapStatic".
-  test('runAppLegacy should bootstrap from a Type', () async {
-    component = runAppLegacy<HelloWorldComponent>(HelloWorldComponent);
-    verifyDomAndStyles();
-    verifyTestability();
-  });
-
-  test('runAppLegacyAsync should bootstrap from a Type', () async {
-    component = await runAppLegacyAsync<HelloWorldComponent>(
-      HelloWorldComponent,
-      beforeComponentCreated: (_) {
-        return Future(() {
-          HelloWorldComponent.name = 'Async World';
-        });
-      },
-    );
-    verifyDomAndStyles(innerText: 'Hello Async World!');
-  });
-
-  test('ApplicationRef should be injectable in a user-application', () async {
-    component = runAppLegacy<HelloWorldComponent>(
-      HelloWorldComponent,
-      createInjectorFromProviders: [ServiceThatInjectsApplicationRef],
-    );
-    expect(component.injector.get(ServiceThatInjectsApplicationRef), isNotNull);
   });
 
   test('runApp should execute beforeComponentCreated in NgZone', () async {

@@ -5,8 +5,6 @@ import 'package:ngtest/angular_test.dart';
 import 'bed_static_test.template.dart' as ng_generated;
 
 void main() {
-  // Intentional explicit lack of ng_generated.initReflector().
-
   test('should create a component with a ComponentFactory', () async {
     final testBed = NgTestBed<ExampleComp>(
       ng_generated.createExampleCompFactory(),

@@ -67,6 +67,9 @@ abstract class RenderView extends View {
   @dart2js.noInline
   void project(Element target, int index) {
     // TODO(b/132111830): Determine why this would be out of bounds.
+    // RangeError in test\core\styling\shim_test.dart:
+    //   host styling
+    //     should apply host style
     final projectedNodesByContentIndex = projectedNodes;
     if (index >= projectedNodesByContentIndex.length) {
       return;

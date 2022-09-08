@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:ngdart/angular.dart';
-import 'package:ngdart/experimental.dart';
 
 import '../bootstrap.dart';
 import '../errors.dart';
@@ -38,21 +37,6 @@ Future<NgTestFixture<T>> createDynamicFixture<T extends Object>(
     type,
     beforeComponentCreated: beforeComponentCreated,
     beforeChangeDetection: beforeChangeDetection,
-  );
-}
-
-/// An alternative factory for [NgTestBed] that allows not typing `T`.
-///
-/// This is for compatibility reasons only and should not be used otherwise.
-NgTestBed<T> createDynamicTestBed<T extends Object>({
-  Element? host,
-  InjectorFactory? rootInjector,
-  bool watchAngularLifecycle = true,
-}) {
-  return NgTestBed<T>._allowDynamicType(
-    host: host,
-    rootInjector: rootInjector,
-    watchAngularLifecycle: watchAngularLifecycle,
   );
 }
 
@@ -128,11 +112,10 @@ class NgTestBed<T extends Object> {
   }
 
   final Element? _host;
-  final List<Object> _providers;
   final NgTestStabilizerFactory _createStabilizer;
 
   // TODO(b/157257828): Split initReflector APIs into a separate class.
-  final ComponentFactory<T>? _componentFactory;
+  final ComponentFactory<T> _componentFactory;
   final InjectorFactory _rootInjector;
 
   /// Create a new [NgTestBed] that uses the provided [component] factory.
@@ -171,52 +154,12 @@ class NgTestBed<T extends Object> {
     );
   }
 
-  /// Create a new empty [NgTestBed] that creates a component type [T].
-  ///
-  /// May optionally specify what DOM element should [host] the component.
-  ///
-  /// By default, the resulting [NgTestFixture] automatically waits for Angular
-  /// to signal completion of change detection - this behavior can vbe disabled
-  /// by setting [watchAngularLifecycle] to `false`.
-  ///
-  /// **WARNING**: Path not recommended. See [NgTestBed] instead.
-  factory NgTestBed.useInitReflector({
-    Element? host,
-    InjectorFactory? rootInjector,
-    bool watchAngularLifecycle = true,
-  }) {
-    if (T == dynamic) {
-      throw GenericTypeMissingError();
-    }
-    return NgTestBed<T>._allowDynamicType(
-      host: host,
-      rootInjector: rootInjector,
-      watchAngularLifecycle: watchAngularLifecycle,
-    );
-  }
-
-  // Used for compatibility only.
-  factory NgTestBed._allowDynamicType({
-    Element? host,
-    InjectorFactory? rootInjector,
-    bool watchAngularLifecycle = true,
-  }) {
-    return NgTestBed<T>._(
-      host: host,
-      providers: const [],
-      stabilizer: watchAngularLifecycle ? _defaultStabilizers : _alwaysStable,
-      rootInjector: rootInjector,
-    );
-  }
-
   NgTestBed._({
     Element? host,
-    required Iterable<Object> providers,
     required NgTestStabilizerFactory stabilizer,
     InjectorFactory? rootInjector,
-    ComponentFactory<T>? component,
+    required ComponentFactory<T> component,
   })  : _host = host,
-        _providers = providers.toList(),
         _createStabilizer = stabilizer,
         _rootInjector = rootInjector ?? _defaultRootInjector,
         _componentFactory = component;
@@ -227,22 +170,10 @@ class NgTestBed<T extends Object> {
     required InjectorFactory rootInjector,
     required bool watchAngularLifecycle,
   })  : _host = host,
-        _providers = const [],
         _createStabilizer =
             watchAngularLifecycle ? _defaultStabilizers : _alwaysStable,
         _rootInjector = rootInjector,
         _componentFactory = component;
-
-  /// Whether this is the new-style [ComponentFactory]-backed [NgTestBed].
-  bool get _usesComponentFactory => _componentFactory != null;
-
-  /// Returns a new instance of [NgTestBed] with [providers] added.
-  NgTestBed<T> addProviders(Iterable<Object> providers) {
-    if (_usesComponentFactory) {
-      throw UnsupportedError('Use "addInjector" instead');
-    }
-    return fork(providers: [..._providers, ...providers]);
-  }
 
   /// Returns a new instance of [NgTestBed] with the root injector wrapped.
   ///
@@ -291,20 +222,6 @@ class NgTestBed<T extends Object> {
     }
   }
 
-  /// Creates the root [InjectorFactory] for a test instance.
-  InjectorFactory _createRootInjectorFactory() {
-    var rootInjector = _rootInjector;
-    if (_providers.isNotEmpty) {
-      rootInjector = (parent) {
-        return ReflectiveInjector.resolveAndCreate(
-          _providers,
-          _rootInjector(parent),
-        );
-      };
-    }
-    return rootInjector;
-  }
-
   // Used for compatibility only. See `create` for public API.
   Future<NgTestFixture<T>> _createDynamic(
     Type type, {
@@ -343,7 +260,7 @@ class NgTestBed<T extends Object> {
 
         // If there is no user hook, we are done.
         if (beforeComponentCreated == null) {
-          return null;
+          return;
         }
 
         // If there is a user hook, execute it within the ngZone:
@@ -360,9 +277,9 @@ class NgTestBed<T extends Object> {
       }
 
       return bootstrapForTest<T>(
-        (_componentFactory ?? typeToFactory(type)) as ComponentFactory<T>,
+        _componentFactory,
         _host ?? _defaultHost(),
-        _createRootInjectorFactory(),
+        _rootInjector,
         beforeComponentCreated: createStabilizersAndRunUserHook,
         beforeChangeDetection: beforeChangeDetection,
         createNgZone: ngZoneFactory,
@@ -387,16 +304,14 @@ class NgTestBed<T extends Object> {
   NgTestBed<E> fork<E extends T>({
     Element? host,
     ComponentFactory<E>? component,
-    Iterable<Object>? providers,
     InjectorFactory? rootInjector,
     NgTestStabilizerFactory? stabilizer,
   }) {
     return NgTestBed<E>._(
       host: host ?? _host,
-      providers: providers ?? _providers,
       stabilizer: stabilizer ?? _createStabilizer,
       rootInjector: rootInjector ?? _rootInjector,
-      component: (component ?? _componentFactory) as ComponentFactory<E>?,
+      component: component ?? _componentFactory as ComponentFactory<E>,
     );
   }
 

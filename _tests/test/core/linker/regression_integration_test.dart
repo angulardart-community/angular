@@ -18,9 +18,7 @@ void main() {
 
   group('Provider', () {
     void testProvider(Object token, Object tokenValue) {
-      final injector = ReflectiveInjector.resolveAndCreate([
-        provide(token, useValue: tokenValue),
-      ]);
+      final injector = Injector.map({token: tokenValue});
       expect(injector.get(token), tokenValue);
     }
 

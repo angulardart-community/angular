@@ -9,14 +9,8 @@ class TemplateCompilerOutputs {
   /// For each `@Component`, how to generate the backing views.
   final DartSourceOutput? templateSource;
 
-  /// For each `@Component` and `@Injectable`, how to allow dynamic loading.
-  ///
-  /// This is known as the `initReflector()` method in `.template.dart` files.
-  final ReflectableOutput reflectableOutput;
-
   const TemplateCompilerOutputs(
     this.templateSource,
-    this.reflectableOutput,
     this.injectorsOutput,
   );
 }

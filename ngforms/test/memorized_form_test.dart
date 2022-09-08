@@ -6,8 +6,6 @@ import 'package:ngtest/angular_test.dart';
 import 'memorized_form_test.template.dart' as ng;
 
 void main() {
-  ng.initReflector();
-
   group(MemorizedForm, () {
     tearDown(() => disposeAnyRunningTest());
 

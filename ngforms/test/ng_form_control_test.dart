@@ -8,8 +8,6 @@ import 'package:ngtest/angular_test.dart';
 import 'ng_form_control_test.template.dart' as ng;
 
 void main() {
-  ng.initReflector();
-
   group('NgFormControlTest', () {
     late NgTestFixture<NgFormControlTest> fixture;
 
