@@ -4,16 +4,8 @@ import 'package:test/test.dart';
 
 import 'directive_test.template.dart' as ng;
 
-Object missingServicFactory(Object willNotBeCalled) {
-  throw AssertionError();
-}
-
 @GenerateInjector([
-  Provider(
-    InjectsMissingService,
-    useFactory: missingServicFactory,
-    deps: [MissingService],
-  ),
+  ClassProvider(InjectsMissingService),
 ])
 final InjectorFactory injector = ng.injector$Injector;
 
