@@ -20,7 +20,7 @@ dependencies:
   args: ^2.0.0
   build: ^2.0.0
   build_test: ^2.0.0
-  code_builder: ^4.0.0
+  code_builder: ^4.3.0
   collection: ^1.15.0
   csslib: ^0.17.0
   dart_style: ^2.0.0

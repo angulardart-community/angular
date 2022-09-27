@@ -50,7 +50,10 @@ void main() {
             Object _getObject$0() => _field0 ??= createFooDynamicDependency(this.get(dynamic));
             Injector _getInjector$1() => this;
             @override
-            Object injectFromSelfOptional(Object token, [Object orElse = throwIfNotFound]) {
+            Object injectFromSelfOptional(
+              Object token, [
+              Object orElse = throwIfNotFound,
+            ]) {
               if (identical(token, Foo)) {
                 return _getObject$0();
               }
