@@ -87,22 +87,22 @@ void main() {
     late Testability testability;
     late TestZone ngZone;
 
-    late List<bool> callback1Calls;
-    late List<bool> callback2Calls;
+    late int callback1Calls;
+    late int callback2Calls;
 
-    void mockCallback1(bool didWork) {
-      callback1Calls.add(didWork);
+    void mockCallback1() {
+      callback1Calls++;
     }
 
-    void mockCallback2(bool didWork) {
-      callback2Calls.add(didWork);
+    void mockCallback2() {
+      callback2Calls++;
     }
 
     setUp(() {
       ngZone = TestZone();
       testability = Testability(ngZone);
-      callback1Calls = [];
-      callback2Calls = [];
+      callback1Calls = 0;
+      callback2Calls = 0;
     });
 
     group('NgZone callback logic', () {
@@ -112,7 +112,7 @@ void main() {
         ngZone.stable();
         testability.whenStable(mockCallback1);
         microTask(() {
-          expect(callback1Calls, hasLength(1));
+          expect(callback1Calls, equals(1));
         });
       });
 
@@ -122,17 +122,17 @@ void main() {
         ngZone.unstable();
         ngZone.stable();
         testability.whenStable(mockCallback1);
-        expect(callback1Calls, isEmpty);
+        expect(callback1Calls, isZero);
       });
 
       test('should fire whenstable callback when event finishes', () async {
         ngZone.unstable();
         testability.whenStable(mockCallback1);
         microTask(() {
-          expect(callback1Calls, isEmpty);
+          expect(callback1Calls, isZero);
           ngZone.stable();
           microTask(() {
-            expect(callback1Calls, hasLength(1));
+            expect(callback1Calls, equals(1));
           });
         });
       });
@@ -143,35 +143,33 @@ void main() {
         ngZone.unstable();
         testability.whenStable(mockCallback1);
         ngZone.stable();
-        expect(callback1Calls, isEmpty);
+        expect(callback1Calls, isZero);
       });
 
-      test(
-          'should fire whenstable callback with didWork '
-          'if event is already finished', () async {
+      test('should fire whenstable callback if event is already finished',
+          () async {
         ngZone.unstable();
         testability.whenStable(mockCallback1);
         ngZone.stable();
         microTask(() {
-          expect(callback1Calls, [true]);
+          expect(callback1Calls, equals(1));
           testability.whenStable(mockCallback2);
           microTask(() {
-            expect(callback2Calls, [false]);
+            expect(callback2Calls, equals(1));
           });
         });
       });
 
-      test('should fire whenstable callback with didwork when event finishes',
-          () async {
+      test('should fire whenstable callback when event finishes', () async {
         ngZone.unstable();
         testability.whenStable(mockCallback1);
         microTask(() {
           ngZone.stable();
           microTask(() {
-            expect(callback1Calls, [true]);
+            expect(callback1Calls, equals(1));
             testability.whenStable(mockCallback2);
             microTask(() {
-              expect(callback2Calls, [false]);
+              expect(callback2Calls, equals(1));
             });
           });
         });

@@ -8,20 +8,14 @@ import 'package:ngdart/src/di/injector.dart';
 /// Returns a simple application [Injector] that is hand-authored.
 ///
 /// Some of the services provided below ([ExceptionHandler], [APP_ID]) may be
-/// overriden by the user-supplied injector - the returned [InjectorFactory] is
+/// overriden by the user-supplied injector - the returned [Injector] is
 /// used as the "base" application injector.
-///
-/// Previously this used `@GenerateInjector`, but that requires running the
-/// Angular generator _on_ Angular itself, which leads to tricky circular
-/// dependency issues for little value.
-InjectorFactory minimalApp() {
-  return (parent) {
-    return Injector.map({
-      APP_ID: _createRandomAppId(),
-      ExceptionHandler: const ExceptionHandler(),
-      ComponentLoader: const ComponentLoader(),
-    }, parent);
-  };
+Injector minimalApp() {
+  return Injector.map({
+    APP_ID: _createRandomAppId(),
+    ExceptionHandler: const ExceptionHandler(),
+    ComponentLoader: const ComponentLoader(),
+  });
 }
 
 /// Creates a random [APP_ID] for use in CSS encapsulation.

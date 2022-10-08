@@ -10,6 +10,9 @@ import 'package:ngdart/angular.dart';
 
 import 'run_app_test.template.dart' as ng;
 
+@GenerateInjector([testabilityProvider])
+final InjectorFactory testabilityInjector = ng.testabilityInjector$Injector;
+
 /// A set of functional tests for the bootstrapping process.
 void main() {
   late ComponentRef<HelloWorldComponent> component;
@@ -39,9 +42,7 @@ void main() {
     );
     expect(getAllAngularTestabilities(), isNot(hasLength(0)));
     expect(jsTestability.isStable(), isTrue, reason: 'Expected stability');
-    jsTestability.whenStable(allowInterop(expectAsync1((didWork) {
-      expect(didWork, isFalse, reason: 'Immediate invocation (no work)');
-
+    jsTestability.whenStable(allowInterop(expectAsync0(() {
       Future(expectAsync0(() {
         verifyDomAndStyles(innerText: 'Hello Universe!');
       }));
@@ -65,7 +66,8 @@ void main() {
   });
 
   test('runApp should bootstrap from a ComponentFactory', () async {
-    component = runApp(ng.createHelloWorldComponentFactory());
+    component = runApp(ng.createHelloWorldComponentFactory(),
+        createInjector: testabilityInjector);
     verifyDomAndStyles();
     verifyTestability();
   });
@@ -169,5 +171,5 @@ external List<JsTestability> getAllAngularTestabilities();
 @JS()
 abstract class JsTestability {
   external bool isStable();
-  external void whenStable(void Function(bool didWork) fn);
+  external void whenStable(void Function() fn);
 }

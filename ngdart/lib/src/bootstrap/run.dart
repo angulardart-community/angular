@@ -1,8 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:ngdart/src/meta.dart';
-import 'package:ngdart/src/testability.dart';
 
-import '../core/app_host.dart';
 import '../core/application_ref.dart';
 import '../core/application_tokens.dart';
 import '../core/linker.dart' show ComponentFactory, ComponentRef;
@@ -14,10 +12,7 @@ import '../runtime/dom_events.dart';
 import '../utilities.dart';
 import 'modules.dart';
 
-/// Used as a "tear-off" of [NgZone].
-NgZone _createNgZone() => NgZone();
-
-/// **INTERNAL ONLY**: Creates a new application-level Injector.
+/// Creates a new application-level Injector.
 ///
 /// This is more complicated than just creating a new Injector, because we want
 /// to make sure we allow [userProvidedInjector] to override _some_ top-level
@@ -29,10 +24,10 @@ NgZone _createNgZone() => NgZone();
 /// `ngtest` package).
 Injector appInjector(
   InjectorFactory userProvidedInjector, {
-  NgZone Function() createNgZone = _createNgZone,
+  NgZone Function() createNgZone = NgZone.new,
 }) {
   // These are the required root services, always provided by AngularDart.
-  final minimalInjector = appGlobals.createAppInjector(minimalApp());
+  final minimalInjector = minimalApp();
 
   // Lazily initialized later on once we have the user injector.
   late final ApplicationRef applicationRef;
@@ -41,7 +36,6 @@ Injector appInjector(
     ApplicationRef: () => applicationRef,
     AppViewUtils: () => appViewUtils,
     NgZone: () => ngZone,
-    Testability: () => Testability(ngZone),
   }, unsafeCast(minimalInjector));
 
   // These are the user-provided overrides.

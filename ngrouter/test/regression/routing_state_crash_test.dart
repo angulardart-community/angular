@@ -13,8 +13,11 @@ void main() {
     final appComponent = runApp<AppComponent>(
       ng.createAppComponentFactory(),
       createInjector: (parent) {
+        final ngZone = parent.provideType<NgZone>(NgZone);
         return Injector.map({
           ExceptionHandler: LoggingExceptionHandler(),
+          Testability: Testability(ngZone),
+          TestabilityRegistry: TestabilityRegistry(),
         }, parent);
       },
     );
@@ -142,7 +145,7 @@ class AppComponent {
 
     // Then wait for an async completion.
     final completer = Completer<void>();
-    _testability.whenStable((_) => completer.complete());
+    _testability.whenStable(completer.complete);
     return completer.future;
   }
 

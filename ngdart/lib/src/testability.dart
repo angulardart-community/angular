@@ -1,1 +1,2 @@
-export 'testability/testability.dart' show Testability, TestabilityRegistry;
+export 'testability/testability.dart'
+    show testabilityProvider, Testability, TestabilityRegistry;
