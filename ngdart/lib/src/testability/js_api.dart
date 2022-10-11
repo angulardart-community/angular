@@ -33,6 +33,9 @@ abstract class JsTestability {
   void whenStable(void Function() callback);
 }
 
+/// A JavaScript interface for interacting with AngularDart's `TestabilityRegistry` API.
+///
+/// A global registry of `Testability` instances given an app root element.
 @JS()
 @anonymous
 abstract class JsTestabilityRegistry {
@@ -41,7 +44,9 @@ abstract class JsTestabilityRegistry {
     required List<JsTestability> Function() getAllAngularTestabilities,
   });
 
+  /// Returns the registered testability instance for [appRoot], or `null`.
   JsTestability? getAngularTestability(Element appRoot);
 
+  /// Returns all testability instances registered.
   List<JsTestability> getAllAngularTestabilities();
 }

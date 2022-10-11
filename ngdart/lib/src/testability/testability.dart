@@ -47,7 +47,6 @@ class Testability {
   /// representation of the app is synchronized with the Dart data and template
   /// models, and no more changes are (currently) epected.
   void whenStable(void Function() callback) {
-    // TODO(b/168535057): Change this to `void Function()` instead.
     _storeCallback(callback);
     _runCallbacksIfStable();
   }
