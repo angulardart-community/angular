@@ -109,9 +109,6 @@ class ViewCompiler {
   }
 
   /// Returns statements that declare a component factory for [view].
-  ///
-  /// These component factories are registered in `initReflector()` and used in
-  /// user code.
   List<o.Statement> _registerComponentFactory(CompileView view) {
     final componentTypeMetadata = view.component.type;
     final componentType = o.importType(componentTypeMetadata)!;

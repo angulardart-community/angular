@@ -49,10 +49,6 @@ class TemplateOutliner implements Builder {
   @override
   Future<void> build(BuildStep buildStep) async {
     if (!await buildStep.resolver.isLibrary(buildStep.inputId)) {
-      await buildStep.writeAsString(
-        buildStep.inputId.changeExtension(_extension),
-        'external void initReflector();',
-      );
       return;
     }
     final library = await buildStep.inputLibrary;
@@ -183,9 +179,6 @@ class $changeDetectorName$typeParameters extends _ng.DirectiveChangeDetector {
         output.writeln('external _ng.Injector $injector(_ng.Injector parent);');
       }
     }
-    output
-      ..writeln()
-      ..writeln('external void initReflector();');
     await buildStep.writeAsString(
       buildStep.inputId.changeExtension(_extension),
       output.toString(),
