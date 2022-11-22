@@ -13,4 +13,4 @@ import 'package:ngdart/src/meta.dart';
 ///     ],
 ///   )
 /// ```
-const APP_ID = OpaqueToken<String>('APP_ID');
+const OpaqueToken<String> appId = OpaqueToken<String>('APP_ID');

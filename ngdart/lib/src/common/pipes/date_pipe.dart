@@ -69,7 +69,7 @@ import 'invalid_pipe_argument_exception.dart';
 ///     {{ $pipe.date(dateObj, 'mmss') }}      // output is '43:11'
 @Pipe('date', pure: true)
 class DatePipe {
-  static final Map<String, String> _ALIASES = {
+  static final Map<String, String> _aliases = {
     'medium': 'yMMMdjms',
     'short': 'yMdjm',
     'fullDate': 'yMMMMEEEEd',
@@ -87,8 +87,8 @@ class DatePipe {
     if (value is num) {
       value = DateTime.fromMillisecondsSinceEpoch(unsafeCast(value));
     }
-    if (DatePipe._ALIASES.containsKey(pattern)) {
-      pattern = DatePipe._ALIASES[pattern]!;
+    if (DatePipe._aliases.containsKey(pattern)) {
+      pattern = DatePipe._aliases[pattern]!;
     }
     return _formatDate(unsafeCast(value), Intl.defaultLocale, pattern);
   }

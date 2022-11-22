@@ -109,7 +109,7 @@ void main() {
 @Component(
   selector: 'child',
   template: '{{value}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class Child {
   var value = '';
@@ -245,7 +245,7 @@ abstract class HasValue {
   providers: [
     ExistingProvider(HasValue, ChildWithExistingProvider),
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class ChildWithExistingProvider implements HasValue {
   @override

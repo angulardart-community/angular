@@ -13,12 +13,12 @@ const styleAttrName = 'style';
 final parentRenderNodeVar = o.variable('parentRenderNode');
 
 const List<String> _changeDetectionStrategies = [
-  'Default',
-  'CheckOnce',
-  'Checked',
-  'CheckAlways',
-  'Detached',
-  'OnPush',
+  'default_',
+  'checkOnce',
+  'checked',
+  'checkAlways',
+  'detached',
+  'onPush',
 ];
 
 /// Converts value of a `ChangeDetectionStrategy` to refer to the static field.

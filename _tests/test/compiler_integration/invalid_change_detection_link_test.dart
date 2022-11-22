@@ -19,7 +19,7 @@ void main() {
         @Component(
           selector: 'test',
           template: '',
-          changeDetection: ChangeDetectionStrategy.OnPush,
+          changeDetection: ChangeDetectionStrategy.onPush,
         )
         class OnPushComponent {}
       """);
@@ -39,7 +39,7 @@ void main() {
       """, errors: [
         allOf([
           contains(
-            'Only supported on components that use "OnPush" change detection',
+            'Only supported on components that use "onPush" change detection',
           ),
           containsSourceLocation(4, 9),
         ]),
@@ -57,7 +57,7 @@ void main() {
       """, errors: [
         allOf([
           contains(
-            'Only supported on components that use "OnPush" change detection',
+            'Only supported on components that use "onPush" change detection',
           ),
           containsSourceLocation(4, 9),
         ]),

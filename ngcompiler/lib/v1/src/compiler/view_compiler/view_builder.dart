@@ -984,7 +984,7 @@ o.OutputType contextType(CompileView view) {
 
 int _getChangeDetectionMode(CompileView view) {
   return view.viewType == ViewType.component &&
-          view.component.changeDetection != ChangeDetectionStrategy.Default
-      ? ChangeDetectionStrategy.CheckOnce
-      : ChangeDetectionStrategy.CheckAlways;
+          view.component.changeDetection != ChangeDetectionStrategy.default_
+      ? ChangeDetectionStrategy.checkOnce
+      : ChangeDetectionStrategy.checkAlways;
 }

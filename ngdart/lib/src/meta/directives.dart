@@ -237,7 +237,7 @@ class Component extends Directive {
     super.visibility = Visibility.local,
     this.viewProviders = const [],
     this.exports = const [],
-    this.changeDetection = ChangeDetectionStrategy.Default,
+    this.changeDetection = ChangeDetectionStrategy.default_,
     this.templateUrl,
     this.template,
     this.preserveWhitespace = false,
@@ -246,7 +246,7 @@ class Component extends Directive {
     this.directives = const [],
     this.directiveTypes = const [],
     this.pipes = const [],
-    this.encapsulation = ViewEncapsulation.Emulated,
+    this.encapsulation = ViewEncapsulation.emulated,
   });
 }
 

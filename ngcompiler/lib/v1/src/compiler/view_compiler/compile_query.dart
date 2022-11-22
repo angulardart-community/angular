@@ -20,7 +20,7 @@ class _QueryValue {
   /// A reference to the associated `ChangeDetectorRef` of the query result.
   final o.Expression? changeDetectorRef;
 
-  /// Whether this value is an OnPush component with a `ChangeDetectorRef`.
+  /// Whether this value is an onPush component with a `ChangeDetectorRef`.
   bool get hasChangeDetectorRef => changeDetectorRef != null;
 }
 
@@ -55,7 +55,7 @@ class _QueryResults {
 
   /// A subset of [values] with associated change detectors.
   ///
-  /// These [values] are backed by OnPush components, whose change detectors
+  /// These [values] are backed by onPush components, whose change detectors
   /// must be registered to implement `ChangeDetectorRef.markChildForCheck()`.
   final List<_QueryValue> withChangeDetectorRefs;
 }
@@ -159,7 +159,7 @@ abstract class CompileQuery {
   /// field) and others require proxy-ing through `mapNestedViews` in order to
   /// determine what `<template>`s are currently active.
   ///
-  /// If [result] is a component instance that uses the OnPush change detection
+  /// If [result] is a component instance that uses the onPush change detection
   /// strategy, [changeDetectorRef] should be its associated `ChangeDetectorRef`
   /// instance. Otherwise this parameter should be null.
   void addQueryResult(

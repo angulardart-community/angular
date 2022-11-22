@@ -306,7 +306,7 @@ class _BindDirectivesVisitor
       CompileContext.current.reportAndRecover(BuildError.forSourceSpan(
         annotation.sourceSpan,
         'Can only be used in the template of a component using '
-        '"ChangeDetectionStrategy.OnPush"',
+        '"ChangeDetectionStrategy.onPush"',
       ));
     }
     var componentAst = _ParseContext._firstComponent(context.boundDirectives);
@@ -319,7 +319,7 @@ class _BindDirectivesVisitor
       CompileContext.current.reportAndRecover(BuildError.forSourceSpan(
         annotation.sourceSpan,
         'Can only be applied to a component using '
-        '"ChangeDetectionStrategy.Default"',
+        '"ChangeDetectionStrategy.default_"',
       ));
     }
   }
@@ -1231,7 +1231,7 @@ class _ElementFilter extends ast.RecursiveTemplateAstVisitor<void> {
   }
 }
 
-/// Validates that all bound components use `ChangeDetectionStrategy.OnPush`.
+/// Validates that all bound components use `ChangeDetectionStrategy.onPush`.
 class _OnPushValidator extends InPlaceRecursiveTemplateVisitor<void> {
   @override
   void visitElement(ng.ElementAst ast, [_]) {

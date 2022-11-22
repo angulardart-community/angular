@@ -39,10 +39,10 @@ abstract class Messages {
     return buffer.toString();
   }
 
-  /// What message should be used for OnPush compatibility warnings.
+  /// What message should be used for onPush compatibility warnings.
   String warningForOnPushCompatibility(String name) {
     return ''
-        '"$name" doesn\'t use "ChangeDetectionStrategy.OnPush", but '
+        '"$name" doesn\'t use "ChangeDetectionStrategy.onPush", but '
         'is used by a component that does. This is unsupported and unlikely '
         'to work as expected.';
   }

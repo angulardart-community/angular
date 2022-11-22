@@ -419,7 +419,7 @@ class CompileTemplateMetadata {
   final List<String> styleUrls;
   final List<String> ngContentSelectors;
   CompileTemplateMetadata(
-      {this.encapsulation = ViewEncapsulation.Emulated,
+      {this.encapsulation = ViewEncapsulation.emulated,
       this.template,
       this.templateUrl,
       this.templateOffset = 0,
@@ -469,7 +469,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   /// Restricts where the directive is injectable.
   final Visibility visibility;
 
-  /// Whether this is an `OnPush` component that also works in a `Default` app.
+  /// Whether this is an `onPush` component that also works in a `default_` app.
   final bool isChangeDetectionLink;
 
   CompileDirectiveMetadata({
@@ -535,7 +535,7 @@ class CompileDirectiveMetadata implements CompileMetadataWithType {
   bool get isComponent =>
       metadataType == CompileDirectiveMetadataType.Component;
 
-  bool get isOnPush => changeDetection == ChangeDetectionStrategy.OnPush;
+  bool get isOnPush => changeDetection == ChangeDetectionStrategy.onPush;
 
   /// Whether the directive requires a change detector class to be generated.
   ///
@@ -625,7 +625,7 @@ CompileDirectiveMetadata createHostComponentMeta(
         styles: const [],
         styleUrls: const [],
         ngContentSelectors: const []),
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.default_,
     analyzedClass: analyzedClass,
     inputs: const {},
     inputTypes: const {},

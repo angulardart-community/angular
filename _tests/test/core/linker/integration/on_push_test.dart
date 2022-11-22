@@ -99,7 +99,7 @@ void main() {
 
 @Component(
   selector: 'push-cmp-with-ref',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   template: '{{field}}',
 )
 class PushCmpWithRef {
@@ -150,7 +150,7 @@ class ManualCheckLoadedComponent {
 @Component(
   selector: 'event-cmp',
   template: '<div (click)="noop()"></div>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class EventCmp {
   void noop() {}
@@ -158,7 +158,7 @@ class EventCmp {
 
 @Component(
   selector: 'push-cmp',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   template: '{{field}}<div (click)="noop()"></div><div *ngIf="true" '
       '(click)="noop()"></div><event-cmp></event-cmp>',
   directives: [EventCmp, NgIf],
@@ -203,7 +203,7 @@ class PushCmpWithRefHostComponent {
 
 @Component(
   selector: 'push-cmp-with-async',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   template: r'{{$pipe.async(field)}}',
   pipes: [AsyncPipe],
 )

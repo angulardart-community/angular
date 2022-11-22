@@ -11,7 +11,7 @@ void main() {
 
   setUp(() => logs = []);
 
-  test('ChangeDetectionStrategy.Detached should behave strangely', () async {
+  test('ChangeDetectionStrategy.detached should behave strangely', () async {
     final testBed = NgTestBed<TestDetachedViaStrategy>(
       ng.createTestDetachedViaStrategyFactory(),
     );
@@ -214,7 +214,7 @@ class Logger implements OnInit, AfterChanges, AfterViewInit, AfterContentInit {
     </span>
   ''',
   // ignore: deprecated_member_use
-  changeDetection: ChangeDetectionStrategy.Detached,
+  changeDetection: ChangeDetectionStrategy.detached,
 )
 class DetachedViaStrategy extends Logger {}
 

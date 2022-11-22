@@ -392,7 +392,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
 
     if (resolvedProvider.providerType == ProviderAstType.Component) {
       if (directiveMetadata?.changeDetection ==
-          ChangeDetectionStrategy.OnPush) {
+          ChangeDetectionStrategy.onPush) {
         changeDetectorRefExpr = componentView;
       }
     }

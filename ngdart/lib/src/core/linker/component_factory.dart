@@ -10,7 +10,7 @@ import 'package:ngdart/src/utilities.dart';
 import 'view_ref.dart' show ViewRef;
 import 'views/host_view.dart';
 
-/// Returns whether [componentRef] uses [ChangeDetectionStrategy.Default].
+/// Returns whether [componentRef] uses [ChangeDetectionStrategy.default_].
 ///
 /// In practice this can be used to assert that a component does *not* use
 /// default change detection in non-default or performance sensitive contexts.

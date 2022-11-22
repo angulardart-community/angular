@@ -81,6 +81,6 @@ abstract class EmbeddedViewRef implements ViewRef {
   /// Detaches this view and destroys all of its associated state.
   void destroy();
 
-  /// Marks this view to be change detected in an "OnPush" context.
+  /// Marks this view to be change detected in an "onPush" context.
   void markForCheck();
 }

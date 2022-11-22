@@ -70,7 +70,7 @@ abstract class ComponentView<T extends Object> extends RenderView {
   /// be referenced by any other means.
   @experimental
   bool get usesDefaultChangeDetection =>
-      _data.changeDetectionMode == ChangeDetectionStrategy.CheckAlways;
+      _data.changeDetectionMode == ChangeDetectionStrategy.checkAlways;
 
   // Initialization ------------------------------------------------------------
 
@@ -134,12 +134,12 @@ abstract class ComponentView<T extends Object> extends RenderView {
 
   @override
   bool get firstCheck =>
-      _data.changeDetectorState == ChangeDetectorState.NeverChecked;
+      _data.changeDetectorState == ChangeDetectorState.neverChecked;
 
   @override
   void detectChangesDeprecated() {
     if (_data.shouldSkipChangeDetection) {
-      if (_data.changeDetectionMode == ChangeDetectionStrategy.Checked) {
+      if (_data.changeDetectionMode == ChangeDetectionStrategy.checked) {
         detectChangesInCheckAlwaysViews();
       }
       return;
@@ -158,13 +158,13 @@ abstract class ComponentView<T extends Object> extends RenderView {
       detectChangesInternal();
     }
 
-    // If we are a 'CheckOnce' component, we are done being checked.
-    if (_data.changeDetectionMode == ChangeDetectionStrategy.CheckOnce) {
-      _data.changeDetectionMode = ChangeDetectionStrategy.Checked;
+    // If we are a 'checkOnce' component, we are done being checked.
+    if (_data.changeDetectionMode == ChangeDetectionStrategy.checkOnce) {
+      _data.changeDetectionMode = ChangeDetectionStrategy.checked;
     }
 
     // Set the state to already checked at least once.
-    _data.changeDetectorState = ChangeDetectorState.CheckedBefore;
+    _data.changeDetectorState = ChangeDetectorState.checkedBefore;
   }
 
   /// Generated code that is called by hosts.
@@ -174,7 +174,7 @@ abstract class ComponentView<T extends Object> extends RenderView {
 
   @override
   void disableChangeDetection() {
-    _data.changeDetectorState = ChangeDetectorState.Errored;
+    _data.changeDetectorState = ChangeDetectorState.errored;
   }
 
   /// Marks this view to be checked during change detection.
@@ -185,14 +185,14 @@ abstract class ComponentView<T extends Object> extends RenderView {
   /// serves to propagate input changes down the component tree during a single
   /// change detection pass.
   void markAsCheckOnce() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.CheckOnce;
+    _data.changeDetectionMode = ChangeDetectionStrategy.checkOnce;
   }
 
   @override
   void markForCheck() {
     final changeDetectionMode = _data.changeDetectionMode;
-    if (changeDetectionMode == ChangeDetectionStrategy.Detached) return;
-    if (changeDetectionMode == ChangeDetectionStrategy.Checked) {
+    if (changeDetectionMode == ChangeDetectionStrategy.detached) return;
+    if (changeDetectionMode == ChangeDetectionStrategy.checked) {
       markAsCheckOnce();
     }
     parentView!.markForCheck();
@@ -200,12 +200,12 @@ abstract class ComponentView<T extends Object> extends RenderView {
 
   @override
   void detachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.Detached;
+    _data.changeDetectionMode = ChangeDetectionStrategy.detached;
   }
 
   @override
   void reattachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.CheckAlways;
+    _data.changeDetectionMode = ChangeDetectionStrategy.checkAlways;
     markForCheck();
   }
 
@@ -282,7 +282,7 @@ class _ComponentViewData implements RenderViewData {
 
   @override
   int get changeDetectorState => _changeDetectorState;
-  int _changeDetectorState = ChangeDetectorState.NeverChecked;
+  int _changeDetectorState = ChangeDetectorState.neverChecked;
   set changeDetectorState(int state) {
     if (_changeDetectorState != state) {
       _changeDetectorState = state;
@@ -311,8 +311,8 @@ class _ComponentViewData implements RenderViewData {
 
   void _updateShouldSkipChangeDetection() {
     _shouldSkipChangeDetection =
-        _changeDetectionMode == ChangeDetectionStrategy.Checked ||
-            _changeDetectionMode == ChangeDetectionStrategy.Detached ||
-            _changeDetectorState == ChangeDetectorState.Errored;
+        _changeDetectionMode == ChangeDetectionStrategy.checked ||
+            _changeDetectionMode == ChangeDetectionStrategy.detached ||
+            _changeDetectorState == ChangeDetectorState.errored;
   }
 }

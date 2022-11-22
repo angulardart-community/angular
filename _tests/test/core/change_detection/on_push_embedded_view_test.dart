@@ -23,13 +23,13 @@ void main() {
   // When these parents are the same, embedded views are well behaved.
   //
   // However, when an embedded view is hosted in the view container of another
-  // OnPush view, it may cease to correctly receive updates from its
+  // onPush view, it may cease to correctly receive updates from its
   // `<template>` parent.
   //
-  // When embedded within an OnPush component, an embedded view is only change
+  // When embedded within an onPush component, an embedded view is only change
   // detected when that parent is marked to be checked. This poses a problem for
   // embedded views with expressions bound to their `<template>` parent.  When
-  // such an embedded view is hosted in the view container of another OnPush
+  // such an embedded view is hosted in the view container of another onPush
   // component, there's currently no mechanism in the framework that marks that
   // component to be checked when the `<template>` parent receives a change that
   // could invalidate a binding within the `<template>`.
@@ -65,7 +65,7 @@ void main() {
 
       // The above change only causes the template producer and its child nested
       // views to be updated. Any templates that originated within its view that
-      // are embedded in a foreign OnPush view don't receive these changes.
+      // are embedded in a foreign onPush view don't receive these changes.
       expect(
         component.templateConsumer!.text,
         contains('Hello template!'),
@@ -77,7 +77,7 @@ void main() {
       });
 
       // The above change that was previously expected is now observed in the
-      // template embedded in a foreign view container with an OnPush parent.
+      // template embedded in a foreign view container with an onPush parent.
       expect(
         component.templateConsumer!.text,
         contains('Hello template!'),
@@ -124,7 +124,7 @@ class TestComponent {
   template: '''
     <template #template>{{templateText}}</template>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   exportAs: 'templateProducer',
 )
 class TemplateProducerComponent implements OnInit {
@@ -149,7 +149,7 @@ class TemplateProducerComponent implements OnInit {
     <template #container></template>
     <div>{{text}}</div>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class TemplateConsumerComponent implements OnInit {
   @ViewChild('container', read: ViewContainerRef)

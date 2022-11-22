@@ -7,7 +7,7 @@ import 'package:ngcompiler/v2/context.dart';
 void main() {
   CompileContext.overrideForTesting();
 
-  test('emits warning for Default component in OnPush template', () async {
+  test('emits warning for Default component in onPush template', () async {
     await compilesExpecting("""
       import '$ngImport';
 
@@ -24,7 +24,7 @@ void main() {
             <default></default>
           </div>
         ''',
-        changeDetection: ChangeDetectionStrategy.OnPush,
+        changeDetection: ChangeDetectionStrategy.onPush,
         directives: [DefaultComponent],
       )
       class TestComponent {}
@@ -32,14 +32,14 @@ void main() {
       allOf([
         contains('<default>'),
         contains(
-          '"DefaultComponent" doesn\'t use "ChangeDetectionStrategy.OnPush"',
+          '"DefaultComponent" doesn\'t use "ChangeDetectionStrategy.onPush"',
         ),
       ]),
     ]);
   });
 
   group('@skipOnPushValidation', () {
-    test('silences warning for Default component in OnPush template', () async {
+    test('silences warning for Default component in onPush template', () async {
       await compilesNormally("""
         import '$ngImport';
 
@@ -56,7 +56,7 @@ void main() {
               <default @skipOnPushValidation></default>
             </div>
           ''',
-          changeDetection: ChangeDetectionStrategy.OnPush,
+          changeDetection: ChangeDetectionStrategy.onPush,
           directives: [DefaultComponent],
         )
         class TestComponent {}
@@ -73,7 +73,7 @@ void main() {
             template: '''
               <div @skipOnPushValidation></div>
             ''',
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class TestComponent {}
         """, errors: [
@@ -91,7 +91,7 @@ void main() {
           @Component(
             selector: 'on-push',
             template: '',
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class OnPushComponent {}
 
@@ -101,7 +101,7 @@ void main() {
               <on-push @skipOnPushValidation></on-push>
             ''',
             directives: [OnPushComponent],
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class TestComponent {}
         """, errors: [
@@ -109,7 +109,7 @@ void main() {
             contains('@skipOnPushValidation'),
             contains(
               'Can only be applied to a component using '
-              '"ChangeDetectionStrategy.Default"',
+              '"ChangeDetectionStrategy.default_"',
             ),
           ]),
         ]);
@@ -138,7 +138,7 @@ void main() {
             contains('@skipOnPushValidation'),
             contains(
               'Can only be used in the template of a component using '
-              '"ChangeDetectionStrategy.OnPush"',
+              '"ChangeDetectionStrategy.onPush"',
             ),
           ]),
         ]);

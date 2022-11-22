@@ -223,23 +223,23 @@ class DefaultIterableDiffer {
       }
     } else {
       index = 0;
-      collection.forEach((item) {
+      for (var item in collection) {
         var itemTrackBy = _trackByFn(index, item);
-        if (record == null || !identical(record!.trackById, itemTrackBy)) {
+        if (record == null || !identical(record.trackById, itemTrackBy)) {
           record = _mismatch(record, item, itemTrackBy, index);
           mayBeDirty = true;
         } else {
           if (mayBeDirty) {
             // TODO(misko): can we limit this to duplicates only?
-            record = _verifyReinsertion(record!, item, itemTrackBy, index);
+            record = _verifyReinsertion(record, item, itemTrackBy, index);
           }
-          if (!identical(record!.item, item)) {
-            _addIdentityChange(record!, item);
+          if (!identical(record.item, item)) {
+            _addIdentityChange(record, item);
           }
         }
-        record = record!._next;
+        record = record._next;
         index++;
-      });
+      }
       _length = index;
     }
     _truncate(record);

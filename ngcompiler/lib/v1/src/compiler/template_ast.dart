@@ -219,8 +219,8 @@ class ElementAst implements TemplateAst {
   /// Whether this element is annotated with `@skipOnPushValidation`.
   ///
   /// If annotated, it prevents the compiler from emitting a warning if a
-  /// component on this element uses the Default change detection strategy in an
-  /// OnPush context. Note that this does not cause [children] to be skipped.
+  /// component on this element uses the default_ change detection strategy in an
+  /// onPush context. Note that this does not cause [children] to be skipped.
   final bool skipOnPushValidation;
 
   final String skipSchemaValidationForSelector;
