@@ -32,12 +32,12 @@ o.OutputType? fromDartType(DartType? dartType, {bool resolveBounds = true}) {
   if (dartType is FunctionType) {
     return fromFunctionType(dartType);
   }
-  if (dartType.element!.isPrivate) {
+  if (dartType.element2!.isPrivate) {
     return o.DYNAMIC_TYPE;
   }
   if (dartType is TypeParameterType && resolveBounds) {
     // Resolve generic type to its bound or dynamic if it has none.
-    final dynamicType = dartType.element.library!.typeProvider.dynamicType;
+    final dynamicType = dartType.element2.library!.typeProvider.dynamicType;
     dartType = dartType.resolveToBound(dynamicType);
   }
   // Note this check for dynamic should come after the check for a type
@@ -61,7 +61,7 @@ o.OutputType? fromDartType(DartType? dartType, {bool resolveBounds = true}) {
   var outputType = o.ExternalType(
     CompileIdentifierMetadata(
       name: dartType.name!,
-      moduleUrl: moduleUrl(dartType.element!),
+      moduleUrl: moduleUrl(dartType.element2!),
       // Most o.ExternalTypes are not created, but those that are (like
       // OpaqueToken<...> need this generic type.
       typeArguments: typeArguments,

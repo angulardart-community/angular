@@ -487,7 +487,7 @@ class _ComponentVisitor
       CompileTokenMetadata(
         identifier: CompileIdentifierMetadata(
           name: selectorType.name!,
-          moduleUrl: moduleUrl(selectorType.element!),
+          moduleUrl: moduleUrl(selectorType.element2!),
         ),
       ),
     ];
@@ -508,7 +508,7 @@ class _ComponentVisitor
       descendants: coerceBool(value, 'descendants', defaultTo: false),
       first: coerceBool(value, 'first', defaultTo: false),
       propertyName: propertyName,
-      isElementType: propertyType?.element != null &&
+      isElementType: propertyType?.element2 != null &&
               _htmlElement.isAssignableFromType(propertyType!) ||
           // A bit imprecise, but this will cover 'Iterable' and 'List'.
           _coreIterable.isAssignableFromType(propertyType!) &&
@@ -519,7 +519,7 @@ class _ComponentVisitor
           ? CompileTokenMetadata(
               identifier: CompileIdentifierMetadata(
                 name: readType.displayName,
-                moduleUrl: moduleUrl(readType.element!),
+                moduleUrl: moduleUrl(readType.element2!),
               ),
             )
           : null,
@@ -541,7 +541,7 @@ class _ComponentVisitor
     var bindTo = ast.PropertyRead(ast.ImplicitReceiver(), element.name!);
     if (element is PropertyAccessorElement && element.isStatic ||
         element is FieldElement && element.isStatic) {
-      if (element.enclosingElement != _directiveClassElement) {
+      if (element.enclosingElement3 != _directiveClassElement) {
         // We do not want to inherit static members.
         // https://github.com/angulardart/angular/issues/1272
         return;
@@ -586,7 +586,7 @@ class _ComponentVisitor
     final propertyName = element.displayName;
     final bindingName =
         coerceString(value, 'bindingPropertyName', defaultTo: propertyName)!;
-    _prohibitBindingChange(element.enclosingElement as ClassElement?,
+    _prohibitBindingChange(element.enclosingElement3 as ClassElement?,
         propertyName, bindingName, immutableBindings ?? bindings);
     bindings[propertyName] = bindingName;
   }
@@ -620,7 +620,7 @@ class _ComponentVisitor
     // Reverse supertypes to traverse inheritance hierarchy from top to bottom
     // so that derived bindings overwrite their inherited definition.
     for (var type in element.allSupertypes.reversed) {
-      _collectInheritableMetadataOn(type.element);
+      _collectInheritableMetadataOn(type.element2 as ClassElement);
     }
     _collectInheritableMetadataOn(element);
   }

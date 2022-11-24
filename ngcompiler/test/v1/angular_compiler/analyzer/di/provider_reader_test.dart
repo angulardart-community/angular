@@ -97,10 +97,10 @@ void main() {
           ),
         ];
       ''');
-      $Example = testLib.getType('Example')!;
-      $ExamplePrime = testLib.getType('ExamplePrime')!;
-      $DependencyA = testLib.getType('DependencyA')!;
-      $DependencyB = testLib.getType('DependencyB')!;
+      $Example = testLib.getClass('Example')!;
+      $ExamplePrime = testLib.getClass('ExamplePrime')!;
+      $DependencyA = testLib.getClass('DependencyA')!;
+      $DependencyB = testLib.getClass('DependencyB')!;
       $createExample = testLib.definingCompilationUnit.functions.first;
       $ExampleCreate = $Example.getMethod('create')!;
       providers =

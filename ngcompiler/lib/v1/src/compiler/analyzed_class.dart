@@ -99,13 +99,13 @@ String typeToCode(DartType type) {
   } else if (type is InterfaceType) {
     var typeArguments = type.typeArguments;
     if (typeArguments.isEmpty) {
-      return type.element.name;
+      return type.element2.name;
     } else {
       final typeArgumentsStr = typeArguments.map(typeToCode).join(', ');
-      return '${type.element.name}<$typeArgumentsStr>';
+      return '${type.element2.name}<$typeArgumentsStr>';
     }
   } else if (type is TypeParameterType) {
-    return type.element.name;
+    return type.element2.name;
   } else if (type.isVoid) {
     return 'void';
   } else {
@@ -365,7 +365,7 @@ class _TypeResolver extends ast.AstVisitor<DartType, dynamic> {
   DartType _lookupGetterReturnType(DartType receiverType, String getterName) {
     if (receiverType is InterfaceType) {
       var getter =
-          receiverType.lookUpGetter2(getterName, receiverType.element.library);
+          receiverType.lookUpGetter2(getterName, receiverType.element2.library);
       if (getter != null) return getter.returnType;
     }
     return _dynamicType;
@@ -377,7 +377,7 @@ class _TypeResolver extends ast.AstVisitor<DartType, dynamic> {
   DartType _lookupMethodReturnType(DartType receiverType, String methodName) {
     if (receiverType is InterfaceType) {
       var method =
-          receiverType.lookUpMethod2(methodName, receiverType.element.library);
+          receiverType.lookUpMethod2(methodName, receiverType.element2.library);
       if (method != null) return method.returnType;
     }
     return _dynamicType;

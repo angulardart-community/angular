@@ -27,7 +27,7 @@ analyzer:
     # Temporary exclusions: Can be removed in the future.
     # =====================
     # Re-enable once we no longer have 200+ analyzer related deprecations.
-    deprecated_member_use: ignore
+    # deprecated_member_use: ignore
     # Re-enable this once unused parameters are exempted (e.g. callback(_) {}).
     inference_failure_on_untyped_parameter: ignore
 

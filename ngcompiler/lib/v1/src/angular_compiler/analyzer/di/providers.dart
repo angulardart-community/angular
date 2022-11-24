@@ -55,7 +55,7 @@ class ProviderReader {
       return _parseUseClass(
         token,
         o,
-        useClass.typeValue.element as ClassElement,
+        useClass.typeValue.element2 as ClassElement,
       );
     }
     final useFactory = reader.read('useFactory');
@@ -90,7 +90,7 @@ class ProviderReader {
       return _parseUseClass(
         token,
         o,
-        reader.read('token').typeValue.element as ClassElement,
+        reader.read('token').typeValue.element2 as ClassElement,
       );
     }
     throw UnsupportedProviderException(o, 'Could not parse provider');
@@ -186,7 +186,7 @@ class ProviderReader {
   /// Returns a provider element representing a single type.
   ProviderElement _parseTypeAsImplicitClassProvider(DartObject o) {
     final reader = ConstantReader(o);
-    final element = reader.typeValue.element;
+    final element = reader.typeValue.element2;
     if (element is ClassElement) {
       final token = linkTypeOf(element.thisType);
       return UseClassProviderElement(

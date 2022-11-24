@@ -26,14 +26,14 @@ DartType? inferProviderType(DartObject provider, DartObject token) {
       return tokenType.typeArguments.first;
     }
     // Check for a _custom_ MultiToken<T>
-    final tokenTypeClass = tokenType.element;
+    final tokenTypeClass = tokenType.element2;
     if (tokenTypeClass is ClassElement) {
       var supertype = tokenTypeClass.supertype!;
       if (!$MultiToken.isExactlyType(supertype)) {
         // When we start using angular_compiler to resolve all of the time
         // remove this message, since we already validate there.
         throw BuildError.forElement(
-            tokenType.element!,
+            tokenType.element2!,
             'A sub-type of OpaqueToken must directly extend OpaqueToken or '
             'MultiToken, and cannot extend another class that in turn extends '
             'OpaqueToken or MultiToken.\n\n'

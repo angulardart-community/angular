@@ -57,7 +57,7 @@ class TokenReader {
     late List<DartType> typeArgs;
     if (!$OpaqueToken.isExactlyType(valueType) &&
         !$MultiToken.isExactlyType(valueType)) {
-      final clazz = valueType.element;
+      final clazz = valueType.element2;
       if (clazz is ClassElement) {
         typeArgs = clazz.supertype!.typeArguments;
       }
@@ -83,21 +83,22 @@ class TokenReader {
   /// generation.
   TypeLink linkToOpaqueToken(DartType type) {
     if (!$OpaqueToken.isAssignableFromType(type)) {
-      throw BuildError.forElement(type.element!, 'Must implement OpaqueToken.');
+      throw BuildError.forElement(
+          type.element2!, 'Must implement OpaqueToken.');
     }
     if ($OpaqueToken.isExactlyType(type) || $MultiToken.isExactlyType(type)) {
       return linkTypeOf(type);
     }
-    final clazz = type.element as ClassElement;
+    final clazz = type.element2 as ClassElement;
     if (clazz.interfaces.isNotEmpty || clazz.mixins.isNotEmpty) {
       throw BuildError.forElement(
-        type.element!,
+        type.element2!,
         'A sub-type of OpaqueToken cannot implement or mixin any interfaces.',
       );
     }
     if (clazz.isPrivate || clazz.isAbstract) {
       throw BuildError.forElement(
-        type.element!,
+        type.element2!,
         'Must not be abstract or a private (i.e. prefixed with `_`) class.',
       );
     }
@@ -109,7 +110,7 @@ class TokenReader {
       var supertypeName =
           clazz.supertype!.getDisplayString(withNullability: false);
       throw BuildError.forElement(
-        type.element!,
+        type.element2!,
         ''
         'A sub-type of OpaqueToken must have a single unnamed const '
         'constructor with no parameters or type parameters. For example, '
@@ -124,7 +125,7 @@ class TokenReader {
     if (!$OpaqueToken.isExactlyType(clazz.supertype!) &&
         !$MultiToken.isExactlyType(clazz.supertype!)) {
       throw BuildError.forElement(
-        type.element!,
+        type.element2!,
         ''
         'A sub-type of OpaqueToken must directly extend OpaqueToken or '
         'MultiToken, and cannot extend another class that in turn extends '

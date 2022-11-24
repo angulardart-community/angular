@@ -92,7 +92,7 @@ class CompileTypeMetadataVisitor
         ).toString());
         return null;
       }
-      var metadata = visitClassElement(type.element);
+      var metadata = visitClassElement(type.element2 as ClassElement);
       final tokenMetadata = CompileTokenMetadata(identifier: metadata);
       _preventProvidingGlobalSingletonService(tokenMetadata);
       return CompileProviderMetadata(
@@ -111,7 +111,7 @@ class CompileTypeMetadataVisitor
     }
     final providerType = inferProviderType(provider, token);
     final providerTypeArgument = providerType is InterfaceType
-        ? _getCompileTypeMetadata(providerType.element,
+        ? _getCompileTypeMetadata(providerType.element2 as ClassElement,
             typeArguments: providerType.typeArguments)
         : null;
 
@@ -181,7 +181,7 @@ class CompileTypeMetadataVisitor
       var type = maybeUseClass!.toTypeValue();
       if (type is InterfaceType) {
         return _getCompileTypeMetadata(
-          type.element,
+          type.element2 as ClassElement,
           enforceClassCanBeCreated: true,
         );
       } else {
@@ -195,7 +195,7 @@ class CompileTypeMetadataVisitor
       final typeValue = token.toTypeValue();
       if (typeValue != null && !typeValue.isDartCoreNull) {
         return _getCompileTypeMetadata(
-          typeValue.element as ClassElement,
+          typeValue.element2 as ClassElement,
           enforceClassCanBeCreated: true,
         );
       }
@@ -231,10 +231,10 @@ class CompileTypeMetadataVisitor
         // be a [FunctionTypedElement].
         var type = maybeUseFactory.type!;
         throw BuildError.forElement(
-          type.element!,
+          type.element2!,
           'Provider.useFactory must be a Function, but got type'
           '$type instead with type element '
-          '${type.element}',
+          '${type.element2}',
         );
       }
     }
@@ -334,7 +334,7 @@ class CompileTypeMetadataVisitor
       // not have something annotated properly. It's likely this is either
       // dead code or is not actually used via DI. We can ignore for now.
       logWarning(''
-          'Could not resolve token for $p on ${p.enclosingElement} in '
+          'Could not resolve token for $p on ${p.enclosingElement3} in '
           '${p.library?.identifier}');
       return CompileDiDependencyMetadata();
     }
@@ -421,10 +421,10 @@ class CompileTypeMetadataVisitor
         }
       }
       return _tokenForType(token.type, isInstance: invocation != null);
-    } else if (token.type!.element is FunctionTypedElement) {
+    } else if (token.type!.element2 is FunctionTypedElement) {
       return CompileTokenMetadata(
           identifier: _identifierForFunction(
-              token.type!.element as FunctionTypedElement));
+              token.type!.element2 as FunctionTypedElement));
     }
     throw ArgumentError('@Inject is not yet supported for $token.');
   }
@@ -474,9 +474,9 @@ class CompileTypeMetadataVisitor
     Element? element = type.alias?.element;
     if (element == null) {
       if (type is DynamicType) {
-        element = type.element;
+        element = type.element2;
       } else if (type is InterfaceType) {
-        element = type.element;
+        element = type.element2;
       }
     }
     if (element == null) {
@@ -520,9 +520,9 @@ class CompileTypeMetadataVisitor
       return _expressionForType(token);
     } else if (token.toFunctionValue() != null) {
       return o.importExpr(_identifierForFunction(token.toFunctionValue()!));
-    } else if (token.type!.element is FunctionTypedElement) {
+    } else if (token.type!.element2 is FunctionTypedElement) {
       return o.importExpr(
-          _identifierForFunction(token.type!.element as FunctionTypedElement));
+          _identifierForFunction(token.type!.element2 as FunctionTypedElement));
     } else {
       throw ArgumentError('Could not create useValue expression for $token');
     }
@@ -567,8 +567,8 @@ class CompileTypeMetadataVisitor
   CompileIdentifierMetadata _identifierForFunction(
       FunctionTypedElement function) {
     String? prefix;
-    if (function.enclosingElement is ClassElement) {
-      prefix = function.enclosingElement!.name;
+    if (function.enclosingElement3 is ClassElement) {
+      prefix = function.enclosingElement3!.name;
     }
     return CompileIdentifierMetadata(
         name: function.name!,
@@ -582,8 +582,8 @@ class CompileTypeMetadataVisitor
     List<DartObject> typesOrTokens,
   ) {
     String? prefix;
-    if (function.enclosingElement is ClassElement) {
-      prefix = function.enclosingElement!.name;
+    if (function.enclosingElement3 is ClassElement) {
+      prefix = function.enclosingElement3!.name;
     }
     return CompileFactoryMetadata(
       name: function.name!,
@@ -648,14 +648,15 @@ class CompileTypeMetadataVisitor
   }
 
   Iterable<FieldElement> _enumValues(DartObject token) {
-    final clazz = token.type!.element as ClassElement;
+    final clazz = token.type!.element2 as ClassElement;
     // Due to https://github.com/dart-lang/sdk/issues/29306, isEnumConstant is
     // not enough, so we also need to skip synthetic fields 'index' and 'value'.
     return clazz.fields
         .where((field) => field.isEnumConstant && !field.isSynthetic);
   }
 
-  bool _isEnum(DartType? type) => type is InterfaceType && type.element.isEnum;
+  bool _isEnum(DartType? type) =>
+      type is InterfaceType && type.element2 is EnumElement;
 
   bool _isProtobufEnum(DartType? type) {
     return type is InterfaceType &&

@@ -66,7 +66,7 @@ void main() {
       ''');
     });
 
-    ClassElement? classNamed(String name) => library.getType(name);
+    ClassElement? classNamed(String name) => library.getClass(name);
 
     FunctionElement functionNamed(String name) =>
         library.definingCompilationUnit.functions

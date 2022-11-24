@@ -48,6 +48,6 @@ Future<ClassElement?> resolveClass(
 ]) async {
   final library = await resolveLibrary(source);
   return name != null
-      ? library.getType(name)
+      ? library.getClass(name)
       : library.definingCompilationUnit.classes.first;
 }

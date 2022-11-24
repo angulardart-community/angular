@@ -116,7 +116,7 @@ void main() {
     });
 
     InterfaceType instantiateClass(String name) {
-      final element = library.getType(name)!;
+      final element = library.getClass(name)!;
       return element.instantiate(
         typeArguments: List.filled(
           element.typeParameters.length,

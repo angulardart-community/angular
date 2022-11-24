@@ -15,7 +15,7 @@ void main() {
     );
     expect(
       library
-          .getType('Example')!
+          .getClass('Example')!
           .metadata
           .first
           .computeConstantValue()!
@@ -37,7 +37,7 @@ void main() {
       includeAngularDeps: false,
     );
     expect(
-      library.getType('Example')!.metadata.first.computeConstantValue(),
+      library.getClass('Example')!.metadata.first.computeConstantValue(),
       isNull,
       reason: 'Angular was not loaded',
     );
@@ -57,7 +57,7 @@ void main() {
         AssetId('test_lib', 'lib/another.dart'): 'class Base {}'
       },
     );
-    final clazz = library.getType('Example')!;
+    final clazz = library.getClass('Example')!;
     expect(
       clazz.metadata.first
           .computeConstantValue()!
@@ -65,6 +65,6 @@ void main() {
           .toStringValue(),
       'Hello World',
     );
-    expect(clazz.supertype!.element.name, 'Base');
+    expect(clazz.supertype!.element2.name, 'Base');
   });
 }
