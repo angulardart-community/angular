@@ -36,7 +36,8 @@ class ChangeDetectionStrategy {
   @Deprecated('Not intended to be a public API. Use "default_" instead.')
   static const int checkAlways = ChangeDetectionCheckedState.checkAlways;
 
-  @Deprecated('Not intended to be a public API. Use "ChangeDetectorRef.detach" instead.')
+  @Deprecated(
+      'Not intended to be a public API. Use "ChangeDetectorRef.detach" instead.')
   static const int detached = ChangeDetectionCheckedState.waitingToBeAttached;
 
   /// An optimized form of change detection, skipping some checks for changes.

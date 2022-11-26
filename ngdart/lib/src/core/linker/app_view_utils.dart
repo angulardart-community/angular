@@ -1,6 +1,7 @@
 import 'dart:html' show DocumentFragment, NodeTreeSanitizer;
 
-import 'package:ngdart/src/core/application_tokens.dart' as application_tokens show appId;
+import 'package:ngdart/src/core/application_tokens.dart' as application_tokens
+    show appId;
 import 'package:ngdart/src/runtime/dom_events.dart' show EventManager;
 
 /// Application wide view utilities.
