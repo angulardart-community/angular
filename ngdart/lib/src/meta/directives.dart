@@ -62,7 +62,7 @@ class Directive {
   /// <form>
   ///   <input type="text">
   ///   <input type="radio">
-  /// <form>
+  /// </form>
   /// ```
   ///
   /// The directive would only be instantiated on the `<input type="text">`
