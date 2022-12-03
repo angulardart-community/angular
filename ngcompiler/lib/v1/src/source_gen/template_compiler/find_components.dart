@@ -340,7 +340,7 @@ class _ComponentVisitor
               _inputTypes[element.displayName] = CompileTypeMetadata(
                 moduleUrl: moduleUrl(element),
                 name: typeName,
-                typeArguments: List.from(typeArguments.map(fromDartType)),
+                typeArguments: List.from(typeArguments.map((DartType type) => fromDartType(type, _library.element.typeSystem))),
               );
             }
           }

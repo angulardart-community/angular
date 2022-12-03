@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/nullability_suffix.dart';
 import 'package:analyzer/dart/element/type.dart';
+import 'package:analyzer/dart/element/type_system.dart';
 import 'package:ngcompiler/v1/angular_compiler.dart';
 import 'package:ngcompiler/v1/src/source_gen/common/url_resolver.dart';
 import 'package:source_gen/source_gen.dart';
@@ -7,14 +8,27 @@ import 'package:source_gen/source_gen.dart';
 import '../compile_metadata.dart';
 import 'output_ast.dart' as o;
 
-/// Creates an AST for code generation from [dartType].
-///
-/// If [resolveBounds] is false, type parameters will not be resolved to their
-/// bound.
+/// Creates an AST for code generation from [dartType] where type parameters
+/// will **not** be resolved to their bound. If bounds resolving is needed, use
+/// [fromDartType] directly.
 ///
 /// Note that private types aren't visible to generated code and will be
 /// replaced with dynamic.
-o.OutputType? fromDartType(DartType? dartType, {bool resolveBounds = true}) {
+o.OutputType? fromDartTypeNoResolve(DartType? dartType) {
+	return fromDartType(dartType, null);
+}
+
+/// Creates an AST for code generation from [dartType].
+///
+/// Note that type parameters will be resolved to their bound. If this is not
+/// desired, use [fromDartTypeNoResolve].
+///
+/// Note that private types aren't visible to generated code and will be
+/// replaced with dynamic.
+o.OutputType? fromDartType(
+  DartType? dartType,
+  TypeSystem? typeSystem,
+) {
   if (dartType == null) {
     // Some analyzer APIs may return a null `DartType` to signify the absence of
     // an explicit type, such as a generic type parameter bound.
@@ -30,15 +44,15 @@ o.OutputType? fromDartType(DartType? dartType, {bool resolveBounds = true}) {
     return o.NEVER_TYPE;
   }
   if (dartType is FunctionType) {
-    return fromFunctionType(dartType);
+    return fromFunctionType(dartType, typeSystem!);
   }
   if (dartType.element2!.isPrivate) {
     return o.DYNAMIC_TYPE;
   }
-  if (dartType is TypeParameterType && resolveBounds) {
+  if (dartType is TypeParameterType && typeSystem != null) {
     // Resolve generic type to its bound or dynamic if it has none.
     final dynamicType = dartType.element2.library!.typeProvider.dynamicType;
-    dartType = dartType.resolveToBound(dynamicType);
+    dartType = typeSystem.resolveToBound(dynamicType);
   }
   // Note this check for dynamic should come after the check for a type
   // parameter, since a type parameter could resolve to dynamic.
@@ -48,13 +62,13 @@ o.OutputType? fromDartType(DartType? dartType, {bool resolveBounds = true}) {
   var typeArguments = <o.OutputType>[];
   if (dartType is ParameterizedType) {
     for (final typeArgument in dartType.typeArguments) {
-      if (typeArgument is TypeParameterType && resolveBounds) {
+      if (typeArgument is TypeParameterType && typeSystem != null) {
         // Temporary hack to avoid a stack overflow for <T extends List<T>>.
         //
         // See https://github.com/angulardart/angular/issues/1397.
         typeArguments.add(o.DYNAMIC_TYPE);
       } else {
-        typeArguments.add(fromDartType(typeArgument, resolveBounds: false)!);
+        typeArguments.add(fromDartTypeNoResolve(typeArgument)!);
       }
     }
   }
@@ -102,11 +116,11 @@ o.OutputType fromTypeLink(TypeLink? typeLink, LibraryReader library) {
 }
 
 /// Creates an AST for code generation from [functionType]
-o.FunctionType fromFunctionType(FunctionType functionType) {
-  final returnType = fromDartType(functionType.returnType);
+o.FunctionType fromFunctionType(FunctionType functionType, TypeSystem typeSystem) {
+  final returnType = fromDartType(functionType.returnType, typeSystem);
   final paramTypes = <o.OutputType>[];
   for (var parameter in functionType.parameters) {
-    paramTypes.add(fromDartType(parameter.type)!);
+    paramTypes.add(fromDartType(parameter.type, typeSystem)!);
   }
   var outputType = o.FunctionType(returnType, paramTypes);
   if (functionType.nullabilitySuffix == NullabilitySuffix.question) {

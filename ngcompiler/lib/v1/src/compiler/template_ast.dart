@@ -187,7 +187,7 @@ class VariableAst implements TemplateAst {
   /// local variable declaration.
   DartType? dartType;
 
-  OutputType? get type => fromDartType(dartType, resolveBounds: false);
+  OutputType? get type => fromDartTypeNoResolve(dartType);
 
   VariableAst(this.name, String? value, this.sourceSpan)
       : value = value != null && value.isNotEmpty ? value : implicitValue;

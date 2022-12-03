@@ -255,7 +255,7 @@ class CompileTypeMetadataVisitor
     for (final typeParameter in element.typeParameters) {
       typeParameters.add(o.TypeParameter(
         typeParameter.name,
-        bound: fromDartType(typeParameter.bound, resolveBounds: false),
+        bound: fromDartTypeNoResolve(typeParameter.bound),
       ));
     }
     return CompileTypeMetadata(
@@ -267,7 +267,8 @@ class CompileTypeMetadataVisitor
             : [],
         element,
       ),
-      typeArguments: List.from(typeArguments.map(fromDartType)),
+      typeArguments: List.from(typeArguments.map(
+          (DartType type) => fromDartType(type, _library.element.typeSystem))),
       typeParameters: typeParameters,
     );
   }
