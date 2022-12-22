@@ -23,7 +23,7 @@ void checkInjectables(LibraryElement library) {
 
 Iterable<CompilationUnitElement> allUnits(LibraryElement library) sync* {
   yield library.definingCompilationUnit;
-  yield* library.parts;
+  yield* library.units;
 }
 
 void checkClass(ClassElement element) {

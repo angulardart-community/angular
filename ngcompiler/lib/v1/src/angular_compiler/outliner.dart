@@ -55,9 +55,8 @@ class TemplateOutliner implements Builder {
     final components = <ClassElement>[];
     final directives = <ClassElement>[];
     final injectors = <String>[];
-    var units = [library.definingCompilationUnit, ...library.parts];
-    var types = units.expand((unit) => unit.classes);
-    var fields = units.expand((unit) => unit.topLevelVariables);
+    var types = library.children.whereType<ClassElement>().toList();
+    var fields = library.children.whereType<TopLevelVariableElement>().toList();
     for (final clazz in types) {
       final component = $Component.firstAnnotationOfExact(
         clazz,
@@ -109,16 +108,16 @@ class TemplateOutliner implements Builder {
     }
 
     output.writeln('// Required for "type inference" (scoping).');
-    for (final d in library.imports) {
-      if (!d.isDeferred && d.uri != null) {
-        var directive = "import '${d.uri}'";
-        if (d.prefix != null) {
-          directive += ' as ${d.prefix!.name}';
+    for (final l in library.libraryImports) {
+      if (l.prefix is! DeferredImportElementPrefix) {
+        var directive = "import '${l.uri}'";
+        if (l.prefix != null) {
+          directive += ' as ${l.prefix!.element.name}';
         }
-        if (d.combinators.isNotEmpty) {
-          final isShow = d.combinators.first is ShowElementCombinator;
+        if (l.combinators.isNotEmpty) {
+          final isShow = l.combinators.first is ShowElementCombinator;
           directive += isShow ? ' show ' : ' hide ';
-          directive += d.combinators
+          directive += l.combinators
               .map((c) {
                 if (c is ShowElementCombinator) {
                   return c.shownNames;

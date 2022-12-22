@@ -503,26 +503,30 @@ class _ComponentVisitor
   ) {
     final value = annotationInfo.constantValue;
     final readType = getField(value, 'read')?.toTypeValue();
+    CompileTokenMetadata? readMetadata;
+
+    if (readType != null) {
+      readMetadata = CompileTokenMetadata(
+        identifier: CompileIdentifierMetadata(
+          name: readType.name!,
+          moduleUrl: moduleUrl(readType.element!),
+        ),
+      );
+    }
+
     return CompileQueryMetadata(
       selectors: _getSelectors(annotationInfo),
       descendants: coerceBool(value, 'descendants', defaultTo: false),
       first: coerceBool(value, 'first', defaultTo: false),
       propertyName: propertyName,
-      isElementType: propertyType?.element != null &&
-              _htmlElement.isAssignableFromType(propertyType!) ||
+      isElementType: propertyType!.element != null &&
+              _htmlElement.isAssignableFromType(propertyType) ||
           // A bit imprecise, but this will cover 'Iterable' and 'List'.
-          _coreIterable.isAssignableFromType(propertyType!) &&
+          _coreIterable.isAssignableFromType(propertyType) &&
               propertyType is ParameterizedType &&
               _htmlElement
                   .isAssignableFromType(propertyType.typeArguments.first),
-      read: readType != null
-          ? CompileTokenMetadata(
-              identifier: CompileIdentifierMetadata(
-                name: readType.displayName,
-                moduleUrl: moduleUrl(readType.element!),
-              ),
-            )
-          : null,
+      read: readMetadata,
     );
   }
 
@@ -620,7 +624,7 @@ class _ComponentVisitor
     // Reverse supertypes to traverse inheritance hierarchy from top to bottom
     // so that derived bindings overwrite their inherited definition.
     for (var type in element.allSupertypes.reversed) {
-      _collectInheritableMetadataOn(type.element);
+      _collectInheritableMetadataOn(type.element as ClassElement);
     }
     _collectInheritableMetadataOn(element);
   }

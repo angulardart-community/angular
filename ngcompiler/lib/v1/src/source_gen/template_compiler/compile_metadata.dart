@@ -92,7 +92,7 @@ class CompileTypeMetadataVisitor
         ).toString());
         return null;
       }
-      var metadata = visitClassElement(type.element);
+      var metadata = visitClassElement(type.element as ClassElement);
       final tokenMetadata = CompileTokenMetadata(identifier: metadata);
       _preventProvidingGlobalSingletonService(tokenMetadata);
       return CompileProviderMetadata(
@@ -111,7 +111,7 @@ class CompileTypeMetadataVisitor
     }
     final providerType = inferProviderType(provider, token);
     final providerTypeArgument = providerType is InterfaceType
-        ? _getCompileTypeMetadata(providerType.element,
+        ? _getCompileTypeMetadata(providerType.element as ClassElement,
             typeArguments: providerType.typeArguments)
         : null;
 
@@ -181,7 +181,7 @@ class CompileTypeMetadataVisitor
       var type = maybeUseClass!.toTypeValue();
       if (type is InterfaceType) {
         return _getCompileTypeMetadata(
-          type.element,
+          type.element as ClassElement,
           enforceClassCanBeCreated: true,
         );
       } else {
@@ -655,7 +655,7 @@ class CompileTypeMetadataVisitor
         .where((field) => field.isEnumConstant && !field.isSynthetic);
   }
 
-  bool _isEnum(DartType? type) => type is InterfaceType && type.element.isEnum;
+  bool _isEnum(DartType? type) => type is InterfaceType && type.isDartCoreEnum;
 
   bool _isProtobufEnum(DartType? type) {
     return type is InterfaceType &&
