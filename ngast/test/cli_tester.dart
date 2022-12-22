@@ -10,8 +10,7 @@ Iterable<NgToken> tokenize(String html) {
 }
 
 String untokenize(Iterable<NgToken> tokens) => tokens
-    .fold(StringBuffer(),
-        (buffer, token) => (buffer as StringBuffer)..write(token.lexeme))
+    .fold(StringBuffer(), (buffer, token) => buffer..write(token.lexeme))
     .toString();
 
 void main() {
