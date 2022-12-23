@@ -32,17 +32,17 @@ void main() {
     });
 
     test('@Directive', () {
-      final aDirective = testLib.getType('ADirective')!;
+      final aDirective = testLib.getClass('ADirective')!;
       expect($Directive.firstAnnotationOfExact(aDirective), isNotNull);
     });
 
     test('@Component', () {
-      final aComponent = testLib.getType('AComponent')!;
+      final aComponent = testLib.getClass('AComponent')!;
       expect($Component.firstAnnotationOfExact(aComponent), isNotNull);
     });
 
     test('@Injectable', () {
-      final anInjectable = testLib.getType('AnInjectable')!;
+      final anInjectable = testLib.getClass('AnInjectable')!;
       expect($Injectable.firstAnnotationOfExact(anInjectable), isNotNull);
     });
 

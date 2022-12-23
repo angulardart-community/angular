@@ -61,8 +61,8 @@ void main() {
           ],
         );
       ''');
-      $Example = testLib.getType('Example')!;
-      $Dependency = testLib.getType('Dependency')!;
+      $Example = testLib.getClass('Example')!;
+      $Dependency = testLib.getClass('Dependency')!;
       $listModule = $Example.metadata.first.computeConstantValue()!;
       $newModuleA = $Example.metadata[1].computeConstantValue()!;
       $newModuleB = $Example.metadata[2].computeConstantValue()!;
@@ -232,7 +232,7 @@ void main() {
         class C {}
       ''');
       final testObjects = List<DartObject>.from(testLib
-          .getType('Example')!
+          .getClass('Example')!
           .metadata
           .map((e) => e.computeConstantValue()));
       aListOfProviders = testObjects[0];

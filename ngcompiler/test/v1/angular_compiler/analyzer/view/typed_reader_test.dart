@@ -240,7 +240,7 @@ void main() {
 
   group('throws', () {
     Future<void> parseTyped(LibraryElement element) async {
-      final example = element.getType('Example')!;
+      final example = element.getClass('Example')!;
       final typedReader = TypedReader(example);
       final typedValue = example.metadata.first.computeConstantValue()!;
       typedReader.parse(typedValue);
