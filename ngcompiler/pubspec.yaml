@@ -10,31 +10,24 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
-  # ngdart doesn't need a tight version constraint, since it is ngdart that
-  # depends on ngcompiler.
-  ngdart: ^7.1.1
-  # Allowing a tiny bit of wiggle here to allow publishing minor updates
-  ngast: ^2.1.4
-
   analyzer: ^5.3.1
   args: ^2.3.1
-  build_test: ^2.1.5
   build: ^2.3.1
+  build_test: ^2.1.5
   code_builder: ^4.4.0
   collection: ^1.17.0
   csslib: ^0.17.2
   dart_style: ^2.2.4
   logging: ^1.1.0
   meta: ^1.8.0
+  ngast: ^2.1.4
+  ngdart: ^7.1.1
   package_config: ^2.1.0
   path: ^1.8.3
   source_gen: ^1.2.6
   source_span: ^1.9.1
-  stack_trace: ^1.11.0
 
 dev_dependencies:
-  # This is here in order for it to be resolvable by the analyzer.
   build_runner: ^2.3.3
-  mockito: ^5.3.2
   lints: ^2.0.1
   test: ^1.22.1
