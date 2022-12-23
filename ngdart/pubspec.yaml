@@ -8,33 +8,16 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
-  # Runtime (or runtime *and* the compiler).
+  build: ^2.3.1
   built_collection: ^5.1.1
   built_value: ^8.4.2
   collection: ^1.17.0
   intl: ^0.18.0
   js: ^0.6.5
-  logging: ^1.1.0
   meta: ^1.8.0
-  stack_trace: ^1.11.0
-  stream_transform: ^2.1.0
-
-  # Allowing a tiny bit of wiggle here to allow publishing minor updates
   ngast: ^2.1.4
   ngcompiler: ^2.1.4-dev
-  ##########################################################################
-
-  build_config: ^1.1.1
-  build: ^2.3.1
-  code_builder: ^4.4.0
-  csslib: ^0.17.2
-  path: ^1.8.3
-  quiver: ^3.2.1
-  source_gen: ^1.2.6
-  source_span: ^1.9.1
+  stream_transform: ^2.1.0
 
 dev_dependencies:
-  # Compiler. Eventually we want to move these to angular_compiler.
-  analyzer: ^5.3.1
-  build_runner: ^2.3.3
   lints: ^2.0.1
