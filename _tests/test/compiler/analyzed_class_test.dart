@@ -84,7 +84,7 @@ void main() {
           final int eight = 8;
         }
       ''');
-      var analyzedClass = AnalyzedClass(library.getType('SubComponent'));
+      var analyzedClass = AnalyzedClass(library.getClass('SubComponent'));
       final sevenExpr = PropertyRead(ImplicitReceiver(), 'seven');
       final eightExpr = PropertyRead(ImplicitReceiver(), 'eight');
       final someNumberExpr = PropertyRead(ImplicitReceiver(), 'someNumber');

@@ -2,44 +2,23 @@ name: _tests
 description: Tests for AngularDart.
 publish_to: none
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
-  # No strict dependencies, we always use dependency_overrides.
-  ngdart:
-  ngtest:
-  ngforms:
-
-  # Actual valid dependencies required.
-  build_resolvers: ^2.0.0
-  collection: ^1.15.0
-  meta: ^1.3.0
-  test: ^1.16.0
+  build_resolvers: ^2.1.0
+  build_test: ^2.1.5
+  collection: ^1.17.0
+  ngdart: ^7.1.1
+  ngtest: ^4.1.1
+  test: ^1.22.1
 
 dev_dependencies:
-  # Actual valid dependencies required.
-  analyzer: ^4.2.0
-  lints: ^2.0.0
-  build_runner: ^2.0.0
-  build_test: ^2.0.0
-  build_web_compilers: #^2.0.0
-  mockito: ^5.0.0
-  package_config: ^2.0.0
-  source_span: ^1.8.0
-  term_glyph: ^1.2.0
-
-# DO NOT REMOVE. We don't publish this package, it is just for testing.
-# dependency_overrides:
-#   ngdart:
-#     path: ../ngdart
-#   ngast:
-#     path: ../ngast
-#   ngcompiler:
-#     path: ../ngcompiler
-#   ngforms:
-#     path: ../ngforms
-#   ngrouter:
-#     path: ../ngrouter
-#   ngtest:
-#     path: ../ngtest
-#   analyzer: ^4.0.0
+  analyzer: ^5.3.1
+  build_runner: ^2.3.3
+  build_web_compilers: ^3.2.7
+  lints: ^2.0.1
+  meta: ^1.8.0
+  mockito: ^5.3.2
+  package_config: ^2.1.0
+  source_span: ^1.9.1
+  term_glyph: ^1.2.1
