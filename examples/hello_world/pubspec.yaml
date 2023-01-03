@@ -1,24 +1,13 @@
 name: examples_hello_world
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   # No strict dependencies, we always use dependency_overrides.
   ngdart:
 
 dev_dependencies:
-  analyzer: ^4.2.0
-  lints: ^2.0.0
-  build_runner: ^2.0.0
-  build_test: ^2.0.0
-  build_web_compilers: ^3.0.0
-
-# DO NOT REMOVE. We don't publish this package, it is just for testing.
-dependency_overrides:
-  ngdart:
-    path: ../../ngdart
-  ngast:
-    path: ../../ngast
-  ngcompiler:
-    path: ../../ngcompiler
+  build_runner: ^2.3.3
+  build_web_compilers: ^3.2.7
+  lints: ^2.0.1

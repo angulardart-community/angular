@@ -1,13 +1,13 @@
 name: ngcompiler
-repository: https://github.com/angulardart-community/angular
 description: >
   The AngularDart compiler.
   It compiles your component files written in Dart into templates so that you
   don't have to worry about all the complicated hassle.
 version: 2.1.4-dev
+repository: https://github.com/angulardart-community/angular
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   analyzer: ^5.3.1
@@ -28,6 +28,5 @@ dependencies:
   source_span: ^1.9.1
 
 dev_dependencies:
-  build_runner: ^2.3.3
   lints: ^2.0.1
   test: ^1.22.1
