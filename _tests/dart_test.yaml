@@ -1,28 +1,30 @@
 # Include common configuration.
-include: ../tool/dart_test_repo.yaml
+include: ../dart_test_repo.yaml
 
 presets:
   browser:
     platforms:
-    - chrome
+      - chrome
     paths:
-    - test/bootstrap
-    - test/common
-    - test/core
-    - test/di
-    - test/integration
-    - test/platform
-    # re-integrate from 'tests'
-    - test/devtools
-    - test/directives
-    - test/lifecycle_hooks
-    - test/templates
-    add_presets: [ci]
+      - test/bootstrap
+      - test/common
+      - test/core
+      - test/di
+      - test/integration
+      - test/platform
+      # re-integrate from 'tests'
+      - test/devtools
+      - test/directives
+      - test/lifecycle_hooks
+      - test/templates
+    add_presets:
+      - ci
 
   vm:
     platforms:
-    - vm
+      - vm
     paths:
-    - test/compiler
-    - test/compiler_integration
-    add_presets: [ci]
+      - test/compiler
+      - test/compiler_integration
+    add_presets:
+      - ci

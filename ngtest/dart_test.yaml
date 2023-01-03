@@ -1,6 +1,9 @@
 # Include common configuration.
-include: ../tool/dart_test_repo.yaml
+include: ../dart_test_repo.yaml
 
-# This repository has only web tests.
-platforms:
-  - chrome
+presets:
+  browser:
+    platforms:
+      - chrome
+    add_presets:
+      - ci

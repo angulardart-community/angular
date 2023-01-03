@@ -3,4 +3,5 @@ targets:
     builders:
       ngdart:
         generate_for:
-          exclude: ["test/url_test.dart"]
+          exclude:
+            - test/url_test.dart

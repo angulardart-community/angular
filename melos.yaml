@@ -2,7 +2,7 @@ name: angular
 repository: https://github.com/angulardart-community/angular
 
 packages:
-   - "**"
+  - "**"
   # - ngast
   # - ngcompiler
   # - ngdart
@@ -12,10 +12,52 @@ packages:
 
 ignore:
   # - _tests
-  - examples
+  # - examples
   - goldens
   - tests
 
 command:
   bootstrap:
     usePubspecOverrides: true
+
+scripts:
+  analyze:
+    run: dart analyze --fatal-warnings .
+    exec:
+      concurrency: 1
+      failFast: true
+
+  format:
+    run: dart format --output=none --set-exit-if-changed .
+    exec:
+      concurrency: 1
+      failFast: true
+
+  build:
+    run: dart run build_runner build --fail-on-severe
+    exec:
+      concurrency: 1
+      failFast: true
+    select-package:
+      depends-on:
+        - build_runner
+
+  test_vm:
+    run: dart test -P vm
+    exec:
+      concurrency: 1
+      failFast: true
+    select-package:
+      depends-on:
+        - test
+
+  test_browser:
+    run: dart run build_runner test --fail-on-severe -- -P browser
+    exec:
+      concurrency: 1
+      failFast: true
+    select-package:
+      depends-on:
+        - build_runner
+        - build_test
+        - test

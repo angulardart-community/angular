@@ -4,10 +4,10 @@ targets:
       build_web_compilers|entrypoint:
         generate_for:
           include:
-          - test/**.browser_test.dart
+            - test/**.browser_test.dart
           exclude:
-          - test/compiler/**
-          - test/compiler_integration/**
-          - test/source_gen/**
-          - test/regression/vm/**
-          - test/core/di/provider_test.dart*
+            - test/compiler/**
+            - test/compiler_integration/**
+            - test/source_gen/**
+            - test/regression/vm/**
+            - test/core/di/provider_test.dart*

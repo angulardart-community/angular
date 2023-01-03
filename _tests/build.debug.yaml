@@ -4,14 +4,14 @@ targets:
       build_web_compilers|entrypoint:
         generate_for:
           include:
-          # Includes both the bootstrapped entrypoints as well as the original
-          # entrypoints to enable easier debugging.
-          - test/**_test.dart
+            # Includes both the bootstrapped entrypoints as well as the original
+            # entrypoints to enable easier debugging.
+            - test/**_test.dart
           exclude:
-          - test/**.vm_test.dart
-          - test/**.node_test.dart
-          - test/compiler/**
-          - test/compiler_integration/**
-          - test/source_gen/**
-          - test/regression/vm/**
-          - test/core/di/provider_test.dart*
+            - test/**.vm_test.dart
+            - test/**.node_test.dart
+            - test/compiler/**
+            - test/compiler_integration/**
+            - test/source_gen/**
+            - test/regression/vm/**
+            - test/core/di/provider_test.dart*
