@@ -25,10 +25,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup
-        uses: dart-lang/setup-dart@v1.4
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup
+        uses: dart-lang/setup-dart@v1.4
+        with:
+          sdk: 2.17.0
       - name: Activate
         run: dart pub global activate melos
       - name: Bootstrap
