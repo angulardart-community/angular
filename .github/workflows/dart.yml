@@ -35,6 +35,8 @@ jobs:
         run: dart pub global run melos bootstrap
       - name: Analyze
         run: dart pub global run melos run analyze
+      - name: Format
+        run: dart pub global run melos run format
       - name: Build
         run: dart pub global run melos run build
       - name: Build

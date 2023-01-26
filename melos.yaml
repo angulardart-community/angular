@@ -24,13 +24,11 @@ scripts:
   analyze:
     run: dart analyze --fatal-warnings .
     exec:
-      concurrency: 1
       failFast: true
 
   format:
     run: dart format --output=none --set-exit-if-changed .
     exec:
-      concurrency: 1
       failFast: true
 
   build:
