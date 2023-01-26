@@ -6,7 +6,7 @@ version: 3.1.1
 repository: https://github.com/angulardart-community/angular
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
   collection: ^1.17.0
@@ -15,9 +15,9 @@ dependencies:
 dev_dependencies:
   async: ^2.10.0
   build_runner: ^2.3.3
-  build_test: ^2.1.5
+  build_test: ^2.1.6
   build_web_compilers: ^3.2.7
   lints: ^2.0.1
   mockito: ^5.3.2
   ngtest: ^4.1.1
-  test: ^1.22.1
+  test: ^1.22.2

@@ -6,17 +6,17 @@ version: 7.1.1
 repository: https://github.com/angulardart-community/angular
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  analyzer: ^5.3.1
+  analyzer: ^5.4.0
   build: ^2.3.1
   built_collection: ^5.1.1
   build_modules: ^4.0.7
-  built_value: ^8.4.2
+  built_value: ^8.4.3
   collection: ^1.17.0
   intl: ^0.18.0
-  js: ^0.6.5
+  js: ^0.6.6
   meta: ^1.8.0
   ngast: ^2.1.4
   ngcompiler: ^2.1.4-dev

@@ -7,13 +7,13 @@ version: 2.1.4-dev
 repository: https://github.com/angulardart-community/angular
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  analyzer: ^5.3.1
-  args: ^2.3.1
+  analyzer: ^5.4.0
+  args: ^2.3.2
   build: ^2.3.1
-  build_test: ^2.1.5
+  build_test: ^2.1.6
   code_builder: ^4.4.0
   collection: ^1.17.0
   csslib: ^0.17.2
@@ -29,4 +29,4 @@ dependencies:
 
 dev_dependencies:
   lints: ^2.0.1
-  test: ^1.22.1
+  test: ^1.22.2
