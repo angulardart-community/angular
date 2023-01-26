@@ -6,7 +6,5 @@ stages:
   - analyze:
       - format
       - analyze: --fatal-infos
-  - build:
-      - command: dart run build_runner build --fail-on-severe
   - unit_test:
-      - command: dart run build_runner test --fail-on-severe -- -P ci
+      - command: dart test -P ci

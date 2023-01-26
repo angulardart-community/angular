@@ -26,12 +26,12 @@ dev_dependencies:
 
 dependency_overrides:
   ngast:
-    path: ..\\ngast
+    path: ../ngast
   ngcompiler:
-    path: ..\\ngcompiler
+    path: ../ngcompiler
   ngdart:
-    path: ..\\ngdart
+    path: ../ngdart
   ngforms:
-    path: ..\\ngforms
+    path: ../ngforms
   ngtest:
-    path: ..\\ngtest
+    path: ../ngtest
