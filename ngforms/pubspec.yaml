@@ -20,3 +20,14 @@ dev_dependencies:
   mockito: ^5.3.2
   ngtest: ^4.1.1
   test: ^1.22.2
+
+dependency_overrides:
+  ngast:
+    path: ../ngast
+  ngcompiler:
+    path: ../ngcompiler
+  ngdart:
+    path: ../ngdart
+  ngtest:
+    path: ../ngtest
+

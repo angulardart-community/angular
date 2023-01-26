@@ -24,3 +24,9 @@ dependencies:
 
 dev_dependencies:
   lints: ^2.0.1
+
+dependency_overrides:
+  ngast:
+    path: ../ngast
+  ngcompiler:
+    path: ../ngcompiler

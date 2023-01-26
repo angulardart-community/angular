@@ -19,3 +19,11 @@ dev_dependencies:
   build_web_compilers: ^3.2.7
   lints: ^2.0.1
   test: ^1.22.2
+
+dependency_overrides:
+  ngast:
+    path: ../ngast
+  ngcompiler:
+    path: ../ngcompiler
+  ngdart:
+    path: ../ngdart

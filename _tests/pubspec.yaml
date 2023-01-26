@@ -23,3 +23,15 @@ dev_dependencies:
   package_config: ^2.1.0
   source_span: ^1.9.1
   term_glyph: ^1.2.1
+
+dependency_overrides:
+  ngast:
+    path: ..\\ngast
+  ngcompiler:
+    path: ..\\ngcompiler
+  ngdart:
+    path: ..\\ngdart
+  ngforms:
+    path: ..\\ngforms
+  ngtest:
+    path: ..\\ngtest
