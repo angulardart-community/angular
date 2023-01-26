@@ -41,23 +41,23 @@ jobs:
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
-    name: "analyze; Dart beta; PKG: ngast; `dart analyze --fatal-infos`"
+    name: "analyze; Dart dev; PKG: ngast; `dart analyze --fatal-infos`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast;commands:analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:analyze_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -73,23 +73,23 @@ jobs:
     needs:
       - job_001
   job_003:
-    name: "analyze; Dart beta; PKGS: ngast, ngcompiler, ngdart; `dart format --output=none --set-exit-if-changed .`"
+    name: "analyze; Dart dev; PKGS: ngast, ngcompiler, ngdart; `dart format --output=none --set-exit-if-changed .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast-ngcompiler-ngdart;commands:format"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast-ngcompiler-ngdart;commands:format"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast-ngcompiler-ngdart
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast-ngcompiler-ngdart
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -123,23 +123,23 @@ jobs:
     needs:
       - job_001
   job_004:
-    name: "analyze; Dart beta; PKGS: ngcompiler, ngdart; `dart analyze`"
+    name: "analyze; Dart dev; PKGS: ngcompiler, ngdart; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler-ngdart;commands:analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler-ngdart;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler-ngdart
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler-ngdart
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -287,23 +287,23 @@ jobs:
     needs:
       - job_001
   job_008:
-    name: "build; Dart beta; PKG: _tests; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: _tests; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -325,23 +325,23 @@ jobs:
       - job_006
       - job_007
   job_009:
-    name: "build; Dart beta; PKG: ngast; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: ngast; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -363,23 +363,23 @@ jobs:
       - job_006
       - job_007
   job_010:
-    name: "build; Dart beta; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: ngcompiler; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -401,23 +401,23 @@ jobs:
       - job_006
       - job_007
   job_011:
-    name: "build; Dart beta; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngforms;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -439,23 +439,23 @@ jobs:
       - job_006
       - job_007
   job_012:
-    name: "build; Dart beta; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngrouter;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -477,23 +477,23 @@ jobs:
       - job_006
       - job_007
   job_013:
-    name: "build; Dart beta; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart dev; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngtest;commands:command_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -743,23 +743,23 @@ jobs:
       - job_006
       - job_007
   job_020:
-    name: "unit_test; Dart beta; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
+    name: "unit_test; Dart dev; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests;commands:command_2"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_2"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -793,23 +793,23 @@ jobs:
       - job_018
       - job_019
   job_021:
-    name: "unit_test; Dart beta; PKG: _tests; `dart run test -P vm`"
+    name: "unit_test; Dart dev; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests;commands:command_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:_tests
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -843,23 +843,23 @@ jobs:
       - job_018
       - job_019
   job_022:
-    name: "unit_test; Dart beta; PKG: ngast; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart dev; PKG: ngast; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngast
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngast
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -893,23 +893,23 @@ jobs:
       - job_018
       - job_019
   job_023:
-    name: "unit_test; Dart beta; PKG: ngcompiler; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart dev; PKG: ngcompiler; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcompiler
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcompiler
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -943,23 +943,23 @@ jobs:
       - job_018
       - job_019
   job_024:
-    name: "unit_test; Dart beta; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart dev; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngforms;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngforms
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngforms
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -993,23 +993,23 @@ jobs:
       - job_018
       - job_019
   job_025:
-    name: "unit_test; Dart beta; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart dev; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngrouter;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngrouter
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngrouter
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
@@ -1043,23 +1043,23 @@ jobs:
       - job_018
       - job_019
   job_026:
-    name: "unit_test; Dart beta; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart dev; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngtest;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngtest
-            os:ubuntu-latest;pub-cache-hosted;sdk:beta
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngtest
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: beta
+          sdk: dev
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
