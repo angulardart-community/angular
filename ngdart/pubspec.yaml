@@ -6,7 +6,7 @@ version: 7.1.1
 repository: https://github.com/angulardart-community/angular
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   analyzer: ^5.4.0

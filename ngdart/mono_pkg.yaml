@@ -1,6 +1,6 @@
 sdk:
-  - dev
   - stable
+  - pubspec
 
 stages:
   - analyze:
