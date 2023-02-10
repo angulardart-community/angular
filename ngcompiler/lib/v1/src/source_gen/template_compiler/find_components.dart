@@ -590,16 +590,16 @@ class _ComponentVisitor
     final propertyName = element.displayName;
     final bindingName =
         coerceString(value, 'bindingPropertyName', defaultTo: propertyName)!;
-    _prohibitBindingChange(element.enclosingElement as ClassElement?,
+    _prohibitBindingChange(element.enclosingElement as InterfaceElement?,
         propertyName, bindingName, immutableBindings ?? bindings);
     bindings[propertyName] = bindingName;
   }
 
   /// Collects inheritable metadata declared on [element].
-  void _collectInheritableMetadataOn(ClassElement element) {
+  void _collectInheritableMetadataOn(InterfaceElement element) {
     // Skip 'Object' since it can't have metadata and we only want to record
     // whether a user type implements 'noSuchMethod'.
-    if (element.isDartCoreObject) return;
+    if (element is ClassElement && element.isDartCoreObject) return;
 
     // Skip checking for noSuchMethod for opted-in libraries.
     if (!CompileContext.current.emitNullSafeCode &&
@@ -608,7 +608,7 @@ class _ComponentVisitor
     }
 
     // Collect metadata from field and property accessor annotations.
-    super.visitClassElement(element);
+    element.visitChildren(this);
 
     // Merge field and setter inputs, so that a derived field input binding is
     // not overridden by an inherited setter input.
@@ -624,7 +624,7 @@ class _ComponentVisitor
     // Reverse supertypes to traverse inheritance hierarchy from top to bottom
     // so that derived bindings overwrite their inherited definition.
     for (var type in element.allSupertypes.reversed) {
-      _collectInheritableMetadataOn(type.element as ClassElement);
+      _collectInheritableMetadataOn(type.element);
     }
     _collectInheritableMetadataOn(element);
   }
@@ -941,7 +941,7 @@ void _errorOnUnusedDirectiveTypes(
 }
 
 void _prohibitBindingChange(
-  ClassElement? element,
+  InterfaceElement? element,
   String propertyName,
   String? bindingName,
   Map<String, String?> bindings,
