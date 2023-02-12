@@ -373,6 +373,20 @@ void main() {
     ''');
   });
 
+  test('should support component with mixins', () {
+    return compilesNormally('''
+      import '$ngImport';
+
+      @Component(
+        selector: 'with-mixin',
+        template: '',
+      )
+      class WithMixinComponent with MyMixin {}
+
+      mixin MyMixin {}
+    ''');
+  });
+
   group('providers', () {
     test('should error on invalid token', () async {
       await compilesExpecting('''
