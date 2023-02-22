@@ -69,7 +69,7 @@ class _NumberPipe {
 @Pipe('number')
 class DecimalPipe extends _NumberPipe {
   String? transform(num? value, [String? digits]) {
-    return _NumberPipe._format(value, _NumberFormatStyle.Decimal, digits);
+    return _NumberPipe._format(value, _NumberFormatStyle.decimal, digits);
   }
 
   const DecimalPipe();
@@ -88,7 +88,7 @@ class DecimalPipe extends _NumberPipe {
 @Pipe('percent')
 class PercentPipe extends _NumberPipe {
   String? transform(num? value, [String? digits]) {
-    return _NumberPipe._format(value, _NumberFormatStyle.Percent, digits);
+    return _NumberPipe._format(value, _NumberFormatStyle.percent, digits);
   }
 
   const PercentPipe();
@@ -118,7 +118,7 @@ class CurrencyPipe extends _NumberPipe {
   ]) =>
       _NumberPipe._format(
         value,
-        _NumberFormatStyle.Currency,
+        _NumberFormatStyle.currency,
         digits,
         currencyCode,
         symbolDisplay,
@@ -127,7 +127,7 @@ class CurrencyPipe extends _NumberPipe {
   const CurrencyPipe();
 }
 
-enum _NumberFormatStyle { Decimal, Percent, Currency }
+enum _NumberFormatStyle { decimal, percent, currency }
 
 String? _normalizeLocale(String? locale) => locale?.replaceAll('-', '_');
 String _formatNumber(
@@ -143,13 +143,13 @@ String _formatNumber(
   locale = _normalizeLocale(locale);
   NumberFormat formatter;
   switch (style) {
-    case _NumberFormatStyle.Decimal:
+    case _NumberFormatStyle.decimal:
       formatter = NumberFormat.decimalPattern(locale);
       break;
-    case _NumberFormatStyle.Percent:
+    case _NumberFormatStyle.percent:
       formatter = NumberFormat.percentPattern(locale);
       break;
-    case _NumberFormatStyle.Currency:
+    case _NumberFormatStyle.currency:
       if (currencyAsSymbol) {
         formatter = NumberFormat.simpleCurrency(locale: locale, name: currency);
       } else {

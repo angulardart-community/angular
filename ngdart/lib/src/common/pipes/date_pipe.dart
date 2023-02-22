@@ -69,7 +69,7 @@ import 'invalid_pipe_argument_exception.dart';
 ///     {{ $pipe.date(dateObj, 'mmss') }}      // output is '43:11'
 @Pipe('date', pure: true)
 class DatePipe {
-  static final Map<String, String> _ALIASES = {
+  static const Map<String, String> _aliases = {
     'medium': 'yMMMdjms',
     'short': 'yMdjm',
     'fullDate': 'yMMMMEEEEd',
@@ -79,6 +79,7 @@ class DatePipe {
     'mediumTime': 'jms',
     'shortTime': 'jm'
   };
+
   String? transform(dynamic value, [String pattern = 'mediumDate']) {
     if (value == null) return null;
     if (!supports(value)) {
@@ -87,8 +88,8 @@ class DatePipe {
     if (value is num) {
       value = DateTime.fromMillisecondsSinceEpoch(unsafeCast(value));
     }
-    if (DatePipe._ALIASES.containsKey(pattern)) {
-      pattern = DatePipe._ALIASES[pattern]!;
+    if (DatePipe._aliases.containsKey(pattern)) {
+      pattern = DatePipe._aliases[pattern]!;
     }
     return _formatDate(unsafeCast(value), Intl.defaultLocale, pattern);
   }
@@ -101,7 +102,9 @@ class DatePipe {
 }
 
 final RegExp _multiPartRegExp = RegExp(r'^([yMdE]+)([Hjms]+)$');
+
 String? _normalizeLocale(String? locale) => locale?.replaceAll('-', '_');
+
 String _formatDate(DateTime date, String? locale, String pattern) {
   locale = _normalizeLocale(locale);
   var formatter = DateFormat(null, locale);
