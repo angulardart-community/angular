@@ -193,7 +193,7 @@ class NgFormTest {
       </button>
     </form>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushControlTest {
   var requiresName = false;
@@ -218,7 +218,7 @@ class OnPushControlTest {
       </button>
     </form>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushControlGroupTest {
   var requiresGroup = false;

@@ -110,7 +110,7 @@ class DefaultComponent {
 @Component(
   selector: 'on-push-container',
   template: '<template #container></template>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushContainerComponent {
   @Input()
@@ -142,7 +142,7 @@ class LoadInOnPush {
     </on-push-container>
   ''',
   directives: [OnPushContainerComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushAncestorComponent {
   @Input()
@@ -170,7 +170,7 @@ class LoadInOnPushDescendant {
     </ng-container>
   ''',
   directives: [NgIf],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushEmbeddedContainerComponent {
   OnPushEmbeddedContainerComponent(this._changeDetectorRef, this._ngZone);

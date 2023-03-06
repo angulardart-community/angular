@@ -76,7 +76,7 @@ class UsesOnPushComponent {
   directives: [
     NgIf,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushComponent {
   final ChangeDetectorRef _changeDetector;

@@ -73,7 +73,7 @@ ir.MatchedDirective convertMatchedDirective(
     hasHostProperties: directive.hasHostProperties,
     isComponent: directive.directive.isComponent,
     isOnPush:
-        directive.directive.changeDetection == ChangeDetectionStrategy.OnPush,
+        directive.directive.changeDetection == ChangeDetectionStrategy.onPush,
     lifecycles: _lifecycles(directive.directive),
   );
 }

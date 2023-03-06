@@ -190,19 +190,20 @@ abstract class HostView<T extends Object> extends View implements DynamicView {
   @override
   void markForCheck() {
     // TODO(b/129780288): remove check for whether this view is detached.
-    if (_data.changeDetectionMode != ChangeDetectionStrategy.Detached) {
+    if (_data.changeDetectionMode !=
+        ChangeDetectionCheckedState.waitingToBeAttached) {
       _data.viewContainer?.parentView?.markForCheck();
     }
   }
 
   @override
   void detachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.Detached;
+    _data.changeDetectionMode = ChangeDetectionCheckedState.waitingToBeAttached;
   }
 
   @override
   void reattachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.CheckAlways;
+    _data.changeDetectionMode = ChangeDetectionCheckedState.checkAlways;
     markForCheck();
   }
 
@@ -257,9 +258,10 @@ class _HostViewData implements DynamicViewData {
   List<void Function()>? _onDestroyCallbacks;
 
   @override
-  int get changeDetectionMode => _changeDetectionMode;
-  int _changeDetectionMode = ChangeDetectionStrategy.CheckAlways;
-  set changeDetectionMode(int mode) {
+  ChangeDetectionCheckedState get changeDetectionMode => _changeDetectionMode;
+  ChangeDetectionCheckedState _changeDetectionMode =
+      ChangeDetectionCheckedState.checkAlways;
+  set changeDetectionMode(ChangeDetectionCheckedState mode) {
     if (_changeDetectionMode != mode) {
       _changeDetectionMode = mode;
       _updateShouldSkipChangeDetection();
@@ -302,8 +304,8 @@ class _HostViewData implements DynamicViewData {
   }
 
   void _updateShouldSkipChangeDetection() {
-    _shouldSkipChangeDetection =
-        _changeDetectionMode == ChangeDetectionStrategy.Detached ||
-            _changeDetectorState == ChangeDetectorState.errored;
+    _shouldSkipChangeDetection = _changeDetectionMode ==
+            ChangeDetectionCheckedState.waitingToBeAttached ||
+        _changeDetectorState == ChangeDetectorState.errored;
   }
 }

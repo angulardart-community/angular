@@ -1,6 +1,7 @@
 import 'compile_metadata.dart'
     show CompileIdentifierMetadata, CompileTokenMetadata;
 
+const _angularRootUrl = 'package:ngdart/angular.dart';
 const _angularLib = 'asset:ngdart/lib';
 
 const _appViewUtilsModuleUrl =
@@ -8,7 +9,6 @@ const _appViewUtilsModuleUrl =
 const _proxiesModuleUrl = '$_angularLib/src/runtime/proxies.dart';
 const _cdModuleUrl =
     '$_angularLib/src/core/change_detection/change_detection.dart';
-const _angularRootUrl = 'package:ngdart/angular.dart';
 const _ngIfUrl = '$_angularLib/src/common/directives/ng_if.dart';
 const _ngForUrl = '$_angularLib/src/common/directives/ng_for.dart';
 const _profileRuntimeModuleUrl = '$_angularLib/src/debug/profile_runtime.dart';
@@ -194,11 +194,11 @@ class Identifiers {
   );
   static final ViewContainer = CompileIdentifierMetadata(
       name: 'ViewContainer',
-      moduleUrl: 'asset:ngdart/lib/src/core/linker/view_container.dart');
+      moduleUrl: '$_angularLib/src/core/linker/view_container.dart');
   static final ViewContainerToken = identifierToken(ViewContainer);
   static final ElementRef = CompileIdentifierMetadata(
       name: 'ElementRef',
-      moduleUrl: 'asset:ngdart/lib/src/core/linker/element_ref.dart');
+      moduleUrl: '$_angularLib/src/core/linker/element_ref.dart');
   static final ElementRefToken = identifierToken(ElementRef);
   static final ViewContainerRef = CompileIdentifierMetadata(
       name: 'ViewContainerRef',
@@ -225,16 +225,19 @@ class Identifiers {
       name: 'ComponentRef', moduleUrl: _angularRootUrl);
   static final TemplateRef = CompileIdentifierMetadata(
       name: 'TemplateRef',
-      moduleUrl: 'asset:ngdart/lib/src/core/linker/template_ref.dart');
+      moduleUrl: '$_angularLib/src/core/linker/template_ref.dart');
   static final TemplateRefToken = identifierToken(Identifiers.TemplateRef);
   static final Injector = CompileIdentifierMetadata(
-      name: 'Injector', moduleUrl: 'asset:ngdart/lib/src/di/injector.dart');
+      name: 'Injector', moduleUrl: '$_angularLib/src/di/injector.dart');
   static final InjectorToken = identifierToken(Identifiers.Injector);
   static final ViewType = CompileIdentifierMetadata(
       name: 'ViewType',
-      moduleUrl: 'asset:ngdart/lib/src/core/linker/view_type.dart');
+      moduleUrl: '$_angularLib/src/core/linker/view_type.dart');
   static final ChangeDetectionStrategy = CompileIdentifierMetadata(
       name: 'ChangeDetectionStrategy', moduleUrl: _cdModuleUrl);
+  static final ChangeDetectionCheckedState = CompileIdentifierMetadata(
+      name: 'ChangeDetectionStrategy',
+      moduleUrl: '$_angularLib/src/meta/change_detection_constants.dart');
   static final identical = CompileIdentifierMetadata(name: 'identical');
   static final profileSetup = CompileIdentifierMetadata(
       name: 'profileSetup', moduleUrl: _profileRuntimeModuleUrl);
@@ -356,7 +359,7 @@ class Identifiers {
 
   static final NgContentRef = CompileIdentifierMetadata(
     name: 'NgContentRef',
-    moduleUrl: 'asset:ngdart/lib/src/core/linker/ng_content_ref.dart',
+    moduleUrl: '$_angularLib/src/core/linker/ng_content_ref.dart',
   );
   static final NgContentRefToken = identifierToken(Identifiers.NgContentRef);
 }

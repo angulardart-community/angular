@@ -124,7 +124,7 @@ class TestComponent {
   template: '''
     <template #template>{{templateText}}</template>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   exportAs: 'templateProducer',
 )
 class TemplateProducerComponent implements OnInit {
@@ -149,7 +149,7 @@ class TemplateProducerComponent implements OnInit {
     <template #container></template>
     <div>{{text}}</div>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class TemplateConsumerComponent implements OnInit {
   @ViewChild('container', read: ViewContainerRef)

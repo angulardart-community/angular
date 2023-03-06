@@ -12,23 +12,13 @@ const classAttrName = 'class';
 const styleAttrName = 'style';
 final parentRenderNodeVar = o.variable('parentRenderNode');
 
-const List<String> _changeDetectionStrategies = [
-  'Default',
-  'CheckOnce',
-  'Checked',
-  'CheckAlways',
-  'Detached',
-  'OnPush',
-];
-
 /// Converts value of a `ChangeDetectionStrategy` to refer to the static field.
 ///
 /// Otherwise the generated code refers to arbitrary integer values.
-o.Expression changeDetectionStrategyToConst(int value) {
-  final name = _changeDetectionStrategies[value];
+o.Expression changeDetectionCheckToConst(String name) {
   return o.importExpr(CompileIdentifierMetadata(
-    name: 'ChangeDetectionStrategy.$name',
-    moduleUrl: Identifiers.ChangeDetectionStrategy.moduleUrl,
+    name: 'ChangeDetectionCheckedState.$name',
+    moduleUrl: Identifiers.ChangeDetectionCheckedState.moduleUrl,
   ));
 }
 

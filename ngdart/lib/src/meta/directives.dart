@@ -156,7 +156,7 @@ class Component extends Directive {
   ///
   /// The [changeDetection] property defines, whether the change detection will
   /// be checked every time or only when the component tells it to do so.
-  final int changeDetection;
+  final ChangeDetectionStrategy changeDetection;
 
   /// Defines the set of injectable objects that are visible to its view
   /// DOM children.
@@ -237,7 +237,7 @@ class Component extends Directive {
     super.visibility = Visibility.local,
     this.viewProviders = const [],
     this.exports = const [],
-    this.changeDetection = ChangeDetectionStrategy.Default,
+    this.changeDetection = ChangeDetectionStrategy.checkAlways,
     this.templateUrl,
     this.template,
     this.preserveWhitespace = false,
@@ -246,7 +246,7 @@ class Component extends Directive {
     this.directives = const [],
     this.directiveTypes = const [],
     this.pipes = const [],
-    this.encapsulation = ViewEncapsulation.Emulated,
+    this.encapsulation = ViewEncapsulation.emulated,
   });
 }
 

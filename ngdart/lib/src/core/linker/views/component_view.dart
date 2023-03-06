@@ -34,12 +34,8 @@ abstract class ComponentView<T extends Object> extends RenderView {
   ComponentView(
     View parentView,
     int parentIndex,
-    int changeDetectionMode,
-  ) : _data = _ComponentViewData(
-          parentView,
-          parentIndex,
-          changeDetectionMode,
-        );
+    ChangeDetectionCheckedState changeDetectionMode,
+  ) : _data = _ComponentViewData(parentView, parentIndex, changeDetectionMode);
 
   @override
   late final T ctx;
@@ -70,7 +66,7 @@ abstract class ComponentView<T extends Object> extends RenderView {
   /// be referenced by any other means.
   @experimental
   bool get usesDefaultChangeDetection =>
-      _data.changeDetectionMode == ChangeDetectionStrategy.CheckAlways;
+      _data.changeDetectionMode == ChangeDetectionCheckedState.checkAlways;
 
   // Initialization ------------------------------------------------------------
 
@@ -139,7 +135,8 @@ abstract class ComponentView<T extends Object> extends RenderView {
   @override
   void detectChangesDeprecated() {
     if (_data.shouldSkipChangeDetection) {
-      if (_data.changeDetectionMode == ChangeDetectionStrategy.Checked) {
+      if (_data.changeDetectionMode ==
+          ChangeDetectionCheckedState.waitingForMarkForCheck) {
         detectChangesInCheckAlwaysViews();
       }
       return;
@@ -159,8 +156,9 @@ abstract class ComponentView<T extends Object> extends RenderView {
     }
 
     // If we are a 'CheckOnce' component, we are done being checked.
-    if (_data.changeDetectionMode == ChangeDetectionStrategy.CheckOnce) {
-      _data.changeDetectionMode = ChangeDetectionStrategy.Checked;
+    if (_data.changeDetectionMode == ChangeDetectionCheckedState.checkOnce) {
+      _data.changeDetectionMode =
+          ChangeDetectionCheckedState.waitingForMarkForCheck;
     }
 
     // Set the state to already checked at least once.
@@ -185,14 +183,18 @@ abstract class ComponentView<T extends Object> extends RenderView {
   /// serves to propagate input changes down the component tree during a single
   /// change detection pass.
   void markAsCheckOnce() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.CheckOnce;
+    _data.changeDetectionMode = ChangeDetectionCheckedState.checkOnce;
   }
 
   @override
   void markForCheck() {
     final changeDetectionMode = _data.changeDetectionMode;
-    if (changeDetectionMode == ChangeDetectionStrategy.Detached) return;
-    if (changeDetectionMode == ChangeDetectionStrategy.Checked) {
+    if (changeDetectionMode ==
+        ChangeDetectionCheckedState.waitingToBeAttached) {
+      return;
+    }
+    if (changeDetectionMode ==
+        ChangeDetectionCheckedState.waitingForMarkForCheck) {
       markAsCheckOnce();
     }
     parentView!.markForCheck();
@@ -200,12 +202,12 @@ abstract class ComponentView<T extends Object> extends RenderView {
 
   @override
   void detachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.Detached;
+    _data.changeDetectionMode = ChangeDetectionCheckedState.waitingToBeAttached;
   }
 
   @override
   void reattachDeprecated() {
-    _data.changeDetectionMode = ChangeDetectionStrategy.CheckAlways;
+    _data.changeDetectionMode = ChangeDetectionCheckedState.checkAlways;
     markForCheck();
   }
 
@@ -247,7 +249,7 @@ class _ComponentViewData implements RenderViewData {
   factory _ComponentViewData(
     View parentView,
     int parentIndex,
-    int changeDetectionMode,
+    ChangeDetectionCheckedState changeDetectionMode,
   ) {
     return _ComponentViewData._(parentView, parentIndex, changeDetectionMode);
   }
@@ -271,9 +273,9 @@ class _ComponentViewData implements RenderViewData {
   List<StreamSubscription<void>>? subscriptions;
 
   @override
-  int get changeDetectionMode => _changeDetectionMode;
-  int _changeDetectionMode;
-  set changeDetectionMode(int mode) {
+  ChangeDetectionCheckedState get changeDetectionMode => _changeDetectionMode;
+  ChangeDetectionCheckedState _changeDetectionMode;
+  set changeDetectionMode(ChangeDetectionCheckedState mode) {
     if (_changeDetectionMode != mode) {
       _changeDetectionMode = mode;
       _updateShouldSkipChangeDetection();
@@ -310,9 +312,10 @@ class _ComponentViewData implements RenderViewData {
   }
 
   void _updateShouldSkipChangeDetection() {
-    _shouldSkipChangeDetection =
-        _changeDetectionMode == ChangeDetectionStrategy.Checked ||
-            _changeDetectionMode == ChangeDetectionStrategy.Detached ||
-            _changeDetectorState == ChangeDetectorState.errored;
+    _shouldSkipChangeDetection = _changeDetectionMode ==
+            ChangeDetectionCheckedState.waitingForMarkForCheck ||
+        _changeDetectionMode ==
+            ChangeDetectionCheckedState.waitingToBeAttached ||
+        _changeDetectorState == ChangeDetectorState.errored;
   }
 }

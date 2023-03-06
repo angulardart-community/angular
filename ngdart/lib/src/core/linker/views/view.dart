@@ -6,6 +6,7 @@ import 'package:ngdart/src/core/change_detection/change_detection.dart';
 import 'package:ngdart/src/core/change_detection/host.dart';
 import 'package:ngdart/src/di/errors.dart';
 import 'package:ngdart/src/di/injector.dart';
+import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/utilities.dart';
 
 /// The base implementation of all views.
@@ -246,7 +247,7 @@ abstract class View implements ChangeDetectorRef {
 abstract class ViewData {
   /// Tracks this view's [ChangeDetectionStrategy].
   // TODO(b/132122866): host and embedded views only need a detached bit.
-  int get changeDetectionMode;
+  ChangeDetectionCheckedState get changeDetectionMode;
 
   /// Tracks this view's [ChangeDetectorState].
   // TODO(b/132122866): host views only need an error bit.

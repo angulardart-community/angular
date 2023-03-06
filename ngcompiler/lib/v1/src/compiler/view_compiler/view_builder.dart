@@ -26,7 +26,7 @@ import 'compile_element.dart' show CompileElement, CompileNode;
 import 'compile_view.dart';
 import 'constants.dart'
     show
-        changeDetectionStrategyToConst,
+        changeDetectionCheckToConst,
         parentRenderNodeVar,
         DetectChangesVars,
         ViewConstructorVars;
@@ -649,7 +649,7 @@ o.Constructor _createComponentViewConstructor(CompileView view) {
       o.SUPER_EXPR.callFn([
         ViewConstructorVars.parentView,
         ViewConstructorVars.parentIndex,
-        changeDetectionStrategyToConst(_getChangeDetectionMode(view)),
+        changeDetectionCheckToConst(_getChangeDetectionCheckMode(view)),
       ]).toStmt()
     ],
     body: body,
@@ -982,9 +982,9 @@ o.OutputType contextType(CompileView view) {
   )!;
 }
 
-int _getChangeDetectionMode(CompileView view) {
+String _getChangeDetectionCheckMode(CompileView view) {
   return view.viewType == ViewType.component &&
-          view.component.changeDetection != ChangeDetectionStrategy.Default
-      ? ChangeDetectionStrategy.CheckOnce
-      : ChangeDetectionStrategy.CheckAlways;
+          view.component.changeDetection != ChangeDetectionStrategy.checkAlways
+      ? ChangeDetectionCheckedState.checkOnce.name
+      : ChangeDetectionCheckedState.checkAlways.name;
 }

@@ -317,7 +317,7 @@ class DynamicComp extends Lifecycles {
 @Component(
   selector: 'dynamic-comp',
   template: 'Dynamic{{input}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class DynamicOnPushComp extends Lifecycles {
   DynamicOnPushComp(super.log);
