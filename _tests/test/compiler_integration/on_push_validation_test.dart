@@ -24,7 +24,7 @@ void main() {
             <default></default>
           </div>
         ''',
-        changeDetection: ChangeDetectionStrategy.OnPush,
+        changeDetection: ChangeDetectionStrategy.onPush,
         directives: [DefaultComponent],
       )
       class TestComponent {}
@@ -32,7 +32,7 @@ void main() {
       allOf([
         contains('<default>'),
         contains(
-          '"DefaultComponent" doesn\'t use "ChangeDetectionStrategy.OnPush"',
+          '"DefaultComponent" doesn\'t use "ChangeDetectionStrategy.onPush"',
         ),
       ]),
     ]);
@@ -56,7 +56,7 @@ void main() {
               <default @skipOnPushValidation></default>
             </div>
           ''',
-          changeDetection: ChangeDetectionStrategy.OnPush,
+          changeDetection: ChangeDetectionStrategy.onPush,
           directives: [DefaultComponent],
         )
         class TestComponent {}
@@ -73,7 +73,7 @@ void main() {
             template: '''
               <div @skipOnPushValidation></div>
             ''',
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class TestComponent {}
         """, errors: [
@@ -91,7 +91,7 @@ void main() {
           @Component(
             selector: 'on-push',
             template: '',
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class OnPushComponent {}
 
@@ -101,7 +101,7 @@ void main() {
               <on-push @skipOnPushValidation></on-push>
             ''',
             directives: [OnPushComponent],
-            changeDetection: ChangeDetectionStrategy.OnPush,
+            changeDetection: ChangeDetectionStrategy.onPush,
           )
           class TestComponent {}
         """, errors: [
@@ -138,7 +138,7 @@ void main() {
             contains('@skipOnPushValidation'),
             contains(
               'Can only be used in the template of a component using '
-              '"ChangeDetectionStrategy.OnPush"',
+              '"ChangeDetectionStrategy.onPush"',
             ),
           ]),
         ]);

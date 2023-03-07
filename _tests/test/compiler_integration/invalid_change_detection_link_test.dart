@@ -19,7 +19,7 @@ void main() {
         @Component(
           selector: 'test',
           template: '',
-          changeDetection: ChangeDetectionStrategy.OnPush,
+          changeDetection: ChangeDetectionStrategy.onPush,
         )
         class OnPushComponent {}
       """);

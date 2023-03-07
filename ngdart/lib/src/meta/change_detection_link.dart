@@ -28,7 +28,7 @@ import 'package:meta/meta_meta.dart';
 /// @Component(
 ///   selector: 'example',
 ///   template: '<template #container></template>',
-///   changeDetection: ChangeDetectionStrategy.OnPush,
+///   changeDetection: ChangeDetectionStrategy.onPush,
 /// )
 /// class ExampleComponent {
 ///   @Input()
