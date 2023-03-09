@@ -109,7 +109,7 @@ void main() {
             contains('@skipOnPushValidation'),
             contains(
               'Can only be applied to a component using '
-              '"ChangeDetectionStrategy.Default"',
+              '"ChangeDetectionStrategy.checkAlways"',
             ),
           ]),
         ]);

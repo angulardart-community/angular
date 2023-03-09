@@ -9,8 +9,8 @@ import 'package:ngdart/src/meta.dart';
 ///   bootstrapStatic(
 ///     YourAppComponent,
 ///     const [
-///       const Provider(APP_ID, useValue: 'my-unique-id'),
+///       const Provider(appId, useValue: 'my-unique-id'),
 ///     ],
 ///   )
 /// ```
-const APP_ID = OpaqueToken<String>('APP_ID');
+const appId = OpaqueToken<String>('appId');

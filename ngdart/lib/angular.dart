@@ -21,7 +21,7 @@ export 'src/bootstrap/run.dart' show runApp, runAppAsync;
 export 'src/common/directives.dart';
 export 'src/common/pipes.dart';
 export 'src/core/application_ref.dart' show ApplicationRef;
-export 'src/core/application_tokens.dart' show APP_ID;
+export 'src/core/application_tokens.dart' show appId;
 export 'src/core/change_detection.dart';
 export 'src/core/exception_handler.dart' show ExceptionHandler;
 export 'src/core/linker.dart';

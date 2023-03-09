@@ -16,7 +16,7 @@ import 'modules.dart';
 ///
 /// This is more complicated than just creating a new Injector, because we want
 /// to make sure we allow [userProvidedInjector] to override _some_ top-level
-/// services (`APP_ID`, `ExceptionHandler`) _and_ to ensure that Angular-level
+/// services (`appId`, `ExceptionHandler`) _and_ to ensure that Angular-level
 /// services (`ApplicationRef`) get the user-provided versions.
 ///
 /// May override [createNgZone] to provide a custom callback to create one. This
@@ -42,7 +42,7 @@ Injector appInjector(
   final userInjector = userProvidedInjector(appGlobalInjector);
 
   // ... and then we add ApplicationRef, which has the unique property of
-  // injecting services (specifically, `ExceptionHandler` and `APP_ID`) that
+  // injecting services (specifically, `ExceptionHandler` and `appId`) that
   // might have come from the user-provided injector, instead of the minimal.
   //
   // We also add other top-level services with similar constraints:
@@ -53,7 +53,7 @@ Injector appInjector(
       userInjector,
     );
     appViewUtils = AppViewUtils(
-      userInjector.provideToken(APP_ID),
+      userInjector.provideToken(appId),
       EventManager(ngZone),
     );
     return userInjector;
