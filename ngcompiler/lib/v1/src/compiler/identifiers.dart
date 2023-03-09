@@ -236,7 +236,7 @@ class Identifiers {
   static final ChangeDetectionStrategy = CompileIdentifierMetadata(
       name: 'ChangeDetectionStrategy', moduleUrl: _cdModuleUrl);
   static final ChangeDetectionCheckedState = CompileIdentifierMetadata(
-      name: 'ChangeDetectionStrategy',
+      name: 'ChangeDetectionCheckedState',
       moduleUrl: '$_angularLib/src/meta/change_detection_constants.dart');
   static final identical = CompileIdentifierMetadata(name: 'identical');
   static final profileSetup = CompileIdentifierMetadata(

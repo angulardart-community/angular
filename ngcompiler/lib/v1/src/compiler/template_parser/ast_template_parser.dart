@@ -319,7 +319,7 @@ class _BindDirectivesVisitor
       CompileContext.current.reportAndRecover(BuildError.forSourceSpan(
         annotation.sourceSpan,
         'Can only be applied to a component using '
-        '"ChangeDetectionStrategy.Default"',
+        '"ChangeDetectionStrategy.checkAlways"',
       ));
     }
   }
