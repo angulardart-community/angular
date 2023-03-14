@@ -153,10 +153,10 @@ class AstDirectiveNormalizer {
 
     // Optimization: Turn off encapsulation when there are no styles to apply.
     var encapsulation = templateMeta.encapsulation;
-    if (encapsulation == ViewEncapsulation.emulated &&
+    if (encapsulation == ViewEncapsulation.Emulated &&
         templateMeta.styles.isEmpty &&
         allExternalStyles.isEmpty) {
-      encapsulation = ViewEncapsulation.none;
+      encapsulation = ViewEncapsulation.None;
     }
 
     return CompileTemplateMetadata(

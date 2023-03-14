@@ -116,9 +116,9 @@ class AngularCompiler {
     NormalizedComponentWithViewDirectives componentWithDirs,
   ) {
     switch (componentWithDirs.component.template!.encapsulation) {
-      case ViewEncapsulation.emulated:
+      case ViewEncapsulation.Emulated:
         return ir.ViewEncapsulation.emulated;
-      case ViewEncapsulation.none:
+      case ViewEncapsulation.None:
         return ir.ViewEncapsulation.none;
       default:
         throw ArgumentError.value(

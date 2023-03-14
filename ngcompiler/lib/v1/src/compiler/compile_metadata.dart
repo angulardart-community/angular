@@ -419,7 +419,7 @@ class CompileTemplateMetadata {
   final List<String> styleUrls;
   final List<String> ngContentSelectors;
   CompileTemplateMetadata(
-      {this.encapsulation = ViewEncapsulation.emulated,
+      {this.encapsulation = ViewEncapsulation.Emulated,
       this.template,
       this.templateUrl,
       this.templateOffset = 0,

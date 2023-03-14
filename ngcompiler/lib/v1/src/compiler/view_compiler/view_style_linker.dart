@@ -26,7 +26,7 @@ class _ViewStyleLinker {
   const _ViewStyleLinker(this._view, this._class);
 
   bool get _hasScopedStyles =>
-      _view.component.template!.encapsulation == ViewEncapsulation.emulated;
+      _view.component.template!.encapsulation == ViewEncapsulation.Emulated;
 
   o.ExternalExpr get _styleType => o.importExpr(_hasScopedStyles
       ? StyleEncapsulation.componentStylesScoped
