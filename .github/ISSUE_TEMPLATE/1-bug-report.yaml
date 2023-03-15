@@ -34,8 +34,6 @@ body:
         - MacOS
         - Linux
       multiple: true
-    validations:
-      required: true
 
   - type: input
     id: browser

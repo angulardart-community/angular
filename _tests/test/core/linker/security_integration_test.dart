@@ -1,8 +1,11 @@
+@TestOn('browser')
+
 import 'dart:html';
 
+import 'package:ngtest/angular_test.dart';
+import 'package:ngdart/src/security/dom_sanitization_service.dart';
 import 'package:test/test.dart';
 import 'package:ngdart/angular.dart';
-import 'package:ngtest/angular_test.dart';
 
 import 'security_integration_test.template.dart' as ng;
 
@@ -10,52 +13,65 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   test('should escape unsafe attributes', () async {
-    final testBed = NgTestBed<UnsafeAttributeComponent>(
-        ng.createUnsafeAttributeComponentFactory());
+    const unsafeUrl = 'javascript:alert(1)';
+    final testBed = NgTestBed(ng.createUnsafeAttributeComponentFactory());
     final testFixture = await testBed.create();
     final a = testFixture.rootElement.querySelector('a') as AnchorElement;
     expect(a.href, matches(r'.*/hello$'));
     await testFixture.update((component) {
-      component.href = 'javascript:alert(1)';
+      component.href = unsafeUrl;
     });
-    expect(a.href, isNot(contains('javascript')));
-  }, tags: 'fails-on-ci');
+    expect(a.href, equals('unsafe:$unsafeUrl'));
+  });
+
+  test('should not escape values marked as trusted', () async {
+    final testBed = NgTestBed(ng.createTrustedValueComponentFactory());
+    final testFixture = await testBed.create();
+    final a = testFixture.rootElement.querySelector('a') as AnchorElement;
+    expect(a.href, 'javascript:alert(1)');
+  });
+
+  test('should throw error when using the wrong trusted value', () async {
+    final testBed = NgTestBed(ng.createWrongTrustedValueComponentFactory());
+    expect(testBed.create(), throwsA(isUnsupportedError));
+  });
 
   test('should escape unsafe styles', () async {
-    final testBed =
-        NgTestBed<UnsafeStyleComponent>(ng.createUnsafeStyleComponentFactory());
+    final testBed = NgTestBed(ng.createUnsafeStyleComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.style.background, matches('red'));
+    final div = testFixture.rootElement.querySelector('div');
+    expect(div?.style.background, matches('red'));
     await testFixture.update((component) {
       component.backgroundStyle = 'url(javascript:evil())';
     });
-    expect(div.style.background, isNot(contains('javascript')));
+    expect(div?.style.background, isNot(contains('javascript')));
   });
 
   test('should escape unsafe HTML', () async {
-    final testBed =
-        NgTestBed<UnsafeHtmlComponent>(ng.createUnsafeHtmlComponentFactory());
+    final testBed = NgTestBed(ng.createUnsafeHtmlComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.innerHtml, 'some <p>text</p>');
+    final div = testFixture.rootElement.querySelector('div');
+    expect(div?.innerHtml, 'some <p>text</p>');
     await testFixture.update((component) {
-      component.html = 'ha <script>evil()</script>';
+      var c = component;
+      c.html = 'ha <script>evil()</script>';
     });
-    expect(div.innerHtml, 'ha ');
+    expect(div?.innerHtml, 'ha ');
     await testFixture.update((component) {
-      component.html = 'also <img src="x" onerror="evil()"> evil';
+      var c = component;
+      c.html = 'also <img src="x" onerror="evil()"> evil';
     });
-    expect(div.innerHtml, 'also <img src="x"> evil');
+    expect(div?.innerHtml, 'also <img src="x"> evil');
     await testFixture.update((component) {
       final srcdoc = '<div></div><script></script>';
-      component.html = 'also <iframe srcdoc="$srcdoc"> content</iframe>';
+      var c = component;
+      c.html = 'also <iframe srcdoc="$srcdoc"> content</iframe>';
     });
     expect(
-      div.innerHtml,
-      'also ',
+      div?.innerHtml,
+      'also <iframe> content</iframe>',
     );
-  }, tags: 'fails-on-ci');
+  });
 }
 
 @Component(
@@ -64,6 +80,29 @@ void main() {
 )
 class UnsafeAttributeComponent {
   String href = 'hello';
+}
+
+@Component(
+    selector: 'trusted-value',
+    template: '<a [href]="href">Link Title</a>',
+    providers: [ClassProvider(DomSanitizationService)])
+class TrustedValueComponent {
+  SafeUrl href;
+
+  TrustedValueComponent(DomSanitizationService sanitizer)
+      : href = sanitizer.bypassSecurityTrustUrl('javascript:alert(1)');
+}
+
+@Component(
+    selector: 'wrong-trusted-value',
+    template: '<a [href]="href">Link Title</a>',
+    providers: [ClassProvider(DomSanitizationService)])
+class WrongTrustedValueComponent {
+  late SafeHtml href;
+
+  WrongTrustedValueComponent(DomSanitizationService sanitizer) {
+    href = sanitizer.bypassSecurityTrustHtml('javascript:alert(1)');
+  }
 }
 
 @Component(
