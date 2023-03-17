@@ -12,4 +12,5 @@ pubspec.lock
 **/doc/api/
 
 # melos
-# pubspec_overrides.yaml
+.idea/
+pubspec_overrides.yaml
