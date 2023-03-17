@@ -16,8 +16,8 @@ enum ViewEncapsulation {
   /// adding the new Host Element attribute to all selectors.
   ///
   /// This is the default option.
-  Emulated,
+  emulated,
 
   /// Don't provide any template or style encapsulation.
-  None
+  none
 }

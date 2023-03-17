@@ -816,7 +816,7 @@ class _ComponentVisitor
         value,
         'encapsulation',
         ViewEncapsulation.values,
-        defaultTo: ViewEncapsulation.Emulated,
+        defaultTo: ViewEncapsulation.emulated,
       );
 
   ChangeDetectionStrategy _changeDetection(

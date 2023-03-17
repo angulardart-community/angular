@@ -1068,7 +1068,7 @@ class CompileView {
   void shimCssForNode(NodeReference nodeReference, int nodeIndex,
       CompileIdentifierMetadata nodeType) {
     if (isRootNodeOfHost(nodeIndex)) return;
-    if (component.template!.encapsulation == ViewEncapsulation.Emulated) {
+    if (component.template!.encapsulation == ViewEncapsulation.emulated) {
       // Set ng_content class for CSS shim.
       var shimMethod =
           nodeType != Identifiers.HTML_ELEMENT ? 'addShimC' : 'addShimE';
