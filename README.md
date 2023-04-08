@@ -1,17 +1,15 @@
 ## AngularDart packages maintained by AngularDart Community
 
-See https://github.com/angulardart-community for current updates on this project.
-
 ## Packages
 
-| Source code    | Published Version                                                                                      |
-|----------------|:------------------------------------------------------------------------------------------------------:|
-| [ngdart]       | [![Pub Package](https://img.shields.io/pub/v/ngdart.svg)](https://pub.dev/packages/ngdart)             |
-| [ngforms]      | [![Pub Package](https://img.shields.io/pub/v/ngforms.svg)](https://pub.dev/packages/ngforms)           |
-| [ngrouter]     | [![Pub Package](https://img.shields.io/pub/v/ngrouter.svg)](https://pub.dev/packages/ngrouter)         |
-| [ngtest]       | [![Pub Package](https://img.shields.io/pub/v/ngtest.svg)](https://pub.dev/packages/ngtest)             |
-| [ngast]        | [![Pub Package](https://img.shields.io/pub/v/ngast.svg)](https://pub.dev/packages/ngast)               |
-| [ngcompiler]   | [![Pub Package](https://img.shields.io/pub/v/ngcompiler.svg)](https://pub.dev/packages/ngcompiler)     |
+| Source code |Published Version                                                                                 |Pre-Release Version (if any)                                                                                      |
+|-------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| [ngdart]    |[![Pub Package](https://img.shields.io/pub/v/ngdart.svg)](https://pub.dev/packages/ngdart)        |[![Pub Package](https://img.shields.io/pub/v/ngdart?include_prereleases)](https://pub.dev/packages/ngdart)        |
+| [ngforms]   |[![Pub Package](https://img.shields.io/pub/v/ngforms.svg)](https://pub.dev/packages/ngforms)      |[![Pub Package](https://img.shields.io/pub/v/ngforms?include_prereleases)](https://pub.dev/packages/ngforms)      |
+| [ngrouter]  |[![Pub Package](https://img.shields.io/pub/v/ngrouter.svg)](https://pub.dev/packages/ngrouter)    |[![Pub Package](https://img.shields.io/pub/v/ngrouter?include_prereleases)](https://pub.dev/packages/ngrouter)    |
+| [ngtest]    |[![Pub Package](https://img.shields.io/pub/v/ngtest.svg)](https://pub.dev/packages/ngtest)        |[![Pub Package](https://img.shields.io/pub/v/ngtest?include_prereleases)](https://pub.dev/packages/ngtest)        |
+| [ngast]     |[![Pub Package](https://img.shields.io/pub/v/ngast.svg)](https://pub.dev/packages/ngast)          |[![Pub Package](https://img.shields.io/pub/v/ngast?include_prereleases)](https://pub.dev/packages/ngast)          |
+| [ngcompiler]|[![Pub Package](https://img.shields.io/pub/v/ngcompiler.svg)](https://pub.dev/packages/ngcompiler)|[![Pub Package](https://img.shields.io/pub/v/ngcompiler?include_prereleases)](https://pub.dev/packages/ngcompiler)|
 
 The following packages are in an external repository:
 
@@ -28,7 +26,7 @@ Join the [Gitter chat room](https://gitter.im/angulardart/community) to ask ques
 
 ## The original Packages (in the restricted maintenance mode)
 
-See https://github.com/angulardart for current updates on this project.
+See https://github.com/angulardart for updates on the original AngularDart project.
 
 | Source code                  | Published Version                                                                                                  |
 |------------------------------|:------------------------------------------------------------------------------------------------------------------:|
