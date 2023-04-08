@@ -1,7 +1,7 @@
 <!-- Badges -->
 
 [![Pub Package](https://img.shields.io/pub/v/ngdart.svg)](https://pub.dev/packages/ngdart)
-[![Build Status](https://img.shields.io/github/workflow/status/angulardart-community/angular/Dart%20CI)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/angulardart-community/angular/dart.yml?branch=master)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
 [![Gitter](https://img.shields.io/gitter/room/angulardart/community)](https://gitter.im/angulardart/community)
 
 [AngularDart][angulardart] is an open-source web framework focused on

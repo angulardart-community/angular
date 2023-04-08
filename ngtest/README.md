@@ -1,5 +1,5 @@
 [![Pub package](https://img.shields.io/pub/v/ngtest.svg)](https://pub.dev/packages/ngtest)
-[![Build Status](https://img.shields.io/github/workflow/status/angulardart-community/angular/Dart%20CI)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/angulardart-community/angular/dart.yml?branch=master)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
 [![Gitter](https://img.shields.io/gitter/room/angulardart/community)](https://gitter.im/angulardart/community)
 
 Testing infrastructure for [AngularDart][webdev_angular], used with the

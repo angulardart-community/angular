@@ -2,6 +2,8 @@
 
 ## Packages
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/angulardart-community/angular/dart.yml?branch=master)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
+
 | Source code |Published Version                                                                                 |Pre-Release Version (if any)                                                                                      |
 |-------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | [ngdart]    |[![Pub Package](https://img.shields.io/pub/v/ngdart.svg)](https://pub.dev/packages/ngdart)        |[![Pub Package](https://img.shields.io/pub/v/ngdart?include_prereleases)](https://pub.dev/packages/ngdart)        |

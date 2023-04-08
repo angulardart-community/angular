@@ -3,7 +3,7 @@
 <!-- Badges -->
 
 [![Pub Package](https://img.shields.io/pub/v/ngast.svg)](https://pub.dartlang.org/packages/ngast)
-[![Build Status](https://img.shields.io/github/workflow/status/angulardart-community/angular/Dart%20CI)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/angulardart-community/angular/dart.yml?branch=master)](https://github.com/angulardart-community/angular/actions/workflows/dart.yml)
 [![Gitter](https://img.shields.io/gitter/room/angulardart/community)](https://gitter.im/angulardart/community)
 
 Parser and utilities for [AngularDart][gh_angular_dart] templates.
