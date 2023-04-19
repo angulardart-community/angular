@@ -52,8 +52,10 @@ void main() {
           'static var someVar = 1;');
       expect(
           emitStmt(someVar
-              .set(o.literal(1,
-                  o.BuiltinType(o.BuiltinTypeName.intName, [o.TypeModifier.constModifier])))
+              .set(o.literal(
+                  1,
+                  o.BuiltinType(o.BuiltinTypeName.intName,
+                      [o.TypeModifier.constModifier])))
               .toDeclStmt(null, [o.StmtModifier.finalStmt])),
           'final someVar = 1;');
       expect(
@@ -159,7 +161,8 @@ void main() {
     test('should support but hide the late declaration modifier', () {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
+        emitStmt(
+            writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
         '/*late*/ String a = \'Hello\';',
       );
     });
@@ -168,7 +171,8 @@ void main() {
       enableNullSafety();
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
+        emitStmt(
+            writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
         'late String a = \'Hello\';',
       );
     });
