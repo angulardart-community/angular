@@ -115,7 +115,7 @@ o.Expression injectFromViewParentInjector(
   bool optional,
 ) {
   final viewExpr = (view.viewType == ViewType.host)
-      ? o.THIS_EXPR
+      ? o.thisExpr
       : o.ReadClassMemberExpr('parentView').notNull();
   return viewExpr.callMethod(optional ? 'injectorGetOptional' : 'injectorGet', [
     createDiTokenExpression(token),
@@ -190,7 +190,8 @@ o.Expression createDiTokenExpression(CompileTokenMetadata token) {
         //
         // i.e. const OpaqueToken('literalValue')
         token.value != null ? [o.literal(token.value)] : const <o.Expression>[],
-        type: o.importType(token.identifier, [], [o.TypeModifier.Const]),
+        type:
+            o.importType(token.identifier, [], [o.TypeModifier.constModifier]),
         // Add any generic types attached to the type.
         //
         // Only a value of `null` precisely means "no generic types", not [].
@@ -214,8 +215,8 @@ o.Expression createFlatArrayForProjectNodes(
     return o.literalArr(
       const [],
       o.ArrayType(
-        o.OBJECT_TYPE,
-        constForEmpty ? const [o.TypeModifier.Const] : const [],
+        o.objectType,
+        constForEmpty ? const [o.TypeModifier.constModifier] : const [],
       ),
     );
   }
@@ -225,27 +226,27 @@ o.Expression createFlatArrayForProjectNodes(
     if (expression.type is o.ArrayType) {
       return expression;
     } else {
-      return o.literalArr([expression], o.OBJECT_TYPE);
+      return o.literalArr([expression], o.objectType);
     }
   }
   var lastNonArrayExpressions = <o.Expression>[];
-  o.Expression result = o.literalArr([], o.OBJECT_TYPE);
+  o.Expression result = o.literalArr([], o.objectType);
   var initialEmptyArray = true;
   for (final expr in expressions) {
     if (expr.type is o.ArrayType) {
       if (lastNonArrayExpressions.isNotEmpty) {
         if (initialEmptyArray) {
-          result = o.literalArr(lastNonArrayExpressions, o.OBJECT_TYPE);
+          result = o.literalArr(lastNonArrayExpressions, o.objectType);
           initialEmptyArray = false;
         } else {
-          result = result.callMethod(o.BuiltinMethod.ConcatArray,
-              [o.literalArr(lastNonArrayExpressions, o.OBJECT_TYPE)]);
+          result = result.callMethod(o.BuiltinMethod.concatArray,
+              [o.literalArr(lastNonArrayExpressions, o.objectType)]);
         }
         lastNonArrayExpressions = [];
       }
       result = initialEmptyArray
-          ? o.literalArr([expr], o.OBJECT_TYPE)
-          : result.callMethod(o.BuiltinMethod.ConcatArray, [unsafeCast(expr)]);
+          ? o.literalArr([expr], o.objectType)
+          : result.callMethod(o.BuiltinMethod.concatArray, [unsafeCast(expr)]);
       initialEmptyArray = false;
     } else {
       lastNonArrayExpressions.add(expr);
@@ -253,10 +254,10 @@ o.Expression createFlatArrayForProjectNodes(
   }
   if (lastNonArrayExpressions.isNotEmpty) {
     if (initialEmptyArray) {
-      result = o.literalArr(lastNonArrayExpressions, o.OBJECT_TYPE);
+      result = o.literalArr(lastNonArrayExpressions, o.objectType);
     } else {
-      result = result.callMethod(o.BuiltinMethod.ConcatArray,
-          [o.literalArr(lastNonArrayExpressions, o.OBJECT_TYPE)]);
+      result = result.callMethod(o.BuiltinMethod.concatArray,
+          [o.literalArr(lastNonArrayExpressions, o.objectType)]);
     }
   }
   return result;
@@ -427,35 +428,35 @@ List<ir.Binding> _toSortedBindings(Map<String, ir.Binding> attributes) =>
 Map<K, V> _toSortedMap<K, V>(Map<K, V> data) => SplayTreeMap.from(data);
 
 final Map<String, CompileIdentifierMetadata> _tagNameToIdentifier = {
-  'a': Identifiers.HTML_ANCHOR_ELEMENT,
-  'area': Identifiers.HTML_AREA_ELEMENT,
-  'audio': Identifiers.HTML_AUDIO_ELEMENT,
-  'button': Identifiers.HTML_BUTTON_ELEMENT,
-  'canvas': Identifiers.HTML_CANVAS_ELEMENT,
-  'div': Identifiers.HTML_DIV_ELEMENT,
-  'form': Identifiers.HTML_FORM_ELEMENT,
-  'iframe': Identifiers.HTML_IFRAME_ELEMENT,
-  'input': Identifiers.HTML_INPUT_ELEMENT,
-  'image': Identifiers.HTML_IMAGE_ELEMENT,
-  'media': Identifiers.HTML_MEDIA_ELEMENT,
-  'menu': Identifiers.HTML_MENU_ELEMENT,
-  'ol': Identifiers.HTML_OLIST_ELEMENT,
-  'option': Identifiers.HTML_OPTION_ELEMENT,
-  'col': Identifiers.HTML_TABLE_COL_ELEMENT,
-  'row': Identifiers.HTML_TABLE_ROW_ELEMENT,
-  'select': Identifiers.HTML_SELECT_ELEMENT,
-  'table': Identifiers.HTML_TABLE_ELEMENT,
-  'textarea': Identifiers.HTML_TEXTAREA_ELEMENT,
-  'ul': Identifiers.HTML_ULIST_ELEMENT,
-  'svg': Identifiers.SVG_SVG_ELEMENT,
+  'a': Identifiers.anchorElement,
+  'area': Identifiers.areaElement,
+  'audio': Identifiers.htmlAudioElement,
+  'button': Identifiers.buttonElement,
+  'canvas': Identifiers.canvasElement,
+  'div': Identifiers.divElement,
+  'form': Identifiers.formElement,
+  'iframe': Identifiers.iframeElement,
+  'input': Identifiers.inputElement,
+  'image': Identifiers.imageElement,
+  'media': Identifiers.mediaElement,
+  'menu': Identifiers.menuElement,
+  'ol': Identifiers.oListElement,
+  'option': Identifiers.optionElement,
+  'col': Identifiers.tableColElement,
+  'row': Identifiers.tableRowElement,
+  'select': Identifiers.selectElement,
+  'table': Identifiers.tableElement,
+  'textarea': Identifiers.textareaElement,
+  'ul': Identifiers.uListElement,
+  'svg': Identifiers.svgSvgElement,
 };
 
 /// Returns strongly typed html elements to improve code generation.
 CompileIdentifierMetadata identifierFromTagName(String name) =>
     _tagNameToIdentifier[name.toLowerCase()] ??
     (detectHtmlElementFromTagName(name)
-        ? Identifiers.HTML_HTML_ELEMENT
-        : Identifiers.HTML_ELEMENT);
+        ? Identifiers.htmlElement
+        : Identifiers.element);
 
 const _htmlTagNames = <String>{
   'a',
@@ -612,7 +613,7 @@ List<o.Statement> maybeCachedCtxDeclarationStatement(
     return [
       DetectChangesVars.cachedCtx
           .set(o.ReadClassMemberExpr('ctx'))
-          .toDeclStmt(null, [o.StmtModifier.Final])
+          .toDeclStmt(null, [o.StmtModifier.finalStmt])
     ];
   }
   return [];

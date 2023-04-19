@@ -19,7 +19,7 @@ class SplitDartEmitter extends DartEmitter {
         );
 
   @override
-  StringSink visitDirective(Directive spec, [_]) {
+  StringSink visitDirective(Directive spec, [StringSink? output]) {
     // Always write import/export directives to a separate buffer.
     return super.visitDirective(spec, _writeImports);
   }

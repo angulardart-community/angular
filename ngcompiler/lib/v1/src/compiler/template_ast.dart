@@ -483,20 +483,20 @@ class ProviderAst implements TemplateAst {
 
 enum ProviderAstType {
   /// Public providers (Directive.providers) that can be reached across views.
-  PublicService,
+  publicService,
 
   /// Provide providers (Directive.viewProviders) that are visible within
   /// template only.
-  PrivateService,
+  privateService,
 
   /// A provider that represents the Component type.
-  Component,
+  component,
 
   /// A provider that represents a Directive type.
-  Directive,
+  directive,
 
   /// Provider that is used by compiled code itself such as TemplateRef.
-  Builtin
+  builtin
 }
 
 /// Position where content is to be projected (instance of <ng-content> in

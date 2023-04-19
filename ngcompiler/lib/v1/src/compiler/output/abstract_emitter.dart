@@ -84,13 +84,9 @@ class EmitterVisitorContext {
       lines = lines.sublist(0, lines.length - 1);
     }
     return lines
-        .map((line) {
-          if (line.parts.isNotEmpty) {
-            return _createIndent(line.indent) + line.parts.join('');
-          } else {
-            return '';
-          }
-        })
+        .map((line) => line.parts.isNotEmpty
+            ? _createIndent(line.indent) + line.parts.join('')
+            : '')
         .toList()
         .join('\n');
   }
@@ -110,7 +106,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitExpressionStmt(
-      o.ExpressionStatement stmt, EmitterVisitorContext context) {
+    o.ExpressionStatement stmt,
+    EmitterVisitorContext context,
+  ) {
     stmt.expr.visitExpression(this, context);
 
     var sourceComment = '';
@@ -192,11 +190,16 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitDeclareVarStmt(
-      o.DeclareVarStmt stmt, EmitterVisitorContext context);
+    o.DeclareVarStmt stmt,
+    EmitterVisitorContext context,
+  );
 
   @override
-  void visitWriteVarExpr(o.WriteVarExpr expr, EmitterVisitorContext context,
-      {bool checkForNull = false}) {
+  void visitWriteVarExpr(
+    o.WriteVarExpr expr,
+    EmitterVisitorContext context, {
+    bool checkForNull = false,
+  }) {
     var lineWasEmpty = context.lineIsEmpty();
     if (!lineWasEmpty) {
       context.print('(');
@@ -214,7 +217,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitWriteStaticMemberExpr(
-      o.WriteStaticMemberExpr expr, EmitterVisitorContext context) {
+    o.WriteStaticMemberExpr expr,
+    EmitterVisitorContext context,
+  ) {
     var lineWasEmpty = context.lineIsEmpty();
     if (!lineWasEmpty) {
       context.print('(');
@@ -262,12 +267,14 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitWriteClassMemberExpr(
-      o.WriteClassMemberExpr expr, EmitterVisitorContext context) {
+    o.WriteClassMemberExpr expr,
+    EmitterVisitorContext context,
+  ) {
     var lineWasEmpty = context.lineIsEmpty();
     if (!lineWasEmpty) {
       context.print('(');
     }
-    o.THIS_EXPR.visitExpression(this, context);
+    o.thisExpr.visitExpression(this, context);
     context.print('.${expr.name} = ');
     expr.value.visitExpression(this, context);
     if (!lineWasEmpty) {
@@ -277,7 +284,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitInvokeMethodExpr(
-      o.InvokeMethodExpr expr, EmitterVisitorContext context) {
+    o.InvokeMethodExpr expr,
+    EmitterVisitorContext context,
+  ) {
     expr.receiver.visitExpression(this, context);
     var name = expr.name;
     var builtin = expr.builtin;
@@ -300,7 +309,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitInvokeMemberMethodExpr(
-      o.InvokeMemberMethodExpr expr, EmitterVisitorContext context) {
+    o.InvokeMemberMethodExpr expr,
+    EmitterVisitorContext context,
+  ) {
     context.print('this.${expr.methodName}(');
     visitAllExpressions(expr.args, context, ',');
     visitAllNamedExpressions(
@@ -317,19 +328,19 @@ abstract class AbstractEmitterVisitor
     var varName = ast.name;
     if (ast.builtin != null) {
       switch (ast.builtin) {
-        case o.BuiltinVar.Super:
+        case o.BuiltinVar.superVar:
           varName = 'super';
           break;
-        case o.BuiltinVar.This:
+        case o.BuiltinVar.thisVar:
           varName = 'this';
           break;
-        case o.BuiltinVar.CatchError:
+        case o.BuiltinVar.catchErrorVar:
           varName = catchErrorVar.name;
           break;
-        case o.BuiltinVar.CatchStack:
+        case o.BuiltinVar.catchStackVar:
           varName = catchStackVar.name;
           break;
-        case o.BuiltinVar.MetadataMap:
+        case o.BuiltinVar.metadataMapVar:
           varName = 'null';
           break;
         default:
@@ -341,7 +352,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitReadStaticMemberExpr(
-      o.ReadStaticMemberExpr ast, EmitterVisitorContext context) {
+    o.ReadStaticMemberExpr ast,
+    EmitterVisitorContext context,
+  ) {
     var t = ast.sourceClass as o.ExternalType?;
     if (t != null) {
       context.print('${t.value.name}.');
@@ -351,13 +364,17 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitReadClassMemberExpr(
-      o.ReadClassMemberExpr ast, EmitterVisitorContext context) {
+    o.ReadClassMemberExpr ast,
+    EmitterVisitorContext context,
+  ) {
     context.print('this.${ast.name}');
   }
 
   @override
   void visitInstantiateExpr(
-      o.InstantiateExpr ast, EmitterVisitorContext context) {
+    o.InstantiateExpr ast,
+    EmitterVisitorContext context,
+  ) {
     context.print('new ');
     ast.classExpr.visitExpression(this, context);
     context.print('(');
@@ -390,7 +407,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitConditionalExpr(
-      o.ConditionalExpr ast, EmitterVisitorContext context) {
+    o.ConditionalExpr ast,
+    EmitterVisitorContext context,
+  ) {
     context.print('(');
     ast.condition.visitExpression(this, context);
     context.print('? ');
@@ -401,7 +420,10 @@ abstract class AbstractEmitterVisitor
   }
 
   @override
-  void visitIfNullExpr(o.IfNullExpr ast, EmitterVisitorContext context) {
+  void visitIfNullExpr(
+    o.IfNullExpr ast,
+    EmitterVisitorContext context,
+  ) {
     context.print('(');
     ast.condition.visitExpression(this, context);
     context.print('?? ');
@@ -434,11 +456,15 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitDeclareFunctionStmt(
-      o.DeclareFunctionStmt stmt, EmitterVisitorContext context);
+    o.DeclareFunctionStmt stmt,
+    EmitterVisitorContext context,
+  );
 
   @override
   void visitBinaryOperatorExpr(
-      o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
+    o.BinaryOperatorExpr ast,
+    EmitterVisitorContext context,
+  ) {
     context.print('(');
     ast.lhs.visitExpression(this, context);
     context.print(' ${ast.operator.opStr} ');
@@ -447,7 +473,10 @@ abstract class AbstractEmitterVisitor
   }
 
   @override
-  void visitReadPropExpr(o.ReadPropExpr ast, EmitterVisitorContext context) {
+  void visitReadPropExpr(
+    o.ReadPropExpr ast,
+    EmitterVisitorContext context,
+  ) {
     ast.receiver.visitExpression(this, context);
     if (ast.checked) {
       context.print('?');
@@ -466,7 +495,9 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitLiteralArrayExpr(
-      o.LiteralArrayExpr ast, EmitterVisitorContext context) {
+    o.LiteralArrayExpr ast,
+    EmitterVisitorContext context,
+  ) {
     var useNewLine = ast.entries.length > 1;
     context.print('[', useNewLine);
     context.incIndent();
@@ -478,37 +509,55 @@ abstract class AbstractEmitterVisitor
 
   @override
   void visitLiteralMapExpr(
-      o.LiteralMapExpr ast, EmitterVisitorContext context) {
+    o.LiteralMapExpr ast,
+    EmitterVisitorContext context,
+  ) {
     var useNewLine = ast.entries.length > 1;
     context.print('{', useNewLine);
     context.incIndent();
-    visitAllObjects((List<dynamic> entry) {
-      final /* String | Expression */ firstEntry = entry[0];
-      if (firstEntry is o.Expression) {
-        firstEntry.visitExpression(this, context);
-      } else {
-        final firstEntryCasted = firstEntry as String;
-        context.print(
-            escapeSingleQuoteString(firstEntryCasted, _escapeDollarInStrings)!);
-      }
-      context.print(': ');
-      entry[1].visitExpression(this, context);
-    }, ast.entries, context, ',', newLine: useNewLine, keepOnSameLine: false);
+    visitAllObjects(
+      (List<dynamic> entry) {
+        final /* String | Expression */ firstEntry = entry[0];
+        if (firstEntry is o.Expression) {
+          firstEntry.visitExpression(this, context);
+        } else {
+          final firstEntryCasted = firstEntry as String;
+          context.print(escapeSingleQuoteString(
+              firstEntryCasted, _escapeDollarInStrings)!);
+        }
+        context.print(': ');
+        entry[1].visitExpression(this, context);
+      },
+      ast.entries,
+      context,
+      ',',
+      newLine: useNewLine,
+      keepOnSameLine: false,
+    );
     context.decIndent();
     context.print('}', useNewLine);
   }
 
-  void visitAllExpressions(List<o.Expression> expressions,
-      EmitterVisitorContext ctx, String separator,
-      {bool newLine = false, bool keepOnSameLine = false}) {
+  void visitAllExpressions(
+    List<o.Expression> expressions,
+    EmitterVisitorContext context,
+    String separator, {
+    bool newLine = false,
+    bool keepOnSameLine = false,
+  }) {
     visitAllObjects<o.Expression>(
-        (expr) => expr.visitExpression(this, ctx), expressions, ctx, separator,
-        newLine: newLine, keepOnSameLine: keepOnSameLine);
+      (expr) => expr.visitExpression(this, context),
+      expressions,
+      context,
+      separator,
+      newLine: newLine,
+      keepOnSameLine: keepOnSameLine,
+    );
   }
 
   void visitAllNamedExpressions(
     List<o.NamedExpr>? expressions,
-    EmitterVisitorContext ctx,
+    EmitterVisitorContext context,
     String seperator, {
     bool alwaysAddSeperator = false,
   }) {
@@ -516,40 +565,46 @@ abstract class AbstractEmitterVisitor
       return;
     }
     if (alwaysAddSeperator) {
-      ctx.print(seperator);
+      context.print(seperator);
     }
-    for (var ast in expressions) {
-      ctx.print('${ast.name}: ');
-      ast.expr.visitExpression(this, ctx);
-      ctx.print(seperator);
+    for (var expression in expressions) {
+      context.print('${expression.name}: ');
+      expression.expr.visitExpression(this, context);
+      context.print(seperator);
     }
   }
 
-  void visitAllObjects<T>(void Function(T) handler, List<T> expressions,
-      EmitterVisitorContext ctx, String separator,
-      {bool newLine = false, bool keepOnSameLine = false}) {
-    const MAX_OUTPUT_LENGTH = 80;
+  void visitAllObjects<T>(
+    void Function(T) handler,
+    List<T> expressions,
+    EmitterVisitorContext context,
+    String separator, {
+    bool newLine = false,
+    bool keepOnSameLine = false,
+  }) {
+    const maxOutputLength = 80;
     var length = expressions.length;
     for (var i = 0; i < length; i++) {
       handler(expressions[i]);
       if (i != (length - 1)) {
         // Place separator.
-        ctx.print(
-            separator,
-            keepOnSameLine
-                ? ctx.currentLineLength > MAX_OUTPUT_LENGTH
-                : newLine);
+        var newLine2 = keepOnSameLine
+            ? context.currentLineLength > maxOutputLength
+            : newLine;
+        context.print(separator, newLine2);
       }
     }
     if (newLine) {
-      ctx.println();
+      context.println();
     }
   }
 
   void visitAllStatements(
-      List<o.Statement> statements, EmitterVisitorContext ctx) {
-    for (var stmt in statements) {
-      stmt.visitStatement(this, ctx);
+    List<o.Statement> statements,
+    EmitterVisitorContext ctx,
+  ) {
+    for (var statement in statements) {
+      statement.visitStatement(this, ctx);
     }
   }
 }

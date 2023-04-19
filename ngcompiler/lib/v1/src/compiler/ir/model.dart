@@ -346,7 +346,7 @@ class ClassBinding implements BindingTarget {
   /// When a class name is specified, then the [BindingSource] is the actual
   /// class string to be set.
   @override
-  o.OutputType get type => name == null ? o.STRING_TYPE : o.BOOL_TYPE;
+  o.OutputType get type => name == null ? o.stringType : o.boolType;
 }
 
 class TabIndexBinding implements BindingTarget {

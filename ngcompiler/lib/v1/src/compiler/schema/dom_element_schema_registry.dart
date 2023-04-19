@@ -277,13 +277,13 @@ class DomElementSchemaRegistry extends ElementSchemaRegistry {
   String _toAttribute(String propertyName) =>
       (_propToAttrMap[propertyName] ?? propertyName).toLowerCase();
 
-  static final Map<String, TemplateSecurityContext> _SECURITY_SCHEMA = {};
+  static final Map<String, TemplateSecurityContext> _securitySchema = {};
 
   void _registerSecuritySchema(
       TemplateSecurityContext context, List<String> schemaElements) {
     var itemCount = schemaElements.length;
     for (var i = 0; i < itemCount; i++) {
-      _SECURITY_SCHEMA[schemaElements[i]] = context;
+      _securitySchema[schemaElements[i]] = context;
     }
   }
 
@@ -343,12 +343,12 @@ class DomElementSchemaRegistry extends ElementSchemaRegistry {
   /// their appropriate context.
   @override
   TemplateSecurityContext securityContext(String tagName, String propName) {
-    if (_SECURITY_SCHEMA.isEmpty) {
+    if (_securitySchema.isEmpty) {
       _initializeSecuritySchema();
     }
     var key = '$tagName|$propName';
-    return _SECURITY_SCHEMA[key] ??
-        _SECURITY_SCHEMA['*|$propName'] ??
+    return _securitySchema[key] ??
+        _securitySchema['*|$propName'] ??
         TemplateSecurityContext.none;
   }
 

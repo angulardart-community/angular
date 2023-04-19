@@ -5,7 +5,7 @@ import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 abstract class ViewStorage {
   ViewStorageItem allocate(
     String name, {
-    o.OutputType outputType = o.OBJECT_TYPE,
+    o.OutputType outputType = o.objectType,
     required List<o.StmtModifier> modifiers,
     o.Expression? initializer,
   });
@@ -22,5 +22,5 @@ class ViewStorageItem {
   ViewStorageItem(this.name,
       {this.outputType, required this.modifiers, this.initializer});
 
-  bool get isStatic => modifiers.contains(o.StmtModifier.Static);
+  bool get isStatic => modifiers.contains(o.StmtModifier.staticStmt);
 }

@@ -9,8 +9,8 @@ import 'abstract_emitter.dart'
 import 'output_ast.dart' as o;
 import 'path_util.dart' show getImportModulePath;
 
-var _debugModuleUrl = 'asset://debug/lib';
-var _METADATA_MAP_VAR = '_METADATA';
+const _debugModuleUrl = 'asset://debug/lib';
+const _metadataMapVar = '_METADATA';
 String debugOutputAstAsDart(
   dynamic /* o . Statement | o . Expression | o . Type | List < dynamic > */
       ast, {
@@ -133,13 +133,13 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
     o.DeclareVarStmt stmt,
     EmitterVisitorContext context,
   ) {
-    if (stmt.hasModifier(o.StmtModifier.Static)) {
+    if (stmt.hasModifier(o.StmtModifier.staticStmt)) {
       context.print('static ');
     }
     var type = stmt.type;
-    if (stmt.hasModifier(o.StmtModifier.Late)) {
+    if (stmt.hasModifier(o.StmtModifier.lateStmt)) {
       var modifier = 'late';
-      if (stmt.hasModifier(o.StmtModifier.Final)) {
+      if (stmt.hasModifier(o.StmtModifier.finalStmt)) {
         modifier = '$modifier final';
       }
       if (!emitNullSafeSyntax) {
@@ -148,9 +148,9 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
         modifier = '$modifier ';
       }
       context.print(modifier);
-    } else if (stmt.hasModifier(o.StmtModifier.Final)) {
+    } else if (stmt.hasModifier(o.StmtModifier.finalStmt)) {
       context.print('final ');
-    } else if (stmt.hasModifier(o.StmtModifier.Const)) {
+    } else if (stmt.hasModifier(o.StmtModifier.constStmt)) {
       _inConstContext = true;
       context.print('const ');
     } else if (type == null) {
@@ -232,12 +232,12 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
   }
 
   void _visitClassField(o.ClassField field, EmitterVisitorContext context) {
-    if (field.hasModifier(o.StmtModifier.Static)) {
+    if (field.hasModifier(o.StmtModifier.staticStmt)) {
       context.print('static ');
     }
-    if (field.hasModifier(o.StmtModifier.Late)) {
+    if (field.hasModifier(o.StmtModifier.lateStmt)) {
       var modifier = 'late';
-      if (field.hasModifier(o.StmtModifier.Final)) {
+      if (field.hasModifier(o.StmtModifier.finalStmt)) {
         modifier = '$modifier final';
       }
       if (!emitNullSafeSyntax) {
@@ -246,7 +246,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
         modifier = '$modifier ';
       }
       context.print(modifier);
-    } else if (field.hasModifier(o.StmtModifier.Final)) {
+    } else if (field.hasModifier(o.StmtModifier.finalStmt)) {
       context.print('final ');
     } else if (field.type == null) {
       context.print('var ');
@@ -267,7 +267,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   void _visitClassGetter(o.ClassGetter getter, EmitterVisitorContext context) {
     _visitAnnotations(getter.annotations, context);
-    if (getter.hasModifier(o.StmtModifier.Static)) {
+    if (getter.hasModifier(o.StmtModifier.staticStmt)) {
       context.print('static ');
     }
     if (getter.type != null) {
@@ -310,7 +310,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   void _visitClassMethod(o.ClassMethod method, EmitterVisitorContext context) {
     _visitAnnotations(method.annotations, context);
-    if (method.hasModifier(o.StmtModifier.Static)) {
+    if (method.hasModifier(o.StmtModifier.staticStmt)) {
       context.print('static ');
     }
     if (method.type != null) {
@@ -354,7 +354,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
       var bound = typeParameter.bound;
       // Don't emit an explicit bound for dynamic, since bounds are implicitly
       // dynamic.
-      if (bound != null && bound != o.DYNAMIC_TYPE) {
+      if (bound != null && bound != o.dynamicType) {
         context.print(' extends ');
         bound.visitType(this, context);
       }
@@ -375,7 +375,9 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitDeclareFunctionStmt(
-      o.DeclareFunctionStmt stmt, EmitterVisitorContext context) {
+    o.DeclareFunctionStmt stmt,
+    EmitterVisitorContext context,
+  ) {
     _visitAnnotations(stmt.annotations, context);
     var type = stmt.type;
     if (type != null) {
@@ -403,9 +405,9 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   String getBuiltinMethodName(o.BuiltinMethod method) {
     switch (method) {
-      case o.BuiltinMethod.ConcatArray:
+      case o.BuiltinMethod.concatArray:
         return '.addAll';
-      case o.BuiltinMethod.SubscribeObservable:
+      case o.BuiltinMethod.subscribeObservable:
         return 'listen';
       default:
         throw StateError('Unknown builtin method: $method');
@@ -414,8 +416,8 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitReadVarExpr(o.ReadVarExpr ast, EmitterVisitorContext context) {
-    if (identical(ast.builtin, o.BuiltinVar.MetadataMap)) {
-      context.print(_METADATA_MAP_VAR);
+    if (identical(ast.builtin, o.BuiltinVar.metadataMapVar)) {
+      context.print(_metadataMapVar);
     } else {
       super.visitReadVarExpr(ast, context);
     }
@@ -458,14 +460,14 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
   void visitBinaryOperatorExpr(
       o.BinaryOperatorExpr ast, EmitterVisitorContext context) {
     switch (ast.operator) {
-      case o.BinaryOperator.Identical:
+      case o.BinaryOperator.identical:
         context.print('identical(');
         ast.lhs.visitExpression(this, context);
         context.print(', ');
         ast.rhs.visitExpression(this, context);
         context.print(')');
         break;
-      case o.BinaryOperator.NotIdentical:
+      case o.BinaryOperator.notIdentical:
         context.print('!identical(');
         ast.lhs.visitExpression(this, context);
         context.print(', ');
@@ -491,20 +493,22 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitLiteralArrayExpr(
-      o.LiteralArrayExpr ast, EmitterVisitorContext context) {
+    o.LiteralArrayExpr ast,
+    EmitterVisitorContext context,
+  ) {
     final wasInConstContext = _inConstContext;
     if (!wasInConstContext && _isConstType(ast.type)) {
       context.print('const ');
       _inConstContext = true;
     }
-    if (ast.type == o.DYNAMIC_TYPE) {
+    if (ast.type == o.dynamicType) {
       context.print('<dynamic>');
-    } else if (ast.type == o.OBJECT_TYPE) {
+    } else if (ast.type == o.objectType) {
       context.print('<Object>');
     } else {
       // TODO(b/171268745): Remove one-off hack for a const <Object>[].
       final type = ast.type;
-      if (type is o.ArrayType && type.of == o.OBJECT_TYPE) {
+      if (type is o.ArrayType && type.of == o.objectType) {
         context.print('<Object>');
       }
     }
@@ -514,7 +518,9 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitLiteralMapExpr(
-      o.LiteralMapExpr ast, EmitterVisitorContext context) {
+    o.LiteralMapExpr ast,
+    EmitterVisitorContext context,
+  ) {
     final wasInConstContext = _inConstContext;
     if (!wasInConstContext && _isConstType(ast.type)) {
       context.print('const ');
@@ -553,7 +559,9 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitInstantiateExpr(
-      o.InstantiateExpr ast, EmitterVisitorContext context) {
+    o.InstantiateExpr ast,
+    EmitterVisitorContext context,
+  ) {
     final wasInNewInstance = _inInvokeOrNewInstance;
     final wasInConstContext = _inConstContext;
     if (!wasInConstContext && _isConstType(ast.type)) {
@@ -580,43 +588,43 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
   void visitBuiltinType(o.BuiltinType type, EmitterVisitorContext context) {
     String typeStr;
     switch (type.name) {
-      case o.BuiltinTypeName.Bool:
+      case o.BuiltinTypeName.boolName:
         typeStr = 'bool';
         break;
-      case o.BuiltinTypeName.Dynamic:
+      case o.BuiltinTypeName.dynamicName:
         typeStr = 'dynamic';
         break;
-      case o.BuiltinTypeName.Object:
+      case o.BuiltinTypeName.objectName:
         typeStr = 'Object';
         break;
-      case o.BuiltinTypeName.Function:
+      case o.BuiltinTypeName.functionName:
         typeStr = 'Function';
         break;
-      case o.BuiltinTypeName.Number:
+      case o.BuiltinTypeName.numberName:
         typeStr = 'num';
         break;
-      case o.BuiltinTypeName.Int:
+      case o.BuiltinTypeName.intName:
         typeStr = 'int';
         break;
-      case o.BuiltinTypeName.Double:
+      case o.BuiltinTypeName.doubleName:
         typeStr = 'double';
         break;
-      case o.BuiltinTypeName.String:
+      case o.BuiltinTypeName.stringName:
         typeStr = 'String';
         break;
-      case o.BuiltinTypeName.Null:
+      case o.BuiltinTypeName.nullName:
         typeStr = 'Null';
         break;
-      case o.BuiltinTypeName.Never:
+      case o.BuiltinTypeName.neverName:
         typeStr = emitNullSafeSyntax ? 'Never' : 'Null /*Never*/';
         break;
-      case o.BuiltinTypeName.Void:
+      case o.BuiltinTypeName.voidName:
         typeStr = 'void';
         break;
       default:
         throw StateError('Unsupported builtin type ${type.name}');
     }
-    if (type.modifiers.contains(o.TypeModifier.Nullable)) {
+    if (type.modifiers.contains(o.TypeModifier.nullableModifier)) {
       final suffix = emitNullSafeSyntax ? '?' : '/*?*/';
       typeStr = '$typeStr$suffix';
     }
@@ -625,7 +633,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
 
   @override
   void visitExternalType(o.ExternalType ast, EmitterVisitorContext context) {
-    final nullable = ast.modifiers.contains(o.TypeModifier.Nullable);
+    final nullable = ast.modifiers.contains(o.TypeModifier.nullableModifier);
     _visitIdentifier(
       ast.value,
       ast.typeParams,
@@ -647,7 +655,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
       param.visitType(this, context);
     }, type.paramTypes, context, ',');
     context.print(')');
-    if (type.modifiers.contains(o.TypeModifier.Nullable)) {
+    if (type.modifiers.contains(o.TypeModifier.nullableModifier)) {
       final postfix = emitNullSafeSyntax ? '?' : '/*?*/';
       context.print(postfix);
     }
@@ -663,7 +671,7 @@ class _DartEmitterVisitor extends AbstractEmitterVisitor
       context.print('dynamic');
     }
     context.print('>');
-    if (type.modifiers.contains(o.TypeModifier.Nullable)) {
+    if (type.modifiers.contains(o.TypeModifier.nullableModifier)) {
       final postfix = emitNullSafeSyntax ? '?' : '/*?*/';
       context.print(postfix);
     }
@@ -770,7 +778,7 @@ o.Expression? _getSuperConstructorCallExpr(o.Statement stmt) {
     if (expr is o.InvokeFunctionExpr) {
       var fn = expr.fn;
       if (fn is o.ReadVarExpr) {
-        if (identical(fn.builtin, o.BuiltinVar.Super)) {
+        if (identical(fn.builtin, o.BuiltinVar.superVar)) {
           return expr;
         }
       }
@@ -780,5 +788,5 @@ o.Expression? _getSuperConstructorCallExpr(o.Statement stmt) {
 }
 
 bool _isConstType(o.OutputType? type) {
-  return type != null && type.hasModifier(o.TypeModifier.Const);
+  return type != null && type.hasModifier(o.TypeModifier.constModifier);
 }

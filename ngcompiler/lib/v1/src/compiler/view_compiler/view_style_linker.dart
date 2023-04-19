@@ -56,13 +56,14 @@ class _ViewStyleLinker {
             o.ConditionalExpr(
               o.importExpr(Runtime.isDevMode),
               o.literal(_view.component.type.moduleUrl),
-              o.NULL_EXPR,
+              o.nullExpr,
             ),
           ),
         ],
-        o.BuiltinType(o.BuiltinTypeName.String, [o.TypeModifier.Nullable]),
+        o.BuiltinType(
+            o.BuiltinTypeName.stringName, [o.TypeModifier.nullableModifier]),
         [
-          o.StmtModifier.Static,
+          o.StmtModifier.staticStmt,
         ],
       ),
     );
@@ -73,9 +74,9 @@ class _ViewStyleLinker {
     outputType: o.importType(
       StyleEncapsulation.componentStyles,
       [],
-      [o.TypeModifier.Nullable],
+      [o.TypeModifier.nullableModifier],
     ),
-    modifiers: const [o.StmtModifier.Static],
+    modifiers: const [o.StmtModifier.staticStmt],
   );
 
   void _addStaticComponentStylesField() {
@@ -85,7 +86,7 @@ class _ViewStyleLinker {
   void _implementDebugClearComponentStyles() {
     // Static._componentStyles = null
     final nullifyStaticComponentStyles =
-        o.WriteStaticMemberExpr(_componentStylesStatic, o.NULL_EXPR).toStmt();
+        o.WriteStaticMemberExpr(_componentStylesStatic, o.nullExpr).toStmt();
     _class.methods.add(
       o.ClassMethod(
         _debugClearComponentStyles,
@@ -93,8 +94,8 @@ class _ViewStyleLinker {
         [
           nullifyStaticComponentStyles,
         ],
-        o.VOID_TYPE,
-        const [o.StmtModifier.Static],
+        o.voidType,
+        const [o.StmtModifier.staticStmt],
       ),
     );
   }
@@ -118,7 +119,7 @@ class _ViewStyleLinker {
     //   }
     // }
     final ifStylesNullInit = o.IfStmt(
-      readStyles.equals(o.NULL_EXPR),
+      readStyles.equals(o.nullExpr),
       [
         o.WriteStaticMemberExpr(
           _componentStylesStatic,

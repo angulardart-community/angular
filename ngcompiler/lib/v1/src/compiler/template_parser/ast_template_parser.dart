@@ -123,7 +123,7 @@ class AstTemplateParser {
     return filterElements;
   }
 
-  List<ng.TemplateAst>? _bindDirectivesAndProviders(
+  List<ng.TemplateAst> _bindDirectivesAndProviders(
     List<CompileDirectiveMetadata?> directives,
     CompileDirectiveMetadata compMeta,
     List<ast.TemplateAst> filteredAst,
@@ -143,11 +143,11 @@ class AstTemplateParser {
 
   List<ng.TemplateAst> _processBoundTemplateNodes(
     CompileDirectiveMetadata compMeta,
-    List<ng.TemplateAst>? providedAsts,
+    List<ng.TemplateAst> providedAsts,
     List<CompilePipeMetadata?> pipes,
   ) {
     final optimizedAsts = _optimize(compMeta, providedAsts);
-    final sortedAsts = _sortInputs(optimizedAsts)!;
+    final sortedAsts = _sortInputs(optimizedAsts);
     _validatePipeNames(sortedAsts, pipes);
     return sortedAsts;
   }
@@ -188,7 +188,7 @@ class AstTemplateParser {
     }
   }
 
-  List<ng.TemplateAst>? _bindProviders(
+  List<ng.TemplateAst> _bindProviders(
     CompileDirectiveMetadata compMeta,
     List<ng.TemplateAst> visitedAsts,
     SourceSpan sourceSpan,
@@ -211,15 +211,18 @@ class AstTemplateParser {
     return providedAsts;
   }
 
-  List<ng.TemplateAst>? _optimize(
-          CompileDirectiveMetadata compMeta, List<ng.TemplateAst>? asts) =>
+  List<ng.TemplateAst> _optimize(
+    CompileDirectiveMetadata compMeta,
+    List<ng.TemplateAst> asts,
+  ) =>
       OptimizeTemplateAstVisitor().visitAll(asts, compMeta);
 
-  List<ng.TemplateAst>? _sortInputs(List<ng.TemplateAst>? asts) =>
+  List<ng.TemplateAst> _sortInputs(List<ng.TemplateAst> asts) =>
       _SortInputsVisitor().visitAll(asts);
 
   List<ast.TemplateAst?> _applyImplicitNamespace(
-          List<ast.TemplateAst> parsedAst) =>
+    List<ast.TemplateAst> parsedAst,
+  ) =>
       parsedAst.map((asNode) => asNode.accept(_NamespaceVisitor())).toList();
 
   void _validatePipeNames(
@@ -856,9 +859,9 @@ class _ParseContext {
       }
     }
     if (isTemplate) {
-      return Identifiers.TemplateRefToken;
+      return Identifiers.templateRefToken;
     } else if (hasReferenceInNgContent) {
-      return Identifiers.NgContentRefToken;
+      return Identifiers.ngContentRefToken;
     } else {
       return null;
     }
@@ -1597,7 +1600,7 @@ class _PipeCollector extends RecursiveAstVisitor<void> {
   final Map<String, List<int>> pipeInvocations = {};
 
   @override
-  void visitPipe(BindingPipe ast, dynamic context) {
+  void visitPipe(BindingPipe ast, void context) {
     (pipeInvocations[ast.name] ??= []).add(ast.args.length);
     ast.exp.visit(this);
     visitAll(ast.args, context);
@@ -1618,7 +1621,7 @@ class _PreserveWhitespaceVisitor extends ast.IdentityTemplateAstVisitor<void> {
   }
 
   @override
-  ast.ContainerAst visitContainer(ast.ContainerAst astNode, [_]) {
+  ast.ContainerAst visitContainer(ast.ContainerAst astNode, [void context]) {
     var children = visitAll(astNode.childNodes);
     astNode.childNodes.clear();
     astNode.childNodes.addAll(children);
@@ -1626,7 +1629,7 @@ class _PreserveWhitespaceVisitor extends ast.IdentityTemplateAstVisitor<void> {
   }
 
   @override
-  ast.ElementAst visitElement(ast.ElementAst astNode, [_]) {
+  ast.ElementAst visitElement(ast.ElementAst astNode, [void context]) {
     var children = visitAll(astNode.childNodes);
     astNode.childNodes.clear();
     astNode.childNodes.addAll(children);
@@ -1634,8 +1637,10 @@ class _PreserveWhitespaceVisitor extends ast.IdentityTemplateAstVisitor<void> {
   }
 
   @override
-  ast.EmbeddedTemplateAst visitEmbeddedTemplate(ast.EmbeddedTemplateAst astNode,
-      [_]) {
+  ast.EmbeddedTemplateAst visitEmbeddedTemplate(
+    ast.EmbeddedTemplateAst astNode, [
+    void context,
+  ]) {
     var children = visitAll(astNode.childNodes);
     astNode.childNodes.clear();
     astNode.childNodes.addAll(children);
@@ -1653,7 +1658,7 @@ class _PreserveWhitespaceVisitor extends ast.IdentityTemplateAstVisitor<void> {
 
 class _SortInputsVisitor extends RecursiveTemplateVisitor<void> {
   @override
-  ng.DirectiveAst visitDirective(ng.DirectiveAst ast, _) {
+  ng.DirectiveAst visitDirective(ng.DirectiveAst ast, void context) {
     ast.inputs.sort(_orderingOf(ast.directive.inputs));
     return super.visitDirective(ast, null) as ng.DirectiveAst;
   }
@@ -1661,12 +1666,12 @@ class _SortInputsVisitor extends RecursiveTemplateVisitor<void> {
   Comparator<ng.BoundDirectivePropertyAst> _orderingOf(
       Map<String, String> inputs) {
     final keys = inputs.keys.toList(growable: false);
-    int _indexOf(ng.BoundDirectivePropertyAst input) {
+    int indexOf(ng.BoundDirectivePropertyAst input) {
       return keys.indexOf(input.memberName);
     }
 
     return (ng.BoundDirectivePropertyAst a, ng.BoundDirectivePropertyAst b) =>
-        Comparable.compare(_indexOf(a), _indexOf(b));
+        Comparable.compare(indexOf(a), indexOf(b));
   }
 }
 
@@ -1688,5 +1693,7 @@ class _BoundHostListener {
 
 /// Returns the matched components with this element ast in the [directives].
 List<CompileDirectiveMetadata> matchElementDirectives(
-        List<CompileDirectiveMetadata> directives, ast.ElementAst astNode) =>
+  List<CompileDirectiveMetadata> directives,
+  ast.ElementAst astNode,
+) =>
     _ParseContext._matchElementDirectives(directives, astNode);

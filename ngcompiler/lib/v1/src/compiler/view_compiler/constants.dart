@@ -18,7 +18,7 @@ final parentRenderNodeVar = o.variable('parentRenderNode');
 o.Expression changeDetectionCheckToConst(String name) {
   return o.importExpr(CompileIdentifierMetadata(
     name: 'ChangeDetectionCheckedState.$name',
-    moduleUrl: Identifiers.ChangeDetectionCheckedState.moduleUrl,
+    moduleUrl: Identifiers.changeDetectionCheckedState.moduleUrl,
   ));
 }
 

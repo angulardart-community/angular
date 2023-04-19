@@ -116,8 +116,8 @@ class _AstToExpressionVisitor
   @override
   o.Expression visitEmptyExpr(compiler_ast.EmptyExpr ast, _) =>
       _isBoolType(_boundType)
-          ? o.LiteralExpr(true, o.BOOL_TYPE)
-          : o.LiteralExpr('', o.STRING_TYPE);
+          ? o.LiteralExpr(true, o.boolType)
+          : o.LiteralExpr('', o.stringType);
 
   @override
   o.Expression visitPipe(compiler_ast.BindingPipe ast, _) {
@@ -350,7 +350,7 @@ class _AstToExpressionVisitor
 }
 
 bool _isBoolType(o.OutputType? type) {
-  if (type == o.BOOL_TYPE) return true;
+  if (type == o.boolType) return true;
   if (type is o.ExternalType) {
     var name = type.value.name;
     return 'bool' == name.trim();

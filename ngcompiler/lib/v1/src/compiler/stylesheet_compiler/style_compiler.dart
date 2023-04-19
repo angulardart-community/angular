@@ -85,11 +85,11 @@ class StyleCompiler {
             styleExpressions,
             o.ArrayType(
               null,
-              listShouldBeConst ? [o.TypeModifier.Const] : const [],
+              listShouldBeConst ? [o.TypeModifier.constModifier] : const [],
             )))
         .toDeclStmt(
-      o.ArrayType(o.OBJECT_TYPE),
-      [o.StmtModifier.Final],
+      o.ArrayType(o.objectType),
+      [o.StmtModifier.finalStmt],
     );
     return StylesCompileResult([statement], stylesVar);
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:ngcompiler/v1/src/compiler/aria_attributes.dart';
 import 'package:ngcompiler/v1/src/compiler/html_events.dart';
 import 'package:ngcompiler/v1/src/compiler/schema/element_schema_registry.dart';
@@ -36,7 +38,7 @@ class MissingDirectiveValidator
   MissingDirectiveValidator(this._registry);
 
   @override
-  void visitElement(ng.ElementAst ast, [_]) {
+  void visitElement(ng.ElementAst ast, [_MissingDirectiveContext? context]) {
     final selectorsGroup = _selectorsGroup(ast.directives);
     final skipValidationSelectors =
         CssSelector.parse(ast.skipSchemaValidationForSelector);
@@ -129,7 +131,8 @@ class MissingDirectiveValidator
       selectors.any((selector) => selector.element == name);
 
   @override
-  void visitEmbeddedTemplate(ng.EmbeddedTemplateAst ast, [_]) {
+  void visitEmbeddedTemplate(ng.EmbeddedTemplateAst ast,
+      [_MissingDirectiveContext? context]) {
     final selectorsGroup = _selectorsGroup(ast.directives);
     super.visitEmbeddedTemplate(
       ast,

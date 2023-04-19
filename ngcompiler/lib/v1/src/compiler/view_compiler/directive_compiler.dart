@@ -34,7 +34,7 @@ class DirectiveCompiler {
   ) {
     final el = NodeReference.parameter(
       storage,
-      o.importType(Identifiers.HTML_HTML_ELEMENT),
+      o.importType(Identifiers.htmlElement),
       'el',
     );
     final constructor = _createChangeDetectorConstructor(
@@ -50,7 +50,7 @@ class DirectiveCompiler {
     );
     return o.ClassStmt(
       _changeDetectorClassName(directive),
-      o.importExpr(Identifiers.DirectiveChangeDetector),
+      o.importExpr(Identifiers.directiveChangeDetector),
       storage.fields,
       const [],
       constructor,
@@ -75,7 +75,7 @@ class DirectiveCompiler {
       'instance',
       outputType: instanceType,
       modifiers: [
-        o.StmtModifier.Final,
+        o.StmtModifier.finalStmt,
       ],
     );
     final constructorArgs = [o.FnParam('this.instance')];
@@ -126,7 +126,7 @@ class DirectiveCompiler {
   static final _firstCheckVarStmt = o.DeclareVarStmt(
     DetectChangesVars.firstCheck.name!,
     o.variable('view').prop('firstCheck'),
-    o.BOOL_TYPE,
+    o.boolType,
   );
 
   static o.ClassMethod _detectHostChanges(List<o.Statement> statements) {
@@ -137,7 +137,7 @@ class DirectiveCompiler {
       'detectHostChanges',
       [
         o.FnParam('view', o.importType(Views.renderView)),
-        o.FnParam('el', o.importType(Identifiers.HTML_ELEMENT)),
+        o.FnParam('el', o.importType(Identifiers.element)),
       ],
       statements,
     );

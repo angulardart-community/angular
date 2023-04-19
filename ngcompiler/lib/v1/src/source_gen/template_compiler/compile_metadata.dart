@@ -494,22 +494,22 @@ class CompileTypeMetadataVisitor
 
   o.Expression _useValueExpression(DartObject? token) {
     if (token == null || token.isNull) {
-      return o.NULL_EXPR;
+      return o.nullExpr;
     } else if (token.toStringValue() != null) {
-      return o.LiteralExpr(token.toStringValue(), o.STRING_TYPE);
+      return o.LiteralExpr(token.toStringValue(), o.stringType);
     } else if (token.toBoolValue() != null) {
-      return o.LiteralExpr(token.toBoolValue(), o.BOOL_TYPE);
+      return o.LiteralExpr(token.toBoolValue(), o.boolType);
     } else if (token.toIntValue() != null) {
-      return o.LiteralExpr(token.toIntValue(), o.INT_TYPE);
+      return o.LiteralExpr(token.toIntValue(), o.intType);
     } else if (token.toDoubleValue() != null) {
-      return o.LiteralExpr(token.toDoubleValue(), o.DOUBLE_TYPE);
+      return o.LiteralExpr(token.toDoubleValue(), o.doubleType);
     } else if (token.toListValue() != null) {
       return o.LiteralArrayExpr(
           token.toListValue()!.map(_useValueExpression).toList(),
-          o.ArrayType(null, [o.TypeModifier.Const]));
+          o.ArrayType(null, [o.TypeModifier.constModifier]));
     } else if (token.toMapValue() != null) {
       return o.LiteralMapExpr(_toMapEntities(token.toMapValue()!),
-          o.MapType(null, [o.TypeModifier.Const]));
+          o.MapType(null, [o.TypeModifier.constModifier]));
     } else if (token.toTypeValue() != null) {
       return o.importExpr(_idFor(token.toTypeValue()!));
     } else if (_isEnum(token.type)) {
@@ -551,7 +551,7 @@ class CompileTypeMetadataVisitor
       namedParams.add(o.NamedExpr(name, _useValueExpression(expr)));
     });
     params.addAll(namedParams);
-    var importType = o.importType(id, null, [o.TypeModifier.Const]);
+    var importType = o.importType(id, null, [o.TypeModifier.constModifier]);
 
     if (invocation.constructor.name.isNotEmpty) {
       if (invocation.constructor.name.startsWith('_')) {

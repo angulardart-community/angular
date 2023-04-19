@@ -7,10 +7,7 @@ abstract class RecursiveTemplateVisitor<C>
     implements TemplateAstVisitor<TemplateAst, C?> {
   /// Visits a collection of [TemplateAst] nodes, returning all of those that
   /// are not null.
-  List<T>? visitAll<T extends TemplateAst>(Iterable<T?>? astNodes,
-      [C? context]) {
-    if (astNodes == null) return null;
-
+  List<T> visitAll<T extends TemplateAst>(Iterable<T> astNodes, [C? context]) {
     final results = <T>[];
     for (final astNode in astNodes) {
       var value = visit(astNode, context);
@@ -28,13 +25,13 @@ abstract class RecursiveTemplateVisitor<C>
   @mustCallSuper
   TemplateAst visitEmbeddedTemplate(EmbeddedTemplateAst ast, C? context) =>
       EmbeddedTemplateAst(
-        visitAll(ast.attrs, context)!,
-        visitAll(ast.references, context)!,
-        visitAll(ast.variables, context)!,
-        visitAll(ast.directives, context)!,
-        visitAll(ast.providers, context)!,
+        visitAll(ast.attrs, context),
+        visitAll(ast.references, context),
+        visitAll(ast.variables, context),
+        visitAll(ast.directives, context),
+        visitAll(ast.providers, context),
         ast.elementProviderUsage,
-        visitAll(ast.children, context)!,
+        visitAll(ast.children, context),
         ast.ngContentIndex,
         ast.sourceSpan,
         ast.matchedNgContentSelectors,
@@ -44,14 +41,14 @@ abstract class RecursiveTemplateVisitor<C>
   @mustCallSuper
   TemplateAst visitElement(ElementAst ast, C? context) => ElementAst(
       ast.name,
-      visitAll(ast.attrs, context)!,
-      visitAll(ast.inputs, context)!,
-      visitAll(ast.outputs, context)!,
-      visitAll(ast.references, context)!,
-      visitAll(ast.directives, context)!,
-      visitAll(ast.providers, context)!,
+      visitAll(ast.attrs, context),
+      visitAll(ast.inputs, context),
+      visitAll(ast.outputs, context),
+      visitAll(ast.references, context),
+      visitAll(ast.directives, context),
+      visitAll(ast.providers, context),
       ast.elementProviderUsage,
-      visitAll(ast.children, context)!,
+      visitAll(ast.children, context),
       ast.ngContentIndex,
       ast.sourceSpan,
       ast.matchedNgContentSelectors);
@@ -60,15 +57,15 @@ abstract class RecursiveTemplateVisitor<C>
   @mustCallSuper
   TemplateAst visitDirective(DirectiveAst ast, C? context) => DirectiveAst(
         ast.directive,
-        inputs: visitAll(ast.inputs, context)!,
-        outputs: visitAll(ast.outputs, context)!,
+        inputs: visitAll(ast.inputs, context),
+        outputs: visitAll(ast.outputs, context),
         sourceSpan: ast.sourceSpan,
       );
 
   @override
   @mustCallSuper
   TemplateAst visitNgContainer(NgContainerAst ast, context) =>
-      NgContainerAst(visitAll(ast.children, context)!, ast.sourceSpan);
+      NgContainerAst(visitAll(ast.children, context), ast.sourceSpan);
 
   @override
   TemplateAst visitNgContent(NgContentAst ast, context) => NgContentAst(
@@ -78,37 +75,43 @@ abstract class RecursiveTemplateVisitor<C>
       visit(ast.reference, context));
 
   @override
-  TemplateAst visitReference(ReferenceAst ast, _) => ast;
+  TemplateAst visitReference(ReferenceAst ast, void context) => ast;
 
   @override
-  TemplateAst visitVariable(VariableAst ast, _) => ast;
+  TemplateAst visitVariable(VariableAst ast, void context) => ast;
 
   @override
-  TemplateAst visitEvent(BoundEventAst ast, _) => ast;
+  TemplateAst visitEvent(BoundEventAst ast, void context) => ast;
 
   @override
-  TemplateAst visitElementProperty(BoundElementPropertyAst ast, _) => ast;
+  TemplateAst visitElementProperty(BoundElementPropertyAst ast, void context) =>
+      ast;
 
   @override
-  TemplateAst visitAttr(AttrAst ast, _) => ast;
+  TemplateAst visitAttr(AttrAst ast, void context) => ast;
 
   @override
-  TemplateAst visitBoundText(BoundTextAst ast, _) => ast;
+  TemplateAst visitBoundText(BoundTextAst ast, void context) => ast;
 
   @override
-  TemplateAst visitText(TextAst ast, _) => ast;
+  TemplateAst visitText(TextAst ast, void context) => ast;
 
   @override
-  TemplateAst visitDirectiveProperty(BoundDirectivePropertyAst ast, _) => ast;
+  TemplateAst visitDirectiveProperty(
+    BoundDirectivePropertyAst ast,
+    void context,
+  ) =>
+      ast;
 
   @override
-  TemplateAst visitDirectiveEvent(BoundDirectiveEventAst ast, _) => ast;
+  TemplateAst visitDirectiveEvent(BoundDirectiveEventAst ast, void context) =>
+      ast;
 
   @override
-  TemplateAst visitProvider(ProviderAst ast, _) => ast;
+  TemplateAst visitProvider(ProviderAst ast, void context) => ast;
 
   @override
-  TemplateAst visitI18nText(I18nTextAst ast, _) => ast;
+  TemplateAst visitI18nText(I18nTextAst ast, void context) => ast;
 }
 
 // TODO(b/141691580): This should be named `RecursiveTemplateVisitor`, while the
@@ -154,43 +157,43 @@ abstract class InPlaceRecursiveTemplateVisitor<C>
 
   @override
   @mustCallSuper
-  void visitNgContainer(NgContainerAst ast, context) {
+  void visitNgContainer(NgContainerAst ast, C? context) {
     visitAll(ast.children, context);
   }
 
   @override
-  void visitNgContent(NgContentAst ast, _) {}
+  void visitNgContent(NgContentAst ast, C? context) {}
 
   @override
-  void visitReference(ReferenceAst ast, _) {}
+  void visitReference(ReferenceAst ast, C? context) {}
 
   @override
-  void visitVariable(VariableAst ast, _) {}
+  void visitVariable(VariableAst ast, C? context) {}
 
   @override
-  void visitEvent(BoundEventAst ast, _) {}
+  void visitEvent(BoundEventAst ast, C? context) {}
 
   @override
-  void visitElementProperty(BoundElementPropertyAst ast, _) {}
+  void visitElementProperty(BoundElementPropertyAst ast, C? context) {}
 
   @override
-  void visitAttr(AttrAst ast, _) {}
+  void visitAttr(AttrAst ast, C? context) {}
 
   @override
-  void visitBoundText(BoundTextAst ast, _) {}
+  void visitBoundText(BoundTextAst ast, C? context) {}
 
   @override
-  void visitText(TextAst ast, _) {}
+  void visitText(TextAst ast, C? context) {}
 
   @override
-  void visitDirectiveProperty(BoundDirectivePropertyAst ast, _) {}
+  void visitDirectiveProperty(BoundDirectivePropertyAst ast, C? context) {}
 
   @override
-  void visitDirectiveEvent(BoundDirectiveEventAst ast, _) {}
+  void visitDirectiveEvent(BoundDirectiveEventAst ast, C? context) {}
 
   @override
-  void visitProvider(ProviderAst ast, _) {}
+  void visitProvider(ProviderAst ast, C? context) {}
 
   @override
-  void visitI18nText(I18nTextAst ast, _) {}
+  void visitI18nText(I18nTextAst ast, C? context) {}
 }
