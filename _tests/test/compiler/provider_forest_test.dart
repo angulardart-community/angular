@@ -5,10 +5,10 @@ import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
 import 'package:ngcompiler/v1/src/compiler/view_compiler/provider_forest.dart';
 
 void main() {
-  final a = ProviderInstance([], o.NULL_EXPR);
-  final b = ProviderInstance([], o.NULL_EXPR);
-  final c = ProviderInstance([], o.NULL_EXPR);
-  final d = ProviderInstance([], o.NULL_EXPR);
+  final a = ProviderInstance([], o.nullExpr);
+  final b = ProviderInstance([], o.nullExpr);
+  final c = ProviderInstance([], o.nullExpr);
+  final d = ProviderInstance([], o.nullExpr);
 
   test('expanding nothing should yield nothing', () {
     expandEmptyNodes([], []);

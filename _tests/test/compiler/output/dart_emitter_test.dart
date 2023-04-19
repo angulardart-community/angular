@@ -43,22 +43,22 @@ void main() {
       expect(
           emitStmt(someVar
               .set(o.literal(1))
-              .toDeclStmt(null, [o.StmtModifier.Final])),
+              .toDeclStmt(null, [o.StmtModifier.finalStmt])),
           'final someVar = 1;');
       expect(
           emitStmt(someVar
               .set(o.literal(1))
-              .toDeclStmt(null, [o.StmtModifier.Static])),
+              .toDeclStmt(null, [o.StmtModifier.staticStmt])),
           'static var someVar = 1;');
       expect(
           emitStmt(someVar
               .set(o.literal(1,
-                  o.BuiltinType(o.BuiltinTypeName.Int, [o.TypeModifier.Const])))
-              .toDeclStmt(null, [o.StmtModifier.Final])),
+                  o.BuiltinType(o.BuiltinTypeName.intName, [o.TypeModifier.constModifier])))
+              .toDeclStmt(null, [o.StmtModifier.finalStmt])),
           'final someVar = 1;');
       expect(
           emitStmt(someVar.set(o.literal(1)).toDeclStmt()), 'var someVar = 1;');
-      expect(emitStmt(someVar.set(o.literal(1)).toDeclStmt(o.INT_TYPE)),
+      expect(emitStmt(someVar.set(o.literal(1)).toDeclStmt(o.intType)),
           'int someVar = 1;');
     });
     test('should read and write variables', () {
@@ -133,8 +133,8 @@ void main() {
 
     test('should support but hide a nullable built-in type', () {
       final nullableString = o.BuiltinType(
-        o.BuiltinTypeName.String,
-        [o.TypeModifier.Nullable],
+        o.BuiltinTypeName.stringName,
+        [o.TypeModifier.nullableModifier],
       );
       var writeVarExpr = o.variable('a').set(o.literal(null));
       expect(
@@ -146,8 +146,8 @@ void main() {
     test('should support and write a nullable built-in type', () {
       enableNullSafety();
       final nullableString = o.BuiltinType(
-        o.BuiltinTypeName.String,
-        [o.TypeModifier.Nullable],
+        o.BuiltinTypeName.stringName,
+        [o.TypeModifier.nullableModifier],
       );
       var writeVarExpr = o.variable('a').set(o.literal(null));
       expect(
@@ -159,7 +159,7 @@ void main() {
     test('should support but hide the late declaration modifier', () {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.Late])),
+        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
         '/*late*/ String a = \'Hello\';',
       );
     });
@@ -168,7 +168,7 @@ void main() {
       enableNullSafety();
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [o.StmtModifier.Late])),
+        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [o.StmtModifier.lateStmt])),
         'late String a = \'Hello\';',
       );
     });
@@ -176,9 +176,9 @@ void main() {
     test('should support but hide late + final declaration modifier', () {
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [
-          o.StmtModifier.Late,
-          o.StmtModifier.Final,
+        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [
+          o.StmtModifier.lateStmt,
+          o.StmtModifier.finalStmt,
         ])),
         '/*late final*/ String a = \'Hello\';',
       );
@@ -188,27 +188,27 @@ void main() {
       enableNullSafety();
       var writeVarExpr = o.variable('a').set(o.literal('Hello'));
       expect(
-        emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE, [
-          o.StmtModifier.Late,
-          o.StmtModifier.Final,
+        emitStmt(writeVarExpr.toDeclStmt(o.stringType, [
+          o.StmtModifier.lateStmt,
+          o.StmtModifier.finalStmt,
         ])),
         'late final String a = \'Hello\';',
       );
     });
 
     test('should support Never but emit Null when not opted-in', () {
-      var declareVar = o.variable('a').set(o.NULL_EXPR);
+      var declareVar = o.variable('a').set(o.nullExpr);
       expect(
-        emitStmt(declareVar.toDeclStmt(o.NEVER_TYPE)),
+        emitStmt(declareVar.toDeclStmt(o.neverType)),
         'Null /*Never*/ a = null;',
       );
     });
 
     test('should support and write Never', () {
       enableNullSafety();
-      var declareVar = o.variable('a').set(o.NULL_EXPR);
+      var declareVar = o.variable('a').set(o.nullExpr);
       expect(
-        emitStmt(declareVar.toDeclStmt(o.NEVER_TYPE)),
+        emitStmt(declareVar.toDeclStmt(o.neverType)),
         // = null isn't semantically valid, but this is a synthetic test anyway.
         'Never a = null;',
       );
@@ -224,17 +224,17 @@ void main() {
                   'a',
                   o.literalArr(
                     [o.literal(1)],
-                    o.ArrayType(o.INT_TYPE, [o.TypeModifier.Const]),
+                    o.ArrayType(o.intType, [o.TypeModifier.constModifier]),
                   )
                 ],
               ],
-              o.MapType(o.ArrayType(o.INT_TYPE), [o.TypeModifier.Const]),
+              o.MapType(o.ArrayType(o.intType), [o.TypeModifier.constModifier]),
             ),
           ],
           type: o.importType(
             CompileIdentifierMetadata(name: 'SomeClass'),
             [],
-            [o.TypeModifier.Const],
+            [o.TypeModifier.constModifier],
           ),
         ).toStmt()),
         "const SomeClass(<String, List<int>>{'a': [1]});",
@@ -243,11 +243,11 @@ void main() {
     test('should support builtin methods', () {
       expect(
           emitStmt(o.variable('arr1').callMethod(
-              o.BuiltinMethod.ConcatArray, [o.variable('arr2')]).toStmt()),
+              o.BuiltinMethod.concatArray, [o.variable('arr2')]).toStmt()),
           'arr1..addAll(arr2);');
       expect(
           emitStmt(o.variable('observable').callMethod(
-              o.BuiltinMethod.SubscribeObservable,
+              o.BuiltinMethod.subscribeObservable,
               [o.variable('listener')]).toStmt()),
           'observable.listen(listener);');
     });
@@ -265,7 +265,7 @@ void main() {
       expect(
           emitStmt(o.literalMap([
             ['someKey', o.literal(1)]
-          ], o.MapType(o.NUMBER_TYPE)).toStmt()),
+          ], o.MapType(o.numberType)).toStmt()),
           '<String, num>{\'someKey\': 1};');
     });
     test('should support external identifiers', () {
@@ -279,7 +279,7 @@ void main() {
     test('should support operators', () {
       var lhs = o.variable('lhs');
       var rhs = o.variable('rhs');
-      expect(emitStmt(someVar.cast(o.INT_TYPE).toStmt()), '(someVar as int);');
+      expect(emitStmt(someVar.cast(o.intType).toStmt()), '(someVar as int);');
       expect(emitStmt(o.not(someVar).toStmt()), '(!someVar);');
       expect(
           emitStmt(someVar
@@ -304,7 +304,7 @@ void main() {
     });
     test('should support function expressions', () {
       expect(emitStmt(o.fn([], []).toStmt()), ['() {', '};'].join('\n'));
-      expect(emitStmt(o.fn([o.FnParam('param1', o.INT_TYPE)], []).toStmt()),
+      expect(emitStmt(o.fn([o.FnParam('param1', o.intType)], []).toStmt()),
           ['(int param1) {', '};'].join('\n'));
     });
     test('should support function statements', () {
@@ -313,11 +313,11 @@ void main() {
       expect(
           emitStmt(o.DeclareFunctionStmt(
               'someFn', [], [o.ReturnStatement(o.literal(1))],
-              type: o.INT_TYPE)),
+              type: o.intType)),
           ['int someFn() {', '  return 1;', '}'].join('\n'));
       expect(
           emitStmt(o.DeclareFunctionStmt(
-              'someFn', [o.FnParam('param1', o.INT_TYPE)], [])),
+              'someFn', [o.FnParam('param1', o.intType)], [])),
           ['void someFn(int param1) {', '}'].join('\n'));
     });
     test('should support generic functions', () {
@@ -328,7 +328,7 @@ void main() {
           'genericFn',
           [o.FnParam('t', t)],
           [],
-          typeParameters: [o.TypeParameter('T', bound: o.NUMBER_TYPE)],
+          typeParameters: [o.TypeParameter('T', bound: o.numberType)],
         )),
         ['void genericFn<T extends num>(T t) {', '}'].join('\n'),
       );
@@ -363,7 +363,7 @@ void main() {
       var bodyStmt = o.variable('body').callFn([]).toStmt();
       var catchStmt = o
           .variable('catchFn')
-          .callFn([o.CATCH_ERROR_VAR, o.CATCH_STACK_VAR]).toStmt();
+          .callFn([o.catchErrorVar, o.catchStackVar]).toStmt();
       expect(
           emitStmt(o.TryCatchStmt([bodyStmt], [catchStmt])),
           [
@@ -380,7 +380,7 @@ void main() {
     group('classes', () {
       o.Statement callSomeMethod;
       setUp(() {
-        callSomeMethod = o.THIS_EXPR.callMethod('someMethod', []).toStmt();
+        callSomeMethod = o.thisExpr.callMethod('someMethod', []).toStmt();
       });
       test('should support declaring classes', () {
         expect(emitStmt(o.ClassStmt('SomeClass', null, [], [], null, [])),
@@ -391,7 +391,7 @@ void main() {
             ['class SomeClass extends SomeSuperClass {', '}'].join('\n'));
       });
       test('should support declaring constructors', () {
-        var superCall = o.SUPER_EXPR.callFn([o.variable('someParam')]).toStmt();
+        var superCall = o.superExpr.callFn([o.variable('someParam')]).toStmt();
         expect(
             emitStmt(
                 o.ClassStmt('SomeClass', null, [], [], o.Constructor(), [])),
@@ -402,7 +402,7 @@ void main() {
                 null,
                 [],
                 [],
-                o.Constructor(params: [o.FnParam('someParam', o.INT_TYPE)]),
+                o.Constructor(params: [o.FnParam('someParam', o.intType)]),
                 [])),
             ['class SomeClass {', '  SomeClass(int someParam);', '}']
                 .join('\n'));
@@ -431,7 +431,7 @@ void main() {
             emitStmt(o.ClassStmt(
                 'SomeClass',
                 null,
-                [o.ClassField('someField', outputType: o.INT_TYPE)],
+                [o.ClassField('someField', outputType: o.intType)],
                 [],
                 null,
                 [])),
@@ -442,8 +442,8 @@ void main() {
                 null,
                 [
                   o.ClassField('someField',
-                      outputType: o.INT_TYPE,
-                      modifiers: const [o.StmtModifier.Final])
+                      outputType: o.intType,
+                      modifiers: const [o.StmtModifier.finalStmt])
                 ],
                 [],
                 null,
@@ -457,7 +457,7 @@ void main() {
             ['class SomeClass {', '  get someGetter {', '  }', '}'].join('\n'));
         expect(
             emitStmt(o.ClassStmt('SomeClass', null, [],
-                [o.ClassGetter('someGetter', [], o.INT_TYPE)], null, [])),
+                [o.ClassGetter('someGetter', [], o.intType)], null, [])),
             ['class SomeClass {', '  int get someGetter {', '  }', '}']
                 .join('\n'));
         expect(
@@ -486,7 +486,7 @@ void main() {
                 .join('\n'));
         expect(
             emitStmt(o.ClassStmt('SomeClass', null, [], [], null,
-                [o.ClassMethod('someMethod', [], [], o.INT_TYPE)])),
+                [o.ClassMethod('someMethod', [], [], o.intType)])),
             ['class SomeClass {', '  int someMethod() {', '  }', '}']
                 .join('\n'));
         expect(
@@ -498,7 +498,7 @@ void main() {
                 null,
                 [
                   o.ClassMethod(
-                      'someMethod', [o.FnParam('someParam', o.INT_TYPE)], [])
+                      'someMethod', [o.FnParam('someParam', o.intType)], [])
                 ])),
             [
               'class SomeClass {',
@@ -532,7 +532,7 @@ void main() {
                   'T',
                   bound: o.importType(
                     CompileIdentifierMetadata(name: 'GenericBound'),
-                    [o.STRING_TYPE],
+                    [o.stringType],
                   ),
                 ),
               ])),
@@ -559,19 +559,19 @@ void main() {
       });
     });
     test('should support builtin types', () {
-      var writeVarExpr = o.variable('a').set(o.NULL_EXPR);
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.DYNAMIC_TYPE)),
+      var writeVarExpr = o.variable('a').set(o.nullExpr);
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.dynamicType)),
           'dynamic a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.BOOL_TYPE)), 'bool a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.INT_TYPE)), 'int a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.NUMBER_TYPE)), 'num a = null;');
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.boolType)), 'bool a = null;');
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.intType)), 'int a = null;');
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.numberType)), 'num a = null;');
       expect(
-          emitStmt(writeVarExpr.toDeclStmt(o.STRING_TYPE)), 'String a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.FUNCTION_TYPE)),
+          emitStmt(writeVarExpr.toDeclStmt(o.stringType)), 'String a = null;');
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.functionType)),
           'Function a = null;');
     });
     test('should support external types', () {
-      var writeVarExpr = o.variable('a').set(o.NULL_EXPR);
+      var writeVarExpr = o.variable('a').set(o.nullExpr);
       expect(
           emitStmt(writeVarExpr.toDeclStmt(o.importType(sameModuleIdentifier))),
           'someLocalId a = null;');
@@ -584,14 +584,14 @@ void main() {
           ].join('\n'));
     });
     test('should support combined types', () {
-      var writeVarExpr = o.variable('a').set(o.NULL_EXPR);
+      var writeVarExpr = o.variable('a').set(o.nullExpr);
       expect(emitStmt(writeVarExpr.toDeclStmt(o.ArrayType(null))),
           'List<dynamic> a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.ArrayType(o.INT_TYPE))),
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.ArrayType(o.intType))),
           'List<int> a = null;');
       expect(emitStmt(writeVarExpr.toDeclStmt(o.MapType(null))),
           'Map<String, dynamic> a = null;');
-      expect(emitStmt(writeVarExpr.toDeclStmt(o.MapType(o.INT_TYPE))),
+      expect(emitStmt(writeVarExpr.toDeclStmt(o.MapType(o.intType))),
           'Map<String, int> a = null;');
     });
     test('should support shadowing members', () {
