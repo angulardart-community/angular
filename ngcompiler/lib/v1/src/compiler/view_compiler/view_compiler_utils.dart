@@ -430,7 +430,7 @@ Map<K, V> _toSortedMap<K, V>(Map<K, V> data) => SplayTreeMap.from(data);
 final Map<String, CompileIdentifierMetadata> _tagNameToIdentifier = {
   'a': Identifiers.anchorElement,
   'area': Identifiers.areaElement,
-  'audio': Identifiers.htmlAudioElement,
+  'audio': Identifiers.audioElement,
   'button': Identifiers.buttonElement,
   'canvas': Identifiers.canvasElement,
   'div': Identifiers.divElement,

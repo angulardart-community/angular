@@ -33,7 +33,7 @@ void main() {
         expect(pipe.transform(date, 'E'), 'Mon');
         expect(pipe.transform(date, 'EEEE'), 'Monday');
         expect(pipe.transform(date, 'H'), '21');
-        expect(pipe.transform(date, 'j'), '9 PM');
+        expect(pipe.transform(date, 'j'), '9\u202FPM');
         expect(pipe.transform(date, 'm'), '43');
         expect(pipe.transform(date, 's'), '11');
       });
@@ -42,18 +42,18 @@ void main() {
         expect(pipe.transform(date, 'MEd'), 'Mon, 6/15');
         expect(pipe.transform(date, 'MMMd'), 'Jun 15');
         expect(pipe.transform(date, 'yMMMMEEEEd'), 'Monday, June 15, 2015');
-        expect(pipe.transform(date, 'jms'), '9:43:11 PM');
+        expect(pipe.transform(date, 'jms'), '9:43:11\u202FPM');
         expect(pipe.transform(date, 'ms'), '43:11');
       });
       test('should format with pattern aliases', () {
-        expect(pipe.transform(date, 'medium'), 'Jun 15, 2015, 9:43:11 PM');
-        expect(pipe.transform(date, 'short'), '6/15/2015, 9:43 PM');
+        expect(pipe.transform(date, 'medium'), 'Jun 15, 2015, 9:43:11\u202FPM');
+        expect(pipe.transform(date, 'short'), '6/15/2015, 9:43\u202FPM');
         expect(pipe.transform(date, 'fullDate'), 'Monday, June 15, 2015');
         expect(pipe.transform(date, 'longDate'), 'June 15, 2015');
         expect(pipe.transform(date, 'mediumDate'), 'Jun 15, 2015');
         expect(pipe.transform(date, 'shortDate'), '6/15/2015');
-        expect(pipe.transform(date, 'mediumTime'), '9:43:11 PM');
-        expect(pipe.transform(date, 'shortTime'), '9:43 PM');
+        expect(pipe.transform(date, 'mediumTime'), '9:43:11\u202FPM');
+        expect(pipe.transform(date, 'shortTime'), '9:43\u202FPM');
       });
       test('should format millis in local timezone', () {
         var millis = date.millisecondsSinceEpoch;
@@ -67,7 +67,7 @@ void main() {
         expect(pipe.transform(millis, 'E'), 'Mon');
         expect(pipe.transform(millis, 'EEEE'), 'Monday');
         expect(pipe.transform(millis, 'H'), '21');
-        expect(pipe.transform(millis, 'j'), '9 PM');
+        expect(pipe.transform(millis, 'j'), '9\u202FPM');
         expect(pipe.transform(millis, 'm'), '43');
         expect(pipe.transform(millis, 's'), '11');
       });

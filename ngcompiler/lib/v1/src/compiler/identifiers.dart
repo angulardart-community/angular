@@ -299,7 +299,7 @@ class Identifiers {
       CompileIdentifierMetadata(name: 'DivElement', moduleUrl: 'dart:html');
   static final areaElement =
       CompileIdentifierMetadata(name: 'AreaElement', moduleUrl: 'dart:html');
-  static final htmlAudioElement =
+  static final audioElement =
       CompileIdentifierMetadata(name: 'AudioElement', moduleUrl: 'dart:html');
   static final buttonElement =
       CompileIdentifierMetadata(name: 'ButtonElement', moduleUrl: 'dart:html');
