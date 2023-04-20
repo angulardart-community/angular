@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show Control;
-import '../validators.dart' show NG_VALIDATORS;
+import '../validators.dart' show ngValidators;
 import 'control_container.dart' show ControlContainer;
 import 'control_value_accessor.dart' show ControlValueAccessor, ngValueAccessor;
 import 'form_interface.dart' show Form;
@@ -91,7 +91,7 @@ class NgControlName extends NgControl implements AfterChanges, OnDestroy {
 
   NgControlName(
     @SkipSelf() this._parent,
-    @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
+    @Optional() @Self() @Inject(ngValidators) List<dynamic>? validators,
     @Optional()
     @Self()
     @Inject(ngValueAccessor)

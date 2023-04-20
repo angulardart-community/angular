@@ -1,3 +1,5 @@
+// ignore_for_file: argument_type_not_assignable
+
 import 'dart:html';
 import 'dart:js_util' as js_util;
 
@@ -66,7 +68,7 @@ typedef ChangeFunctionSimple = dynamic Function(dynamic value);
   selector: 'input[integer]',
   providers: [
     ExistingProvider.forToken(ngValueAccessor, IntValueAccessor),
-    ExistingProvider.forToken(NG_VALIDATORS, IntValueAccessor),
+    ExistingProvider.forToken(ngValidators, IntValueAccessor),
   ],
 )
 class IntValueAccessor implements ControlValueAccessor<dynamic>, Validator {

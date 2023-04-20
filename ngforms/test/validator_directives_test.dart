@@ -1,3 +1,5 @@
+// ignore_for_file: argument_type_not_assignable
+
 import 'package:test/test.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';

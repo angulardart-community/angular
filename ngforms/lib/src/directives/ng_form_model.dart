@@ -1,7 +1,7 @@
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show AbstractControlGroup;
-import '../validators.dart' show Validators, NG_VALIDATORS;
+import '../validators.dart' show Validators, ngValidators;
 import 'abstract_form.dart' show AbstractForm;
 import 'control_container.dart' show ControlContainer;
 import 'ng_control.dart' show NgControl;
@@ -106,7 +106,7 @@ class NgFormModel extends AbstractForm<AbstractControlGroup>
   List<NgControl> directives = [];
 
   NgFormModel(
-    @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
+    @Optional() @Self() @Inject(ngValidators) List<dynamic>? validators,
   ) : _validator = composeValidators(validators);
 
   @override

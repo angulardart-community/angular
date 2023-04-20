@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show AbstractControlGroup, Control, ControlGroup;
-import '../validators.dart' show NG_VALIDATORS;
+import '../validators.dart' show ngValidators;
 import 'control_container.dart' show ControlContainer;
 import 'ng_control.dart' show NgControl;
 import 'ng_control_group.dart' show NgControlGroup;
@@ -22,7 +22,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup;
 )
 class MemorizedForm extends NgForm {
   MemorizedForm(
-    @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
+    @Optional() @Self() @Inject(ngValidators) List<dynamic>? validators,
     ChangeDetectorRef changeDetectorRef,
   ) : super(validators, changeDetectorRef);
 

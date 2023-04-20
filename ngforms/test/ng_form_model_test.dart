@@ -1,3 +1,5 @@
+// ignore_for_file: argument_type_not_assignable
+
 import 'package:test/test.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
@@ -189,7 +191,7 @@ class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
 
 @Directive(selector: '[matchingPasswords]', providers: [
   ValueProvider.forToken(
-      NG_VALIDATORS, MatchingPasswordsValidator.matchingPasswordsValidator),
+      ngValidators, MatchingPasswordsValidator.matchingPasswordsValidator),
 ])
 class MatchingPasswordsValidator {
   static Map<String, dynamic>? matchingPasswordsValidator(

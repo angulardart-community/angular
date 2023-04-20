@@ -5,7 +5,7 @@ import 'package:ngdart/angular.dart';
 import 'control_value_accessor.dart'
     show ChangeHandler, ControlValueAccessor, ngValueAccessor, TouchHandler;
 
-const CHECKBOX_VALUE_ACCESSOR = ExistingProvider.forToken(
+const checkboxValueAccessor = ExistingProvider.forToken(
   ngValueAccessor,
   CheckboxControlValueAccessor,
 );
@@ -21,7 +21,7 @@ const CHECKBOX_VALUE_ACCESSOR = ExistingProvider.forToken(
   selector: 'input[type=checkbox][ngControl],'
       'input[type=checkbox][ngFormControl],'
       'input[type=checkbox][ngModel]',
-  providers: [CHECKBOX_VALUE_ACCESSOR],
+  providers: [checkboxValueAccessor],
 )
 class CheckboxControlValueAccessor extends Object
     with TouchHandler, ChangeHandler<bool>

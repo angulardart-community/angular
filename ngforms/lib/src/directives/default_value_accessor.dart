@@ -6,7 +6,7 @@ import 'package:ngforms/src/directives/shared.dart' show setElementDisabled;
 
 import 'control_value_accessor.dart';
 
-const DEFAULT_VALUE_ACCESSOR = ExistingProvider.forToken(
+const defaultValueAccessor = ExistingProvider.forToken(
   ngValueAccessor,
   DefaultValueAccessor,
 );
@@ -23,7 +23,7 @@ const DEFAULT_VALUE_ACCESSOR = ExistingProvider.forToken(
       'textarea[ngFormControl],'
       'input:not([type=checkbox])[ngModel],'
       'textarea[ngModel],[ngDefaultControl]',
-  providers: [DEFAULT_VALUE_ACCESSOR],
+  providers: [defaultValueAccessor],
 )
 class DefaultValueAccessor extends Object
     with TouchHandler, ChangeHandler<String>
