@@ -3,15 +3,13 @@
 // **************************************************************************
 
 import 'generated_injector_large.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'generated_injector_large.template.dart' as _ref0;
 import 'package:ngdart/src/di/injector.dart' as _i1;
 import 'generated_injector_large.dart' as _i2;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'generated_injector_large.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -21,7 +19,7 @@ final List<Object> styles$GoldenComponent = const [];
 
 class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent> {
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -75,6 +73,7 @@ import8.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
 }
 
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 _i1.Injector doGenerate$Injector(_i1.Injector parent) => _Injector$doGenerate._(parent);
 
 class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injector {
@@ -105,7 +104,18 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
   _i2.UtilA0? _field21;
 
   _i2.BaseUtil _getBaseUtil$0() => _field0 ??= _i2.BaseUtil();
-  _i2.AppUtil _getAppUtil$1() => _field1 ??= _i2.AppUtil(this.get(_i2.UtilB0), this.get(_i2.UtilB1), this.get(_i2.UtilB2), this.get(_i2.UtilB3), this.get(_i2.UtilB4), this.get(_i2.UtilB5), this.get(_i2.UtilB6), this.get(_i2.UtilB7), this.get(_i2.UtilB8), this.get(_i2.UtilB9));
+  _i2.AppUtil _getAppUtil$1() => _field1 ??= _i2.AppUtil(
+        this.get(_i2.UtilB0),
+        this.get(_i2.UtilB1),
+        this.get(_i2.UtilB2),
+        this.get(_i2.UtilB3),
+        this.get(_i2.UtilB4),
+        this.get(_i2.UtilB5),
+        this.get(_i2.UtilB6),
+        this.get(_i2.UtilB7),
+        this.get(_i2.UtilB8),
+        this.get(_i2.UtilB9),
+      );
   Object _getExisting$2() => this.get(_i2.UtilA9);
   Object _getExisting$3() => this.get(_i2.UtilA8);
   Object _getExisting$4() => this.get(_i2.UtilA7);
@@ -128,7 +138,10 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
   _i2.UtilA0 _getUtilA0$21() => _field21 ??= _i2.UtilA0();
   _i1.Injector _getInjector$22() => this;
   @override
-  Object? injectFromSelfOptional(Object token, [Object? orElse = _i1.throwIfNotFound]) {
+  Object? injectFromSelfOptional(
+    Object token, [
+    Object? orElse = _i1.throwIfNotFound,
+  ]) {
     if (identical(token, _i2.BaseUtil)) {
       return _getBaseUtil$0();
     }
@@ -200,15 +213,4 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
     }
     return orElse;
   }
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

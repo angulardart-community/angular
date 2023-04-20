@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'directive_change_detector.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'directive_change_detector.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'directive_change_detector.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import7;
@@ -24,7 +22,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final import1.NgModelLike _NgModelLike_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -56,7 +54,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._NgModelLike_0_5, 'ngModel', currVal_0);
       }
-      this._NgModelLike_0_5.model = currVal_0 /* REF:asset:goldens/test/change_detection/directive_change_detector.dart:445:464 */;
+      this._NgModelLike_0_5.model = currVal_0 /* REF:asset:goldens/test/change_detection/directive_change_detector.dart:415:434 */;
       changed = true;
       this._expr_0 = currVal_0;
     }
@@ -112,15 +110,4 @@ class _ViewGoldenComponentHost0 extends import11.HostView<import1.GoldenComponen
 
 import11.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

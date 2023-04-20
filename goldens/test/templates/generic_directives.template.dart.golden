@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'generic_directives.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'generic_directives.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'generic_directives.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -49,7 +47,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewUsesGenericChangeDetector0 _compView_9;
   late final import1.UsesGenericChangeDetector _UsesGenericChangeDetector_9_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -185,7 +183,7 @@ final List<Object> styles$UntypedComp = const [];
 
 class ViewUntypedComp0 extends import0.ComponentView<import1.UntypedComp> {
   static import2.ComponentStyles? _componentStyles;
-  ViewUntypedComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUntypedComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -246,7 +244,7 @@ class ViewUsesUntypedComp0 extends import0.ComponentView<import1.UsesUntypedComp
   late final import1.UntypedComp _UntypedComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesUntypedComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesUntypedComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-unyped-comp'));
   }
@@ -272,7 +270,7 @@ class ViewUsesUntypedComp0 extends import0.ComponentView<import1.UsesUntypedComp
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._UntypedComp_0_5, 'input', currVal_0);
       }
-      this._UntypedComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:1531:1548 */;
+      this._UntypedComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:1501:1518 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -328,7 +326,7 @@ final List<Object> styles$GenericComp = const [];
 
 class ViewGenericComp0<T> extends import0.ComponentView<import1.GenericComp<T>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewGenericComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGenericComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -389,7 +387,7 @@ class ViewUsesGenericComp0 extends import0.ComponentView<import1.UsesGenericComp
   late final import1.GenericComp<int> _GenericComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesGenericComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesGenericComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-generic-comp'));
   }
@@ -415,7 +413,7 @@ class ViewUsesGenericComp0 extends import0.ComponentView<import1.UsesGenericComp
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._GenericComp_0_5, 'input', currVal_0);
       }
-      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:1965:1982 */;
+      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:1935:1952 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -474,7 +472,7 @@ class ViewUsesGenericCompGeneric0<E> extends import0.ComponentView<import1.UsesG
   late final import1.GenericComp<List<E>> _GenericComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesGenericCompGeneric0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesGenericCompGeneric0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-generic-comp-generic'));
   }
@@ -500,7 +498,7 @@ class ViewUsesGenericCompGeneric0<E> extends import0.ComponentView<import1.UsesG
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._GenericComp_0_5, 'input', currVal_0);
       }
-      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:2303:2320 */;
+      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:2273:2290 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -556,7 +554,7 @@ final List<Object> styles$MappingComp1 = const [];
 
 class ViewMappingComp10<K, V> extends import0.ComponentView<import1.MappingComp1<K, V>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewMappingComp10(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewMappingComp10(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -618,7 +616,7 @@ class ViewUsesMappingComp10 extends import0.ComponentView<import1.UsesMappingCom
   Object? _expr_0;
   Object? _expr_1;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesMappingComp10(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesMappingComp10(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-mapping-comp-1'));
   }
@@ -644,7 +642,7 @@ class ViewUsesMappingComp10 extends import0.ComponentView<import1.UsesMappingCom
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._MappingComp1_0_5, 'key', currVal_0);
       }
-      this._MappingComp1_0_5.key = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:2811:2826 */;
+      this._MappingComp1_0_5.key = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:2781:2796 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.bindValue;
@@ -652,7 +650,7 @@ class ViewUsesMappingComp10 extends import0.ComponentView<import1.UsesMappingCom
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._MappingComp1_0_5, 'value', currVal_1);
       }
-      this._MappingComp1_0_5.value = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:2827:2846 */;
+      this._MappingComp1_0_5.value = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:2797:2816 */;
       this._expr_1 = currVal_1;
     }
     this._compView_0.detectChanges();
@@ -708,7 +706,7 @@ final List<Object> styles$MappingComp2 = const [];
 
 class ViewMappingComp20<K, V> extends import0.ComponentView<import1.MappingComp2<K, V>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewMappingComp20(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewMappingComp20(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -769,7 +767,7 @@ class ViewUsesMappingComp20 extends import0.ComponentView<import1.UsesMappingCom
   late final import1.MappingComp2<int, String> _MappingComp2_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesMappingComp20(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesMappingComp20(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-mapping-comp-2'));
   }
@@ -795,7 +793,7 @@ class ViewUsesMappingComp20 extends import0.ComponentView<import1.UsesMappingCom
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._MappingComp2_0_5, 'input', currVal_0);
       }
-      this._MappingComp2_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:3337:3354 */;
+      this._MappingComp2_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:3307:3324 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -851,7 +849,7 @@ final List<Object> styles$BoundComp = const [];
 
 class ViewBoundComp0<T extends num> extends import0.ComponentView<import1.BoundComp<T>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -912,7 +910,7 @@ class ViewUsesBoundCompWithBounds0 extends import0.ComponentView<import1.UsesBou
   late final import1.BoundComp _BoundComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesBoundCompWithBounds0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesBoundCompWithBounds0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-bound-comp-with-bounds'));
   }
@@ -938,7 +936,7 @@ class ViewUsesBoundCompWithBounds0 extends import0.ComponentView<import1.UsesBou
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._BoundComp_0_5, 'input', currVal_0);
       }
-      this._BoundComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:3763:3780 */;
+      this._BoundComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:3733:3750 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -997,7 +995,7 @@ class ViewUsesBoundComp0 extends import0.ComponentView<import1.UsesBoundComp> {
   late final import1.BoundComp _BoundComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -1023,7 +1021,7 @@ class ViewUsesBoundComp0 extends import0.ComponentView<import1.UsesBoundComp> {
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._BoundComp_0_5, 'input', currVal_0);
       }
-      this._BoundComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4070:4087 */;
+      this._BoundComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4040:4057 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -1079,7 +1077,7 @@ final List<Object> styles$SelfBoundComp = const [];
 
 class ViewSelfBoundComp0<A, B extends A> extends import0.ComponentView<import1.SelfBoundComp<A, B>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewSelfBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewSelfBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -1141,7 +1139,7 @@ class ViewUsesSelfBoundComp0 extends import0.ComponentView<import1.UsesSelfBound
   Object? _expr_0;
   Object? _expr_1;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesSelfBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesSelfBoundComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -1167,7 +1165,7 @@ class ViewUsesSelfBoundComp0 extends import0.ComponentView<import1.UsesSelfBound
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._SelfBoundComp_0_5, 'a', currVal_0);
       }
-      this._SelfBoundComp_0_5.a = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4482:4493 */;
+      this._SelfBoundComp_0_5.a = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4452:4463 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.bindB;
@@ -1175,7 +1173,7 @@ class ViewUsesSelfBoundComp0 extends import0.ComponentView<import1.UsesSelfBound
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._SelfBoundComp_0_5, 'b', currVal_1);
       }
-      this._SelfBoundComp_0_5.b = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:4494:4505 */;
+      this._SelfBoundComp_0_5.b = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:4464:4475 */;
       this._expr_1 = currVal_1;
     }
     this._compView_0.detectChanges();
@@ -1231,7 +1229,7 @@ final List<Object> styles$FunctionTypeComp = const [];
 
 class ViewFunctionTypeComp0<F> extends import0.ComponentView<import1.FunctionTypeComp<F>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewFunctionTypeComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewFunctionTypeComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('comp'));
   }
@@ -1292,7 +1290,7 @@ class ViewUsesFunctionTypeComp0 extends import0.ComponentView<import1.UsesFuncti
   late final import1.FunctionTypeComp<String> _FunctionTypeComp_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesFunctionTypeComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesFunctionTypeComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-function-type-comp'));
   }
@@ -1318,7 +1316,7 @@ class ViewUsesFunctionTypeComp0 extends import0.ComponentView<import1.UsesFuncti
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._FunctionTypeComp_0_5, 'input', currVal_0);
       }
-      this._FunctionTypeComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4987:5004 */;
+      this._FunctionTypeComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:4957:4974 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -1383,7 +1381,7 @@ class ViewNestedParentComp0<T> extends import0.ComponentView<import1.NestedParen
   Object? _expr_1;
   Object? _expr_2;
   static import2.ComponentStyles? _componentStyles;
-  ViewNestedParentComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewNestedParentComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('parent'));
   }
@@ -1423,7 +1421,7 @@ class ViewNestedParentComp0<T> extends import0.ComponentView<import1.NestedParen
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedChildComp_0_5, 'input', currVal_0);
       }
-      this._NestedChildComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5391:5407 */;
+      this._NestedChildComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5361:5377 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.input2;
@@ -1431,7 +1429,7 @@ class ViewNestedParentComp0<T> extends import0.ComponentView<import1.NestedParen
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedChildComp_1_5, 'input', currVal_1);
       }
-      this._NestedChildComp_1_5.input = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:5428:5444 */;
+      this._NestedChildComp_1_5.input = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:5398:5414 */;
       this._expr_1 = currVal_1;
     }
     final currVal_2 = _ctx.moreInputs;
@@ -1439,7 +1437,7 @@ class ViewNestedParentComp0<T> extends import0.ComponentView<import1.NestedParen
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NgFor_2_9, 'ngForOf', currVal_2);
       }
-      this._NgFor_2_9.ngForOf = currVal_2 /* REF:asset:goldens/test/templates/generic_directives.dart:5465:5497 */;
+      this._NgFor_2_9.ngForOf = currVal_2 /* REF:asset:goldens/test/templates/generic_directives.dart:5435:5467 */;
       this._expr_2 = currVal_2;
     }
     if ((!import9.debugThrowIfChanged)) {
@@ -1504,7 +1502,7 @@ class _ViewNestedParentComp1<T> extends import16.EmbeddedView<import1.NestedPare
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedChildComp_0_5, 'input', currVal_0);
       }
-      this._NestedChildComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5498:5513 */;
+      this._NestedChildComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5468:5483 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -1540,7 +1538,7 @@ final List<Object> styles$NestedChildComp = const [];
 
 class ViewNestedChildComp0<T> extends import0.ComponentView<import1.NestedChildComp<T>> {
   static import2.ComponentStyles? _componentStyles;
-  ViewNestedChildComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewNestedChildComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child'));
   }
@@ -1603,7 +1601,7 @@ class ViewUsesNestedParentComp0 extends import0.ComponentView<import1.UsesNested
   Object? _expr_1;
   Object? _expr_2;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesNestedParentComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesNestedParentComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-nested-parent-comp'));
   }
@@ -1629,7 +1627,7 @@ class ViewUsesNestedParentComp0 extends import0.ComponentView<import1.UsesNested
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedParentComp_0_5, 'input1', currVal_0);
       }
-      this._NestedParentComp_0_5.input1 = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5991:6010 */;
+      this._NestedParentComp_0_5.input1 = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:5961:5980 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.binding2;
@@ -1637,7 +1635,7 @@ class ViewUsesNestedParentComp0 extends import0.ComponentView<import1.UsesNested
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedParentComp_0_5, 'input2', currVal_1);
       }
-      this._NestedParentComp_0_5.input2 = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:6017:6036 */;
+      this._NestedParentComp_0_5.input2 = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:5987:6006 */;
       this._expr_1 = currVal_1;
     }
     final currVal_2 = _ctx.moreBindings;
@@ -1645,7 +1643,7 @@ class ViewUsesNestedParentComp0 extends import0.ComponentView<import1.UsesNested
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._NestedParentComp_0_5, 'moreInputs', currVal_2);
       }
-      this._NestedParentComp_0_5.moreInputs = currVal_2 /* REF:asset:goldens/test/templates/generic_directives.dart:6043:6070 */;
+      this._NestedParentComp_0_5.moreInputs = currVal_2 /* REF:asset:goldens/test/templates/generic_directives.dart:6013:6040 */;
       this._expr_2 = currVal_2;
     }
     this._compView_0.detectChanges();
@@ -1707,7 +1705,7 @@ class ViewUsesMultipleTypesComp0 extends import0.ComponentView<import1.UsesMulti
   Object? _expr_0;
   Object? _expr_1;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesMultipleTypesComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesMultipleTypesComp0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-multiple-types-comp'));
   }
@@ -1738,7 +1736,7 @@ class ViewUsesMultipleTypesComp0 extends import0.ComponentView<import1.UsesMulti
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._GenericComp_0_5, 'input', currVal_0);
       }
-      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:6434:6448 */;
+      this._GenericComp_0_5.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:6404:6418 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.index;
@@ -1746,7 +1744,7 @@ class ViewUsesMultipleTypesComp0 extends import0.ComponentView<import1.UsesMulti
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._GenericComp_1_5, 'input', currVal_1);
       }
-      this._GenericComp_1_5.input = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:6467:6482 */;
+      this._GenericComp_1_5.input = currVal_1 /* REF:asset:goldens/test/templates/generic_directives.dart:6437:6452 */;
       this._expr_1 = currVal_1;
     }
     this._compView_0.detectChanges();
@@ -1807,7 +1805,7 @@ class ViewUsesGenericChangeDetector0 extends import0.ComponentView<import1.UsesG
   Object? _expr_0;
   late final import6.DivElement _el_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesGenericChangeDetector0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesGenericChangeDetector0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-generic-change-detector'));
   }
@@ -1835,7 +1833,7 @@ class ViewUsesGenericChangeDetector0 extends import0.ComponentView<import1.UsesG
       if (import10.isDevToolsEnabled) {
         import10.Inspector.instance.recordInput(this._GenericDirective_0_5.instance, 'input', currVal_0);
       }
-      this._GenericDirective_0_5.instance.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:6907:6922 */;
+      this._GenericDirective_0_5.instance.input = currVal_0 /* REF:asset:goldens/test/templates/generic_directives.dart:6877:6892 */;
       this._expr_0 = currVal_0;
     }
     this._GenericDirective_0_5.detectHostChanges(this, this._el_0);
@@ -1893,36 +1891,4 @@ class GenericDirectiveNgCd<T extends String> extends import18.DirectiveChangeDet
       this._expr_0 = currVal_0;
     }
   }
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(UntypedComp, createUntypedCompFactory());
-  _ngRef.registerComponent(UsesUntypedComp, createUsesUntypedCompFactory());
-  _ngRef.registerComponent(GenericComp, createGenericCompFactory());
-  _ngRef.registerComponent(UsesGenericComp, createUsesGenericCompFactory());
-  _ngRef.registerComponent(UsesGenericCompGeneric, createUsesGenericCompGenericFactory());
-  _ngRef.registerComponent(MappingComp1, createMappingComp1Factory());
-  _ngRef.registerComponent(UsesMappingComp1, createUsesMappingComp1Factory());
-  _ngRef.registerComponent(MappingComp2, createMappingComp2Factory());
-  _ngRef.registerComponent(UsesMappingComp2, createUsesMappingComp2Factory());
-  _ngRef.registerComponent(BoundComp, createBoundCompFactory());
-  _ngRef.registerComponent(UsesBoundCompWithBounds, createUsesBoundCompWithBoundsFactory());
-  _ngRef.registerComponent(UsesBoundComp, createUsesBoundCompFactory());
-  _ngRef.registerComponent(SelfBoundComp, createSelfBoundCompFactory());
-  _ngRef.registerComponent(UsesSelfBoundComp, createUsesSelfBoundCompFactory());
-  _ngRef.registerComponent(FunctionTypeComp, createFunctionTypeCompFactory());
-  _ngRef.registerComponent(UsesFunctionTypeComp, createUsesFunctionTypeCompFactory());
-  _ngRef.registerComponent(NestedParentComp, createNestedParentCompFactory());
-  _ngRef.registerComponent(NestedChildComp, createNestedChildCompFactory());
-  _ngRef.registerComponent(UsesNestedParentComp, createUsesNestedParentCompFactory());
-  _ngRef.registerComponent(UsesMultipleTypesComp, createUsesMultipleTypesCompFactory());
-  _ngRef.registerComponent(UsesGenericChangeDetector, createUsesGenericChangeDetectorFactory());
-  _ref0.initReflector();
 }

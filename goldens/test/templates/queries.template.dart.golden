@@ -3,15 +3,13 @@
 // **************************************************************************
 
 import 'queries.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'queries.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'queries.dart' as import1;
 import 'package:ngdart/src/core/linker/view_container.dart';
 import 'package:ngdart/src/common/directives/ng_if.dart';
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import4;
 import 'package:ngdart/src/core/linker/views/view.dart' as import5;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import6;
 import 'package:ngdart/src/utilities.dart' as import7;
 import 'dart:html' as import8;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import9;
@@ -51,7 +49,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewContentHasReference0 _compView_8;
   late final import1.ContentHasReference _ContentHasReference_8_5;
   static import4.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('golden'));
   }
@@ -124,7 +122,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
     if (import10.isDevToolsEnabled) {
       import10.Inspector.instance.recordInput(this._NgIf_2_9, 'ngIf', _ctx.someValue);
     }
-    this._NgIf_2_9.ngIf = _ctx.someValue /* REF:asset:goldens/test/templates/queries.dart:694:711 */;
+    this._NgIf_2_9.ngIf = _ctx.someValue /* REF:asset:goldens/test/templates/queries.dart:664:681 */;
     this._appEl_2.detectChangesInNestedViews();
     if ((!import13.debugThrowIfChanged)) {
       if (this._viewQuery_AnotherDirective_4_isDirty) {
@@ -238,7 +236,7 @@ class ViewEmbeddedQueries0 extends import0.ComponentView<import1.EmbeddedQueries
   late final ViewContainer _appEl_1;
   late final ViewContainer _appEl_2;
   static import4.ComponentStyles? _componentStyles;
-  ViewEmbeddedQueries0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewEmbeddedQueries0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('embedded-queries'));
   }
@@ -377,7 +375,7 @@ class ViewNestedNgForQueriesList0 extends import0.ComponentView<import1.NestedNg
   late final ViewContainer _appEl_0;
   late final NgIf _NgIf_0_9;
   static import4.ComponentStyles? _componentStyles;
-  ViewNestedNgForQueriesList0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewNestedNgForQueriesList0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('nested-ng-for-queries'));
   }
@@ -405,7 +403,7 @@ class ViewNestedNgForQueriesList0 extends import0.ComponentView<import1.NestedNg
     if (import10.isDevToolsEnabled) {
       import10.Inspector.instance.recordInput(this._NgIf_0_9, 'ngIf', _ctx.conditionA);
     }
-    this._NgIf_0_9.ngIf = _ctx.conditionA /* REF:asset:goldens/test/templates/queries.dart:2649:2667 */;
+    this._NgIf_0_9.ngIf = _ctx.conditionA /* REF:asset:goldens/test/templates/queries.dart:2619:2637 */;
     this._appEl_0.detectChangesInNestedViews();
   }
 
@@ -463,7 +461,7 @@ class _ViewNestedNgForQueriesList1 extends import16.EmbeddedView<import1.NestedN
     if (import10.isDevToolsEnabled) {
       import10.Inspector.instance.recordInput(this._NgIf_1_9, 'ngIf', _ctx.conditionB);
     }
-    this._NgIf_1_9.ngIf = _ctx.conditionB /* REF:asset:goldens/test/templates/queries.dart:2680:2698 */;
+    this._NgIf_1_9.ngIf = _ctx.conditionB /* REF:asset:goldens/test/templates/queries.dart:2650:2668 */;
     this._appEl_1.detectChangesInNestedViews();
   }
 
@@ -504,7 +502,7 @@ class _ViewNestedNgForQueriesList2 extends import16.EmbeddedView<import1.NestedN
         if (import10.isDevToolsEnabled) {
           import10.Inspector.instance.recordInput(this._NgFor_1_9, 'ngForOf', _ctx.items);
         }
-        this._NgFor_1_9.ngForOf = _ctx.items /* REF:asset:goldens/test/templates/queries.dart:2713:2739 */;
+        this._NgFor_1_9.ngForOf = _ctx.items /* REF:asset:goldens/test/templates/queries.dart:2683:2709 */;
       }
     }
     if ((!import13.debugThrowIfChanged)) {
@@ -566,7 +564,7 @@ class ViewStaticSingleQuery0 extends import0.ComponentView<import1.StaticSingleQ
   late final ViewContainer _appEl_1;
   late final NgIf _NgIf_1_9;
   static import4.ComponentStyles? _componentStyles;
-  ViewStaticSingleQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewStaticSingleQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('static-single-query'));
   }
@@ -600,7 +598,7 @@ class ViewStaticSingleQuery0 extends import0.ComponentView<import1.StaticSingleQ
     if (import10.isDevToolsEnabled) {
       import10.Inspector.instance.recordInput(this._NgIf_1_9, 'ngIf', _ctx.isVisible);
     }
-    this._NgIf_1_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/templates/queries.dart:3291:3308 */;
+    this._NgIf_1_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/templates/queries.dart:3261:3278 */;
     this._appEl_1.detectChangesInNestedViews();
   }
 
@@ -678,7 +676,7 @@ class ViewDynamicSingleQuery0 extends import0.ComponentView<import1.DynamicSingl
   late final import1.AnotherDirective _AnotherDirective_1_5;
   late final import1.AnotherDirective _AnotherDirective_2_5;
   static import4.ComponentStyles? _componentStyles;
-  ViewDynamicSingleQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewDynamicSingleQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('dynamic-single-query'));
   }
@@ -715,7 +713,7 @@ class ViewDynamicSingleQuery0 extends import0.ComponentView<import1.DynamicSingl
     if (import10.isDevToolsEnabled) {
       import10.Inspector.instance.recordInput(this._NgIf_0_9, 'ngIf', _ctx.isVisible);
     }
-    this._NgIf_0_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/templates/queries.dart:3735:3752 */;
+    this._NgIf_0_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/templates/queries.dart:3705:3722 */;
     this._appEl_0.detectChangesInNestedViews();
     if ((!import13.debugThrowIfChanged)) {
       if (this._viewQuery_AnotherDirective_0_isDirty) {
@@ -810,7 +808,7 @@ final List<Object> styles$ContentQuery = const [];
 
 class ViewContentQuery0 extends import0.ComponentView<import1.ContentQuery> {
   static import4.ComponentStyles? _componentStyles;
-  ViewContentQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewContentQuery0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('content-query'));
   }
@@ -876,7 +874,7 @@ class ViewContentHasReference0 extends import0.ComponentView<import1.ContentHasR
   final import20.TextBinding _textBinding_4 = import20.TextBinding();
   late final import21.NgContentRef _NgContentRef_0_5;
   static import4.ComponentStyles? _componentStyles;
-  ViewContentHasReference0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewContentHasReference0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('content-has-reference'));
   }
@@ -901,8 +899,8 @@ class ViewContentHasReference0 extends import0.ComponentView<import1.ContentHasR
   void detectChangesInternal() {
     final _ctx = this.ctx;
     final local_foo = this._NgContentRef_0_5;
-    this._textBinding_2.updateText(import22.interpolate0(local_foo.hasContent)) /* REF:asset:goldens/test/templates/queries.dart:4611:4629 */;
-    this._textBinding_4.updateText(import22.interpolate0((_ctx.ref!).hasContent)) /* REF:asset:goldens/test/templates/queries.dart:4634:4653 */;
+    this._textBinding_2.updateText(import22.interpolate0(local_foo.hasContent)) /* REF:asset:goldens/test/templates/queries.dart:4581:4599 */;
+    this._textBinding_4.updateText(import22.interpolate0((_ctx.ref!).hasContent)) /* REF:asset:goldens/test/templates/queries.dart:4604:4623 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -944,21 +942,4 @@ class _ViewContentHasReferenceHost0 extends import18.HostView<import1.ContentHas
 
 import18.HostView<import1.ContentHasReference> viewFactory_ContentHasReferenceHost0() {
   return _ViewContentHasReferenceHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(EmbeddedQueries, createEmbeddedQueriesFactory());
-  _ngRef.registerComponent(NestedNgForQueriesList, createNestedNgForQueriesListFactory());
-  _ngRef.registerComponent(StaticSingleQuery, createStaticSingleQueryFactory());
-  _ngRef.registerComponent(DynamicSingleQuery, createDynamicSingleQueryFactory());
-  _ngRef.registerComponent(ContentQuery, createContentQueryFactory());
-  _ngRef.registerComponent(ContentHasReference, createContentHasReferenceFactory());
-  _ref0.initReflector();
 }

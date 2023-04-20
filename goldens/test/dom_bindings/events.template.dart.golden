@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'events.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'events.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'events.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -24,7 +22,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewUsesOutputs0 _compView_1;
   late final import1.UsesOutputs _UsesOutputs_1_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -104,7 +102,7 @@ final List<Object> styles$UsesDomEvents = const [];
 
 class ViewUsesDomEvents0 extends import0.ComponentView<import1.UsesDomEvents> {
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesDomEvents0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesDomEvents0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-dom-events'));
   }
@@ -174,7 +172,7 @@ class ViewUsesOutputs0 extends import0.ComponentView<import1.UsesOutputs> {
   late final ViewHasNgEvents0 _compView_0;
   late final import1.HasNgEvents _HasNgEvents_0_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesOutputs0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesOutputs0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-ng-events'));
   }
@@ -252,7 +250,7 @@ final List<Object> styles$HasNgEvents = const [];
 
 class ViewHasNgEvents0 extends import0.ComponentView<import1.HasNgEvents> {
   static import2.ComponentStyles? _componentStyles;
-  ViewHasNgEvents0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasNgEvents0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('has-ng-events'));
   }
@@ -304,18 +302,4 @@ class _ViewHasNgEventsHost0 extends import8.HostView<import1.HasNgEvents> {
 
 import8.HostView<import1.HasNgEvents> viewFactory_HasNgEventsHost0() {
   return _ViewHasNgEventsHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(UsesDomEvents, createUsesDomEventsFactory());
-  _ngRef.registerComponent(UsesOutputs, createUsesOutputsFactory());
-  _ngRef.registerComponent(HasNgEvents, createHasNgEventsFactory());
-  _ref0.initReflector();
 }

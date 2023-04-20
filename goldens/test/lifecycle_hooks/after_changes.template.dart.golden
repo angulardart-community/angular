@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'after_changes.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'after_changes.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'after_changes.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/check_binding.dart' as import7;
@@ -26,7 +24,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   Object? _expr_1;
   Object? _expr_2;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -54,7 +52,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._UsesAfterChanges_0_5, 'a', currVal_0);
       }
-      this._UsesAfterChanges_0_5.a = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:434:441 */;
+      this._UsesAfterChanges_0_5.a = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:404:411 */;
       changed = true;
       this._expr_0 = currVal_0;
     }
@@ -63,7 +61,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._UsesAfterChanges_0_5, 'b', currVal_1);
       }
-      this._UsesAfterChanges_0_5.b = currVal_1 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:442:449 */;
+      this._UsesAfterChanges_0_5.b = currVal_1 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:412:419 */;
       changed = true;
       this._expr_1 = currVal_1;
     }
@@ -72,7 +70,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._UsesAfterChanges_0_5, 'c', currVal_2);
       }
-      this._UsesAfterChanges_0_5.c = currVal_2 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:450:457 */;
+      this._UsesAfterChanges_0_5.c = currVal_2 /* REF:asset:goldens/test/lifecycle_hooks/after_changes.dart:420:427 */;
       changed = true;
       this._expr_2 = currVal_2;
     }
@@ -132,7 +130,7 @@ final List<Object> styles$UsesAfterChanges = const [];
 
 class ViewUsesAfterChanges0 extends import0.ComponentView<import1.UsesAfterChanges> {
   static import2.ComponentStyles? _componentStyles;
-  ViewUsesAfterChanges0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesAfterChanges0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('uses-after-changes'));
   }
@@ -184,16 +182,4 @@ class _ViewUsesAfterChangesHost0 extends import10.HostView<import1.UsesAfterChan
 
 import10.HostView<import1.UsesAfterChanges> viewFactory_UsesAfterChangesHost0() {
   return _ViewUsesAfterChangesHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(UsesAfterChanges, createUsesAfterChangesFactory());
-  _ref0.initReflector();
 }

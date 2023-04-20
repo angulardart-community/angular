@@ -3,15 +3,13 @@
 // **************************************************************************
 
 import 'pipes.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'pipes.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'pipes.dart' as import1;
 import 'package:ngdart/src/runtime/text_binding.dart' as import2;
 import 'dart:core';
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import4;
 import 'package:ngdart/src/core/linker/views/view.dart' as import5;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import6;
 import 'package:ngdart/src/utilities.dart' as import7;
 import 'dart:html' as import8;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import9;
@@ -43,7 +41,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final import1.ImpureTimePipe _pipe_time_5;
   late final import1.ImpureLifecyclePipe _pipe_impureLifecycle_6;
   static import4.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('golden'));
   }
@@ -97,13 +95,13 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_4.updateText(import11.interpolate0(this._pipe_identity_0_0(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:444:467 */;
-    this._textBinding_7.updateText(import11.interpolate0(this._pipe_concat_1_0(_ctx.a, _ctx.b))) /* REF:asset:goldens/test/templates/pipes.dart:513:537 */;
-    this._textBinding_10.updateText(import11.interpolate0(this._pipe_merge_2_0(_ctx.a, _ctx.b))) /* REF:asset:goldens/test/templates/pipes.dart:583:606 */;
-    this._textBinding_13.updateText(import11.interpolate0(this._pipe_typed_3_0(_ctx.a, 1))) /* REF:asset:goldens/test/templates/pipes.dart:652:675 */;
-    this._textBinding_16.updateText(import11.interpolate0(this._pipe_pureLifecycle_4_0(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:721:749 */;
-    this._textBinding_21.updateText(import11.interpolate0(this._pipe_time_5.transform('now'))) /* REF:asset:goldens/test/templates/pipes.dart:844:867 */;
-    this._textBinding_24.updateText(import11.interpolate0(this._pipe_impureLifecycle_6.transform(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:913:943 */;
+    this._textBinding_4.updateText(import11.interpolate0(this._pipe_identity_0_0(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:414:437 */;
+    this._textBinding_7.updateText(import11.interpolate0(this._pipe_concat_1_0(_ctx.a, _ctx.b))) /* REF:asset:goldens/test/templates/pipes.dart:483:507 */;
+    this._textBinding_10.updateText(import11.interpolate0(this._pipe_merge_2_0(_ctx.a, _ctx.b))) /* REF:asset:goldens/test/templates/pipes.dart:553:576 */;
+    this._textBinding_13.updateText(import11.interpolate0(this._pipe_typed_3_0(_ctx.a, 1))) /* REF:asset:goldens/test/templates/pipes.dart:622:645 */;
+    this._textBinding_16.updateText(import11.interpolate0(this._pipe_pureLifecycle_4_0(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:691:719 */;
+    this._textBinding_21.updateText(import11.interpolate0(this._pipe_time_5.transform('now'))) /* REF:asset:goldens/test/templates/pipes.dart:814:837 */;
+    this._textBinding_24.updateText(import11.interpolate0(this._pipe_impureLifecycle_6.transform(_ctx.a))) /* REF:asset:goldens/test/templates/pipes.dart:883:913 */;
   }
 
   @override
@@ -151,15 +149,4 @@ class _ViewGoldenComponentHost0 extends import13.HostView<import1.GoldenComponen
 
 import13.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

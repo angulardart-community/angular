@@ -3,8 +3,6 @@
 // **************************************************************************
 
 import 'directive_star_syntax.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'directive_star_syntax.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'directive_star_syntax.dart' as import1;
 import 'package:ngdart/src/core/linker/view_container.dart';
@@ -12,7 +10,7 @@ import 'package:ngdart/src/common/directives/ng_if.dart';
 import 'package:ngdart/src/common/directives/ng_for.dart' as import4;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import5;
 import 'package:ngdart/src/core/linker/views/view.dart' as import6;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import7;
 import 'package:ngdart/src/utilities.dart' as import8;
 import 'dart:html' as import9;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import10;
@@ -36,7 +34,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final import4.NgFor _NgFor_2_9;
   Object? _expr_0;
   static import5.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import6.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import6.View parentView, int parentIndex) : super(parentView, parentIndex, import7.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import8.unsafeCast(import9.document.createElement('golden'));
   }
@@ -71,13 +69,13 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
     if (import12.isDevToolsEnabled) {
       import12.Inspector.instance.recordInput(this._NgIf_0_9, 'ngIf', _ctx.show);
     }
-    this._NgIf_0_9.ngIf = _ctx.show /* REF:asset:goldens/test/templates/directive_star_syntax.dart:442:454 */;
+    this._NgIf_0_9.ngIf = _ctx.show /* REF:asset:goldens/test/templates/directive_star_syntax.dart:412:424 */;
     final currVal_0 = _ctx.values;
     if (import13.checkBinding(this._expr_0, currVal_0, 'values', 'asset:goldens/test/templates/directive_star_syntax.dart')) {
       if (import12.isDevToolsEnabled) {
         import12.Inspector.instance.recordInput(this._NgFor_2_9, 'ngForOf', currVal_0);
       }
-      this._NgFor_2_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/directive_star_syntax.dart:513:571 */;
+      this._NgFor_2_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/directive_star_syntax.dart:483:541 */;
       this._expr_0 = currVal_0;
     }
     if ((!import13.debugThrowIfChanged)) {
@@ -134,7 +132,7 @@ class _ViewGoldenComponent1 extends import15.EmbeddedView<import1.GoldenComponen
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_2.updateText(import18.interpolateString0(_ctx.value)) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:472:481 */;
+    this._textBinding_2.updateText(import18.interpolateString0(_ctx.value)) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:442:451 */;
   }
 }
 
@@ -165,9 +163,9 @@ class _ViewGoldenComponent2 extends import15.EmbeddedView<import1.GoldenComponen
     final local_index = import8.unsafeCast<int>(this.locals['index']);
     final local_v = import8.unsafeCast<int>(this.locals['\$implicit']);
     final local_odd = import8.unsafeCast<bool>(this.locals['odd']);
-    this._textBinding_1.updateTextWithPrimitive(local_index) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:581:590 */;
-    this._textBinding_3.updateTextWithPrimitive(local_v) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:592:597 */;
-    this._textBinding_5.updateTextWithPrimitive(local_odd) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:599:606 */;
+    this._textBinding_1.updateTextWithPrimitive(local_index) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:551:560 */;
+    this._textBinding_3.updateTextWithPrimitive(local_v) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:562:567 */;
+    this._textBinding_5.updateTextWithPrimitive(local_odd) /* REF:asset:goldens/test/templates/directive_star_syntax.dart:569:576 */;
   }
 }
 
@@ -189,15 +187,4 @@ class _ViewGoldenComponentHost0 extends import20.HostView<import1.GoldenComponen
 
 import20.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

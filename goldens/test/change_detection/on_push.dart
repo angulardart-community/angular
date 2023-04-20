@@ -24,7 +24,7 @@ void main() {
     <child [name]="name"></child>
     <child-with-do-check [name]="name"></child-with-do-check>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class GoldenComponent {
   String name = deopt();
@@ -33,7 +33,7 @@ class GoldenComponent {
 @Component(
   selector: 'child',
   template: 'Name: {{name}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class Child {
   @Input()
@@ -43,7 +43,7 @@ class Child {
 @Component(
   selector: 'child-with-do-check',
   template: 'Name: {{name}}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class ChildWithDoCheck implements DoCheck {
   @Input()

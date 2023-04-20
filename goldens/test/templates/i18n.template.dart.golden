@@ -3,14 +3,12 @@
 // **************************************************************************
 
 import 'i18n.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'i18n.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'i18n.dart' as import1;
 import 'package:intl/intl.dart' as import2;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import3;
 import 'package:ngdart/src/core/linker/views/view.dart' as import4;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import5;
 import 'package:ngdart/src/utilities.dart' as import6;
 import 'dart:html' as import7;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import8;
@@ -26,7 +24,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   static final String _message_1 = import2.Intl.message('message', desc: 'description');
   late final import1.MessageDirective _MessageDirective_7_5;
   static import3.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, import5.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import6.unsafeCast(import7.document.createElement('golden'));
   }
@@ -108,15 +106,4 @@ class _ViewGoldenComponentHost0 extends import12.HostView<import1.GoldenComponen
 
 import12.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

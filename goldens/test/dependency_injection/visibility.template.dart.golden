@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'visibility.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'visibility.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'visibility.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -23,7 +21,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewHasVisibilityLocal0 _compView_1;
   late final import1.HasVisibilityLocal _HasVisibilityLocal_1_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -111,7 +109,7 @@ final List<Object> styles$HasVisibilityAll = const [];
 
 class ViewHasVisibilityAll0 extends import0.ComponentView<import1.HasVisibilityAll> {
   static import2.ComponentStyles? _componentStyles;
-  ViewHasVisibilityAll0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasVisibilityAll0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('has-visibility-all'));
   }
@@ -177,7 +175,7 @@ final List<Object> styles$HasVisibilityLocal = const [];
 
 class ViewHasVisibilityLocal0 extends import0.ComponentView<import1.HasVisibilityLocal> {
   static import2.ComponentStyles? _componentStyles;
-  ViewHasVisibilityLocal0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasVisibilityLocal0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('has-visibility-local'));
   }
@@ -229,17 +227,4 @@ class _ViewHasVisibilityLocalHost0 extends import8.HostView<import1.HasVisibilit
 
 import8.HostView<import1.HasVisibilityLocal> viewFactory_HasVisibilityLocalHost0() {
   return _ViewHasVisibilityLocalHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(HasVisibilityAll, createHasVisibilityAllFactory());
-  _ngRef.registerComponent(HasVisibilityLocal, createHasVisibilityLocalFactory());
-  _ref0.initReflector();
 }

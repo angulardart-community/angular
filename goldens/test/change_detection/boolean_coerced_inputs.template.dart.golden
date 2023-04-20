@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'boolean_coerced_inputs.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'boolean_coerced_inputs.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'boolean_coerced_inputs.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import7;
@@ -29,7 +27,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final import1.FancyButtonComponent _FancyButtonComponent_2_5;
   Object? _expr_2;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -66,18 +64,18 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._FancyButtonComponent_0_5, 'raised', true);
       }
-      this._FancyButtonComponent_0_5.raised = true /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:487:493 */;
+      this._FancyButtonComponent_0_5.raised = true /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:457:463 */;
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._FancyButtonComponent_1_5, 'raised', true);
       }
-      this._FancyButtonComponent_1_5.raised = true /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:528:536 */;
+      this._FancyButtonComponent_1_5.raised = true /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:498:506 */;
     }
     final currVal_2 = _ctx.value;
     if (import9.checkBinding(this._expr_2, currVal_2, 'value', 'asset:goldens/test/change_detection/boolean_coerced_inputs.dart')) {
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._FancyButtonComponent_2_5, 'raised', currVal_2);
       }
-      this._FancyButtonComponent_2_5.raised = currVal_2 /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:610:626 */;
+      this._FancyButtonComponent_2_5.raised = currVal_2 /* REF:asset:goldens/test/change_detection/boolean_coerced_inputs.dart:580:596 */;
       this._expr_2 = currVal_2;
     }
     this._compView_0.detectChanges();
@@ -137,7 +135,7 @@ final List<Object> styles$FancyButtonComponent = const [];
 
 class ViewFancyButtonComponent0 extends import0.ComponentView<import1.FancyButtonComponent> {
   static import2.ComponentStyles? _componentStyles;
-  ViewFancyButtonComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewFancyButtonComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('fancy-button'));
   }
@@ -189,16 +187,4 @@ class _ViewFancyButtonComponentHost0 extends import11.HostView<import1.FancyButt
 
 import11.HostView<import1.FancyButtonComponent> viewFactory_FancyButtonComponentHost0() {
   return _ViewFancyButtonComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(FancyButtonComponent, createFancyButtonComponentFactory());
-  _ref0.initReflector();
 }

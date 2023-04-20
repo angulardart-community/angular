@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'interpolate.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'interpolate.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'interpolate.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/check_binding.dart' as import7;
@@ -44,7 +42,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   Object? _expr_0;
   Object? _expr_1;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -110,7 +108,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._SimpleStringInterpolate_0_5, 'value', currVal_0);
       }
-      this._SimpleStringInterpolate_0_5.value = currVal_0 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:667:683 */;
+      this._SimpleStringInterpolate_0_5.value = currVal_0 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:637:653 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = _ctx.anything;
@@ -118,7 +116,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._SimpleUnknownInterpolate_1_5, 'value', currVal_1);
       }
-      this._SimpleUnknownInterpolate_1_5.value = currVal_1 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:721:739 */;
+      this._SimpleUnknownInterpolate_1_5.value = currVal_1 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:691:709 */;
       this._expr_1 = currVal_1;
     }
     this._compView_0.detectChanges();
@@ -191,7 +189,7 @@ final List<Object> styles$SimpleStringInterpolate = const [];
 class ViewSimpleStringInterpolate0 extends import0.ComponentView<import1.SimpleStringInterpolate> {
   final import11.TextBinding _textBinding_0 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewSimpleStringInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewSimpleStringInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('simple-string'));
   }
@@ -208,7 +206,7 @@ class ViewSimpleStringInterpolate0 extends import0.ComponentView<import1.SimpleS
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_0.updateText(import12.interpolateString0(_ctx.value)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1233:1242 */;
+    this._textBinding_0.updateText(import12.interpolateString0(_ctx.value)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1203:1212 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -257,7 +255,7 @@ final List<Object> styles$SimpleUnknownInterpolate = const [];
 class ViewSimpleUnknownInterpolate0 extends import0.ComponentView<import1.SimpleUnknownInterpolate> {
   final import11.TextBinding _textBinding_0 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewSimpleUnknownInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewSimpleUnknownInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('simple-unknown'));
   }
@@ -274,7 +272,7 @@ class ViewSimpleUnknownInterpolate0 extends import0.ComponentView<import1.Simple
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_0.updateText(import12.interpolate0(_ctx.value)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1365:1374 */;
+    this._textBinding_0.updateText(import12.interpolate0(_ctx.value)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1335:1344 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -322,7 +320,7 @@ final List<Object> styles$KnownFinalValuesInterpolate = const [];
 
 class ViewKnownFinalValuesInterpolate0 extends import0.ComponentView<import1.KnownFinalValuesInterpolate> {
   static import2.ComponentStyles? _componentStyles;
-  ViewKnownFinalValuesInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewKnownFinalValuesInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('known-finals'));
   }
@@ -335,10 +333,10 @@ class ViewKnownFinalValuesInterpolate0 extends import0.ComponentView<import1.Kno
     final parentRenderNode = this.initViewRoot();
     final doc = import6.document;
     final _el_0 = import13.appendSpan(doc, parentRenderNode);
-    final _text_1 = import13.appendText(_el_0, import12.interpolateString0(import1.KnownFinalValuesInterpolate.aConstString));
+    final _text_1 = import13.appendText(_el_0, import12.interpolate0(import1.KnownFinalValuesInterpolate.aConstString));
     final _text_2 = import13.appendText(parentRenderNode, ' ');
     final _el_3 = import13.appendSpan(doc, parentRenderNode);
-    final _text_4 = import13.appendText(_el_3, import12.interpolateString0(import1.KnownFinalValuesInterpolate.aFinalString));
+    final _text_4 = import13.appendText(_el_3, import12.interpolate0(import1.KnownFinalValuesInterpolate.aFinalString));
     final _text_5 = import13.appendText(parentRenderNode, ' ');
     final _el_6 = import13.appendSpan(doc, parentRenderNode);
     final _text_7 = import13.appendText(_el_6, import12.interpolate0(import1.KnownFinalValuesInterpolate.aFinalNumber));
@@ -394,7 +392,7 @@ class ViewAdjacentInterpolate0 extends import0.ComponentView<import1.AdjacentInt
   final import11.TextBinding _textBinding_9 = import11.TextBinding();
   final import11.TextBinding _textBinding_11 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewAdjacentInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewAdjacentInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('adjacency'));
   }
@@ -424,11 +422,11 @@ class ViewAdjacentInterpolate0 extends import0.ComponentView<import1.AdjacentInt
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_1.updateText(import12.interpolateString0(_ctx.greeting)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1815:1827 */;
-    this._textBinding_3.updateText(import12.interpolateString0(_ctx.place)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1828:1837 */;
-    this._textBinding_7.updateText(import12.interpolateString0(_ctx.greeting)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1856:1868 */;
-    this._textBinding_9.updateText(import12.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1891:1899 */;
-    this._textBinding_11.updateText(import12.interpolateString0(_ctx.place)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1907:1916 */;
+    this._textBinding_1.updateText(import12.interpolateString0(_ctx.greeting)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1785:1797 */;
+    this._textBinding_3.updateText(import12.interpolateString0(_ctx.place)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1798:1807 */;
+    this._textBinding_7.updateText(import12.interpolateString0(_ctx.greeting)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1826:1838 */;
+    this._textBinding_9.updateText(import12.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1861:1869 */;
+    this._textBinding_11.updateText(import12.interpolateString0(_ctx.place)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:1877:1886 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -476,7 +474,7 @@ final List<Object> styles$LiteralsInterpolate = const [];
 
 class ViewLiteralsInterpolate0 extends import0.ComponentView<import1.LiteralsInterpolate> {
   static import2.ComponentStyles? _componentStyles;
-  ViewLiteralsInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewLiteralsInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('literals'));
   }
@@ -549,7 +547,7 @@ class ViewPropertyInterpolate0 extends import0.ComponentView<import1.PropertyInt
   Object? _expr_0;
   late final import6.HtmlElement _el_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewPropertyInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewPropertyInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('property'));
   }
@@ -569,7 +567,7 @@ class ViewPropertyInterpolate0 extends import0.ComponentView<import1.PropertyInt
     final _ctx = this.ctx;
     final currVal_0 = import12.interpolateString2('', _ctx.title1, ' ', _ctx.title2, '');
     if (import7.checkBinding(this._expr_0, currVal_0, '{{title1}} {{title2}}', 'asset:goldens/test/dom_bindings/interpolate.dart')) {
-      import13.setProperty(this._el_0, 'title', currVal_0) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2275:2304 */;
+      import13.setProperty(this._el_0, 'title', currVal_0) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2245:2274 */;
       this._expr_0 = currVal_0;
     }
   }
@@ -622,7 +620,7 @@ class ViewInputInterpolate0 extends import0.ComponentView<import1.InputInterpola
   late final import1.ChildComponent _ChildComponent_0_5;
   Object? _expr_0;
   static import2.ComponentStyles? _componentStyles;
-  ViewInputInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewInputInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('inputs'));
   }
@@ -648,7 +646,7 @@ class ViewInputInterpolate0 extends import0.ComponentView<import1.InputInterpola
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._ChildComponent_0_5, 'value', currVal_0);
       }
-      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2509:2528 */;
+      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2479:2498 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -704,7 +702,7 @@ final List<Object> styles$ChildComponent = const [];
 
 class ViewChildComponent0 extends import0.ComponentView<import1.ChildComponent> {
   static import2.ComponentStyles? _componentStyles;
-  ViewChildComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child'));
   }
@@ -786,7 +784,7 @@ class ViewMaximumInterpolateLimit0 extends import0.ComponentView<import1.Maximum
   late final import6.ButtonElement _el_43;
   late final import6.ButtonElement _el_45;
   static import2.ComponentStyles? _componentStyles;
-  ViewMaximumInterpolateLimit0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewMaximumInterpolateLimit0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('max-interpolate-limit'));
   }
@@ -849,34 +847,34 @@ class ViewMaximumInterpolateLimit0 extends import0.ComponentView<import1.Maximum
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_1.updateText(import12.interpolateString0(_ctx.stringA)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2835:2846 */;
-    this._textBinding_3.updateText(import12.interpolateString0(_ctx.stringB)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2853:2864 */;
-    this._textBinding_5.updateText(import12.interpolateString0(_ctx.stringC)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2871:2882 */;
-    this._textBinding_7.updateText(import12.interpolateString0(_ctx.stringD)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2889:2900 */;
-    this._textBinding_9.updateText(import12.interpolateString0(_ctx.stringE)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2907:2918 */;
-    this._textBinding_11.updateText(import12.interpolateString0(_ctx.stringF)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2925:2936 */;
-    this._textBinding_13.updateText(import12.interpolateString0(_ctx.stringG)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2943:2954 */;
-    this._textBinding_15.updateText(import12.interpolateString0(_ctx.stringH)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2961:2972 */;
-    this._textBinding_17.updateText(import12.interpolateString0(_ctx.stringI)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2979:2990 */;
-    this._textBinding_19.updateText(import12.interpolateString0(_ctx.stringJ)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2997:3008 */;
-    this._textBinding_22.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringA))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3038:3055 */;
-    this._textBinding_24.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringB))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3062:3079 */;
-    this._textBinding_26.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringC))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3086:3103 */;
-    this._textBinding_28.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringD))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3110:3127 */;
-    this._textBinding_30.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringE))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3134:3151 */;
-    this._textBinding_32.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringF))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3158:3175 */;
-    this._textBinding_34.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringG))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3182:3199 */;
-    this._textBinding_36.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringH))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3206:3223 */;
-    this._textBinding_38.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringI))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3230:3247 */;
-    this._textBinding_40.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringJ))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3254:3271 */;
+    this._textBinding_1.updateText(import12.interpolateString0(_ctx.stringA)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2805:2816 */;
+    this._textBinding_3.updateText(import12.interpolateString0(_ctx.stringB)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2823:2834 */;
+    this._textBinding_5.updateText(import12.interpolateString0(_ctx.stringC)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2841:2852 */;
+    this._textBinding_7.updateText(import12.interpolateString0(_ctx.stringD)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2859:2870 */;
+    this._textBinding_9.updateText(import12.interpolateString0(_ctx.stringE)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2877:2888 */;
+    this._textBinding_11.updateText(import12.interpolateString0(_ctx.stringF)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2895:2906 */;
+    this._textBinding_13.updateText(import12.interpolateString0(_ctx.stringG)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2913:2924 */;
+    this._textBinding_15.updateText(import12.interpolateString0(_ctx.stringH)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2931:2942 */;
+    this._textBinding_17.updateText(import12.interpolateString0(_ctx.stringI)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2949:2960 */;
+    this._textBinding_19.updateText(import12.interpolateString0(_ctx.stringJ)) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:2967:2978 */;
+    this._textBinding_22.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringA))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3008:3025 */;
+    this._textBinding_24.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringB))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3032:3049 */;
+    this._textBinding_26.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringC))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3056:3073 */;
+    this._textBinding_28.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringD))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3080:3097 */;
+    this._textBinding_30.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringE))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3104:3121 */;
+    this._textBinding_32.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringF))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3128:3145 */;
+    this._textBinding_34.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringG))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3152:3169 */;
+    this._textBinding_36.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringH))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3176:3193 */;
+    this._textBinding_38.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringI))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3200:3217 */;
+    this._textBinding_40.updateText(import12.interpolate0(import1.MaximumInterpolateLimit.hide(_ctx.stringJ))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3224:3241 */;
     final currVal_0 = import12.interpolateN(['', _ctx.stringA, ',', _ctx.stringB, ',', _ctx.stringC, ',', _ctx.stringD, ',', _ctx.stringE, ',', _ctx.stringF, ',', _ctx.stringG, ',', _ctx.stringH, ',', _ctx.stringI, '']);
     if (import7.checkBinding(this._expr_0, currVal_0, '{{stringA}},{{stringB}},{{stringC}},{{stringD}},{{stringE}},{{stringF}},{{stringG}},{{stringH}},{{stringI}}', 'asset:goldens/test/dom_bindings/interpolate.dart')) {
-      import13.setProperty(this._el_43, 'title', currVal_0) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3395:3510 */;
+      import13.setProperty(this._el_43, 'title', currVal_0) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3365:3480 */;
       this._expr_0 = currVal_0;
     }
     final currVal_1 = import12.interpolateN(['', _ctx.stringA, ',', _ctx.stringB, ',', _ctx.stringC, ',', _ctx.stringD, '']);
     if (import7.checkBinding(this._expr_1, currVal_1, '{{stringA}},{{stringB}},{{stringC}},{{stringD}}', 'asset:goldens/test/dom_bindings/interpolate.dart')) {
-      import13.setProperty(this._el_45, 'title', currVal_1) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3533:3588 */;
+      import13.setProperty(this._el_45, 'title', currVal_1) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:3503:3558 */;
       this._expr_1 = currVal_1;
     }
   }
@@ -929,7 +927,7 @@ class ViewNullCheckedInterpolate0 extends import0.ComponentView<import1.NullChec
   final import11.TextBinding _textBinding_2 = import11.TextBinding();
   final import11.TextBinding _textBinding_4 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewNullCheckedInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewNullCheckedInterpolate0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('null-checked'));
   }
@@ -950,9 +948,9 @@ class ViewNullCheckedInterpolate0 extends import0.ComponentView<import1.NullChec
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_0.updateText(import12.interpolate0((_ctx.maybeNull ?? ''))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4071:4090 */;
-    this._textBinding_2.updateText(import12.interpolateString0(_ctx.maybeNull?.toUpperCase())) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4095:4123 */;
-    this._textBinding_4.updateTextWithPrimitive(_ctx.maybeNull?.hashCode) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4128:4151 */;
+    this._textBinding_0.updateText(import12.interpolate0((_ctx.maybeNull ?? ''))) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4041:4060 */;
+    this._textBinding_2.updateText(import12.interpolateString0(_ctx.maybeNull?.toUpperCase())) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4065:4093 */;
+    this._textBinding_4.updateTextWithPrimitive(_ctx.maybeNull?.hashCode) /* REF:asset:goldens/test/dom_bindings/interpolate.dart:4098:4121 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -994,25 +992,4 @@ class _ViewNullCheckedInterpolateHost0 extends import10.HostView<import1.NullChe
 
 import10.HostView<import1.NullCheckedInterpolate> viewFactory_NullCheckedInterpolateHost0() {
   return _ViewNullCheckedInterpolateHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(SimpleStringInterpolate, createSimpleStringInterpolateFactory());
-  _ngRef.registerComponent(SimpleUnknownInterpolate, createSimpleUnknownInterpolateFactory());
-  _ngRef.registerComponent(KnownFinalValuesInterpolate, createKnownFinalValuesInterpolateFactory());
-  _ngRef.registerComponent(AdjacentInterpolate, createAdjacentInterpolateFactory());
-  _ngRef.registerComponent(LiteralsInterpolate, createLiteralsInterpolateFactory());
-  _ngRef.registerComponent(PropertyInterpolate, createPropertyInterpolateFactory());
-  _ngRef.registerComponent(InputInterpolate, createInputInterpolateFactory());
-  _ngRef.registerComponent(ChildComponent, createChildComponentFactory());
-  _ngRef.registerComponent(MaximumInterpolateLimit, createMaximumInterpolateLimitFactory());
-  _ngRef.registerComponent(NullCheckedInterpolate, createNullCheckedInterpolateFactory());
-  _ref0.initReflector();
 }

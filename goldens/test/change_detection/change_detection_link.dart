@@ -47,7 +47,7 @@ class GoldenComponent {}
     NestedOnPushLink,
     NgIf,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class OnPushLink {
   @ViewChild('container', read: ViewContainerRef)
@@ -63,7 +63,7 @@ class OnPushLink {
 @Component(
   selector: 'nested-on-push',
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class NestedOnPush {}
 
@@ -73,7 +73,7 @@ class NestedOnPush {}
   template: '''
     <template #container></template>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class NestedOnPushLink {
   @ViewChild('container', read: ViewContainerRef)

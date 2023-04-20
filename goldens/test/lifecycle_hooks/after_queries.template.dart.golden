@@ -3,15 +3,13 @@
 // **************************************************************************
 
 import 'after_queries.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'after_queries.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'after_queries.dart' as import1;
 import 'package:ngdart/src/core/linker/view_container.dart';
 import 'package:ngdart/src/common/directives/ng_if.dart';
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import4;
 import 'package:ngdart/src/core/linker/views/view.dart' as import5;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import6;
 import 'package:ngdart/src/utilities.dart' as import7;
 import 'dart:html' as import8;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import9;
@@ -36,7 +34,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final NgIf _NgIf_3_9;
   Object? _expr_0;
   static import4.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('golden'));
   }
@@ -81,13 +79,13 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._ChildComponent_2_5, 'value', currVal_0);
       }
-      this._ChildComponent_2_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:575:590 */;
+      this._ChildComponent_2_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:545:560 */;
       this._expr_0 = currVal_0;
     }
     if (import11.isDevToolsEnabled) {
       import11.Inspector.instance.recordInput(this._NgIf_3_9, 'ngIf', _ctx.showValue);
     }
-    this._NgIf_3_9.ngIf = _ctx.showValue /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:636:653 */;
+    this._NgIf_3_9.ngIf = _ctx.showValue /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:606:623 */;
     this._appEl_3.detectChangesInNestedViews();
     if ((!import12.debugThrowIfChanged)) {
       if (firstCheck) {
@@ -161,7 +159,7 @@ class _ViewGoldenComponent1 extends import14.EmbeddedView<import1.GoldenComponen
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._ChildComponent_0_5, 'value', currVal_0);
       }
-      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:654:669 */;
+      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:624:639 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -202,7 +200,7 @@ class ViewUsesAfterView0 extends import0.ComponentView<import1.UsesAfterView> {
   late final NgIf _NgIf_1_9;
   Object? _expr_0;
   static import4.ComponentStyles? _componentStyles;
-  ViewUsesAfterView0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesAfterView0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('uses-after-view'));
   }
@@ -235,13 +233,13 @@ class ViewUsesAfterView0 extends import0.ComponentView<import1.UsesAfterView> {
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._ChildComponent_0_5, 'value', currVal_0);
       }
-      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:1012:1027 */;
+      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:982:997 */;
       this._expr_0 = currVal_0;
     }
     if (import11.isDevToolsEnabled) {
       import11.Inspector.instance.recordInput(this._NgIf_1_9, 'ngIf', _ctx.showValue);
     }
-    this._NgIf_1_9.ngIf = _ctx.showValue /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:1069:1086 */;
+    this._NgIf_1_9.ngIf = _ctx.showValue /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:1039:1056 */;
     this._appEl_1.detectChangesInNestedViews();
     this._compView_0.detectChanges();
   }
@@ -299,7 +297,7 @@ class _ViewUsesAfterView1 extends import14.EmbeddedView<import1.UsesAfterView> {
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._ChildComponent_0_5, 'value', currVal_0);
       }
-      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:1087:1102 */;
+      this._ChildComponent_0_5.value = currVal_0 /* REF:asset:goldens/test/lifecycle_hooks/after_queries.dart:1057:1072 */;
       this._expr_0 = currVal_0;
     }
     this._compView_0.detectChanges();
@@ -347,7 +345,7 @@ final List<Object> styles$ChildComponent = const [];
 
 class ViewChildComponent0 extends import0.ComponentView<import1.ChildComponent> {
   static import4.ComponentStyles? _componentStyles;
-  ViewChildComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('child'));
   }
@@ -405,7 +403,7 @@ final List<Object> styles$UsesAfterContent = const [];
 
 class ViewUsesAfterContent0 extends import0.ComponentView<import1.UsesAfterContent> {
   static import4.ComponentStyles? _componentStyles;
-  ViewUsesAfterContent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewUsesAfterContent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('uses-after-content'));
   }
@@ -470,18 +468,4 @@ class _ViewUsesAfterContentHost0 extends import16.HostView<import1.UsesAfterCont
 
 import16.HostView<import1.UsesAfterContent> viewFactory_UsesAfterContentHost0() {
   return _ViewUsesAfterContentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(UsesAfterView, createUsesAfterViewFactory());
-  _ngRef.registerComponent(ChildComponent, createChildComponentFactory());
-  _ngRef.registerComponent(UsesAfterContent, createUsesAfterContentFactory());
-  _ref0.initReflector();
 }
