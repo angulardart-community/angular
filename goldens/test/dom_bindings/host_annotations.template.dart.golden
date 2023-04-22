@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'host_annotations.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'host_annotations.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'host_annotations.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import7;
@@ -32,7 +30,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   Object? _expr_4;
   Object? _expr_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('host'));
     import7.updateAttribute(this.rootElement, 'const-add-attr-bool', (import1.GoldenComponent.constAddAttributeBool ? '' : null));
@@ -87,7 +85,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
         import7.updateClassBindingNonHtml(this.rootElement, 'const-add-class', import1.GoldenComponent.constAddClass);
       }
       if ((import1.GoldenComponent.constAddStyleColor != null)) {
-        this.rootElement.style.setProperty('color', import1.GoldenComponent.constAddStyleColor);
+        this.rootElement.style.setProperty('color', import1.GoldenComponent.constAddStyleColor?.toString());
       }
     }
     final currVal_0 = import1.GoldenComponent.getterAddAttributeBool;
@@ -174,7 +172,7 @@ final List<Object> styles$HasOutput = const [];
 
 class ViewHasOutput0 extends import0.ComponentView<import1.HasOutput> {
   static import2.ComponentStyles? _componentStyles;
-  ViewHasOutput0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasOutput0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('has-output'));
   }
@@ -226,16 +224,4 @@ class _ViewHasOutputHost0 extends import12.HostView<import1.HasOutput> {
 
 import12.HostView<import1.HasOutput> viewFactory_HasOutputHost0() {
   return _ViewHasOutputHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(HasOutput, createHasOutputFactory());
-  _ref0.initReflector();
 }

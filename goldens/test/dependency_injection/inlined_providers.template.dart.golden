@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'inlined_providers.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'inlined_providers.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'inlined_providers.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import7;
@@ -53,7 +51,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewChildComponentInjecting$D0 _compView_7;
   late final import1.ChildComponentInjecting$D _ChildComponentInjecting$D_7_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -244,7 +242,7 @@ final List<Object> styles$ChildComponentProvidingA$B$C = const [];
 
 class ViewChildComponentProvidingA$B$C0 extends import0.ComponentView<import1.ChildComponentProvidingA$B$C> {
   static import2.ComponentStyles? _componentStyles;
-  ViewChildComponentProvidingA$B$C0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponentProvidingA$B$C0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child-component-providing-a-b-c'));
   }
@@ -321,7 +319,7 @@ final List<Object> styles$ChildComponentWithNgContentProviding$D = const [];
 
 class ViewChildComponentWithNgContentProviding$D0 extends import0.ComponentView<import1.ChildComponentWithNgContentProviding$D> {
   static import2.ComponentStyles? _componentStyles;
-  ViewChildComponentWithNgContentProviding$D0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponentWithNgContentProviding$D0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child-component-with-ngcontent-providing-d'));
   }
@@ -389,7 +387,7 @@ final List<Object> styles$ChildComponentInjecting$D = const [];
 
 class ViewChildComponentInjecting$D0 extends import0.ComponentView<import1.ChildComponentInjecting$D> {
   static import2.ComponentStyles? _componentStyles;
-  ViewChildComponentInjecting$D0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponentInjecting$D0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child-component-injecting-d'));
   }
@@ -451,7 +449,7 @@ final List<Object> styles$ChildComponentWithVisibilityAll = const [];
 
 class ViewChildComponentWithVisibilityAll0 extends import0.ComponentView<import1.ChildComponentWithVisibilityAll> {
   static import2.ComponentStyles? _componentStyles;
-  ViewChildComponentWithVisibilityAll0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewChildComponentWithVisibilityAll0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child-component-with-visibility-all'));
   }
@@ -511,19 +509,4 @@ class _ViewChildComponentWithVisibilityAllHost0 extends import10.HostView<import
 
 import10.HostView<import1.ChildComponentWithVisibilityAll> viewFactory_ChildComponentWithVisibilityAllHost0() {
   return _ViewChildComponentWithVisibilityAllHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(ChildComponentProvidingA$B$C, createChildComponentProvidingA$B$CFactory());
-  _ngRef.registerComponent(ChildComponentWithNgContentProviding$D, createChildComponentWithNgContentProviding$DFactory());
-  _ngRef.registerComponent(ChildComponentInjecting$D, createChildComponentInjecting$DFactory());
-  _ngRef.registerComponent(ChildComponentWithVisibilityAll, createChildComponentWithVisibilityAllFactory());
-  _ref0.initReflector();
 }

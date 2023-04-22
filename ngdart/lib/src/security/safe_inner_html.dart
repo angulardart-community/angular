@@ -42,16 +42,15 @@ class SafeInnerHtmlDirective {
 
   @Input()
   set safeInnerHtml(safeInnerHtml) {
-    print('Setting inner html as $safeInnerHtml');
+    // print('Setting inner html as $safeInnerHtml');
     if (safeInnerHtml is SafeHtml) {
       _element.setInnerHtml(
         safeInnerHtml.changingThisWillBypassSecurityTrust,
         treeSanitizer: NodeTreeSanitizer.trusted,
       );
-      print('$safeInnerHtml is SafeHtml!');
-      print(_element.innerHtml);
+      // print('$safeInnerHtml is SafeHtml!');
+      // print(_element.innerHtml);
     } else if (safeInnerHtml == null) {
-      print('Bruh!');
       _element.setInnerHtml('');
     } else {
       // A regular string is not allowed since a security audit needs to be able

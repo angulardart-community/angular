@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-04-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`ngdart` - `v8.0.0-dev.2`](#ngdart---v800-dev2)
+ - [`ngrouter` - `v4.0.0-dev.2`](#ngrouter---v400-dev2)
+ - [`ngforms` - `v5.0.0-dev.2`](#ngforms---v500-dev2)
+ - [`ngcompiler` - `v3.0.0-dev.2`](#ngcompiler---v300-dev2)
+ - [`ngtest` - `v5.0.0-dev.2`](#ngtest---v500-dev2)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `ngrouter` - `v4.0.0-dev.2`
+ - `ngforms` - `v5.0.0-dev.2`
+ - `ngcompiler` - `v3.0.0-dev.2`
+ - `ngtest` - `v5.0.0-dev.2`
+
+---
+
+#### `ngdart` - `v8.0.0-dev.2`
+
+ - **DOCS**(all): update to new workflow badge. ([01a55035](https://github.com/angulardart-community/angular/commit/01a55035a3a69c3fca20212d428aa476662b14a4))
+
+
 ## 2023-04-06
 
 ### Changes

@@ -56,4 +56,4 @@ class GoldenComponent {
 }
 
 @GenerateInjector(provideTokens)
-final goldenInjector = ng.goldenInjector$Injector;
+final InjectorFactory goldenInjector = ng.goldenInjector$Injector;

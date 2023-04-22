@@ -6,7 +6,7 @@ import 'dom_sanitization_service.dart';
 
 /// Converts [stringOrSafeOrBypass] into a `String` safe to use within the DOM.
 String? sanitizeHtml(Object? stringOrSafeOrBypass) {
-  print('Sanitizing $stringOrSafeOrBypass');
+  // print('Sanitizing $stringOrSafeOrBypass');
   if (stringOrSafeOrBypass == null) {
     return null;
   }

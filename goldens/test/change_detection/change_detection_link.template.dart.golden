@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'change_detection_link.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'change_detection_link.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'change_detection_link.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -30,7 +28,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final ViewOnPushLink0 _compView_0;
   late final import1.OnPushLink _OnPushLink_0_5;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -114,7 +112,7 @@ class ViewOnPushLink0 extends import0.ComponentView<import1.OnPushLink> {
   late final ViewContainer _appEl_5;
   late final NgIf _NgIf_5_9;
   static import2.ComponentStyles? _componentStyles;
-  ViewOnPushLink0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewOnPushLink0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('on-push-link'));
   }
@@ -171,11 +169,11 @@ class ViewOnPushLink0 extends import0.ComponentView<import1.OnPushLink> {
     if (import13.isDevToolsEnabled) {
       import13.Inspector.instance.recordInput(this._NgIf_2_9, 'ngIf', _ctx.isVisible);
     }
-    this._NgIf_2_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/change_detection/change_detection_link.dart:1019:1036 */;
+    this._NgIf_2_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/change_detection/change_detection_link.dart:959:976 */;
     if (import13.isDevToolsEnabled) {
       import13.Inspector.instance.recordInput(this._NgIf_5_9, 'ngIf', _ctx.isVisible);
     }
-    this._NgIf_5_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/change_detection/change_detection_link.dart:1216:1233 */;
+    this._NgIf_5_9.ngIf = _ctx.isVisible /* REF:asset:goldens/test/change_detection/change_detection_link.dart:1156:1173 */;
     this._appEl_0.detectChangesInNestedViews();
     this._appEl_2.detectChangesInNestedViews();
     this._appEl_5.detectChangesInNestedViews();
@@ -339,7 +337,7 @@ final List<Object> styles$NestedOnPush = const [];
 
 class ViewNestedOnPush0 extends import0.ComponentView<import1.NestedOnPush> {
   static import2.ComponentStyles? _componentStyles;
-  ViewNestedOnPush0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewNestedOnPush0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('nested-on-push'));
   }
@@ -399,7 +397,7 @@ class ViewNestedOnPushLink0 extends import0.ComponentView<import1.NestedOnPushLi
   late final ViewContainer _appEl_0;
   late final TemplateRef _TemplateRef_0_8;
   static import2.ComponentStyles? _componentStyles;
-  ViewNestedOnPushLink0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewNestedOnPushLink0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('nested-on-push-link'));
   }
@@ -483,18 +481,4 @@ class _ViewNestedOnPushLinkHost0 extends import8.HostView<import1.NestedOnPushLi
 
 import8.HostView<import1.NestedOnPushLink> viewFactory_NestedOnPushLinkHost0() {
   return _ViewNestedOnPushLinkHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(OnPushLink, createOnPushLinkFactory());
-  _ngRef.registerComponent(NestedOnPush, createNestedOnPushFactory());
-  _ngRef.registerComponent(NestedOnPushLink, createNestedOnPushLinkFactory());
-  _ref0.initReflector();
 }

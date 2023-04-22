@@ -3,8 +3,6 @@
 // **************************************************************************
 
 import 'generated_injector_small.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'generated_injector_small.template.dart' as _ref0;
 import 'package:ngdart/src/di/injector.dart' as _i1;
 import 'generated_injector_small.dart' as _i2;
 import 'package:ngdart/src/meta/di_tokens.dart' as _i3;
@@ -12,7 +10,7 @@ import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'generated_injector_small.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/angular.dart';
@@ -22,7 +20,7 @@ final List<Object> styles$GoldenComponent = const [];
 
 class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent> {
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -76,6 +74,7 @@ import8.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
 }
 
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 _i1.Injector doGenerate$Injector(_i1.Injector parent) => _Injector$doGenerate._(parent);
 
 class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injector {
@@ -87,11 +86,21 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
 
   _i2.Example? _field10;
 
-  Object _getObject$0() => _field0 ??= _i2.createExampleOptional(provideUntyped(_i2.Example, null));
+  Object _getObject$0() => _field0 ??= _i2.createExampleOptional(provideUntyped(
+        _i2.Example,
+        null,
+      ));
   List<String> _getList$1() => _field1 ??= _i2.createListOfString();
   String _getString$2() => 'ABC123';
-  Object _getObject$3() => const {'instanceOfExample': _i2.Example(), _i2.instanceOfExamplePrime: 'instanceOfExamplePrime'};
-  Object _getObject$4() => const [_i2.Example(), _i2.instanceOfExamplePrime, _i2.ExampleTheta.instance];
+  Object _getObject$3() => const {
+        'instanceOfExample': _i2.Example(),
+        _i2.instanceOfExamplePrime: 'instanceOfExamplePrime',
+      };
+  Object _getObject$4() => const [
+        _i2.Example(),
+        _i2.instanceOfExamplePrime,
+        _i2.ExampleTheta.instance,
+      ];
   Object _getObject$5() => _i2.ExampleTheta.instance;
   Object _getObject$6() => _i2.instanceOfExamplePrime;
   Object _getObject$7() => const _i2.Example();
@@ -102,7 +111,10 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
   String _getString$12() => 'B';
   _i1.Injector _getInjector$13() => this;
   @override
-  Object? injectFromSelfOptional(Object token, [Object? orElse = _i1.throwIfNotFound]) {
+  Object? injectFromSelfOptional(
+    Object token, [
+    Object? orElse = _i1.throwIfNotFound,
+  ]) {
     if (identical(token, _i2.ExampleOptional)) {
       return _getObject$0();
     }
@@ -140,19 +152,11 @@ class _Injector$doGenerate extends _i1.HierarchicalInjector implements _i1.Injec
       return _getInjector$13();
     }
     if (identical(token, const _i3.MultiToken<String>('someMultiToken'))) {
-      return [_getString$11(), _getString$12()];
+      return [
+        _getString$11(),
+        _getString$12(),
+      ];
     }
     return orElse;
   }
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }

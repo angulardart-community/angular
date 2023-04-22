@@ -2,7 +2,7 @@ name: ngdart
 description: >-
   Fast and productive web framework by Google.
   Separate, but similar to the JavaScript framework with a similar name.
-version: 8.0.0-dev.1
+version: 8.0.0-dev.2
 repository: https://github.com/angulardart-community/angular
 
 environment:

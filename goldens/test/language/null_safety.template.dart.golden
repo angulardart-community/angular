@@ -3,6 +3,3 @@
 // **************************************************************************
 
 import 'null_safety.dart';
-
-// No initReflector() linking required.
-void initReflector() {}

@@ -1,3 +1,7 @@
+## 8.0.0-dev.2
+
+ - **DOCS**(all): update to new workflow badge. ([01a55035](https://github.com/angulardart-community/angular/commit/01a55035a3a69c3fca20212d428aa476662b14a4))
+
 ## 8.0.0-dev.1
 
 > Note: This release has breaking changes.

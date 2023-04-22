@@ -13,7 +13,6 @@ packages:
 ignore:
   # - _tests
   - examples
-  - goldens
   - tests
 
 command:

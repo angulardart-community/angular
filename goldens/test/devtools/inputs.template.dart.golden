@@ -3,14 +3,12 @@
 // **************************************************************************
 
 import 'inputs.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'inputs.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'inputs.dart' as import1;
 import 'package:intl/intl.dart' as import2;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import3;
 import 'package:ngdart/src/core/linker/views/view.dart' as import4;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import5;
 import 'package:ngdart/src/utilities.dart' as import6;
 import 'dart:html' as import7;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import8;
@@ -41,7 +39,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   Object? _expr_5;
   Object? _expr_7;
   static import3.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, import5.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import6.unsafeCast(import7.document.createElement('golden'));
   }
@@ -99,7 +97,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
         if (import9.isDevToolsEnabled) {
           import9.Inspector.instance.recordInput(this._HasInputComponent_0_5, 'name', _ctx.immutableValue);
         }
-        this._HasInputComponent_0_5.name = _ctx.immutableValue /* REF:asset:goldens/test/devtools/inputs.dart:527:550 */;
+        this._HasInputComponent_0_5.name = _ctx.immutableValue /* REF:asset:goldens/test/devtools/inputs.dart:497:520 */;
       }
     }
     final currVal_1 = _ctx.mutableValue;
@@ -107,18 +105,18 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputComponent_1_5, 'name', currVal_1);
       }
-      this._HasInputComponent_1_5.name = currVal_1 /* REF:asset:goldens/test/devtools/inputs.dart:579:600 */;
+      this._HasInputComponent_1_5.name = currVal_1 /* REF:asset:goldens/test/devtools/inputs.dart:549:570 */;
       this._expr_1 = currVal_1;
     }
     if (firstCheck) {
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputComponent_2_5, 'name', 'literalValue');
       }
-      this._HasInputComponent_2_5.name = 'literalValue' /* REF:asset:goldens/test/devtools/inputs.dart:629:652 */;
+      this._HasInputComponent_2_5.name = 'literalValue' /* REF:asset:goldens/test/devtools/inputs.dart:599:622 */;
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputComponent_3_5, 'name', 'attributeValue');
       }
-      this._HasInputComponent_3_5.name = 'attributeValue' /* REF:asset:goldens/test/devtools/inputs.dart:681:702 */;
+      this._HasInputComponent_3_5.name = 'attributeValue' /* REF:asset:goldens/test/devtools/inputs.dart:651:672 */;
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputComponent_4_5, 'name', _message_0);
       }
@@ -126,14 +124,14 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputsComponent_5_5, 'number', 12);
       }
-      this._HasInputsComponent_5_5.number = 12 /* REF:asset:goldens/test/devtools/inputs.dart:856:869 */;
+      this._HasInputsComponent_5_5.number = 12 /* REF:asset:goldens/test/devtools/inputs.dart:826:839 */;
     }
     final currVal_5 = _ctx.mutableValue;
     if (import10.checkBinding(this._expr_5, currVal_5, 'mutableValue', 'asset:goldens/test/devtools/inputs.dart')) {
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasInputsComponent_5_5, 'name', currVal_5);
       }
-      this._HasInputsComponent_5_5.name = currVal_5 /* REF:asset:goldens/test/devtools/inputs.dart:834:855 */;
+      this._HasInputsComponent_5_5.name = currVal_5 /* REF:asset:goldens/test/devtools/inputs.dart:804:825 */;
       this._expr_5 = currVal_5;
     }
     final currVal_7 = _ctx.mutableValue;
@@ -141,7 +139,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import9.isDevToolsEnabled) {
         import9.Inspector.instance.recordInput(this._HasRenamedInputComponent_6_5, 'templateName', currVal_7);
       }
-      this._HasRenamedInputComponent_6_5.propertyName = currVal_7 /* REF:asset:goldens/test/devtools/inputs.dart:935:964 */;
+      this._HasRenamedInputComponent_6_5.propertyName = currVal_7 /* REF:asset:goldens/test/devtools/inputs.dart:905:934 */;
       this._expr_7 = currVal_7;
     }
     this._compView_0.detectChanges();
@@ -209,7 +207,7 @@ final List<Object> styles$HasInputComponent = const [];
 
 class ViewHasInputComponent0 extends import0.ComponentView<import1.HasInputComponent> {
   static import3.ComponentStyles? _componentStyles;
-  ViewHasInputComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasInputComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, import5.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import6.unsafeCast(import7.document.createElement('has-input'));
   }
@@ -267,7 +265,7 @@ final List<Object> styles$HasInputsComponent = const [];
 
 class ViewHasInputsComponent0 extends import0.ComponentView<import1.HasInputsComponent> {
   static import3.ComponentStyles? _componentStyles;
-  ViewHasInputsComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasInputsComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, import5.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import6.unsafeCast(import7.document.createElement('has-inputs'));
   }
@@ -325,7 +323,7 @@ final List<Object> styles$HasRenamedInputComponent = const [];
 
 class ViewHasRenamedInputComponent0 extends import0.ComponentView<import1.HasRenamedInputComponent> {
   static import3.ComponentStyles? _componentStyles;
-  ViewHasRenamedInputComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewHasRenamedInputComponent0(import4.View parentView, int parentIndex) : super(parentView, parentIndex, import5.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import6.unsafeCast(import7.document.createElement('has-renamed-input'));
   }
@@ -377,18 +375,4 @@ class _ViewHasRenamedInputComponentHost0 extends import12.HostView<import1.HasRe
 
 import12.HostView<import1.HasRenamedInputComponent> viewFactory_HasRenamedInputComponentHost0() {
   return _ViewHasRenamedInputComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(HasInputComponent, createHasInputComponentFactory());
-  _ngRef.registerComponent(HasInputsComponent, createHasInputsComponentFactory());
-  _ngRef.registerComponent(HasRenamedInputComponent, createHasRenamedInputComponentFactory());
-  _ref0.initReflector();
 }

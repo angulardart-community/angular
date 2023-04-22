@@ -3,13 +3,11 @@
 // **************************************************************************
 
 import 'on_push.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'on_push.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'on_push.dart' as import1;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import2;
 import 'package:ngdart/src/core/linker/views/view.dart' as import3;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import4;
 import 'package:ngdart/src/utilities.dart' as import5;
 import 'dart:html' as import6;
 import 'package:ngdart/src/runtime/check_binding.dart' as import7;
@@ -30,7 +28,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   Object? _expr_0;
   Object? _expr_1;
   static import2.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewGoldenComponent0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('golden'));
   }
@@ -63,7 +61,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._Child_0_5, 'name', currVal_0);
       }
-      this._Child_0_5.name = currVal_0 /* REF:asset:goldens/test/change_detection/on_push.dart:443:456 */;
+      this._Child_0_5.name = currVal_0 /* REF:asset:goldens/test/change_detection/on_push.dart:413:426 */;
       changed = true;
       this._expr_0 = currVal_0;
     }
@@ -76,7 +74,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import8.isDevToolsEnabled) {
         import8.Inspector.instance.recordInput(this._ChildWithDoCheck_1_5, 'name', currVal_1);
       }
-      this._ChildWithDoCheck_1_5.name = currVal_1 /* REF:asset:goldens/test/change_detection/on_push.dart:491:504 */;
+      this._ChildWithDoCheck_1_5.name = currVal_1 /* REF:asset:goldens/test/change_detection/on_push.dart:461:474 */;
       changed = true;
       this._expr_1 = currVal_1;
     }
@@ -142,7 +140,7 @@ final List<Object> styles$Child = const [];
 class ViewChild0 extends import0.ComponentView<import1.Child> {
   final import11.TextBinding _textBinding_1 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewChild0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewChild0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child'));
   }
@@ -160,7 +158,7 @@ class ViewChild0 extends import0.ComponentView<import1.Child> {
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_1.updateText(import13.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/change_detection/on_push.dart:692:700 */;
+    this._textBinding_1.updateText(import13.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/change_detection/on_push.dart:662:670 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -218,7 +216,7 @@ final List<Object> styles$ChildWithDoCheck = const [];
 class ViewChildWithDoCheck0 extends import0.ComponentView<import1.ChildWithDoCheck> {
   final import11.TextBinding _textBinding_1 = import11.TextBinding();
   static import2.ComponentStyles? _componentStyles;
-  ViewChildWithDoCheck0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckOnce) {
+  ViewChildWithDoCheck0(import3.View parentView, int parentIndex) : super(parentView, parentIndex, import4.ChangeDetectionCheckedState.checkOnce) {
     this.initComponentStyles();
     this.rootElement = import5.unsafeCast(import6.document.createElement('child-with-do-check'));
   }
@@ -236,7 +234,7 @@ class ViewChildWithDoCheck0 extends import0.ComponentView<import1.ChildWithDoChe
   @override
   void detectChangesInternal() {
     final _ctx = this.ctx;
-    this._textBinding_1.updateText(import13.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/change_detection/on_push.dart:866:874 */;
+    this._textBinding_1.updateText(import13.interpolateString0(_ctx.name)) /* REF:asset:goldens/test/change_detection/on_push.dart:836:844 */;
   }
 
   static void _debugClearComponentStyles() {
@@ -290,17 +288,4 @@ class _ViewChildWithDoCheckHost0 extends import10.HostView<import1.ChildWithDoCh
 
 import10.HostView<import1.ChildWithDoCheck> viewFactory_ChildWithDoCheckHost0() {
   return _ViewChildWithDoCheckHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ngRef.registerComponent(Child, createChildFactory());
-  _ngRef.registerComponent(ChildWithDoCheck, createChildWithDoCheckFactory());
-  _ref0.initReflector();
 }

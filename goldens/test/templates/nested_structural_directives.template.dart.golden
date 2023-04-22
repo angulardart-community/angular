@@ -3,15 +3,13 @@
 // **************************************************************************
 
 import 'nested_structural_directives.dart';
-import 'package:ngdart/src/reflector.dart' as _ngRef;
-import 'nested_structural_directives.template.dart' as _ref0;
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'nested_structural_directives.dart' as import1;
 import 'package:ngdart/src/core/linker/view_container.dart';
 import 'package:ngdart/src/common/directives/ng_for.dart' as import3;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import4;
 import 'package:ngdart/src/core/linker/views/view.dart' as import5;
-import 'package:ngdart/src/core/change_detection/change_detection.dart';
+import 'package:ngdart/src/meta/change_detection_constants.dart' as import6;
 import 'package:ngdart/src/utilities.dart' as import7;
 import 'dart:html' as import8;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import9;
@@ -33,7 +31,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
   late final import3.NgFor _NgFor_1_9;
   Object? _expr_0;
   static import4.ComponentStyles? _componentStyles;
-  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, ChangeDetectionStrategy.CheckAlways) {
+  ViewGoldenComponent0(import5.View parentView, int parentIndex) : super(parentView, parentIndex, import6.ChangeDetectionCheckedState.checkAlways) {
     this.initComponentStyles();
     this.rootElement = import7.unsafeCast(import8.document.createElement('golden'));
   }
@@ -63,7 +61,7 @@ class ViewGoldenComponent0 extends import0.ComponentView<import1.GoldenComponent
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._NgFor_1_9, 'ngForOf', currVal_0);
       }
-      this._NgFor_1_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/nested_structural_directives.dart:462:488 */;
+      this._NgFor_1_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/nested_structural_directives.dart:432:458 */;
       this._expr_0 = currVal_0;
     }
     if ((!import12.debugThrowIfChanged)) {
@@ -129,7 +127,7 @@ class _ViewGoldenComponent1 extends import14.EmbeddedView<import1.GoldenComponen
       if (import11.isDevToolsEnabled) {
         import11.Inspector.instance.recordInput(this._NgFor_1_9, 'ngForOf', currVal_0);
       }
-      this._NgFor_1_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/nested_structural_directives.dart:502:525 */;
+      this._NgFor_1_9.ngForOf = currVal_0 /* REF:asset:goldens/test/templates/nested_structural_directives.dart:472:495 */;
       this._expr_0 = currVal_0;
     }
     if ((!import12.debugThrowIfChanged)) {
@@ -182,11 +180,11 @@ class _ViewGoldenComponent2 extends import14.EmbeddedView<import1.GoldenComponen
     if (import11.isDevToolsEnabled) {
       import11.Inspector.instance.recordInput(this._NgIf_1_9, 'ngIf', local_col.isEven);
     }
-    this._NgIf_1_9.ngIf = local_col.isEven /* REF:asset:goldens/test/templates/nested_structural_directives.dart:551:569 */;
+    this._NgIf_1_9.ngIf = local_col.isEven /* REF:asset:goldens/test/templates/nested_structural_directives.dart:521:539 */;
     if (import11.isDevToolsEnabled) {
       import11.Inspector.instance.recordInput(this._NgIf_3_9, 'ngIf', local_col.isOdd);
     }
-    this._NgIf_3_9.ngIf = local_col.isOdd /* REF:asset:goldens/test/templates/nested_structural_directives.dart:647:664 */;
+    this._NgIf_3_9.ngIf = local_col.isOdd /* REF:asset:goldens/test/templates/nested_structural_directives.dart:617:634 */;
     this._appEl_1.detectChangesInNestedViews();
     this._appEl_3.detectChangesInNestedViews();
   }
@@ -214,7 +212,7 @@ class _ViewGoldenComponent3 extends import14.EmbeddedView<import1.GoldenComponen
   @override
   void detectChangesInternal() {
     final local_col = import7.unsafeCast<int>(import7.unsafeCast<_ViewGoldenComponent2>((this.parentView!)).locals['\$implicit']);
-    this._textBinding_1.updateTextWithPrimitive(local_col) /* REF:asset:goldens/test/templates/nested_structural_directives.dart:589:596 */;
+    this._textBinding_1.updateTextWithPrimitive(local_col) /* REF:asset:goldens/test/templates/nested_structural_directives.dart:559:566 */;
   }
 }
 
@@ -234,7 +232,7 @@ class _ViewGoldenComponent4 extends import14.EmbeddedView<import1.GoldenComponen
   @override
   void detectChangesInternal() {
     final local_col = import7.unsafeCast<int>(import7.unsafeCast<_ViewGoldenComponent2>((this.parentView!)).locals['\$implicit']);
-    this._textBinding_1.updateTextWithPrimitive(local_col) /* REF:asset:goldens/test/templates/nested_structural_directives.dart:683:690 */;
+    this._textBinding_1.updateTextWithPrimitive(local_col) /* REF:asset:goldens/test/templates/nested_structural_directives.dart:653:660 */;
   }
 }
 
@@ -256,15 +254,4 @@ class _ViewGoldenComponentHost0 extends import19.HostView<import1.GoldenComponen
 
 import19.HostView<import1.GoldenComponent> viewFactory_GoldenComponentHost0() {
   return _ViewGoldenComponentHost0();
-}
-
-var _visited = false;
-void initReflector() {
-  if (_visited) {
-    return;
-  }
-  _visited = true;
-
-  _ngRef.registerComponent(GoldenComponent, createGoldenComponentFactory());
-  _ref0.initReflector();
 }
