@@ -1,5 +1,3 @@
-// ignore_for_file: argument_type_not_assignable
-
 import 'dart:html';
 import 'dart:js_util' as js_util;
 
