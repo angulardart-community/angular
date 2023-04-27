@@ -1,4 +1,3 @@
-import 'dart:async' show Completer;
 import 'dart:html' show window;
 
 import 'package:test/test.dart';
@@ -47,7 +46,7 @@ void main() {
     // resolved. In order to be sure we're testing the correct state, we listen
     // for the next `popstate` event and use a completer to signal that it has
     // occured.
-    var nextPopState = Completer<void>()..complete(window.onPopState.first);
+    var nextPopState = window.onPopState.first;
     // Prevent navigation on back button.
     await testFixture.update((_) {
       routerHook.canLeave = false;
@@ -55,18 +54,18 @@ void main() {
     });
     // In rare cases, not waiting for this `popstate` event causes the
     // subsequent code to execute first.
-    await nextPopState.future;
+    await nextPopState;
 
     // Location should not have changed.
     expect(location.path(), '/c');
 
-    nextPopState = Completer<void>()..complete(window.onPopState.first);
+    nextPopState = window.onPopState.first;
     // Allow navigation on back button.
     await testFixture.update((_) {
       routerHook.canLeave = true;
       location.back();
     });
-    await nextPopState.future;
+    await nextPopState;
 
     // Location should now be the correct previous history location.
     expect(location.path(), '/b');
@@ -79,7 +78,7 @@ const testModule = Module(
 );
 
 @GenerateInjector.fromModules([testModule])
-final createInjector = ng.createInjector$Injector;
+final InjectorFactory createInjector = ng.createInjector$Injector;
 
 @Component(
   selector: 'test',
