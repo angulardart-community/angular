@@ -19,8 +19,7 @@ void main() {
       fixture = await testBed.create();
     });
 
-    // ignore: prefer_function_declarations_over_variables
-    var checkProperties = (NgFormControl controlDir, Control control) {
+    void checkProperties(NgFormControl controlDir, Control control) {
       expect(controlDir.control, control);
       expect(controlDir.value, control.value);
       expect(controlDir.valid, control.valid);
@@ -29,7 +28,7 @@ void main() {
       expect(controlDir.dirty, control.dirty);
       expect(controlDir.touched, control.touched);
       expect(controlDir.untouched, control.untouched);
-    };
+    }
 
     test('should reexport control properties', () async {
       await fixture.update((cmp) {

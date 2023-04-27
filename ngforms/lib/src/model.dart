@@ -18,30 +18,32 @@ AbstractControl? _find(AbstractControl control, List<String?>? path) {
   });
 }
 
-@optionalTypeArgs
-abstract class AbstractControl<T> {
+enum ControlStatus {
   /// Indicates that a Control is valid, i.e. that no errors exist in the input
   /// value.
-  static const VALID = 'VALID';
+  valid,
 
   /// Indicates that a Control is invalid, i.e. that an error exists in the
   /// input value.
-  static const INVALID = 'INVALID';
+  invalid,
 
   /// Indicates that a Control is pending, i.e. that async validation is
   /// occurring and errors are not yet available for the input value.
-  static const PENDING = 'PENDING';
+  pending,
 
   /// Indicates that a FormControl is disabled, i.e. that the control is exempt
   /// from ancestor calculations of validity or value.
-  static const DISABLED = 'DISABLED';
+  disabled,
+}
 
+@optionalTypeArgs
+abstract class AbstractControl<T> {
   ValidatorFn? validator;
   T? _value;
   final _valueChanges = StreamController<T?>.broadcast();
-  final _statusChanges = StreamController<String>.broadcast();
+  final _statusChanges = StreamController<ControlStatus>.broadcast();
   final _disabledChanges = StreamController<bool>.broadcast();
-  String? _status;
+  ControlStatus? _status;
   Map<String, dynamic>? _errors;
   bool _pristine = true;
   bool _touched = false;
@@ -54,13 +56,13 @@ abstract class AbstractControl<T> {
   T? get value => _value;
 
   /// The validation status of the control.
-  String? get status => _status;
+  ControlStatus? get status => _status;
 
-  bool get valid => _status == VALID;
+  bool get valid => _status == ControlStatus.valid;
 
-  bool get invalid => _status == INVALID;
+  bool get invalid => _status == ControlStatus.invalid;
 
-  bool get disabled => _status == DISABLED;
+  bool get disabled => _status == ControlStatus.disabled;
 
   bool get enabled => !disabled;
 
@@ -77,11 +79,11 @@ abstract class AbstractControl<T> {
 
   Stream<T?> get valueChanges => _valueChanges.stream;
 
-  Stream<String> get statusChanges => _statusChanges.stream;
+  Stream<ControlStatus> get statusChanges => _statusChanges.stream;
 
   Stream<bool> get disabledChanges => _disabledChanges.stream;
 
-  bool get pending => _status == PENDING;
+  bool get pending => _status == ControlStatus.pending;
 
   /// Marks the control as `touched`.
   ///
@@ -150,7 +152,7 @@ abstract class AbstractControl<T> {
   }
 
   void markAsPending({bool onlySelf = false}) {
-    _status = PENDING;
+    _status = ControlStatus.pending;
 
     var parent = _parent;
     if (parent != null && !onlySelf) {
@@ -165,7 +167,7 @@ abstract class AbstractControl<T> {
   /// If the control has children, all children will be disabled to
   /// maintain the model.
   void markAsDisabled({bool updateParent = true, bool emitEvent = true}) {
-    _status = DISABLED;
+    _status = ControlStatus.disabled;
 
     _forEachChild(
         // Only set self, so that children don't try to update their parent,
@@ -185,7 +187,7 @@ abstract class AbstractControl<T> {
   ///
   /// If the control has children, all children will be enabled.
   void markAsEnabled({bool updateParent = true, bool emitEvent = true}) {
-    _status = VALID;
+    _status = ControlStatus.valid;
     _forEachChild(
         // Only set self, so that children don't try to update their parent,
         // and thus create a loop of updates.
@@ -332,12 +334,18 @@ abstract class AbstractControl<T> {
     _parent?._updateControlsErrors();
   }
 
-  String _calculateStatus() {
-    if (_allControlsHaveStatus(DISABLED)) return DISABLED;
-    if (_errors != null) return INVALID;
-    if (_anyControlsHaveStatus(PENDING)) return PENDING;
-    if (_anyControlsHaveStatus(INVALID)) return INVALID;
-    return VALID;
+  ControlStatus _calculateStatus() {
+    if (_allControlsHaveStatus(ControlStatus.disabled)) {
+      return ControlStatus.disabled;
+    }
+    if (_errors != null) return ControlStatus.invalid;
+    if (_anyControlsHaveStatus(ControlStatus.pending)) {
+      return ControlStatus.pending;
+    }
+    if (_anyControlsHaveStatus(ControlStatus.invalid)) {
+      return ControlStatus.invalid;
+    }
+    return ControlStatus.valid;
   }
 
   void _updateTouched([bool updateParent = false]) {
@@ -382,9 +390,9 @@ abstract class AbstractControl<T> {
   @protected
   void onUpdate();
 
-  bool _anyControlsHaveStatus(String status) =>
+  bool _anyControlsHaveStatus(ControlStatus status) =>
       _anyControls((c) => c.status == status);
-  bool _allControlsHaveStatus(String status);
+  bool _allControlsHaveStatus(ControlStatus status);
   bool _anyControlsTouched() => _anyControls((c) => c.touched);
   bool _anyControlsDirty() => _anyControls((c) => c.dirty);
 
@@ -450,10 +458,10 @@ class Control<T> extends AbstractControl<T> {
   void onUpdate() {}
 
   @override
-  bool _anyControls(_) => false;
+  bool _anyControls(condition) => false;
 
   @override
-  bool _allControlsHaveStatus(String status) => this.status == status;
+  bool _allControlsHaveStatus(ControlStatus status) => this.status == status;
 
   @override
   void _forEachChild(void Function(AbstractControl) callback) {}
@@ -572,7 +580,7 @@ abstract class AbstractControlGroup<T> extends AbstractControl<T> {
   }
 
   @override
-  bool _allControlsHaveStatus(String status) {
+  bool _allControlsHaveStatus(ControlStatus status) {
     if (controls.isEmpty) return this.status == status;
 
     for (var name in controls.keys) {
@@ -684,7 +692,7 @@ class ControlArray extends AbstractControl<List<dynamic>> {
   }
 
   @override
-  bool _allControlsHaveStatus(String status) {
+  bool _allControlsHaveStatus(ControlStatus status) {
     if (controls.isEmpty) return this.status == status;
 
     for (var control in controls) {

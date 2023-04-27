@@ -1,7 +1,7 @@
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show AbstractControl;
-import '../validators.dart' show Validators, NG_VALIDATORS;
+import '../validators.dart' show Validators, ngValidators;
 
 /// An interface to be implemented as classes acting as validators.
 ///
@@ -12,7 +12,7 @@ import '../validators.dart' show Validators, NG_VALIDATORS;
 ///   selector: '[custom-validator]',
 ///   providers: const [
 ///     const ExistingProvider.forToken(
-///       NG_VALIDATORS,
+///       ngValidators,
 ///       CustomValidatorDirective,
 ///     ),
 ///   ]
@@ -64,7 +64,7 @@ typedef ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
       '[required][ngFormControl],'
       '[required][ngModel]',
   providers: [
-    ExistingProvider.forToken(NG_VALIDATORS, RequiredValidator),
+    ExistingProvider.forToken(ngValidators, RequiredValidator),
   ],
 )
 class RequiredValidator implements Validator {
@@ -87,7 +87,7 @@ class RequiredValidator implements Validator {
       '[minlength][ngFormControl],'
       '[minlength][ngModel]',
   providers: [
-    ExistingProvider.forToken(NG_VALIDATORS, MinLengthValidator),
+    ExistingProvider.forToken(ngValidators, MinLengthValidator),
   ],
 )
 class MinLengthValidator implements Validator {
@@ -126,7 +126,7 @@ class MinLengthValidator implements Validator {
       '[maxlength][ngFormControl],'
       '[maxlength][ngModel]',
   providers: [
-    ExistingProvider.forToken(NG_VALIDATORS, MaxLengthValidator),
+    ExistingProvider.forToken(ngValidators, MaxLengthValidator),
   ],
 )
 class MaxLengthValidator implements Validator {
@@ -168,7 +168,7 @@ class MaxLengthValidator implements Validator {
       '[pattern][ngFormControl],'
       '[pattern][ngModel]',
   providers: [
-    ExistingProvider.forToken(NG_VALIDATORS, PatternValidator),
+    ExistingProvider.forToken(ngValidators, PatternValidator),
   ],
 )
 class PatternValidator implements Validator {

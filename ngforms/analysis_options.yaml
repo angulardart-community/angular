@@ -2,6 +2,4 @@ include: ../analysis_options.yaml
 
 analyzer:
   errors:
-    # False positives related to missing .template.dart files
-    invalid_assignment: ignore
-    argument_type_not_assignable: ignore
+    implementation_imports: ignore

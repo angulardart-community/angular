@@ -5,7 +5,7 @@ import 'package:ngdart/angular.dart';
 
 import '../model.dart'
     show AbstractControl, AbstractControlGroup, ControlGroup, Control;
-import '../validators.dart' show NG_VALIDATORS;
+import '../validators.dart' show ngValidators;
 import 'abstract_form.dart' show AbstractForm;
 import 'control_container.dart' show ControlContainer;
 import 'ng_control.dart' show NgControl;
@@ -78,14 +78,14 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 )
 class NgForm extends AbstractNgForm<ControlGroup> {
   NgForm(
-    @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
+    @Optional() @Self() @Inject(ngValidators) List<dynamic>? validators,
     ChangeDetectorRef changeDetectorRef,
   ) : super(changeDetectorRef) {
     form = ControlGroup({}, composeValidators(validators));
   }
 
   @override
-  ControlGroup createGroup(NgControlGroup _) => ControlGroup({});
+  ControlGroup createGroup(NgControlGroup dir) => ControlGroup({});
 }
 
 /// Abstract class to easily create forms that are template driven.

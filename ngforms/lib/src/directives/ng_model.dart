@@ -4,7 +4,7 @@ import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show Control;
-import '../validators.dart' show NG_VALIDATORS;
+import '../validators.dart' show ngValidators;
 import 'control_value_accessor.dart' show ControlValueAccessor, ngValueAccessor;
 import 'ng_control.dart' show NgControl;
 import 'shared.dart' show setUpControl;
@@ -79,8 +79,8 @@ class NgModel extends NgControl implements AfterChanges, OnInit {
   NgModel(
       @Optional()
       @Self()
-      @Inject(NG_VALIDATORS)
-          List<dynamic>? validators,
+      @Inject(ngValidators)
+          List<Object>? validators,
       @Optional()
       @Self()
       @Inject(ngValueAccessor)

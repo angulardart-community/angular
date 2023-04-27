@@ -1,16 +1,18 @@
 import 'package:test/test.dart';
 import 'package:ngforms/ngforms.dart';
 
-void main() {
-  // ignore: prefer_function_declarations_over_variables
-  var validator = (String key, dynamic error) {
-    return (AbstractControl c) {
-      var r = <String, dynamic>{};
-      r[key] = error;
-      return r;
-    };
+Map<String, dynamic> Function(AbstractControl c) validator(
+  String key,
+  dynamic error,
+) {
+  return (AbstractControl c) {
+    final r = <String, dynamic>{};
+    r[key] = error;
+    return r;
   };
+}
 
+void main() {
   group('Validators', () {
     group('required', () {
       test('should error on an empty string', () {

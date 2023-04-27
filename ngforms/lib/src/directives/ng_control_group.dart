@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ngdart/angular.dart';
 
 import '../model.dart' show AbstractControlGroup;
-import '../validators.dart' show NG_VALIDATORS;
+import '../validators.dart' show ngValidators;
 import 'control_container.dart' show ControlContainer;
 import 'form_interface.dart' show Form;
 import 'shared.dart' show controlPath, composeValidators;
@@ -21,7 +21,7 @@ import 'validators.dart' show ValidatorFn;
 ///   directives: const [formDirectives],
 ///   template: '''
 ///     <div>
-///       <h2>Angular2 Control &amp; AbstractControlGroup Example</h2>
+///       <h2>Angular Control &amp; AbstractControlGroup Example</h2>
 ///       <form #f="ngForm">
 ///         <div ngControlGroup="name" #cg-name="form">
 ///           <h3>Enter your name:</h3>
@@ -45,7 +45,7 @@ import 'validators.dart' show ValidatorFn;
 ///     if (cg.control == null) {
 ///       return null;
 ///     }
-///     return JSON.encode(cg.control.value, null, 2);
+///     return json.encode(cg.control.value, null, 2);
 ///   }
 /// }
 /// ```
@@ -70,7 +70,7 @@ class NgControlGroup extends ControlContainer<AbstractControlGroup>
 
   NgControlGroup(
     @SkipSelf() this._parent,
-    @Optional() @Self() @Inject(NG_VALIDATORS) List<dynamic>? validators,
+    @Optional() @Self() @Inject(ngValidators) List<dynamic>? validators,
   ) : validator = composeValidators(validators);
 
   @Input('ngControlGroup')

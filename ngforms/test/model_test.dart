@@ -1,8 +1,6 @@
 import 'package:test/test.dart';
 import 'package:ngforms/ngforms.dart';
 
-import 'model_test.template.dart' as ng_generated;
-
 void main() {
   group('Form Model', () {
     group('Control', () {
@@ -146,8 +144,8 @@ void main() {
             'should fire an event after the status has been updated to invalid',
             () {
           c.statusChanges.listen(expectAsync1((status) {
-            expect(c.status, 'INVALID');
-            expect(status, 'INVALID');
+            expect(c.status, ControlStatus.invalid);
+            expect(status, ControlStatus.invalid);
           }));
           c.updateValue('');
         });

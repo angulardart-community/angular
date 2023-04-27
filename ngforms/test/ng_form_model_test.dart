@@ -189,7 +189,7 @@ class DummyControlValueAccessor implements ControlValueAccessor<dynamic> {
 
 @Directive(selector: '[matchingPasswords]', providers: [
   ValueProvider.forToken(
-      NG_VALIDATORS, MatchingPasswordsValidator.matchingPasswordsValidator),
+      ngValidators, MatchingPasswordsValidator.matchingPasswordsValidator),
 ])
 class MatchingPasswordsValidator {
   static Map<String, dynamic>? matchingPasswordsValidator(

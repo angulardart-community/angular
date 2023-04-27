@@ -6,7 +6,7 @@ import 'model.dart' as model_module;
 ///  Providers for validators to be used for [Control]s in a form.
 ///
 ///  Provide this using `ExistingProvider.forToken` to add validators.
-const NG_VALIDATORS = MultiToken<Object>('NgValidators');
+const ngValidators = MultiToken<Object>('NgValidators');
 
 ///  Provides a set of validators used by form controls.
 ///

@@ -894,7 +894,7 @@ Map<String, dynamic>? loginIsEmptyGroupValidator(AbstractControl c) {
 @Directive(
   selector: '[login-is-empty-validator]',
   providers: [
-    ValueProvider.forToken(NG_VALIDATORS, loginIsEmptyGroupValidator),
+    ValueProvider.forToken(ngValidators, loginIsEmptyGroupValidator),
   ],
 )
 class LoginIsEmptyValidator {}
@@ -991,7 +991,7 @@ class NumberModelTest {
 @Component(
     selector: 'radio-test',
     directives: [formDirectives],
-    providers: FORM_PROVIDERS,
+    providers: formProviders,
     template: '''
 <form [ngFormModel]="form">
   <input type="radio" ngControl="foodChicken" name="food">
@@ -1274,7 +1274,7 @@ class NgModelSingleFieldTest {
 @Component(
     selector: 'template-radio-test',
     directives: [formDirectives],
-    providers: FORM_PROVIDERS,
+    providers: formProviders,
     template: '''
 <form>
   <input type="radio" name="food" ngControl="chicken" [(ngModel)]="data['chicken1']">

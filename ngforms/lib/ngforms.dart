@@ -50,20 +50,21 @@ export 'src/form_builder.dart' show FormBuilder;
 export 'src/model.dart'
     show
         AbstractControl,
+        ControlStatus,
         Control,
         AbstractControlGroup,
         ControlGroup,
         ControlArray;
-export 'src/validators.dart' show NG_VALIDATORS, Validators;
+export 'src/validators.dart' show ngValidators, Validators;
 
 /// Shorthand set of providers used for building Angular forms.
 ///
 /// ### Example
 ///
 /// ```dart
-/// runApp(createMyAppFactory(), [FORM_PROVIDERS]);
+/// runApp(MyAppNgFactory, [formProviders]);
 /// ````
-const List<Type> FORM_PROVIDERS = [RadioControlRegistry];
+const List<Type> formProviders = [RadioControlRegistry];
 
-/// See [FORM_PROVIDERS] instead.
-const FORM_BINDINGS = FORM_PROVIDERS;
+/// See [formProviders] instead.
+const List<Type> formBindings = formProviders;

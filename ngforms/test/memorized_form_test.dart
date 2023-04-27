@@ -13,7 +13,7 @@ void main() {
       late NgTestFixture<TestControlComponent> fixture;
       late TestControlComponent readonlyCmp;
 
-      void _showControls(TestControlComponent component, bool show) {
+      void showControls(TestControlComponent component, bool show) {
         component
           ..showInputOne = show
           ..showInputTwo = show;
@@ -34,7 +34,7 @@ void main() {
       test('Adding controls adds them to the form', () async {
         await fixture.update((component) {
           component.one = 'one';
-          _showControls(component, true);
+          showControls(component, true);
         });
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(readonlyCmp.form!.value, {'one': 'one', 'two': null});
@@ -43,20 +43,20 @@ void main() {
       test('Adding then removing controls does not remove control', () async {
         await fixture.update((component) {
           component.one = 'one';
-          _showControls(component, true);
+          showControls(component, true);
         });
-        await fixture.update((component) => _showControls(component, false));
+        await fixture.update((component) => showControls(component, false));
 
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(readonlyCmp.form!.value, {'one': 'one', 'two': null});
       });
 
       test('Readding a control preserves the value', () async {
-        await fixture.update((component) => _showControls(component, true));
+        await fixture.update((component) => showControls(component, true));
         await fixture.update((component) =>
             (component.form!.controls!['two'] as Control).updateValue('two'));
-        await fixture.update((component) => _showControls(component, false));
-        await fixture.update((component) => _showControls(component, true));
+        await fixture.update((component) => showControls(component, false));
+        await fixture.update((component) => showControls(component, true));
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(readonlyCmp.form!.value, {'one': null, 'two': 'two'},
             reason: 'Should still have the same values');
@@ -67,7 +67,7 @@ void main() {
       late NgTestFixture<TestGroupComponent> fixture;
       late TestGroupComponent readonlyCmp;
 
-      void _showGroups(TestGroupComponent component, bool show) {
+      void showGroups(TestGroupComponent component, bool show) {
         component
           ..showGroupOne = show
           ..showGroupTwo = show;
@@ -88,7 +88,7 @@ void main() {
       test('Adding control groups adds them to the form', () async {
         await fixture.update((component) {
           component.one = 'one';
-          _showGroups(component, true);
+          showGroups(component, true);
         });
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(readonlyCmp.form!.value, {
@@ -101,9 +101,9 @@ void main() {
           () async {
         await fixture.update((component) {
           component.one = 'one';
-          _showGroups(component, true);
+          showGroups(component, true);
         });
-        await fixture.update((component) => _showGroups(component, false));
+        await fixture.update((component) => showGroups(component, false));
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(readonlyCmp.form!.value, {
           'one': {'one': 'one'},
@@ -112,13 +112,13 @@ void main() {
       });
 
       test('Readding a control group preserves the value', () async {
-        await fixture.update((component) => _showGroups(component, true));
+        await fixture.update((component) => showGroups(component, true));
         await fixture.update((component) =>
             ((component.form!.controls!['two'] as ControlGroup).controls['two']
                     as Control)
                 .updateValue('two'));
-        await fixture.update((component) => _showGroups(component, false));
-        await fixture.update((component) => _showGroups(component, true));
+        await fixture.update((component) => showGroups(component, false));
+        await fixture.update((component) => showGroups(component, true));
 
         expect(readonlyCmp.form!.form!.controls.length, 2);
         expect(
