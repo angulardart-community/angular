@@ -8,5 +8,4 @@ library angular_test.compatibility;
 
 import 'package:meta/meta.dart';
 
-export 'src/frontend/bed.dart' show createDynamicFixture;
 export 'src/frontend/fixture.dart' show injectFromFixture;

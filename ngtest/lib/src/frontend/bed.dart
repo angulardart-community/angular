@@ -17,27 +17,13 @@ NgTestFixture<void>? activeTest;
 ///
 /// Returns a future that completes when the test is destroyed.
 ///
-/// This function is meant to be used within the
-/// [`tearDown`](https://goo.gl/qT4fxc) function of `package:test`:
+/// This function is meant to be used within
+/// the `tearDown` function of `package:test`:
 /// ```dart
 /// tearDown(() => disposeAnyRunningTest());
 /// ```
-Future<void> disposeAnyRunningTest() async => activeTest?.dispose();
-
-/// An alternative method for [NgTestBed.create] that allows a dynamic [type].
-///
-/// This is for compatibility reasons only and should not be used otherwise.
-Future<NgTestFixture<T>> createDynamicFixture<T extends Object>(
-  NgTestBed<T> bed,
-  Type type, {
-  FutureOr<void> Function(Injector)? beforeComponentCreated,
-  FutureOr<void> Function(T)? beforeChangeDetection,
-}) {
-  return bed._createDynamic(
-    type,
-    beforeComponentCreated: beforeComponentCreated,
-    beforeChangeDetection: beforeChangeDetection,
-  );
+Future<void> disposeAnyRunningTest() async {
+  return activeTest?.dispose();
 }
 
 /// An immutable builder for creating a pre-configured AngularDart application.
@@ -209,25 +195,6 @@ class NgTestBed<T extends Object> {
     FutureOr<void> Function(Injector)? beforeComponentCreated,
     FutureOr<void> Function(T instance)? beforeChangeDetection,
   }) {
-    return _createDynamic(
-      T,
-      beforeComponentCreated: beforeComponentCreated,
-      beforeChangeDetection: beforeChangeDetection,
-    );
-  }
-
-  static void _checkForActiveTest() {
-    if (activeTest != null) {
-      throw TestAlreadyRunningError();
-    }
-  }
-
-  // Used for compatibility only. See `create` for public API.
-  Future<NgTestFixture<T>> _createDynamic(
-    Type type, {
-    FutureOr<void> Function(Injector)? beforeComponentCreated,
-    FutureOr<void> Function(T instance)? beforeChangeDetection,
-  }) {
     // We *purposefully* do not use async/await here - that always adds an
     // additional micro-task - we want this to fail fast without entering an
     // asynchronous event if another test is running.
@@ -296,6 +263,12 @@ class NgTestBed<T extends Object> {
         return testFixture;
       });
     });
+  }
+
+  static void _checkForActiveTest() {
+    if (activeTest != null) {
+      throw TestAlreadyRunningError();
+    }
   }
 
   /// Creates a new instance of [NgTestBed].
