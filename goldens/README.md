@@ -1,13 +1,11 @@
-A WIP destination for golden file testing.
+A destination for golden file testing.
 
-See b/147830720.
+TIP: Need to update all of the tests? Run:
 
-TIP: Need to update all of the tests quickly? Use:
-
-```bash
-$ third_party/dart_src/ndart/goldens/update_all.sh
+```shell
+$ dart run build_runner build -r
+$ dart run tool/update.dart
 ```
 
 Currently when adding a new `a.dart` file, you must add a sibling
-`a.template.dart.golden` and `a.js.golden` file, otherwise the resulting
-`golden_test` macro will fail saying those files are not found.
+`a.template.dart.golden` and `a.js.golden` file.
