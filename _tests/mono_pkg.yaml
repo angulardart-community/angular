@@ -1,5 +1,5 @@
 sdk:
-  - stable
+  - 2.19.6
   - pubspec
 
 stages:
