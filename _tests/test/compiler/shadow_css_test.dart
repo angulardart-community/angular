@@ -34,30 +34,22 @@ RegExp containsRegexp(String input) {
       _escapedRegExpSpecialChars, (match) => '\\${match[0]}'));
 }
 
-RegExp _normalizerExp1,
-    _normalizerExp2,
-    _normalizerExp3,
-    _normalizerExp4,
-    _normalizerExp5,
-    _normalizerExp6,
-    _normalizerExp7;
-
 String normalizeCSS(String css) {
-  _normalizerExp1 ??= RegExp(r'\s+');
-  _normalizerExp2 ??= RegExp(r':\s');
-  _normalizerExp3 ??= RegExp('' "'" r'');
-  _normalizerExp4 ??= RegExp(r'{');
-  _normalizerExp5 ??= RegExp(r'}(?!}|$)');
-  _normalizerExp6 ??= RegExp(r'url\((\"|\s)(.+)(\"|\s)\)(\s*)');
-  _normalizerExp7 ??= RegExp(r'\[(.+)=([^"\]]+)\]');
-  css = css.replaceAll(_normalizerExp1, ' ');
-  css = css.replaceAll(_normalizerExp2, ':');
-  css = css.replaceAll(_normalizerExp3, '"');
-  css = css.replaceAll(_normalizerExp4, ' {');
-  css = css.replaceAll(_normalizerExp5, '} ');
-  css = css.replaceAllMapped(_normalizerExp6, (match) => 'url("${match[2]}")');
+  RegExp normalizerExp1 = RegExp(r'\s+');
+  RegExp normalizerExp2 = RegExp(r':\s');
+  RegExp normalizerExp3 = RegExp('' "'" r'');
+  RegExp normalizerExp4 = RegExp(r'{');
+  RegExp normalizerExp5 = RegExp(r'}(?!}|$)');
+  RegExp normalizerExp6 = RegExp(r'url\((\"|\s)(.+)(\"|\s)\)(\s*)');
+  RegExp normalizerExp7 = RegExp(r'\[(.+)=([^"\]]+)\]');
+  css = css.replaceAll(normalizerExp1, ' ');
+  css = css.replaceAll(normalizerExp2, ':');
+  css = css.replaceAll(normalizerExp3, '"');
+  css = css.replaceAll(normalizerExp4, ' {');
+  css = css.replaceAll(normalizerExp5, '} ');
+  css = css.replaceAllMapped(normalizerExp6, (match) => 'url("${match[2]}")');
   css = css.replaceAllMapped(
-      _normalizerExp7, (match) => '[${match[1]}="${match[2]}"]');
+      normalizerExp7, (match) => '[${match[1]}="${match[2]}"]');
   return css;
 }
 
