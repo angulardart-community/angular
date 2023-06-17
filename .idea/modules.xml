@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/_tests/melos__tests.iml" filepath="$PROJECT_DIR$/_tests/melos__tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/examples/hello_world/melos_examples_hello_world.iml" filepath="$PROJECT_DIR$/examples/hello_world/melos_examples_hello_world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goldens/melos_goldens.iml" filepath="$PROJECT_DIR$/goldens/melos_goldens.iml" />
       <module fileurl="file://$PROJECT_DIR$/ngast/melos_ngast.iml" filepath="$PROJECT_DIR$/ngast/melos_ngast.iml" />
       <module fileurl="file://$PROJECT_DIR$/ngcompiler/melos_ngcompiler.iml" filepath="$PROJECT_DIR$/ngcompiler/melos_ngcompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/ngdart/melos_ngdart.iml" filepath="$PROJECT_DIR$/ngdart/melos_ngdart.iml" />
