@@ -33,16 +33,8 @@ analyzer:
 
 linter:
   rules:
-    # Permanent inclusions: These are optional lints that are not default true.
-    - hash_and_equals
     - iterable_contains_unrelated_type
     - list_remove_unrelated_type
-    - overridden_fields
-    - prefer_function_declarations_over_variables
-    - prefer_initializing_formals
-    - prefer_void_to_null
-    - unnecessary_statements
-    # from pedantic
     - always_declare_return_types
     - prefer_single_quotes
     - sort_child_properties_last
