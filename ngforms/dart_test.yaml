@@ -4,3 +4,4 @@ include: ../tool/dart_test_repo.yaml
 # This repository has only web tests.
 platforms:
   - chrome
+  - firefox

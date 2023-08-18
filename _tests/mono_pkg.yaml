@@ -7,4 +7,5 @@ stages:
       - command: dart run build_runner build --fail-on-severe
   - unit_test:
       - command: dart run test -P vm
-      - command: dart run build_runner test --fail-on-severe -- -P browser
+      - command: dart run build_runner test --fail-on-severe -- -P browser -p chrome
+      - command: dart run build_runner test --fail-on-severe -- -P browser -p firefox

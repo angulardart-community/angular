@@ -3,5 +3,7 @@ presets:
     # Don't run any tests that are tagged ["fails-on-ci"].
     exclude_tags: "fails-on-ci"
 
-    # https://github.com/dart-lang/test/blob/master/doc/configuration.md#reporter
-    reporter: expanded
+override_platforms:
+  firefox:
+    settings:
+      arguments: --headless

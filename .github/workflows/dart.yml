@@ -591,7 +591,7 @@ jobs:
       - job_006
       - job_007
   job_016:
-    name: "unit_test; Dart 2.18.0; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
+    name: "unit_test; Dart 2.18.0; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -616,8 +616,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        run: dart run build_runner test --fail-on-severe -- -P browser
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P browser -p chrome
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -637,6 +637,52 @@ jobs:
       - job_014
       - job_015
   job_017:
+    name: "unit_test; Dart 2.18.0; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:_tests;commands:command_3"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.18.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: _tests_pub_upgrade
+        name: _tests; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _tests
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P browser -p firefox
+        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
+        working-directory: _tests
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_018:
     name: "unit_test; Dart 2.18.0; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
@@ -682,7 +728,7 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_018:
+  job_019:
     name: "unit_test; Dart 2.18.0; PKG: ngast; `dart test -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -690,7 +736,7 @@ jobs:
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngast;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngast;commands:command_4"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
@@ -728,7 +774,7 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_019:
+  job_020:
     name: "unit_test; Dart 2.18.0; PKG: ngcompiler; `dart test -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -736,7 +782,7 @@ jobs:
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngcompiler;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngcompiler;commands:command_4"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
@@ -774,15 +820,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_020:
-    name: "unit_test; Dart 2.18.0; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_021:
+    name: "unit_test; Dart 2.18.0; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngforms;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngforms;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
@@ -800,8 +846,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -820,15 +866,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_021:
-    name: "unit_test; Dart 2.18.0; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_022:
+    name: "unit_test; Dart 2.18.0; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngrouter;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngrouter;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
@@ -846,8 +892,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -866,15 +912,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_022:
-    name: "unit_test; Dart 2.18.0; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_023:
+    name: "unit_test; Dart 2.18.0; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngtest;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngtest;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
@@ -892,8 +938,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:
@@ -912,8 +958,146 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_023:
-    name: "unit_test; Dart 2.19.6; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
+  job_024:
+    name: "unit_test; Dart 2.18.0; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngforms;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngforms
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.18.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngforms_pub_upgrade
+        name: ngforms; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngforms
+      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
+        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
+        working-directory: ngforms
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_025:
+    name: "unit_test; Dart 2.18.0; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngrouter;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngrouter
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.18.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngrouter_pub_upgrade
+        name: ngrouter; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngrouter
+      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
+        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
+        working-directory: ngrouter
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_026:
+    name: "unit_test; Dart 2.18.0; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngtest;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0;packages:ngtest
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.18.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.18.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngtest_pub_upgrade
+        name: ngtest; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngtest
+      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
+        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
+        working-directory: ngtest
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_027:
+    name: "unit_test; Dart 2.19.6; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -938,8 +1122,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        run: dart run build_runner test --fail-on-severe -- -P browser
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P browser -p chrome
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -958,7 +1142,53 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_024:
+  job_028:
+    name: "unit_test; Dart 2.19.6; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:_tests;commands:command_3"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:_tests
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.19.6"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: _tests_pub_upgrade
+        name: _tests; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _tests
+      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P browser -p firefox
+        if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
+        working-directory: _tests
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_029:
     name: "unit_test; Dart 2.19.6; PKG: _tests; `dart run test -P vm`"
     runs-on: ubuntu-latest
     steps:
@@ -1004,7 +1234,7 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_025:
+  job_030:
     name: "unit_test; Dart 2.19.6; PKG: ngast; `dart test -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -1012,7 +1242,7 @@ jobs:
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngast;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngast;commands:command_4"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngast
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
@@ -1050,7 +1280,7 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_026:
+  job_031:
     name: "unit_test; Dart 2.19.6; PKG: ngcompiler; `dart test -P ci`"
     runs-on: ubuntu-latest
     steps:
@@ -1058,7 +1288,7 @@ jobs:
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngcompiler;commands:command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngcompiler;commands:command_4"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngcompiler
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
@@ -1096,15 +1326,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_027:
-    name: "unit_test; Dart 2.19.6; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_032:
+    name: "unit_test; Dart 2.19.6; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngforms;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngforms;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngforms
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
@@ -1122,8 +1352,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -1142,15 +1372,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_028:
-    name: "unit_test; Dart 2.19.6; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_033:
+    name: "unit_test; Dart 2.19.6; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngrouter;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngrouter;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngrouter
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
@@ -1168,8 +1398,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -1188,15 +1418,15 @@ jobs:
       - job_013
       - job_014
       - job_015
-  job_029:
-    name: "unit_test; Dart 2.19.6; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
+  job_034:
+    name: "unit_test; Dart 2.19.6; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngtest;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngtest;commands:command_5"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngtest
             os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
@@ -1214,8 +1444,146 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci -p chrome"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p chrome
+        if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
+        working-directory: ngtest
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_035:
+    name: "unit_test; Dart 2.19.6; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngforms;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngforms
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.19.6"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngforms_pub_upgrade
+        name: ngforms; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngforms
+      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
+        if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
+        working-directory: ngforms
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_036:
+    name: "unit_test; Dart 2.19.6; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngrouter;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngrouter
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.19.6"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngrouter_pub_upgrade
+        name: ngrouter; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngrouter
+      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
+        if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
+        working-directory: ngrouter
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+  job_037:
+    name: "unit_test; Dart 2.19.6; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci -p firefox`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngtest;commands:command_6"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6;packages:ngtest
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.19.6
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+        with:
+          sdk: "2.19.6"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - id: ngtest_pub_upgrade
+        name: ngtest; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngtest
+      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci -p firefox"
+        run: dart run build_runner test --fail-on-severe -- -P ci -p firefox
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:

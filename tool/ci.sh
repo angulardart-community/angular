@@ -84,16 +84,24 @@ for PKG in ${PKGS}; do
         dart run test -P vm || EXIT_CODE=$?
         ;;
       command_2)
-        echo 'dart run build_runner test --fail-on-severe -- -P browser'
-        dart run build_runner test --fail-on-severe -- -P browser || EXIT_CODE=$?
+        echo 'dart run build_runner test --fail-on-severe -- -P browser -p chrome'
+        dart run build_runner test --fail-on-severe -- -P browser -p chrome || EXIT_CODE=$?
         ;;
       command_3)
+        echo 'dart run build_runner test --fail-on-severe -- -P browser -p firefox'
+        dart run build_runner test --fail-on-severe -- -P browser -p firefox || EXIT_CODE=$?
+        ;;
+      command_4)
         echo 'dart test -P ci'
         dart test -P ci || EXIT_CODE=$?
         ;;
-      command_4)
-        echo 'dart run build_runner test --fail-on-severe -- -P ci'
-        dart run build_runner test --fail-on-severe -- -P ci || EXIT_CODE=$?
+      command_5)
+        echo 'dart run build_runner test --fail-on-severe -- -P ci -p chrome'
+        dart run build_runner test --fail-on-severe -- -P ci -p chrome || EXIT_CODE=$?
+        ;;
+      command_6)
+        echo 'dart run build_runner test --fail-on-severe -- -P ci -p firefox'
+        dart run build_runner test --fail-on-severe -- -P ci -p firefox || EXIT_CODE=$?
         ;;
       format)
         echo 'dart format --output=none --set-exit-if-changed .'
