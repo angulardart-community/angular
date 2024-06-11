@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'i18n_test.template.dart' as ng;
 
@@ -32,7 +31,7 @@ void main() {
     final lineBreaks = testFixture.rootElement.querySelectorAll('br');
     expect(lineBreaks, hasLength(1));
     final strongElement = testFixture.rootElement.querySelector('strong')!;
-    expect(strongElement.text, 'emphasis!');
+    expect(strongElement.textContent, 'emphasis!');
   });
 
   test('should render message with unsafe HTML', () async {
@@ -57,7 +56,7 @@ void main() {
     final testFixture = await testBed.create();
     expect(testFixture.text, 'Italic, not <i>italic</i>.');
     final italicElement = testFixture.rootElement.querySelector('i')!;
-    expect(italicElement.text, 'Italic');
+    expect(italicElement.textContent, 'Italic');
   });
 
   // This test ensures none of our Intl.message() parameters are invalid.

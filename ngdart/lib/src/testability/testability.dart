@@ -2,11 +2,11 @@
 library angular.src.testability;
 
 import 'dart:async';
-import 'dart:html' show Element;
-import 'dart:html';
+import 'dart:js_interop';
 
-import 'package:js/js.dart';
 import 'package:meta/meta.dart';
+import 'package:web/web.dart' show Element;
+import 'package:web/web.dart';
 
 import '../../di.dart';
 import '../core/zone/ng_zone.dart';

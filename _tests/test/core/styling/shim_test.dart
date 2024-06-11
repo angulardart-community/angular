@@ -1,10 +1,9 @@
 library angular2.test.common.styling.shim_test;
 
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'shim_test.template.dart' as ng;
 

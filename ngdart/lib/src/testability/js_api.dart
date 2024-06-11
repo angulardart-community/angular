@@ -1,9 +1,9 @@
 @JS()
 library angular.src.testability.js_api;
 
-import 'dart:html';
+import 'dart:js_interop';
 
-import 'package:js/js.dart';
+import 'package:web/web.dart';
 
 /// A JavaScript interface for interacting with AngularDart's `Testability` API.
 ///
@@ -12,8 +12,8 @@ import 'package:js/js.dart';
 @anonymous
 abstract class JsTestability {
   external factory JsTestability({
-    required bool Function() isStable,
-    required void Function(void Function()) whenStable,
+    required JSFunction isStable,
+    required JSFunction whenStable,
   });
 
   /// Returns whether the application is considered stable.
@@ -30,7 +30,7 @@ abstract class JsTestability {
   /// invoked, [callback] is invoked with a value of `false` for `didWork`,
   /// indicating that no asynchronous work was awaited before execution.
   /// Otherwise a value of `true` is passed.
-  void whenStable(void Function() callback);
+  void whenStable(JSFunction callback);
 }
 
 /// A JavaScript interface for interacting with AngularDart's `TestabilityRegistry` API.
@@ -40,8 +40,8 @@ abstract class JsTestability {
 @anonymous
 abstract class JsTestabilityRegistry {
   external factory JsTestabilityRegistry({
-    required JsTestability? Function(Element) getAngularTestability,
-    required List<JsTestability> Function() getAllAngularTestabilities,
+    required JSFunction getAngularTestability,
+    required JSFunction getAllAngularTestabilities,
   });
 
   /// Returns the registered testability instance for [appRoot], or `null`.

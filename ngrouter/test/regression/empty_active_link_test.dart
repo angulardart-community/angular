@@ -15,7 +15,7 @@ void main() {
         .addInjector(injector);
     final testFixture = await testBed.create();
     final anchor = testFixture.rootElement.querySelector('a')!;
-    expect(anchor.classes, contains(AppComponent.activeClassName));
+    expect(anchor.classList.contains(AppComponent.activeClassName), isTrue);
   });
 }
 

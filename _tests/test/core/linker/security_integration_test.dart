@@ -1,11 +1,10 @@
 @TestOn('browser')
 
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/security/dom_sanitization_service.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'security_integration_test.template.dart' as ng;
 
@@ -17,7 +16,7 @@ void main() {
     final testBed = NgTestBed<UnsafeAttributeComponent>(
         ng.createUnsafeAttributeComponentFactory());
     final testFixture = await testBed.create();
-    final a = testFixture.rootElement.querySelector('a') as AnchorElement;
+    final a = testFixture.rootElement.querySelector('a') as HTMLAnchorElement;
     expect(a.href, matches(r'.*/hello$'));
     await testFixture.update((component) {
       component.href = unsafeUrl;
@@ -29,7 +28,7 @@ void main() {
     final testBed = NgTestBed<TrustedValueComponent>(
         ng.createTrustedValueComponentFactory());
     final testFixture = await testBed.create();
-    final a = testFixture.rootElement.querySelector('a') as AnchorElement;
+    final a = testFixture.rootElement.querySelector('a') as HTMLAnchorElement;
     expect(a.href, 'javascript:alert(1)');
   });
 
@@ -43,37 +42,37 @@ void main() {
     final testBed =
         NgTestBed<UnsafeStyleComponent>(ng.createUnsafeStyleComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div');
-    expect(div?.style.background, matches('red'));
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
+    expect(div.style.background, matches('red'));
     await testFixture.update((component) {
       component.backgroundStyle = 'url(javascript:evil())';
     });
-    expect(div?.style.background, isNot(contains('javascript')));
+    expect(div.style.background, isNot(contains('javascript')));
   });
 
   test('should escape unsafe HTML', () async {
     final testBed =
         NgTestBed<UnsafeHtmlComponent>(ng.createUnsafeHtmlComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div');
-    expect(div?.innerHtml, 'some <p>text</p>');
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
+    expect(div.innerHTML, 'some <p>text</p>');
     await testFixture.update((component) {
       var c = component;
       c.html = 'ha <script>evil()</script>';
     });
-    expect(div?.innerHtml, 'ha ');
+    expect(div.innerHTML, 'ha ');
     await testFixture.update((component) {
       var c = component;
       c.html = 'also <img src="x" onerror="evil()"> evil';
     });
-    expect(div?.innerHtml, 'also <img src="x"> evil');
+    expect(div.innerHTML, 'also <img src="x"> evil');
     await testFixture.update((component) {
       final srcdoc = '<div></div><script></script>';
       var c = component;
       c.html = 'also <iframe srcdoc="$srcdoc"> content</iframe>';
     });
     expect(
-      div?.innerHtml,
+      div.innerHTML,
       'also <iframe> content</iframe>',
     );
   });

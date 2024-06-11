@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:collection/collection.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import '../router/router.dart';
 import '../router/router_state.dart';
@@ -80,6 +80,29 @@ class RouterLinkActive implements AfterViewInit, OnDestroy {
         break;
       }
     }
-    _element.classes.toggleAll(_classes, isActive);
+    _element.classList.toggleAll(_classes, isActive);
   }
+}
+
+extension on DOMTokenList {
+  void toggleAll(Iterable<String> iterable, bool shouldAdd) {
+    for (var e in iterable) {
+      toggle(e, shouldAdd);
+    }
+  }
+
+  // bool toggle(String value, [bool? shouldAdd]) {
+  //   _validateToken(value);
+  //   Set<String> s = readClasses();
+  //   bool result = false;
+  //   if (shouldAdd == null) shouldAdd = !s.contains(value);
+  //   if (shouldAdd) {
+  //     s.add(value);
+  //     result = true;
+  //   } else {
+  //     s.remove(value);
+  //   }
+  //   writeClasses(s);
+  //   return result;
+  // }
 }

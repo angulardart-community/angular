@@ -4,11 +4,10 @@ part of 'testability.dart';
 external List<JsTestabilityRegistry>? _ngJsTestabilityRegistries;
 
 @JS('getAngularTestability')
-external set _jsGetAngularTestability(
-    Object? Function(Element element) function);
+external set _jsGetAngularTestability(JSFunction function);
 
 @JS('getAllAngularTestabilities')
-external set _jsGetAllAngularTestabilities(List<Object> Function() function);
+external set _jsGetAllAngularTestabilities(JSFunction function);
 
 @JS('frameworkStabilizers')
 external List<Object?>? _jsFrameworkStabilizers;
@@ -22,10 +21,9 @@ class _JSTestabilityProxy implements _TestabilityProxy {
     if (registries == null) {
       registries = <JsTestabilityRegistry>[];
       _ngJsTestabilityRegistries = registries;
-      _jsGetAngularTestability = allowInterop(_getAngularTestability);
-      _jsGetAllAngularTestabilities = allowInterop(_getAllAngularTestabilities);
-      (_jsFrameworkStabilizers ??= <Object?>[])
-          .add(allowInterop(_whenAllStable));
+      _jsGetAngularTestability = _getAngularTestability.toJS;
+      _jsGetAllAngularTestabilities = _getAllAngularTestabilities.toJS;
+      (_jsFrameworkStabilizers ??= <Object?>[]).add(_whenAllStable.toJS);
     }
     registries.add(registry.asJsApi());
   }
@@ -73,7 +71,7 @@ class _JSTestabilityProxy implements _TestabilityProxy {
     }
 
     for (var i = 0; i < testabilities.length; i++) {
-      testabilities[i].whenStable(allowInterop(decrement));
+      testabilities[i].whenStable(decrement.toJS);
     }
   }
 }
@@ -81,8 +79,8 @@ class _JSTestabilityProxy implements _TestabilityProxy {
 extension on Testability {
   JsTestability asJsApi() {
     return JsTestability(
-      isStable: allowInterop(() => isStable),
-      whenStable: allowInterop(whenStable),
+      isStable: (() => isStable).toJS,
+      whenStable: whenStable.toJS,
     );
   }
 }
@@ -101,8 +99,8 @@ extension on TestabilityRegistry {
     }
 
     return JsTestabilityRegistry(
-      getAngularTestability: allowInterop(getAngularTestability),
-      getAllAngularTestabilities: allowInterop(getAllAngularTestabilities),
+      getAngularTestability: getAngularTestability.toJS,
+      getAllAngularTestabilities: getAllAngularTestabilities.toJS,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'additional_expression_lib.dart' as lib;
 import 'additional_expression_test.template.dart' as ng;
@@ -39,7 +40,9 @@ void main() {
       expect(fixture.assertOnlyInstance.a, isNull);
 
       await fixture.update(
-        (_) => fixture.rootElement.querySelectorAll('button')[0].click(),
+        (_) => (fixture.rootElement.querySelectorAll('button').item(0)
+                as HTMLElement)
+            .click(),
       );
 
       expect(fixture.assertOnlyInstance.a, isNotNull);
@@ -50,7 +53,9 @@ void main() {
       expect(fixture.assertOnlyInstance.b, isNull);
 
       await fixture.update(
-        (_) => fixture.rootElement.querySelectorAll('button')[1].click(),
+        (_) => (fixture.rootElement.querySelectorAll('button').item(1)
+                as HTMLElement)
+            .click(),
       );
 
       expect(fixture.assertOnlyInstance.a, isNotNull);
@@ -62,7 +67,9 @@ void main() {
       expect(fixture.assertOnlyInstance.b, isNull);
 
       await fixture.update(
-        (_) => fixture.rootElement.querySelectorAll('button')[2].click(),
+        (_) => (fixture.rootElement.querySelectorAll('button').item(2)
+                as HTMLElement)
+            .click(),
       );
 
       expect(fixture.assertOnlyInstance.a, isNotNull);

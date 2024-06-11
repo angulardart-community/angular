@@ -1,10 +1,10 @@
 @JS()
 library golden;
 
-import 'dart:html';
+import 'dart:js_interop';
 
-import 'package:js/js.dart';
 import 'package:ngdart/angular.dart';
+import 'package:web/web.dart';
 
 import 'queries.template.dart' as ng;
 

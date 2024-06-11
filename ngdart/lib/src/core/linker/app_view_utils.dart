@@ -1,7 +1,6 @@
-import 'dart:html' show DocumentFragment, NodeTreeSanitizer;
-
 import 'package:ngdart/src/core/application_tokens.dart' as tokens show appId;
 import 'package:ngdart/src/runtime/dom_events.dart' show EventManager;
+import 'package:web/web.dart';
 
 /// Application wide view utilities.
 late AppViewUtils appViewUtils;
@@ -20,8 +19,6 @@ class AppViewUtils {
 
 /// Creates a document fragment from [trustedHtml].
 DocumentFragment createTrustedHtml(String trustedHtml) {
-  return DocumentFragment.html(
-    trustedHtml,
-    treeSanitizer: NodeTreeSanitizer.trusted,
-  );
+  //TODO: test this behavior
+  return document.createDocumentFragment()..textContent = trustedHtml;
 }

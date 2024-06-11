@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html' show EventListener, PopStateEvent;
 
 import 'package:ngdart/angular.dart' show Injectable;
 import 'package:ngrouter/src/location/location_strategy.dart'
     show LocationStrategy;
+import 'package:web/web.dart' show PopStateEvent, Event;
 
 /// A mock implementation of [LocationStrategy] that allows tests to fire
 /// simulated location events.
@@ -56,7 +56,7 @@ class MockLocationStrategy extends LocationStrategy {
   }
 
   @override
-  void onPopState(EventListener fn) {
+  void onPopState(void Function(Event) fn) {
     _subject.stream.listen(fn);
   }
 

@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/bootstrap/run.dart';
 import 'package:ngdart/src/core/application_ref.dart';
+import 'package:web/web.dart';
 
 /// Returns a future that completes with a new instantiated component.
 ///

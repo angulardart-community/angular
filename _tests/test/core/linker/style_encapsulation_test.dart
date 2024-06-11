@@ -1,30 +1,32 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'style_encapsulation_test.template.dart' as ng;
 
 void main() {
   tearDown(() {
-    document.head!.querySelectorAll('style').forEach((e) => e.remove());
+    document.head!
+        .querySelectorAll('style')
+        .asIterable()
+        .forEach((e) => e.parentNode?.removeChild(e));
     return disposeAnyRunningTest();
   });
 
   String failureReason(Element target) {
-    final lastStyles = document.head!.querySelectorAll('style');
-    final styleText = lastStyles.map((e) => e.text).join('\n');
-    return 'HTML:\n\n${target.outerHtml}\nCSS:\n\n$styleText';
+    final lastStyles = document.head!.querySelectorAll('style').asIterable();
+    final styleText = lastStyles.map((e) => e.textContent).join('\n');
+    return 'HTML:\n\n${target.outerHTML}\nCSS:\n\n$styleText';
   }
 
   test('should encapsulate usages of [class]=', () async {
     final testBed =
         NgTestBed<TestSetClassProperty>(ng.createTestSetClassPropertyFactory());
     final fixture = await testBed.create();
-    final element = fixture.rootElement.querySelector('div')!;
+    final element = fixture.rootElement.querySelector('div')! as HTMLDivElement;
     expect(
-      element.getComputedStyle().position,
+      window.getComputedStyle(element).position,
       'absolute',
       reason: failureReason(element),
     );
@@ -36,7 +38,7 @@ void main() {
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('div')!;
     expect(
-      element.getComputedStyle().position,
+      window.getComputedStyle(element).position,
       'absolute',
       reason: failureReason(element),
     );
@@ -48,7 +50,7 @@ void main() {
     final fixture = await testBed.create();
     final element = fixture.rootElement.querySelector('button')!;
     expect(
-      element.getComputedStyle().textTransform,
+      window.getComputedStyle(element).textTransform,
       isNot('uppercase'),
       reason: failureReason(element),
     );

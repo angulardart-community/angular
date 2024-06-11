@@ -1,9 +1,12 @@
-import 'dart:html';
-import 'dart:js';
+// ignore_for_file: constant_identifier_names
+
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'key_events_test.template.dart' as ng;
 
@@ -205,13 +208,13 @@ Event createKeyboardEvent(
   bool shiftKey = false,
   bool metaKey = false,
 }) {
-  if (!context.hasProperty(CREATE_KEYBOARD_EVENT_NAME)) {
+  if (!globalContext.hasProperty(CREATE_KEYBOARD_EVENT_NAME).toDart) {
     var script = document.createElement('script')
       ..setAttribute('type', 'text/javascript')
       ..text = CREATE_KEYBOARD_EVENT_SCRIPT;
     document.body!.append(script);
   }
-  return context.callMethod(CREATE_KEYBOARD_EVENT_NAME, [
+  return globalContext.callMethod(CREATE_KEYBOARD_EVENT_NAME, [
     type,
     keyCode,
     ctrlKey,

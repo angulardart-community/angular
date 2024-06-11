@@ -1,10 +1,10 @@
-import 'dart:html';
 import 'dart:js_util' as js_util;
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'accessor_test.template.dart' as ng;
 

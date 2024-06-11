@@ -10,7 +10,7 @@ import 'visibility.dart';
 ///
 /// <?code-excerpt "docs/attribute-directives/lib/src/highlight_directive_1.dart"?>
 /// ```dart
-/// import 'dart:html';
+/// import 'package:web/web.dart';
 ///
 /// import 'package:ngdart/angular.dart';
 ///

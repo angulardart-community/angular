@@ -1,6 +1,5 @@
-import 'dart:html' as html;
-
 import 'package:ngdart/angular.dart' show Injectable, Inject, Optional;
+import 'package:web/web.dart' as web;
 
 import 'location.dart' show Location;
 import 'location_strategy.dart' show LocationStrategy, appBaseHref;
@@ -43,7 +42,7 @@ class HashLocationStrategy extends LocationStrategy {
   ]) : _baseHref = baseHref ?? '';
 
   @override
-  void onPopState(html.EventListener fn) {
+  void onPopState(void Function(web.Event) fn) {
     _platformLocation.onPopState(fn);
   }
 

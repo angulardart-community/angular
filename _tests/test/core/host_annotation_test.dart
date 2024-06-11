@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'host_annotation_test.template.dart' as ng;
 
@@ -10,11 +9,13 @@ void main() {
   tearDown(disposeAnyRunningTest);
 
   /// Returns the root [Element] created by initializing [component].
-  Future<Element> rootElementOf<T extends Object>(
+  Future<HTMLElement> rootElementOf<T extends Object>(
     ComponentFactory<T> component,
   ) {
     final testBed = NgTestBed(component);
-    return testBed.create().then((fixture) => fixture.rootElement);
+    return testBed
+        .create()
+        .then((fixture) => fixture.rootElement as HTMLElement);
   }
 
   group('@HostBinding', () {
@@ -116,13 +117,13 @@ void main() {
       );
       final fixture = await testBed.create();
       final element = fixture.rootElement;
-      expect(element.classes, isNot(contains('fancy')));
+      expect(element.classList.asIterable(), isNot(contains('fancy')));
 
       await fixture.update((c) => c.fancy = true);
-      expect(element.classes, contains('fancy'));
+      expect(element.classList.asIterable(), contains('fancy'));
 
       await fixture.update((c) => c.fancy = false);
-      expect(element.classes, isNot(contains('fancy')));
+      expect(element.classList.asIterable(), isNot(contains('fancy')));
     });
 
     test('should support multiple annotations on a single field', () async {
@@ -139,7 +140,7 @@ void main() {
           NgTestBed<HostListenerClick>(ng.createHostListenerClickFactory());
       final fixture = await testBed.create();
       fixture.assertOnlyInstance.clickHandler = expectAsync0(() {});
-      await fixture.update((_) => fixture.rootElement.click());
+      await fixture.update((_) => (fixture.rootElement as HTMLElement).click());
     });
 
     test('should support click through inheritance', () async {
@@ -147,7 +148,7 @@ void main() {
           ng.createHostListenerInheritedClickFactory());
       final fixture = await testBed.create();
       fixture.assertOnlyInstance.clickHandler = expectAsync0(() {});
-      await fixture.update((_) => fixture.rootElement.click());
+      await fixture.update((_) => (fixture.rootElement as HTMLElement).click());
     });
 
     test('should support multiple annotations on a single field', () async {

@@ -1,7 +1,7 @@
-import 'dart:html';
-
+// import 'package:web/web.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import '../../core/change_detection/differs/default_keyvalue_differ.dart';
 
@@ -58,7 +58,7 @@ import '../../core/change_detection/differs/default_keyvalue_differ.dart';
   selector: '[ngStyle]',
 )
 class NgStyle implements DoCheck {
-  final Element _ngElement;
+  final HTMLElement _ngElement;
   Map<String, String?>? _rawStyle;
   DefaultKeyValueDiffer? _differ;
 

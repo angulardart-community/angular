@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:meta/meta.dart';
@@ -8,6 +7,7 @@ import 'package:ngdart/src/core/linker/style_encapsulation.dart';
 import 'package:ngdart/src/devtools.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import 'render_view.dart';
 import 'view.dart';

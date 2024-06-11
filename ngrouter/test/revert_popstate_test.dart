@@ -1,9 +1,8 @@
-import 'dart:html' show window;
-
 import 'package:ngdart/angular.dart';
 import 'package:ngrouter/ngrouter.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart' show WindowEventGetters, window;
 
 import 'revert_popstate_test.template.dart' as ng;
 

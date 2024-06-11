@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngrouter/ngrouter.dart';
 import 'package:ngrouter/testing.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'routing_state_crash_test.template.dart' as ng;
 
@@ -33,24 +34,24 @@ void main() {
     await onStable();
     expect(_logs, isEmpty);
     expect(locationStrategy.path(), isEmpty);
-    expect(routeContainer.text, contains('Home Page'));
+    expect(routeContainer.textContent, contains('Home Page'));
 
     // "Navigate" to /another
     await appComponent.instance.updateUrl('/another');
     expect(_logs, isEmpty);
-    expect(routeContainer.text, contains('Another Page'));
+    expect(routeContainer.textContent, contains('Another Page'));
 
     // "Navigate" to /throws.
     await appComponent.instance.updateUrl('/throws');
     expect(_logs, [contains('$IntentionalException')]);
     // Since navigation fails, we should still be at the previous route.
-    expect(routeContainer.text, contains('Another Page'));
+    expect(routeContainer.textContent, contains('Another Page'));
 
     // "Navigate" back to /home.
     _logs.clear();
     await appComponent.instance.updateUrl('/home');
     expect(_logs, isEmpty);
-    expect(routeContainer.text, contains('Home Page'));
+    expect(routeContainer.textContent, contains('Home Page'));
   });
 }
 
@@ -74,9 +75,9 @@ class LoggingExceptionHandler implements ExceptionHandler {
     _logs.add('$exception: $stack');
 
     if (exception is! IntentionalException) {
-      window.console.error('$exception\n$stack');
+      console.error('$exception\n$stack'.toJS);
     } else {
-      window.console.info('ExceptionHandler caught the intentional exception');
+      console.info('ExceptionHandler caught the intentional exception'.toJS);
     }
   }
 }
