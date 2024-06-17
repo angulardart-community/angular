@@ -3,7 +3,7 @@ description: Goldens for AngularDart.
 publish_to: none
 
 environment:
-  sdk: ">=3.2.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   meta: ^1.11.0
