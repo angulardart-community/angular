@@ -45,9 +45,9 @@ void main() {
       final testBed =
           NgTestBed(ng.createInterpolatedTrustedInnerHtmlTestFactory());
       final testRoot = await testBed.create();
-      print(testRoot.rootElement.innerHtml);
+      print(testRoot.rootElement.innerHTML);
       await testRoot.update();
-      print(testRoot.rootElement.innerHtml);
+      print(testRoot.rootElement.innerHTML);
       expect(testRoot.text, contains('(Unsafe)'));
     },
         skip:

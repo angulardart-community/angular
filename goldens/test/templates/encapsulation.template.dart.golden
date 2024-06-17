@@ -5,7 +5,7 @@
 import 'encapsulation.dart';
 import 'package:ngdart/src/core/linker/views/component_view.dart' as import0;
 import 'encapsulation.dart' as import1;
-import 'dart:html' as import2;
+import 'package:web/web.dart' as import2;
 import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import3;
 import 'package:ngdart/src/core/linker/views/view.dart' as import4;
 import 'package:ngdart/src/meta/change_detection_constants.dart' as import5;

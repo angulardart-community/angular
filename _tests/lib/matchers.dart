@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 /// Matches textual content of an element including children.
 Matcher hasTextContent(String expected) => _HasTextContent(expected);
@@ -42,19 +41,19 @@ String? _elementText(Object? n) {
       return '';
     }
 
-    if (n is ContentElement) {
-      return _elementText(n.getDistributedNodes());
+    if (n is HTMLSlotElement) {
+      return _elementText(n.assignedNodes());
     }
 
     if (n is Element && n.shadowRoot != null) {
-      return _elementText(n.shadowRoot!.nodes);
+      return _elementText(n.shadowRoot!.childNodes);
     }
 
-    if (n.nodes.isNotEmpty) {
-      return _elementText(n.nodes);
+    if (n.childNodes.length > 0) {
+      return _elementText(n.childNodes);
     }
 
-    return n.text;
+    return n.textContent;
   } else {
     return '$n';
   }

@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'package:web/web.dart';
 
 /// An Angular view that can be created and destroyed dynamically.
 ///

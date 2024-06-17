@@ -12,7 +12,7 @@ import 'package:ngdart/src/core/linker/style_encapsulation.dart' as import5;
 import 'package:ngdart/src/core/linker/views/view.dart' as import6;
 import 'package:ngdart/src/meta/change_detection_constants.dart' as import7;
 import 'package:ngdart/src/utilities.dart' as import8;
-import 'dart:html' as import9;
+import 'package:web/web.dart' as import9;
 import 'package:ngdart/src/runtime/dom_helpers.dart' as import10;
 import 'package:ngdart/src/core/linker/template_ref.dart';
 import 'package:ngdart/src/devtools.dart' as import12;

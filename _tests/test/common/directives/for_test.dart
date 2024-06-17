@@ -380,8 +380,8 @@ void main() {
           ];
         });
         var endElements = testFixture.rootElement.querySelectorAll('p');
-        expect(startElements[0], endElements[1]);
-        expect(startElements[1], endElements[0]);
+        expect(startElements.item(0), endElements.item(1));
+        expect(startElements.item(1), endElements.item(0));
       });
 
       test(

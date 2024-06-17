@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'ng_for_content_projection_test.template.dart' as ng;
 
@@ -26,12 +25,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '3', '2'],
       );
     });
@@ -44,12 +43,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '3', '2'],
       );
     });
@@ -62,12 +61,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         // TODO(b/129297484): Should be "['1', '3', '2']".
         ['1', '2', '3'],
       );
@@ -81,12 +80,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '3', '2'],
       );
     });
@@ -99,12 +98,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '3', '2'],
       );
     });
@@ -117,12 +116,12 @@ void main() {
       );
 
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         ['1', '2', '3'],
       );
       await forceReorder132();
       expect(
-        fixture.assertOnlyInstance.children!.map((h) => h.text),
+        fixture.assertOnlyInstance.children!.map((h) => h.textContent),
         // TODO(b/129297484): Should be "['1', '3', '2']".
         ['1', '2', '3'],
       );

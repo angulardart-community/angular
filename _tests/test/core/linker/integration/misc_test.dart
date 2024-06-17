@@ -1,6 +1,7 @@
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'misc_test.template.dart' as ng;
 
@@ -18,7 +19,7 @@ void main() {
     final testBed = NgTestBed<HostAttributeFromDirectiveComponent>(
         ng.createHostAttributeFromDirectiveComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.children.first;
+    final div = testFixture.rootElement.children.item(0) as HTMLElement;
     expect(div.attributes, containsPair('role', 'button'));
   });
 
@@ -26,7 +27,7 @@ void main() {
     final testBed = NgTestBed<HostPropertyFromDirectiveComponent>(
         ng.createHostPropertyFromDirectiveComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.children.first;
+    final div = testFixture.rootElement.children.item(0) as HTMLElement;
     expect(div.id, 'one');
     await testFixture.update((component) => component.directive!.id = 'two');
     expect(div.id, 'two');

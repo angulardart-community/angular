@@ -4,7 +4,7 @@ library golden;
 // This code is roughly intended to reflect large-internal clients, i.e.
 // https://source.corp.google.com/piper///depot/google3/ads/awapps2/cm/client/overview/root/lib/overview.template.dart
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:ngdart/angular.dart';
 
 import 'large_templates.template.dart' as ng;

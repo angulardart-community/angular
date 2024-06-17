@@ -1,5 +1,3 @@
-import 'dart:html' show Element;
-
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:meta/meta.dart';
 import 'package:ngdart/src/core/change_detection/change_detection.dart';
@@ -8,6 +6,7 @@ import 'package:ngdart/src/di/errors.dart';
 import 'package:ngdart/src/di/injector.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart' show Element;
 
 /// The base implementation of all views.
 ///

@@ -1,12 +1,15 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:async';
 import 'dart:convert' show json;
 import 'dart:developer';
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:meta/meta.dart';
 import 'package:stream_transform/stream_transform.dart';
+import 'package:web/web.dart';
 
 import '../core/application_ref.dart';
 import '../core/linker/views/component_view.dart';
@@ -69,10 +72,13 @@ class Inspector {
   /// inspecting another.
   void inspect(ApplicationRef applicationRef) {
     if (_applicationRef != null) {
-      window.console.error('''
+      console.error(
+        '''
 AngularDart DevTools does not yet support apps with multiple runApp()
 invocations. Please contact angulardart-eng@ if you encounter this error.
-''');
+'''
+            .toJS,
+      );
       return;
     }
 
@@ -247,7 +253,7 @@ invocations. Please contact angulardart-eng@ if you encounter this error.
       if (componentView != null) {
         return _referenceCounter.toId(componentView, groupName);
       }
-      current = current.parent;
+      current = current.parentNode;
     }
     return -1;
   }
@@ -280,7 +286,9 @@ invocations. Please contact angulardart-eng@ if you encounter this error.
   List<Map<String, Object>> getComponents(String groupName) {
     final json = <Map<String, Object>>[];
     for (final element in _contentRoots) {
-      final treeWalker = TreeWalker(element, NodeFilter.SHOW_ELEMENT);
+      final treeWalker =
+          //TODO:
+          document.createTreeWalker(element, NodeFilterExtensions.SHOW_ELEMENT);
       _collectJson(treeWalker, groupName, json);
     }
     return json;
@@ -295,8 +303,9 @@ invocations. Please contact angulardart-eng@ if you encounter this error.
     return BuiltList.build((b) {
       for (final element in _contentRoots) {
         // Structural directives can be anchored on comments.
-        final whatToShow = NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT;
-        final treeWalker = TreeWalker(element, whatToShow);
+        final whatToShow = NodeFilterExtensions.SHOW_ELEMENT |
+            NodeFilterExtensions.SHOW_COMMENT;
+        final treeWalker = document.createTreeWalker(element, whatToShow);
         _collectNodes(treeWalker, groupName, b);
       }
     });
@@ -409,4 +418,13 @@ class _InspectorNodeData {
 
   /// The directives applied to this node, if any.
   final directives = <Object>[];
+}
+
+/// See https://github.com/dart-lang/web/issues/252
+extension NodeFilterExtensions on NodeFilter {
+  static const SHOW_ALL = 0xFFFFFFFF;
+
+  static const SHOW_ELEMENT = 0x1;
+  static const SHOW_COMMENT = 0x80;
+  static const SHOW_TEXT = 0x4;
 }

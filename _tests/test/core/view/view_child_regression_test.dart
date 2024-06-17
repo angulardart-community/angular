@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'view_child_regression_test.template.dart' as ng;
 

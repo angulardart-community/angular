@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'query_integration_test.template.dart' as ng;
 
@@ -227,7 +226,7 @@ void main() {
 
       while (divIt.moveNext()) {
         itemIt.moveNext();
-        expect(divIt.current.text, itemIt.current);
+        expect(divIt.current.textContent, itemIt.current);
       }
 
       expect(itemIt.moveNext(), false);
@@ -250,7 +249,7 @@ void main() {
       await testFixture.update((component) {
         component.showEmbeddedViews = true;
       });
-      expect(testFixture.assertOnlyInstance.div?.text, 'First');
+      expect(testFixture.assertOnlyInstance.div?.textContent, 'First');
     });
   });
 }

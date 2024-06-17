@@ -1,7 +1,7 @@
 // @JS()
 // library golden;
 
-// import 'package:js/js.dart';
+// import 'dart:js_interop';
 // import 'package:safe_html/safe_html.dart';
 // import 'package:ngdart/angular.dart';
 

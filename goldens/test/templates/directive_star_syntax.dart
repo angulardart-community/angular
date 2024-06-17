@@ -1,7 +1,7 @@
 @JS()
 library golden;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:ngdart/angular.dart';
 
 import 'directive_star_syntax.template.dart' as ng;

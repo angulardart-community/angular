@@ -1,9 +1,8 @@
-import 'dart:html' as html;
-
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/devtools.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart' as web;
 
 import 'inspector_test.template.dart' as ng;
 
@@ -263,7 +262,7 @@ void main() {
     });
 
     group('external content root', () {
-      late html.Element container;
+      late web.Element container;
       late NgTestFixture<TestExternalContentRoots> testFixture;
 
       setUp(() async {
@@ -358,8 +357,8 @@ void main() {
       final testBed = NgTestBed<TestExternalContentRoots>(
           ng.createTestExternalContentRootsFactory());
       final testFixture = await testBed.create();
-      final childContainer = html.DivElement();
-      final parentContainer = testFixture.rootElement.parent!
+      final childContainer = web.HTMLDivElement();
+      final parentContainer = testFixture.rootElement.parentElement!
         ..append(childContainer);
       registerContentRoot(childContainer);
       registerContentRoot(parentContainer);
@@ -628,7 +627,7 @@ void main() {
     });
 
     group('external content root', () {
-      late html.Element container;
+      late web.Element container;
       late NgTestFixture<TestExternalContentRoots> testFixture;
 
       setUp(() async {
@@ -723,8 +722,8 @@ void main() {
       final testBed = NgTestBed<TestExternalContentRoots>(
           ng.createTestExternalContentRootsFactory());
       final testFixture = await testBed.create();
-      final childContainer = html.DivElement();
-      final parentContainer = testFixture.rootElement.parent!
+      final childContainer = web.HTMLDivElement();
+      final parentContainer = testFixture.rootElement.parentElement!
         ..append(childContainer);
       registerContentRoot(childContainer);
       registerContentRoot(parentContainer);
@@ -963,9 +962,9 @@ void main() {
   });
 }
 
-html.Element createContentRoot({html.Element? parent}) {
-  final root = html.DivElement();
-  (parent ?? html.document.body!).append(root);
+web.Element createContentRoot({web.Element? parent}) {
+  final root = web.HTMLDivElement();
+  (parent ?? web.document.body!).append(root);
   registerContentRoot(root);
   return root;
 }
@@ -1188,7 +1187,7 @@ class TestExternalContentRoots {
   @ViewChild('multiple')
   TemplateRef? multipleComponentTemplateRef;
 
-  void initExternalContent(html.Element container, TemplateRef content) {
+  void initExternalContent(web.Element container, TemplateRef content) {
     final viewRef = _viewContainerRef.createEmbeddedView(content);
     for (final node in viewRef.rootNodes) {
       container.append(node);

@@ -18,25 +18,25 @@ void main() {
     final testBed =
         NgTestBed<RendersChildren>(ng.createRendersChildrenFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml, html);
+    expect(testFixture.rootElement.innerHTML, html);
   });
 
   test('supports *ngFor', () async {
     final testBed = NgTestBed<SupportsNgFor>(ng.createSupportsNgForFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml, anchorHtml);
+    expect(testFixture.rootElement.innerHTML, anchorHtml);
     final values = ['a', 'b', 'c'];
     final html = values.join();
     await testFixture.update((component) => component.values.addAll(values));
-    expect(testFixture.rootElement.innerHtml, '$anchorHtml$html');
+    expect(testFixture.rootElement.innerHTML, '$anchorHtml$html');
   });
 
   test('supports *ngIf', () async {
     final testBed = NgTestBed<SupportsNgIf>(ng.createSupportsNgIfFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml, anchorHtml);
+    expect(testFixture.rootElement.innerHTML, anchorHtml);
     await testFixture.update((component) => component.visible = true);
-    expect(testFixture.rootElement.innerHtml, '$anchorHtml$html');
+    expect(testFixture.rootElement.innerHTML, '$anchorHtml$html');
   });
 
   test('supports *ngTemplateOutlet', () async {
@@ -44,7 +44,7 @@ void main() {
         ng.createSupportsNgTemplateOutletFactory());
     final testFixture = await testBed.create();
     expect(
-        testFixture.rootElement.innerHtml,
+        testFixture.rootElement.innerHTML,
         '$anchorHtml ' // <template #ref> anchor
         '$anchorHtml' // <template> and ViewContainerRef anchor for *-directive
         '${testFixture.assertOnlyInstance.context['message']}');
@@ -54,10 +54,10 @@ void main() {
     final testBed =
         NgTestBed<SupportsNesting>(ng.createSupportsNestingFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml, anchorHtml);
+    expect(testFixture.rootElement.innerHTML, anchorHtml);
     await testFixture.update((component) => component.integers = [1, 2, 3]);
     expect(
-        testFixture.rootElement.innerHtml,
+        testFixture.rootElement.innerHTML,
         '$anchorHtml' // NgFor
         '$anchorHtml' // NgIf true
         '<li>1</li>'
@@ -67,7 +67,7 @@ void main() {
         '<li>3</li>');
     await testFixture.update((component) => component.filterOdd = true);
     expect(
-        testFixture.rootElement.innerHtml,
+        testFixture.rootElement.innerHTML,
         '$anchorHtml' // NgFor
         '$anchorHtml' // NgIf false
         '$anchorHtml' // NgIf true
@@ -79,10 +79,10 @@ void main() {
   test('can be projected', () async {
     final testBed = NgTestBed<CanBeProjected>(ng.createCanBeProjectedFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml,
+    expect(testFixture.rootElement.innerHTML,
         '<content-host>$anchorHtml$html</content-host>');
     await testFixture.update((component) => component.visible = false);
-    expect(testFixture.rootElement.innerHtml,
+    expect(testFixture.rootElement.innerHTML,
         '<content-host>$anchorHtml</content-host>');
   });
 
@@ -90,7 +90,7 @@ void main() {
     final testBed = NgTestBed<CanHostProjectedContent>(
         ng.createCanHostProjectedContentFactory());
     final testFixture = await testBed.create();
-    expect(testFixture.rootElement.innerHtml,
+    expect(testFixture.rootElement.innerHTML,
         '<contained-content-host>$html</contained-content-host>');
   });
 }

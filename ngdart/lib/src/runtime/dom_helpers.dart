@@ -4,12 +4,13 @@
 @JS()
 library angular.src.runtime.dom_helpers;
 
-import 'dart:html' hide document;
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
-import 'package:js/js.dart';
-import 'package:js/js_util.dart' as js;
+// import 'package:js/js_util.dart' as js;
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart' hide document;
 
 /// https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
 Text _createTextNode(String text) => Text(text);
@@ -42,11 +43,11 @@ var domRootRendererIsDirty = false;
 ///
 /// For [element]s not guaranteed to be HTML, see [updateClassBindingNonHtml].
 @dart2js.noInline
-void updateClassBinding(HtmlElement element, String className, bool isAdd) {
+void updateClassBinding(HTMLElement element, String className, bool isAdd) {
   if (isAdd) {
-    element.classes.add(className);
+    element.classList.add(className);
   } else {
-    element.classes.remove(className);
+    element.classList.remove(className);
   }
 }
 
@@ -60,9 +61,9 @@ void updateClassBinding(HtmlElement element, String className, bool isAdd) {
 @dart2js.noInline
 void updateClassBindingNonHtml(Element element, String className, bool isAdd) {
   if (isAdd) {
-    element.classes.add(className);
+    element.classList.add(className);
   } else {
-    element.classes.remove(className);
+    element.classList.remove(className);
   }
 }
 
@@ -126,7 +127,7 @@ void setProperty(
   String property,
   Object? value,
 ) {
-  js.setProperty(element, property, value);
+  element.setProperty(property.toJS, value?.toJSBox);
 }
 
 /// Creates a [Text] node with the provided [contents].
@@ -200,7 +201,7 @@ Comment appendAnchor(Node parent) {
 ///
 /// This is an optimization to reduce code size for a common operation.
 @dart2js.noInline
-DivElement appendDiv(Document doc, Node parent) {
+HTMLDivElement appendDiv(Document doc, Node parent) {
   return unsafeCast(parent.append(doc.createElement('div')));
 }
 
@@ -208,7 +209,7 @@ DivElement appendDiv(Document doc, Node parent) {
 ///
 /// This is an optimization to reduce code size for a common operation.
 @dart2js.noInline
-SpanElement appendSpan(Document doc, Node parent) {
+HTMLSpanElement appendSpan(Document doc, Node parent) {
   return unsafeCast(parent.append(doc.createElement('span')));
 }
 
@@ -267,10 +268,23 @@ void insertNodesAsSibling(List<Node> nodes, Node sibling) {
   if (nodes.isEmpty || parentOfSibling == null) {
     return;
   }
-  final nextSibling = sibling.nextNode;
+  final nextSibling = sibling.nextSibling;
   if (nextSibling == null) {
     appendNodes(nodes, parentOfSibling);
   } else {
     insertNodesBefore(nodes, parentOfSibling, nextSibling);
+  }
+}
+
+extension NgNodeHelpers on Node {
+  //source: https://api.dart.dev/stable/2.19.5/dart-html/Node/remove.html
+  /// Removes this node from the DOM.
+  void remove() {
+    // TODO(jacobr): should we throw an exception if parent is already null?
+    // TODO(vsm): Use the native remove when available.
+    if (parentNode != null) {
+      final Node parent = parentNode!;
+      parent.removeChild(this);
+    }
   }
 }

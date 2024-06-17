@@ -1,5 +1,6 @@
-import 'dart:html';
 import 'dart:js_util' as js_util;
+
+import 'package:web/web.dart';
 
 import '../model.dart' show Control, AbstractControlGroup;
 import '../validators.dart' show Validators;

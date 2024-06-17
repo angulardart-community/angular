@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:html' show Event;
 
 import 'package:ngdart/angular.dart';
+import 'package:web/web.dart' show Event;
 
 import '../model.dart';
 import 'control_container.dart';

@@ -1,19 +1,17 @@
 @JS()
 library angular.src.testability.js_api;
 
-import 'dart:html';
+import 'dart:js_interop';
 
-import 'package:js/js.dart';
+import 'package:web/web.dart';
 
 /// A JavaScript interface for interacting with AngularDart's `Testability` API.
 ///
 /// This interfaces with a running AngularDart application.
-@JS()
-@anonymous
-abstract class JsTestability {
+extension type JsTestability._(JSObject _) implements JSObject {
   external factory JsTestability({
-    required bool Function() isStable,
-    required void Function(void Function()) whenStable,
+    required JSFunction isStable,
+    required JSFunction whenStable,
   });
 
   /// Returns whether the application is considered stable.
@@ -22,7 +20,7 @@ abstract class JsTestability {
   /// framework. By default, this is determined by no known asynchronous tasks
   /// (microtasks, or timers) being present but not yet executed within the
   /// framework context.
-  bool isStable();
+  external bool isStable();
 
   /// Invokes the provided [callback] when the application [isStable].
   ///
@@ -30,23 +28,21 @@ abstract class JsTestability {
   /// invoked, [callback] is invoked with a value of `false` for `didWork`,
   /// indicating that no asynchronous work was awaited before execution.
   /// Otherwise a value of `true` is passed.
-  void whenStable(void Function() callback);
+  external void whenStable(JSFunction callback);
 }
 
 /// A JavaScript interface for interacting with AngularDart's `TestabilityRegistry` API.
 ///
 /// A global registry of `Testability` instances given an app root element.
-@JS()
-@anonymous
-abstract class JsTestabilityRegistry {
+extension type JsTestabilityRegistry._(JSObject _) implements JSObject {
   external factory JsTestabilityRegistry({
-    required JsTestability? Function(Element) getAngularTestability,
-    required List<JsTestability> Function() getAllAngularTestabilities,
+    required JSFunction getAngularTestability,
+    required JSFunction getAllAngularTestabilities,
   });
 
   /// Returns the registered testability instance for [appRoot], or `null`.
-  JsTestability? getAngularTestability(Element appRoot);
+  external JsTestability? getAngularTestability(Element appRoot);
 
   /// Returns all testability instances registered.
-  List<JsTestability> getAllAngularTestabilities();
+  external JSArray<JsTestability> getAllAngularTestabilities();
 }

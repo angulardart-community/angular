@@ -35,11 +35,11 @@ void main() {
       fakeRouter.current = RouterState('/user/jill', const []);
     });
     final anchor = fixture.rootElement.querySelector('a')!;
-    expect(anchor.classes, isEmpty);
+    expect(anchor.classList.length, isZero);
     await fixture.update((_) {
       fakeRouter.current = RouterState('/user/bob', const []);
     });
-    expect(anchor.classes, contains('active-link'));
+    expect(anchor.classList.contains('active-link'), isTrue);
   });
 
   test('should validate queryParams and fragment', () async {
@@ -50,22 +50,22 @@ void main() {
       fakeRouter.current = RouterState('/user/bob', const []);
     });
     final anchor = fixture.rootElement.querySelector('a')!;
-    expect(anchor.classes, isEmpty);
+    expect(anchor.classList.length, isZero);
     await fixture.update((_) {
       fakeRouter.current =
           RouterState('/user/bob', const [], queryParameters: {'param': '1'});
     });
-    expect(anchor.classes, isEmpty);
+    expect(anchor.classList.length, isZero);
     await fixture.update((_) {
       fakeRouter.current = RouterState('/user/bob', const [], fragment: 'frag');
     });
-    expect(anchor.classes, isEmpty);
+    expect(anchor.classList.length, isZero);
 
     await fixture.update((_) {
       fakeRouter.current = RouterState('/user/bob', const [],
           queryParameters: {'param': '1'}, fragment: 'frag');
     });
-    expect(anchor.classes, contains('active-link'));
+    expect(anchor.classList.contains('active-link'), isTrue);
   });
 
   test(
@@ -80,7 +80,7 @@ void main() {
           queryParameters: {'param': '1'}, fragment: 'frag');
     });
     final anchor = fixture.rootElement.querySelector('a')!;
-    expect(anchor.classes, contains('active-link'));
+    expect(anchor.classList.contains('active-link'), isTrue);
   });
 }
 

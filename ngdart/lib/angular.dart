@@ -78,3 +78,4 @@ export 'src/runtime/check_binding.dart' show debugCheckBindings;
 // TODO(b/116697059): Move to a testonly=1 library.
 export 'src/testability.dart'
     show testabilityProvider, Testability, TestabilityRegistry;
+export 'src/utilities/iterables.dart';
