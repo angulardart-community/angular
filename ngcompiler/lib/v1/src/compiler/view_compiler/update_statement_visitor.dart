@@ -142,7 +142,7 @@ class _UpdateStatementsVisitor
           : currValExpr.callMethod('toString', []);
       final styleWithUnit = styleString.plus(o.literal(styleBinding.unit));
       styleValueExpr =
-          currValExpr.isBlank().conditional(o.nullExpr, styleWithUnit);
+          currValExpr.isBlank().conditional(o.escapedString(''), styleWithUnit);
     } else {
       styleValueExpr = bindingSource.isString
           ? currValExpr

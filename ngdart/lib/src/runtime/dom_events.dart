@@ -34,7 +34,10 @@ class EventManager {
     // If the view compiler knows that a given event is a DOM event (i.e.
     // "click"), it will never be called into EventManager. But of course the
     // browser APIs change, so this is the final fallback.
-    element.addEventListener(name, callback.toJS);
+    //
+    // TODO(GZGavinZhao): the `Event` signature should progagate back to
+    // `addEventListener` for stronger type guarantees.
+    element.addEventListener(name, ((Event event) => callback(event)).toJS);
   }
 }
 
@@ -88,7 +91,7 @@ class _KeyEventsHandler {
 
     element.addEventListener(
         parsed.domEventName,
-        (event) {
+        (Event event) {
           if (event is KeyboardEvent && parsed.matches(event)) {
             callback(event);
           }
