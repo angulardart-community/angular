@@ -34,6 +34,8 @@ const testabilityProvider = [
 /// must be injected too.
 // TODO(b/168535057): Add `dispose` function (to unsubscribe, remove elements).
 @sealed
+// @JS()
+// @staticInterop
 class Testability {
   final NgZone _ngZone;
 
@@ -46,6 +48,7 @@ class Testability {
   /// This is commonly referred to as _stable_, that-is that the DOM
   /// representation of the app is synchronized with the Dart data and template
   /// models, and no more changes are (currently) epected.
+  // @JSExport('whenStable')
   void whenStable(void Function() callback) {
     _storeCallback(callback);
     _runCallbacksIfStable();
@@ -69,6 +72,7 @@ class Testability {
   /// Whether the framework is no longer anticipating change detection.
   ///
   /// See [whenStable] for details.
+  // @JSExport('isStable')
   bool get isStable => !_ngZone.isRunning && !_ngZone.hasPendingMacrotasks;
 
   void _runCallbacksIfStable() {
