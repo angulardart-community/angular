@@ -324,10 +324,10 @@ class HtmlBinding implements BindingTarget {
 }
 
 class ClassBinding implements BindingTarget {
-  /// Name of the class binding, i.e. foo in [class.foo]='bar'.
+  /// Name of the class binding, i.e. foo in `[class.foo]='bar'`.
   ///
-  /// If name is null, then we treat this as a [className]='"foo"' or
-  /// [attr.class]='foo'.
+  /// If name is null, then we treat this as a `[className]='"foo"'` or
+  /// `[attr.class]='foo'`.
   final String? name;
 
   @override

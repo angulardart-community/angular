@@ -21,7 +21,7 @@ class ComponentLoader {
   ///
   /// May optionally define a parent [injector]; defaults to an empty injector.
   ///
-  /// ```dart
+  /// ```
   /// // An `ExampleComponent`s generated code, including a `ComponentFactory`.
   /// import 'example.template.dart' as ng;
   ///
@@ -66,10 +66,10 @@ class ComponentLoader {
   /// in the DOM, similar to how `*ngIf` and `*ngFor` operate.
   ///
   /// The following API would load a new component next to `currentAd`:
-  /// ```dart
+  /// ```
   /// @Component(
   ///   selector: 'ad-view',
-  ///   template: r'''
+  ///   template: '''
   ///     This component is sponsored by:
   ///     <template #currentAd></template>
   ///   ''',

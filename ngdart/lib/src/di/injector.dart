@@ -17,7 +17,7 @@ Never throwsNotFound(HierarchicalInjector injector, Object token) {
 /// Defines a function that creates an injector around a [parent] injector.
 ///
 /// An [InjectorFactory] can be as simple as a closure or function:
-/// ```dart
+/// ```
 /// class Example {}
 ///
 /// /// Returns an [Injector] that provides an `Example` service.

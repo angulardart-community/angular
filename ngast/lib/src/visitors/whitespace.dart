@@ -4,7 +4,7 @@ import 'recursive.dart';
 /// Applies whitespace reduction to implement (`preserveWhitespace: false`).
 ///
 /// Use [visitAllRoot] to process root nodes:
-/// ```dart
+/// ```
 /// var nodes = parse(template, sourceUrl: url);
 /// nodes = const MinimizeWhitespaceVisitor().visitAllRoot(nodes);
 /// ```

@@ -26,7 +26,7 @@ abstract class CanActivate {
   /// ```
   /// class MyComponent implements CanActivate {
   ///   @override
-  ///   Future<bool> canActivate(RouterState _, RouterState __) async {
+  ///   Future<bool> canActivate(RouterState current, RouterState next) async {
   ///     // Maybe this page isn't ready yet for production, so always reject.
   ///     return false;
   ///   }
@@ -65,8 +65,9 @@ abstract class CanDeactivate {
   ///   Future<bool> canDeactivate(
   ///     RouterState current,
   ///     RouterState next,
-  ///   ) async =>
-  ///       current.parameters['id'] != next.parameters['id'];
+  ///   ) async {
+  ///     return current.parameters['id'] != next.parameters['id'];
+  ///   }
   /// }
   /// ```
   ///
@@ -156,12 +157,12 @@ abstract class OnActivate {
   /// **NOTE**: If the component also extends [CanReuse] and is reused, this
   /// will be called again on the same instance.
   ///
-  /// ```dart
+  /// ```
   /// class MyComponent extends CanReuse implements OnActivate {
   ///   User user;
   ///
   ///   @override
-  ///   void onActivate(_, RouterState current) {
+  ///   void onActivate(RouterState? previous, RouterState current) {
   ///     var userId = current.getParameter('userId');
   ///     getUserById(userId).then((user) => this.user = user);
   ///   }

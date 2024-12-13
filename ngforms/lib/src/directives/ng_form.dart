@@ -33,9 +33,10 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'my-app',
+///   directives: [coreDirectives, formDirectives],
 ///   template: '''
 ///     <div>
 ///       <p>Submit the form to see the data object Angular builds</p>
@@ -55,15 +56,14 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 ///       <p>Form data submitted:</p>
 ///       </form>
 ///       <pre>{{data}}</pre>
-///     </div>''',
-///   directives: const [coreDirectives, formDirectives]
-/// })
+///     </div>
+///   ''',
+/// )
 /// class App {
-///
-///   String data;
+///   String? data;
 ///
 ///   void onSubmit(data) {
-///     data = JSON.encode(data);
+///     this.data = json.encode(data);
 ///   }
 /// }
 /// ```

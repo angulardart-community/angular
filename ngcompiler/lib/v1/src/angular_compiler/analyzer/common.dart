@@ -44,8 +44,8 @@ String? getTypeName(DartType type) {
 ///
 /// For example for the following code:
 /// ```
-/// const foo = const <String>[];
-/// const bar = const ['A string'];
+/// const foo = <String>[];
+/// const bar = ['A string'];
 /// ```
 ///
 /// ... both `foo` and `bar` should return the [DartType] for `String`.

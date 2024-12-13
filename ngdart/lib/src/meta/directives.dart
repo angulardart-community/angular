@@ -9,7 +9,7 @@ import 'visibility.dart';
 /// attach behavior to elements in the DOM.
 ///
 /// <?code-excerpt "docs/attribute-directives/lib/src/highlight_directive_1.dart"?>
-/// ```dart
+/// ```
 /// import 'dart:html';
 ///
 /// import 'package:ngdart/angular.dart';
@@ -32,8 +32,8 @@ import 'visibility.dart';
 ///
 /// See also:
 ///
-/// * [Attribute Directives](https://webdev.dartlang.org/angular/guide/attribute-directives)
-/// * [Lifecycle Hooks](https://webdev.dartlang.org/angular/guide/lifecycle-hooks)
+/// * [Attribute Directives](https://angulardart.xyz/guide/attribute-directives)
+/// * [Lifecycle Hooks](https://angulardart.xyz/guide/lifecycle-hooks)
 ///
 @Target({TargetKind.classType})
 class Directive {
@@ -75,14 +75,15 @@ class Directive {
   /// ### Example
   /// Here is an example of a class that can be injected:
   ///
-  /// ```dart
+  /// ```
   /// class Greeter {
   ///   String greet(String name) => 'Hello ${name}!';
   /// }
   ///
   /// @Directive(
   ///   selector: 'greet',
-  ///   providers: const [ Greeter])
+  ///   providers: [Greeter],
+  /// )
   /// class HelloWorld {
   ///   final Greeter greeter;
   ///
@@ -96,16 +97,18 @@ class Directive {
   ///
   /// ### Example
   ///
-  /// ```dart
+  /// ```
   /// @Directive(
   ///   selector: 'child-dir',
-  ///   exportAs: 'child')
+  ///   exportAs: 'child',
+  /// )
   /// class ChildDir {}
   ///
   /// @Component(
   ///   selector: 'main',
   ///   template: `<child-dir #c="child"></child-dir>`,
-  ///   directives: const [ChildDir])
+  ///   directives: [ChildDir],
+  /// )
   /// class MainComponent {}
   /// ```
   final String? exportAs;
@@ -146,7 +149,7 @@ class Directive {
 /// the callbacks are called by the change detection at defined points in time
 /// during the life of the component.
 ///
-/// [LCH]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks
+/// [LCH]: https://angulardart.xyz/guide/lifecycle-hooks
 @Target({TargetKind.classType})
 class Component extends Directive {
   /// Defines the used change detection strategy.
@@ -164,31 +167,29 @@ class Component extends Directive {
   /// ## Simple Example
   ///
   /// Here is an example of a class that can be injected:
+  /// ```
+  /// class Greeter {
+  ///   greet(String name) => 'Hello ${name}!';
+  /// }
   ///
-  ///     class Greeter {
-  ///        greet(String name) => 'Hello ${name}!';
-  ///     }
+  /// @Directive(
+  ///   selector: 'needs-greeter'
+  /// )
+  /// class NeedsGreeter {
+  ///   final Greeter greeter;
   ///
-  ///     @Directive(
-  ///       selector: 'needs-greeter'
-  ///     )
-  ///     class NeedsGreeter {
-  ///       final Greeter greeter;
+  ///   NeedsGreeter(this.greeter);
+  /// }
   ///
-  ///       NeedsGreeter(this.greeter);
-  ///     }
-  ///
-  ///     @Component(
-  ///       selector: 'greet',
-  ///       viewProviders: [
-  ///         Greeter
-  ///       ],
-  ///       template: '<needs-greeter></needs-greeter>',
-  ///       directives: [NeedsGreeter]
-  ///     )
-  ///     class HelloWorld {
-  ///     }
-  ///
+  /// @Component(
+  ///   selector: 'greet',
+  ///   viewProviders: [Greeter],
+  ///   template: '<needs-greeter></needs-greeter>',
+  ///   directives: [NeedsGreeter]
+  /// )
+  /// class HelloWorld {
+  /// }
+  /// ```
   final List<Object> viewProviders;
 
   /// A list of identifiers that may be referenced in the template.
@@ -196,16 +197,16 @@ class Component extends Directive {
   /// ## Small Example
   ///
   /// Suppose you want to use an enum value in your template:
+  /// ```
+  /// enum MyEnum { foo, bar, baz }
   ///
-  ///     enum MyEnum { foo, bar, baz }
-  ///
-  ///     @Component(
-  ///       selector: 'example',
-  ///       exports: const [MyEnum],
-  ///       template: '<p>{{MyEnum.bar}}</p>',
-  ///     )
-  ///     class Example {}
-  ///
+  /// @Component(
+  ///   selector: 'example',
+  ///   exports: [MyEnum],
+  ///   template: '<p>{{MyEnum.bar}}</p>',
+  /// )
+  /// class Example {}
+  /// ```
   final List<Object?> exports;
 
   final String? templateUrl;
@@ -282,7 +283,7 @@ class Pipe {
 ///
 /// A [Directive] could read the string literal `'text'` like so:
 ///
-/// ```dart
+/// ```
 /// @Directive(selector: 'input')
 /// class InputAttrDirective {
 ///   InputAttrDirective(@Attribute('type') String type) {
@@ -324,7 +325,7 @@ abstract class _Query {
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'root-comp',
 ///   directives: [TabPanelComponent, TabComponent],
@@ -434,7 +435,7 @@ abstract class _ViewQuery extends _Query {
 ///
 /// With a [Type] selector:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'child-cmp',
 ///   template: '<p>child</p>'
@@ -454,12 +455,12 @@ abstract class _ViewQuery extends _Query {
 /// )
 /// class SomeCmp implements AfterViewInit {
 ///   @ViewChildren(ChildCmp)
-///   List<ChildCmp> children;
+///   List<ChildCmp>? children;
 ///
 ///   @override
 ///   void ngAfterViewInit() {
 ///     // children are set
-///     for (var child in children) {
+///     for (var child in children!) {
 ///       child.doSomething();
 ///     }
 ///   }
@@ -468,7 +469,7 @@ abstract class _ViewQuery extends _Query {
 ///
 /// With a [String] selector:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'child-cmp',
 ///   template: '<p>child</p>',
@@ -488,12 +489,12 @@ abstract class _ViewQuery extends _Query {
 /// )
 /// class SomeCmp implements AfterViewInit {
 ///   @ViewChildren('child1, child2, child3')
-///   List<ChildCmp> children;
+///   List<ChildCmp>? children;
 ///
 ///   @override
 ///   void ngAfterViewInit() {
 ///     // Initial children are set
-///     for (var child in children) {
+///     for (var child in children!) {
 ///       child.doSomething();
 ///     }
 ///   }
@@ -502,7 +503,7 @@ abstract class _ViewQuery extends _Query {
 ///
 /// Using a _setter_ for update notifications:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'child-cmp',
 ///   template: '<p>child</p>',
@@ -545,7 +546,7 @@ abstract class _ViewQuery extends _Query {
 ///
 /// Reading an HTML element using `read`:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'child-cmp',
 ///   template: '<p>child</p>',
@@ -565,7 +566,7 @@ abstract class _ViewQuery extends _Query {
 /// )
 /// class SomeCmp {
 ///   @ViewChildren('child1, child2, child3', read: Element)
-///   List<Element> children;
+///   List<Element>? children;
 /// }
 /// ```
 ///
@@ -596,7 +597,7 @@ class ViewChildren extends _ViewQuery {
 /// represents a single (or first, if more than one is found) node being queried
 /// - similar to `querySelector` instead of `querySelectorAll`.
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'child-cmp',
 ///   template: '<p>child</p>',
@@ -610,7 +611,7 @@ class ViewChildren extends _ViewQuery {
 /// )
 /// class SomeCmp {
 ///   @ViewChild(ChildCmp)
-///   ChildCmp child;
+///   ChildCmp? child;
 /// }
 /// ```
 ///
@@ -638,32 +639,34 @@ class ViewChild extends _ViewQuery {
 ///
 /// The following example creates a component with two input properties.
 ///
-/// ```dart
+/// ```
 /// @Component(
-///    selector: 'bank-account',
-///    template: '''
-///      Bank Name: {{bankName}}
-///      Account Id: {{id}}
-///    ''')
-///  class BankAccount {
-///    @Input()
-///    String bankName;
+///   selector: 'bank-account',
+///   template: '''
+///     Bank Name: {{bankName}}
+///     Account Id: {{id}}
+///   ''',
+/// )
+/// class BankAccount {
+///   @Input()
+///   String bankName;
 ///
-///    @Input('account-id')
-///    String id;
+///   @Input('account-id')
+///   String id;
 ///
-///    // this property is not bound, and won't be automatically updated
-///    String normalizedBankName;
-///  }
+///   // this property is not bound, and won't be automatically updated
+///   String normalizedBankName;
+/// }
 ///
-///  @Component(
-///    selector: 'app',
-///    template: '''
-///      <bank-account bank-name="RBC" account-id="4747"></bank-account>
-///    ''',
-///    directives: const [BankAccount])
-///  class App {}
-///  ```
+/// @Component(
+///   selector: 'app',
+///   template: '''
+///     <bank-account bank-name="RBC" account-id="4747"></bank-account>
+///   ''',
+///   directives: [BankAccount],
+/// )
+/// class App {}
+/// ```
 @Target({
   TargetKind.field,
   TargetKind.setter,
@@ -685,14 +688,14 @@ class Input {
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Directive(selector: 'interval-dir')
 /// class IntervalDir {
-///   final _everySecond = new StreamController<String>();
+///   final _everySecond = StreamController<String>();
 ///   @Output()
 ///   final get everySecond => _everySecond.stream;
 ///
-///   final _every5Secs = new StreamController<void>();
+///   final _every5Secs = StreamController<void>();
 ///   @Output('everyFiveSeconds')
 ///   final get every5Secs => _every5Secs.stream;
 ///
@@ -710,7 +713,7 @@ class Input {
 ///         (everyFiveSeconds)="everyFiveSeconds()">
 ///     </interval-dir>
 ///   ''',
-///   directives: const [IntervalDir])
+///   directives: [IntervalDir])
 /// class App {
 ///   void everySecond() {
 ///     print('second');
@@ -780,7 +783,7 @@ class HostBinding {
 /// either `@Directive` or `@Component`, and is inherited when a class
 /// implements, extends, or mixes-in a class with this annotation.
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'button-like',
 ///   template: 'CLICK ME',
@@ -795,13 +798,13 @@ class HostBinding {
 /// method with, including a magic argument `'\$event'`, which is replaced with
 /// the value of the event stream. In most cases [args] can be inferred when
 /// bound to a method with a single argument:
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'button-like',
 ///   template: 'CLICK ME',
 /// )
 /// class ButtonLikeComponent {
-///   @HostListener('click') // == @HostListener('click', const ['\$event'])
+///   @HostListener('click') // == @HostListener('click', ['\$event'])
 ///   void onClick(MouseEvent e) {}
 /// }
 /// ```

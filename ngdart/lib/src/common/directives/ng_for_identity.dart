@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:ngdart/src/common/directives/ng_for.dart';
 import 'package:ngdart/src/core/linker/template_ref.dart';
 import 'package:ngdart/src/core/linker/view_container_ref.dart';
 import 'package:ngdart/src/meta.dart';

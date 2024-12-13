@@ -60,10 +60,10 @@ export 'directives/validators.dart'
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'my-app',
-///   directives: const [formDirectives]
+///   directives: [formDirectives]
 /// )
 /// class MyApp {}
 /// ```

@@ -5,7 +5,7 @@ import 'package:ngdart/src/meta.dart';
 ///
 /// ### Examples
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'example',
 ///   template: '''
@@ -28,7 +28,7 @@ import 'package:ngdart/src/meta.dart';
 ///         [ngTemplateOutletContext]="iconContext">
 ///     </template>
 ///   ''',
-///   directives: const [NgTemplateOutlet],
+///   directives: [NgTemplateOutlet],
 /// )
 /// class ExampleComponent {
 ///   final textContext = 'Hello world!';

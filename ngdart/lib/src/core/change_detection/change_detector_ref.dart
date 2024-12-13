@@ -31,12 +31,12 @@ abstract class ChangeDetectorRef {
   ///   changeDetection: ChangeDetectionStrategy.onPush,
   /// )
   /// class OnPushExample implements OnDestroy {
-  ///   Timer timer;
+  ///   late Timer timer;
   ///
   ///   var ticks = 0;
   ///
   ///   OnPushExample(ChangeDetectorRef changeDetector) {
-  ///     timer = Timer.periodic(Duration(seconds: 1), () {
+  ///     timer = Timer.periodic(const Duration(seconds: 1), () {
   ///       ticks++;
   ///       changeDetector.markForCheck();
   ///     });

@@ -21,9 +21,7 @@ export 'src/route_definition.dart'
 /// ```
 /// @Component(
 ///   selector: '...',
-///   providers: [
-///     routerProvidersTest,
-///   ],
+///   providers: [routerProvidersTest],
 /// )
 /// class TestComponent {}
 /// ```
@@ -42,7 +40,7 @@ const routerProvidersTest = [
 /// ```
 /// @GenerateInjector.fromModules([routerTestModule])
 /// final InjectorFactory testInjector = ng.testInjector$Injector;
-/// ...
+/// // ...
 /// final testBed = NgTestBed(
 ///     ng.TestComponentNgFactory,
 ///     rootInjector: testInjector);

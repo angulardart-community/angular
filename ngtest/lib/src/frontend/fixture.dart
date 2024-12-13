@@ -54,7 +54,7 @@ class NgTestFixture<T> {
   /// and often you'd want to assert against the _final_ state.
   ///
   /// #Example use
-  /// ```dart
+  /// ```
   /// expect(fixture.text, contains('Loading...'));
   /// await fixture.update();
   /// expect(fixture.text, contains('Hello World'));
@@ -90,7 +90,7 @@ class NgTestFixture<T> {
   /// expects of the instance state.
   ///
   /// #Example
-  /// ```dart
+  /// ```
   /// await fixture.update((c) {
   ///   c.value = 5;
   /// });

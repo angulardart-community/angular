@@ -7,7 +7,9 @@ import 'dom_sanitization_service.dart' show SafeHtml;
 /// Sets [Element.innerHtml] _without_ sanitizing the HTML output.
 ///
 /// Requires use of a [SafeHtml] wrapper created by [DomSanitizationService]:
-///     var safeHtml = domSanitizationService.bypassSecurityTrustHtml('...');
+/// ```
+/// var safeHtml = domSanitizationService.bypassSecurityTrustHtml('...');
+/// ```
 ///
 /// (This allows security reviews to easily search for and catch exceptions)
 ///
@@ -17,10 +19,10 @@ import 'dom_sanitization_service.dart' show SafeHtml;
 ///
 /// __Example use__:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'my-component',
-///   directives: const [SafeInnerHtmlDirective],
+///   directives: [SafeInnerHtmlDirective],
 ///   template: '''
 ///     <div [safeInnerHtml]="trustedHtml"></div>
 ///   ''',
@@ -34,7 +36,9 @@ import 'dom_sanitization_service.dart' show SafeHtml;
 ///             'I solemnly swear that this <script></script> is OK!');
 /// }
 /// ```
-@Directive(selector: '[safeInnerHtml]')
+@Directive(
+  selector: '[safeInnerHtml]',
+)
 class SafeInnerHtmlDirective {
   final Element _element;
 

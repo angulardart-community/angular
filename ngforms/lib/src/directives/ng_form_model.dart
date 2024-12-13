@@ -16,13 +16,14 @@ import 'validators.dart' show ValidatorFn;
 /// In this example, we bind the control group to the form element, and we bind
 /// the login and password controls to the login and password elements.
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'my-app',
+///   directives: [formDirectives],
 ///   template: '''
 ///     <div>
 ///       <h2>NgFormModel Example</h2>
-///       <form [ngFormModel]='loginForm">
+///       <form [ngFormModel]="loginForm">
 ///         <p>Login: <input type="text" ngControl="login"></p>
 ///         <p>Password: <input type="password" ngControl="password"></p>
 ///       </form>
@@ -30,53 +31,47 @@ import 'validators.dart' show ValidatorFn;
 ///       <pre>{{value}}</pre>
 ///     </div>
 ///   ''',
-///   directives: const [formDirectives]
-/// })
+/// )
 /// class App {
-///   ControlGroup loginForm;
-///
-///   App() {
-///     loginForm = new ControlGroup({
-///       login: new Control(""),
-///       password: new Control("")
-///     });
-///   }
+///   ControlGroup loginForm = ControlGroup({
+///     'login': Control(''),
+///     'password': Control(''),
+///   });
 ///
 ///   String get value {
-///     return JSON.encode(loginForm.value);
+///     return json.encode(loginForm.value);
 ///   }
 /// }
 /// ```
 ///
 /// We can also use ngModel to bind a domain model to the form.
 ///
-/// ```dart
+/// ```
 /// @Component(
-///      selector: "login-comp",
-///      directives: const [formDirectives],
-///      template: '''
-///        <form [ngFormModel]='loginForm'>
-///          Login <input type='text' ngControl='login' [(ngModel)]='credentials.login'>
-///          Password <input type='password' ngControl='password'
-///                          [(ngModel)]='credentials.password'>
-///          <button (click)="onLogin()">Login</button>
-///        </form>'''
-///      )
-/// class LoginComp {
-///  credentials: {login: string, password: string};
-///  ControlGroup loginForm;
+///   selector: 'login-comp',
+///   directives: [formDirectives],
+///   template: '''
+///     <form [ngFormModel]="loginForm">
+///       Login <input type="text" ngControl="login" [(ngModel)]="login">
+///       Password <input type="password" ngControl="password"
+///                       [(ngModel)]="password">
+///       <button (click)="onLogin()">Login</button>
+///     </form>
+///   ''',
+/// )
+/// class HelloWorldComponent {
+///   String? login;
+///   String? password;
 ///
-///  LoginComp() {
-///    loginForm = new ControlGroup({
-///      login: new Control(""),
-///      password: new Control("")
-///    });
-///  }
+///   ControlGroup loginForm = ControlGroup({
+///     'login': Control(''),
+///     'password': Control(''),
+///   });
 ///
-///  void onLogin() {
-///    // credentials.login === 'some login'
-///    // credentials.password === 'some password'
-///  }
+///   void onLogin() {
+///     // login == 'some login'
+///     // password == 'some password'
+///   }
 /// }
 /// ```
 @Directive(

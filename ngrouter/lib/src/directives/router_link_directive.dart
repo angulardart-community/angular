@@ -5,6 +5,7 @@ import 'dart:html'
 import 'package:ngdart/angular.dart';
 
 import '../location.dart' show Location;
+import '../route_path.dart';
 import '../router/navigation_params.dart';
 import '../router/router.dart';
 import '../url.dart';
@@ -14,7 +15,7 @@ import '../url.dart';
 /// ```html
 /// <a routerLink="/heroes">Heroes</a>
 /// ```
-/// Can also be used with [RouterPath].
+/// Can also be used with [RoutePath].
 /// ```html
 /// <a [routerLink]="heroPath.toUrl()">Heroes</a>
 /// ```

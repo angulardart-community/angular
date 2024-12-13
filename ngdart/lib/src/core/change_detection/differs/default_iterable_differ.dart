@@ -12,7 +12,7 @@ import 'package:ngdart/src/utilities.dart';
 /// you may specify a [TrackByFn]`:
 /// ```
 /// class MyComp {
-///   Object trackByEmployeeId(int index, dynamic item) {
+///   Object? trackByEmployeeId(int index, dynamic item) {
 ///     return item is Employee ? item.id : item;
 ///   }
 /// }
@@ -260,8 +260,6 @@ class DefaultIterableDiffer {
   /// previousKey to currentKey, and clear all of the queues (additions, moves,
   /// removals). Set the previousIndexes of moved and added items to their
   /// currentIndexes. Reset the list of additions, moves and removals
-  ///
-  /// @internal
   void _reset() {
     if (isDirty) {
       CollectionChangeRecord? record;
@@ -293,8 +291,6 @@ class DefaultIterableDiffer {
   ///   then it is a new item.
   /// - `item` is the current item in the collection
   /// - `index` is the position of the item in the collection
-  ///
-  /// @internal
   CollectionChangeRecord _mismatch(CollectionChangeRecord? record, dynamic item,
       dynamic itemTrackBy, int index) {
     // The previous record after which we will append the current one.
@@ -361,8 +357,6 @@ class DefaultIterableDiffer {
   /// switching position. This is incorrect, since a better way to think of it
   /// is as insert of 'b' rather then switch 'a' with 'b' and then add 'a'
   /// at the end.
-  ///
-  /// @internal
   CollectionChangeRecord _verifyReinsertion(CollectionChangeRecord record,
       dynamic item, dynamic itemTrackBy, int index) {
     var reinsertRecord = _unlinkedRecords?.get(itemTrackBy);
@@ -379,8 +373,6 @@ class DefaultIterableDiffer {
   /// collection.
   ///
   /// - `record` The first excess [CollectionChangeRecord].
-  ///
-  /// @internal
   void _truncate(CollectionChangeRecord? record) {
     // Anything after that needs to be removed;
     while (record != null) {

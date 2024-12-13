@@ -15,7 +15,7 @@ import 'tokens.dart';
 /// Support for reading and parsing a class or function's "dependencies".
 ///
 /// For example, the following class and its constructor:
-/// ```dart
+/// ```
 /// class FooService {
 ///   FooService(BarService barService, [@Optional() @Inject(someToken) baz]);
 /// }

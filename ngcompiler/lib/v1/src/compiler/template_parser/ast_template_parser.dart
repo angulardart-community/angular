@@ -1190,8 +1190,7 @@ String _getEventName(ast.EventAst event) =>
 
 /// Visitor which filters elements that are not supported in angular templates.
 class _ElementFilter extends ast.RecursiveTemplateAstVisitor<void> {
-  static const _securityUrl =
-      'https://webdev.dartlang.org/angular/guide/security';
+  static const _securityUrl = 'https://angulardart.xyz/guide/security';
 
   @override
   ast.ElementAst? visitElement(ast.ElementAst astNode, [_]) {

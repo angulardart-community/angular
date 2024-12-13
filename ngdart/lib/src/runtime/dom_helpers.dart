@@ -36,7 +36,7 @@ var domRootRendererIsDirty = false;
 /// ```
 ///
 /// ... would emit:
-/// ```dart
+/// ```
 /// updateClassBinding(_divElement, 'warning', isWarning);
 /// ```
 ///
@@ -135,7 +135,7 @@ void setProperty(
 ///
 /// For example, the naive way of creating text nodes would be:
 ///
-/// ```dart
+/// ```
 /// var a = Text('Hello');
 /// var b = Text('World');
 /// var c = Text('!')
@@ -153,7 +153,7 @@ void setProperty(
 ///
 /// Where-as using [createText] minimizes the amount of code:
 ///
-/// ```dart
+/// ```
 /// var d = document;
 /// var a = createText(d, 'Hello');
 /// var b = createText(d, 'World');

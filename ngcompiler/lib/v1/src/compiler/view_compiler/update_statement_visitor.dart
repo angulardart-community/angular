@@ -269,9 +269,6 @@ o.Expression _sanitizedValue(
     case TemplateSecurityContext.resourceUrl:
       method = SafeHtmlAdapters.sanitizeResourceUrl;
       break;
-    default:
-      throw ArgumentError('internal error, unexpected '
-          'TemplateSecurityContext $securityContext.');
   }
   return o.importExpr(method).callFn([renderValue]);
 }

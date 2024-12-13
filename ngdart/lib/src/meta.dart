@@ -26,7 +26,7 @@ export 'meta/visibility.dart';
 /// will be referenced in the template HTML of an AngularDart component. For
 /// example:
 ///
-/// ```dart
+/// ```
 /// // my_component.dart
 /// import 'package:ngdart/angular.dart';
 ///
@@ -50,7 +50,7 @@ export 'meta/visibility.dart';
 /// and is not intended to be part of the public API of the component. Another
 /// library attempting to access `fullName` would trigger a diagnostic:
 ///
-/// ```dart
+/// ```
 /// // other_lib.dart
 /// import 'my_component.dart';
 ///

@@ -9,6 +9,8 @@
 /// - `onDestroy` (at the very end before destruction)
 library lifecycle_hooks;
 
+import 'dart:async';
+
 /// Implement this interface to get notified when any data-bound property of
 /// your directive is changed by the Angular framework.
 ///
@@ -27,11 +29,11 @@ abstract class AfterChanges {
 /// children have been checked. It is normally only invoked once when the
 /// directive is instantiated:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'user-panel',
-///   directives: const [NgFor],
-///   template: r'''
+///   directives: [NgFor],
+///   template: '''
 ///     <li *ngFor="let user of users">
 ///       {{user}}
 ///     </li>
@@ -70,7 +72,7 @@ abstract class OnInit {
 /// component is being destroyed. [ngOnDestroy] may be used to cleanup resources
 /// such as [StreamSubscription]s:
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'user-panel',
 ///   template: 'Online users: {{count}}',
@@ -140,7 +142,7 @@ abstract class DoCheck {
 /// Try this [live example][ex] from the [Lifecycle Hooks][docs] page:
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_content_component.dart (template)"?>
-/// ```dart
+/// ```
 /// template: '''
 ///   <div>-- projected content begins --</div>
 ///     <ng-content></ng-content>
@@ -150,7 +152,7 @@ abstract class DoCheck {
 /// ```
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_content_component.dart (hooks)"?>
-/// ```dart
+/// ```
 /// class AfterContentComponent implements AfterContentChecked, AfterContentInit {
 ///   String _prevHero = '';
 ///   String comment = '';
@@ -182,8 +184,8 @@ abstract class DoCheck {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#aftercontent
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-content
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#aftercontent
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-content
 abstract class AfterContentInit {
   void ngAfterContentInit();
 }
@@ -196,7 +198,7 @@ abstract class AfterContentInit {
 /// Try this [live example][ex] from the [Lifecycle Hooks][docs] page:
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_content_component.dart (template)"?>
-/// ```dart
+/// ```
 /// template: '''
 ///   <div>-- projected content begins --</div>
 ///     <ng-content></ng-content>
@@ -206,7 +208,7 @@ abstract class AfterContentInit {
 /// ```
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_content_component.dart (hooks)"?>
-/// ```dart
+/// ```
 /// class AfterContentComponent implements AfterContentChecked, AfterContentInit {
 ///   String _prevHero = '';
 ///   String comment = '';
@@ -238,8 +240,8 @@ abstract class AfterContentInit {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#aftercontent
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-content
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#aftercontent
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-content
 abstract class AfterContentChecked {
   void ngAfterContentChecked();
 }
@@ -252,7 +254,7 @@ abstract class AfterContentChecked {
 /// Try this [live example][ex] from the [Lifecycle Hooks][docs] page:
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_view_component.dart (template)"?>
-/// ```dart
+/// ```
 /// template: '''
 ///   <div>-- child view begins --</div>
 ///     <my-child-view></my-child-view>
@@ -261,7 +263,7 @@ abstract class AfterContentChecked {
 /// ```
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_view_component.dart (hooks)"?>
-/// ```dart
+/// ```
 /// class AfterViewComponent implements AfterViewChecked, AfterViewInit {
 ///   var _prevHero = '';
 ///
@@ -291,8 +293,8 @@ abstract class AfterContentChecked {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#afterview
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-view
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#afterview
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-view
 abstract class AfterViewInit {
   void ngAfterViewInit();
 }
@@ -305,7 +307,7 @@ abstract class AfterViewInit {
 /// Try this [live example][ex] from the [Lifecycle Hooks][docs] page:
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_view_component.dart (template)"?>
-/// ```dart
+/// ```
 /// template: '''
 ///   <div>-- child view begins --</div>
 ///     <my-child-view></my-child-view>
@@ -314,7 +316,7 @@ abstract class AfterViewInit {
 /// ```
 ///
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_view_component.dart (hooks)"?>
-/// ```dart
+/// ```
 /// class AfterViewComponent implements AfterViewChecked, AfterViewInit {
 ///   var _prevHero = '';
 ///
@@ -344,8 +346,8 @@ abstract class AfterViewInit {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#afterview
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-view
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#afterview
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-view
 abstract class AfterViewChecked {
   void ngAfterViewChecked();
 }

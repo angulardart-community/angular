@@ -16,9 +16,10 @@ import 'shared.dart' show setUpControl;
 /// changes, the value of the control will reflect that change. Likewise, if the value of the
 /// control changes, the input element reflects that change.
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'my-app',
+///   directives: [coreDirectives, formDirectives]
 ///   template: '''
 ///     <div>
 ///       <h2>NgFormControl Example</h2>
@@ -30,10 +31,9 @@ import 'shared.dart' show setUpControl;
 ///       </form>
 ///     </div>
 ///   ''',
-///   directives: const [coreDirectives, formDirectives]
 /// )
 /// class App {
-///   Control loginControl = new Control('');
+///   Control loginControl = Control('');
 /// }
 /// ```
 ///
@@ -43,15 +43,17 @@ import 'shared.dart' show setUpControl;
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Component(
-///      selector: "login-comp",
-///      directives: const [formDirectives],
-///      template: "<input type='text' [ngFormControl]='loginControl' [(ngModel)]='login'>"
-///      )
+///   selector: 'login-comp',
+///   directives: [formDirectives],
+///   template: '''
+///     <input type="text" [ngFormControl]="loginControl" [(ngModel)]="login">
+///   ''',
+/// )
 /// class LoginComp {
-///  Control loginControl = new Control('');
-///  String login;
+///   Control loginControl = new Control('');
+///   String? login;
 /// }
 /// ```
 @Directive(

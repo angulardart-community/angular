@@ -435,7 +435,7 @@ abstract class InjectorVisitor {
   /// Implement providing a new instance of [type], calling [constructor].
   ///
   /// Any [dependencies] are expected to invoke local methods as appropriate:
-  /// ```dart
+  /// ```
   /// refer('inject').call([refer('Dep1')])
   /// ```
   void visitProvideClass(
@@ -461,7 +461,7 @@ abstract class InjectorVisitor {
   /// Implement providing [token] by calling [function].
   ///
   /// Any [dependencies] are expected to invoke local methods as appropriate:
-  /// ```dart
+  /// ```
   /// refer('inject').call([refer('Dep1')])
   /// ```
   void visitProvideFactory(

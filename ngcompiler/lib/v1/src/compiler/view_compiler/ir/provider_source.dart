@@ -26,9 +26,9 @@ abstract class ProviderSource {
   /// Whether a dynamic `injectorGet(...)` is required to resolve this provider.
   ///
   /// For example:
-  /// ```dart
-  ///   // DependencyService is dynamically required to resolve MyService.
-  ///   _MyService = MyService(injectorGet(DependencyService));
+  /// ```
+  /// // DependencyService is dynamically required to resolve MyService.
+  /// _MyService = MyService(injectorGet(DependencyService));
   /// ```
   bool get hasDynamicDependencies => false;
 }

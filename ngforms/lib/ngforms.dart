@@ -10,6 +10,8 @@ library ngforms; // name the library so we can run dartdoc on it by name.
 import 'src/directives/radio_control_value_accessor.dart'
     show RadioControlRegistry;
 
+import 'src/model.dart' show Control, ControlGroup;
+
 export 'src/directives.dart'
     show
         composeValidators,
@@ -61,8 +63,11 @@ export 'src/validators.dart' show ngValidators, Validators;
 ///
 /// ### Example
 ///
-/// ```dart
-/// runApp(MyAppNgFactory, [formProviders]);
+/// ```
+/// @GenerateInjector(formProviders)
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// runApp(MyAppNgFactory, createInjector: injector);
 /// ````
 const List<Type> formProviders = [RadioControlRegistry];
 

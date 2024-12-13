@@ -65,7 +65,7 @@ class Provider<T extends Object> {
   /// Class whose constructor should be invoked when [token] is injected.
   ///
   /// When omitted and [token] is a [Type], this value is implicitly [token]:
-  /// ```dart
+  /// ```
   /// // The same thing.
   /// const Provider(Foo);
   /// const Provider(Foo, useClass: Foo);
@@ -75,7 +75,7 @@ class Provider<T extends Object> {
   /// Constant value to use when [token] is injected.
   ///
   /// It is recommended to use [useValue] with an [OpaqueToken] as [token]:
-  /// ```dart
+  /// ```
   /// const animationDelay = OpaqueToken<Duration>('animationDelay');
   ///
   /// const Provider(animationDelay, useValue: Duration(seconds: 1));
@@ -159,12 +159,12 @@ Object buildAtRuntime(Provider provider, RuntimeInjectorBuilder builder) {
 /// If [T] is provided (i.e. not [dynamic]), it must be the same as [token].
 ///
 /// A class that provides itself:
-/// ```dart
+/// ```
 /// const ClassProvider(Service);
 /// ```
 ///
 /// A class that provides itself with a different implementation:
-/// ```dart
+/// ```
 /// const ClassProvider(Service, useClass: CachedService);
 /// ```
 @optionalTypeArgs
@@ -244,7 +244,7 @@ class FactoryProvider<T extends Object> extends Provider<T> {
 /// Describes at compile-time using a constant value to represent a token.
 ///
 /// It is recommended to use [useValue] with an [OpaqueToken] as [token]:
-/// ```dart
+/// ```
 /// const animationDelay = OpaqueToken<Duration>('animationDelay');
 ///
 /// const ValueProvider.forToken(animationDelay, Duration(seconds: 1));

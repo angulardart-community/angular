@@ -12,7 +12,7 @@ import 'package:ngdart/src/meta.dart';
 /// Previously, AngularDart loosely expressed "modules" as a recursive list of
 /// both providers and other lists of providers. For example, the following
 /// pattern may be re-written to use `Module`:
-/// ```dart
+/// ```
 /// // Before.
 /// const carModule = [
 ///   ClassProvider(Car, useClass: AmericanCar),

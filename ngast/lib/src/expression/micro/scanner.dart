@@ -55,8 +55,6 @@ class NgMicroScanner {
         return _scanLetAssignment();
       case _NgMicroScannerState.scanLetIdentifier:
         return _scanLetIdentifier();
-      default:
-        throw _unexpected();
     }
   }
 

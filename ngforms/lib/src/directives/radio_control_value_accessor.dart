@@ -55,7 +55,7 @@ class RadioButtonState {
 ///
 /// ### Example
 ///
-/// ```dart
+/// ```
 /// @Component(
 ///   template: '''
 ///     <input type="radio" name="food" [(ngModel)]="foodChicken">

@@ -1,3 +1,5 @@
+import '../meta.dart';
+
 /// Options for configuring whether a directive class can be injected.
 ///
 /// See [Directive.visibility] for details including the default behavior.
@@ -5,10 +7,10 @@ enum Visibility {
   /// The directive can only be injected "locally"; i.e. not from another view.
   ///
   /// For example, the following code will fail at runtime:
-  /// ```dart
+  /// ```
   /// @Component(
   ///   selector: 'parent',
-  ///   directives: const [Child],
+  ///   directives: [Child],
   ///   template: '<child></child>',
   ///
   ///   // The default, but here explicitly for clarity.
@@ -28,7 +30,7 @@ enum Visibility {
   ///
   /// However, if the `Parent` and `Child` components are in the same view, the
   /// example works:
-  /// ```dart
+  /// ```
   /// @Component(
   ///   selector: 'parent',
   ///   template: '',
@@ -49,7 +51,7 @@ enum Visibility {
   ///
   /// @Component(
   ///   selector: 'app',
-  ///   directives: const [Child, Parent],
+  ///   directives: [Child, Parent],
   ///   template: '''
   ///     <parent>
   ///       <child></child>
@@ -63,15 +65,15 @@ enum Visibility {
   /// each other regardless of visibility.
   ///
   /// Furthermore, it is possible to provide another interface to children:
-  /// ```dart
+  /// ```
   /// // An interface that will be provided by the Parent class.
   /// abstract class Example {}
   ///
   /// @Component(
   ///   selector: 'parent',
-  ///   directives: const [Child],
-  ///   providers: const [
-  ///     const ExistingProvider(Example, useExisting: Parent),
+  ///   directives: [Child],
+  ///   providers: [
+  ///     ExistingProvider(Example, useExisting: Parent),
   ///   ],
   ///   template: '<child></child>',
   /// )
@@ -88,7 +90,7 @@ enum Visibility {
   /// }
   /// ```
   ///
-  /// ... like all uses of `providers: const [ ... ]`, this increases the cost
+  /// ... like all uses of `providers: [ ... ]`, this increases the cost
   /// of the component or directive, and should only be added when injection
   /// is truly needed, similar to [Visibility.all].
   ///
@@ -99,10 +101,10 @@ enum Visibility {
 
   /// The directive can be injected anywhere in the sub tree.
   ///
-  /// ```dart
+  /// ```
   /// @Component(
   ///   selector: 'parent',
-  ///   directives: const [Child],
+  ///   directives: [Child],
   ///   template: '<child></child>',
   ///   visibility: Visibility.all,
   /// )

@@ -27,7 +27,7 @@ const routerDirectives = [RouterOutlet, RouterLink, RouterLinkActive];
 /// ```
 /// @GenerateInjector([routerProviders])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
+/// // ...
 /// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
 /// ```
 const routerProviders = [
@@ -54,7 +54,7 @@ const routerModule = Module(provide: routerProviders);
 /// ```
 /// @GenerateInjector([routerProvidersHash])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
+/// // ...
 /// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
 /// ```
 const routerProvidersHash = [
@@ -70,7 +70,7 @@ const routerProvidersHash = [
 /// ```
 /// @GenerateInjector.fromModules([routerHashModule])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
+/// // ...
 /// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
 /// ```
 const routerHashModule = Module(provide: routerProvidersHash);

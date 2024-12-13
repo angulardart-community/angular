@@ -1,6 +1,7 @@
 import 'package:ngdart/angular.dart';
 
 import '../directives/router_outlet_directive.dart';
+import '../router/router.dart';
 
 /// **INTERNAL ONLY**: An injected token to access [RouterOutlet]s.
 ///

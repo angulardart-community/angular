@@ -26,7 +26,7 @@ import 'package:ngdart/src/runtime/check_binding.dart';
 /// </template>
 /// ```
 ///
-/// [guide]: https://webdev.dartlang.org/angular/guide/template-syntax.html#ngIf
+/// [guide]: https://angulardart.xyz/guide/template-syntax.html#ngIf
 @Directive(
   selector: '[ngIf]',
 )

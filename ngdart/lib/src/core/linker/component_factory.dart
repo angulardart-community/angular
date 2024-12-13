@@ -103,7 +103,7 @@ class ComponentRef<C> {
 /// Backing implementation behind a `class` [T] annotated with `@Component`.
 ///
 /// For example, if this lives in `example.dart`:
-/// ```dart
+/// ```
 /// @Component(
 ///   selector: 'example',
 ///   template: '...',
@@ -113,10 +113,10 @@ class ComponentRef<C> {
 ///
 /// ... then `ExampleNgFactory` is generated in `example.template.dart`, and
 /// can be accessed by importing this generated file. For example:
-/// ```dart
+/// ```
 /// import 'example.template.dart' as ng;
 ///
-/// getComponentFactory() {
+/// void getComponentFactory() {
 ///   final ComponentFactory<ng.Example> comp = ng.ExampleNgFactory;
 ///   // Can now use 'comp' as a ComponentFactory<Example>.
 /// }

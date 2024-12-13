@@ -2,6 +2,10 @@ import 'dart:html';
 
 import 'package:ngdart/angular.dart' show OpaqueToken;
 
+import '../location/hash_location_strategy.dart';
+import '../location/path_location_strategy.dart';
+import '../router/router.dart';
+
 /// `LocationStrategy` is responsible for representing and reading route state
 /// from the browser's URL. Angular provides two strategies:
 /// [HashLocationStrategy] and [PathLocationStrategy] (default).
@@ -32,7 +36,7 @@ abstract class LocationStrategy {
 /// The [appBaseHref] token represents the base HREF to be used for the router.
 ///
 /// For example, if your site is at `/my/app` on your host:
-/// ```dart
+/// ```
 /// const ValueProvider.forToken(appBaseHref, '/my/app');
 /// ```
 const appBaseHref = OpaqueToken<String>('appBaseHref');

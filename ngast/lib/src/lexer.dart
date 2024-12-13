@@ -7,7 +7,7 @@ import 'token/tokens.dart';
 /// Separates an Angular template into a series of lexical tokens.
 ///
 /// ## Example use
-/// ```dart
+/// ```
 /// const NgLexer().tokenize('<div>Hello World!</div>');
 /// ```
 class NgLexer {

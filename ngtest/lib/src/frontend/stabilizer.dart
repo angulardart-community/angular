@@ -40,18 +40,18 @@ NgTestStabilizerFactory composeStabilizers(
 /// DOM as-if you were a user with a browser, and assert the state of the DOM
 /// instead of the state of the component. For example, a toggle button that
 /// switches between 'Yes' and 'No' when clicked:
-/// ```dart
+/// ```
 /// testToggleButton(ButtonElement button) {
 ///   expect(button.text, 'Yes');
 ///   button.click();
 ///   expect(button.text, 'No');
 /// }
-/// ```dart
+/// ```
 ///
 /// In the case of Angular, and of other DOM-related libraries, however, the
 /// changes are not always applied immediately (synchronously). Instead, we need
 /// a contract that lets us `await` any possible changes, and then assert state:
-/// ```dart
+/// ```
 /// testToggleButton(ButtonElement button, NgTestStabilizer dom) async {
 ///   expect(button.text, 'Yes');
 ///   await dom.update(() => button.click());
