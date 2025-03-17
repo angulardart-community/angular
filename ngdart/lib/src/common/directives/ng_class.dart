@@ -46,8 +46,8 @@ import 'package:ngdart/src/utilities.dart';
 /// For details, see the [`ngClass` discussion in the Template Syntax][guide]
 /// page.
 ///
-/// [ex]: https://angulardart.dev/examples/template-syntax#ngClass
-/// [guide]: https://webdev.dartlang.org/angular/guide/template-syntax.html#ngClass
+/// [ex]: https://angulardart.xyz/examples/template-syntax#ngClass
+/// [guide]: https://angulardart.xyz/guide/template-syntax.html#ngClass
 @Directive(
   selector: '[ngClass]',
 )

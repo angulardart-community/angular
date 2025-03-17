@@ -81,7 +81,7 @@ import '../../core/linker.dart';
 /// For details, see the [`ngFor` discussion in the Template Syntax][guide]
 /// page.
 ///
-/// [guide]: https://webdev.dartlang.org/angular/guide/template-syntax.html#ngFor
+/// [guide]: https://angulardart.xyz/guide/template-syntax.html#ngFor
 @Directive(
   selector: '[ngFor][ngForOf]',
 )

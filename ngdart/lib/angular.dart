@@ -11,9 +11,9 @@
 /// * [AngularDart guide][]
 /// * [AngularDart cheat sheet][cheatsheet]
 ///
-/// [AngularDart]: https://webdev.dartlang.org/angular
-/// [AngularDart guide]: https://webdev.dartlang.org/angular/guide
-/// [cheatsheet]: https://webdev.dartlang.org/angular/cheatsheet
+/// [AngularDart]: https://angulardart.xyz
+/// [AngularDart guide]: https://angulardart.xyz/guide
+/// [cheatsheet]: https://angulardart.xyz/cheatsheet
 
 library;
 

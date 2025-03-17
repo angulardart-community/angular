@@ -182,8 +182,8 @@ abstract class DoCheck {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#aftercontent
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-content
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#aftercontent
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-content
 abstract class AfterContentInit {
   void ngAfterContentInit();
 }
@@ -238,8 +238,8 @@ abstract class AfterContentInit {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#aftercontent
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-content
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#aftercontent
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-content
 abstract class AfterContentChecked {
   void ngAfterContentChecked();
 }
@@ -291,8 +291,8 @@ abstract class AfterContentChecked {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#afterview
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-view
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#afterview
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-view
 abstract class AfterViewInit {
   void ngAfterViewInit();
 }
@@ -344,8 +344,8 @@ abstract class AfterViewInit {
 /// }
 /// ```
 ///
-/// [docs]: https://webdev.dartlang.org/angular/guide/lifecycle-hooks.html#afterview
-/// [ex]: https://webdev.dartlang.org/examples/lifecycle-hooks#after-view
+/// [docs]: https://angulardart.xyz/guide/lifecycle-hooks.html#afterview
+/// [ex]: https://angulardart.xyz/examples/lifecycle-hooks#after-view
 abstract class AfterViewChecked {
   void ngAfterViewChecked();
 }

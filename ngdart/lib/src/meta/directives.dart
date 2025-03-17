@@ -32,8 +32,8 @@ import 'visibility.dart';
 ///
 /// See also:
 ///
-/// * [Attribute Directives](https://webdev.dartlang.org/angular/guide/attribute-directives)
-/// * [Lifecycle Hooks](https://webdev.dartlang.org/angular/guide/lifecycle-hooks)
+/// * [Attribute Directives](https://angulardart.xyz/guide/attribute-directives)
+/// * [Lifecycle Hooks](https://angulardart.xyz/guide/lifecycle-hooks)
 ///
 @Target({TargetKind.classType})
 class Directive {

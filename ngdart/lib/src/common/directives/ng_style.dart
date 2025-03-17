@@ -52,8 +52,8 @@ import '../../core/change_detection/differs/default_keyvalue_differ.dart';
 /// A better practice, however, is to bind to a component field or method, as
 /// in the binding to `setStyle()` above.
 ///
-/// [guide]: https://webdev.dartlang.org/angular/guide/template-syntax.html#ngStyle
-/// [ex]: https://angulardart.dev/examples/template-syntax#ngStyle
+/// [guide]: https://angulardart.xyz/guide/template-syntax.html#ngStyle
+/// [ex]: https://angulardart.xyz/examples/template-syntax#ngStyle
 @Directive(
   selector: '[ngStyle]',
 )
