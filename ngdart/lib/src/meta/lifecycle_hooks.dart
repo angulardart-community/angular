@@ -15,7 +15,6 @@ library;
 /// [ngAfterChanges] is called right after the data-bound properties have been
 /// checked and before view and content children are checked if at least one of
 /// them has changed.
-///
 abstract class AfterChanges {
   void ngAfterChanges();
 }
@@ -31,7 +30,7 @@ abstract class AfterChanges {
 /// @Component(
 ///   selector: 'user-panel',
 ///   directives: const [NgFor],
-///   template: r'''
+///   template: '''
 ///     <li *ngFor="let user of users">
 ///       {{user}}
 ///     </li>
@@ -76,7 +75,7 @@ abstract class OnInit {
 ///   template: 'Online users: {{count}}',
 /// )
 /// class UserPanel implements OnInit, OnDestroy {
-///   StreamSubscription _onlineUserSub;
+///   StreamSubscription? _onlineUserSub;
 ///
 ///   int count = 0;
 ///
@@ -87,7 +86,7 @@ abstract class OnInit {
 ///
 ///   @override
 ///   void ngOnDestroy() {
-///     _onlineUserSub.cancel();
+///     _onlineUserSub?.cancel();
 ///   }
 /// }
 /// ```
@@ -125,9 +124,9 @@ abstract class OnDestroy {
 /// Doing so may cause an infinite loop, as [DoCheck] will continue to be called
 /// and the asynchronous events will invalidate the state.
 ///
-/// **WARNING**: It is invalid to implement both [DoCheck] _and_ [OnChanges]
-/// or [AfterChanges]. `ngOnChanges` and `ngAfterChanges` will never be called,
-/// as `ngDoCheck` is used instead of the default change detector.
+/// **WARNING**: It is invalid to implement both [DoCheck] and [AfterChanges].
+/// `ngAfterChanges` will never be called, as `ngDoCheck` is used instead of
+/// the default change detector.
 abstract class DoCheck {
   void ngDoCheck();
 }
@@ -316,11 +315,11 @@ abstract class AfterViewInit {
 /// <?code-excerpt "docs/lifecycle-hooks/lib/src/after_view_component.dart (hooks)"?>
 /// ```dart
 /// class AfterViewComponent implements AfterViewChecked, AfterViewInit {
-///   var _prevHero = '';
+///   String _prevHero = '';
 ///
 ///   // Query for a VIEW child of type `ChildViewComponent`
 ///   @ViewChild(ChildViewComponent)
-///   ChildViewComponent viewChild;
+///   ChildViewComponent? viewChild;
 ///
 ///   @override
 ///   void ngAfterViewInit() {
@@ -332,10 +331,10 @@ abstract class AfterViewInit {
 ///   @override
 ///   void ngAfterViewChecked() {
 ///     // viewChild is updated after the view has been checked
-///     if (_prevHero == viewChild.hero) {
+///     if (_prevHero == viewChild!.hero) {
 ///       _logIt('AfterViewChecked (no change)');
 ///     } else {
-///       _prevHero = viewChild.hero;
+///       _prevHero = viewChild!.hero;
 ///       _logIt('AfterViewChecked');
 ///       _doSomething();
 ///     }

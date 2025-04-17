@@ -69,7 +69,7 @@ class ComponentLoader {
   /// ```dart
   /// @Component(
   ///   selector: 'ad-view',
-  ///   template: r'''
+  ///   template: '''
   ///     This component is sponsored by:
   ///     <template #currentAd></template>
   ///   ''',

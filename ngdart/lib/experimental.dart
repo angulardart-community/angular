@@ -24,7 +24,7 @@ export 'src/meta.dart' show changeDetectionLink;
 ///
 /// Requires [userInjector] to provide app-level services or overrides:
 /// ```dart
-/// main() {
+/// void main() {
 ///   var injector = rootInjector((parent) {
 ///     return Injector.map({ /* ... */ }, parent);
 ///   });

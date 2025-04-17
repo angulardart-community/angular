@@ -53,13 +53,13 @@ class _NumberPipe {
 /// configurations are based on the active locale.
 ///
 /// ### Usage
-///
-///     $pipe.number(expression, [digitInfo])
-///
+/// ```dart
+/// $pipe.number(expression, [digitInfo])
+/// ```
 /// where `expression` is a number and `digitInfo` has the following format:
-///
-///     {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}
-///
+/// ```dart
+/// {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}
+/// ```
 /// - minIntegerDigits is the minimum number of integer digits to use. Defaults to 1.
 /// - minFractionDigits is the minimum number of digits after fraction. Defaults to 0.
 /// - maxFractionDigits is the maximum number of digits after fraction. Defaults to 3.
@@ -81,9 +81,9 @@ class DecimalPipe extends _NumberPipe {
 /// Formats a number as local percent.
 ///
 /// ### Usage
-///
-///     $pipe.percent(expression, [digitInfo])
-///
+/// ```dart
+/// $pipe.percent(expression, [digitInfo])
+/// ```
 /// For more information about `digitInfo` see [DecimalPipe]
 @Pipe('percent')
 class PercentPipe extends _NumberPipe {
@@ -100,9 +100,9 @@ class PercentPipe extends _NumberPipe {
 /// Formats a number as local currency.
 ///
 /// ### Usage
-///
-///     $pipe.currency(expression, [currencyCode, symbolDisplay, digitInfo])
-///
+/// ```dart
+/// $pipe.currency(expression, [currencyCode, symbolDisplay, digitInfo])
+/// ```
 /// where `currencyCode` is the ISO 4217 currency code, such as "USD" for the
 /// US dollar and "EUR" for the euro. `symbolDisplay` is a boolean indicating
 /// whether to use the currency symbol (e.g. $) or the currency code (e.g. USD)
@@ -115,14 +115,15 @@ class CurrencyPipe extends _NumberPipe {
     String currencyCode = 'USD',
     bool symbolDisplay = false,
     String? digits,
-  ]) =>
-      _NumberPipe._format(
-        value,
-        _NumberFormatStyle.currency,
-        digits,
-        currencyCode,
-        symbolDisplay,
-      );
+  ]) {
+    return _NumberPipe._format(
+      value,
+      _NumberFormatStyle.currency,
+      digits,
+      currencyCode,
+      symbolDisplay,
+    );
+  }
 
   const CurrencyPipe();
 }

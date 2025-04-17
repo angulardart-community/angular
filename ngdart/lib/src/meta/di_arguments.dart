@@ -5,22 +5,26 @@ import 'package:meta/meta_meta.dart';
 /// ## Example
 ///
 /// ```dart
-/// class Engine {}
-///
-/// @Injectable()
-/// class Car {
-///   final Engine engine;
-///   Car(@Inject("MyEngine") this.engine);
+/// class Engine {
+///   const Engine();
 /// }
 ///
-/// var engine = new Engine();
+/// const engine = Engine();
 ///
-/// var injector = Injector.resolveAndCreate([
-///  new Provider("MyEngine", useValue: engine),
-///  Car
-/// ]);
+/// class Car {
+///   Car(@Inject(Engine) this.engine);
 ///
-/// expect(injector.get(Car).engine, same(engine));
+///   final Engine engine;
+/// }
+///
+/// @GenerateInjector(const [
+///   const ValueProvider(Engine, engine),
+///   const ClassProvider(Car),
+/// ])
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// Car car = injector(root).get(Car);
+/// expect(car.engine, same(engine));
 /// ```
 ///
 /// When `@Inject()` is not present, [Injector] will use the type annotation of
@@ -31,13 +35,18 @@ import 'package:meta/meta_meta.dart';
 /// ```dart
 /// class Engine {}
 ///
-/// @Injectable()
 /// class Car {
-///   Car(Engine engine) {} //same as Car(@Inject(Engine) Engine engine)
+///   Car(Engine engine) {} // same as Car(@Inject(Engine) Engine engine)
 /// }
 ///
-/// var injector = Injector.resolveAndCreate([Engine, Car]);
-/// expect(injector.get(Car).engine, new isInstanceOf<Engine>());
+/// @GenerateInjector(const [
+///   const ClassProvider(Engine),
+///   const ClassProvider(Car),
+/// ])
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// Car car = injector(root).get(Car);
+/// expect(car.engine, isA<Engine>());
 /// ```
 @Target({TargetKind.parameter})
 class Inject {
@@ -98,7 +107,7 @@ class Inject {
 ///
 /// ```dart
 /// // Could be put anywhere DI providers are allowed.
-/// const Provide(MyService, useFactory: createMyService);
+/// const FactoryProvider(MyService, createMyService);
 ///
 /// // A `Provide` may now use `createMyService` via `useFactory`.
 /// @Injectable()
@@ -126,14 +135,18 @@ class Injectable {
 /// ```dart
 /// class Engine {}
 ///
-/// @Injectable()
 /// class Car {
-///   final Engine engine;
+///   final Engine? engine;
 ///   Car(@Optional() this.engine);
 /// }
 ///
-/// var injector = Injector.resolveAndCreate([Car]);
-/// expect(injector.get(Car).engine, isNull);
+/// @GenerateInjector(const [
+///   const ClassProvider(Car)
+/// ])
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// Car car = injector(root).get(Car);
+/// expect(car.engine, isNull);
 /// ```
 @Target({TargetKind.parameter})
 class Optional {
@@ -147,20 +160,31 @@ class Optional {
 /// ```dart
 /// class Dependency {}
 ///
-/// @Injectable()
 /// class NeedsDependency {
 ///   final Dependency dependency;
 ///   NeedsDependency(@Self() this.dependency);
 /// }
 ///
-/// var inj = Injector.resolveAndCreate([Dependency, NeedsDependency]);
-/// var nd = inj.get(NeedsDependency);
+/// @GenerateInjector(const [
+///   const ClassProvider(Dependency),
+///   const ClassProvider(NeedsDependency),
+/// ])
+/// final InjectorFactory injector = ng.injector$Injector;
 ///
-/// expect(nd.dependency, new isInstanceOf<Dependency>());
+/// NeedsDependency needsDependency = injector(root).get(NeedsDependency);
+/// expect(needsDependency.dependency, isA<Dependency>());
 ///
-/// inj = Injector.resolveAndCreate([Dependency]);
-/// var child = inj.resolveAndCreateChild([NeedsDependency]);
-/// expect(() => child.get(NeedsDependency), throws);
+/// @GenerateInjector(const [
+///   const ClassProvider(Dependency),
+/// ])
+/// final InjectorFactory parent = ng.parent$Injector;
+///
+/// @GenerateInjector(const [
+///   const ClassProvider(NeedsDependency),
+/// ])
+/// final InjectorFactory child = ng.child$Injector;
+///
+/// expect(() => child(parent(root)).get(NeedsDependency), throwsA(anything));
 /// ```
 @Target({TargetKind.parameter})
 class Self {
@@ -175,19 +199,31 @@ class Self {
 /// ```dart
 /// class Dependency {}
 ///
-/// @Injectable()
 /// class NeedsDependency {
 ///   final Dependency dependency;
 ///   NeedsDependency(@SkipSelf() this.dependency);
 /// }
 ///
-/// var parent = Injector.resolveAndCreate([Dependency]);
-/// var child = parent.resolveAndCreateChild([NeedsDependency]);
-/// expect(child.get(NeedsDependency).dependency, new
-///     isInstanceOf<Dependency>());
+/// @GenerateInjector(const [
+///   const ClassProvider(Dependency),
+/// ])
+/// final InjectorFactory parent = ng.parent$Injector;
 ///
-/// var inj = Injector.resolveAndCreate([Dependency, NeedsDependency]);
-/// expect(() => inj.get(NeedsDependency), throws);
+/// @GenerateInjector(const [
+///   const ClassProvider(NeedsDependency),
+/// ])
+/// final InjectorFactory child = ng.child$Injector;
+///
+/// NeedsDependency needsDependency = child(parent(root)).get(NeedsDependency)
+/// expect(needsDependency.dependency, isA<Dependency>());
+///
+/// @GenerateInjector(const [
+///   const ClassProvider(Dependency),
+///   const ClassProvider(NeedsDependency),
+/// ])
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// expect(() => injector(root).get(NeedsDependency), throwsA(anything));
 /// ```
 @Target({TargetKind.parameter})
 class SkipSelf {
@@ -214,14 +250,15 @@ class SkipSelf {
 /// class HostService {}
 ///
 /// @Directive(
-///   selector: 'child-directive'
+///   selector: 'child-directive',
 /// )
 /// class ChildDirective {
 ///   ChildDirective(
-///       @Optional() @Host() OtherService os,
-///       @Optional() @Host() HostService hs) {
-///     print("os is null", os);
-///     print("hs is NOT null", hs);
+///     @Optional() @Host() OtherService? os,
+///     @Optional() @Host() HostService? hs,
+///   ) {
+///     print('os is null: $os');
+///     print('hs is NOT null: $hs');
 ///   }
 /// }
 ///
@@ -231,7 +268,7 @@ class SkipSelf {
 ///   template: '''
 ///     Dir: <child-directive></child-directive>
 ///   ''',
-///   directives: const [ChildDirective]
+///   directives: const [ChildDirective],
 /// )
 /// class ParentCmp {}
 ///
@@ -245,7 +282,9 @@ class SkipSelf {
 /// )
 /// class App {}
 ///
-/// bootstrap(App);
+/// void main() {
+///   runApp(ng.AppNgFactory);
+/// }
 ///```
 @Target({TargetKind.parameter})
 class Host {

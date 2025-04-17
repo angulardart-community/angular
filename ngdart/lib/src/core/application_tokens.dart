@@ -6,11 +6,17 @@ import 'package:ngdart/src/meta.dart';
 ///
 /// To avoid a randomly generated value, a custom value can be provided:
 /// ```dart
-///   bootstrapStatic(
-///     YourAppComponent,
-///     const [
-///       const Provider(appId, useValue: 'my-unique-id'),
-///     ],
-///   )
+/// import 'package:ngdart/angular.dart';
+///
+/// import 'main.template.dart' as ng;
+///
+/// @GenerateInjector(const [
+///   const ValueProvider.forToken(appId, 'my-unique-id')
+/// ])
+/// final InjectorFactory appInjector = appInjector$Injector;
+///
+/// void main() {
+///   runApp(ng.AppComponentNgFactory, createInjector: appInjector);
+/// }
 /// ```
-const appId = OpaqueToken<String>('appId');
+const OpaqueToken<String> appId = OpaqueToken<String>('appId');

@@ -13,14 +13,14 @@ import 'package:ngdart/src/utilities.dart';
 ///
 /// - [String] - all the CSS classes listed in a string (space delimited) are
 ///   added
-/// - [List]   - all the CSS classes (List elements) are added
-/// - [Object] - each key corresponds to a CSS class name while values are
+/// - [List] - all the CSS classes (List elements) are added
+/// - [Map] - each key corresponds to a CSS class name while values are
 ///   interpreted as expressions evaluating to [bool]. If a given expression
-///   evaluates to [true] a corresponding CSS class is added - otherwise it is
+///   evaluates to `true` a corresponding CSS class is added - otherwise it is
 ///   removed.
 ///
 /// While the [NgClass] directive can interpret expressions evaluating to
-/// [String], [Array] or [Object], the [Object]-based version is the most often
+/// [String], [List] or [Map], the [Map]-based version is the most often
 /// used and has an advantage of keeping all the CSS class names in a template.
 ///
 /// ### Examples
@@ -145,7 +145,7 @@ class NgClass implements DoCheck, OnDestroy {
   }
 
   /// If [rawClassVal] is an `Iterable`, it should only contain string values,
-  /// but it is OK if the `Iterable` itself is [Iterable<dynamic>] or
+  /// but it is OK if the `Iterable` itself is `Iterable<dynamic>` or
   /// `Iterable<Object?>` since we need to walk it in this method anyway.
   ///
   /// Likewise, if [rawClassVal] is a Map, its keys should all be strings.

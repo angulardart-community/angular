@@ -53,7 +53,7 @@ class ComponentStyles {
   /// `List<String>` or a `String`. While in practice this _is_ possible, the
   /// current data structure exists in order to optimize for style re-use:
   ///
-  /// ```
+  /// ```dart
   /// @Component(
   ///   styleUrls: ['shared.css'],
   /// )

@@ -9,11 +9,11 @@ import 'di_modules.dart';
 /// component or directive that injector is generated ahead of time, during
 /// compilation:
 ///
-/// ```
+/// ```dart
 /// import 'my_file.template.dart' as ng;
 ///
 /// @GenerateInjector(const [
-///   const Provider(A, useClass: APrime),
+///   const ClassProvider(A, APrime)
 /// ])
 /// // The generated factory is your method's name, suffixed with `$Injector`.
 /// final InjectorFactory example = example$Injector;

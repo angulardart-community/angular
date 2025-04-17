@@ -156,7 +156,7 @@ Object buildAtRuntime(Provider provider, RuntimeInjectorBuilder builder) {
 
 /// Describes at compile-time configuring to return an instance of a `class`.
 ///
-/// If [T] is provided (i.e. not [dynamic]), it must be the same as [token].
+/// If [T] is provided (i.e. not `dynamic`), it must be the same as [token].
 ///
 /// A class that provides itself:
 /// ```dart

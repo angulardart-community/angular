@@ -7,7 +7,9 @@ import 'dom_sanitization_service.dart' show SafeHtml;
 /// Sets [Element.innerHtml] _without_ sanitizing the HTML output.
 ///
 /// Requires use of a [SafeHtml] wrapper created by [DomSanitizationService]:
-///     var safeHtml = domSanitizationService.bypassSecurityTrustHtml('...');
+/// ```dart
+/// var safeHtml = domSanitizationService.bypassSecurityTrustHtml('...');
+/// ```
 ///
 /// (This allows security reviews to easily search for and catch exceptions)
 ///

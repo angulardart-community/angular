@@ -12,13 +12,13 @@ import 'invalid_pipe_argument_exception.dart' show InvalidPipeArgumentException;
 /// An optional 'flags' parameter can be set.
 ///
 /// ### Usage
-///
-///     $pipe.replace(expression, pattern, replacement)
-///
+/// ```dart
+/// $pipe.replace(expression, pattern, replacement)
+/// ```
 /// All behavior is based on the expected behavior of the JavaScript API
 /// String.prototype.replace() function.
 ///
-/// Where the input expression is a [String] or [Number] (to be treated as a
+/// Where the input expression is a [String] or [num] (to be treated as a
 /// string),
 /// the `pattern` is a [String] or [RegExp],
 /// the 'replacement' is a [String] or [Function].

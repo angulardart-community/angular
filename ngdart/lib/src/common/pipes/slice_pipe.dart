@@ -8,9 +8,9 @@ import 'invalid_pipe_argument_exception.dart' show InvalidPipeArgumentException;
 /// elements.
 ///
 /// ### Usage
-///
-///     $pipe.slice(expression, start, [end])
-///
+/// ```dart
+/// $pipe.slice(expression, start, [end])
+/// ```
 /// The input _expression_ must be a [List] or [String].
 ///
 /// - _start_: the starting index of the subset to return.

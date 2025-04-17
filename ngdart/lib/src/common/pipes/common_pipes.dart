@@ -11,7 +11,7 @@ import 'uppercase_pipe.dart' show UpperCasePipe;
 /// This collection can be used to quickly enumerate all the built-in pipes in
 /// the `pipes` property of the `@Component` annotation. For most applications
 /// it's recommended to only reference the _exact_ pipes you use, however.
-const commonPipes = [
+const List<Type> commonPipes = <Type>[
   AsyncPipe,
   UpperCasePipe,
   LowerCasePipe,

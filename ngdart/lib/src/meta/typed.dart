@@ -27,19 +27,16 @@ class Typed<T extends Object> {
   /// A [Typed] declaration that specifies this field takes precedence over one
   /// that doesn't when the host element has a matching reference.
   ///
-  /// ```
+  /// ```dart
   /// @Component(
-  ///   ...
   ///   template: '''
   ///     <!-- Defaults to GenericComponent<String> -->
   ///     <generic></generic>
   ///     <!-- The reference marks this as GenericComponent<int> -->
   ///     <generic #indexed></generic>
   ///   ''',
-  ///   directives: [
-  ///     GenericComponent,
-  ///   ],
-  ///   directiveTypes: [
+  ///   directives: const [GenericComponent],
+  ///   directiveTypes: const [
   ///     // Applies to <generic> by default.
   ///     Typed<GenericComponent<String>>(),
   ///     // Applies to <generic #indexed> only.
@@ -71,7 +68,7 @@ class Typed<T extends Object> {
   /// long as all of the type arguments are concrete, nested type parameters can
   /// be specified indefinitely, directly within [T].
   ///
-  /// ```
+  /// ```dart
   /// @Component(...)
   /// class GenericComponent<A, B> {}
   ///
@@ -88,10 +85,8 @@ class Typed<T extends Object> {
   /// ```
   ///
   /// See [on] for details about this optional parameter.
-  const Typed({
-    this.on,
-  }) :
-        // This actually needs to be null, the compiler checks if typeArguments
+  const Typed({this.on})
+      : // This actually needs to be null, the compiler checks if typeArguments
         // is non-null to determine which constructor was used.
         typeArguments = null;
 
@@ -104,7 +99,7 @@ class Typed<T extends Object> {
   /// `B` can be flowed as a type argument to `ChildComponent`'s type parameter
   /// `A`.
   ///
-  /// ```
+  /// ```dart
   /// @Component(...)
   /// class ChildComponent<A> {}
   ///
@@ -126,11 +121,8 @@ class Typed<T extends Object> {
   ///
   /// See the [typeArguments] and [on] fields for details about these
   /// parameters.
-  const Typed.of(
-    List<Object> typeArguments, {
-    this.on,
-  }) :
-        // We prevent passing in a non-null value (because this constructor
+  const Typed.of(List<Object> typeArguments, {this.on})
+      : // We prevent passing in a non-null value (because this constructor
         // requires an actual List). The compiler checks this field and whether
         // it is null (or not) to determine which constructor was used.
         // ignore: prefer_initializing_formals

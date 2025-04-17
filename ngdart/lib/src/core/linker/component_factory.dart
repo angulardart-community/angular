@@ -15,7 +15,7 @@ import 'views/host_view.dart';
 /// In practice this can be used to assert that a component does *not* use
 /// default change detection in non-default or performance sensitive contexts.
 ///
-/// ```
+/// ```dart
 /// final componentRef = viewContainerRef.createComponent(componentFactory);
 /// assert(!debugUsesDefaultChangeDetection(componentRef));
 /// ```
@@ -116,7 +116,7 @@ class ComponentRef<C> {
 /// ```dart
 /// import 'example.template.dart' as ng;
 ///
-/// getComponentFactory() {
+/// void getComponentFactory() {
 ///   final ComponentFactory<ng.Example> comp = ng.ExampleNgFactory;
 ///   // Can now use 'comp' as a ComponentFactory<Example>.
 /// }

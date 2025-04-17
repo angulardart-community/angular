@@ -20,7 +20,7 @@ abstract class ChangeDetectionHost {
   /// **INTERNAL ONLY**: Whether a crash was detected during the last `tick()`.
   static bool get checkForCrashes => _current?._lastGuardedView != null;
 
-  /// **INTERNAL ONLY**: Register a crash during [view.detectCrash].
+  /// **INTERNAL ONLY**: Register a crash during [View.detectCrash].
   static void handleCrash(View view, Object error, StackTrace trace) {
     final current = _current!;
     current
@@ -42,7 +42,7 @@ abstract class ChangeDetectionHost {
   StackTrace? _lastCaughtTrace;
 
   /// Tracks whether a tick is currently in progress.
-  var _runningTick = false;
+  bool _runningTick = false;
 
   final List<ChangeDetectorRef> _changeDetectors = [];
 
@@ -94,7 +94,7 @@ abstract class ChangeDetectionHost {
     }
   }
 
-  /// Runs [AppView.detectChanges] on all top-level components/views.
+  /// Runs [DeprecatedDetectChanges.detectChanges] on all top-level components/views.
   void _runTick() {
     final detectors = _changeDetectors;
     final length = detectors.length;
@@ -111,7 +111,7 @@ abstract class ChangeDetectionHost {
     }
   }
 
-  /// Runs [AppView.detectChanges] for all top-level components/views.
+  /// Runs [DeprecatedDetectChanges.detectChanges] for all top-level components/views.
   ///
   /// Unlike [_runTick], this enters a guarded mode that checks a view tree for
   /// exceptions, trying to find the leaf-most node that throws during change
@@ -168,7 +168,7 @@ abstract class ChangeDetectionHost {
     _lastGuardedView = _lastCaughtException = _lastCaughtTrace = null;
   }
 
-  /// Disables the [view] as an error, and forwards to [reportException].
+  /// Disables the [view] as an error, and forwards to [handleUncaughtException].
   @dart2js.noInline
   void reportViewException(
     View view,

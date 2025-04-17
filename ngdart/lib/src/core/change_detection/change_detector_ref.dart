@@ -24,19 +24,19 @@ abstract class ChangeDetectorRef {
   /// of the component has changed - for example if an async function was
   /// executed or an observable model has changed:
   ///
-  /// ```
+  /// ```dart
   /// @Component(
   ///   selector: 'on-push-example',
   ///   template: 'Number of ticks: {{ticks}}",
   ///   changeDetection: ChangeDetectionStrategy.onPush,
   /// )
   /// class OnPushExample implements OnDestroy {
-  ///   Timer timer;
+  ///   late Timer timer;
   ///
-  ///   var ticks = 0;
+  ///   int ticks = 0;
   ///
   ///   OnPushExample(ChangeDetectorRef changeDetector) {
-  ///     timer = Timer.periodic(Duration(seconds: 1), () {
+  ///     timer = Timer.periodic(const Duration(seconds: 1), () {
   ///       ticks++;
   ///       changeDetector.markForCheck();
   ///     });
@@ -72,7 +72,7 @@ abstract class ChangeDetectorRef {
   /// knowledge of whether or not [child] is backed by a component using
   /// `ChangeDetectionStrategy.onPush`.
   ///
-  /// ```
+  /// ```dart
   /// @Component(
   ///   selector: 'example',
   ///   template: '<ng-content></ng-content>',

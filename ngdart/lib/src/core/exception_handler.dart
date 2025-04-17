@@ -6,28 +6,25 @@ import 'dart:html';
 /// prints the error message directly to the JavaScript developer console.
 ///
 /// It's possible to instead write a _custom exception handler_:
-/// ```
+/// ```dart
 /// import 'package:ngdart/angular.dart';
 ///
 /// import 'main.template.dart' as ng;
 ///
 /// class MyExceptionHandler implements ExceptionHandler {
 ///   @override
-///   void call(exception, [stackTrace, String reason]) {
+///   void call(Object exception, [Object? stackTrace, String? reason]) {
 ///     // Do something with this exception, like send to an online service.
 ///   }
 /// }
 ///
-/// @GenerateInjector([
-///   ClassProvider(ExceptionHandler, useClass: MyExceptionHandler),
+/// @GenerateInjector(const [
+///   const ClassProvider(ExceptionHandler, useClass: MyExceptionHandler),
 /// ])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
 ///
 /// void main() {
-///   runApp(
-///     ng.createMyAppFactory(),
-///     createInjector: appInjector,
-///   );
+///   runApp(ng.AppNgFactory, createInjector: appInjector);
 /// }
 /// ```
 class ExceptionHandler {
