@@ -8,13 +8,13 @@ import 'url.dart';
 /// endpoints of the application. Then, this path can be used to create
 /// [RouteDefinition]s and generate URLs. This way, there are no circular
 /// dependencies.
-/// ```
-/// RoutePath contactRoute = new RoutePath(
+/// ```dart
+/// RoutePath contactRoute = RoutePath(
 ///   path: 'contact',
 ///   useAsDefault: true
 /// );
 ///
-/// new RouteDefinition(
+/// RouteDefinition(
 ///   routePath: contactRoute,
 ///   component: MyComponentNgFactory,
 /// );

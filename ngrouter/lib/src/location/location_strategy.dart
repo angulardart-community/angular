@@ -1,3 +1,8 @@
+/// @docImport '../router/router.dart';
+/// @docImport 'hash_location_strategy.dart';
+/// @docImport 'path_location_strategy.dart';
+library;
+
 import 'dart:html';
 
 import 'package:ngdart/angular.dart' show OpaqueToken;

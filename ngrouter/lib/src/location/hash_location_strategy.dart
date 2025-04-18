@@ -16,14 +16,14 @@ import 'platform_location.dart' show PlatformLocation;
 ///
 /// ### Example
 ///
-/// ```
+/// ```dart
 /// import 'package:ngdart/angular.dart';
 /// import 'package:ngrouter/ngrouter.dart';
 ///
 /// @Component(
 ///   // Should only be provided at the root.
-///   providers: [
-///     routerProvidersHash,
+///   providers: const [
+///     routerProvidersHash
 ///   ],
 /// )
 /// class AppComponent {

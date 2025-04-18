@@ -1,3 +1,6 @@
+/// @docImport 'router.dart';
+library;
+
 import 'package:ngdart/angular.dart';
 
 import '../directives/router_outlet_directive.dart';

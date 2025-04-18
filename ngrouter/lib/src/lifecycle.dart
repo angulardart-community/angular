@@ -23,10 +23,10 @@ abstract class CanActivate {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyComponent implements CanActivate {
   ///   @override
-  ///   Future<bool> canActivate(RouterState _, RouterState __) async {
+  ///   Future<bool> canActivate(RouterState current, RouterState next) async {
   ///     // Maybe this page isn't ready yet for production, so always reject.
   ///     return false;
   ///   }
@@ -59,14 +59,15 @@ abstract class CanDeactivate {
   /// accept the transition, or completes with `false` in order to reject it
   /// (and prevent the routing from occurring).
   ///
-  /// ```
+  /// ```dart
   /// class MyComponent implements CanDeactivate {
   ///   @override
   ///   Future<bool> canDeactivate(
   ///     RouterState current,
   ///     RouterState next,
-  ///   ) async =>
-  ///       current.parameters['id'] != next.parameters['id'];
+  ///   ) async {
+  ///     return current.parameters['id'] != next.parameters['id'];
+  ///   }
   /// }
   /// ```
   ///
@@ -93,7 +94,7 @@ abstract class CanNavigate {
   /// The client should return a future that completes with a boolean indicating
   /// whether the router is allowed to navigate.
   ///
-  /// ```
+  /// ```dart
   /// class MyComponent implements CanNavigate {
   ///   bool get _hasFormBeenSaved => ...;
   ///
@@ -122,7 +123,7 @@ abstract class CanReuse {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyComponent implements CanReuse {
   ///   @override
   ///   Future<bool> canReuse(RouterState current, RouterState next) async {
@@ -134,7 +135,7 @@ abstract class CanReuse {
   ///
   /// Or simply mixin or extend this class:
   ///
-  /// ```
+  /// ```dart
   /// class MyComponent extends CanReuse {}
   /// ```
   Future<bool> canReuse(RouterState current, RouterState next) async {
@@ -158,10 +159,10 @@ abstract class OnActivate {
   ///
   /// ```dart
   /// class MyComponent extends CanReuse implements OnActivate {
-  ///   User user;
+  ///   late User user;
   ///
   ///   @override
-  ///   void onActivate(_, RouterState current) {
+  ///   void onActivate(RouterState? previous, RouterState current) {
   ///     var userId = current.getParameter('userId');
   ///     getUserById(userId).then((user) => this.user = user);
   ///   }

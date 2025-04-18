@@ -1,3 +1,6 @@
+/// @docImport 'lifecycle.dart';
+library;
+
 import 'router/navigation_params.dart';
 import 'router/router_state.dart';
 
@@ -6,10 +9,10 @@ import 'router/router_state.dart';
 /// A class should extend this class and be injected along with the router to
 /// hook into route navigation.
 ///
-/// ```
+/// ```dart
 /// class MyHook extends RouterHook {}
 ///
-/// @GenerateInjector([
+/// @GenerateInjector(const [
 ///   ClassProvider(RouterHook, useClass: MyHook),
 ///   routerProviders,
 /// ])
@@ -26,10 +29,13 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   @override
-  ///   Future<String> navigationPath(String _, NavigationParams __) async {
+  ///   Future<String> navigationPath(
+  ///     String path,
+  ///     NavigationParams params,
+  ///   ) async {
   ///     // Maybe there is only a homepage, so redirect all to homepage.
   ///     return '';
   ///   }
@@ -47,7 +53,7 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   MyHook(this._injector);
   ///
@@ -59,7 +65,9 @@ abstract class RouterHook {
   ///
   ///   @override
   ///   Future<NavigationParams> navigationParams(
-  ///       String _, NavigationParams params) async {
+  ///     String path,
+  ///     NavigationParams params,
+  ///   ) async {
   ///     // Combine the query parameters with existing ones.
   ///     return NavigationParams(
   ///       queryParameters: {
@@ -71,7 +79,9 @@ abstract class RouterHook {
   /// }
   /// ```
   Future<NavigationParams> navigationParams(
-      String path, NavigationParams params) async {
+    String path,
+    NavigationParams params,
+  ) async {
     // Provided as a default if someone extends or mixes-in this interface.
     return params;
   }
@@ -84,21 +94,27 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   final AuthService _authService;
   ///
   ///   @override
   ///   Future<bool> canActivate(
-  ///       Object component, RouterState _, RouterState __) async {
+  ///     Object component,
+  ///     RouterState oldState,
+  ///     RouterState newState,
+  ///   ) async {
   ///     // Make the default behavior to block all LoginRequired components
   ///     // unless logged in.
   ///     return _authService.isLoggedIn || component is! LoginRequired;
   ///   }
   /// }
   /// ```
-  Future<bool> canActivate(Object componentInstance, RouterState? oldState,
-      RouterState newState) async {
+  Future<bool> canActivate(
+    Object componentInstance,
+    RouterState? oldState,
+    RouterState newState,
+  ) async {
     // Provided as a default if someone extends or mixes-in this interface.
     return true;
   }
@@ -111,20 +127,26 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   final Window _window;
   ///
   ///   @override
   ///   Future<bool> canDeactivate(
-  ///       Object component, RouterState _, RouterState __) async {
+  ///     Object component,
+  ///     RouterState oldState,
+  ///     RouterState newState,
+  ///   ) async {
   ///     // Always ask if the user wants to navigate away from the page.
   ///     return _window.confirm('Discard changes?');
   ///   }
   /// }
   /// ```
-  Future<bool> canDeactivate(Object componentInstance, RouterState oldState,
-      RouterState newState) async {
+  Future<bool> canDeactivate(
+    Object componentInstance,
+    RouterState oldState,
+    RouterState newState,
+  ) async {
     // Provided as a default if someone extends or mixes-in this interface.
     return true;
   }
@@ -137,7 +159,7 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   final Window _window;
   ///
@@ -161,18 +183,24 @@ abstract class RouterHook {
   ///
   /// You can use `async` in order to simplify when returning synchronously:
   ///
-  /// ```
+  /// ```dart
   /// class MyHook extends RouterHook {
   ///   @override
   ///   Future<bool> canReuse(
-  ///       Object _, RouterState __, RouterState ___) async {
+  ///     Object component,
+  ///     RouterState oldState,
+  ///     RouterState newState,
+  ///   ) async {
   ///     // Make the default behavior to always reuse the component.
   ///     return true;
   ///   }
   /// }
   /// ```
-  Future<bool> canReuse(Object componentInstance, RouterState oldState,
-      RouterState newState) async {
+  Future<bool> canReuse(
+    Object componentInstance,
+    RouterState oldState,
+    RouterState newState,
+  ) async {
     // Provided as a default if someone extends or mixes-in this interface.
     return false;
   }

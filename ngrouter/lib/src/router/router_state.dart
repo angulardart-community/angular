@@ -12,8 +12,8 @@ class RouterState extends Url {
 
   /// A map of URL parameters.
   ///
-  /// If matched RouteDefinition has a path '/customer/:id' and the URL is
-  /// '/customer/5', parameters would equal { 'id': '5' }.
+  /// If matched RouteDefinition has a path `/customer/:id` and the URL is
+  /// `/customer/5`, parameters would equal `{ 'id': '5' }`.
   final Map<String, String> parameters;
 
   /// Whether this state was caused by a `popstate` event.

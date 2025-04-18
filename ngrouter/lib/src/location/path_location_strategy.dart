@@ -1,3 +1,6 @@
+/// @docImport '../constants.dart';
+library;
+
 import 'dart:html' as html;
 
 import 'package:ngdart/angular.dart' show Injectable, Inject, Optional;

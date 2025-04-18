@@ -18,10 +18,10 @@ export 'src/route_definition.dart'
 /// Add these providers to your test bed for testing your route configuration or
 /// components with dependencies on the router.
 ///
-/// ```
+/// ```dart
 /// @Component(
 ///   selector: '...',
-///   providers: [
+///   providers: const [
 ///     routerProvidersTest,
 ///   ],
 /// )
@@ -39,12 +39,15 @@ const routerProvidersTest = [
 /// Add this module to your test bed for testing your route configuration or
 /// components with dependencies on the router.
 ///
-/// ```
-/// @GenerateInjector.fromModules([routerTestModule])
+/// ```dart
+/// @GenerateInjector.fromModules(const [
+///   routerTestModule
+/// ])
 /// final InjectorFactory testInjector = ng.testInjector$Injector;
-/// ...
+///
 /// final testBed = NgTestBed(
-///     ng.TestComponentNgFactory,
-///     rootInjector: testInjector);
+///   ng.TestComponentNgFactory,
+///   rootInjector: testInjector,
+/// );
 /// ```
 const routerTestModule = Module(provide: routerProvidersTest);

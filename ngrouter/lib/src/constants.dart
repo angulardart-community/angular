@@ -11,10 +11,10 @@ import 'router/router_impl.dart';
 ///
 /// Attach to a @[Component]'s directives when using any other the Router
 /// directives.
-/// ```
+/// ```dart
 /// @Component(
 ///   selector: 'my-app',
-///   directives: [routerDirectives]
+///   directives: const [routerDirectives]
 ///   template: '<router-outlet></router-outlet>'
 /// )
 /// class MyApp {}
@@ -24,11 +24,15 @@ const routerDirectives = [RouterOutlet, RouterLink, RouterLinkActive];
 /// The main [Router] providers.
 ///
 /// The [routerProviders] should be added to the app's root injector.
-/// ```
-/// @GenerateInjector([routerProviders])
+/// ```dart
+/// @GenerateInjector(const [
+///   routerProviders,
+/// ])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
-/// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+///
+/// void main() {
+///   runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+/// }
 /// ```
 const routerProviders = [
   ClassProvider(LocationStrategy, useClass: PathLocationStrategy),
@@ -40,22 +44,30 @@ const routerProviders = [
 /// The main [Router] DI module.
 ///
 /// The [routerModule] should be added to the app's root injector.
-/// ```
-/// @GenerateInjector.fromModules([routerModule])
+/// ```dart
+/// @GenerateInjector.fromModules(const [
+///   routerModule
+/// ])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
-/// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+///
+/// void main() {
+///   runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+/// }
 /// ```
 const routerModule = Module(provide: routerProviders);
 
 /// The main [Router] providers when using hash routing.
 ///
 /// The [routerProvidersHash] should be added to the app's root injector.
-/// ```
-/// @GenerateInjector([routerProvidersHash])
+/// ```dart
+/// @GenerateInjector(const [
+///   routerProvidersHash
+/// ])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
-/// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+///
+/// void main() {
+///   runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+/// }
 /// ```
 const routerProvidersHash = [
   ClassProvider(LocationStrategy, useClass: HashLocationStrategy),
@@ -67,10 +79,14 @@ const routerProvidersHash = [
 /// The main [Router] DI module when using hash routing.
 ///
 /// The [routerHashModule] should be added to the app's root injector.
-/// ```
-/// @GenerateInjector.fromModules([routerHashModule])
+/// ```dart
+/// @GenerateInjector.fromModules(const [
+///   routerHashModule
+/// ])
 /// final InjectorFactory appInjector = ng.appInjector$Injector;
-/// ...
-/// runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+///
+/// void main() {
+///   runApp(ng.MyAppComponentNgFactory, createInjector: appInjector);
+/// }
 /// ```
 const routerHashModule = Module(provide: routerProvidersHash);

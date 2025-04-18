@@ -1,3 +1,7 @@
+/// @docImport '../router/router.dart';
+/// @docImport 'location_strategy.dart';
+library;
+
 import 'dart:html';
 
 /// This class should not be used directly by an application developer. Instead, use
@@ -8,8 +12,7 @@ import 'dart:html';
 /// This means that we can have different implementation of `PlatformLocation` for the different
 /// platforms
 /// that angular supports. For example, the default `PlatformLocation` is {@link
-/// BrowserPlatformLocation},
-/// however when you run your app in a WebWorker you use [WebWorkerPlatformLocation].
+/// BrowserPlatformLocation}.
 ///
 /// The `PlatformLocation` class is used directly by all implementations of [LocationStrategy]
 /// when
