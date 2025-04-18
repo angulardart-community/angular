@@ -1,3 +1,6 @@
+/// @docImport 'real_time_stabilizer.dart';
+library;
+
 import 'dart:async';
 
 import 'package:collection/collection.dart';
