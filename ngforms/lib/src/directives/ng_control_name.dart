@@ -1,3 +1,7 @@
+/// @docImport 'ng_form.dart';
+/// @docImport 'ng_form_model.dart';
+library;
+
 import 'dart:async';
 
 import 'package:ngdart/angular.dart';
@@ -22,20 +26,21 @@ import 'shared.dart' show controlPath;
 ///
 /// ```dart
 /// @Component(
-///      selector: "login-comp",
-///      directives: const [formDirectives],
-///      template: '''
-///        <form #f="ngForm" (submit)='onLogIn(f.value)'>
-///          Login <input type='text' ngControl='login' #l="form">
-///          <div *ngIf="!l.valid">Login is invalid</div>
+///   selector: 'login-comp',
+///   directives: const [coreDirectives, formDirectives],
+///   template: '''
+///     <form #f="ngForm" (submit)="onLogIn(f.value)">
+///       Login <input type="text" ngControl="login" #l="ngForm">
+///       <div *ngIf="!l.valid!">Login is invalid</div>
 ///
-///          Password <input type='password' ngControl='password'>
-///          <button type='submit'>Log in!</button>
-///        </form>
-///      ''')
+///       Password <input type="password" ngControl="password">
+///       <button type="submit">Log in!</button>
+///     </form>
+///   ''',
+/// )
 /// class LoginComp {
-///  void onLogIn(value) {
-///    // value === {'login': 'some login', 'password': 'some password'}
+///  void onLogIn(dynamic value) {
+///    // value == {'login': 'some login', 'password': 'some password'}
 ///  }
 /// }
 /// ```
@@ -44,23 +49,25 @@ import 'shared.dart' show controlPath;
 ///
 /// ```dart
 /// @Component(
-///      selector: "login-comp",
-///      directives: [formDirectives],
-///      template: '''
-///        <form (submit)='onLogIn()'>
-///          Login <input type='text' ngControl='login' [(ngModel)]="credentials.login">
-///          Password <input type='password' ngControl='password'
-///                          [(ngModel)]="credentials.password">
-///          <button type='submit'>Log in!</button>
-///        </form>
-///      ''')
+///   selector: 'login-comp',
+///   directives: const [formDirectives],
+///   template: '''
+///     <form (submit)="onLogIn()">
+///       Login <input type="text" ngControl="login" [(ngModel)]="login">
+///       Password <input type="password" ngControl="password"
+///                       [(ngModel)]="password">
+///       <button type="submit">Log in!</button>
+///     </form>
+///   ''')
 /// class LoginComp {
-///  credentials: {login:string, password:string};
+///   String? login;
 ///
-///  onLogIn(): void {
-///    // credentials.login === "some login"
-///    // credentials.password === "some password"
-///  }
+///   String? password;
+///
+///   void onLogIn() {
+///     // login == 'some login'
+///     // password == some password'
+///   }
 /// }
 /// ```
 @Directive(

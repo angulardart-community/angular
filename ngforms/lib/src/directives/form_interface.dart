@@ -1,3 +1,7 @@
+/// @docImport 'ng_form.dart';
+/// @docImport 'ng_form_model.dart';
+library;
+
 import '../model.dart' show Control, AbstractControlGroup;
 import 'ng_control.dart' show NgControl;
 import 'ng_control_group.dart' show NgControlGroup;

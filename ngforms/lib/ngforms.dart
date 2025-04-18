@@ -5,6 +5,8 @@
 ///
 /// This module is not included in the `angular` module; you must import the
 /// forms module explicitly.
+///
+/// @docImport 'src/model.dart';
 library; // name the library so we can run dartdoc on it by name.
 
 import 'src/directives/radio_control_value_accessor.dart'
@@ -62,7 +64,10 @@ export 'src/validators.dart' show ngValidators, Validators;
 /// ### Example
 ///
 /// ```dart
-/// runApp(MyAppNgFactory, [formProviders]);
+/// @GenerateInjector(formProviders)
+/// final InjectorFactory injector = ng.injector$Injector;
+///
+/// runApp(MyAppNgFactory, createInjector: injector);
 /// ````
 const List<Type> formProviders = [RadioControlRegistry];
 

@@ -1,3 +1,6 @@
+/// @docImport 'ng_control_name.dart';
+library;
+
 import 'dart:async';
 
 import 'package:meta/dart2js.dart' as dart2js;

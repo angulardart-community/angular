@@ -1,27 +1,27 @@
 import 'package:ngdart/angular.dart';
 
 import 'directives/validators.dart' show ValidatorFn;
-import 'model.dart' as model_module;
+import 'model.dart';
 
-///  Providers for validators to be used for [Control]s in a form.
+/// Providers for validators to be used for [AbstractControl]s in a form.
 ///
-///  Provide this using `ExistingProvider.forToken` to add validators.
+/// Provide this using `ExistingProvider.forToken` to add validators.
 const ngValidators = MultiToken<Object>('NgValidators');
 
-///  Provides a set of validators used by form controls.
+/// Provides a set of validators used by form controls.
 ///
-///  A validator is a function that processes a [Control] or collection of
-///  controls and returns a map of errors. A null map means that validation has
-///  passed.
+/// A validator is a function that processes a [AbstractControl]or collection
+/// of controls and returns a map of errors. A null map means that validation
+/// has passed.
 ///
-///  ### Example
+/// ### Example
 ///
 /// ```dart
-/// Control loginControl = new Control("", Validators.required)
+/// Control loginControl = Control("", Validators.required)
 /// ```
 class Validators {
   ///  Validator that requires controls to have a non-empty value.
-  static Map<String, bool>? required(model_module.AbstractControl control) {
+  static Map<String, bool>? required(AbstractControl control) {
     return control.value == null || control.value == ''
         ? {'required': true}
         : null;
@@ -29,8 +29,7 @@ class Validators {
 
   ///  Validator that requires controls to have a value of a minimum length.
   static ValidatorFn minLength(num minLength) {
-    return /* Map < String , dynamic >? */ (model_module.AbstractControl
-        control) {
+    return /* Map < String , dynamic >? */ (AbstractControl control) {
       if (Validators.required(control) != null) return null;
       final v = control.value as String;
       return v.length < minLength
@@ -46,8 +45,7 @@ class Validators {
 
   ///  Validator that requires controls to have a value of a maximum length.
   static ValidatorFn maxLength(num maxLength) {
-    return /* Map < String , dynamic >? */ (model_module.AbstractControl
-        control) {
+    return /* Map < String , dynamic >? */ (AbstractControl control) {
       if (Validators.required(control) != null) return null;
       final v = control.value as String;
       return v.length > maxLength
@@ -63,8 +61,7 @@ class Validators {
 
   ///  Validator that requires a control to match a regex to its value.
   static ValidatorFn pattern(String pattern) {
-    return /* Map < String , dynamic >? */ (model_module.AbstractControl
-        control) {
+    return /* Map < String , dynamic >? */ (AbstractControl control) {
       if (Validators.required(control) != null) return null;
       var regex = RegExp('^$pattern\$');
       final v = control.value as String;
@@ -77,8 +74,7 @@ class Validators {
   }
 
   ///  No-op validator.
-  static Map<String, bool>? nullValidator(model_module.AbstractControl c) =>
-      null;
+  static Map<String, bool>? nullValidator(AbstractControl c) => null;
 
   ///  Compose multiple validators into a single function that returns the union
   ///  of the individual error maps.
@@ -86,7 +82,7 @@ class Validators {
     if (validators == null) return null;
     final presentValidators = _removeNullValidators(validators);
     if (presentValidators.isEmpty) return null;
-    return (model_module.AbstractControl control) {
+    return (AbstractControl control) {
       return _executeValidators(control, presentValidators);
     };
   }
@@ -104,7 +100,7 @@ class Validators {
 }
 
 Map<String, dynamic>? _executeValidators(
-    model_module.AbstractControl control, List<ValidatorFn> validators) {
+    AbstractControl control, List<ValidatorFn> validators) {
   var result = <String, dynamic>{};
   for (var i = 0, len = validators.length; i < len; i++) {
     final validator = validators[i];
