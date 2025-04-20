@@ -491,7 +491,7 @@ class _ComponentVisitor
   }
 
   static final _coreIterable = TypeChecker.fromUrl('dart:core#Iterable');
-  static final _htmlElement = TypeChecker.fromUrl('dart:html#Element');
+  static final _htmlElement = TypeChecker.fromUrl('package:web/src/dom/dom.dart#Element');
 
   CompileQueryMetadata _getQuery(
     AnnotationInformation annotationInfo,

@@ -1,6 +1,6 @@
 import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 import 'package:ngcompiler/v1/src/compiler/identifiers.dart'
-    show DomHelpers, Identifiers, SafeHtmlAdapters;
+    show DomHelpers, Identifiers, JsInterop, SafeHtmlAdapters;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart';
 import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
@@ -124,7 +124,10 @@ class _UpdateStatementsVisitor
     return o.importExpr(DomHelpers.setProperty).callFn([
       renderNode!.toReadExpr(),
       o.literal(propertyBinding.name),
-      renderValue!,
+      o
+          // TODO(ykmnkmi): math other types
+          .importExpr(JsInterop.stringToJSString)
+          .callFn([renderValue!]).prop('toJS'),
     ]).toStmt();
   }
 

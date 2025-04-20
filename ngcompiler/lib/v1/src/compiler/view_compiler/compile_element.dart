@@ -264,7 +264,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         } else {
           // If we can't find a valid query type, then we fall back to
           // ElementRef. HOWEVER, if specifically typed as Element or
-          // HtmlElement, use that.
+          // HTMLElement, use that.
           value = queryWithRead.query.metadata.isElementType
               ? renderNode.toReadExpr()
               : elementRef;

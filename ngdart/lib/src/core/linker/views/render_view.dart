@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/src/core/linker/app_view_utils.dart';
@@ -8,6 +8,7 @@ import 'package:ngdart/src/core/linker/view_container.dart';
 import 'package:ngdart/src/core/linker/view_fragment.dart';
 import 'package:ngdart/src/runtime/dom_helpers.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import 'view.dart';
 
@@ -128,11 +129,11 @@ abstract class RenderView extends View {
   ///   * Calls [markForCheck] on this view to ensure it gets change detected
   ///   during the next change detection cycle, in case it uses a non-default
   ///   change detection strategy.
-  void Function(E) eventHandler0<E>(void Function() handler) {
-    return (E event) {
+  JSFunction eventHandler0(void Function() handler) {
+    return (Event event) {
       markForCheck();
       appViewUtils.eventManager.zone.runGuarded(handler);
-    };
+    }.toJS;
   }
 
   /// The same as [eventHandler0], but [handler] is passed an event parameter.
@@ -149,24 +150,20 @@ abstract class RenderView extends View {
   /// of the event listener is a subclass of [Event]. The [Event] passed in from
   /// [EventTarget.addEventListener] can then be safely coerced back to its
   /// known type.
-  void Function(E) eventHandler1<E, F extends E>(void Function(F) handler) {
-    assert(
-        E == Null || F != Null,
-        "Event handler '$handler' isn't assignable to expected type "
-        "'($E) => void'");
+  JSFunction eventHandler1<E extends Event>(void Function(E event) handler) {
     return (E event) {
       markForCheck();
       appViewUtils.eventManager.zone.runGuarded(
-        () => handler(unsafeCast<F>(event)),
+        () => handler(event),
       );
-    };
+    }.toJS;
   }
 
   // Styling -------------------------------------------------------------------
 
-  /// Equivalent to [addShimE], but optimized for [HtmlElement].
+  /// Equivalent to [addShimE], but optimized for [HTMLElement].
   @dart2js.tryInline
-  void addShimC(HtmlElement element) {
+  void addShimC(HTMLElement element) {
     componentStyles.addContentShimClassHtmlElement(element);
   }
 
@@ -176,7 +173,7 @@ abstract class RenderView extends View {
   /// shim class is needed for any styles to match [element].
   ///
   /// This should only be used for SVG or custom elements. For a plain
-  /// [HtmlElement], use [addShimC] instead.
+  /// [HTMLElement], use [addShimC] instead.
   @dart2js.tryInline
   void addShimE(Element element) {
     componentStyles.addContentShimClass(element);
@@ -189,7 +186,7 @@ abstract class RenderView extends View {
   ///
   /// For example, through the `[class]="..."` or `[attr.class]="..."` syntax.
   @dart2js.noInline
-  void updateChildClass(HtmlElement element, String newClass) {
+  void updateChildClass(HTMLElement element, String newClass) {
     componentStyles.updateChildClassHtmlElement(element, newClass);
   }
 
