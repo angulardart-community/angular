@@ -1,8 +1,9 @@
-import 'dart:html';
-import 'dart:js_util' as js_util;
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/src/directives/shared.dart' show setElementDisabled;
+import 'package:web/web.dart';
 
 import 'control_value_accessor.dart'
     show ChangeHandler, ControlValueAccessor, ngValueAccessor, TouchHandler;
@@ -76,7 +77,7 @@ class RadioButtonState {
 class RadioControlValueAccessor extends Object
     with TouchHandler, ChangeHandler<RadioButtonState>
     implements ControlValueAccessor<RadioButtonState>, OnDestroy, OnInit {
-  final HtmlElement _element;
+  final HTMLInputElement _element;
   final RadioControlRegistry _registry;
   final Injector _injector;
   RadioButtonState? _state;
@@ -108,7 +109,7 @@ class RadioControlValueAccessor extends Object
   void writeValue(RadioButtonState? value) {
     _state = value;
     if (value?.checked ?? false) {
-      js_util.setProperty(_element, 'checked', true);
+      _element['checked'] = true.toJS;
     }
   }
 
