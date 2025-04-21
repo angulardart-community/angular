@@ -71,7 +71,8 @@ Future<T> runWithContext<T>(
         );
       }
       if (!buildCompletedOrFailed.isCompleted) {
-        buildCompletedOrFailed.complete();
+        // TODO(ykmnkmi): check or switch back to complete.
+        buildCompletedOrFailed.completeError(e, s);
       }
     },
     zoneSpecification: ZoneSpecification(
