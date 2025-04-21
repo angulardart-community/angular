@@ -248,7 +248,7 @@ void appendNodes(List<Node> nodes, Node parent) {
 /// Removes [nodes] from the DOM.
 @dart2js.noInline
 void removeNodes(List<Node> nodes) {
-  for (var i = 0, node = nodes[i], l = nodes.length; i < l; node = nodes[++i]) {
+  for (var i = 0, node = nodes[0], l = nodes.length; i < l; node = nodes[i++]) {
     node.parentNode?.removeChild(node);
   }
 }
