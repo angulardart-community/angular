@@ -1,19 +1,22 @@
-import 'dart:html';
-
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngrouter/ngrouter.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
-@GenerateNiceMocks([MockSpec<BrowserPlatformLocation>()])
+// TODO(ykmnkmi): replace with BrowserPlatformLocation when `mockito` supports
+//  extension types.
+@GenerateNiceMocks([MockSpec<PlatformLocation>()])
 import 'hash_location_strategy_test.mocks.dart'; // ignore: uri_does_not_exist
 
 import 'hash_location_strategy_test.template.dart' as ng;
 
+// TODO(ykmnkmi): replace with MockBrowserPlatformLocation when `mockito`
+//  supports extension types.
 // ignore: undefined_function
-final platformLocation = MockBrowserPlatformLocation();
+final platformLocation = MockPlatformLocation();
 
 void main() {
   setUp(() {
@@ -59,7 +62,7 @@ class AppComponent {
   static final routes = [fooRoute];
 
   @ViewChild('routerLink')
-  HtmlElement? anchor;
+  HTMLAnchorElement? anchor;
 }
 
 @Component(selector: 'foo', template: '')
