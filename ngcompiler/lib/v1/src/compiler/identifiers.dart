@@ -39,7 +39,8 @@ class JsInterop {
     );
   }
 
-  static final stringToJSString = _of('StringToJSString');
+  static final functionToJSExportedDartFunction =
+      _of('FunctionToJSExportedDartFunction');
 }
 
 /// A collection of methods for manipulating the DOM from generated code.
@@ -288,6 +289,8 @@ class Identifiers {
 
   // Runtime is initialized by output interpreter. Compiler executes in VM and
   // can't import `package:web/web.dart` to initialize here.
+  static var event = CompileIdentifierMetadata(
+      name: 'Event', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
   static var commentNode = CompileIdentifierMetadata(
       name: 'Comment', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
   static var textNode = CompileIdentifierMetadata(
@@ -327,7 +330,8 @@ class Identifiers {
   static final inputElement = CompileIdentifierMetadata(
       name: 'HTMLInputElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final textareaElement = CompileIdentifierMetadata(
-      name: 'HTMLTextAreaElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+      name: 'HTMLTextAreaElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final mediaElement = CompileIdentifierMetadata(
       name: 'HTMLMediaElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final menuElement = CompileIdentifierMetadata(
@@ -341,9 +345,11 @@ class Identifiers {
   static final tableElement = CompileIdentifierMetadata(
       name: 'HTMLTableElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final tableRowElement = CompileIdentifierMetadata(
-      name: 'HTMLTableRowElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+      name: 'HTMLTableRowElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final tableColElement = CompileIdentifierMetadata(
-      name: 'HTMLTableColElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+      name: 'HTMLTableColElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final uListElement = CompileIdentifierMetadata(
       name: 'HTMLUListElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final node = CompileIdentifierMetadata(

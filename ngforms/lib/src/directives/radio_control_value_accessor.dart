@@ -86,7 +86,8 @@ class RadioControlValueAccessor extends Object
   @Input()
   String? name;
 
-  RadioControlValueAccessor(this._element, this._registry, this._injector);
+  RadioControlValueAccessor(HTMLElement element, this._registry, this._injector)
+      : _element = element as HTMLInputElement;
 
   @HostListener('change')
   void changeHandler() {

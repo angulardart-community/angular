@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:js_interop';
 
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/src/core/linker/app_view_utils.dart';
@@ -129,11 +128,11 @@ abstract class RenderView extends View {
   ///   * Calls [markForCheck] on this view to ensure it gets change detected
   ///   during the next change detection cycle, in case it uses a non-default
   ///   change detection strategy.
-  JSFunction eventHandler0(void Function() handler) {
+  void Function(Event event) eventHandler0(void Function() handler) {
     return (Event event) {
       markForCheck();
       appViewUtils.eventManager.zone.runGuarded(handler);
-    }.toJS;
+    };
   }
 
   /// The same as [eventHandler0], but [handler] is passed an event parameter.
@@ -150,13 +149,17 @@ abstract class RenderView extends View {
   /// of the event listener is a subclass of [Event]. The [Event] passed in from
   /// [EventTarget.addEventListener] can then be safely coerced back to its
   /// known type.
-  JSFunction eventHandler1<E extends Event>(void Function(E event) handler) {
+  void Function(E) eventHandler1<E, F extends E>(void Function(F) handler) {
+    assert(
+        E == Null || F != Null,
+        "Event handler '$handler' isn't assignable to expected type "
+        "'($E) => void'");
     return (E event) {
       markForCheck();
       appViewUtils.eventManager.zone.runGuarded(
-        () => handler(event),
+        () => handler(unsafeCast(event)),
       );
-    }.toJS;
+    };
   }
 
   // Styling -------------------------------------------------------------------

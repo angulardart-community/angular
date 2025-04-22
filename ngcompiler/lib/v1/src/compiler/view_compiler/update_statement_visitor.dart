@@ -124,10 +124,7 @@ class _UpdateStatementsVisitor
     return o.importExpr(DomHelpers.setProperty).callFn([
       renderNode!.toReadExpr(),
       o.literal(propertyBinding.name),
-      o
-          // TODO(ykmnkmi): math other types
-          .importExpr(JsInterop.stringToJSString)
-          .callFn([renderValue!]).prop('toJS'),
+      renderValue!,
     ]).toStmt();
   }
 
@@ -248,7 +245,13 @@ class _UpdateStatementsVisitor
           [o.Expression? renderValue]) =>
       (renderNode?.toReadExpr() ?? appViewInstance!).callMethod(
         'addEventListener',
-        [o.literal(nativeEvent.name), renderValue!],
+        [
+          o.literal(nativeEvent.name),
+          o.importExpr(JsInterop.functionToJSExportedDartFunction).instantiate([
+            renderValue!.cast(
+                o.FunctionType(o.voidType, [o.importType(Identifiers.event)!]))
+          ]).prop('toJS')
+        ],
       ).toStmt();
 }
 

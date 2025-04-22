@@ -123,9 +123,22 @@ void setAttribute(
 void setProperty(
   Element element,
   String property,
-  JSAny? value,
+  Object? value,
 ) {
-  element[property] = value;
+  // TODO(ykmnkmi): `ngcompiler` doesn't have type data to use convert
+  //  values to JS types and use `JSAny` here. Expected to be inlined
+  //  with right type.
+  if (value == null) {
+    element[property] = null;
+  } else if (value is bool) {
+    element[property] = value.toJS;
+  } else if (value is num) {
+    element[property] = value.toJS;
+  } else if (value is String) {
+    element[property] = value.toJS;
+  } else {
+    element[property] = value.jsify();
+  }
 }
 
 /// Creates a [Text] node with the provided [contents].
