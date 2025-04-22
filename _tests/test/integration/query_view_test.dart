@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:_tests/query_tests.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'query_view_test.template.dart' as ng;
 
@@ -38,7 +38,7 @@ void main() {
           ng.createTestNestedNgForQueriesListFactory());
       final fixture = await testBed.create();
       expect(
-        fixture.assertOnlyInstance.taggedDivs!.map((e) => e.text),
+        fixture.assertOnlyInstance.taggedDivs!.map((e) => e.textContent),
         ['1', '2', '3'],
       );
     });
@@ -49,7 +49,7 @@ void main() {
           ng.createTestNestedAndStaticNgForQueriesListFactory());
       final fixture = await testBed.create();
       expect(
-        fixture.assertOnlyInstance.taggedDivs!.map((e) => e.text),
+        fixture.assertOnlyInstance.taggedDivs!.map((e) => e.textContent),
         ['1', '2', '3', '4', '5', '6', '7'],
       );
     });

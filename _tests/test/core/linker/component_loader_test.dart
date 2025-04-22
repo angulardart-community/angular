@@ -48,7 +48,7 @@ void main() {
           ng.createDynamicCompFactory(),
           injector: logInjector(comp.context),
         );
-        expect(ref.location.text, 'Dynamic');
+        expect(ref.location.textContent, 'Dynamic');
       });
     });
 
@@ -149,7 +149,7 @@ void main() {
           ng.createDynamicOnPushCompFactory(),
           injector: logInjector(comp.context),
         );
-        expect(ref.location.text, 'Dynamic');
+        expect(ref.location.textContent, 'Dynamic');
       });
     });
 

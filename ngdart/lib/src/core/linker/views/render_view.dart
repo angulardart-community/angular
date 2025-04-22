@@ -128,8 +128,8 @@ abstract class RenderView extends View {
   ///   * Calls [markForCheck] on this view to ensure it gets change detected
   ///   during the next change detection cycle, in case it uses a non-default
   ///   change detection strategy.
-  void Function(Event event) eventHandler0(void Function() handler) {
-    return (Event event) {
+  void Function(E event) eventHandler0<E>(void Function() handler) {
+    return (E event) {
       markForCheck();
       appViewUtils.eventManager.zone.runGuarded(handler);
     };

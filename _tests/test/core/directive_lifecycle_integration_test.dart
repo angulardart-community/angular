@@ -1,5 +1,3 @@
-library angular2.test.core.directive_lifecycle_integration_test;
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';

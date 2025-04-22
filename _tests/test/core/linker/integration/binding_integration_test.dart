@@ -1,6 +1,9 @@
+import 'dart:js_interop';
+
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'binding_integration_test.template.dart' as ng;
 
@@ -59,7 +62,7 @@ void main() {
     final testBed =
         NgTestBed<BoundStyleComponent>(ng.createBoundStyleComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
     expect(div.style.height, '10px');
     await testFixture.update((component) => component.height = null);
     expect(div.style.height, '');
@@ -69,7 +72,7 @@ void main() {
     final testBed = NgTestBed<BoundMismatchedPropertyComponent>(
         ng.createBoundMismatchedPropertyComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
     expect(div.tabIndex, 0);
     await testFixture.update((component) => component.index = 5);
     expect(div.tabIndex, 5);
@@ -79,7 +82,7 @@ void main() {
     final testBed = NgTestBed<BoundCamelCasePropertyComponent>(
         ng.createBoundCamelCasePropertyComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
     expect(div.tabIndex, 1);
     await testFixture.update((component) => component.index = 0);
     expect(div.tabIndex, 0);
@@ -89,21 +92,21 @@ void main() {
     final testBed = NgTestBed<BoundInnerHtmlComponent>(
         ng.createBoundInnerHtmlComponentFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.innerHtml, 'Initial <span>HTML</span>');
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
+    expect((div.innerHTML as JSString).toDart, 'Initial <span>HTML</span>');
     await testFixture
         .update((component) => component.html = 'New <div>HTML</div>');
-    expect(div.innerHtml, 'New <div>HTML</div>');
+    expect((div.innerHTML as JSString).toDart, 'New <div>HTML</div>');
   });
 
   test('should consume className binding using class alias', () async {
     final testBed =
         NgTestBed<BoundClassNameAlias>(ng.createBoundClassNameAliasFactory());
     final testFixture = await testBed.create();
-    final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.classes, contains('foo'));
-    expect(div.classes, contains('bar'));
-    expect(div.classes, isNot(contains('initial')));
+    final div = testFixture.rootElement.querySelector('div') as HTMLDivElement;
+    expect(div.classList.contains('foo'), isTrue);
+    expect(div.classList.contains('bar'), isTrue);
+    expect(div.classList.contains('initial'), isFalse);
   });
 }
 

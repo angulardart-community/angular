@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'query_html_element_test.template.dart' as ng;
 
@@ -12,28 +11,30 @@ void main() {
   test('should support @ViewChild with Element', () async {
     final fixture =
         await NgTestBed<UsesElement>(ng.createUsesElementFactory()).create();
-    expect(fixture.assertOnlyInstance.element!.text, '1');
+    expect(fixture.assertOnlyInstance.element!.textContent, '1');
   });
 
-  test('should support @ViewChild with HtmlElement', () async {
+  test('should support @ViewChild with HTMLElement', () async {
     final fixture =
-        await NgTestBed<UsesHtmlElement>(ng.createUsesHtmlElementFactory())
+        await NgTestBed<UsesHTMLElement>(ng.createUsesHTMLElementFactory())
             .create();
-    expect(fixture.assertOnlyInstance.element!.text, '2');
+    expect(fixture.assertOnlyInstance.element!.textContent, '2');
   });
 
   test('should support @ViewChildren with Element', () async {
     final fixture =
         await NgTestBed<UsesListOfElement>(ng.createUsesListOfElementFactory())
             .create();
-    expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
+    expect(fixture.assertOnlyInstance.elements!.map((e) => e.textContent),
+        ['1', '2']);
   });
 
-  test('should support @ViewChildren with HtmlElement', () async {
-    final fixture = await NgTestBed<UsesListOfHtmlElement>(
-            ng.createUsesListOfHtmlElementFactory())
+  test('should support @ViewChildren with HTMLElement', () async {
+    final fixture = await NgTestBed<UsesListOfHTMLElement>(
+            ng.createUsesListOfHTMLElementFactory())
         .create();
-    expect(fixture.assertOnlyInstance.elements!.map((e) => e.text), ['1', '2']);
+    expect(fixture.assertOnlyInstance.elements!.map((e) => e.textContent),
+        ['1', '2']);
   });
 }
 
@@ -50,9 +51,9 @@ class UsesElement {
   selector: 'uses-element',
   template: '<div #div>2</div>',
 )
-class UsesHtmlElement {
+class UsesHTMLElement {
   @ViewChild('div')
-  HtmlElement? element;
+  HTMLElement? element;
 }
 
 @Component(
@@ -68,7 +69,7 @@ class UsesListOfElement {
   selector: 'uses-list-of-element',
   template: '<div #div>1</div><div #div>2</div>',
 )
-class UsesListOfHtmlElement {
+class UsesListOfHTMLElement {
   @ViewChildren('div')
-  List<HtmlElement>? elements;
+  List<HTMLElement>? elements;
 }

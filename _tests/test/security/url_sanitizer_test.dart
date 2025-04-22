@@ -1,4 +1,5 @@
 @TestOn('browser')
+library;
 
 import 'package:ngdart/src/security/url_sanitizer.dart';
 import 'package:test/test.dart';

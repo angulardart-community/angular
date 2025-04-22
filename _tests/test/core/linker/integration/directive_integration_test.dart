@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'directive_integration_test.template.dart' as ng;
 
@@ -203,8 +203,8 @@ class UnboundDirectiveInputComponent {}
   selector: '[no-duplicate]',
 )
 class DuplicateDir {
-  DuplicateDir(HtmlElement element) {
-    element.text = '${element.text}noduplicate';
+  DuplicateDir(HTMLElement element) {
+    element.textContent = '${element.textContent}noduplicate';
   }
 }
 

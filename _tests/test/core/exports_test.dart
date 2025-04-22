@@ -1,6 +1,7 @@
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'exports_statics.dart' as lib;
 import 'exports_statics.dart';
@@ -54,7 +55,7 @@ void main() {
       var testBed = NgTestBed<StaticEventHandlerTest>(
           ng.createStaticEventHandlerTestFactory());
       var fixture = await testBed.create();
-      var div = fixture.rootElement.querySelector('div')!;
+      var div = fixture.rootElement.querySelector('div') as HTMLDivElement;
       clickHandled = false;
       await fixture.update((_) {
         div.click();
@@ -66,7 +67,7 @@ void main() {
       var testBed = NgTestBed<StaticEventHandlerTargetTest>(
           ng.createStaticEventHandlerTargetTestFactory());
       var fixture = await testBed.create();
-      var div = fixture.rootElement.querySelector('div')!;
+      var div = fixture.rootElement.querySelector('div') as HTMLDivElement;
       MyClass.clickHandled = false;
       await fixture.update((_) {
         div.click();
@@ -78,7 +79,7 @@ void main() {
       var testBed = NgTestBed<StaticEventHandlerArgTest>(
           ng.createStaticEventHandlerArgTestFactory());
       var fixture = await testBed.create();
-      var div = fixture.rootElement.querySelector('div')!;
+      var div = fixture.rootElement.querySelector('div') as HTMLDivElement;
       late List<Object> listArg;
       await fixture.update((StaticEventHandlerArgTest component) {
         component.clickHandler = (list) {
@@ -103,11 +104,11 @@ void main() {
       var testBed = NgTestBed<SelfReferHostBindingTest>(
           ng.createSelfReferHostBindingTestFactory());
       var fixture = await testBed.create();
-      expect(fixture.rootElement.title, 'hello');
+      expect((fixture.rootElement as HTMLElement).title, 'hello');
       await fixture.update((_) {
         SelfReferHostBindingTest.staticField = 'goodbye';
       });
-      expect(fixture.rootElement.title, 'goodbye');
+      expect((fixture.rootElement as HTMLElement).title, 'goodbye');
     });
 
     group('can be prefixed', () {

@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'on_push_test.template.dart' as ng;
 
@@ -55,21 +55,25 @@ void main() {
         NgTestBed<PushCmpHostComponent>(ng.createPushCmpHostComponentFactory());
     final testFixture = await testBed.create();
     final cmp = testFixture.assertOnlyInstance.child!;
-    final cmpElement = testFixture.rootElement.children.first;
+    final cmpElement = testFixture.rootElement.children.item(0)!;
     expect(cmp.numberOfChecks, 1);
     // Regular element.
     await testFixture.update((_) {
-      cmpElement.children[0].dispatchEvent(MouseEvent('click'));
+      cmpElement.children.item(0)!.dispatchEvent(MouseEvent('click'));
     });
     expect(cmp.numberOfChecks, 2);
     // Element inside an *ngIf.
     await testFixture.update((_) {
-      cmpElement.children[1].dispatchEvent(MouseEvent('click'));
+      cmpElement.children.item(1)!.dispatchEvent(MouseEvent('click'));
     });
     expect(cmp.numberOfChecks, 3);
     // Element inside a child component.
     await testFixture.update((_) {
-      cmpElement.children[2].children[0].dispatchEvent(MouseEvent('click'));
+      cmpElement.children
+          .item(2)!
+          .children
+          .item(1)!
+          .dispatchEvent(MouseEvent('click'));
     });
     expect(cmp.numberOfChecks, 4);
   });

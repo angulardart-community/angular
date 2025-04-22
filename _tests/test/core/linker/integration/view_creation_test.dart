@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'view_creation_test.template.dart' as ng;
 
@@ -19,21 +19,21 @@ void main() {
   });
 
   test('should support moving embedded views', () async {
-    final template = TemplateElement()..append(DivElement());
+    final template = HTMLTemplateElement()..append(HTMLDivElement());
     final testBed = NgTestBed<MovesEmbeddedViewComponent>(
       ng.createMovesEmbeddedViewComponentFactory(),
     ).addInjector(
       (i) => Injector.map({
-        ANCHOR_ELEMENT: template,
+        anchorElement: template,
       }, i),
     );
     final testFixture = await testBed.create();
     final viewport = testFixture.assertOnlyInstance.viewport!;
-    expect(viewport.anchor.text, '');
+    expect(viewport.anchor.textContent, '');
     await testFixture.update((component) => component.ctxBoolProp = true);
-    expect(viewport.anchor.text, 'hello');
+    expect(viewport.anchor.textContent, 'hello');
     await testFixture.update((component) => component.ctxBoolProp = false);
-    expect(viewport.anchor.text, '');
+    expect(viewport.anchor.textContent, '');
   });
 
   group('property bindings', () {
@@ -50,8 +50,9 @@ void main() {
         ng.createOverriddenPropertyComponentFactory(),
       );
       final testFixture = await testBed.create();
-      final span = testFixture.rootElement.querySelector('span');
-      expect(span!.title, isEmpty);
+      final span =
+          testFixture.rootElement.querySelector('span') as HTMLSpanElement;
+      expect(span.title, isEmpty);
     });
 
     test('should allow directive host property to update DOM', () async {
@@ -59,8 +60,9 @@ void main() {
         ng.createDirectiveUpdatesDomComponentFactory(),
       );
       final testFixture = await testBed.create();
-      final span = testFixture.rootElement.querySelector('span');
-      expect(span!.title, 'TITLE');
+      final span =
+          testFixture.rootElement.querySelector('span') as HTMLSpanElement;
+      expect(span.title, 'TITLE');
     });
   });
 
@@ -82,7 +84,8 @@ void main() {
       await testFixture.update((component) {
         component.directive!.myAttr = 'bar';
       });
-      final directiveElement = testFixture.rootElement.children.first;
+      final directiveElement =
+          testFixture.rootElement.children.item(0) as HTMLElement;
       expect(directiveElement.attributes, containsPair('my-attr', 'bar'));
     });
 
@@ -105,7 +108,8 @@ void main() {
       final testFixture = await testBed.create();
       final directive = testFixture.assertOnlyInstance.directive!;
       expect(directive.target, isNull);
-      final directiveElement = testFixture.rootElement.children.first;
+      final directiveElement =
+          testFixture.rootElement.children.item(0) as EventTarget;
       directiveElement.dispatchEvent(MouseEvent('click'));
       await testFixture.update();
       expect(directive.target, directiveElement);
@@ -118,16 +122,16 @@ void main() {
     );
     final testFixture = await testBed.create();
     final svg = testFixture.rootElement.querySelector('svg')!;
-    expect(svg.namespaceUri, 'http://www.w3.org/2000/svg');
+    expect(svg.namespaceURI, 'http://www.w3.org/2000/svg');
     final use = testFixture.rootElement.querySelector('use')!;
-    expect(use.namespaceUri, 'http://www.w3.org/2000/svg');
+    expect(use.namespaceURI, 'http://www.w3.org/2000/svg');
     final foreignObject =
         testFixture.rootElement.querySelector('foreignObject')!;
-    expect(foreignObject.namespaceUri, 'http://www.w3.org/2000/svg');
+    expect(foreignObject.namespaceURI, 'http://www.w3.org/2000/svg');
     final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.namespaceUri, 'http://www.w3.org/1999/xhtml');
+    expect(div.namespaceURI, 'http://www.w3.org/1999/xhtml');
     final p = testFixture.rootElement.querySelector('p')!;
-    expect(p.namespaceUri, 'http://www.w3.org/1999/xhtml');
+    expect(p.namespaceURI, 'http://www.w3.org/1999/xhtml');
   });
 
   group('namespace attributes', () {
@@ -164,7 +168,7 @@ class SimpleImperativeViewComponent {
   }
 }
 
-const ANCHOR_ELEMENT = OpaqueToken('AnchorElement');
+const anchorElement = OpaqueToken('AnchorElement');
 
 @Directive(
   selector: '[someImpvp]',
@@ -173,10 +177,10 @@ class SomeImperativeViewport {
   ViewContainerRef vc;
   TemplateRef templateRef;
   EmbeddedViewRef? view;
-  TemplateElement anchor;
+  HTMLTemplateElement anchor;
 
   SomeImperativeViewport(
-      this.vc, this.templateRef, @Inject(ANCHOR_ELEMENT) this.anchor);
+      this.vc, this.templateRef, @Inject(anchorElement) this.anchor);
 
   @Input()
   set someImpvp(bool value) {
