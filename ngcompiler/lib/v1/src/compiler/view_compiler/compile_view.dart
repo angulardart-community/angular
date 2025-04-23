@@ -747,9 +747,9 @@ class CompileView {
           null,
           [o.StmtModifier.privateStmt]);
 
-  final _eventParam = o.FnParam(
+  static final _eventParam = o.FnParam(
     EventHandlerVars.event.name!,
-    o.importType(null),
+    o.importType(Identifiers.event),
   );
 
   /// Create an html node and appends to parent element.
