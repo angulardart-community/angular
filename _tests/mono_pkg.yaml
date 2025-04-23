@@ -1,7 +1,7 @@
 sdk:
   - pubspec
-  - dev
   - stable
+  # - dev
 
 stages:
   - build:
