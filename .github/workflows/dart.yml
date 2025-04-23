@@ -272,7 +272,7 @@ jobs:
     needs:
       - job_001
   job_005:
-    name: "build; Dart 3.6.0; PKG: _tests; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart 3.6.0; PKG: _tests; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -297,8 +297,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "_tests; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -307,7 +307,7 @@ jobs:
       - job_003
       - job_004
   job_006:
-    name: "build; Dart 3.6.0; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart 3.6.0; PKG: ngforms; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -332,8 +332,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngforms; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -342,7 +342,7 @@ jobs:
       - job_003
       - job_004
   job_007:
-    name: "build; Dart 3.6.0; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart 3.6.0; PKG: ngrouter; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -367,8 +367,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngrouter; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -377,7 +377,7 @@ jobs:
       - job_003
       - job_004
   job_008:
-    name: "build; Dart 3.6.0; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart 3.6.0; PKG: ngtest; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -402,8 +402,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngtest; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:
@@ -412,7 +412,7 @@ jobs:
       - job_003
       - job_004
   job_009:
-    name: "build; Dart stable; PKG: _tests; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart stable; PKG: _tests; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -437,8 +437,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "_tests; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -447,7 +447,7 @@ jobs:
       - job_003
       - job_004
   job_010:
-    name: "build; Dart stable; PKG: ngforms; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart stable; PKG: ngforms; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -472,8 +472,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngforms; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -482,7 +482,7 @@ jobs:
       - job_003
       - job_004
   job_011:
-    name: "build; Dart stable; PKG: ngrouter; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart stable; PKG: ngrouter; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -507,8 +507,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngrouter; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -517,7 +517,7 @@ jobs:
       - job_003
       - job_004
   job_012:
-    name: "build; Dart stable; PKG: ngtest; `dart run build_runner build --fail-on-severe`"
+    name: "build; Dart stable; PKG: ngtest; `dart run build_runner build --delete-conflicting-outputs --fail-on-severe`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -542,8 +542,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner build --fail-on-severe"
-        run: dart run build_runner build --fail-on-severe
+      - name: "ngtest; dart run build_runner build --delete-conflicting-outputs --fail-on-severe"
+        run: dart run build_runner build --delete-conflicting-outputs --fail-on-severe
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:
@@ -552,7 +552,7 @@ jobs:
       - job_003
       - job_004
   job_013:
-    name: "unit_test; Dart 3.6.0; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
+    name: "unit_test; Dart 3.6.0; PKG: _tests; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -577,8 +577,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        run: dart run build_runner test --fail-on-severe -- -P browser
+      - name: "_tests; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -724,7 +724,7 @@ jobs:
       - job_011
       - job_012
   job_017:
-    name: "unit_test; Dart 3.6.0; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart 3.6.0; PKG: ngforms; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -749,8 +749,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngforms; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -767,7 +767,7 @@ jobs:
       - job_011
       - job_012
   job_018:
-    name: "unit_test; Dart 3.6.0; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart 3.6.0; PKG: ngrouter; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -792,8 +792,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngrouter; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -810,7 +810,7 @@ jobs:
       - job_011
       - job_012
   job_019:
-    name: "unit_test; Dart 3.6.0; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart 3.6.0; PKG: ngtest; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -835,8 +835,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngtest; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:
@@ -853,7 +853,7 @@ jobs:
       - job_011
       - job_012
   job_020:
-    name: "unit_test; Dart stable; PKG: _tests; `dart run build_runner test --fail-on-severe -- -P browser`"
+    name: "unit_test; Dart stable; PKG: _tests; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -878,8 +878,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _tests
-      - name: "_tests; dart run build_runner test --fail-on-severe -- -P browser"
-        run: dart run build_runner test --fail-on-severe -- -P browser
+      - name: "_tests; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser
         if: "always() && steps._tests_pub_upgrade.conclusion == 'success'"
         working-directory: _tests
     needs:
@@ -1025,7 +1025,7 @@ jobs:
       - job_011
       - job_012
   job_024:
-    name: "unit_test; Dart stable; PKG: ngforms; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart stable; PKG: ngforms; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1050,8 +1050,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngforms
-      - name: "ngforms; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngforms; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngforms_pub_upgrade.conclusion == 'success'"
         working-directory: ngforms
     needs:
@@ -1068,7 +1068,7 @@ jobs:
       - job_011
       - job_012
   job_025:
-    name: "unit_test; Dart stable; PKG: ngrouter; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart stable; PKG: ngrouter; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1093,8 +1093,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngrouter
-      - name: "ngrouter; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngrouter; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngrouter_pub_upgrade.conclusion == 'success'"
         working-directory: ngrouter
     needs:
@@ -1111,7 +1111,7 @@ jobs:
       - job_011
       - job_012
   job_026:
-    name: "unit_test; Dart stable; PKG: ngtest; `dart run build_runner test --fail-on-severe -- -P ci`"
+    name: "unit_test; Dart stable; PKG: ngtest; `dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
@@ -1136,8 +1136,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: ngtest
-      - name: "ngtest; dart run build_runner test --fail-on-severe -- -P ci"
-        run: dart run build_runner test --fail-on-severe -- -P ci
+      - name: "ngtest; dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci"
+        run: dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci
         if: "always() && steps.ngtest_pub_upgrade.conclusion == 'success'"
         working-directory: ngtest
     needs:
