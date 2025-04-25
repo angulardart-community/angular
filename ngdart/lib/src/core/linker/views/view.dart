@@ -126,7 +126,7 @@ abstract class View implements ChangeDetectorRef {
   @override
   void markChildForCheck(Object child) {
     // ignore: invalid_runtime_check_with_js_interop_types
-    assert(child is JSAny && child.isA<Element>(),
+    assert(child is! JSAny || !child.isA<Element>(),
         'Expected a component instance');
     queryChangeDetectorRefs[child]?.markForCheck();
   }

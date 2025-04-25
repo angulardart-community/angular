@@ -95,7 +95,7 @@ void main() {
       await testFixture.update((MapUpdateTest component) {
         component.map = null;
       });
-      expect(content.classList, isEmpty);
+      expect(content.classList, hasDomTokenList([]));
       await testFixture.update((MapUpdateTest component) {
         component.map = <String, bool>{'foo': false, 'bar': true};
       });
@@ -200,7 +200,7 @@ void main() {
         component.list = ['foo bar baz', 'foo1 bar1   baz1'];
       });
       expect(content.classList,
-          equals(['foo', 'bar', 'baz', 'foo1', 'bar1', 'baz1']));
+          hasDomTokenList(['foo', 'bar', 'baz', 'foo1', 'bar1', 'baz1']));
       await testFixture.update((ListUpdateTest component) {
         component.list = ['foo bar   baz foobar'];
       });
@@ -691,7 +691,7 @@ extension _SumCssClasses on Element {
       final classList = (nodes.item(i) as Element).classList;
       final classListLength = classList.length;
       for (var j = 0; j < classListLength; j++) {
-        yield classList.item(i)!;
+        yield classList.item(j)!;
       }
     }
   }

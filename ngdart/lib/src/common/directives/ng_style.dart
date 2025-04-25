@@ -86,6 +86,6 @@ class NgStyle implements DoCheck {
     // HTMLElement, SVGElement and MathMLElement have same `style` property.
     (_ngElement as HTMLElement)
         .style
-        .setProperty(unsafeCast(record.key), unsafeCast(record.currentValue));
+        .setProperty(unsafeCast(record.key), unsafeCast(record.currentValue ?? ''));
   }
 }

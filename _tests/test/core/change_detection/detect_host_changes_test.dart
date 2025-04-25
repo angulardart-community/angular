@@ -19,7 +19,7 @@ void main() {
     var testRoot = await testBed.create();
     var targetElement = testRoot.rootElement.querySelector('.mytarget')!;
     expect(targetElement.firstChild!.textContent, 'ChildHello');
-    expect(targetElement.attributes.getNamedItem('data-xyz'), 'abc');
+    expect(targetElement.getAttribute('data-xyz'), 'abc');
   });
 }
 

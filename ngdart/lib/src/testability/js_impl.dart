@@ -12,8 +12,8 @@ external set _jsGetAllAngularTestabilities(JSFunction function);
 @JS('frameworkStabilizers')
 external JSArray<JSFunction>? _jsFrameworkStabilizers;
 
-extension on JSArray<JSFunction> {
-  external void push(JSFunction item);
+extension on JSArray {
+  external void push(JSAny item);
 }
 
 class _JSTestabilityProxy implements _TestabilityProxy {
@@ -30,7 +30,7 @@ class _JSTestabilityProxy implements _TestabilityProxy {
       (_jsFrameworkStabilizers ??= JSArray<JSFunction>())
           .push(_whenAllStable.toJS);
     }
-    registries.add(registry.toJS);
+    registries.push(registry.toJS);
   }
 
   /// For every registered [TestabilityRegistry], tries `getAngularTestability`.
