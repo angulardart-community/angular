@@ -32,15 +32,19 @@ class DevTools {
 class JsInterop {
   const JsInterop._();
 
-  static CompileIdentifierMetadata _of(String name) {
-    return CompileIdentifierMetadata(
-      name: name,
-      moduleUrl: 'dart:js_interop',
-    );
-  }
+  static final functionToJSExportedDartFunction = CompileIdentifierMetadata(
+    name: 'FunctionToJSExportedDartFunction',
+    moduleUrl: 'dart:js_interop',
+  );
 
-  static final functionToJSExportedDartFunction =
-      _of('FunctionToJSExportedDartFunction');
+  static final jsObject = CompileIdentifierMetadata(
+    name: 'JSObject',
+    moduleUrl: 'dart:_interceptors',
+  );
+
+  static final jsObjectToken = CompileTokenMetadata(
+    identifier: jsObject,
+  );
 }
 
 /// A collection of methods for manipulating the DOM from generated code.
