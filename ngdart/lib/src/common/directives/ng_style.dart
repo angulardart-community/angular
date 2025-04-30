@@ -84,8 +84,8 @@ class NgStyle implements DoCheck {
 
   void _setProperty(KeyValueChangeRecord record) {
     // HTMLElement, SVGElement and MathMLElement have same `style` property.
-    (_ngElement as HTMLElement)
-        .style
-        .setProperty(unsafeCast(record.key), unsafeCast(record.currentValue ?? ''));
+    // The cast should be omitted because both types are JSObject.
+    (_ngElement as HTMLElement).style.setProperty(
+        unsafeCast(record.key), unsafeCast(record.currentValue ?? ''));
   }
 }
