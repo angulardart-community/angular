@@ -43,9 +43,9 @@ void main() {
         ng.createBoundAriaAttributeComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.attributes, containsPair('aria-label', 'Initial label'));
+    expect(div.getAttribute('aria-label'), equals('Initial label'));
     await testFixture.update((component) => component.label = 'New label');
-    expect(div.attributes, containsPair('aria-label', 'New label'));
+    expect(div.getAttribute('aria-label'), equals('New label'));
   });
 
   test('should remove attribute when bound expression is null', () async {
@@ -53,9 +53,9 @@ void main() {
         ng.createBoundAttributeComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.querySelector('div')!;
-    expect(div.attributes, containsPair('foo', 'Initial value'));
+    expect(div.getAttribute('foo'), equals('Initial value'));
     await testFixture.update((component) => component.value = null);
-    expect(div.attributes, isNot(contains('foo')));
+    expect(div.getAttribute('foo'), isNull);
   });
 
   test('should remove style when bound expression is null', () async {

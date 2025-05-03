@@ -20,7 +20,7 @@ void main() {
         ng.createHostAttributeFromDirectiveComponentFactory());
     final testFixture = await testBed.create();
     final div = testFixture.rootElement.children.item(0) as HTMLDivElement;
-    expect(div.attributes, containsPair('role', 'button'));
+    expect(div.getAttribute('role'), equals('button'));
   });
 
   test('should support updating host element via host properties', () async {

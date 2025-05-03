@@ -38,7 +38,7 @@ void main() {
           ng.createTestDerivedComponentFactory());
       final testFixture = await testBed.create();
       final hostElement = testFixture.rootElement.querySelector('derived')!;
-      expect(hostElement.attributes, containsPair('title', 'inherited'));
+      expect(hostElement.getAttribute('title'), equals('inherited'));
     });
 
     test('implementation should be overriden', () async {
@@ -46,7 +46,7 @@ void main() {
           ng.createTestOverrideComponentFactory());
       final testFixture = await testBed.create();
       final hostElement = testFixture.rootElement.querySelector('override')!;
-      expect(hostElement.attributes, containsPair('title', 'overridden'));
+      expect(hostElement.getAttribute('title'), equals('overridden'));
     });
 
     test('should allow multiple bindings to inherited property', () async {
@@ -55,8 +55,8 @@ void main() {
       final testFixture = await testBed.create();
       final hostElement =
           testFixture.rootElement.querySelector('annotated-derived')!;
-      expect(hostElement.attributes, containsPair('title', 'inherited'));
-      expect(hostElement.attributes, containsPair('id', 'inherited'));
+      expect(hostElement.getAttribute('title'), equals('inherited'));
+      expect(hostElement.getAttribute('id'), equals('inherited'));
     });
   });
 
@@ -215,9 +215,9 @@ void main() {
       });
       final element =
           testFixture.rootElement.querySelector('multiple-supertypes')!;
-      expect(element.attributes, containsPair('foo', '1'));
-      expect(element.attributes, containsPair('bar', '2'));
-      expect(element.attributes, containsPair('baz', '3'));
+      expect(element.getAttribute('foo'), equals('1'));
+      expect(element.getAttribute('bar'), equals('2'));
+      expect(element.getAttribute('baz'), equals('3'));
     });
 
     test('from most derived binding', () async {
@@ -229,8 +229,8 @@ void main() {
           ..value = '1'
           ..fooValue = '2';
       });
-      expect(testFixture.rootElement.attributes, containsPair('foo', '2'));
-      expect(testFixture.rootElement.attributes, containsPair('bar', '1'));
+      expect(testFixture.rootElement.getAttribute('foo'), equals('2'));
+      expect(testFixture.rootElement.getAttribute('bar'), equals('1'));
     });
   });
 

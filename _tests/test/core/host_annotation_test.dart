@@ -89,16 +89,16 @@ void main() {
       );
       final fixture = await testBed.create();
       final element = fixture.rootElement;
-      expect(element.attributes, isNot(contains('disabled')));
-      expect(element.attributes, isNot(contains('aria-disabled')));
+      expect(element.getAttribute('disabled'), isNull);
+      expect(element.getAttribute('aria-disabled'), isNull);
 
       await fixture.update((c) => c.disabledBackingValue = true);
-      expect(element.attributes, contains('disabled'));
-      expect(element.attributes, contains('aria-disabled'));
+      expect(element.getAttribute('disabled'), isNotNull);
+      expect(element.getAttribute('aria-disabled'), isNotNull);
 
       await fixture.update((c) => c.disabledBackingValue = false);
-      expect(element.attributes, isNot(contains('disabled')));
-      expect(element.attributes, isNot(contains('aria-disabled')));
+      expect(element.getAttribute('disabled'), isNull);
+      expect(element.getAttribute('aria-disabled'), isNull);
     });
 
     test('should support conditional attributes on static members', () async {
@@ -107,8 +107,8 @@ void main() {
       );
       final fixture = await testBed.create();
       final element = fixture.rootElement;
-      expect(element.attributes, contains('disabled'));
-      expect(element.attributes, contains('aria-disabled'));
+      expect(element.getAttribute('disabled'), isNotNull);
+      expect(element.getAttribute('aria-disabled'), isNotNull);
     });
 
     test('should support conditional classes', () async {

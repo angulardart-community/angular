@@ -86,7 +86,7 @@ void main() {
       });
       final directiveElement =
           testFixture.rootElement.children.item(0) as HTMLElement;
-      expect(directiveElement.attributes, containsPair('my-attr', 'bar'));
+      expect(directiveElement.getAttribute('my-attr'), equals('bar'));
     });
 
     test('should support @Output', () async {
