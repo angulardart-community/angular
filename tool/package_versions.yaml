@@ -27,6 +27,7 @@ ngdart: ^8.0.0-dev.4
 ngtest: ^5.0.0-dev.2
 package_config: ^2.1.1
 path: ^1.9.1
+sanitize_dom: ^0.1.0
 source_gen: ^1.5.0
 source_span: ^1.10.1
 stream_transform: ^2.1.0

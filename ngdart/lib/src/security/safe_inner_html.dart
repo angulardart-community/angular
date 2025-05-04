@@ -1,6 +1,5 @@
-import 'dart:js_interop';
-
 import 'package:ngdart/angular.dart';
+import 'package:sanitize_dom/sanitize_dom.dart';
 import 'package:web/web.dart';
 
 import 'dom_sanitization_service.dart' show SafeHtml;
@@ -44,10 +43,12 @@ class SafeInnerHtmlDirective {
   @Input()
   set safeInnerHtml(dynamic safeInnerHtml) {
     if (safeInnerHtml is SafeHtml) {
-      _element.innerHTML =
-          safeInnerHtml.changingThisWillBypassSecurityTrust.toJS;
+      _element.setInnerHtml(
+        safeInnerHtml.changingThisWillBypassSecurityTrust,
+        treeSanitizer: NodeTreeSanitizer.trusted,
+      );
     } else if (safeInnerHtml == null) {
-      _element.innerHTML = ''.toJS;
+      _element.setInnerHtml('');
     } else {
       // A regular string is not allowed since a security audit needs to be able
       // to search for SafeHtml and identify all locations where we are
