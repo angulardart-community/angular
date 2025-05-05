@@ -72,7 +72,7 @@ void main() {
       cmpElement.children
           .item(2)!
           .children
-          .item(1)!
+          .item(0)!
           .dispatchEvent(MouseEvent('click'));
     });
     expect(cmp.numberOfChecks, 4);

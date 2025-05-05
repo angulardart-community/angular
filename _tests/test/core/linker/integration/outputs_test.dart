@@ -61,8 +61,9 @@ void main() {
     final inputPrevent =
         testFixture.rootElement.children.item(0) as HTMLInputElement;
     final inputNoPrevent =
-        testFixture.rootElement.children.item(0) as HTMLInputElement;
-    final clickPrevent = MouseEvent('click');
+        testFixture.rootElement.children.item(1) as HTMLInputElement;
+    // `true` by default in the `dart:html` Event contructor
+    final clickPrevent = MouseEvent('click', MouseEventInit(cancelable: true));
     final clickNoPrevent = MouseEvent('click');
     inputPrevent.dispatchEvent(clickPrevent);
     inputNoPrevent.dispatchEvent(clickNoPrevent);
