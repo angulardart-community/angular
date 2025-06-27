@@ -19,7 +19,7 @@ import '../validators.dart' show Validators, ngValidators;
 /// )
 /// class CustomValidatorDirective implements Validator {
 ///   @override
-///   Map<String, dynamic> validate(AbstractControl control) {
+///   Map<String, dynamic>? validate(AbstractControl control) {
 ///     // The length of the input string can't be longer than 14 characters.
 ///     final value = c.value;
 ///     if (value is String && value.length > 14) {

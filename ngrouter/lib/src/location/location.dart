@@ -23,13 +23,13 @@ import 'location_strategy.dart' show LocationStrategy;
 ///
 /// ### Example
 ///
-/// ```
+/// ```dart
 /// import 'package:ngdart/angular.dart';
 /// import 'package:ngrouter/ngrouter.dart';
 ///
 /// @Component(
 ///   // Should only be provided at the root.
-///   providers: [routerProviders],
+///   providers: const [routerProviders],
 /// )
 /// class AppComponent {
 ///   AppComponent(Location location) {

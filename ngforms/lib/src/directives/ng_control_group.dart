@@ -1,3 +1,7 @@
+/// @docImport 'ng_form.dart';
+/// @docImport 'ng_form_model.dart';
+library;
+
 import 'dart:async';
 
 import 'package:ngdart/angular.dart';
@@ -23,29 +27,29 @@ import 'validators.dart' show ValidatorFn;
 ///     <div>
 ///       <h2>Angular Control &amp; AbstractControlGroup Example</h2>
 ///       <form #f="ngForm">
-///         <div ngControlGroup="name" #cg-name="form">
+///         <div ngControlGroup="name" #name="ngForm">
 ///           <h3>Enter your name:</h3>
 ///           <p>First: <input ngControl="first" required></p>
 ///           <p>Middle: <input ngControl="middle"></p>
 ///           <p>Last: <input ngControl="last" required></p>
 ///         </div>
 ///         <h3>Name value:</h3>
-///         <pre>{{valueOf(cgName)}}</pre>
-///         <p>Name is {{cgName?.control?.valid ? "valid" : "invalid"}}</p>
+///         <pre>{{valueOf(name)}}</pre>
+///         <p>Name is {{name.control!.valid ? "valid" : "invalid"}}</p>
 ///         <h3>What's your favorite food?</h3>
 ///         <p><input ngControl="food"></p>
 ///         <h3>Form value</h3>
 ///         <pre>{{valueOf(f)}}</pre>
 ///       </form>
 ///     </div>
-///   '''
-/// })
+///   ''',
+/// )
 /// class App {
-///   String valueOf(NgControlGroup cg) {
-///     if (cg.control == null) {
+///   String? valueOf(ControlContainer cc) {
+///     if (cc.control == null) {
 ///       return null;
 ///     }
-///     return json.encode(cg.control.value, null, 2);
+///     return json.encode(cc.control!.value);
 ///   }
 /// }
 /// ```

@@ -46,7 +46,7 @@ NgTestStabilizerFactory composeStabilizers(
 ///   button.click();
 ///   expect(button.text, 'No');
 /// }
-/// ```dart
+/// ```
 ///
 /// In the case of Angular, and of other DOM-related libraries, however, the
 /// changes are not always applied immediately (synchronously). Instead, we need

@@ -1,8 +1,11 @@
+/// @docImport 'router.dart';
+library;
+
 /// Additional parameters for [Router.navigate].
 class NavigationParams {
   /// A map of parameters for the querystring of a URL.
   ///
-  /// For example: /url?name=john has queryParameters of {'name': 'john'}
+  /// For example: `/url?name=john` has queryParameters of `{'name': 'john'}`.
   final Map<String, String> queryParameters;
 
   /// The hash fragment for a URL.

@@ -19,6 +19,7 @@ import 'shared.dart' show setUpControl;
 /// ```dart
 /// @Component(
 ///   selector: 'my-app',
+///   directives: const [coreDirectives, formDirectives]
 ///   template: '''
 ///     <div>
 ///       <h2>NgFormControl Example</h2>
@@ -30,10 +31,9 @@ import 'shared.dart' show setUpControl;
 ///       </form>
 ///     </div>
 ///   ''',
-///   directives: const [coreDirectives, formDirectives]
 /// )
 /// class App {
-///   Control loginControl = new Control('');
+///   Control loginControl = Control('');
 /// }
 /// ```
 ///
@@ -45,13 +45,15 @@ import 'shared.dart' show setUpControl;
 ///
 /// ```dart
 /// @Component(
-///      selector: "login-comp",
-///      directives: const [formDirectives],
-///      template: "<input type='text' [ngFormControl]='loginControl' [(ngModel)]='login'>"
-///      )
+///   selector: 'login-comp',
+///   directives: const [formDirectives],
+///   template: '''
+///     <input type="text" [ngFormControl]="loginControl" [(ngModel)]="login">
+///   ''',
+/// )
 /// class LoginComp {
-///  Control loginControl = new Control('');
-///  String login;
+///   Control loginControl = new Control('');
+///   String? login;
 /// }
 /// ```
 @Directive(

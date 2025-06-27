@@ -16,9 +16,9 @@ import 'invalid_pipe_argument_exception.dart';
 ///   in Chrome and Opera browsers.
 ///
 /// ## Usage
-///
-///     $pipe.date(expression, [format])
-///
+/// ```dart
+/// $pipe.date(expression, [format])
+/// ```
 /// where `expression` is a date object or a number (milliseconds since UTC
 /// epoch) and `format` indicates which date/time components to include:
 ///
@@ -62,11 +62,12 @@ import 'invalid_pipe_argument_exception.dart';
 ///
 /// Assuming `dateObj` is (year: 2015, month: 6, day: 15, hour: 21, minute: 43,
 /// second: 11) in the _local_ time and locale is 'en-US':
-///
-///     {{ $pipe.date(dateObj) }}             // output is 'Jun 15, 2015'
-///     {{ $pipe.date(dateObj, 'medium') }}    // output is 'Jun 15, 2015, 9:43:11 PM'
-///     {{ $pipe.date(dateObj, 'shortTime') }} // output is '9:43 PM'
-///     {{ $pipe.date(dateObj, 'mmss') }}      // output is '43:11'
+/// ```dart
+/// {{ $pipe.date(dateObj) }}              // output is 'Jun 15, 2015'
+/// {{ $pipe.date(dateObj, 'medium') }}    // output is 'Jun 15, 2015, 9:43:11 PM'
+/// {{ $pipe.date(dateObj, 'shortTime') }} // output is '9:43 PM'
+/// {{ $pipe.date(dateObj, 'mmss') }}      // output is '43:11'
+/// ```
 @Pipe('date', pure: true)
 class DatePipe {
   static const Map<String, String> _aliases = {

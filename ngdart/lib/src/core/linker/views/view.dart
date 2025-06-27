@@ -1,3 +1,7 @@
+/// @docImport '../view_container_ref.dart';
+/// @docImport '../view_ref.dart';
+library;
+
 import 'dart:js_interop';
 
 import 'package:meta/dart2js.dart' as dart2js;
@@ -54,7 +58,7 @@ abstract class View implements ChangeDetectorRef {
   /// Creates the internal state of this view.
   ///
   /// This means, for the most part, creating the necessary initial DOM nodes,
-  /// eagerly provided services or references (such as `ViewContainerRef`), and
+  /// eagerly provided services or references (such as [ViewContainerRef]), and
   /// making them available as class members for later access (such as in
   /// [detectChanges] or [destroyInternalState]).
   @protected
@@ -62,7 +66,7 @@ abstract class View implements ChangeDetectorRef {
 
   /// Destroys the internal state of this view.
   ///
-  /// Note that unlike `EmbeddedViewRef.destroy`, this does not detach the view
+  /// Note that unlike [EmbeddedViewRef.destroy], this does not detach the view
   /// from its container.
   void destroyInternalState();
 
@@ -137,7 +141,7 @@ abstract class View implements ChangeDetectorRef {
   /// for intra-view dependency injection. However, when a user "injects" the
   /// [Injector], they are expecting the API to match other types of injectors:
   ///
-  /// ```
+  /// ```dart
   /// class C {
   ///   C(Injector i) {
   ///     // This view (located at 'nodeIndex') adapted to the Injector API.

@@ -1,3 +1,6 @@
+/// @docImport 'ng_for.dart';
+library;
+
 import 'package:meta/meta.dart';
 import 'package:ngdart/src/core/linker/template_ref.dart';
 import 'package:ngdart/src/core/linker/view_container_ref.dart';
@@ -15,8 +18,6 @@ import 'package:ngdart/src/meta.dart';
 /// * Uses _identity_ not _contents_ of a collection to build child views.
 /// * Assumes all collections' contents will never change.
 /// * Only supports the `$implicit` and `index` local variables.
-///
-/// This API is **experimental** and subject to change or removal.
 @Directive(
   selector: '[ngForIdentity][ngForIdentityOf]',
 )

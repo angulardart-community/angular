@@ -82,10 +82,11 @@ class SelectControlValueAccessor extends Object
 /// Marks `<option>` as dynamic, so Angular can be notified when options change.
 ///
 /// ### Example
-///
-///     <select ngControl="city">
-///       <option *ngFor="let c of cities" [value]="c"></option>
-///     </select>
+/// ```html
+/// <select ngControl="city">
+///   <option *ngFor="let c of cities" [value]="c"></option>
+/// </select>
+/// ```
 @Directive(
   selector: 'option',
 )

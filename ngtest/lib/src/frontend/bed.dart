@@ -60,7 +60,7 @@ Future<void> disposeAnyRunningTest() async {
 ///
 ///   test('should render "Hello World" in all-caps', () async {
 ///     bed = bed.addProviders(const [
-///       const Provider(TextFormatter, useClass: AllCapsTextFormatter),
+///       const ClassProvider(TextFormatter, AllCapsTextFormatter),
 ///     ]);
 ///     fixture = await bed.create();
 ///     expect(fixture.text, contains('HELLO WORLD'));
@@ -106,19 +106,12 @@ class NgTestBed<T extends Object> {
 
   /// Create a new [NgTestBed] that uses the provided [component] factory.
   ///
-  /// Some APIs are not supported outside of [NgTestBed.useInitReflector]:
-  ///
-  /// * [addProviders] will throw [UnsupportedError]; instead, the [addInjector]
-  ///   API allows you to wrap the previous [Injector], if any, to provide
-  ///   additional services. In most cases just [rootInjector] is enough, and
-  ///   you could re-use providers via [GenerateInjector].
-  ///
   /// ```dart
   /// void main() {
   ///   final ngTestBed = NgTestBed(
   ///     SomeComponentNgFactory,
-  ///     rootInjector: ([parent]) => new Injector.map({
-  ///       Service: new Service(),
+  ///     rootInjector: ([parent]) => Injector.map({
+  ///       Service: Service(),
   ///     }, parent),
   ///   );
   /// }

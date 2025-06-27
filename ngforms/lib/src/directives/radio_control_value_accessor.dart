@@ -1,3 +1,8 @@
+/// @docImport 'ng_control_name.dart';
+/// @docImport 'ng_form_control.dart';
+/// @docImport 'ng_model.dart';
+library;
+
 import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 

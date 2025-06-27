@@ -1,3 +1,6 @@
+/// @docImport 'directives/router_outlet_directive.dart';
+library;
+
 import 'dart:async';
 
 import 'package:ngdart/angular.dart';
@@ -45,10 +48,10 @@ abstract class RouteDefinition {
 
   /// Define a route from [path] that loads [component] into an outlet.
   ///
-  /// ```
+  /// ```dart
   /// import 'contact_view.template.dart';
   ///
-  /// new RouteDefinition(
+  /// RouteDefinition(
   ///   path: 'contact',
   ///   component: ContactViewComponentNgFactory,
   /// );
@@ -60,12 +63,12 @@ abstract class RouteDefinition {
   ///
   /// Another way to create a RouteDefinition is by using a [RoutePath]. The
   /// routePath can also be used for other applications, such as creating URLs.
-  /// ```
+  /// ```dart
   /// RoutePath contactRoute = new RoutePath(
   ///   path: 'contact',
   /// );
   ///
-  /// new RouteDefinition(
+  /// RouteDefinition(
   ///   routePath: contactRoute,
   ///   component: ContactViewComponentNgFactory,
   /// );
@@ -81,7 +84,7 @@ abstract class RouteDefinition {
   /// Define a route from [path] that uses [loader] to resolve a component.
   ///
   /// Can be used to prefetch/initialize, such as loading a deferred library:
-  /// ```
+  /// ```dart
   /// import 'contact_view.template.dart' deferred as contact_view;
   ///
   /// Future<ComponentFactory> loadContentView() async {
@@ -92,8 +95,8 @@ abstract class RouteDefinition {
   ///
   /// Then create a [RouteDefinition] that uses `loadContentView`:
   ///
-  /// ```
-  /// new RouteDefinition.defer('contact', loadContactView);
+  /// ```dart
+  /// RouteDefinition.defer('contact', loadContactView);
   /// ```
   ///
   /// An optional [prefetcher] can be specified to prefetch additional
@@ -118,9 +121,9 @@ abstract class RouteDefinition {
     RoutePath? routePath,
   }) = DeferredRouteDefinition._;
 
-  /// Configures a redirect from a [path] --> [to] another one.
+  /// Configures a redirect from a [path] --> [redirectTo] another one.
   ///
-  /// ```
+  /// ```dart
   /// new RouteDefinition.redirect(
   ///   path: 'contact',
   ///   redirectTo: 'about/contact',
@@ -136,10 +139,10 @@ abstract class RouteDefinition {
   /// both a default route, and redirect all unmatched routes, be sure to use
   /// '.+' as your path.
   ///
-  /// ```
+  /// ```dart
   /// [
-  ///   new RouteDefinition(path: 'home', useAsDefault: true, ...),
-  ///   new RouteDefinition.redirect(path: '.+', redirectTo: 'home'),
+  ///   RouteDefinition(path: 'home', useAsDefault: true, ...),
+  ///   RouteDefinition.redirect(path: '.+', redirectTo: 'home'),
   /// ]
   /// ```
   factory RouteDefinition.redirect({

@@ -1,3 +1,8 @@
+/// @docImport 'directives/control_value_accessor.dart';
+/// @docImport 'directives/ng_form_control.dart';
+/// @docImport 'directives/ng_form_model.dart';
+library;
+
 import 'dart:async';
 
 import 'package:meta/meta.dart';
@@ -268,10 +273,8 @@ abstract class AbstractControl<T> {
   /// ## Usage
   ///
   /// ```dart
-  /// Control login = new Control("someLogin");
-  /// login.setErrors({
-  ///   "notUnique": true
-  /// });
+  /// Control login = Control("someLogin");
+  /// login.setErrors({"notUnique": true});
   ///
   /// expect(login.valid).toEqual(false);
   /// expect(login.errors).toEqual({"notUnique": true});
@@ -303,7 +306,7 @@ abstract class AbstractControl<T> {
   ///
   /// If no match is found, returns null.
   ///
-  /// For [ControlGroups], matches on name. For [ControlArray], it parses an int
+  /// For [ControlGroup]s, matches on name. For [ControlArray], it parses an int
   /// to match on index.
   AbstractControl? findPath(List<String?>? path) => _find(this, path);
 
@@ -467,8 +470,8 @@ class Control<T> extends AbstractControl<T> {
 
   /// Register a listener for change events.
   ///
-  /// Used internally to connect the model with the [ValueAccessor] which will
-  /// write the model value to the View.
+  /// Used internally to connect the model with the [ControlValueAccessor]
+  /// which will write the model value to the View.
   /// NOTE: Should only be called internally by angular. Use [valueChanges] or
   /// [statusChanges] to get updates on the [Control].
   void registerOnChange(Function fn) {

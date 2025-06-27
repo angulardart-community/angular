@@ -19,7 +19,9 @@ const defaultValueAccessor = ExistingProvider.forToken(
 /// [NgModel], [NgFormControl], and [NgControlName] directives.
 ///
 /// ### Example
-///     <input type="text" ngControl="searchQuery">
+/// ```html
+/// <input type="text" ngControl="searchQuery">
+/// ```
 @Directive(
   selector: 'input:not([type=checkbox])[ngControl],'
       'textarea[ngControl],'

@@ -7,7 +7,7 @@ import 'views/render_view.dart';
 /// Users can access this class via a direct reference in the template, or a
 /// view query.
 ///
-/// ```
+/// ```dart
 /// @Component(
 ///   selector: 'comp',
 ///   template: '''
@@ -19,7 +19,7 @@ import 'views/render_view.dart';
 /// )
 /// class FooComponent {
 ///   @ViewChild(NgContentRef)
-///   NgContentRef child;
+///   NgContentRef? child;
 /// }
 class NgContentRef {
   final RenderView _renderView;

@@ -1,3 +1,6 @@
+/// @docImport '../route_path.dart';
+library;
+
 import 'dart:async';
 import 'dart:js_interop';
 
@@ -22,7 +25,7 @@ import '../url.dart';
 /// ```html
 /// <a routerLink="/heroes">Heroes</a>
 /// ```
-/// Can also be used with [RouterPath].
+/// Can also be used with [RoutePath].
 /// ```html
 /// <a [routerLink]="heroPath.toUrl()">Heroes</a>
 /// ```

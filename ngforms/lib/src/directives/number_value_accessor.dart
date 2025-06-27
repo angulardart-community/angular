@@ -1,3 +1,8 @@
+/// @docImport 'ng_control_name.dart';
+/// @docImport 'ng_form_control.dart';
+/// @docImport 'ng_model.dart';
+library;
+
 import 'package:ngdart/angular.dart';
 import 'package:web/web.dart';
 
@@ -12,9 +17,10 @@ const numberValueAccessor = ExistingProvider.forToken(
 /// The accessor for writing a number value and listening to changes that is used by the
 /// [NgModel], [NgFormControl], and [NgControlName] directives.
 ///
-///  ### Example
-///
-///  <input type="number" [(ngModel)]="age">
+/// ### Example
+/// ```html
+/// <input type="number" [(ngModel)]="age">
+/// ```
 @Directive(
   selector: 'input[type=number][ngControl],'
       'input[type=number][ngFormControl],'

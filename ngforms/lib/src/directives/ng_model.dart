@@ -1,3 +1,6 @@
+/// @docImport 'ng_control_name.dart';
+library;
+
 import 'dart:async';
 
 import 'package:meta/dart2js.dart' as dart2js;
@@ -25,8 +28,8 @@ import 'shared.dart' show setUpControl;
 ///
 /// Learn more about `ngModel` in the [Forms][] and [Template Syntax][TS] pages.
 ///
-/// [Forms]:  https://angulardart.dev/angular/guide/forms#ngModel
-/// [TS]:  https://angulardart.dev/angular/guide/template-syntax#ngModel
+/// [Forms]:  https://angulardart.xyz/angular/guide/forms#ngModel
+/// [TS]:  https://angulardart.xyz/angular/guide/template-syntax#ngModel
 ///
 /// ### Examples
 ///
@@ -46,7 +49,7 @@ import 'shared.dart' show setUpControl;
 ///
 /// Try the [live example][ex].
 ///
-/// [ex]:  https://angulardart.dev/examples/template-syntax/#ngModel
+/// [ex]:  https://angulardart.xyz/examples/template-syntax/#ngModel
 @Directive(
   selector: '[ngModel]:not([ngControl]):not([ngFormControl])',
   providers: [

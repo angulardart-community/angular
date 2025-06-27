@@ -12,7 +12,7 @@ import 'views/render_view.dart';
 /// `<template>` element (or directive prefixed with `*`) and have the
 /// `TemplateRef` for this Embedded View injected into the constructor of the
 /// directive using the `TemplateRef` Token. Alternatively you can query for the
-/// `TemplateRef` from a Component or a Directive via [Query].
+/// `TemplateRef` from a Component or a Directive via `Query`.
 ///
 /// To instantiate Embedded Views based on a Template, use
 /// [ViewContainerRef#createEmbeddedView], which will create the View and attach

@@ -17,8 +17,8 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 ///
 /// ### Typical Use
 ///
-/// Include `formDirectives` in the `directives` section of a [View] annotation
-/// to use `NgForm` and its associated controls.
+/// Include `formDirectives` in the `directives` section of a component
+/// annotation to use `NgForm` and its associated controls.
 ///
 /// ### Structure
 ///
@@ -36,6 +36,7 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 /// ```dart
 /// @Component(
 ///   selector: 'my-app',
+///   directives: const [coreDirectives, formDirectives],
 ///   template: '''
 ///     <div>
 ///       <p>Submit the form to see the data object Angular builds</p>
@@ -55,15 +56,14 @@ import 'shared.dart' show setUpControl, setUpControlGroup, composeValidators;
 ///       <p>Form data submitted:</p>
 ///       </form>
 ///       <pre>{{data}}</pre>
-///     </div>''',
-///   directives: const [coreDirectives, formDirectives]
-/// })
+///     </div>
+///   ''',
+/// )
 /// class App {
-///
-///   String data;
+///   String? data;
 ///
 ///   void onSubmit(data) {
-///     data = JSON.encode(data);
+///     this.data = json.encode(data);
 ///   }
 /// }
 /// ```

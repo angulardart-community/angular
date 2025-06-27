@@ -1,3 +1,7 @@
+/// @docImport '../lifecycle.dart';
+/// @docImport '../router_hook.dart';
+library;
+
 import '../directives/router_outlet_directive.dart';
 import 'navigation_params.dart';
 import 'router_state.dart';
@@ -8,7 +12,7 @@ enum NavigationResult { success, blockedByGuard, invalidRoute }
 /// The Angular router, which is represented as a stream of state changes.
 ///
 /// In order to be notified when navigation is occurring listen to the stream:
-/// ```
+/// ```dart
 /// class MyComponent implements OnInit {
 ///   final Router _router;
 ///
@@ -46,7 +50,7 @@ abstract class Router {
   ///
   /// This occurs after the [RouterHook] (if any) has rewritten the path and
   /// parameters and the final non-redirecting route has been resolved, but
-  /// before any [CanActivate] and [CanDeactive] implementations are checked.
+  /// before any [CanActivate] and [CanDeactivate] implementations are checked.
   Stream<RouterState> get onRouteResolved;
 
   /// Emits the next router state after a new route is activated.
