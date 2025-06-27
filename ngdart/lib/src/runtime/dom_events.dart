@@ -1,6 +1,8 @@
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:ngdart/src/core/zone/ng_zone.dart';
+import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 /// Provides a runtime implementation for "native" DOM events on elements.
 class EventManager {
@@ -18,7 +20,7 @@ class EventManager {
   void addEventListener(
     Element element,
     String name,
-    void Function(Object) callback,
+    void Function(Event) callback,
   ) {
     if (_keyEvents.supports(name)) {
       // Run the actual DOM event (i.e. "keydown" or "keyup") outside of the
@@ -33,7 +35,7 @@ class EventManager {
     // If the view compiler knows that a given event is a DOM event (i.e.
     // "click"), it will never be called into EventManager. But of course the
     // browser APIs change, so this is the final fallback.
-    element.addEventListener(name, callback);
+    element.addEventListener(name, callback.toJS);
   }
 }
 
@@ -75,7 +77,7 @@ class _KeyEventsHandler {
   void addEventListener(
     Element element,
     String name,
-    void Function(Object) callback,
+    void Function(Event) callback,
   ) {
     assert(_supports(name), 'Should never be called before "supports".');
     final parsed = _cache[name];
@@ -85,11 +87,13 @@ class _KeyEventsHandler {
       return;
     }
 
-    element.addEventListener(parsed.domEventName, (event) {
-      if (event is KeyboardEvent && parsed.matches(event)) {
-        callback(event);
-      }
-    });
+    element.addEventListener(
+        parsed.domEventName,
+        (Event event) {
+          if (event.isA<KeyboardEvent>() && parsed.matches(unsafeCast(event))) {
+            callback(event);
+          }
+        }.toJS);
   }
 
   static _ParsedEvent? _parse(String name) {

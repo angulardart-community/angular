@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'implicit_static_test.template.dart' as ng;
 
@@ -114,7 +113,7 @@ class InvokeTearOff {
 
   @Input()
   set invoke(String Function() value) {
-    _host.text = value();
+    _host.textContent = value();
   }
 }
 

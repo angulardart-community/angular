@@ -6,7 +6,7 @@ import 'compile_view.dart' show CompileView;
 import 'ir/provider_source.dart';
 import 'ir/view_storage.dart';
 import 'view_compiler_utils.dart'
-    show getPropertyInView, replaceReadClassMemberInExpression;
+    show getPropertyInView, replaceReadClassMemberInExpression, unsafeCast;
 
 const _viewQueryNodeIndex = -1;
 
@@ -452,9 +452,9 @@ class _ListCompileQuery extends CompileQuery {
       if (_isSingle && results.values.isEmpty) {
         return const [];
       }
-      result = _createUpdatesStaticOnly(results.values);
+      result = _createUpdatesStaticOnly(results.values, metadata.isElementType);
     } else {
-      result = _createUpdatesNested(results.values);
+      result = _createUpdatesNested(results.values, metadata.isElementType);
     }
     return [
       ..._createAddQueryChangeDetectorRefs(results.withChangeDetectorRefs),
@@ -470,8 +470,20 @@ class _ListCompileQuery extends CompileQuery {
   //
   // * If this is for @{Content|View}Child, use the first value.
   // * Else, return the element(s) as a List.
-  o.Expression _createUpdatesStaticOnly(List<o.Expression> values) =>
-      _isSingle ? values.first : o.literalArr(values);
+  o.Expression _createUpdatesStaticOnly(
+    List<o.Expression> values,
+    bool isElement,
+  ) {
+    if (_isSingle) {
+      return isElement ? unsafeCast(values.first) : values.first;
+    }
+
+    if (isElement) {
+      values = values.map(unsafeCast).toList();
+    }
+
+    return o.literalArr(values);
+  }
 
   // Returns the equivalent of `{list}.isNotEmpty ? {list}.first : null`.
   o.Expression _firstIfNotEmpty(o.Expression list) {
@@ -486,11 +498,12 @@ class _ListCompileQuery extends CompileQuery {
   //
   // * If this is for @{Content|View}Child, return the first value if not empty.
   // * Else, just return the {expression} itself (already a List).
-  o.Expression _createUpdatesNested(List<o.Expression> values) {
+  o.Expression _createUpdatesNested(List<o.Expression> values, bool isElement) {
     // We know there are nested views, so if the length is 1, then it must be a
     // `mapNestedViews` expression which returns a list. Otherwise, we wrap the
     // results in a list literal.
     final value = values.length != 1 ? o.literalArr(values) : values.first;
+    // TODO(ykmnkmi): add unsafeCast if needed.
     return _isSingle ? _firstIfNotEmpty(value) : value;
   }
 }

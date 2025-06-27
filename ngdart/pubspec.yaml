@@ -16,10 +16,11 @@ dependencies:
   built_value: ^8.9.2
   collection: ^1.19.1
   intl: ^0.19.0
-  js: ^0.7.1
   meta: ^1.16.0
   ngcompiler: ^3.0.0-dev.3
+  sanitize_dom: ^0.1.0
   stream_transform: ^2.1.0
+  web: ^1.1.1
 
 dev_dependencies:
   lints: ^5.0.0

@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/runtime/check_binding.dart';
 import 'package:ngtest/angular_test.dart';
@@ -15,7 +17,7 @@ void main() {
       var testFixture = await testBed.create();
       var element = testFixture.rootElement;
       expect(element.querySelectorAll('copy-me'), hasLength(1));
-      expect(element.innerHtml, contains('hello2'));
+      expect(element.innerHTML, contains('hello2'));
     });
 
     test('should toggle node when condition changes', () async {
@@ -50,31 +52,31 @@ void main() {
         component.booleanCondition = false;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(0));
-      expect(element.innerHtml!.contains('hello'), false);
+      expect((element.innerHTML as JSString).toDart.contains('hello'), isFalse);
 
       await testFixture.update((NgIfNestedTestComponent component) {
         component.booleanCondition = true;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(1));
-      expect(element.innerHtml!.contains('hello'), true);
+      expect((element.innerHTML as JSString).toDart.contains('hello'), isTrue);
 
       await testFixture.update((NgIfNestedTestComponent component) {
         component.nestedBooleanCondition = false;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(0));
-      expect(element.innerHtml!.contains('hello'), false);
+      expect((element.innerHTML as JSString).toDart.contains('hello'), isFalse);
 
       await testFixture.update((NgIfNestedTestComponent component) {
         component.nestedBooleanCondition = true;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(1));
-      expect(element.innerHtml!.contains('hello'), true);
+      expect((element.innerHTML as JSString).toDart.contains('hello'), isTrue);
 
       await testFixture.update((NgIfNestedTestComponent component) {
         component.booleanCondition = false;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(0));
-      expect(element.innerHtml!.contains('hello'), false);
+      expect((element.innerHTML as JSString).toDart.contains('hello'), isFalse);
     });
 
     test('should update multiple bindings', () async {
@@ -84,20 +86,21 @@ void main() {
       var element = testFixture.rootElement;
       // Check startup.
       expect(element.querySelectorAll('copy-me'), hasLength(3));
-      expect(element.text, 'helloNumberhelloStringhelloFunction');
+      expect(
+          element.textContent, equals('helloNumberhelloStringhelloFunction'));
 
       await testFixture.update((NgIfMultiUpdateTestComponent component) {
         component.numberCondition = 0;
       });
       expect(element.querySelectorAll('copy-me'), hasLength(1));
-      expect(element.text, 'helloString');
+      expect(element.textContent, equals('helloString'));
 
       await testFixture.update((NgIfMultiUpdateTestComponent component) {
         component.numberCondition = 1;
         component.stringCondition = 'bar';
       });
       expect(element.querySelectorAll('copy-me'), hasLength(1));
-      expect(element.text, 'helloNumber');
+      expect(element.textContent, equals('helloNumber'));
       await testFixture.update((NgIfMultiUpdateTestComponent component) {
         component.booleanCondition = false;
       });

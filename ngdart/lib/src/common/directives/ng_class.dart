@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:ngdart/src/core/change_detection/differs/default_iterable_differ.dart';
 import 'package:ngdart/src/core/change_detection/differs/default_keyvalue_differ.dart';
 import 'package:ngdart/src/meta.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 /// The [NgClass] directive conditionally adds and removes CSS classes on an
 /// HTML element based on an expression's evaluation result.
@@ -173,7 +172,7 @@ class NgClass implements DoCheck, OnDestroy {
     className = className.trim();
     if (className.isEmpty) return;
     var el = _ngEl;
-    var classList = el.classes;
+    var classList = el.classList;
     if (className.contains(' ')) {
       var classes = className.split(_separator);
       for (var i = 0, len = classes.length; i < len; i++) {

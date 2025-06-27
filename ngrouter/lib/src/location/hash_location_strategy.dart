@@ -1,6 +1,7 @@
-import 'dart:html' as html;
+import 'dart:js_interop';
 
 import 'package:ngdart/angular.dart' show Injectable, Inject, Optional;
+import 'package:web/web.dart' hide Location;
 
 import 'location.dart' show Location;
 import 'location_strategy.dart' show LocationStrategy, appBaseHref;
@@ -43,7 +44,7 @@ class HashLocationStrategy extends LocationStrategy {
   ]) : _baseHref = baseHref ?? '';
 
   @override
-  void onPopState(html.EventListener fn) {
+  void onPopState(void Function(Event event) fn) {
     _platformLocation.onPopState(fn);
   }
 
@@ -85,7 +86,7 @@ class HashLocationStrategy extends LocationStrategy {
   }
 
   @override
-  void pushState(Object? state, String title, String url, String queryParams) {
+  void pushState(JSAny? state, String title, String url, String queryParams) {
     var externalUrl =
         prepareExternalUrl(url + Location.normalizeQueryParams(queryParams));
     _platformLocation.pushState(state, title, externalUrl);
@@ -93,7 +94,7 @@ class HashLocationStrategy extends LocationStrategy {
 
   @override
   void replaceState(
-      Object? state, String title, String url, String queryParams) {
+      JSAny? state, String title, String url, String queryParams) {
     var normalizedUrl =
         prepareExternalUrl(url + Location.normalizeQueryParams(queryParams));
     _platformLocation.replaceState(state, title, normalizedUrl);

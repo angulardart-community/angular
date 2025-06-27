@@ -1,5 +1,3 @@
-import 'dart:html' show DocumentFragment, NodeTreeSanitizer;
-
 import 'package:ngdart/src/core/application_tokens.dart' as tokens show appId;
 import 'package:ngdart/src/runtime/dom_events.dart' show EventManager;
 
@@ -15,13 +13,5 @@ class AppViewUtils {
   AppViewUtils(
     @tokens.appId this.appId,
     this.eventManager,
-  );
-}
-
-/// Creates a document fragment from [trustedHtml].
-DocumentFragment createTrustedHtml(String trustedHtml) {
-  return DocumentFragment.html(
-    trustedHtml,
-    treeSanitizer: NodeTreeSanitizer.trusted,
   );
 }

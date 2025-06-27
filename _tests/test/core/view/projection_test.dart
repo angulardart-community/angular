@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:_tests/matchers.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'projection_test.template.dart' as ng;
 
@@ -74,12 +73,12 @@ void main() {
           ng.createContainerWithStyleNotEmulatedFactory());
       var testFixture = await testBed.create();
       var mainEl = testFixture.rootElement;
-      var div1 = mainEl.children.first;
+      var div1 = mainEl.children.item(0)!;
       var div2 = document.createElement('div');
       div2.className = 'redStyle';
       mainEl.append(div2);
-      expect(div1.getComputedStyle().color, 'rgb(255, 0, 0)');
-      expect(div2.getComputedStyle().color, 'rgb(255, 0, 0)');
+      expect(window.getComputedStyle(div1).color, 'rgb(255, 0, 0)');
+      expect(window.getComputedStyle(div2).color, 'rgb(255, 0, 0)');
     });
 
     test('should support emulated style encapsulation', () async {
@@ -87,12 +86,12 @@ void main() {
           ng.createContainerWithStyleEmulatedFactory());
       var testFixture = await testBed.create();
       var mainEl = testFixture.rootElement;
-      var div1 = mainEl.children.first;
+      var div1 = mainEl.children.item(0)!;
       var div2 = document.createElement('div');
       div2.className = 'blueStyle';
       mainEl.append(div2);
-      expect(div1.getComputedStyle().color, 'rgb(0, 0, 255)');
-      expect(div2.getComputedStyle().color, 'rgb(0, 0, 0)');
+      expect(window.getComputedStyle(div1).color, 'rgb(0, 0, 255)');
+      expect(window.getComputedStyle(div2).color, 'rgb(0, 0, 0)');
     });
 
     test('should project ng-content using select query', () async {
@@ -106,72 +105,144 @@ void main() {
       final testBed = NgTestBed<SelectExactAttributeTestComponent>(
           ng.createSelectExactAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support hypen attribute selector', () async {
       final testBed = NgTestBed<SelectHyphenAttributeTestComponent>(
           ng.createSelectHyphenAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support list attribute selector', () async {
       final testBed = NgTestBed<SelectListAttributeTestComponent>(
           ng.createSelectListAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support prefix attribute selector', () async {
       final testBed = NgTestBed<SelectPrefixAttributeTestComponent>(
           ng.createSelectPrefixAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support set attribute selector', () async {
       final testBed = NgTestBed<SelectSetAttributeTestComponent>(
           ng.createSelectSetAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support substring attribute selector', () async {
       final testBed = NgTestBed<SelectSubstringAttributeTestComponent>(
           ng.createSelectSubstringAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support suffix attribute selector', () async {
       final testBed = NgTestBed<SelectSuffixAttributeTestComponent>(
           ng.createSelectSuffixAttributeTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
 
     test('should support multiple levels with ngProjectAs', () async {
       final testBed = NgTestBed<NgProjectAsTestComponent>(
           ng.createNgProjectAsTestComponentFactory());
       final testFixture = await testBed.create();
-      final select = testFixture.rootElement.querySelector;
-      expect(select('.selected')!.text!.trim(), 'Should be selected.');
-      expect(select('.rejected')!.text!.trim(), "Shouldn't be selected.");
+      expect(
+          testFixture.rootElement
+              .querySelector('.selected')!
+              .textContent!
+              .trim(),
+          'Should be selected.');
+      expect(
+          testFixture.rootElement
+              .querySelector('.rejected')!
+              .textContent!
+              .trim(),
+          "Shouldn't be selected.");
     });
   });
 }

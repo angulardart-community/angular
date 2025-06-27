@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/angular.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import 'detect_host_changes_test.template.dart' as ng;
 
@@ -19,8 +18,8 @@ void main() {
     var testBed = NgTestBed<TestContainer>(ng.createTestContainerFactory());
     var testRoot = await testBed.create();
     var targetElement = testRoot.rootElement.querySelector('.mytarget')!;
-    expect(targetElement.firstChild!.text, 'ChildHello');
-    expect(targetElement.attributes['data-xyz'], 'abc');
+    expect(targetElement.firstChild!.textContent, 'ChildHello');
+    expect(targetElement.getAttribute('data-xyz'), 'abc');
   });
 }
 
@@ -58,5 +57,5 @@ class SomeDirective {
   void handleClick(Event e) {}
 
   @HostListener('keypress')
-  void handleKeyPress(KeyEvent e) {}
+  void handleKeyPress(KeyboardEvent e) {}
 }

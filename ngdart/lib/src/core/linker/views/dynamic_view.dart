@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:ngdart/src/core/linker/view_container.dart';
 import 'package:ngdart/src/core/linker/view_fragment.dart';
 import 'package:ngdart/src/core/linker/view_ref.dart';
+import 'package:web/web.dart';
 
 import 'view.dart';
 

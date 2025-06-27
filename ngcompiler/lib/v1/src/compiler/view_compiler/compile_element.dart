@@ -8,7 +8,7 @@ import '../compile_metadata.dart'
         CompileQueryMetadata,
         CompileProviderMetadata;
 import '../i18n/message.dart';
-import '../identifiers.dart' show Identifiers, identifierToken;
+import '../identifiers.dart' show Identifiers, JsInterop, identifierToken;
 import '../output/output_ast.dart' as o;
 import '../template_ast.dart'
     show TemplateAst, ProviderAst, ProviderAstType, ReferenceAst;
@@ -113,6 +113,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         .instantiate([renderNode.toReadExpr()]);
 
     _providers.add(Identifiers.elementRefToken, elementRef);
+    _providers.add(JsInterop.jsObjectToken, renderNode.toReadExpr());
     _providers.add(Identifiers.elementToken, renderNode.toReadExpr());
     _providers.add(Identifiers.htmlElementToken, renderNode.toReadExpr());
     var readInjectorExpr =
@@ -264,7 +265,7 @@ class CompileElement extends CompileNode implements ProviderResolverHost {
         } else {
           // If we can't find a valid query type, then we fall back to
           // ElementRef. HOWEVER, if specifically typed as Element or
-          // HtmlElement, use that.
+          // HTMLElement, use that.
           value = queryWithRead.query.metadata.isElementType
               ? renderNode.toReadExpr()
               : elementRef;

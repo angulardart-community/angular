@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:collection/collection.dart';
 import 'package:ngdart/angular.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import '../router/router.dart';
 import '../router/router_state.dart';
@@ -80,6 +80,8 @@ class RouterLinkActive implements AfterViewInit, OnDestroy {
         break;
       }
     }
-    _element.classes.toggleAll(_classes, isActive);
+    for (var i = 0; i < _classes.length; i++) {
+      _element.classList.toggle(_classes[i], isActive);
+    }
   }
 }

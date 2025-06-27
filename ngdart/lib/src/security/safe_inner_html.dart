@@ -1,6 +1,6 @@
-import 'dart:html' show Element, NodeTreeSanitizer;
-
 import 'package:ngdart/angular.dart';
+import 'package:sanitize_dom/sanitize_dom.dart';
+import 'package:web/web.dart';
 
 import 'dom_sanitization_service.dart' show SafeHtml;
 
@@ -43,7 +43,7 @@ class SafeInnerHtmlDirective {
   SafeInnerHtmlDirective(this._element);
 
   @Input()
-  set safeInnerHtml(safeInnerHtml) {
+  set safeInnerHtml(dynamic safeInnerHtml) {
     if (safeInnerHtml is SafeHtml) {
       _element.setInnerHtml(
         safeInnerHtml.changingThisWillBypassSecurityTrust,

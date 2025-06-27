@@ -1,6 +1,6 @@
 import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 import 'package:ngcompiler/v1/src/compiler/identifiers.dart'
-    show DomHelpers, Identifiers, SafeHtmlAdapters;
+    show DomHelpers, Identifiers, JsInterop, SafeHtmlAdapters;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart' as ir;
 import 'package:ngcompiler/v1/src/compiler/ir/model.dart';
 import 'package:ngcompiler/v1/src/compiler/output/output_ast.dart' as o;
@@ -142,7 +142,7 @@ class _UpdateStatementsVisitor
           : currValExpr.callMethod('toString', []);
       final styleWithUnit = styleString.plus(o.literal(styleBinding.unit));
       styleValueExpr =
-          currValExpr.isBlank().conditional(o.nullExpr, styleWithUnit);
+          currValExpr.isBlank().conditional(o.literal(''), styleWithUnit);
     } else {
       styleValueExpr = bindingSource.isString
           ? currValExpr
@@ -245,7 +245,13 @@ class _UpdateStatementsVisitor
           [o.Expression? renderValue]) =>
       (renderNode?.toReadExpr() ?? appViewInstance!).callMethod(
         'addEventListener',
-        [o.literal(nativeEvent.name), renderValue!],
+        [
+          o.literal(nativeEvent.name),
+          o.importExpr(JsInterop.functionToJSExportedDartFunction).instantiate([
+            renderValue!.cast(
+                o.FunctionType(o.voidType, [o.importType(Identifiers.event)!]))
+          ]).prop('toJS')
+        ],
       ).toStmt();
 }
 

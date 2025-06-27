@@ -388,7 +388,7 @@ class CompileQueryMetadata {
   /// Name of class member on the component to update with query result.
   final String? propertyName;
 
-  /// Whether this is typed `dart:html`'s `Element` (or a sub-type).
+  /// Whether this is typed `package:web/web.dart`'s `Element` (or a sub-type).
   final bool isElementType;
 
   /// Optional type to read for given match.

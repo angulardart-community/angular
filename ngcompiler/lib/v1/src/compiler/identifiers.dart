@@ -29,6 +29,24 @@ class DevTools {
   );
 }
 
+class JsInterop {
+  const JsInterop._();
+
+  static final functionToJSExportedDartFunction = CompileIdentifierMetadata(
+    name: 'FunctionToJSExportedDartFunction',
+    moduleUrl: 'dart:js_interop',
+  );
+
+  static final jsObject = CompileIdentifierMetadata(
+    name: 'JSObject',
+    moduleUrl: 'dart:_interceptors',
+  );
+
+  static final jsObjectToken = CompileTokenMetadata(
+    identifier: jsObject,
+  );
+}
+
 /// A collection of methods for manipulating the DOM from generated code.
 class DomHelpers {
   const DomHelpers._();
@@ -274,69 +292,72 @@ class Identifiers {
       CompileIdentifierMetadata(name: 'NgFor', moduleUrl: _ngForUrl);
 
   // Runtime is initialized by output interpreter. Compiler executes in VM and
-  // can't import dart:html to initialize here.
-  static var commentNode =
-      CompileIdentifierMetadata(name: 'Comment', moduleUrl: 'dart:html');
-  static var textNode =
-      CompileIdentifierMetadata(name: 'Text', moduleUrl: 'dart:html');
-  static var document =
-      CompileIdentifierMetadata(name: 'document', moduleUrl: 'dart:html');
+  // can't import `package:web/web.dart` to initialize here.
+  static var event = CompileIdentifierMetadata(
+      name: 'Event', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
+  static var commentNode = CompileIdentifierMetadata(
+      name: 'Comment', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
+  static var textNode = CompileIdentifierMetadata(
+      name: 'Text', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
+  static var document = CompileIdentifierMetadata(
+      name: 'document', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
   static final documentFragment = CompileIdentifierMetadata(
-      name: 'DocumentFragment', moduleUrl: 'dart:html');
-  static final element =
-      CompileIdentifierMetadata(name: 'Element', moduleUrl: 'dart:html');
+      name: 'DocumentFragment', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
+  static final element = CompileIdentifierMetadata(
+      name: 'Element', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
   static final elementToken = identifierToken(element);
-  static final htmlElement =
-      CompileIdentifierMetadata(name: 'HtmlElement', moduleUrl: 'dart:html');
+  static final htmlElement = CompileIdentifierMetadata(
+      name: 'HTMLElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final htmlElementToken = identifierToken(htmlElement);
-  static final svgSvgElement =
-      CompileIdentifierMetadata(name: 'SvgSvgElement', moduleUrl: 'dart:svg');
-  static final svgElement =
-      CompileIdentifierMetadata(name: 'SvgElement', moduleUrl: 'dart:svg');
-  static final anchorElement =
-      CompileIdentifierMetadata(name: 'AnchorElement', moduleUrl: 'dart:html');
-  static final divElement =
-      CompileIdentifierMetadata(name: 'DivElement', moduleUrl: 'dart:html');
-  static final areaElement =
-      CompileIdentifierMetadata(name: 'AreaElement', moduleUrl: 'dart:html');
-  static final audioElement =
-      CompileIdentifierMetadata(name: 'AudioElement', moduleUrl: 'dart:html');
-  static final buttonElement =
-      CompileIdentifierMetadata(name: 'ButtonElement', moduleUrl: 'dart:html');
-  static final canvasElement =
-      CompileIdentifierMetadata(name: 'CanvasElement', moduleUrl: 'dart:html');
-  static final formElement =
-      CompileIdentifierMetadata(name: 'FormElement', moduleUrl: 'dart:html');
-  static final iframeElement =
-      CompileIdentifierMetadata(name: 'IFrameElement', moduleUrl: 'dart:html');
-  static final imageElement =
-      CompileIdentifierMetadata(name: 'ImageElement', moduleUrl: 'dart:html');
-  static final inputElement =
-      CompileIdentifierMetadata(name: 'InputElement', moduleUrl: 'dart:html');
+  static final svgSvgElement = CompileIdentifierMetadata(
+      name: 'SVGSVGElement', moduleUrl: 'asset:web/lib/src/dom/svg.dart');
+  static final svgElement = CompileIdentifierMetadata(
+      name: 'SVGElement', moduleUrl: 'asset:web/lib/src/dom/svg.dart');
+  static final anchorElement = CompileIdentifierMetadata(
+      name: 'HTMLAnchorElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final divElement = CompileIdentifierMetadata(
+      name: 'HTMLDivElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final areaElement = CompileIdentifierMetadata(
+      name: 'HTMLAreaElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final audioElement = CompileIdentifierMetadata(
+      name: 'HTMLAudioElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final buttonElement = CompileIdentifierMetadata(
+      name: 'HTMLButtonElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final canvasElement = CompileIdentifierMetadata(
+      name: 'HTMLCanvasElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final formElement = CompileIdentifierMetadata(
+      name: 'HTMLFormElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final iframeElement = CompileIdentifierMetadata(
+      name: 'HTMLIFrameElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final imageElement = CompileIdentifierMetadata(
+      name: 'HTMLImageElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final inputElement = CompileIdentifierMetadata(
+      name: 'HTMLInputElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final textareaElement = CompileIdentifierMetadata(
-      name: 'TextAreaElement', moduleUrl: 'dart:html');
-  static final mediaElement =
-      CompileIdentifierMetadata(name: 'MediaElement', moduleUrl: 'dart:html');
-  static final menuElement =
-      CompileIdentifierMetadata(name: 'MenuElement', moduleUrl: 'dart:html');
-  static final nodeTreeSanitizer = CompileIdentifierMetadata(
-      name: 'NodeTreeSanitizer', moduleUrl: 'dart:html');
-  static final optionElement =
-      CompileIdentifierMetadata(name: 'OptionElement', moduleUrl: 'dart:html');
-  static final oListElement =
-      CompileIdentifierMetadata(name: 'OListElement', moduleUrl: 'dart:html');
-  static final selectElement =
-      CompileIdentifierMetadata(name: 'SelectElement', moduleUrl: 'dart:html');
-  static final tableElement =
-      CompileIdentifierMetadata(name: 'TableElement', moduleUrl: 'dart:html');
+      name: 'HTMLTextAreaElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final mediaElement = CompileIdentifierMetadata(
+      name: 'HTMLMediaElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final menuElement = CompileIdentifierMetadata(
+      name: 'HTMLMenuElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final optionElement = CompileIdentifierMetadata(
+      name: 'HTMLOptionElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final oListElement = CompileIdentifierMetadata(
+      name: 'HTMLOListElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final selectElement = CompileIdentifierMetadata(
+      name: 'HTMLSelectElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final tableElement = CompileIdentifierMetadata(
+      name: 'HTMLTableElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final tableRowElement = CompileIdentifierMetadata(
-      name: 'TableRowElement', moduleUrl: 'dart:html');
+      name: 'HTMLTableRowElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
   static final tableColElement = CompileIdentifierMetadata(
-      name: 'TableColElement', moduleUrl: 'dart:html');
-  static final uListElement =
-      CompileIdentifierMetadata(name: 'UListElement', moduleUrl: 'dart:html');
-  static final node =
-      CompileIdentifierMetadata(name: 'Node', moduleUrl: 'dart:html');
+      name: 'HTMLTableColElement',
+      moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final uListElement = CompileIdentifierMetadata(
+      name: 'HTMLUListElement', moduleUrl: 'asset:web/lib/src/dom/html.dart');
+  static final node = CompileIdentifierMetadata(
+      name: 'Node', moduleUrl: 'asset:web/lib/src/dom/dom.dart');
 
   /// A class used for message internationalization.
   static final intl = CompileIdentifierMetadata(

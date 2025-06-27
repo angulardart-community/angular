@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 import 'view_container.dart';
 

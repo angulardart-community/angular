@@ -1,11 +1,12 @@
-import 'dart:html' hide Location;
-import 'dart:js';
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngrouter/ngrouter.dart';
 import 'package:ngrouter/testing.dart';
 import 'package:ngtest/angular_test.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart' hide Location;
 
 import 'router_link_directive_test.template.dart' as ng;
 
@@ -33,7 +34,7 @@ void main() {
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob';
     });
-    final anchor = fixture.rootElement.querySelector('a') as AnchorElement;
+    final anchor = fixture.rootElement.querySelector('a') as HTMLAnchorElement;
     expect(anchor.pathname, '/users/bob');
     expect(fakeRouter.lastNavigatedPath, isNull);
     await fixture.update((_) => anchor.click());
@@ -58,7 +59,7 @@ void main() {
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob?param1=one&param2=2#frag';
     });
-    final anchor = fixture.rootElement.querySelector('a') as AnchorElement;
+    final anchor = fixture.rootElement.querySelector('a') as HTMLAnchorElement;
     expect(anchor.pathname, '/users/bob');
     await fixture.update((_) => anchor.click());
     expect(fakeRouter.lastNavigatedPath, '/users/bob');
@@ -75,7 +76,7 @@ void main() {
     ).addInjector(addInjector).create(beforeChangeDetection: (comp) {
       comp.routerLink = '/users/bob';
     });
-    final anchor = fixture.rootElement.querySelector('a') as AnchorElement;
+    final anchor = fixture.rootElement.querySelector('a') as HTMLAnchorElement;
     expect(anchor.pathname, '/users/bob');
     expect(anchor.target, '_parent');
     await fixture.update((_) => anchor.click());
@@ -85,9 +86,7 @@ void main() {
 
 @Component(
   selector: 'test-router-link',
-  directives: [
-    RouterLink,
-  ],
+  directives: [RouterLink],
   template: r'''
     <a [routerLink]="routerLink"></a>
   ''',
@@ -107,9 +106,7 @@ class TestRouterLinkKeyPress {
 
 @Component(
   selector: 'test-router-link',
-  directives: [
-    RouterLink,
-  ],
+  directives: [RouterLink],
   template: r'''
     <a (click)="onClick($event)" [routerLink]="routerLink" target="_parent"></a>
   ''',
@@ -174,21 +171,21 @@ Event createKeyboardEvent(
   bool shiftKey = false,
   bool metaKey = false,
 }) {
-  if (!context.hasProperty(_createKeyboardEventName)) {
+  if (!globalContext.has(_createKeyboardEventName)) {
     final script = document.createElement('script')
       ..setAttribute('type', 'text/javascript')
-      ..text = _createKeyboardEventScript;
+      ..textContent = _createKeyboardEventScript;
     document.body!.append(script);
   }
-  return context.callMethod(
-    _createKeyboardEventName,
+  return globalContext.callMethodVarArgs(
+    _createKeyboardEventName.toJS,
     [
-      type,
-      keyCode,
-      ctrlKey,
-      altKey,
-      shiftKey,
-      metaKey,
+      type.toJS,
+      keyCode.toJS,
+      ctrlKey.toJS,
+      altKey.toJS,
+      shiftKey.toJS,
+      metaKey.toJS,
     ],
   ) as Event;
 }

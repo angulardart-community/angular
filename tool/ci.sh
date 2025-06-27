@@ -68,20 +68,20 @@ for PKG in ${PKGS}; do
         dart analyze --fatal-infos . || EXIT_CODE=$?
         ;;
       command_0)
-        echo 'dart run build_runner build --fail-on-severe'
-        dart run build_runner build --fail-on-severe || EXIT_CODE=$?
+        echo 'dart run build_runner build --delete-conflicting-outputs --fail-on-severe'
+        dart run build_runner build --delete-conflicting-outputs --fail-on-severe || EXIT_CODE=$?
         ;;
       command_1)
         echo 'dart test -P vm'
         dart test -P vm || EXIT_CODE=$?
         ;;
       command_2)
-        echo 'dart run build_runner test --fail-on-severe -- -P browser'
-        dart run build_runner test --fail-on-severe -- -P browser || EXIT_CODE=$?
+        echo 'dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser'
+        dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P browser || EXIT_CODE=$?
         ;;
       command_3)
-        echo 'dart run build_runner test --fail-on-severe -- -P ci'
-        dart run build_runner test --fail-on-severe -- -P ci || EXIT_CODE=$?
+        echo 'dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci'
+        dart run build_runner test --delete-conflicting-outputs --fail-on-severe -- -P ci || EXIT_CODE=$?
         ;;
       format)
         echo 'dart format --output=none --set-exit-if-changed .'

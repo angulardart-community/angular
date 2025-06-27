@@ -1,8 +1,9 @@
-import 'dart:html';
-import 'dart:js_util' as js_util;
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/src/directives/shared.dart' show setElementDisabled;
+import 'package:web/web.dart';
 
 import 'control_value_accessor.dart';
 import 'ng_control_name.dart';
@@ -33,7 +34,7 @@ const defaultValueAccessor = ExistingProvider.forToken(
 class DefaultValueAccessor extends Object
     with TouchHandler, ChangeHandler<String>
     implements ControlValueAccessor<dynamic> {
-  final HtmlElement _element;
+  final HTMLElement _element;
 
   DefaultValueAccessor(this._element);
 
@@ -44,8 +45,8 @@ class DefaultValueAccessor extends Object
 
   @override
   void writeValue(value) {
-    var normalizedValue = value ?? '';
-    js_util.setProperty(_element, 'value', normalizedValue);
+    var normalizedValue = value as String? ?? '';
+    _element['value'] = normalizedValue.toJS;
   }
 
   @override

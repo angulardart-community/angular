@@ -2,10 +2,18 @@
 library;
 
 import 'dart:async';
-import 'dart:html'
-    show AnchorElement, Element, Event, KeyboardEvent, KeyCode, MouseEvent;
+import 'dart:js_interop';
 
 import 'package:ngdart/angular.dart';
+import 'package:web/web.dart'
+    show
+        Element,
+        ElementEventGetters,
+        Event,
+        HTMLAnchorElement,
+        KeyCode,
+        KeyboardEvent,
+        MouseEvent;
 
 import '../location.dart' show Location;
 import '../router/navigation_params.dart';
@@ -45,7 +53,7 @@ class RouterLink implements OnDestroy {
     // The browser will synthesize a click event for anchor elements when they
     // receive an Enter key press. For other elements, we must manually add a
     // key press listener to ensure the link remains keyboard accessible.
-    if (element is! AnchorElement) {
+    if (!element.isA<HTMLAnchorElement>()) {
       _keyPressSubscription = element.onKeyPress.listen(_onKeyPress);
     }
   }

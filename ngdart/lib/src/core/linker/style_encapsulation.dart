@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:meta/dart2js.dart' as dart2js;
 import 'package:ngdart/src/core/linker/app_view_utils.dart';
 import 'package:ngdart/src/runtime/dom_helpers.dart';
 import 'package:ngdart/src/utilities.dart';
+import 'package:web/web.dart';
 
 /// Clears all component styles from the DOM.
 ///
@@ -119,8 +118,8 @@ class ComponentStyles {
     updateClassBindingNonHtml(element, _contentPrefix, true);
   }
 
-  /// An optimized variant of [addShimClass] for [HtmlElement]s.
-  void addContentShimClassHtmlElement(HtmlElement element) {
+  /// An optimized variant of [addShimClass] for [HTMLElement]s.
+  void addContentShimClassHtmlElement(HTMLElement element) {
     updateClassBinding(element, _contentPrefix, true);
   }
 
@@ -129,8 +128,8 @@ class ComponentStyles {
     updateClassBindingNonHtml(element, _hostPrefix, true);
   }
 
-  /// An optimized variant of [addHostShimClass] for [HtmlElement]s.
-  void addHostShimClassHtmlElement(HtmlElement element) {
+  /// An optimized variant of [addHostShimClass] for [HTMLElement]s.
+  void addHostShimClassHtmlElement(HTMLElement element) {
     updateClassBinding(element, _hostPrefix, true);
   }
 
@@ -140,8 +139,8 @@ class ComponentStyles {
     updateAttribute(element, 'class', '$newClass $_contentPrefix');
   }
 
-  /// An optimized variant of [updateChildClass] for [HtmlElement]s.
-  void updateChildClassHtmlElement(HtmlElement element, String newClass) {
+  /// An optimized variant of [updateChildClass] for [HTMLElement]s.
+  void updateChildClassHtmlElement(HTMLElement element, String newClass) {
     element.className = '$newClass $_contentPrefix';
   }
 
@@ -151,9 +150,9 @@ class ComponentStyles {
     updateAttribute(element, 'class', '$newClass $_hostPrefix');
   }
 
-  /// An optimized variant of [updateChildClassForHost] for [HtmlElement]s.
+  /// An optimized variant of [updateChildClassForHost] for [HTMLElement]s.
   void updateChildClassForHostHtmlElement(
-    HtmlElement element,
+    HTMLElement element,
     String newClass,
   ) {
     element.className = '$newClass $_hostPrefix';
@@ -167,7 +166,7 @@ class ComponentStyles {
       target.add('/* From: $_componentUrl*/');
     }
     final styles = _flattenStyles(_styles, target, _componentId).join();
-    final styleElement = StyleElement()..text = styles;
+    final styleElement = HTMLStyleElement()..textContent = styles;
     if (isDevMode) {
       // Remove style element from the DOM on hot restart.
       debugOnClear(() {
@@ -190,7 +189,7 @@ class _UnscopedComponentStyles extends ComponentStyles {
   }
 
   @override
-  void addContentShimClassHtmlElement(HtmlElement element) {
+  void addContentShimClassHtmlElement(HTMLElement element) {
     // Intentionally left blank; unscoped syles do not apply shim classes.
   }
 
@@ -200,7 +199,7 @@ class _UnscopedComponentStyles extends ComponentStyles {
   }
 
   @override
-  void addHostShimClassHtmlElement(HtmlElement element) {
+  void addHostShimClassHtmlElement(HTMLElement element) {
     // Intentionally left blank; unscoped syles do not apply shim classes.
   }
 
@@ -212,7 +211,7 @@ class _UnscopedComponentStyles extends ComponentStyles {
   }
 
   @override
-  void updateChildClassHtmlElement(HtmlElement element, String newClass) {
+  void updateChildClassHtmlElement(HTMLElement element, String newClass) {
     element.className = newClass;
   }
 
@@ -225,7 +224,7 @@ class _UnscopedComponentStyles extends ComponentStyles {
 
   @override
   void updateChildClassForHostHtmlElement(
-    HtmlElement element,
+    HTMLElement element,
     String newClass,
   ) {
     // Straight applies the class without any prefixing.

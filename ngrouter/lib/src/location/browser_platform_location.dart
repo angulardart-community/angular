@@ -1,6 +1,7 @@
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:ngdart/angular.dart' show Injectable;
+import 'package:web/web.dart';
 
 import 'base_href.dart';
 import 'platform_location.dart';
@@ -21,23 +22,23 @@ class BrowserPlatformLocation extends PlatformLocation {
   String? getBaseHrefFromDOM() => baseHrefFromDOM();
 
   @override
-  void onPopState(EventListener fn) {
-    window.addEventListener('popstate', fn, false);
+  void onPopState(void Function(Event event) fn) {
+    window.addEventListener('popstate', fn.toJS, false.toJS);
   }
 
   @override
-  void onHashChange(EventListener fn) {
-    window.addEventListener('hashchange', fn, false);
+  void onHashChange(void Function(Event event) fn) {
+    window.addEventListener('hashchange', fn.toJS, false.toJS);
   }
 
   @override
   String get pathname {
-    return location.pathname!;
+    return location.pathname;
   }
 
   @override
   String get search {
-    return location.search!;
+    return location.search;
   }
 
   @override
@@ -50,12 +51,12 @@ class BrowserPlatformLocation extends PlatformLocation {
   }
 
   @override
-  void pushState(Object? state, String title, String? url) {
+  void pushState(JSAny? state, String title, String? url) {
     _history.pushState(state, title, url);
   }
 
   @override
-  void replaceState(Object? state, String title, String? url) {
+  void replaceState(JSAny? state, String title, String? url) {
     _history.replaceState(state, title, url);
   }
 
