@@ -11,8 +11,8 @@ import 'ast.dart' as ast;
 import 'parser.dart';
 
 /// Implements [ExpressionParser] using `package:analyzer`'s AST parser.
-class AnalyzerExpressionParser extends ExpressionParser {
-  AnalyzerExpressionParser() : super.forInheritence();
+class AnalyzerExpressionParser extends ExpressionParserImpl {
+  AnalyzerExpressionParser();
 
   @override
   ast.AST parseActionImpl(

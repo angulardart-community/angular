@@ -35,8 +35,9 @@ abstract class BuildError extends Error {
   factory BuildError.fromMultiple(
     Iterable<BuildError> errors, [
     String header = 'Multiple errors occurred',
-  ]) =>
-      _MultipleBuildError(errors.toList(), header);
+  ]) {
+    return _MultipleBuildError(errors.toList(), header);
+  }
 
   /// Create a build error using the provided source span as [context].
   factory BuildError.forSourceSpan(
@@ -86,8 +87,8 @@ abstract class BuildError extends Error {
   ///
   /// Where possible, it is greatly preferable to use another [BuildError]
   /// constructor or sub-type that provides context on why the error occurred;
-  /// using [withoutContext] can be suitable when either the context is
-  /// explicitly provided as part of the [message].
+  /// using [BuildError.withoutContext] can be suitable when either the context
+  /// is explicitly provided as part of the [message].
   factory BuildError.withoutContext(String message) = _SimpleBuildError;
 }
 
@@ -97,7 +98,9 @@ class _SimpleBuildError extends BuildError {
   _SimpleBuildError(this._message);
 
   @override
-  String toString() => _message;
+  String toString() {
+    return _message;
+  }
 }
 
 class _MultipleBuildError extends BuildError {
@@ -111,7 +114,9 @@ class _MultipleBuildError extends BuildError {
         assert(_header != null && !_header.endsWith(':'));
 
   @override
-  String toString() => '$_header:\n${_errors.join('\n')}';
+  String toString() {
+    return '$_header:\n${_errors.join('\n')}';
+  }
 }
 
 class _SourceSpanBuildError extends BuildError {
@@ -124,5 +129,7 @@ class _SourceSpanBuildError extends BuildError {
   );
 
   @override
-  String toString() => _sourceSpan.message(_message);
+  String toString() {
+    return _sourceSpan.message(_message);
+  }
 }

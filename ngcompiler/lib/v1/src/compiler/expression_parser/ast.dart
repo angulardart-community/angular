@@ -1,7 +1,7 @@
 import 'package:ngcompiler/v1/src/compiler/compile_metadata.dart';
 
 /// An abstraction representing a component of a parsed Dart expression.
-abstract class AST {
+sealed class AST {
   /// Given a [visitor] and optionally a [context], produce a return value [R].
   R visit<R, C, CO extends C>(AstVisitor<R, C> visitor, [CO? context]);
 }
@@ -14,7 +14,7 @@ abstract class AST {
 /// ```
 /// NamedExpr('foo', LiteralPrimitive('bar')) // foo: 'bar'
 /// ```
-class NamedExpr extends AST {
+final class NamedExpr extends AST {
   /// Name (identifier) being assigned [expression].
   final String name;
 
@@ -23,23 +23,19 @@ class NamedExpr extends AST {
   NamedExpr(this.name, this.expression);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitNamedExpr(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitNamedExpr(this, context);
+  }
 }
 
 /// A placeholder expression used when otherwise no expression is parsed/found.
 ///
 /// For example, this might result from parsing `[foo]=""`.
-class EmptyExpr extends AST {
+final class EmptyExpr extends AST {
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitEmptyExpr(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitEmptyExpr(this, context);
+  }
 }
 
 /// A reference to a "static" variable or identifier represented by [id].
@@ -56,17 +52,15 @@ class EmptyExpr extends AST {
 /// ```
 /// StaticRead(AppViewIdentifiers.someField); // appViewUtils.someField
 /// ```
-class StaticRead extends AST {
+final class StaticRead extends AST {
   final CompileIdentifierMetadata id;
 
   StaticRead(this.id);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitStaticRead(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitStaticRead(this, context);
+  }
 }
 
 /// A reference to a local variable [name].
@@ -82,28 +76,24 @@ class StaticRead extends AST {
 /// ```
 /// VariableRead('foo') // foo
 /// ```
-class VariableRead extends AST {
+final class VariableRead extends AST {
   /// Name of a local variable.
   final String name;
 
   VariableRead(this.name);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitVariableRead(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitVariableRead(this, context);
+  }
 }
 
 /// The "root" expression (the context in which the expression is evaluated).
-class ImplicitReceiver extends AST {
+final class ImplicitReceiver extends AST {
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitImplicitReceiver(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitImplicitReceiver(this, context);
+  }
 }
 
 /// A ternary or where [condition] will either pick [trueExpr] or [falseExpr].
@@ -116,23 +106,19 @@ class ImplicitReceiver extends AST {
 ///   VariableRead('c'),
 /// )
 /// ```
-class Conditional extends AST {
+final class Conditional extends AST {
   final AST condition;
+
   final AST trueExp;
+
   final AST falseExp;
 
-  Conditional(
-    this.condition,
-    this.trueExp,
-    this.falseExp,
-  );
+  Conditional(this.condition, this.trueExp, this.falseExp);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitConditional(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitConditional(this, context);
+  }
 }
 
 /// Represents the "if null" (`??`) operator.
@@ -140,24 +126,19 @@ class Conditional extends AST {
 /// ```
 /// IfNull(VariableRead('a'), VariableRead('b')) // a ?? b
 /// ```
-class IfNull extends AST {
+final class IfNull extends AST {
   /// Condition for the null check and result if it is not null.
   final AST condition;
 
   /// Result if the [condition] operand is null.
   final AST nullExp;
 
-  IfNull(
-    this.condition,
-    this.nullExp,
-  );
+  IfNull(this.condition, this.nullExp);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitIfNull(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitIfNull(this, context);
+  }
 }
 
 /// Reads a property (getter or field) [name] from [receiver].
@@ -165,7 +146,7 @@ class IfNull extends AST {
 /// ```
 /// PropertyRead(VariableRead('a'), 'b') // a.b
 /// ```
-class PropertyRead extends AST {
+final class PropertyRead extends AST {
   /// Context to read [name] from.
   final AST receiver;
 
@@ -175,11 +156,9 @@ class PropertyRead extends AST {
   PropertyRead(this.receiver, this.name);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitPropertyRead(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitPropertyRead(this, context);
+  }
 }
 
 /// Similar to [PropertyRead], but avoids NPEs by using `?.` instead of `.`.
@@ -187,7 +166,7 @@ class PropertyRead extends AST {
 /// ```
 /// SafePropertyRead(VariableRead('a'), VariableRead('b')) // a?.b
 /// ```
-class SafePropertyRead extends AST {
+final class SafePropertyRead extends AST {
   /// Context to read [name] from.
   final AST receiver;
 
@@ -197,11 +176,9 @@ class SafePropertyRead extends AST {
   SafePropertyRead(this.receiver, this.name);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitSafePropertyRead(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitSafePropertyRead(this, context);
+  }
 }
 
 /// Similar to [PropertyRead], but uses bracket operator `[]` to refer to [key].
@@ -209,7 +186,7 @@ class SafePropertyRead extends AST {
 /// ```
 /// KeyedRead(VariableRead('a'), LiteralPrimitive('b')) // a['b']
 /// ```
-class KeyedRead extends AST {
+final class KeyedRead extends AST {
   /// Context to read [key] from.
   final AST receiver;
 
@@ -219,8 +196,9 @@ class KeyedRead extends AST {
   KeyedRead(this.receiver, this.key);
 
   @override
-  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) =>
-      visitor.visitKeyedRead(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitKeyedRead(this, context);
+  }
 }
 
 /// Writes a property (setter or field) [name] to [receiver].
@@ -228,7 +206,7 @@ class KeyedRead extends AST {
 /// ```
 /// PropertyWrite(VariableRead('a'), 'b', LiteralPrimitive('c')) // a.b = 'c'
 /// ```
-class PropertyWrite extends AST {
+final class PropertyWrite extends AST {
   /// Context to write [name] to.
   final AST receiver;
 
@@ -241,11 +219,9 @@ class PropertyWrite extends AST {
   PropertyWrite(this.receiver, this.name, this.value);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitPropertyWrite(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitPropertyWrite(this, context);
+  }
 }
 
 /// Similar to [PropertyWrite] using bracket operator `[]=` to refer to [key].
@@ -258,7 +234,7 @@ class PropertyWrite extends AST {
 ///   LiteralPrimitive('c'),
 /// )
 /// ```
-class KeyedWrite extends AST {
+final class KeyedWrite extends AST {
   /// Context to write [key] to.
   final AST receiver;
 
@@ -271,11 +247,9 @@ class KeyedWrite extends AST {
   KeyedWrite(this.receiver, this.key, this.value);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitKeyedWrite(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitKeyedWrite(this, context);
+  }
 }
 
 /// A method call that has been interpreted as a specialized "pipe" invocation.
@@ -294,7 +268,7 @@ class KeyedWrite extends AST {
 ///   [LiteralPrimitive('baz')],
 /// )
 /// ```
-class BindingPipe extends AST {
+final class BindingPipe extends AST {
   /// Name of the pipe.
   final String name;
 
@@ -307,11 +281,9 @@ class BindingPipe extends AST {
   BindingPipe(this.exp, this.name, this.args);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitPipe(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitPipe(this, context);
+  }
 }
 
 /// Represents a primitive value (either [number], [String], [bool], or `null`).
@@ -326,7 +298,7 @@ class BindingPipe extends AST {
 /// // 5
 /// LiteralPrimitive(5)
 /// ```
-class LiteralPrimitive extends AST {
+final class LiteralPrimitive extends AST {
   /// Value being parsed.
   ///
   /// This is either [number], [String], [bool], or `null`.
@@ -335,11 +307,9 @@ class LiteralPrimitive extends AST {
   LiteralPrimitive(this.value);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitLiteralPrimitive(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitLiteralPrimitive(this, context);
+  }
 }
 
 /// Represents converting a result or multiple results explicitly to a [String].
@@ -354,7 +324,7 @@ class LiteralPrimitive extends AST {
 ///   [VariableRead('place'), EmptyExpr()],
 /// )
 /// ```
-class Interpolation extends AST {
+final class Interpolation extends AST {
   /// For a given expression `i`, the preceding string (if any).
   ///
   /// In practice, this is an empty string (`''`) if there is no preceding
@@ -367,11 +337,9 @@ class Interpolation extends AST {
   Interpolation(this.strings, this.expressions);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitInterpolation(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitInterpolation(this, context);
+  }
 }
 
 /// Represents a binary expression, i.e. `left operator right`.
@@ -380,7 +348,7 @@ class Interpolation extends AST {
 /// // 2 + 3
 /// Binary('+', LiteralPrimitive(2), LiteralPrimitive(3))
 /// ```
-class Binary extends AST {
+final class Binary extends AST {
   /// A literal result of parsing a binary operator.
   final String operator;
 
@@ -393,11 +361,9 @@ class Binary extends AST {
   Binary(this.operator, this.left, this.right);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitBinary(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitBinary(this, context);
+  }
 }
 
 /// A unary prefixed "not" expression, i.e. `!expr`.
@@ -406,18 +372,16 @@ class Binary extends AST {
 /// // !true
 /// PrefixNot(LiteralPrimitive(true))
 /// ```
-class PrefixNot extends AST {
+final class PrefixNot extends AST {
   /// Expression to negate.
   final AST expression;
 
   PrefixNot(this.expression);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitPrefixNot(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitPrefixNot(this, context);
+  }
 }
 
 /// Coerces `T?` to `T`, throwing if null, i.e. `var!`.
@@ -426,17 +390,15 @@ class PrefixNot extends AST {
 /// // a!
 /// PostfixNotNull(VariableRead('a'))
 /// ```
-class PostfixNotNull extends AST {
+final class PostfixNotNull extends AST {
   final AST expression;
 
   PostfixNotNull(this.expression);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitPostfixNotNull(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitPostfixNotNull(this, context);
+  }
 }
 
 /// A call to a method.
@@ -450,7 +412,7 @@ class PostfixNotNull extends AST {
 ///   [NamedExpr('baz', LiteralPrimitive(123))],
 /// )
 /// ```
-class MethodCall extends AST {
+final class MethodCall extends AST {
   final AST receiver;
   final String name;
   final List<AST> args;
@@ -464,15 +426,13 @@ class MethodCall extends AST {
   ]);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitMethodCall(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitMethodCall(this, context);
+  }
 }
 
 /// Similar to [MethodCall], but only if the [receiver] is non-null.
-class SafeMethodCall extends AST {
+final class SafeMethodCall extends AST {
   final AST receiver;
   final String name;
   final List<AST> args;
@@ -486,11 +446,9 @@ class SafeMethodCall extends AST {
   ]);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitSafeMethodCall(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitSafeMethodCall(this, context);
+  }
 }
 
 /// Similar to [MethodCall], but [target] is callable.
@@ -503,7 +461,7 @@ class SafeMethodCall extends AST {
 ///   [NamedExpr('baz', LiteralPrimitive(123))],
 /// )
 /// ```
-class FunctionCall extends AST {
+final class FunctionCall extends AST {
   final AST target;
   final List<AST> args;
   final List<NamedExpr> namedArgs;
@@ -515,15 +473,13 @@ class FunctionCall extends AST {
   ]);
 
   @override
-  R visit<R, C, CO extends C>(
-    AstVisitor<R, C?> visitor, [
-    CO? context,
-  ]) =>
-      visitor.visitFunctionCall(this, context);
+  R visit<R, C, CO extends C>(AstVisitor<R, C?> visitor, [CO? context]) {
+    return visitor.visitFunctionCall(this, context);
+  }
 }
 
 /// Wraps an [AST] with [source] and [location] information.
-class ASTWithSource {
+final class ASTWithSource {
   final AST ast;
   final String? source;
   final String? location;
@@ -552,40 +508,62 @@ class ASTWithSource {
 
 abstract class AstVisitor<R, C> {
   R visitBinary(Binary ast, C context);
+
   R visitConditional(Conditional ast, C context);
+
   R visitEmptyExpr(EmptyExpr ast, C context);
+
   R visitFunctionCall(FunctionCall ast, C context);
+
   R visitIfNull(IfNull ast, C context);
+
   R visitImplicitReceiver(ImplicitReceiver ast, C context);
+
   R visitInterpolation(Interpolation ast, C context);
+
   R visitKeyedRead(KeyedRead ast, C context);
+
   R visitKeyedWrite(KeyedWrite ast, C context);
+
   R visitLiteralPrimitive(LiteralPrimitive ast, C context);
+
   R visitMethodCall(MethodCall ast, C context);
+
   R visitNamedExpr(NamedExpr ast, C context);
+
   R visitPipe(BindingPipe ast, C context);
+
   R visitPostfixNotNull(PostfixNotNull ast, C context);
+
   R visitPrefixNot(PrefixNot ast, C context);
+
   R visitPropertyRead(PropertyRead ast, C context);
+
   R visitPropertyWrite(PropertyWrite ast, C context);
+
   R visitSafeMethodCall(SafeMethodCall ast, C context);
+
   R visitSafePropertyRead(SafePropertyRead ast, C context);
+
   R visitStaticRead(StaticRead ast, C context);
+
   R visitVariableRead(VariableRead ast, C context);
 }
 
 class RecursiveAstVisitor<C> implements AstVisitor<void, C> {
   @override
   void visitBinary(Binary ast, C context) {
-    ast.left.visit(this, context);
-    ast.right.visit(this, context);
+    ast
+      ..left.visit(this, context)
+      ..right.visit(this, context);
   }
 
   @override
   void visitConditional(Conditional ast, C context) {
-    ast.condition.visit(this, context);
-    ast.trueExp.visit(this, context);
-    ast.falseExp.visit(this, context);
+    ast
+      ..condition.visit(this, context)
+      ..trueExp.visit(this, context)
+      ..falseExp.visit(this, context);
   }
 
   @override
@@ -611,8 +589,9 @@ class RecursiveAstVisitor<C> implements AstVisitor<void, C> {
 
   @override
   void visitIfNull(IfNull ast, C context) {
-    ast.condition.visit(this, context);
-    ast.nullExp.visit(this, context);
+    ast
+      ..condition.visit(this, context)
+      ..nullExp.visit(this, context);
   }
 
   @override
@@ -625,15 +604,17 @@ class RecursiveAstVisitor<C> implements AstVisitor<void, C> {
 
   @override
   void visitKeyedRead(KeyedRead ast, C context) {
-    ast.receiver.visit(this, context);
-    ast.key.visit(this, context);
+    ast
+      ..receiver.visit(this, context)
+      ..key.visit(this, context);
   }
 
   @override
   void visitKeyedWrite(KeyedWrite ast, C context) {
-    ast.receiver.visit(this, context);
-    ast.key.visit(this, context);
-    ast.value.visit(this, context);
+    ast
+      ..receiver.visit(this, context)
+      ..key.visit(this, context)
+      ..value.visit(this, context);
   }
 
   @override
@@ -663,8 +644,9 @@ class RecursiveAstVisitor<C> implements AstVisitor<void, C> {
 
   @override
   void visitPropertyWrite(PropertyWrite ast, C context) {
-    ast.receiver.visit(this, context);
-    ast.value.visit(this, context);
+    ast
+      ..receiver.visit(this, context)
+      ..value.visit(this, context);
   }
 
   @override
@@ -694,95 +676,135 @@ class RecursiveAstVisitor<C> implements AstVisitor<void, C> {
 
 class AstTransformer implements AstVisitor<AST, void> {
   @override
-  AST visitImplicitReceiver(ImplicitReceiver ast, _) => ast;
+  AST visitImplicitReceiver(ImplicitReceiver ast, void context) {
+    return ast;
+  }
 
   @override
-  AST visitStaticRead(StaticRead ast, _) => ast;
+  AST visitStaticRead(StaticRead ast, void context) {
+    return ast;
+  }
 
   @override
-  AST visitVariableRead(VariableRead ast, _) => ast;
+  AST visitVariableRead(VariableRead ast, void context) {
+    return ast;
+  }
 
   @override
-  AST visitInterpolation(Interpolation ast, _) =>
-      Interpolation(ast.strings, _visitAll(ast.expressions));
+  AST visitInterpolation(Interpolation ast, void context) {
+    return Interpolation(ast.strings, _visitAll(ast.expressions));
+  }
 
   @override
-  AST visitLiteralPrimitive(LiteralPrimitive ast, _) =>
-      LiteralPrimitive(ast.value);
+  AST visitLiteralPrimitive(LiteralPrimitive ast, void context) {
+    return LiteralPrimitive(ast.value);
+  }
 
   @override
-  AST visitPropertyRead(PropertyRead ast, _) =>
-      PropertyRead(ast.receiver.visit(this), ast.name);
+  AST visitPropertyRead(PropertyRead ast, void context) {
+    return PropertyRead(ast.receiver.visit(this), ast.name);
+  }
 
   @override
-  AST visitPropertyWrite(PropertyWrite ast, _) =>
-      PropertyWrite(ast.receiver.visit(this), ast.name, ast.value);
+  AST visitPropertyWrite(PropertyWrite ast, void context) {
+    return PropertyWrite(ast.receiver.visit(this), ast.name, ast.value);
+  }
 
   @override
-  AST visitSafePropertyRead(SafePropertyRead ast, _) =>
-      SafePropertyRead(ast.receiver.visit(this), ast.name);
+  AST visitSafePropertyRead(SafePropertyRead ast, void context) {
+    return SafePropertyRead(ast.receiver.visit(this), ast.name);
+  }
 
   @override
-  AST visitMethodCall(MethodCall ast, _) => MethodCall(ast.receiver.visit(this),
-      ast.name, _visitAll(ast.args), _visitAll(ast.namedArgs));
-
-  @override
-  AST visitSafeMethodCall(SafeMethodCall ast, _) => SafeMethodCall(
+  AST visitMethodCall(MethodCall ast, void context) {
+    return MethodCall(
       ast.receiver.visit(this),
       ast.name,
       _visitAll(ast.args),
-      _visitAll(ast.namedArgs));
+      _visitAll(ast.namedArgs),
+    );
+  }
 
   @override
-  AST visitFunctionCall(FunctionCall ast, _) => FunctionCall(
-      ast.target.visit(this), _visitAll(ast.args), _visitAll(ast.namedArgs));
+  AST visitSafeMethodCall(SafeMethodCall ast, void context) {
+    return SafeMethodCall(
+      ast.receiver.visit(this),
+      ast.name,
+      _visitAll(ast.args),
+      _visitAll(ast.namedArgs),
+    );
+  }
 
   @override
-  AST visitNamedExpr(NamedExpr ast, _) => ast;
+  AST visitFunctionCall(FunctionCall ast, void context) {
+    return FunctionCall(
+      ast.target.visit(this),
+      _visitAll(ast.args),
+      _visitAll(ast.namedArgs),
+    );
+  }
 
   @override
-  AST visitBinary(Binary ast, _) =>
-      Binary(ast.operator, ast.left.visit(this), ast.right.visit(this));
+  AST visitNamedExpr(NamedExpr ast, void context) {
+    return ast;
+  }
 
   @override
-  AST visitPostfixNotNull(PostfixNotNull ast, _) =>
-      PostfixNotNull(ast.expression.visit(this));
+  AST visitBinary(Binary ast, void context) {
+    return Binary(ast.operator, ast.left.visit(this), ast.right.visit(this));
+  }
 
   @override
-  AST visitPrefixNot(PrefixNot ast, _) => PrefixNot(ast.expression.visit(this));
+  AST visitPostfixNotNull(PostfixNotNull ast, void context) {
+    return PostfixNotNull(ast.expression.visit(this));
+  }
 
   @override
-  AST visitConditional(Conditional ast, _) => Conditional(
+  AST visitPrefixNot(PrefixNot ast, void context) {
+    return PrefixNot(ast.expression.visit(this));
+  }
+
+  @override
+  AST visitConditional(Conditional ast, void context) {
+    return Conditional(
       ast.condition.visit(this),
       ast.trueExp.visit(this),
-      ast.falseExp.visit(this));
+      ast.falseExp.visit(this),
+    );
+  }
 
   @override
-  AST visitIfNull(IfNull ast, _) =>
-      IfNull(ast.condition.visit(this), ast.nullExp.visit(this));
+  AST visitIfNull(IfNull ast, void context) {
+    return IfNull(ast.condition.visit(this), ast.nullExp.visit(this));
+  }
 
   @override
-  AST visitPipe(BindingPipe ast, _) =>
-      BindingPipe(ast.exp.visit(this), ast.name, _visitAll(ast.args));
+  AST visitPipe(BindingPipe ast, void context) {
+    return BindingPipe(ast.exp.visit(this), ast.name, _visitAll(ast.args));
+  }
 
   @override
-  AST visitKeyedRead(KeyedRead ast, _) =>
-      KeyedRead(ast.receiver.visit(this), ast.key.visit(this));
+  AST visitKeyedRead(KeyedRead ast, void context) {
+    return KeyedRead(ast.receiver.visit(this), ast.key.visit(this));
+  }
 
   @override
-  AST visitKeyedWrite(KeyedWrite ast, _) => KeyedWrite(
-      ast.receiver.visit(this), ast.key.visit(this), ast.value.visit(this));
+  AST visitKeyedWrite(KeyedWrite ast, void context) {
+    return KeyedWrite(
+      ast.receiver.visit(this),
+      ast.key.visit(this),
+      ast.value.visit(this),
+    );
+  }
 
   @override
-  AST visitEmptyExpr(EmptyExpr ast, _) => EmptyExpr();
+  AST visitEmptyExpr(EmptyExpr ast, void context) {
+    return EmptyExpr();
+  }
 
   List<R> _visitAll<R extends AST>(List<AST> asts) {
-    var res = <R>[];
-    for (var i = 0; i < asts.length; ++i) {
-      final ast = asts[i];
-      final result = ast.visit(this);
-      res.add(result as R);
-    }
-    return res;
+    return <R>[
+      for (var i = 0; i < asts.length; ++i) asts[i].visit(this) as R,
+    ];
   }
 }
